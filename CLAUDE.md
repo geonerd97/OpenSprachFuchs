@@ -9,7 +9,7 @@ Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige,
 - **Modular:** jede Sprache ist ein JSON-Paket (`packs/`), herunterladbar und aktualisierbar. Die App meldet Updates für Pakete (Prüfsumme) und für sich selbst (GitHub-Releases).
 - **Anonym und datensparsam:** Konto = zufälliger Schlüssel (4×4 Zeichen), keine Klar- oder Benutzernamen, Spielstand auf dem Handy verschlüsselt. Konto löschen und Datenschutzhinweis sind eingebaut. Alles, was neu an den Server geht, muss in `PRIVACY.md` und `PRIVACY_HTML` beschrieben werden.
 - **Freunde** über einen öffentlichen Freundescode (nicht den Schlüssel), max. 5, Namen nur lokal (im verschlüsselten Spielstand). Gemeinsame Serie pro Freund (Variante A), täglich ein kostenloses Geschenk (5 💎).
-- Backend kostenlos bei **Cloudflare** (Worker + D1 + statische Dateien). Live unter `https://openlingo.betterlingo-worker.workers.dev/`, D1-Datenbank `openlingo` in Westeuropa (`weur`). Deploy: `cd worker && npm run deploy`.
+- Backend kostenlos bei **Cloudflare** (Worker + D1 + statische Dateien). Live unter `https://openlingo.openlingo.workers.dev/`, D1-Datenbank `openlingo` in Westeuropa (`weur`). Deploy: `cd worker && npm run deploy`.
 - **Keine Liga.** Thai, Schweizerdeutsch und Kölsch sollen später als Pakete nachgeliefert werden (die Inhalte der Vorversion liegen nicht im öffentlichen Repository; der Maintainer hat sie im privaten Verlauf auf seinem Gitea). Das Paketformat braucht dafür noch Umschrift, `noTyping`/`noListen` und abweichende Stimme.
 
 ## Aufbau
