@@ -7,8 +7,13 @@ cd "$(dirname "$0")/.."
 [ -f android/keystore.properties ] || { echo "android/keystore.properties fehlt (siehe README, 'Release bauen')."; exit 1; }
 command -v gh >/dev/null || { echo "Die GitHub CLI (gh) fehlt: https://cli.github.com"; exit 1; }
 version=$(sed -n 's/^ *versionName = "\(.*\)"/\1/p' android/app/build.gradle.kts)
+# The GitHub repository from app/js/config.js, and the git remote that points to it.
+repo=$(sed -n 's/^ *GITHUB_REPO: "\(.*\)",/\1/p' app/js/config.js)
+[ -n "$repo" ] || { echo "GITHUB_REPO in app/js/config.js ist leer."; exit 1; }
+remote=$(git remote -v | awk -v r="github.com[/:]$repo(\\.git)? " '$0 ~ r && /\(push\)/ {print $1; exit}')
+[ -n "$remote" ] || { echo "Kein git-Remote für github.com/$repo gefunden."; exit 1; }
 tag="v$version"
-if gh release view "$tag" >/dev/null 2>&1; then echo "Release $tag gibt es schon. Erst versionCode und versionName erhöhen."; exit 1; fi
+if gh release view "$tag" --repo "$repo" >/dev/null 2>&1; then echo "Release $tag gibt es schon. Erst versionCode und versionName erhöhen."; exit 1; fi
 if [ -n "$(git status --porcelain)" ]; then echo "Es gibt nicht committete Änderungen. Bitte erst committen."; exit 1; fi
 
 echo "Tests …"
@@ -21,9 +26,9 @@ out="android/app/build/outputs/apk/release/betterlingo-$version.apk"
 cp "$apk" "$out"
 
 git tag "$tag"
-git push origin "$tag"
+git push "$remote" "$tag"
 # Versions below 1.0 are experimental and published as pre-releases.
 flags=()
 case "$version" in 0.*) flags+=(--prerelease); title="Betterlingo $version (experimentell)";; *) title="Betterlingo $version";; esac
-gh release create "$tag" "$out" --title "$title" --generate-notes ${flags[@]+"${flags[@]}"}
+gh release create "$tag" --repo "$repo" "$out" --title "$title" --generate-notes ${flags[@]+"${flags[@]}"}
 echo "Fertig: Release $tag veröffentlicht."
