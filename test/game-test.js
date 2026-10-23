@@ -308,5 +308,21 @@ g.view = "home";
   a.ui.modal = null;
 }
 
-console.log(`Übungen: ${count}, Fehler: ${errors}`, JSON.stringify(types));
+// App updates: pre-releases count (every 0.x version is one), and only a newer version is offered.
+(async () => {
+  const releases = [{ tag_name: "v0.0.1", prerelease: true, draft: false, html_url: "u1" }, { tag_name: "v0.0.3", draft: true, html_url: "u3" },
+    { tag_name: "v0.0.2", prerelease: true, draft: false, html_url: "u2" }];
+  const fetchImpl = async url => {
+    if (/api\.github\.com/.test(url) && !/\/releases\?/.test(url)) fail("Update-Prüfung fragt die falsche Adresse ab", url);
+    if (!/api\.github\.com/.test(url)) throw new Error("offline"); // backend calls at start-up
+    return new Response(JSON.stringify(releases));
+  };
+  const u = loadGame({ AndroidBridge: { appVersion: () => "0.0.1", setReminder() {}, reportDay() {}, speak() {}, stop() {} } }, { fetch: fetchImpl });
+  await u.checkAppUpdate();
+  if (!u.ui.appUpdate || u.ui.appUpdate.version !== "0.0.2" || u.ui.appUpdate.url !== "u2") fail("App-Update (Vorabversion) nicht erkannt", JSON.stringify(u.ui.appUpdate));
+  const same = loadGame({ AndroidBridge: { appVersion: () => "0.0.2", setReminder() {}, reportDay() {}, speak() {}, stop() {} } }, { fetch: fetchImpl });
+  await same.checkAppUpdate();
+  if (same.ui.appUpdate) fail("App-Update angeboten, obwohl die Version aktuell ist");
+  console.log(`Übungen: ${count}, Fehler: ${errors}`, JSON.stringify(types));
 process.exit(errors ? 1 : 0);
+})();

@@ -223,9 +223,12 @@ async function checkAppUpdate() {
   try { last = +localStorage.getItem("opensprachfuchs-update-check") || 0; } catch (e) {}
   if (Date.now() - last < 864e5 && !ui.appUpdate) return;
   try {
-    const r = await fetchTimeout(`https://api.github.com/repos/${CONFIG.GITHUB_REPO}/releases/latest`, { headers: { Accept: "application/vnd.github+json" } });
+    // Not /releases/latest: GitHub leaves pre-releases out there, and every 0.x version is one.
+    const r = await fetchTimeout(`https://api.github.com/repos/${CONFIG.GITHUB_REPO}/releases?per_page=10`, { headers: { Accept: "application/vnd.github+json" } });
     if (!r.ok) return;
-    const rel = await r.json();
+    const list = await r.json();
+    const rel = (Array.isArray(list) ? list : []).filter(x => !x.draft && x.tag_name).sort((x, y) => (newerVersion(x.tag_name, y.tag_name) ? -1 : 1))[0];
+    if (!rel) return;
     localStorage.setItem("opensprachfuchs-update-check", String(Date.now()));
     if (newerVersion(rel.tag_name, window.AndroidBridge.appVersion())) { ui.appUpdate = { version: String(rel.tag_name).replace(/^v/, ""), url: rel.html_url }; render(); }
   } catch (e) {}
