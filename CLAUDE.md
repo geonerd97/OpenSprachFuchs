@@ -1,4 +1,4 @@
-# Openlingo – freie Sprachlern-App für Android
+# OpenSprachFuchs – freie Sprachlern-App für Android
 
 ## Worum es geht
 Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch und brasilianisches Portugiesisch** lernen. Die Oberfläche ist komplett auf Deutsch. Veröffentlicht wird auf GitHub (Code MIT, Sprachpakete CC BY-SA 4.0); die APK baut der Maintainer lokal auf dem Mac und lädt sie als GitHub-Release hoch (`tools/release.sh`).
@@ -9,14 +9,14 @@ Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige,
 - **Modular:** jede Sprache ist ein JSON-Paket (`packs/`), herunterladbar und aktualisierbar. Die App meldet Updates für Pakete (Prüfsumme) und für sich selbst (GitHub-Releases).
 - **Anonym und datensparsam:** Konto = zufälliger Schlüssel (4×4 Zeichen), keine Klar- oder Benutzernamen, Spielstand auf dem Handy verschlüsselt. Konto löschen und Datenschutzhinweis sind eingebaut. Alles, was neu an den Server geht, muss in `PRIVACY.md` und `PRIVACY_HTML` beschrieben werden.
 - **Freunde** über einen öffentlichen Freundescode (nicht den Schlüssel), max. 5, Namen nur lokal (im verschlüsselten Spielstand). Gemeinsame Serie pro Freund (Variante A), täglich ein kostenloses Geschenk (5 💎).
-- Backend kostenlos bei **Cloudflare** (Worker + D1 + statische Dateien). Live unter `https://openlingo.openlingo.workers.dev/`, D1-Datenbank `openlingo` in Westeuropa (`weur`). Deploy: `cd worker && npm run deploy`.
+- Backend kostenlos bei **Cloudflare** (Worker + D1 + statische Dateien). Live unter `https://opensprachfuchs.opensprachfuchs.workers.dev/`, D1-Datenbank `opensprachfuchs` in Westeuropa (`weur`). Deploy: `cd worker && npm run deploy`.
 - **Keine Liga.** Thai, Schweizerdeutsch und Kölsch sollen später als Pakete nachgeliefert werden (die Inhalte der Vorversion liegen nicht im öffentlichen Repository; der Maintainer hat sie im privaten Verlauf auf seinem Gitea). Das Paketformat braucht dafür noch Umschrift, `noTyping`/`noListen` und abweichende Stimme.
 
 ## Aufbau
 | Pfad | Inhalt |
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten, Systemschriften. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
-| `android/` | WebView-App, Paket `de.openlingo.app`, Version 0.0.1 (versionCode 3, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.1 (versionCode 3, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
@@ -25,15 +25,15 @@ Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige,
 
 ### app/js
 - `config.js`: `CONFIG.BACKEND_URL`, `GITHUB_REPO`, `OPERATOR` (Platzhalter, beim Deployment eintragen), `APP` (AndroidBridge vorhanden), `BACKEND` (auf localhost automatisch `http://localhost:8787/`), `fetchTimeout`.
-- `content.js`: installierte Pakete in localStorage (`openlingo-pack-<code>`, Liste mit sha256 in `openlingo-packs`), `COURSES`, `fetchPackIndex` (Backend, sonst mitgelieferte `packs/`; nur Backend-Index zählt für Updates), `downloadPack`, `packUpdates`, `setCourse` → `UNITS` mit Wörtern `{id, t, alt, de, pic}` und Sätzen `{id, t, tAlt, de, deAlt}`, Tipp-Hilfe `HINT_T`/`HINT_DE`.
-- `state.js`: Spielstand `st` in `openlingo-state`, Serie, Herzen, SRS, Statistik, Abzeichen, Rückstufung, Tagesaufgaben, Shop. **Fortschritt hängt an festen IDs** (`w:basics.w01`, `s:…`), nicht am Text.
+- `content.js`: installierte Pakete in localStorage (`opensprachfuchs-pack-<code>`, Liste mit sha256 in `opensprachfuchs-packs`), `COURSES`, `fetchPackIndex` (Backend, sonst mitgelieferte `packs/`; nur Backend-Index zählt für Updates), `downloadPack`, `packUpdates`, `setCourse` → `UNITS` mit Wörtern `{id, t, alt, de, pic}` und Sätzen `{id, t, tAlt, de, deAlt}`, Tipp-Hilfe `HINT_T`/`HINT_DE`.
+- `state.js`: Spielstand `st` in `opensprachfuchs-state`, Serie, Herzen, SRS, Statistik, Abzeichen, Rückstufung, Tagesaufgaben, Shop. **Fortschritt hängt an festen IDs** (`w:basics.w01`, `s:…`), nicht am Text.
 - `account.js`: Schlüssel (Crockford Base32, 80 Bit) → PBKDF2-SHA256 (150.000 Runden) → Token (Bearer, Server speichert SHA-256) + AES-GCM-Schlüssel. Spielstand = base64([Version][IV][Chiffrat]), Version 1 = gzip. `createAccount` (offline möglich, `pending`), `signIn`, `initAccount`, `pushSave`/`pullSave` (neueres `savedAt` gewinnt, Server antwortet 409 bei älterem), `deleteAccount`, `signOut`, `reportLearningDay`, Fehlermeldungs-Warteschlange `st.reportQueue`, App-Update-Check (GitHub, 1×/Tag).
 - `friends.js`: `loadFriends`, `addFriend`, `acceptFriend`, `removeFriend`, `sendGift`, `claimGifts`, `pairStreak` (gilt, solange `streakDay` heute oder gestern ist), Namen in `st.friends[id]`.
 - `audio.js`: Soundeffekte, Sprachausgabe über `AndroidBridge.speak` (im Desktop-Browser `speechSynthesis`), Hören/Sprechen pausieren, Spracherkennung nur in der App.
 - `exercises.js`: Lektionspläne, Antwortprüfung (`norm`, `lev`), Generatoren `GEN.*`, `generate()` mit Fallbacks.
 - `lesson.js`: Ablauf aller Runden (Lektion, Training, Einstufungstest, Blitzrunde, Gespräch, Meisterschaft), `finish()`.
 - `views.js`: Rendering. Logo `logoHTML()` (`app/img/logo.webp`). Startseite mit **Tab-Leiste unten** (`TABS`: Lernweg, Üben, Freunde, Shop, Profil; `ui.tab`), Onboarding-Ansichten `welcome`/`newkey`/`signin`/`langs`, Dialoge (`modalHTML`), `PRIVACY_HTML`.
-- `main.js`: Klick-Delegation über `data-act`, Tastatur, Zurück-Taste (`window.openlingoBack`: Dialog → Lektion → Tab Lernweg → App verlassen), Start.
+- `main.js`: Klick-Delegation über `data-act`, Tastatur, Zurück-Taste (`window.opensprachfuchsBack`: Dialog → Lektion → Tab Lernweg → App verlassen), Start.
 
 ### Backend (`worker/src/index.js`)
 Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PUT /api/save`, `POST /api/day`, `GET/POST /api/friends`, `POST /api/friends/:id/accept`, `DELETE /api/friends/:id`, `POST /api/friends/:id/gift`, `POST /api/gifts/claim`, `POST /api/report`, `GET /api/ping`. Statische Pakete unter `/packs/`.
@@ -62,7 +62,7 @@ Lernweg mit 20 Einheiten (A1–B2) à 4 Lektionen, Einstufungstest, Übungstypen
 
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
-- 2026-10-23: Umbenennung in Openlingo (vorher Betterlingo). Logo vom Maintainer: Comic-Fuchs mit blauem „O“ (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon aus `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FBF8F3`). Keine Eule (Abgrenzung zu Duolingo).
+- 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo vom Maintainer: Comic-Fuchs mit blauem „O“ (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon aus `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FBF8F3`). Keine Eule (Abgrenzung zu Duolingo).
 - 2026-10-23: Neuaufbau als Open-Source-Projekt: Android-only, Sprachpakete, Cloudflare-Backend mit anonymem Schlüssel-Konto und verschlüsselten Spielständen, Freunde (gemeinsame Serien, Geschenke), offline-fähig, Tab-Leiste unten. Pi-Server, Docker, Web-App/PWA, Thai und Dialekte entfernt.
 
 ## Mögliche nächste Schritte

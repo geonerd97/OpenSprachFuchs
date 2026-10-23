@@ -1,12 +1,12 @@
-<p align="center"><img src="docs/logo.webp" alt="Openlingo-Logo: ein Comic-Fuchs mit einem blauen O" width="160"></p>
+<p align="center"><img src="docs/logo.webp" alt="OpenSprachFuchs-Logo: ein Comic-Fuchs mit einem blauen O" width="160"></p>
 
-# Openlingo
+# OpenSprachFuchs
 
 Eine freie Sprachlern-App für Android, inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch oder brasilianisches Portugiesisch** lernen wollen.
 
-Openlingo ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duolingo zu tun.
+OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duolingo zu tun.
 
-> ⚠️ **Experimentell:** Openlingo ist in einer frühen Version (0.x). Funktionen, Datenformat und Backend können sich noch ändern, und es kann Fehler geben. Wichtige Lernfortschritte bitte nicht allein darauf verlassen.
+> ⚠️ **Experimentell:** OpenSprachFuchs ist in einer frühen Version (0.x). Funktionen, Datenformat und Backend können sich noch ändern, und es kann Fehler geben. Wichtige Lernfortschritte bitte nicht allein darauf verlassen.
 
 ## Funktionen
 
@@ -86,7 +86,7 @@ Der kostenlose Tarif von Cloudflare reicht für ein kleines Projekt: 100.000 API
    ```
 3. Datenbank anlegen (`weur` = Westeuropa) und die ausgegebene `database_id` in `worker/wrangler.toml` eintragen:
    ```bash
-   npx wrangler d1 create openlingo --location weur
+   npx wrangler d1 create opensprachfuchs --location weur
    ```
 4. Tabellen anlegen:
    ```bash
@@ -96,13 +96,13 @@ Der kostenlose Tarif von Cloudflare reicht für ein kleines Projekt: 100.000 API
    ```bash
    npm run deploy
    ```
-   Wrangler zeigt danach die Adresse, z. B. `https://openlingo.<dein-name>.workers.dev/`.
+   Wrangler zeigt danach die Adresse, z. B. `https://opensprachfuchs.<dein-name>.workers.dev/`.
 6. Diese Adresse in [`app/js/config.js`](app/js/config.js) als `BACKEND_URL` eintragen. Dort gehören auch dein GitHub-Repository (`GITHUB_REPO`, für Update-Hinweise) und unter `OPERATOR` Name und Kontakt des Betreibers hin. Letzteres verlangt die DSGVO für den Datenschutzhinweis.
 
 **Fehlermeldungen aus der App lesen** („Fehler melden“):
 
 ```bash
-npx wrangler d1 execute openlingo --remote --command "SELECT * FROM reports ORDER BY id DESC LIMIT 50"
+npx wrangler d1 execute opensprachfuchs --remote --command "SELECT * FROM reports ORDER BY id DESC LIMIT 50"
 ```
 
 **Lokal testen:** `npm run dev` startet den Worker unter `http://localhost:8787`. Wird die App über `localhost` geöffnet, nutzt sie automatisch dieses Backend.
@@ -122,13 +122,13 @@ Releases müssen immer mit **demselben Schlüssel** signiert sein, sonst lassen 
 
 1. Einmalig einen Schlüssel erzeugen. **Datei und Passwörter gut sichern, nie ins Repository!**
    ```bash
-   keytool -genkeypair -v -keystore ~/openlingo-release.jks -keyalg RSA -keysize 4096 -validity 10000 -alias openlingo
+   keytool -genkeypair -v -keystore ~/opensprachfuchs-release.jks -keyalg RSA -keysize 4096 -validity 10000 -alias opensprachfuchs
    ```
 2. Die Datei `android/keystore.properties` anlegen. Sie steht in `.gitignore`.
    ```properties
-   storeFile=/Users/<du>/openlingo-release.jks
+   storeFile=/Users/<du>/opensprachfuchs-release.jks
    storePassword=…
-   keyAlias=openlingo
+   keyAlias=opensprachfuchs
    keyPassword=…
    ```
 3. In [`android/app/build.gradle.kts`](android/app/build.gradle.kts) `versionCode` um 1 erhöhen und `versionName` setzen, z. B. `0.0.2`.

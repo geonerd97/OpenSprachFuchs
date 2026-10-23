@@ -34,7 +34,7 @@ function fakeD1() {
   const call = (url, opts = {}) => worker.fetch(new Request(url, opts), env);
   // The app's fetch goes straight into the worker.
   const appFetch = (url, opts = {}) => call(url, Object.assign({}, opts, { signal: undefined }));
-  const B = "https://openlingo.YOUR-SUBDOMAIN.workers.dev/";
+  const B = "https://opensprachfuchs.YOUR-SUBDOMAIN.workers.dev/";
 
   /* ---------- Raw API ---------- */
   ok((await call(B + "api/account")).status === 401, "ohne Token kein Zugriff");
@@ -124,7 +124,7 @@ function fakeD1() {
   // Deleting the account removes everything on the server, the app keeps playing without account.
   const before = DB.db.prepare("SELECT COUNT(*) n FROM friendships").get().n;
   await anna.deleteAccount();
-  ok(anna.acct.status === "none" && !anna.store["openlingo-account"], "App: Konto nicht vom Gerät entfernt");
+  ok(anna.acct.status === "none" && !anna.store["opensprachfuchs-account"], "App: Konto nicht vom Gerät entfernt");
   ok(DB.db.prepare("SELECT COUNT(*) n FROM friendships").get().n === before - 4, "Freundschaften nach Löschen übrig");
   ok(!(await wrong.signIn(anna.acct.key || "K7QM-4XD2-PL9A-H3TV")), "Gelöschtes Konto noch nutzbar");
 

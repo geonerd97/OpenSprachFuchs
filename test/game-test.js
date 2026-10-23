@@ -62,8 +62,8 @@ for (const code of codes) {
   g.ui.tab = "shop"; if (!g.homeHTML().includes('data-act="buy"')) fail("Shop-Tab ohne Angebote");
   g.ui.tab = "friends"; if (!g.homeHTML().includes("Konto anlegen")) fail("Freunde-Tab ohne Konto zeigt keinen Hinweis");
   g.ui.tab = "practice";
-  if (!global.window.openlingoBack() || g.ui.tab !== "path") fail("Zurück wechselt nicht zum Lernweg");
-  if (global.window.openlingoBack()) fail("Zurück auf dem Lernweg sollte die App verlassen");
+  if (!global.window.opensprachfuchsBack() || g.ui.tab !== "path") fail("Zurück wechselt nicht zum Lernweg");
+  if (global.window.opensprachfuchsBack()) fail("Zurück auf dem Lernweg sollte die App verlassen");
 }
 
 // Shared answer helper for flows below: answers every task correctly through the real check().
@@ -293,10 +293,10 @@ g.view = "home";
     a.startLesson(0, 3); a.L.queue.unshift(sp); a.L.cur = a.L.queue.shift(); a.L.checked = false; a.L.mic = ""; a.L.heard = null;
     a.exerciseHTML(a.L.cur); a.startRecognition();
     if (!calls.includes("listen:en-US")) fail("App: Spracherkennung nicht gestartet");
-    global.window.openlingoSpeech({ type: "result", texts: [sp.target.toLowerCase().replace(/[.!?]/g, "")] });
+    global.window.opensprachfuchsSpeech({ type: "result", texts: [sp.target.toLowerCase().replace(/[.!?]/g, "")] });
     if (!a.L.checked || !a.L.res.ok) fail("App: richtig gesprochener Satz abgelehnt", sp.target);
     a.L.cur = Object.assign({}, sp); a.L.checked = false; a.L.mic = ""; a.L.heard = null; a.startRecognition();
-    global.window.openlingoSpeech({ type: "result", texts: ["completely different words here"] });
+    global.window.opensprachfuchsSpeech({ type: "result", texts: ["completely different words here"] });
     if (!a.L.checked || a.L.res.ok) fail("App: falsch gesprochener Satz angenommen");
     a.L.cur = Object.assign({}, sp); a.L.checked = false; a.pauseSpeaking();
     if (a.L.cur.type !== "bank") fail("App: Sprechen pausieren wandelt die Aufgabe nicht um");
@@ -304,7 +304,7 @@ g.view = "home";
   a.ui.modal = "settings"; if (!a.modalHTML().includes('data-k="reminder"')) fail("App: Erinnerung fehlt in den Einstellungen");
   a.ui.modal = null;
   a.startLesson(0, 0);
-  if (!global.window.openlingoBack() || a.ui.modal !== "quit") fail("App: Zurück in der Lektion fragt nicht nach");
+  if (!global.window.opensprachfuchsBack() || a.ui.modal !== "quit") fail("App: Zurück in der Lektion fragt nicht nach");
   a.ui.modal = null;
 }
 

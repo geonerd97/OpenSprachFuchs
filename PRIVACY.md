@@ -1,10 +1,10 @@
 # Datenschutzhinweis
 
-Openlingo erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine Werbung, kein Tracking, keine Analyse- oder Absturzdienste und keine Schriftarten oder Skripte von Dritten. Dieser Text steht in kürzerer Form auch in der App (Profil → Datenschutz).
+OpenSprachFuchs erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine Werbung, kein Tracking, keine Analyse- oder Absturzdienste und keine Schriftarten oder Skripte von Dritten. Dieser Text steht in kürzerer Form auch in der App (Profil → Datenschutz).
 
-**Verantwortlich** für das Backend unter `openlingo.openlingo.workers.dev`: Martin Reger, E-Mail: openlingo(at)gmx.net
+**Verantwortlich** für das Backend unter `opensprachfuchs.opensprachfuchs.workers.dev`: Martin Reger, E-Mail: opensprachfuchs(at)gmx.net
 
-Wer Openlingo mit einem eigenen Backend betreibt, ist dafür selbst verantwortlich und trägt seine Angaben hier und in `app/js/config.js` (`OPERATOR`) ein.
+Wer OpenSprachFuchs mit einem eigenen Backend betreibt, ist dafür selbst verantwortlich und trägt seine Angaben hier und in `app/js/config.js` (`OPERATOR`) ein.
 
 ## Ohne Konto
 
@@ -51,7 +51,7 @@ Bitte schreib nichts Persönliches in die Notiz. Meldungen werden nach späteste
 
 ## Technik und Dienstleister
 
-- **Cloudflare** (Cloudflare, Inc., USA) betreibt den Server, also Worker und D1-Datenbank. Wie jeder Webserver verarbeitet Cloudflare dabei IP-Adressen, um die Anfragen auszuliefern und vor Missbrauch zu schützen; Openlingo zählt Anfragen pro IP-Adresse für eine Minute (Rate Limiting) und speichert sie nicht. Cloudflare ist nach dem EU-US Data Privacy Framework zertifiziert. Mit Cloudflare ist ein Auftragsverarbeitungsvertrag abzuschließen (in den Cloudflare-Einstellungen verfügbar).
+- **Cloudflare** (Cloudflare, Inc., USA) betreibt den Server, also Worker und D1-Datenbank. Wie jeder Webserver verarbeitet Cloudflare dabei IP-Adressen, um die Anfragen auszuliefern und vor Missbrauch zu schützen; OpenSprachFuchs zählt Anfragen pro IP-Adresse für eine Minute (Rate Limiting) und speichert sie nicht. Cloudflare ist nach dem EU-US Data Privacy Framework zertifiziert. Mit Cloudflare ist ein Auftragsverarbeitungsvertrag abzuschließen (in den Cloudflare-Einstellungen verfügbar).
 - **GitHub** (GitHub, Inc., USA): Ist im Code ein Repository eingetragen, fragt die App höchstens einmal am Tag bei GitHub nach einer neuen Version. GitHub sieht dabei deine IP-Adresse. Das lässt sich in den Einstellungen abschalten.
 - **Sprachausgabe und Spracherkennung** erledigen die Dienste deines Handys, z. B. von Google. Für sie gelten deren Datenschutzbestimmungen.
 

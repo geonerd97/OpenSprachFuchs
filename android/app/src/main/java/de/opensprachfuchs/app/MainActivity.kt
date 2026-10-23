@@ -1,4 +1,4 @@
-package de.openlingo.app
+package de.opensprachfuchs.app
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -29,7 +29,7 @@ import org.json.JSONObject
 import java.util.Locale
 
 /**
- * Openlingo as an Android app: the game (../app and a copy of all language packs, copied into the assets at
+ * OpenSprachFuchs as an Android app: the game (../app and a copy of all language packs, copied into the assets at
  * build time) runs in a WebView served from https://appassets.androidplatform.net, so it works offline and keeps
  * its progress in the WebView's storage. The backend is only reached over HTTPS, for backups, friends and updates.
  * The page talks to the app through `window.AndroidBridge` for speech, the daily reminder, sharing and links.
@@ -86,7 +86,7 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
 
     /** The game closes dialogs and leaves lessons itself; only on the home screen does the app go to the background. */
     private fun handleBack() {
-        web.evaluateJavascript("window.openlingoBack ? String(window.openlingoBack()) : 'false'") { result ->
+        web.evaluateJavascript("window.opensprachfuchsBack ? String(window.opensprachfuchsBack()) : 'false'") { result ->
             if (result != "\"true\"") moveTaskToBack(true)
         }
     }
@@ -126,9 +126,9 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
 
     /* ---------- Speech recognition for speaking tasks ---------- */
 
-    /** Sends a result or error to the page, which waits for it in `window.openlingoSpeech`. */
+    /** Sends a result or error to the page, which waits for it in `window.opensprachfuchsSpeech`. */
     private fun sendSpeech(message: JSONObject) {
-        web.post { web.evaluateJavascript("window.openlingoSpeech && window.openlingoSpeech($message)", null) }
+        web.post { web.evaluateJavascript("window.opensprachfuchsSpeech && window.opensprachfuchsSpeech($message)", null) }
     }
 
     private fun speechError(code: String) = sendSpeech(JSONObject().put("type", "error").put("code", code))
@@ -187,7 +187,7 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
             if (!ttsReady) return false
             val available = engine.setLanguage(Locale.forLanguageTag(lang)) >= TextToSpeech.LANG_AVAILABLE
             engine.setSpeechRate(if (slow) 0.6f else 0.95f)
-            engine.speak(text, TextToSpeech.QUEUE_FLUSH, null, "openlingo")
+            engine.speak(text, TextToSpeech.QUEUE_FLUSH, null, "opensprachfuchs")
             return available
         }
 
@@ -206,7 +206,7 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         @JavascriptInterface
         fun canRecognize(): Boolean = SpeechRecognizer.isRecognitionAvailable(this@MainActivity)
 
-        /** Listens once in [lang]; the result goes to `window.openlingoSpeech`. Asks for the microphone the first time. */
+        /** Listens once in [lang]; the result goes to `window.opensprachfuchsSpeech`. Asks for the microphone the first time. */
         @JavascriptInterface
         fun startListening(lang: String) {
             runOnUiThread {
@@ -241,7 +241,7 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         @JavascriptInterface
         fun copy(text: String) {
             runOnUiThread {
-                getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("Openlingo", text))
+                getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("OpenSprachFuchs", text))
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Toast.makeText(this@MainActivity, "Kopiert", Toast.LENGTH_SHORT).show()
             }
         }

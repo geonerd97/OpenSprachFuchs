@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Openlingo"
+rootProject.name = "OpenSprachFuchs"
 include(":app")

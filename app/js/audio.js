@@ -52,7 +52,7 @@ function resumeListening() { st.listenOffUntil = 0; save(); render(); }
 const clockText = ms => { const d = new Date(ms); return `${d.getHours()}:${String(d.getMinutes()).padStart(2, "0")}`; };
 const pauseUntilText = () => clockText(st.listenOffUntil);
 
-/* Speaking: the phone's speech recognition listens once; the result arrives in window.openlingoSpeech. */
+/* Speaking: the phone's speech recognition listens once; the result arrives in window.opensprachfuchsSpeech. */
 let speechBroken = false;
 const speechSupported = () => !speechBroken && APP && !!(window.AndroidBridge.canRecognize && window.AndroidBridge.canRecognize());
 const speakPaused = () => Date.now() < (st.speakOffUntil || 0);
@@ -93,7 +93,7 @@ function startRecognition() {
     if (!["no-speech", "no-match", "aborted"].includes(code)) speechBroken = true;
     render();
   };
-  window.openlingoSpeech = msg => { if (msg && msg.type === "result") done(msg.texts || []); else if (msg && msg.type === "error") fail(msg.code); };
+  window.opensprachfuchsSpeech = msg => { if (msg && msg.type === "result") done(msg.texts || []); else if (msg && msg.type === "error") fail(msg.code); };
   L.mic = "listening"; L.micErr = ""; render();
   try { window.AndroidBridge.startListening(C.voice); } catch (e) { fail("unavailable"); }
 }

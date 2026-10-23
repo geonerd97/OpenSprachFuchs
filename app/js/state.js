@@ -2,7 +2,7 @@
 /* ---------- State ----------
    Progress always lives on the device (localStorage). With an account it is also backed up, encrypted (account.js).
    XP, streak, hearts and gems are shared by all languages; st.courses[code] keeps what belongs to one language. */
-const STORE = "openlingo-state";
+const STORE = "opensprachfuchs-state";
 const LESSONS_PER_UNIT = 4, MAX_HEARTS = 10, REGEN_MS = 20 * 60 * 1000;
 const DEF = { gems: 20, freezes: 0, boostUntil: 0, history: {}, bestStreak: 0, badges: {}, perfect: 0, placementPassed: false, xp: 0, streak: 0,
   lastDay: null, day: null, dayLessons: 0, hearts: MAX_HEARTS, heartsTs: 0, course: "", courses: {}, lessons: 0, listenOffUntil: 0, speakOffUntil: 0,

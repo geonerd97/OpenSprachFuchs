@@ -1,4 +1,4 @@
-package de.openlingo.app
+package de.opensprachfuchs.app
 
 import android.Manifest
 import android.app.AlarmManager
@@ -21,7 +21,7 @@ import java.util.Calendar
 object Reminders {
     private const val PREFS = "reminder"
     private const val CHANNEL = "daily"
-    const val ACTION = "de.openlingo.app.REMINDER"
+    const val ACTION = "de.opensprachfuchs.app.REMINDER"
 
     private fun prefs(c: Context) = c.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
@@ -65,14 +65,14 @@ object Reminders {
         nm.createNotificationChannel(NotificationChannel(CHANNEL, "Tägliche Erinnerung", NotificationManager.IMPORTANCE_DEFAULT))
         val streak = p.getInt("streak", 0)
         val text = if (streak > 0) "Deine Serie von $streak ${if (streak == 1) "Tag" else "Tagen"} wartet. Eine Lektion reicht!"
-        else "Fünf Minuten Openlingo? Eine Lektion reicht fürs Tagesziel."
+        else "Fünf Minuten OpenSprachFuchs? Eine Lektion reicht fürs Tagesziel."
         val open = PendingIntent.getActivity(
             c, 0, Intent(c, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
         val n = Notification.Builder(c, CHANNEL)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle("Zeit für Openlingo")
+            .setContentTitle("Zeit für OpenSprachFuchs")
             .setContentText(text)
             .setContentIntent(open)
             .setAutoCancel(true)

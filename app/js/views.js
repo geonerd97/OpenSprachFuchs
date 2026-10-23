@@ -68,7 +68,7 @@ function homeHTML() {
       <div class="nodes">${nodes}</div></section>`;
   }).join("");
   return `<header class="topbar"><div class="topbar-in">
-      <div class="brand"><span class="brand-mark">${logoHTML()}</span><span class="name">Openlingo</span></div>
+      <div class="brand"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>
       <div class="stats"><button class="langchip" data-act="courses" title="Du lernst ${C.name}. Sprache wechseln" aria-label="Sprache wechseln, aktuell ${C.name}">${C.code}${I.chev(14)}</button>
         <span class="stat flame ${streak ? "" : "off"}" title="Tage in Folge">${I.flame(22)}${streak}</span>
         <span class="stat xp" title="Gesamt-XP">${I.bolt(22)}${st.xp}</span>
@@ -438,7 +438,7 @@ function modalHTML() {
     <button class="btn ghost wide" data-act="managepacks">Sprachen verwalten</button>
     <button class="btn ghost wide" data-act="privacy">Datenschutz</button>
     <button class="btn ghost wide" data-act="resetcourse">Fortschritt in ${esc(C.name)} zurücksetzen …</button><button class="btn ghost wide" data-act="reset">Alles zurücksetzen</button>
-    <p class="muted" style="text-align:center">Openlingo ${APP && window.AndroidBridge.appVersion ? esc(window.AndroidBridge.appVersion()) : ""} · freie Software${!APP || /^0\./.test(window.AndroidBridge.appVersion ? window.AndroidBridge.appVersion() : "0.") ? " · experimentell" : ""}</p>`);
+    <p class="muted" style="text-align:center">OpenSprachFuchs ${APP && window.AndroidBridge.appVersion ? esc(window.AndroidBridge.appVersion()) : ""} · freie Software${!APP || /^0\./.test(window.AndroidBridge.appVersion ? window.AndroidBridge.appVersion() : "0.") ? " · experimentell" : ""}</p>`);
 }
 
 /* ---------- Onboarding, languages, friends ---------- */
@@ -450,10 +450,10 @@ function shopHTML() {
     ${ui.shopMsg ? `<p role="status" style="margin:0;font-weight:800;color:var(--good)">${esc(ui.shopMsg)}</p>` : ""}
     <div class="shop">${rows}</div>`;
 }
-/* The logo: the Openlingo fox with the "O" (app/img/logo.webp; the launcher icon is cut out from the same picture). */
+/* The logo: the OpenSprachFuchs fox with the "O" (app/img/logo.webp; the launcher icon is cut out from the same picture). */
 const logoHTML = () => `<img class="logo" src="img/logo.webp" alt="" width="34" height="34">`;
 const modal = (title, body) => `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${title}</h2>${body}</div></div>`;
-const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">Openlingo</span></div>`;
+const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>`;
 function welcomeHTML() {
   return `<div class="center"><div class="card">${brandHTML()}<h1>Sprachen lernen, frei und ohne Werbung</h1>
     <p class="muted" style="font-size:1.05rem">Für deinen Fortschritt bekommst du einen geheimen Schlüssel. Mehr braucht es nicht: keinen Namen, keine E-Mail, kein Passwort.</p>
@@ -530,7 +530,7 @@ function friendsPanelHTML() {
     ${friends.list.length < MAX_FRIENDS ? `<button class="btn ghost wide" data-act="addfriend" ${acct.status !== "ok" ? "disabled" : ""}>Freund hinzufügen</button>` : ""}</div>`;
 }
 const PRIVACY_HTML = `<div class="privacy">
-  <p>Openlingo erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine Werbung, kein Tracking und keine Analyse-Dienste.</p>
+  <p>OpenSprachFuchs erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine Werbung, kein Tracking und keine Analyse-Dienste.</p>
   <h3>Auf deinem Gerät</h3><p class="muted">Fortschritt, Einstellungen, heruntergeladene Sprachpakete und dein Schlüssel.</p>
   <h3>Auf dem Server (nur mit Konto)</h3><ul class="muted">
     <li>eine Prüfsumme deines Zugangs (nicht der Schlüssel selbst)</li>
@@ -539,6 +539,6 @@ const PRIVACY_HTML = `<div class="privacy">
     <li>Freundschaften: wer mit wem, gemeinsame Serie, an welchem Tag ein Geschenk verschickt wurde</li></ul>
   <p class="muted">Deine Freunde sehen deinen Freundescode, ob du heute gelernt hast und eure gemeinsame Serie. Namen für Freunde vergibst du selbst; sie liegen nur verschlüsselt in deinem Spielstand.</p>
   <h3>Fehlermeldungen</h3><p class="muted">„Fehler melden“ schickt Aufgabe, erwartete Lösung, deine Antwort und deine Notiz ohne Bezug zu deinem Konto. Schreib bitte nichts Persönliches hinein.</p>
-  <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; Openlingo speichert sie nicht.${CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt einmal am Tag bei GitHub an (abschaltbar)." : ""}</p>
+  <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt einmal am Tag bei GitHub an (abschaltbar)." : ""}</p>
   <h3>Löschen</h3><p class="muted">Unter Profil → Konto → „Konto löschen“ wird alles sofort vom Server entfernt. Konten, die 12 Monate nicht genutzt werden, löscht der Server von selbst.</p>
   ${CONFIG.OPERATOR ? `<h3>Verantwortlich</h3><p class="muted">${esc(CONFIG.OPERATOR)}</p>` : ""}</div>`;

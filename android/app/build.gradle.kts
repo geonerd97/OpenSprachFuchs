@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    namespace = "de.openlingo.app"
+    namespace = "de.opensprachfuchs.app"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "de.openlingo.app"
+        applicationId = "de.opensprachfuchs.app"
         minSdk = 26
         targetSdk = 36
         versionCode = 3

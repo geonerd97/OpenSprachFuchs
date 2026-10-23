@@ -1,6 +1,6 @@
-# Cloudflare Worker for Openlingo: API (accounts, encrypted saves, friends) and the language packs.
+# Cloudflare Worker for OpenSprachFuchs: API (accounts, encrypted saves, friends) and the language packs.
 # Template: copy to wrangler.toml (not in Git) and enter your database_id. See README.md, "Backend einrichten".
-name = "openlingo"
+name = "opensprachfuchs"
 main = "src/index.js"
 compatibility_date = "2025-09-01"
 
@@ -10,8 +10,8 @@ directory = "./public"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "openlingo"
-database_id = "REPLACE-WITH-YOUR-DATABASE-ID"   # printed by: npx wrangler d1 create openlingo --location weur
+database_name = "opensprachfuchs"
+database_id = "REPLACE-WITH-YOUR-DATABASE-ID"   # printed by: npx wrangler d1 create opensprachfuchs --location weur
 
 # Abuse protection per IP address. The address is only used for counting and is not stored.
 [[ratelimits]]
