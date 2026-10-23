@@ -4,7 +4,7 @@ Betterlingo erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine
 
 > **Hinweis für Betreiber:** Wer das Backend öffentlich betreibt, ist dafür verantwortlich. Trag deinen Namen und eine Kontaktmöglichkeit unten und in `app/js/config.js` (`OPERATOR`) ein. Dieser Text ist eine Vorlage und keine Rechtsberatung.
 
-**Verantwortlich:** _Name, Anschrift, E-Mail des Betreibers eintragen_
+**Verantwortlich:** geonerd97, betterlingo-info(at)gmx.net
 
 ## Ohne Konto
 

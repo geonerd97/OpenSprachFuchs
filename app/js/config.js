@@ -7,7 +7,7 @@ const CONFIG = {
   BACKEND_URL: "https://betterlingo.betterlingo-worker.workers.dev/",
   GITHUB_REPO: "geonerd97/Betterlingo",
   // Who runs the backend (name and contact), shown in the privacy notice. Required by the GDPR when you run it publicly.
-  OPERATOR: "",
+  OPERATOR: "geonerd97 betterlingo-info@gmx.net",
 };
 
 /* Inside the Android app the page talks to the phone through window.AndroidBridge. */
