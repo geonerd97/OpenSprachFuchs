@@ -1,0 +1,803 @@
+{
+  "format": 1,
+  "code": "es",
+  "name": "Spanisch",
+  "short": "ES",
+  "voice": "es-ES",
+  "color": "#E2671B",
+  "note": "Spanisch aus Spanien",
+  "articles": "^(el|la|los|las|un|una) ",
+  "gapSkip": ["el","la","los","las","un","una","yo"],
+  "glossary": {
+    "el": "der",
+    "la": "die",
+    "los": "die (Plural)",
+    "las": "die (Plural)",
+    "un": "ein",
+    "una": "eine",
+    "yo": "ich",
+    "tú": "du",
+    "él": "er",
+    "ella": "sie",
+    "nosotros": "wir",
+    "es": "ist",
+    "está": "ist (Zustand/Ort)",
+    "soy": "ich bin",
+    "estoy": "ich bin",
+    "y": "und",
+    "no": "nicht / nein",
+    "de": "von",
+    "del": "vom",
+    "a": "nach / zu",
+    "al": "zum",
+    "en": "in",
+    "con": "mit",
+    "para": "für",
+    "mi": "mein",
+    "tu": "dein",
+    "su": "sein / Ihr",
+    "qué": "was",
+    "dónde": "wo",
+    "cómo": "wie",
+    "muy": "sehr",
+    "me": "mich / mir",
+    "te": "dich / dir",
+    "se": "sich / man",
+    "hay": "es gibt",
+    "que": "dass / was",
+    "lo": "es / ihn",
+    "más": "mehr"
+  },
+  "units": [
+    {
+      "id": "basics", "title": "Erste Worte", "level": "A1", "colors": ["#2456E8","#1A3FB0"],
+      "desc": "Grüßen, bitten, danken: die Wörter für jeden Tag.",
+      "words": [
+        {"id":"basics.w01","de":"hallo","t":"hola","pic":"👋"},
+        {"id":"basics.w02","de":"tschüss","t":["adiós","hasta luego","chao"]},
+        {"id":"basics.w03","de":"bitte","t":"por favor"},
+        {"id":"basics.w04","de":"danke","t":"gracias","pic":"🙏"},
+        {"id":"basics.w05","de":"ja","t":"sí","pic":"✅"},
+        {"id":"basics.w06","de":"nein","t":"no","pic":"❌"},
+        {"id":"basics.w07","de":"Entschuldigung","t":["perdone","disculpe","perdón"]},
+        {"id":"basics.w08","de":"es tut mir leid","t":"lo siento"},
+        {"id":"basics.w09","de":"guten Morgen","t":"buenos días","pic":"🌅"},
+        {"id":"basics.w10","de":"guten Abend","t":["buenas tardes","buenas noches"]},
+        {"id":"basics.w11","de":"gute Nacht","t":"buenas noches","pic":"🌙"},
+        {"id":"basics.w12","de":"gern geschehen","t":"de nada"},
+        {"id":"basics.w13","de":"in Ordnung","t":["vale","de acuerdo","ok"]}
+      ],
+      "sentences": [
+        {"id":"basics.s01","de":["Hallo, wie geht es dir?","Hallo, wie geht's?","Hallo, wie geht es Ihnen?"],"t":["Hola, ¿cómo estás?","Hola, ¿qué tal?","Hola, ¿cómo está?"]},
+        {"id":"basics.s02","de":"Mir geht es gut, danke.","t":["Estoy bien, gracias.","Bien, gracias."]},
+        {"id":"basics.s03","de":"Guten Morgen!","t":"¡Buenos días!"},
+        {"id":"basics.s04","de":["Vielen Dank!","Danke schön!"],"t":"¡Muchas gracias!"},
+        {"id":"basics.s05","de":"Entschuldigung, sprechen Sie Deutsch?","t":["Perdone, ¿habla alemán?","Disculpe, ¿habla alemán?","Perdón, ¿habla usted alemán?"]},
+        {"id":"basics.s06","de":"Ja, bitte.","t":"Sí, por favor."},
+        {"id":"basics.s07","de":"Nein, danke.","t":"No, gracias."},
+        {"id":"basics.s08","de":"Gern geschehen.","t":"De nada."},
+        {"id":"basics.s09","de":"Es tut mir leid.","t":"Lo siento."},
+        {"id":"basics.s10","de":"Bis morgen!","t":"¡Hasta mañana!"},
+        {"id":"basics.s11","de":"Einen schönen Tag noch!","t":["¡Que tenga un buen día!","¡Que tengas un buen día!","¡Buen día!"]}
+      ]
+    },
+    {
+      "id": "talk", "title": "Sich verständigen", "level": "A1", "colors": ["#8C3FC8","#682C99"],
+      "desc": "Vorstellen, nachfragen und sagen, wenn du etwas nicht verstehst.",
+      "words": [
+        {"id":"talk.w01","de":"ich","t":"yo"},
+        {"id":"talk.w02","de":"du / Sie","t":["tú","usted"]},
+        {"id":"talk.w03","de":"der Name","t":"el nombre"},
+        {"id":"talk.w04","de":"Deutschland","t":"Alemania"},
+        {"id":"talk.w05","de":"Deutsch","t":"el alemán"},
+        {"id":"talk.w06","de":"sprechen","t":"hablar"},
+        {"id":"talk.w07","de":"verstehen","t":["entender","comprender"]},
+        {"id":"talk.w08","de":"langsam","t":"despacio","pic":"🐢"},
+        {"id":"talk.w09","de":"wiederholen","t":"repetir"},
+        {"id":"talk.w10","de":"ein bisschen","t":"un poco"},
+        {"id":"talk.w11","de":"wo","t":"dónde"},
+        {"id":"talk.w12","de":"was","t":"qué"},
+        {"id":"talk.w13","de":"wie","t":"cómo"},
+        {"id":"talk.w14","de":"warum","t":"por qué"}
+      ],
+      "sentences": [
+        {"id":"talk.s01","de":["Ich heiße Anna.","Mein Name ist Anna."],"t":["Me llamo Anna.","Mi nombre es Anna."]},
+        {"id":"talk.s02","de":["Wie heißt du?","Wie heißen Sie?","Wie ist dein Name?"],"t":["¿Cómo te llamas?","¿Cómo se llama?","¿Cuál es tu nombre?"]},
+        {"id":"talk.s03","de":"Ich komme aus Deutschland.","t":["Soy de Alemania.","Vengo de Alemania."]},
+        {"id":"talk.s04","de":["Woher kommst du?","Woher kommen Sie?"],"t":["¿De dónde eres?","¿De dónde es usted?","¿De dónde es?"]},
+        {"id":"talk.s05","de":"Ich spreche ein bisschen Spanisch.","t":["Hablo un poco de español.","Hablo un poco español."]},
+        {"id":"talk.s06","de":["Ich verstehe nicht.","Ich verstehe das nicht."],"t":["No entiendo.","No lo entiendo."]},
+        {"id":"talk.s07","de":"Können Sie das bitte wiederholen?","t":["¿Puede repetir, por favor?","¿Puede repetirlo, por favor?"]},
+        {"id":"talk.s08","de":"Bitte sprechen Sie langsamer.","t":["Hable más despacio, por favor.","Más despacio, por favor."]},
+        {"id":"talk.s09","de":"Was bedeutet das?","t":["¿Qué significa eso?","¿Qué significa esto?"]},
+        {"id":"talk.s10","de":"Wie sagt man das auf Spanisch?","t":"¿Cómo se dice eso en español?"},
+        {"id":"talk.s11","de":["Freut mich!","Freut mich, dich kennenzulernen."],"t":["¡Mucho gusto!","¡Encantado!","¡Encantada!"]}
+      ]
+    },
+    {
+      "id": "money", "title": "Zahlen & Bezahlen", "level": "A1", "colors": ["#0E8C80","#08665D"],
+      "desc": "Preise verstehen, bezahlen, mit Karte oder bar.",
+      "words": [
+        {"id":"money.w01","de":"eins","t":"uno"},
+        {"id":"money.w02","de":"zwei","t":"dos"},
+        {"id":"money.w03","de":"drei","t":"tres"},
+        {"id":"money.w04","de":"vier","t":"cuatro"},
+        {"id":"money.w05","de":"fünf","t":"cinco"},
+        {"id":"money.w06","de":"zehn","t":"diez"},
+        {"id":"money.w07","de":"zwanzig","t":"veinte"},
+        {"id":"money.w08","de":"hundert","t":"cien"},
+        {"id":"money.w09","de":"der Euro","t":"el euro","pic":"💶"},
+        {"id":"money.w10","de":"das Geld","t":"el dinero","pic":"💰"},
+        {"id":"money.w11","de":"die Karte","t":"la tarjeta","pic":"💳"},
+        {"id":"money.w12","de":"die Quittung","t":["el recibo","el tique"],"pic":"🧾"},
+        {"id":"money.w13","de":"teuer","t":"caro"},
+        {"id":"money.w14","de":"billig","t":"barato"}
+      ],
+      "sentences": [
+        {"id":"money.s01","de":"Wie viel kostet das?","t":["¿Cuánto cuesta?","¿Cuánto es?"]},
+        {"id":"money.s02","de":"Das kostet zehn Euro.","t":["Cuesta diez euros.","Son diez euros."]},
+        {"id":"money.s03","de":"Das ist zu teuer.","t":["Es demasiado caro.","Es muy caro."]},
+        {"id":"money.s04","de":"Kann ich mit Karte zahlen?","t":"¿Puedo pagar con tarjeta?"},
+        {"id":"money.s05","de":"Ich zahle bar.","t":"Pago en efectivo."},
+        {"id":"money.s06","de":"Haben Sie etwas Günstigeres?","t":"¿Tiene algo más barato?"},
+        {"id":"money.s07","de":"Die Quittung, bitte.","t":["El recibo, por favor.","El tique, por favor."]},
+        {"id":"money.s08","de":"Ich möchte zwei, bitte.","t":["Quiero dos, por favor.","Dos, por favor."]},
+        {"id":"money.s09","de":"Wo ist ein Geldautomat?","t":["¿Dónde hay un cajero automático?","¿Dónde hay un cajero?"]},
+        {"id":"money.s10","de":["Stimmt so.","Behalten Sie den Rest."],"t":"Quédese con el cambio."}
+      ]
+    },
+    {
+      "id": "time", "title": "Uhrzeit & Tage", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Öffnungszeiten, Uhrzeit und Verabredungen.",
+      "words": [
+        {"id":"time.w01","de":"heute","t":"hoy"},
+        {"id":"time.w02","de":"morgen","t":"mañana"},
+        {"id":"time.w03","de":"gestern","t":"ayer"},
+        {"id":"time.w04","de":"jetzt","t":"ahora"},
+        {"id":"time.w05","de":"später","t":"más tarde"},
+        {"id":"time.w06","de":"früh","t":"temprano"},
+        {"id":"time.w07","de":"die Stunde","t":"la hora"},
+        {"id":"time.w08","de":"die Minute","t":"el minuto"},
+        {"id":"time.w09","de":"der Tag","t":"el día"},
+        {"id":"time.w10","de":"die Woche","t":"la semana"},
+        {"id":"time.w11","de":"Samstag","t":"sábado"},
+        {"id":"time.w12","de":"Sonntag","t":"domingo"},
+        {"id":"time.w13","de":"offen","t":"abierto"},
+        {"id":"time.w14","de":"geschlossen","t":"cerrado"},
+        {"id":"time.w15","de":"die Uhr","t":"el reloj","pic":"🕒"}
+      ],
+      "sentences": [
+        {"id":"time.s01","de":["Wie spät ist es?","Wie viel Uhr ist es?"],"t":"¿Qué hora es?"},
+        {"id":"time.s02","de":"Es ist drei Uhr.","t":"Son las tres."},
+        {"id":"time.s03","de":"Wann öffnet das Museum?","t":["¿Cuándo abre el museo?","¿A qué hora abre el museo?"]},
+        {"id":"time.s04","de":"Das Geschäft ist heute geschlossen.","t":["La tienda está cerrada hoy.","Hoy la tienda está cerrada."]},
+        {"id":"time.s05","de":"Ist es heute offen?","t":["¿Está abierto hoy?","¿Abre hoy?"]},
+        {"id":"time.s06","de":"Bis später!","t":["¡Hasta luego!","¡Hasta más tarde!"]},
+        {"id":"time.s07","de":"Wir bleiben eine Woche.","t":"Nos quedamos una semana."},
+        {"id":"time.s08","de":"Der Bus kommt in zehn Minuten.","t":"El autobús llega en diez minutos."},
+        {"id":"time.s09","de":"Heute ist Samstag.","t":"Hoy es sábado."},
+        {"id":"time.s10","de":"Ich habe jetzt keine Zeit.","t":["Ahora no tengo tiempo.","No tengo tiempo ahora."]}
+      ]
+    },
+    {
+      "id": "food", "title": "Café & Restaurant", "level": "A1", "colors": ["#E2671B","#AE4C0F"],
+      "desc": "Tisch bestellen, Essen wählen, Allergien nennen, zahlen.",
+      "words": [
+        {"id":"food.w01","de":"der Kaffee","t":"el café","pic":"☕"},
+        {"id":"food.w02","de":"der Tee","t":"el té","pic":"🍵"},
+        {"id":"food.w03","de":"das Wasser","t":"el agua","pic":"💧"},
+        {"id":"food.w04","de":"das Bier","t":"la cerveza","pic":"🍺"},
+        {"id":"food.w05","de":"der Wein","t":"el vino","pic":"🍷"},
+        {"id":"food.w06","de":"das Brot","t":"el pan","pic":"🍞"},
+        {"id":"food.w07","de":"das Hähnchen","t":"el pollo","pic":"🍗"},
+        {"id":"food.w08","de":"der Fisch","t":"el pescado","pic":"🐟"},
+        {"id":"food.w09","de":"der Salat","t":"la ensalada","pic":"🥗"},
+        {"id":"food.w10","de":"die Speisekarte","t":["la carta","el menú"]},
+        {"id":"food.w11","de":"der Tisch","t":"la mesa"},
+        {"id":"food.w12","de":"die Rechnung","t":"la cuenta"},
+        {"id":"food.w13","de":"das Frühstück","t":"el desayuno"},
+        {"id":"food.w14","de":"das Abendessen","t":"la cena"},
+        {"id":"food.w15","de":"vegetarisch","t":["vegetariano","vegetariana"]},
+        {"id":"food.w16","de":"lecker","t":["rico","delicioso"]}
+      ],
+      "sentences": [
+        {"id":"food.s01","de":"Einen Tisch für zwei, bitte.","t":"Una mesa para dos, por favor."},
+        {"id":"food.s02","de":"Die Speisekarte, bitte.","t":["La carta, por favor.","El menú, por favor."]},
+        {"id":"food.s03","de":["Ich hätte gern einen Kaffee.","Ich möchte einen Kaffee."],"t":["Quisiera un café.","Quiero un café.","Me gustaría un café."]},
+        {"id":"food.s04","de":"Ein Bier, bitte.","t":"Una cerveza, por favor."},
+        {"id":"food.s05","de":["Ich bin Vegetarier.","Ich bin Vegetarierin."],"t":["Soy vegetariano.","Soy vegetariana."]},
+        {"id":"food.s06","de":"Ich bin allergisch gegen Nüsse.","t":["Soy alérgico a los frutos secos.","Soy alérgica a los frutos secos.","Soy alérgico a las nueces."]},
+        {"id":"food.s07","de":"Was empfehlen Sie?","t":["¿Qué me recomienda?","¿Qué recomienda?"]},
+        {"id":"food.s08","de":"Die Rechnung, bitte.","t":"La cuenta, por favor."},
+        {"id":"food.s09","de":"Das Essen ist sehr lecker.","t":["La comida está muy rica.","La comida está deliciosa."]},
+        {"id":"food.s10","de":"Noch ein Wasser, bitte.","t":"Otra agua, por favor."}
+      ]
+    },
+    {
+      "id": "shop", "title": "Einkaufen", "level": "A1", "colors": ["#D2477F","#A1305D"],
+      "desc": "Supermarkt, Kleidung, Souvenirs: finden, anprobieren, kaufen.",
+      "words": [
+        {"id":"shop.w01","de":"der Supermarkt","t":"el supermercado","pic":"🛒"},
+        {"id":"shop.w02","de":"das Geschäft","t":"la tienda","pic":"🏪"},
+        {"id":"shop.w03","de":"die Tüte","t":"la bolsa","pic":"🛍️"},
+        {"id":"shop.w04","de":"die Flasche","t":"la botella","pic":"🍾"},
+        {"id":"shop.w05","de":"das Obst","t":"la fruta","pic":"🍎"},
+        {"id":"shop.w06","de":"die Sonnencreme","t":["el protector solar","la crema solar"],"pic":"🧴"},
+        {"id":"shop.w07","de":"das Souvenir","t":["el recuerdo","el souvenir"],"pic":"🎁"},
+        {"id":"shop.w08","de":"die Größe","t":"la talla"},
+        {"id":"shop.w09","de":"kaufen","t":"comprar"},
+        {"id":"shop.w10","de":"suchen","t":"buscar"},
+        {"id":"shop.w11","de":"anprobieren","t":"probarse"},
+        {"id":"shop.w12","de":"groß","t":"grande"},
+        {"id":"shop.w13","de":"klein","t":"pequeño"}
+      ],
+      "sentences": [
+        {"id":"shop.s01","de":"Ich suche einen Supermarkt.","t":["Busco un supermercado.","Estoy buscando un supermercado."]},
+        {"id":"shop.s02","de":"Haben Sie das in Größe M?","t":["¿Lo tiene en la talla M?","¿Tiene esto en talla M?"]},
+        {"id":"shop.s03","de":"Ich schaue nur, danke.","t":["Solo estoy mirando, gracias.","Sólo estoy mirando, gracias."]},
+        {"id":"shop.s04","de":"Kann ich das anprobieren?","t":["¿Puedo probármelo?","¿Me lo puedo probar?"]},
+        {"id":"shop.s05","de":"Ich nehme es.","t":"Me lo llevo."},
+        {"id":"shop.s06","de":"Brauchen Sie eine Tüte?","t":["¿Necesita una bolsa?","¿Quiere una bolsa?"]},
+        {"id":"shop.s07","de":"Wann schließt der Laden?","t":["¿Cuándo cierra la tienda?","¿A qué hora cierra la tienda?"]},
+        {"id":"shop.s08","de":"Eine Flasche Wasser, bitte.","t":"Una botella de agua, por favor."},
+        {"id":"shop.s09","de":"Wo finde ich Sonnencreme?","t":["¿Dónde encuentro protector solar?","¿Dónde puedo encontrar protector solar?"]},
+        {"id":"shop.s10","de":"Das ist zu klein.","t":["Es demasiado pequeño.","Es muy pequeño."]}
+      ]
+    },
+    {
+      "id": "way", "title": "Nach dem Weg fragen", "level": "A1", "colors": ["#4E8A1C","#386614"],
+      "desc": "Links, rechts, geradeaus: Wege erfragen und verstehen.",
+      "words": [
+        {"id":"way.w01","de":"links","t":["a la izquierda","izquierda"]},
+        {"id":"way.w02","de":"rechts","t":["a la derecha","derecha"]},
+        {"id":"way.w03","de":"geradeaus","t":["todo recto","recto","derecho"]},
+        {"id":"way.w04","de":"nah","t":"cerca"},
+        {"id":"way.w05","de":"weit","t":"lejos"},
+        {"id":"way.w06","de":"die Straße","t":"la calle"},
+        {"id":"way.w07","de":"die Ecke","t":"la esquina"},
+        {"id":"way.w08","de":"die Toilette","t":["el baño","el servicio","el aseo"],"pic":"🚻"},
+        {"id":"way.w09","de":"der Strand","t":"la playa","pic":"🏖️"},
+        {"id":"way.w10","de":"die Altstadt","t":["el casco antiguo","el casco viejo"]},
+        {"id":"way.w11","de":"der Stadtplan","t":"el mapa","pic":"🗺️"},
+        {"id":"way.w12","de":"die Kirche","t":"la iglesia","pic":"⛪"},
+        {"id":"way.w13","de":"das Museum","t":"el museo","pic":"🏛️"}
+      ],
+      "sentences": [
+        {"id":"way.s01","de":"Entschuldigung, wo ist die Toilette?","t":["Perdone, ¿dónde está el baño?","Disculpe, ¿dónde está el baño?","Perdón, ¿dónde está el baño?"]},
+        {"id":"way.s02","de":"Wie komme ich zum Strand?","t":"¿Cómo llego a la playa?"},
+        {"id":"way.s03","de":["Gehen Sie geradeaus.","Geh geradeaus."],"t":["Siga todo recto.","Siga recto.","Siga derecho."]},
+        {"id":"way.s04","de":"Biegen Sie an der Ecke links ab.","t":["Gire a la izquierda en la esquina.","En la esquina, gire a la izquierda."]},
+        {"id":"way.s05","de":"Ist es weit?","t":"¿Está lejos?"},
+        {"id":"way.s06","de":"Es ist ganz in der Nähe.","t":"Está muy cerca."},
+        {"id":"way.s07","de":"Können Sie mir das auf der Karte zeigen?","t":["¿Me lo puede enseñar en el mapa?","¿Puede mostrármelo en el mapa?"]},
+        {"id":"way.s08","de":"Ich habe mich verlaufen.","t":["Estoy perdido.","Estoy perdida."]},
+        {"id":"way.s09","de":"Das Museum ist rechts.","t":"El museo está a la derecha."},
+        {"id":"way.s10","de":"Wo ist die Altstadt?","t":["¿Dónde está el casco antiguo?","¿Dónde está el casco viejo?"]}
+      ]
+    },
+    {
+      "id": "transport", "title": "Bus, Bahn & Taxi", "level": "A2", "colors": ["#4B50D6","#3438A6"],
+      "desc": "Tickets kaufen, Abfahrten finden, mit dem Taxi fahren.",
+      "words": [
+        {"id":"transport.w01","de":"der Zug","t":"el tren","pic":"🚆"},
+        {"id":"transport.w02","de":"der Bus","t":["el autobús","el bus"],"pic":"🚌"},
+        {"id":"transport.w03","de":"das Taxi","t":"el taxi","pic":"🚕"},
+        {"id":"transport.w04","de":"das Auto","t":"el coche","pic":"🚗"},
+        {"id":"transport.w05","de":"der Flughafen","t":"el aeropuerto","pic":"✈️"},
+        {"id":"transport.w06","de":"der Bahnhof","t":"la estación"},
+        {"id":"transport.w07","de":"die Haltestelle","t":"la parada"},
+        {"id":"transport.w08","de":"die Fahrkarte","t":["el billete","el boleto"],"pic":"🎫"},
+        {"id":"transport.w09","de":"das Gleis","t":"el andén"},
+        {"id":"transport.w10","de":"die Abfahrt","t":"la salida"},
+        {"id":"transport.w11","de":"die Ankunft","t":"la llegada"},
+        {"id":"transport.w12","de":"die Verspätung","t":"el retraso"},
+        {"id":"transport.w13","de":"der Koffer","t":"la maleta","pic":"🧳"}
+      ],
+      "sentences": [
+        {"id":"transport.s01","de":"Eine Fahrkarte zum Flughafen, bitte.","t":["Un billete al aeropuerto, por favor.","Un billete para el aeropuerto, por favor."]},
+        {"id":"transport.s02","de":"Wann fährt der nächste Zug?","t":["¿Cuándo sale el próximo tren?","¿A qué hora sale el próximo tren?"]},
+        {"id":"transport.s03","de":"Von welchem Gleis fährt der Zug?","t":"¿De qué andén sale el tren?"},
+        {"id":"transport.s04","de":"Hält dieser Bus am Bahnhof?","t":"¿Este autobús para en la estación?"},
+        {"id":"transport.s05","de":"Der Zug hat Verspätung.","t":["El tren tiene retraso.","El tren llega tarde."]},
+        {"id":"transport.s06","de":"Zum Flughafen, bitte.","t":"Al aeropuerto, por favor."},
+        {"id":"transport.s07","de":"Wo ist die Bushaltestelle?","t":["¿Dónde está la parada de autobús?","¿Dónde está la parada del autobús?"]},
+        {"id":"transport.s08","de":"Ich möchte ein Auto mieten.","t":["Quisiera alquilar un coche.","Quiero alquilar un coche."]},
+        {"id":"transport.s09","de":"Mein Koffer ist nicht angekommen.","t":["Mi maleta no ha llegado.","Mi maleta no llegó."]},
+        {"id":"transport.s10","de":"Muss ich umsteigen?","t":["¿Tengo que hacer transbordo?","¿Tengo que cambiar?"]}
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "level": "A2", "colors": ["#B7791F","#8A5A12"],
+      "desc": "Einchecken, WLAN, Frühstück und kleine Probleme.",
+      "words": [
+        {"id":"hotel.w01","de":"das Hotel","t":"el hotel","pic":"🏨"},
+        {"id":"hotel.w02","de":"das Zimmer","t":"la habitación"},
+        {"id":"hotel.w03","de":"der Schlüssel","t":"la llave","pic":"🔑"},
+        {"id":"hotel.w04","de":"die Reservierung","t":"la reserva"},
+        {"id":"hotel.w05","de":"das Bett","t":"la cama","pic":"🛏️"},
+        {"id":"hotel.w06","de":"die Dusche","t":"la ducha","pic":"🚿"},
+        {"id":"hotel.w07","de":"das Handtuch","t":"la toalla"},
+        {"id":"hotel.w08","de":"das WLAN","t":"el wifi","pic":"📶"},
+        {"id":"hotel.w09","de":"das Passwort","t":"la contraseña"},
+        {"id":"hotel.w10","de":"der Aufzug","t":"el ascensor","pic":"🛗"},
+        {"id":"hotel.w11","de":"die Nacht","t":"la noche","pic":"🌙"},
+        {"id":"hotel.w12","de":"der Reisepass","t":"el pasaporte","pic":"🛂"},
+        {"id":"hotel.w13","de":"die Klimaanlage","t":"el aire acondicionado","pic":"❄️"},
+        {"id":"hotel.w14","de":"laut","t":"ruidoso"}
+      ],
+      "sentences": [
+        {"id":"hotel.s01","de":"Ich habe eine Reservierung.","t":"Tengo una reserva."},
+        {"id":"hotel.s02","de":"Haben Sie ein Zimmer frei?","t":"¿Tiene una habitación libre?"},
+        {"id":"hotel.s03","de":"Für zwei Nächte, bitte.","t":"Para dos noches, por favor."},
+        {"id":"hotel.s04","de":"Wie ist das WLAN-Passwort?","t":"¿Cuál es la contraseña del wifi?"},
+        {"id":"hotel.s05","de":"Ist das Frühstück inklusive?","t":["¿El desayuno está incluido?","¿Está incluido el desayuno?"]},
+        {"id":"hotel.s06","de":"Die Dusche funktioniert nicht.","t":"La ducha no funciona."},
+        {"id":"hotel.s07","de":"Können wir noch Handtücher bekommen?","t":["¿Nos puede dar más toallas?","¿Podemos tener más toallas?"]},
+        {"id":"hotel.s08","de":"Wann ist der Check-out?","t":["¿A qué hora es la salida?","¿Cuándo es el check-out?"]},
+        {"id":"hotel.s09","de":"Ich habe meinen Schlüssel verloren.","t":["He perdido mi llave.","Perdí mi llave."]},
+        {"id":"hotel.s10","de":"Das Zimmer ist zu laut.","t":["La habitación es demasiado ruidosa.","La habitación es muy ruidosa."]}
+      ]
+    },
+    {
+      "id": "help", "title": "Notfall & Gesundheit", "level": "A2", "colors": ["#C93A3A","#962828"],
+      "desc": "Arzt, Apotheke, Polizei: Hilfe holen, wenn es darauf ankommt.",
+      "words": [
+        {"id":"help.w01","de":"Hilfe","t":["socorro","ayuda"],"pic":"🆘"},
+        {"id":"help.w02","de":"der Arzt","t":"el médico","pic":"🩺"},
+        {"id":"help.w03","de":"das Krankenhaus","t":"el hospital","pic":"🏥"},
+        {"id":"help.w04","de":"die Apotheke","t":"la farmacia","pic":"💊"},
+        {"id":"help.w05","de":"die Polizei","t":"la policía","pic":"🚓"},
+        {"id":"help.w06","de":"der Krankenwagen","t":"la ambulancia","pic":"🚑"},
+        {"id":"help.w07","de":"krank","t":["enfermo","enferma"]},
+        {"id":"help.w08","de":"der Schmerz","t":"el dolor"},
+        {"id":"help.w09","de":"der Kopf","t":"la cabeza"},
+        {"id":"help.w10","de":"der Bauch","t":["el estómago","la barriga"]},
+        {"id":"help.w11","de":"das Fieber","t":"la fiebre","pic":"🤒"},
+        {"id":"help.w12","de":"der Notfall","t":"la emergencia"},
+        {"id":"help.w13","de":"die Tablette","t":"la pastilla"},
+        {"id":"help.w14","de":"gestohlen","t":"robado"}
+      ],
+      "sentences": [
+        {"id":"help.s01","de":"Hilfe! Rufen Sie einen Krankenwagen!","t":["¡Socorro! ¡Llame a una ambulancia!","¡Ayuda! ¡Llame a una ambulancia!"]},
+        {"id":"help.s02","de":"Ich brauche einen Arzt.","t":"Necesito un médico."},
+        {"id":"help.s03","de":"Wo ist die nächste Apotheke?","t":"¿Dónde está la farmacia más cercana?"},
+        {"id":"help.s04","de":"Ich habe Kopfschmerzen.","t":["Me duele la cabeza.","Tengo dolor de cabeza."]},
+        {"id":"help.s05","de":"Mir ist schlecht.","t":["Me siento mal.","Estoy mareado.","Estoy mareada."]},
+        {"id":"help.s06","de":"Mein Handy wurde gestohlen.","t":["Me han robado el móvil.","Me robaron el móvil."]},
+        {"id":"help.s07","de":"Rufen Sie die Polizei!","t":"¡Llame a la policía!"},
+        {"id":"help.s08","de":"Ich habe Fieber.","t":"Tengo fiebre."},
+        {"id":"help.s09","de":"Ich bin allergisch gegen Penicillin.","t":["Soy alérgico a la penicilina.","Soy alérgica a la penicilina."]},
+        {"id":"help.s10","de":"Es ist ein Notfall.","t":"Es una emergencia."},
+        {"id":"help.s11","de":"Wo tut es weh?","t":["¿Dónde le duele?","¿Dónde te duele?"]}
+      ]
+    },
+    {
+      "id": "leisure", "title": "Wetter & Freizeit", "level": "A2", "colors": ["#0F8FA6","#0B6A7B"],
+      "desc": "Über das Wetter reden, Ausflüge planen, Tickets kaufen.",
+      "words": [
+        {"id":"leisure.w01","de":"das Wetter","t":"el tiempo"},
+        {"id":"leisure.w02","de":"die Sonne","t":"el sol","pic":"☀️"},
+        {"id":"leisure.w03","de":"der Regen","t":"la lluvia","pic":"🌧️"},
+        {"id":"leisure.w04","de":"der Wind","t":"el viento","pic":"💨"},
+        {"id":"leisure.w05","de":"heiß","t":["caluroso","caliente"]},
+        {"id":"leisure.w06","de":"kalt","t":"frío"},
+        {"id":"leisure.w07","de":"schwimmen","t":"nadar","pic":"🏊"},
+        {"id":"leisure.w08","de":"wandern","t":["hacer senderismo","caminar"]},
+        {"id":"leisure.w09","de":"der Ausflug","t":"la excursión"},
+        {"id":"leisure.w10","de":"das Meer","t":"el mar","pic":"🌊"},
+        {"id":"leisure.w11","de":"der Berg","t":"la montaña","pic":"⛰️"},
+        {"id":"leisure.w12","de":"der Regenschirm","t":"el paraguas","pic":"☂️"},
+        {"id":"leisure.w13","de":"die Eintrittskarte","t":"la entrada","pic":"🎟️"}
+      ],
+      "sentences": [
+        {"id":"leisure.s01","de":"Wie ist das Wetter heute?","t":"¿Qué tiempo hace hoy?"},
+        {"id":"leisure.s02","de":"Es ist sonnig und warm.","t":["Hace sol y calor.","Está soleado y hace calor."]},
+        {"id":"leisure.s03","de":"Morgen soll es regnen.","t":["Mañana va a llover.","Se supone que mañana va a llover."]},
+        {"id":"leisure.s04","de":"Lass uns an den Strand gehen!","t":"¡Vamos a la playa!"},
+        {"id":"leisure.s05","de":"Kann man hier schwimmen?","t":"¿Se puede nadar aquí?"},
+        {"id":"leisure.s06","de":"Wir möchten einen Ausflug in die Berge machen.","t":["Queremos hacer una excursión a la montaña.","Nos gustaría hacer una excursión a la montaña."]},
+        {"id":"leisure.s07","de":"Zwei Eintrittskarten, bitte.","t":"Dos entradas, por favor."},
+        {"id":"leisure.s08","de":"Es ist zu kalt zum Baden.","t":"Hace demasiado frío para bañarse."},
+        {"id":"leisure.s09","de":"Hast du einen Regenschirm?","t":"¿Tienes un paraguas?"},
+        {"id":"leisure.s10","de":"Was kann man hier unternehmen?","t":"¿Qué se puede hacer aquí?"}
+      ]
+    },
+    {
+      "id": "past", "title": "Erlebnisse erzählen", "level": "A2", "colors": ["#B03CA8","#83287C"],
+      "desc": "In der Vergangenheit erzählen: was du gesehen und erlebt hast.",
+      "words": [
+        {"id":"past.w01","de":"letzte Woche","t":"la semana pasada"},
+        {"id":"past.w02","de":"letztes Jahr","t":"el año pasado"},
+        {"id":"past.w03","de":"vor zwei Tagen","t":"hace dos días"},
+        {"id":"past.w04","de":"schon","t":"ya"},
+        {"id":"past.w05","de":"noch nie","t":"nunca"},
+        {"id":"past.w06","de":"besuchen","t":"visitar"},
+        {"id":"past.w07","de":"sehen","t":"ver","pic":"👀"},
+        {"id":"past.w08","de":"reisen","t":"viajar"},
+        {"id":"past.w09","de":"vergessen","t":"olvidar"},
+        {"id":"past.w10","de":"verlieren","t":"perder"},
+        {"id":"past.w11","de":"ankommen","t":"llegar"},
+        {"id":"past.w12","de":"der Urlaub","t":"las vacaciones","pic":"🏝️"},
+        {"id":"past.w13","de":"die Reise","t":"el viaje","pic":"🧳"},
+        {"id":"past.w14","de":"das Foto","t":"la foto","pic":"📷"}
+      ],
+      "sentences": [
+        {"id":"past.s01","de":"Gestern war ich im Museum.","t":["Ayer fui al museo.","Ayer estuve en el museo."]},
+        {"id":"past.s02","de":"Wir sind letzte Woche angekommen.","t":["Llegamos la semana pasada.","Nosotros llegamos la semana pasada."]},
+        {"id":"past.s03","de":"Hast du schon die Altstadt gesehen?","t":["¿Ya has visto el casco antiguo?","¿Has visto ya el casco antiguo?","¿Ya viste el casco antiguo?"]},
+        {"id":"past.s04","de":"Ich habe meinen Pass im Hotel vergessen.","t":["He olvidado mi pasaporte en el hotel.","Olvidé mi pasaporte en el hotel."]},
+        {"id":"past.s05","de":"Das Essen gestern Abend war fantastisch.","t":["La comida de anoche fue fantástica.","La cena de anoche fue fantástica."]},
+        {"id":"past.s06","de":"Wir waren noch nie in Lissabon.","t":"Nunca hemos estado en Lisboa."},
+        {"id":"past.s07","de":"Vor zwei Tagen haben wir einen Ausflug gemacht.","t":["Hace dos días hicimos una excursión.","Hicimos una excursión hace dos días."]},
+        {"id":"past.s08","de":"Letztes Jahr sind wir nach Spanien gereist.","t":["El año pasado viajamos a España.","Viajamos a España el año pasado."]},
+        {"id":"past.s09","de":"Wie war dein Urlaub?","t":["¿Qué tal tus vacaciones?","¿Cómo fueron tus vacaciones?"]},
+        {"id":"past.s10","de":"Ich habe meine Tasche im Bus verloren.","t":["He perdido mi bolso en el autobús.","Perdí mi bolso en el autobús."]}
+      ]
+    },
+    {
+      "id": "plans", "title": "Pläne machen", "level": "A2", "colors": ["#50667F","#3A4C60"],
+      "desc": "Verabreden, einladen, zu- und absagen.",
+      "words": [
+        {"id":"plans.w01","de":"heute Abend","t":"esta noche"},
+        {"id":"plans.w02","de":"morgen früh","t":"mañana por la mañana"},
+        {"id":"plans.w03","de":"das Wochenende","t":"el fin de semana"},
+        {"id":"plans.w04","de":"treffen","t":["quedar","encontrarse"]},
+        {"id":"plans.w05","de":"einladen","t":"invitar"},
+        {"id":"plans.w06","de":"planen","t":["planear","planificar"]},
+        {"id":"plans.w07","de":"frei","t":"libre"},
+        {"id":"plans.w08","de":"das Konzert","t":"el concierto","pic":"🎵"},
+        {"id":"plans.w09","de":"das Kino","t":"el cine","pic":"🎬"},
+        {"id":"plans.w10","de":"vielleicht","t":["quizás","tal vez","quizá"]},
+        {"id":"plans.w11","de":"klar","t":["claro","por supuesto"]},
+        {"id":"plans.w12","de":"leider","t":["desgraciadamente","lamentablemente","por desgracia"]},
+        {"id":"plans.w13","de":"zusammen","t":["juntos","juntas"]}
+      ],
+      "sentences": [
+        {"id":"plans.s01","de":"Was machst du heute Abend?","t":["¿Qué haces esta noche?","¿Qué vas a hacer esta noche?"]},
+        {"id":"plans.s02","de":"Morgen fahren wir in die Stadt.","t":["Mañana vamos a la ciudad.","Mañana vamos al centro."]},
+        {"id":"plans.s03","de":"Hast du am Wochenende Zeit?","t":["¿Tienes tiempo el fin de semana?","¿Estás libre el fin de semana?"]},
+        {"id":"plans.s04","de":"Wollen wir zusammen essen gehen?","t":["¿Vamos a comer juntos?","¿Quieres ir a comer juntos?"]},
+        {"id":"plans.s05","de":"Ich lade dich ein.","t":"Te invito."},
+        {"id":"plans.s06","de":"Wir treffen uns um acht vor dem Hotel.","t":["Quedamos a las ocho delante del hotel.","Nos vemos a las ocho delante del hotel."]},
+        {"id":"plans.s07","de":"Leider kann ich morgen nicht.","t":["Lo siento, mañana no puedo.","Desgraciadamente, mañana no puedo.","Por desgracia, mañana no puedo."]},
+        {"id":"plans.s08","de":"Vielleicht gehen wir ins Kino.","t":["Quizás vayamos al cine.","Tal vez vayamos al cine.","A lo mejor vamos al cine."]},
+        {"id":"plans.s09","de":"Wann fängt das Konzert an?","t":["¿Cuándo empieza el concierto?","¿A qué hora empieza el concierto?"]},
+        {"id":"plans.s10","de":"Klar, gerne!","t":["¡Claro, con mucho gusto!","¡Claro, encantado!","¡Claro, me encantaría!"]}
+      ]
+    },
+    {
+      "id": "problems", "title": "Probleme lösen", "level": "B1", "colors": ["#D0542A","#9E3D1C"],
+      "desc": "Höflich reklamieren, um Hilfe bitten, Lösungen finden.",
+      "words": [
+        {"id":"problems.w01","de":"das Problem","t":"el problema"},
+        {"id":"problems.w02","de":"kaputt","t":["roto","estropeado"]},
+        {"id":"problems.w03","de":"die Beschwerde","t":["la queja","la reclamación"]},
+        {"id":"problems.w04","de":"umtauschen","t":"cambiar"},
+        {"id":"problems.w05","de":"erstatten","t":["reembolsar","devolver el dinero"]},
+        {"id":"problems.w06","de":"falsch","t":["equivocado","incorrecto"]},
+        {"id":"problems.w07","de":"dringend","t":"urgente"},
+        {"id":"problems.w08","de":"der Verantwortliche","t":["el encargado","el responsable","el gerente"]},
+        {"id":"problems.w09","de":"die Lösung","t":"la solución"},
+        {"id":"problems.w10","de":"reparieren","t":["arreglar","reparar"],"pic":"🔧"},
+        {"id":"problems.w11","de":"warten","t":"esperar","pic":"⏳"},
+        {"id":"problems.w12","de":"funktionieren","t":"funcionar"},
+        {"id":"problems.w13","de":"die Heizung","t":"la calefacción","pic":"🔥"}
+      ],
+      "sentences": [
+        {"id":"problems.s01","de":"Könnte ich bitte mit dem Verantwortlichen sprechen?","t":["¿Podría hablar con el encargado, por favor?","¿Podría hablar con el responsable, por favor?"]},
+        {"id":"problems.s02","de":"Die Rechnung stimmt leider nicht.","t":["Lo siento, pero la cuenta no está bien.","Me temo que la cuenta está mal."]},
+        {"id":"problems.s03","de":"Wir haben vor einer Stunde bestellt.","t":["Pedimos hace una hora.","Hemos pedido hace una hora."]},
+        {"id":"problems.s04","de":"Könnten Sie das bitte reparieren?","t":["¿Podría arreglarlo, por favor?","¿Podría repararlo, por favor?"]},
+        {"id":"problems.s05","de":"Ich möchte das umtauschen.","t":["Quisiera cambiar esto.","Me gustaría cambiar esto."]},
+        {"id":"problems.s06","de":"Kann ich mein Geld zurückbekommen?","t":["¿Me pueden devolver el dinero?","¿Puedo recuperar mi dinero?"]},
+        {"id":"problems.s07","de":"Das ist nicht das, was ich bestellt habe.","t":["Esto no es lo que he pedido.","Esto no es lo que pedí."]},
+        {"id":"problems.s08","de":"Es wäre nett, wenn Sie uns helfen könnten.","t":["Sería muy amable si pudiera ayudarnos.","Sería amable si pudiera ayudarnos."]},
+        {"id":"problems.s09","de":"Wie lange müssen wir noch warten?","t":"¿Cuánto tiempo más tenemos que esperar?"},
+        {"id":"problems.s10","de":"Die Heizung funktioniert seit gestern nicht.","t":"La calefacción no funciona desde ayer."}
+      ]
+    },
+    {
+      "id": "opinions", "title": "Meinungen & Gespräche", "level": "B1", "colors": ["#6E4BD8","#5135A8"],
+      "desc": "Meinung sagen, zustimmen, widersprechen, Vorschläge machen.",
+      "words": [
+        {"id":"opinions.w01","de":"die Meinung","t":"la opinión"},
+        {"id":"opinions.w02","de":"denken","t":["pensar","creer"],"pic":"🤔"},
+        {"id":"opinions.w03","de":"glauben","t":"creer"},
+        {"id":"opinions.w04","de":"einverstanden","t":"de acuerdo","pic":"🤝"},
+        {"id":"opinions.w05","de":"wichtig","t":"importante"},
+        {"id":"opinions.w06","de":"interessant","t":"interesante"},
+        {"id":"opinions.w07","de":"langweilig","t":"aburrido","pic":"🥱"},
+        {"id":"opinions.w08","de":"schön","t":["bonito","precioso"]},
+        {"id":"opinions.w09","de":"eigentlich","t":["en realidad","realmente"]},
+        {"id":"opinions.w10","de":"vorschlagen","t":["proponer","sugerir"]},
+        {"id":"opinions.w11","de":"der Unterschied","t":"la diferencia"},
+        {"id":"opinions.w12","de":"die Erfahrung","t":"la experiencia"},
+        {"id":"opinions.w13","de":"die Sprache","t":["el idioma","la lengua"],"pic":"💬"}
+      ],
+      "sentences": [
+        {"id":"opinions.s01","de":"Was hältst du davon?","t":["¿Qué te parece?","¿Qué opinas?","¿Qué piensas de eso?"]},
+        {"id":"opinions.s02","de":"Ich finde, dass die Stadt sehr schön ist.","t":["Creo que la ciudad es muy bonita.","Me parece que la ciudad es muy bonita."]},
+        {"id":"opinions.s03","de":"Da bin ich ganz deiner Meinung.","t":["Estoy totalmente de acuerdo contigo.","Estoy completamente de acuerdo contigo."]},
+        {"id":"opinions.s04","de":"Das sehe ich anders.","t":["Yo lo veo de otra manera.","Lo veo de otra manera."]},
+        {"id":"opinions.s05","de":"Wenn ich mehr Zeit hätte, würde ich länger bleiben.","t":["Si tuviera más tiempo, me quedaría más.","Si tuviera más tiempo, me quedaría más tiempo.","Si tuviera más tiempo, me quedaría más días."]},
+        {"id":"opinions.s06","de":"Ich schlage vor, dass wir morgen früh losfahren.","t":"Propongo que salgamos mañana por la mañana."},
+        {"id":"opinions.s07","de":"Das war eine tolle Erfahrung.","t":["Fue una experiencia genial.","Fue una gran experiencia."]},
+        {"id":"opinions.s08","de":"Eigentlich wollte ich ans Meer fahren.","t":["En realidad, quería ir al mar.","En realidad quería ir a la playa."]},
+        {"id":"opinions.s09","de":"Was ist der Unterschied zwischen den beiden?","t":"¿Cuál es la diferencia entre los dos?"},
+        {"id":"opinions.s10","de":"Es ist wichtig, die Sprache ein bisschen zu sprechen.","t":["Es importante hablar un poco el idioma.","Es importante hablar un poco la lengua."]}
+      ]
+    },
+    {
+      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
+      "desc": "Über Beruf, Familie und Hobbys plaudern.",
+      "words": [
+        {"id":"smalltalk.w01","de":"der Beruf","t":["la profesión","el trabajo"]},
+        {"id":"smalltalk.w02","de":"die Arbeit","t":"el trabajo","pic":"💼"},
+        {"id":"smalltalk.w03","de":"das Hobby","t":["el pasatiempo","la afición","el hobby"]},
+        {"id":"smalltalk.w04","de":"verheiratet","t":["casado","casada"],"pic":"💍"},
+        {"id":"smalltalk.w05","de":"die Kinder","t":["los hijos","los niños"]},
+        {"id":"smalltalk.w06","de":"wohnen","t":"vivir","pic":"🏠"},
+        {"id":"smalltalk.w07","de":"mögen","t":"gustar"},
+        {"id":"smalltalk.w08","de":"kochen","t":"cocinar","pic":"🍳"},
+        {"id":"smalltalk.w09","de":"der Sport","t":"el deporte","pic":"🏃"},
+        {"id":"smalltalk.w10","de":"die Musik","t":"la música","pic":"🎵"},
+        {"id":"smalltalk.w11","de":"das erste Mal","t":"la primera vez"},
+        {"id":"smalltalk.w12","de":"die Freizeit","t":"el tiempo libre"}
+      ],
+      "sentences": [
+        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["¿A qué te dedicas?","¿En qué trabajas?"]},
+        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":["Trabajo de profesora.","Trabajo como profesora.","Soy profesora."]},
+        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["¿Es la primera vez que vienes aquí?","¿Es tu primera vez aquí?"]},
+        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":["Vivo cerca de Múnich.","Yo vivo cerca de Múnich."]},
+        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":"En mi tiempo libre me gusta cocinar."},
+        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["Estoy casado y tengo dos hijos.","Estoy casada y tengo dos hijos."]},
+        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["¿Cuánto tiempo te quedas aquí?","¿Cuánto tiempo vas a quedarte?"]},
+        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":"¿Haces deporte?"},
+        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["Ha sido un placer conocerte.","Fue un placer conocerte.","Me alegró conocerte."]},
+        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":["¡Sigamos en contacto!","¡Mantengámonos en contacto!"]}
+      ]
+    },
+    {
+      "id": "car", "title": "Mietwagen & Tanken", "level": "B1", "colors": ["#1E5AA8","#153F78"],
+      "desc": "Auto mieten, tanken, parken und mit Pannen umgehen.",
+      "words": [
+        {"id":"car.w01","de":"der Mietwagen","t":"el coche de alquiler","pic":"🚗"},
+        {"id":"car.w02","de":"tanken","t":["repostar","echar gasolina"]},
+        {"id":"car.w03","de":"die Tankstelle","t":"la gasolinera","pic":"⛽"},
+        {"id":"car.w04","de":"der Führerschein","t":["el carné de conducir","el permiso de conducir"],"pic":"🪪"},
+        {"id":"car.w05","de":"parken","t":["aparcar","estacionar"],"pic":"🅿️"},
+        {"id":"car.w06","de":"die Versicherung","t":"el seguro"},
+        {"id":"car.w07","de":"die Panne","t":"la avería"},
+        {"id":"car.w08","de":"der Reifen","t":["la rueda","el neumático"],"pic":"🛞"},
+        {"id":"car.w09","de":"die Autobahn","t":"la autopista","pic":"🛣️"},
+        {"id":"car.w10","de":"die Maut","t":"el peaje"},
+        {"id":"car.w11","de":"die Kaution","t":["la fianza","el depósito"]},
+        {"id":"car.w12","de":"voll","t":"lleno"},
+        {"id":"car.w13","de":"leer","t":"vacío"}
+      ],
+      "sentences": [
+        {"id":"car.s01","de":"Ich habe einen Mietwagen reserviert.","t":["He reservado un coche de alquiler.","Reservé un coche de alquiler."]},
+        {"id":"car.s02","de":"Ist die Versicherung im Preis inbegriffen?","t":["¿El seguro está incluido en el precio?","¿Está incluido el seguro en el precio?"]},
+        {"id":"car.s03","de":"Muss ich das Auto vollgetankt zurückgeben?","t":"¿Tengo que devolver el coche con el depósito lleno?"},
+        {"id":"car.s04","de":"Wo kann ich hier parken?","t":"¿Dónde puedo aparcar aquí?"},
+        {"id":"car.s05","de":"Wir hatten eine Panne auf der Autobahn.","t":["Hemos tenido una avería en la autopista.","Tuvimos una avería en la autopista."]},
+        {"id":"car.s06","de":"Der Reifen ist platt.","t":["La rueda está pinchada.","Tenemos una rueda pinchada."]},
+        {"id":"car.s07","de":"Volltanken, bitte.","t":["Lleno, por favor.","Llénelo, por favor."]},
+        {"id":"car.s08","de":"Wie hoch ist die Kaution?","t":["¿De cuánto es la fianza?","¿Cuánto es la fianza?"]},
+        {"id":"car.s09","de":"Ich brauche Ihren Führerschein und eine Kreditkarte.","t":"Necesito su carné de conducir y una tarjeta de crédito."},
+        {"id":"car.s10","de":"Muss man auf dieser Straße Maut zahlen?","t":"¿Hay que pagar peaje en esta carretera?"}
+      ]
+    },
+    {
+      "id": "doctor", "title": "Arzt & Apotheke", "level": "B1", "colors": ["#3F6212","#2C450D"],
+      "desc": "Beschwerden genau beschreiben, Medikamente verstehen.",
+      "words": [
+        {"id":"doctor.w01","de":"das Rezept","t":"la receta","pic":"📄"},
+        {"id":"doctor.w02","de":"die Erkältung","t":["el resfriado","el catarro"],"pic":"🤧"},
+        {"id":"doctor.w03","de":"der Husten","t":"la tos"},
+        {"id":"doctor.w04","de":"der Durchfall","t":"la diarrea"},
+        {"id":"doctor.w05","de":"der Sonnenbrand","t":"la quemadura solar"},
+        {"id":"doctor.w06","de":"die Krankenversicherung","t":["el seguro médico","el seguro de salud"]},
+        {"id":"doctor.w07","de":"die Salbe","t":"la pomada"},
+        {"id":"doctor.w08","de":"der Termin","t":"la cita","pic":"📅"},
+        {"id":"doctor.w09","de":"verschreiben","t":"recetar"},
+        {"id":"doctor.w10","de":"der Knöchel","t":"el tobillo","pic":"🦶"},
+        {"id":"doctor.w11","de":"der Zahnarzt","t":"el dentista","pic":"🦷"},
+        {"id":"doctor.w12","de":"schwanger","t":"embarazada","pic":"🤰"},
+        {"id":"doctor.w13","de":"die Nebenwirkung","t":"el efecto secundario"},
+        {"id":"doctor.w14","de":"dreimal täglich","t":"tres veces al día"}
+      ],
+      "sentences": [
+        {"id":"doctor.s01","de":"Ich hätte gern einen Termin beim Arzt.","t":["Quisiera una cita con el médico.","Me gustaría pedir cita con el médico."]},
+        {"id":"doctor.s02","de":"Seit drei Tagen habe ich Husten und Fieber.","t":["Tengo tos y fiebre desde hace tres días.","Hace tres días que tengo tos y fiebre."]},
+        {"id":"doctor.s03","de":"Ich habe mir den Knöchel verstaucht.","t":["Me he torcido el tobillo.","Me torcí el tobillo."]},
+        {"id":"doctor.s04","de":"Brauche ich dafür ein Rezept?","t":["¿Necesito receta para esto?","¿Hace falta receta para esto?"]},
+        {"id":"doctor.s05","de":"Nehmen Sie die Tabletten dreimal täglich nach dem Essen.","t":["Tome las pastillas tres veces al día después de comer.","Tome las pastillas tres veces al día después de las comidas."]},
+        {"id":"doctor.s06","de":"Haben Sie etwas gegen Sonnenbrand?","t":["¿Tiene algo para las quemaduras solares?","¿Tiene algo para la quemadura solar?"]},
+        {"id":"doctor.s07","de":"Gibt es Nebenwirkungen?","t":["¿Tiene efectos secundarios?","¿Hay efectos secundarios?"]},
+        {"id":"doctor.s08","de":"Ich bin schwanger.","t":"Estoy embarazada."},
+        {"id":"doctor.s09","de":"Mir tut ein Zahn weh.","t":["Me duele una muela.","Me duele un diente."]},
+        {"id":"doctor.s10","de":"Zahlt meine Krankenversicherung das?","t":["¿Lo paga mi seguro médico?","¿Mi seguro médico cubre esto?"]}
+      ]
+    },
+    {
+      "id": "culture", "title": "Sehenswürdigkeiten & Kultur", "level": "B1", "colors": ["#9D174D","#6F1036"],
+      "desc": "Führungen, Eintritt, Ausstellungen und Geschichte.",
+      "words": [
+        {"id":"culture.w01","de":"die Sehenswürdigkeit","t":["el monumento","el lugar de interés"]},
+        {"id":"culture.w02","de":"die Führung","t":"la visita guiada"},
+        {"id":"culture.w03","de":"die Ausstellung","t":"la exposición","pic":"🖼️"},
+        {"id":"culture.w04","de":"die Ermäßigung","t":"el descuento"},
+        {"id":"culture.w05","de":"das Schloss","t":"el castillo","pic":"🏰"},
+        {"id":"culture.w06","de":"die Kathedrale","t":"la catedral"},
+        {"id":"culture.w07","de":"der Reiseführer","t":["el guía","la guía"]},
+        {"id":"culture.w08","de":"das Jahrhundert","t":"el siglo"},
+        {"id":"culture.w09","de":"berühmt","t":"famoso","pic":"⭐"},
+        {"id":"culture.w10","de":"fotografieren","t":["hacer fotos","fotografiar","sacar fotos"],"pic":"📸"},
+        {"id":"culture.w11","de":"die Öffnungszeiten","t":["el horario de apertura","el horario"]},
+        {"id":"culture.w12","de":"der Markt","t":"el mercado","pic":"🧺"}
+      ],
+      "sentences": [
+        {"id":"culture.s01","de":"Gibt es eine Ermäßigung für Studenten?","t":["¿Hay descuento para estudiantes?","¿Hay un descuento para estudiantes?"]},
+        {"id":"culture.s02","de":"Wann beginnt die nächste Führung?","t":["¿Cuándo empieza la próxima visita guiada?","¿A qué hora empieza la próxima visita guiada?"]},
+        {"id":"culture.s03","de":"Darf man hier fotografieren?","t":["¿Se pueden hacer fotos aquí?","¿Se puede sacar fotos aquí?","¿Está permitido hacer fotos aquí?"]},
+        {"id":"culture.s04","de":"Die Kathedrale wurde im dreizehnten Jahrhundert gebaut.","t":["La catedral fue construida en el siglo trece.","La catedral fue construida en el siglo XIII.","La catedral se construyó en el siglo trece."]},
+        {"id":"culture.s05","de":"Was muss man in dieser Stadt unbedingt sehen?","t":["¿Qué es imprescindible ver en esta ciudad?","¿Qué hay que ver sí o sí en esta ciudad?"]},
+        {"id":"culture.s06","de":"Die Ausstellung hat mir sehr gut gefallen.","t":["La exposición me ha gustado mucho.","Me gustó mucho la exposición."]},
+        {"id":"culture.s07","de":"Bis wann hat der Markt geöffnet?","t":["¿Hasta qué hora está abierto el mercado?","¿Hasta cuándo abre el mercado?"]},
+        {"id":"culture.s08","de":"Gibt es eine Führung auf Deutsch?","t":["¿Hay alguna visita guiada en alemán?","¿Hay visita guiada en alemán?"]},
+        {"id":"culture.s09","de":"Das Schloss ist eine der berühmtesten Sehenswürdigkeiten des Landes.","t":"El castillo es uno de los monumentos más famosos del país."},
+        {"id":"culture.s10","de":"Wie viel kostet der Eintritt?","t":"¿Cuánto cuesta la entrada?"}
+      ]
+    },
+    {
+      "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
+      "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
+      "words": [
+        {"id":"negotiate.w01","de":"der Kompromiss","t":["el término medio","el acuerdo","el compromiso"]},
+        {"id":"negotiate.w02","de":"das Angebot","t":"la oferta"},
+        {"id":"negotiate.w03","de":"der Vorteil","t":"la ventaja"},
+        {"id":"negotiate.w04","de":"der Nachteil","t":["la desventaja","el inconveniente"]},
+        {"id":"negotiate.w05","de":"überzeugen","t":"convencer"},
+        {"id":"negotiate.w06","de":"verhandeln","t":"negociar"},
+        {"id":"negotiate.w07","de":"die Bedingung","t":"la condición"},
+        {"id":"negotiate.w08","de":"deshalb","t":["por eso","por lo tanto"]},
+        {"id":"negotiate.w09","de":"trotzdem","t":["aun así","sin embargo"]},
+        {"id":"negotiate.w10","de":"obwohl","t":"aunque"},
+        {"id":"negotiate.w11","de":"zufrieden","t":["satisfecho","contento"]},
+        {"id":"negotiate.w12","de":"die Entscheidung","t":"la decisión"},
+        {"id":"negotiate.w13","de":"vernünftig","t":"razonable"}
+      ],
+      "sentences": [
+        {"id":"negotiate.s01","de":"Wäre es möglich, den Preis etwas zu senken?","t":"¿Sería posible bajar un poco el precio?"},
+        {"id":"negotiate.s02","de":"Unter einer Bedingung bin ich einverstanden.","t":"Estoy de acuerdo con una condición."},
+        {"id":"negotiate.s03","de":"Obwohl das Hotel teuer war, hat es sich gelohnt.","t":["Aunque el hotel era caro, mereció la pena.","Aunque el hotel fue caro, valió la pena."]},
+        {"id":"negotiate.s04","de":"Das ist ein vernünftiges Angebot.","t":"Es una oferta razonable."},
+        {"id":"negotiate.s05","de":"Ich verstehe Ihren Standpunkt, trotzdem sehe ich das anders.","t":["Entiendo su punto de vista, pero aun así lo veo de otra manera.","Entiendo su punto de vista, sin embargo lo veo de otra manera."]},
+        {"id":"negotiate.s06","de":"Hätten wir früher gebucht, wäre es billiger gewesen.","t":["Si hubiéramos reservado antes, habría sido más barato.","Si hubiésemos reservado antes, habría sido más barato.","Si hubiéramos reservado antes, hubiera sido más barato."]},
+        {"id":"negotiate.s07","de":"Der größte Vorteil ist die Lage.","t":["La mayor ventaja es la ubicación.","La principal ventaja es la ubicación."]},
+        {"id":"negotiate.s08","de":"Man hat mir gesagt, dass das Museum montags geschlossen ist.","t":["Me dijeron que el museo cierra los lunes.","Me han dicho que el museo está cerrado los lunes."]},
+        {"id":"negotiate.s09","de":"Lassen Sie mich darüber nachdenken.","t":["Déjeme pensarlo.","Déjeme que lo piense."]},
+        {"id":"negotiate.s10","de":"Wir sind mit der Lösung sehr zufrieden.","t":"Estamos muy satisfechos con la solución."}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "restaurant", "title": "Im Restaurant", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Haben Sie reserviert?","t":"¡Buenas noches! ¿Tienen reserva?"},
+          "a": [
+            {"de":"Nein, einen Tisch für zwei, bitte.","t":"No, una mesa para dos, por favor."},
+            {"de":"Ich möchte die Rechnung.","t":"Quisiera la cuenta."},
+            {"de":"Es ist drei Uhr.","t":"Son las tres."}
+          ] },
+        { "p": {"de":"Was möchten Sie trinken?","t":"¿Qué quieren beber?"},
+          "a": [
+            {"de":"Zwei Wasser, bitte.","t":"Dos aguas, por favor."},
+            {"de":"Wo ist der Bahnhof?","t":"¿Dónde está la estación de tren?"},
+            {"de":"Ich habe Kopfschmerzen.","t":"Me duele la cabeza."}
+          ] },
+        { "p": {"de":"Haben Sie schon gewählt?","t":"¿Ya han elegido?"},
+          "a": [
+            {"de":"Ja, ich nehme den Fisch.","t":"Sí, yo quiero el pescado."},
+            {"de":"Ja, ich habe einen Hund.","t":"Sí, tengo un perro."},
+            {"de":"Nein, ich komme aus Deutschland.","t":"No, soy de Alemania."}
+          ] },
+        { "p": {"de":"Hat es Ihnen geschmeckt?","t":"¿Les ha gustado?"},
+          "a": [
+            {"de":"Ja, sehr lecker! Die Rechnung, bitte.","t":"¡Sí, muy rico! La cuenta, por favor."},
+            {"de":"Zwei Fahrkarten, bitte.","t":"Dos billetes, por favor."},
+            {"de":"Wo ist die Apotheke?","t":"¿Dónde está la farmacia?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi", "title": "Im Taxi", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
+      "turns": [
+        { "p": {"de":"Hallo! Wohin möchten Sie?","t":"¡Hola! ¿Adónde quiere ir?"},
+          "a": [
+            {"de":"Zum Flughafen, bitte.","t":"Al aeropuerto, por favor."},
+            {"de":"Ein Bier, bitte.","t":"Una cerveza, por favor."},
+            {"de":"Ich heiße Anna.","t":"Me llamo Anna."}
+          ] },
+        { "p": {"de":"Haben Sie Gepäck?","t":"¿Tiene equipaje?"},
+          "a": [
+            {"de":"Ja, einen Koffer.","t":"Sí, una maleta."},
+            {"de":"Ja, ich bin Vegetarier.","t":"Sí, soy vegetariano."},
+            {"de":"Nein, es ist zu teuer.","t":"No, es demasiado caro."}
+          ] },
+        { "p": {"de":"Es gibt viel Verkehr. Es dauert etwa vierzig Minuten.","t":"Hay mucho tráfico. Se tarda unos cuarenta minutos."},
+          "a": [
+            {"de":"Kein Problem. Wie viel kostet die Fahrt?","t":"No hay problema. ¿Cuánto cuesta el viaje?"},
+            {"de":"Guten Morgen!","t":"¡Buenos días!"},
+            {"de":"Ich habe meinen Schlüssel verloren.","t":"He perdido mi llave."}
+          ] },
+        { "p": {"de":"Etwa fünfzig Euro.","t":"Unos cincuenta euros."},
+          "a": [
+            {"de":"In Ordnung. Kann ich mit Karte zahlen?","t":"Vale. ¿Puedo pagar con tarjeta?"},
+            {"de":"Die Suppe ist kalt.","t":"La sopa está fría."},
+            {"de":"Ich habe zwei Schwestern.","t":"Tengo dos hermanas."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"¡Buenas tardes! ¿Le puedo ayudar?"},
+          "a": [
+            {"de":"Ja, ich habe eine Reservierung.","t":"Sí, tengo una reserva."},
+            {"de":"Ja, ich habe Fieber.","t":"Sí, tengo fiebre."},
+            {"de":"Nein, ich nehme den Bus.","t":"No, tomo el autobús."}
+          ] },
+        { "p": {"de":"Auf welchen Namen, bitte?","t":"¿A nombre de quién, por favor?"},
+          "a": [
+            {"de":"Auf den Namen Weber.","t":"A nombre de Weber."},
+            {"de":"Für zwei Nächte, bitte.","t":"Para dos noches, por favor."},
+            {"de":"Der Kaffee ist lecker.","t":"El café está rico."}
+          ] },
+        { "p": {"de":"Ihr Zimmer ist im dritten Stock. Hier ist Ihr Schlüssel.","t":"Su habitación está en la tercera planta. Aquí tiene su llave."},
+          "a": [
+            {"de":"Danke! Wann gibt es Frühstück?","t":"¡Gracias! ¿A qué hora es el desayuno?"},
+            {"de":"Ich suche einen Supermarkt.","t":"Busco un supermercado."},
+            {"de":"Das Museum ist rechts.","t":"El museo está a la derecha."}
+          ] },
+        { "p": {"de":"Von sieben bis zehn Uhr.","t":"De siete a diez."},
+          "a": [
+            {"de":"Perfekt, vielen Dank!","t":"¡Perfecto, muchas gracias!"},
+            {"de":"Wie spät ist es?","t":"¿Qué hora es?"},
+            {"de":"Ich bin allergisch gegen Nüsse.","t":"Soy alérgico a los frutos secos."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy", "title": "In der Apotheke", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
+      "turns": [
+        { "p": {"de":"Guten Tag, was kann ich für Sie tun?","t":"Buenos días, ¿en qué puedo ayudarle?"},
+          "a": [
+            {"de":"Ich habe Halsschmerzen.","t":"Me duele la garganta."},
+            {"de":"Ich nehme es.","t":"Me lo llevo."},
+            {"de":"Wo ist der Strand?","t":"¿Dónde está la playa?"}
+          ] },
+        { "p": {"de":"Seit wann haben Sie das?","t":"¿Desde cuándo lo tiene?"},
+          "a": [
+            {"de":"Seit zwei Tagen.","t":"Desde hace dos días."},
+            {"de":"Um acht Uhr.","t":"A las ocho."},
+            {"de":"Zwei Kilometer.","t":"Dos kilómetros."}
+          ] },
+        { "p": {"de":"Haben Sie auch Fieber?","t":"¿Tiene también fiebre?"},
+          "a": [
+            {"de":"Nein, kein Fieber.","t":"No, no tengo fiebre."},
+            {"de":"Nein, kein Zucker.","t":"No, sin azúcar."},
+            {"de":"Ja, mit Karte.","t":"Sí, con tarjeta."}
+          ] },
+        { "p": {"de":"Nehmen Sie diese Tabletten dreimal täglich.","t":"Tome estas pastillas tres veces al día."},
+          "a": [
+            {"de":"Danke. Brauche ich ein Rezept?","t":"Gracias. ¿Necesito receta?"},
+            {"de":"Danke. Ist das Frühstück inklusive?","t":"Gracias. ¿El desayuno está incluido?"},
+            {"de":"Ja, zwei Bier, bitte.","t":"Sí, dos cervezas, por favor."}
+          ] }
+      ]
+    }
+  ]
+}

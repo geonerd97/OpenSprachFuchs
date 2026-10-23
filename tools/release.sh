@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Builds a signed release APK and publishes it as a GitHub release v<versionName>.
+# Needs: android/keystore.properties (see README), the GitHub CLI (`gh auth login`), Node 22.5+.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+[ -f android/keystore.properties ] || { echo "android/keystore.properties fehlt (siehe README, 'Release bauen')."; exit 1; }
+command -v gh >/dev/null || { echo "Die GitHub CLI (gh) fehlt: https://cli.github.com"; exit 1; }
+version=$(sed -n 's/^ *versionName = "\(.*\)"/\1/p' android/app/build.gradle.kts)
+tag="v$version"
+if gh release view "$tag" >/dev/null 2>&1; then echo "Release $tag gibt es schon. Erst versionCode und versionName erhöhen."; exit 1; fi
+if [ -n "$(git status --porcelain)" ]; then echo "Es gibt nicht committete Änderungen. Bitte erst committen."; exit 1; fi
+
+echo "Tests …"
+npm test
+echo "Baue Release $version …"
+(cd android && ./gradlew --console=plain clean assembleRelease)
+apk="android/app/build/outputs/apk/release/app-release.apk"
+[ -f "$apk" ] || { echo "Keine signierte APK gefunden ($apk)."; exit 1; }
+out="android/app/build/outputs/apk/release/betterlingo-$version.apk"
+cp "$apk" "$out"
+
+git tag "$tag"
+git push origin "$tag"
+# Versions below 1.0 are experimental and published as pre-releases.
+flags=()
+case "$version" in 0.*) flags+=(--prerelease); title="Betterlingo $version (experimentell)";; *) title="Betterlingo $version";; esac
+gh release create "$tag" "$out" --title "$title" --generate-notes ${flags[@]+"${flags[@]}"}
+echo "Fertig: Release $tag veröffentlicht."

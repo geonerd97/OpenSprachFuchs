@@ -1,0 +1,12 @@
+.gradle/
+.idea/
+.kotlin/
+build/
+local.properties
+*.iml
+# Copied from ../app and ../worker/public/packs on every build
+app/src/main/assets/
+# Release signing (see README)
+keystore.properties
+*.jks
+*.keystore

@@ -1,0 +1,804 @@
+{
+  "format": 1,
+  "code": "fr",
+  "name": "Französisch",
+  "short": "FR",
+  "voice": "fr-FR",
+  "color": "#8C3FC8",
+  "note": "Französisch aus Frankreich",
+  "articles": "^(le |la |les |un |une |l')",
+  "gapSkip": ["le","la","les","un","une","de","du","je"],
+  "glossary": {
+    "le": "der/das",
+    "la": "die",
+    "les": "die (Plural)",
+    "un": "ein",
+    "une": "eine",
+    "je": "ich",
+    "j'ai": "ich habe",
+    "tu": "du",
+    "il": "er",
+    "elle": "sie",
+    "nous": "wir",
+    "vous": "Sie / ihr",
+    "est": "ist",
+    "suis": "bin",
+    "c'est": "das ist",
+    "et": "und",
+    "pas": "nicht",
+    "ne": "(Verneinung)",
+    "de": "von",
+    "du": "vom / etwas",
+    "des": "von den / einige",
+    "à": "in / nach / um",
+    "au": "zum / im",
+    "avec": "mit",
+    "pour": "für",
+    "mon": "mein",
+    "ma": "meine",
+    "mes": "meine (Plural)",
+    "où": "wo",
+    "que": "dass / was",
+    "qui": "wer / der",
+    "on": "man / wir",
+    "ce": "dies",
+    "très": "sehr",
+    "trop": "zu (sehr)",
+    "dans": "in",
+    "sur": "auf",
+    "s'il": "wenn er",
+    "plaît": "gefällt"
+  },
+  "units": [
+    {
+      "id": "basics", "title": "Erste Worte", "level": "A1", "colors": ["#2456E8","#1A3FB0"],
+      "desc": "Grüßen, bitten, danken: die Wörter für jeden Tag.",
+      "words": [
+        {"id":"basics.w01","de":"hallo","t":["bonjour","salut"],"pic":"👋"},
+        {"id":"basics.w02","de":"tschüss","t":"au revoir"},
+        {"id":"basics.w03","de":"bitte","t":["s'il vous plaît","s'il te plaît"]},
+        {"id":"basics.w04","de":"danke","t":"merci","pic":"🙏"},
+        {"id":"basics.w05","de":"ja","t":"oui","pic":"✅"},
+        {"id":"basics.w06","de":"nein","t":"non","pic":"❌"},
+        {"id":"basics.w07","de":"Entschuldigung","t":["excusez-moi","pardon"]},
+        {"id":"basics.w08","de":"es tut mir leid","t":["je suis désolé","je suis désolée","désolé","désolée"]},
+        {"id":"basics.w09","de":"guten Morgen","t":"bonjour","pic":"🌅"},
+        {"id":"basics.w10","de":"guten Abend","t":"bonsoir"},
+        {"id":"basics.w11","de":"gute Nacht","t":"bonne nuit","pic":"🌙"},
+        {"id":"basics.w12","de":"gern geschehen","t":["de rien","je vous en prie"]},
+        {"id":"basics.w13","de":"in Ordnung","t":["d'accord","ok"]}
+      ],
+      "sentences": [
+        {"id":"basics.s01","de":["Hallo, wie geht es dir?","Hallo, wie geht's?","Hallo, wie geht es Ihnen?"],"t":["Bonjour, comment ça va?","Salut, ça va?","Bonjour, comment allez-vous?"]},
+        {"id":"basics.s02","de":"Mir geht es gut, danke.","t":["Ça va bien, merci.","Je vais bien, merci."]},
+        {"id":"basics.s03","de":"Guten Morgen!","t":"Bonjour!"},
+        {"id":"basics.s04","de":["Vielen Dank!","Danke schön!"],"t":"Merci beaucoup!"},
+        {"id":"basics.s05","de":"Entschuldigung, sprechen Sie Deutsch?","t":["Excusez-moi, vous parlez allemand?","Excusez-moi, parlez-vous allemand?"]},
+        {"id":"basics.s06","de":"Ja, bitte.","t":["Oui, s'il vous plaît.","Oui, merci."]},
+        {"id":"basics.s07","de":"Nein, danke.","t":"Non, merci."},
+        {"id":"basics.s08","de":"Gern geschehen.","t":["De rien.","Je vous en prie."]},
+        {"id":"basics.s09","de":"Es tut mir leid.","t":["Je suis désolé.","Je suis désolée.","Désolé."]},
+        {"id":"basics.s10","de":"Bis morgen!","t":"À demain!"},
+        {"id":"basics.s11","de":"Einen schönen Tag noch!","t":"Bonne journée!"}
+      ]
+    },
+    {
+      "id": "talk", "title": "Sich verständigen", "level": "A1", "colors": ["#8C3FC8","#682C99"],
+      "desc": "Vorstellen, nachfragen und sagen, wenn du etwas nicht verstehst.",
+      "words": [
+        {"id":"talk.w01","de":"ich","t":"je"},
+        {"id":"talk.w02","de":"du / Sie","t":["tu","vous"]},
+        {"id":"talk.w03","de":"der Name","t":"le nom"},
+        {"id":"talk.w04","de":"Deutschland","t":"l'Allemagne"},
+        {"id":"talk.w05","de":"Deutsch","t":"l'allemand"},
+        {"id":"talk.w06","de":"sprechen","t":"parler"},
+        {"id":"talk.w07","de":"verstehen","t":"comprendre"},
+        {"id":"talk.w08","de":"langsam","t":"lentement","pic":"🐢"},
+        {"id":"talk.w09","de":"wiederholen","t":"répéter"},
+        {"id":"talk.w10","de":"ein bisschen","t":"un peu"},
+        {"id":"talk.w11","de":"wo","t":"où"},
+        {"id":"talk.w12","de":"was","t":["quoi","que"]},
+        {"id":"talk.w13","de":"wie","t":"comment"},
+        {"id":"talk.w14","de":"warum","t":"pourquoi"}
+      ],
+      "sentences": [
+        {"id":"talk.s01","de":["Ich heiße Anna.","Mein Name ist Anna."],"t":"Je m'appelle Anna."},
+        {"id":"talk.s02","de":["Wie heißt du?","Wie heißen Sie?","Wie ist dein Name?"],"t":["Comment tu t'appelles?","Comment t'appelles-tu?","Comment vous appelez-vous?"]},
+        {"id":"talk.s03","de":"Ich komme aus Deutschland.","t":["Je viens d'Allemagne.","Je suis d'Allemagne."]},
+        {"id":"talk.s04","de":["Woher kommst du?","Woher kommen Sie?"],"t":["D'où viens-tu?","Tu viens d'où?","D'où venez-vous?"]},
+        {"id":"talk.s05","de":"Ich spreche ein bisschen Französisch.","t":"Je parle un peu français."},
+        {"id":"talk.s06","de":["Ich verstehe nicht.","Ich verstehe das nicht."],"t":"Je ne comprends pas."},
+        {"id":"talk.s07","de":"Können Sie das bitte wiederholen?","t":["Vous pouvez répéter, s'il vous plaît?","Pouvez-vous répéter, s'il vous plaît?"]},
+        {"id":"talk.s08","de":"Bitte sprechen Sie langsamer.","t":["Parlez plus lentement, s'il vous plaît.","Plus lentement, s'il vous plaît."]},
+        {"id":"talk.s09","de":"Was bedeutet das?","t":["Qu'est-ce que ça veut dire?","Ça veut dire quoi?"]},
+        {"id":"talk.s10","de":"Wie sagt man das auf Französisch?","t":["Comment dit-on ça en français?","Comment on dit ça en français?"]},
+        {"id":"talk.s11","de":["Freut mich!","Freut mich, dich kennenzulernen."],"t":["Enchanté!","Enchantée!"]}
+      ]
+    },
+    {
+      "id": "money", "title": "Zahlen & Bezahlen", "level": "A1", "colors": ["#0E8C80","#08665D"],
+      "desc": "Preise verstehen, bezahlen, mit Karte oder bar.",
+      "words": [
+        {"id":"money.w01","de":"eins","t":"un"},
+        {"id":"money.w02","de":"zwei","t":"deux"},
+        {"id":"money.w03","de":"drei","t":"trois"},
+        {"id":"money.w04","de":"vier","t":"quatre"},
+        {"id":"money.w05","de":"fünf","t":"cinq"},
+        {"id":"money.w06","de":"zehn","t":"dix"},
+        {"id":"money.w07","de":"zwanzig","t":"vingt"},
+        {"id":"money.w08","de":"hundert","t":"cent"},
+        {"id":"money.w09","de":"der Euro","t":"l'euro","pic":"💶"},
+        {"id":"money.w10","de":"das Geld","t":"l'argent","pic":"💰"},
+        {"id":"money.w11","de":"die Karte","t":"la carte","pic":"💳"},
+        {"id":"money.w12","de":"die Quittung","t":"le reçu","pic":"🧾"},
+        {"id":"money.w13","de":"teuer","t":"cher"},
+        {"id":"money.w14","de":"billig","t":["pas cher","bon marché"]}
+      ],
+      "sentences": [
+        {"id":"money.s01","de":"Wie viel kostet das?","t":["Combien ça coûte?","C'est combien?"]},
+        {"id":"money.s02","de":"Das kostet zehn Euro.","t":["Ça coûte dix euros.","C'est dix euros."]},
+        {"id":"money.s03","de":"Das ist zu teuer.","t":"C'est trop cher."},
+        {"id":"money.s04","de":"Kann ich mit Karte zahlen?","t":["Je peux payer par carte?","Est-ce que je peux payer par carte?"]},
+        {"id":"money.s05","de":"Ich zahle bar.","t":["Je paie en espèces.","Je vais payer en espèces."]},
+        {"id":"money.s06","de":"Haben Sie etwas Günstigeres?","t":["Vous avez quelque chose de moins cher?","Avez-vous quelque chose de moins cher?"]},
+        {"id":"money.s07","de":"Die Quittung, bitte.","t":"Le reçu, s'il vous plaît."},
+        {"id":"money.s08","de":"Ich möchte zwei, bitte.","t":["J'en voudrais deux, s'il vous plaît.","Deux, s'il vous plaît."]},
+        {"id":"money.s09","de":"Wo ist ein Geldautomat?","t":["Où est un distributeur?","Où y a-t-il un distributeur?"]},
+        {"id":"money.s10","de":["Stimmt so.","Behalten Sie den Rest."],"t":"Gardez la monnaie."}
+      ]
+    },
+    {
+      "id": "time", "title": "Uhrzeit & Tage", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Öffnungszeiten, Uhrzeit und Verabredungen.",
+      "words": [
+        {"id":"time.w01","de":"heute","t":"aujourd'hui"},
+        {"id":"time.w02","de":"morgen","t":"demain"},
+        {"id":"time.w03","de":"gestern","t":"hier"},
+        {"id":"time.w04","de":"jetzt","t":"maintenant"},
+        {"id":"time.w05","de":"später","t":"plus tard"},
+        {"id":"time.w06","de":"früh","t":"tôt"},
+        {"id":"time.w07","de":"die Stunde","t":"l'heure"},
+        {"id":"time.w08","de":"die Minute","t":"la minute"},
+        {"id":"time.w09","de":"der Tag","t":"le jour"},
+        {"id":"time.w10","de":"die Woche","t":"la semaine"},
+        {"id":"time.w11","de":"Samstag","t":"samedi"},
+        {"id":"time.w12","de":"Sonntag","t":"dimanche"},
+        {"id":"time.w13","de":"offen","t":"ouvert"},
+        {"id":"time.w14","de":"geschlossen","t":"fermé"},
+        {"id":"time.w15","de":"die Uhr","t":"l'horloge","pic":"🕒"}
+      ],
+      "sentences": [
+        {"id":"time.s01","de":["Wie spät ist es?","Wie viel Uhr ist es?"],"t":"Quelle heure est-il?"},
+        {"id":"time.s02","de":"Es ist drei Uhr.","t":"Il est trois heures."},
+        {"id":"time.s03","de":"Wann öffnet das Museum?","t":["Quand ouvre le musée?","À quelle heure ouvre le musée?"]},
+        {"id":"time.s04","de":"Das Geschäft ist heute geschlossen.","t":"Le magasin est fermé aujourd'hui."},
+        {"id":"time.s05","de":"Ist es heute offen?","t":["C'est ouvert aujourd'hui?","Est-ce que c'est ouvert aujourd'hui?"]},
+        {"id":"time.s06","de":"Bis später!","t":["À plus tard!","À tout à l'heure!"]},
+        {"id":"time.s07","de":"Wir bleiben eine Woche.","t":"Nous restons une semaine."},
+        {"id":"time.s08","de":"Der Bus kommt in zehn Minuten.","t":"Le bus arrive dans dix minutes."},
+        {"id":"time.s09","de":"Heute ist Samstag.","t":["Aujourd'hui, c'est samedi.","Aujourd'hui c'est samedi.","Nous sommes samedi."]},
+        {"id":"time.s10","de":"Ich habe jetzt keine Zeit.","t":"Je n'ai pas le temps maintenant."}
+      ]
+    },
+    {
+      "id": "food", "title": "Café & Restaurant", "level": "A1", "colors": ["#E2671B","#AE4C0F"],
+      "desc": "Tisch bestellen, Essen wählen, Allergien nennen, zahlen.",
+      "words": [
+        {"id":"food.w01","de":"der Kaffee","t":"le café","pic":"☕"},
+        {"id":"food.w02","de":"der Tee","t":"le thé","pic":"🍵"},
+        {"id":"food.w03","de":"das Wasser","t":"l'eau","pic":"💧"},
+        {"id":"food.w04","de":"das Bier","t":"la bière","pic":"🍺"},
+        {"id":"food.w05","de":"der Wein","t":"le vin","pic":"🍷"},
+        {"id":"food.w06","de":"das Brot","t":"le pain","pic":"🍞"},
+        {"id":"food.w07","de":"das Hähnchen","t":"le poulet","pic":"🍗"},
+        {"id":"food.w08","de":"der Fisch","t":"le poisson","pic":"🐟"},
+        {"id":"food.w09","de":"der Salat","t":"la salade","pic":"🥗"},
+        {"id":"food.w10","de":"die Speisekarte","t":["la carte","le menu"]},
+        {"id":"food.w11","de":"der Tisch","t":"la table"},
+        {"id":"food.w12","de":"die Rechnung","t":"l'addition"},
+        {"id":"food.w13","de":"das Frühstück","t":"le petit-déjeuner"},
+        {"id":"food.w14","de":"das Abendessen","t":"le dîner"},
+        {"id":"food.w15","de":"vegetarisch","t":["végétarien","végétarienne"]},
+        {"id":"food.w16","de":"lecker","t":["délicieux","bon"]}
+      ],
+      "sentences": [
+        {"id":"food.s01","de":"Einen Tisch für zwei, bitte.","t":"Une table pour deux, s'il vous plaît."},
+        {"id":"food.s02","de":"Die Speisekarte, bitte.","t":["La carte, s'il vous plaît.","Le menu, s'il vous plaît."]},
+        {"id":"food.s03","de":["Ich hätte gern einen Kaffee.","Ich möchte einen Kaffee."],"t":"Je voudrais un café."},
+        {"id":"food.s04","de":"Ein Bier, bitte.","t":"Une bière, s'il vous plaît."},
+        {"id":"food.s05","de":["Ich bin Vegetarier.","Ich bin Vegetarierin."],"t":["Je suis végétarien.","Je suis végétarienne."]},
+        {"id":"food.s06","de":"Ich bin allergisch gegen Nüsse.","t":["Je suis allergique aux noix.","Je suis allergique aux fruits à coque."]},
+        {"id":"food.s07","de":"Was empfehlen Sie?","t":["Qu'est-ce que vous recommandez?","Que recommandez-vous?"]},
+        {"id":"food.s08","de":"Die Rechnung, bitte.","t":"L'addition, s'il vous plaît."},
+        {"id":"food.s09","de":"Das Essen ist sehr lecker.","t":["Le repas est très bon.","C'est très bon.","Le repas est délicieux."]},
+        {"id":"food.s10","de":"Noch ein Wasser, bitte.","t":["Encore une eau, s'il vous plaît.","Une autre eau, s'il vous plaît."]}
+      ]
+    },
+    {
+      "id": "shop", "title": "Einkaufen", "level": "A1", "colors": ["#D2477F","#A1305D"],
+      "desc": "Supermarkt, Kleidung, Souvenirs: finden, anprobieren, kaufen.",
+      "words": [
+        {"id":"shop.w01","de":"der Supermarkt","t":"le supermarché","pic":"🛒"},
+        {"id":"shop.w02","de":"das Geschäft","t":"le magasin","pic":"🏪"},
+        {"id":"shop.w03","de":"die Tüte","t":"le sac","pic":"🛍️"},
+        {"id":"shop.w04","de":"die Flasche","t":"la bouteille","pic":"🍾"},
+        {"id":"shop.w05","de":"das Obst","t":"les fruits","pic":"🍎"},
+        {"id":"shop.w06","de":"die Sonnencreme","t":"la crème solaire","pic":"🧴"},
+        {"id":"shop.w07","de":"das Souvenir","t":"le souvenir","pic":"🎁"},
+        {"id":"shop.w08","de":"die Größe","t":"la taille"},
+        {"id":"shop.w09","de":"kaufen","t":"acheter"},
+        {"id":"shop.w10","de":"suchen","t":"chercher"},
+        {"id":"shop.w11","de":"anprobieren","t":"essayer"},
+        {"id":"shop.w12","de":"groß","t":"grand"},
+        {"id":"shop.w13","de":"klein","t":"petit"}
+      ],
+      "sentences": [
+        {"id":"shop.s01","de":"Ich suche einen Supermarkt.","t":"Je cherche un supermarché."},
+        {"id":"shop.s02","de":"Haben Sie das in Größe M?","t":["Vous l'avez en taille M?","Vous avez ça en taille M?"]},
+        {"id":"shop.s03","de":"Ich schaue nur, danke.","t":["Je regarde juste, merci.","Je regarde seulement, merci.","Je regarde, merci."]},
+        {"id":"shop.s04","de":"Kann ich das anprobieren?","t":["Je peux l'essayer?","Est-ce que je peux l'essayer?"]},
+        {"id":"shop.s05","de":"Ich nehme es.","t":"Je le prends."},
+        {"id":"shop.s06","de":"Brauchen Sie eine Tüte?","t":["Vous avez besoin d'un sac?","Vous voulez un sac?"]},
+        {"id":"shop.s07","de":"Wann schließt der Laden?","t":["Quand ferme le magasin?","À quelle heure ferme le magasin?"]},
+        {"id":"shop.s08","de":"Eine Flasche Wasser, bitte.","t":"Une bouteille d'eau, s'il vous plaît."},
+        {"id":"shop.s09","de":"Wo finde ich Sonnencreme?","t":["Où est-ce que je trouve de la crème solaire?","Où puis-je trouver de la crème solaire?"]},
+        {"id":"shop.s10","de":"Das ist zu klein.","t":"C'est trop petit."}
+      ]
+    },
+    {
+      "id": "way", "title": "Nach dem Weg fragen", "level": "A1", "colors": ["#4E8A1C","#386614"],
+      "desc": "Links, rechts, geradeaus: Wege erfragen und verstehen.",
+      "words": [
+        {"id":"way.w01","de":"links","t":["à gauche","gauche"]},
+        {"id":"way.w02","de":"rechts","t":["à droite","droite"]},
+        {"id":"way.w03","de":"geradeaus","t":"tout droit"},
+        {"id":"way.w04","de":"nah","t":["près","proche"]},
+        {"id":"way.w05","de":"weit","t":"loin"},
+        {"id":"way.w06","de":"die Straße","t":"la rue"},
+        {"id":"way.w07","de":"die Ecke","t":"le coin"},
+        {"id":"way.w08","de":"die Toilette","t":"les toilettes","pic":"🚻"},
+        {"id":"way.w09","de":"der Strand","t":"la plage","pic":"🏖️"},
+        {"id":"way.w10","de":"die Altstadt","t":"la vieille ville"},
+        {"id":"way.w11","de":"der Stadtplan","t":["le plan","la carte"],"pic":"🗺️"},
+        {"id":"way.w12","de":"die Kirche","t":"l'église","pic":"⛪"},
+        {"id":"way.w13","de":"das Museum","t":"le musée","pic":"🏛️"}
+      ],
+      "sentences": [
+        {"id":"way.s01","de":"Entschuldigung, wo ist die Toilette?","t":"Excusez-moi, où sont les toilettes?"},
+        {"id":"way.s02","de":"Wie komme ich zum Strand?","t":["Comment aller à la plage?","Comment je vais à la plage?"]},
+        {"id":"way.s03","de":["Gehen Sie geradeaus.","Geh geradeaus."],"t":["Allez tout droit.","Va tout droit."]},
+        {"id":"way.s04","de":"Biegen Sie an der Ecke links ab.","t":["Tournez à gauche au coin.","Au coin, tournez à gauche."]},
+        {"id":"way.s05","de":"Ist es weit?","t":["C'est loin?","Est-ce que c'est loin?"]},
+        {"id":"way.s06","de":"Es ist ganz in der Nähe.","t":"C'est tout près."},
+        {"id":"way.s07","de":"Können Sie mir das auf der Karte zeigen?","t":["Vous pouvez me montrer sur le plan?","Pouvez-vous me montrer sur la carte?","Vous pouvez me montrer sur la carte?"]},
+        {"id":"way.s08","de":"Ich habe mich verlaufen.","t":["Je suis perdu.","Je suis perdue."]},
+        {"id":"way.s09","de":"Das Museum ist rechts.","t":"Le musée est à droite."},
+        {"id":"way.s10","de":"Wo ist die Altstadt?","t":"Où est la vieille ville?"}
+      ]
+    },
+    {
+      "id": "transport", "title": "Bus, Bahn & Taxi", "level": "A2", "colors": ["#4B50D6","#3438A6"],
+      "desc": "Tickets kaufen, Abfahrten finden, mit dem Taxi fahren.",
+      "words": [
+        {"id":"transport.w01","de":"der Zug","t":"le train","pic":"🚆"},
+        {"id":"transport.w02","de":"der Bus","t":"le bus","pic":"🚌"},
+        {"id":"transport.w03","de":"das Taxi","t":"le taxi","pic":"🚕"},
+        {"id":"transport.w04","de":"das Auto","t":"la voiture","pic":"🚗"},
+        {"id":"transport.w05","de":"der Flughafen","t":"l'aéroport","pic":"✈️"},
+        {"id":"transport.w06","de":"der Bahnhof","t":"la gare"},
+        {"id":"transport.w07","de":"die Haltestelle","t":"l'arrêt"},
+        {"id":"transport.w08","de":"die Fahrkarte","t":["le billet","le ticket"],"pic":"🎫"},
+        {"id":"transport.w09","de":"das Gleis","t":"le quai"},
+        {"id":"transport.w10","de":"die Abfahrt","t":"le départ"},
+        {"id":"transport.w11","de":"die Ankunft","t":"l'arrivée"},
+        {"id":"transport.w12","de":"die Verspätung","t":"le retard"},
+        {"id":"transport.w13","de":"der Koffer","t":"la valise","pic":"🧳"}
+      ],
+      "sentences": [
+        {"id":"transport.s01","de":"Eine Fahrkarte zum Flughafen, bitte.","t":"Un billet pour l'aéroport, s'il vous plaît."},
+        {"id":"transport.s02","de":"Wann fährt der nächste Zug?","t":["Quand part le prochain train?","À quelle heure part le prochain train?"]},
+        {"id":"transport.s03","de":"Von welchem Gleis fährt der Zug?","t":"De quel quai part le train?"},
+        {"id":"transport.s04","de":"Hält dieser Bus am Bahnhof?","t":["Ce bus s'arrête à la gare?","Est-ce que ce bus s'arrête à la gare?"]},
+        {"id":"transport.s05","de":"Der Zug hat Verspätung.","t":["Le train a du retard.","Le train est en retard."]},
+        {"id":"transport.s06","de":"Zum Flughafen, bitte.","t":"À l'aéroport, s'il vous plaît."},
+        {"id":"transport.s07","de":"Wo ist die Bushaltestelle?","t":"Où est l'arrêt de bus?"},
+        {"id":"transport.s08","de":"Ich möchte ein Auto mieten.","t":"Je voudrais louer une voiture."},
+        {"id":"transport.s09","de":"Mein Koffer ist nicht angekommen.","t":"Ma valise n'est pas arrivée."},
+        {"id":"transport.s10","de":"Muss ich umsteigen?","t":["Est-ce que je dois changer?","Je dois changer?"]}
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "level": "A2", "colors": ["#B7791F","#8A5A12"],
+      "desc": "Einchecken, WLAN, Frühstück und kleine Probleme.",
+      "words": [
+        {"id":"hotel.w01","de":"das Hotel","t":"l'hôtel","pic":"🏨"},
+        {"id":"hotel.w02","de":"das Zimmer","t":"la chambre"},
+        {"id":"hotel.w03","de":"der Schlüssel","t":"la clé","pic":"🔑"},
+        {"id":"hotel.w04","de":"die Reservierung","t":"la réservation"},
+        {"id":"hotel.w05","de":"das Bett","t":"le lit","pic":"🛏️"},
+        {"id":"hotel.w06","de":"die Dusche","t":"la douche","pic":"🚿"},
+        {"id":"hotel.w07","de":"das Handtuch","t":"la serviette"},
+        {"id":"hotel.w08","de":"das WLAN","t":"le wifi","pic":"📶"},
+        {"id":"hotel.w09","de":"das Passwort","t":"le mot de passe"},
+        {"id":"hotel.w10","de":"der Aufzug","t":"l'ascenseur","pic":"🛗"},
+        {"id":"hotel.w11","de":"die Nacht","t":"la nuit","pic":"🌙"},
+        {"id":"hotel.w12","de":"der Reisepass","t":"le passeport","pic":"🛂"},
+        {"id":"hotel.w13","de":"die Klimaanlage","t":"la climatisation","pic":"❄️"},
+        {"id":"hotel.w14","de":"laut","t":"bruyant"}
+      ],
+      "sentences": [
+        {"id":"hotel.s01","de":"Ich habe eine Reservierung.","t":"J'ai une réservation."},
+        {"id":"hotel.s02","de":"Haben Sie ein Zimmer frei?","t":["Vous avez une chambre libre?","Avez-vous une chambre libre?"]},
+        {"id":"hotel.s03","de":"Für zwei Nächte, bitte.","t":"Pour deux nuits, s'il vous plaît."},
+        {"id":"hotel.s04","de":"Wie ist das WLAN-Passwort?","t":"Quel est le mot de passe du wifi?"},
+        {"id":"hotel.s05","de":"Ist das Frühstück inklusive?","t":["Le petit-déjeuner est compris?","Le petit-déjeuner est inclus?"]},
+        {"id":"hotel.s06","de":"Die Dusche funktioniert nicht.","t":["La douche ne marche pas.","La douche ne fonctionne pas."]},
+        {"id":"hotel.s07","de":"Können wir noch Handtücher bekommen?","t":["On peut avoir plus de serviettes?","Pourrions-nous avoir des serviettes supplémentaires?"]},
+        {"id":"hotel.s08","de":"Wann ist der Check-out?","t":["À quelle heure est le départ?","Le check-out est à quelle heure?"]},
+        {"id":"hotel.s09","de":"Ich habe meinen Schlüssel verloren.","t":"J'ai perdu ma clé."},
+        {"id":"hotel.s10","de":"Das Zimmer ist zu laut.","t":"La chambre est trop bruyante."}
+      ]
+    },
+    {
+      "id": "help", "title": "Notfall & Gesundheit", "level": "A2", "colors": ["#C93A3A","#962828"],
+      "desc": "Arzt, Apotheke, Polizei: Hilfe holen, wenn es darauf ankommt.",
+      "words": [
+        {"id":"help.w01","de":"Hilfe","t":["au secours","à l'aide"],"pic":"🆘"},
+        {"id":"help.w02","de":"der Arzt","t":["le médecin","le docteur"],"pic":"🩺"},
+        {"id":"help.w03","de":"das Krankenhaus","t":"l'hôpital","pic":"🏥"},
+        {"id":"help.w04","de":"die Apotheke","t":"la pharmacie","pic":"💊"},
+        {"id":"help.w05","de":"die Polizei","t":"la police","pic":"🚓"},
+        {"id":"help.w06","de":"der Krankenwagen","t":"l'ambulance","pic":"🚑"},
+        {"id":"help.w07","de":"krank","t":"malade"},
+        {"id":"help.w08","de":"der Schmerz","t":"la douleur"},
+        {"id":"help.w09","de":"der Kopf","t":"la tête"},
+        {"id":"help.w10","de":"der Bauch","t":"le ventre"},
+        {"id":"help.w11","de":"das Fieber","t":"la fièvre","pic":"🤒"},
+        {"id":"help.w12","de":"der Notfall","t":"l'urgence"},
+        {"id":"help.w13","de":"die Tablette","t":"le comprimé"},
+        {"id":"help.w14","de":"gestohlen","t":"volé"}
+      ],
+      "sentences": [
+        {"id":"help.s01","de":"Hilfe! Rufen Sie einen Krankenwagen!","t":["Au secours! Appelez une ambulance!","À l'aide! Appelez une ambulance!"]},
+        {"id":"help.s02","de":"Ich brauche einen Arzt.","t":"J'ai besoin d'un médecin."},
+        {"id":"help.s03","de":"Wo ist die nächste Apotheke?","t":"Où est la pharmacie la plus proche?"},
+        {"id":"help.s04","de":"Ich habe Kopfschmerzen.","t":"J'ai mal à la tête."},
+        {"id":"help.s05","de":"Mir ist schlecht.","t":["Je me sens mal.","J'ai la nausée.","J'ai mal au cœur."]},
+        {"id":"help.s06","de":"Mein Handy wurde gestohlen.","t":["On m'a volé mon téléphone.","Mon téléphone a été volé."]},
+        {"id":"help.s07","de":"Rufen Sie die Polizei!","t":"Appelez la police!"},
+        {"id":"help.s08","de":"Ich habe Fieber.","t":"J'ai de la fièvre."},
+        {"id":"help.s09","de":"Ich bin allergisch gegen Penicillin.","t":"Je suis allergique à la pénicilline."},
+        {"id":"help.s10","de":"Es ist ein Notfall.","t":"C'est une urgence."},
+        {"id":"help.s11","de":"Wo tut es weh?","t":["Où avez-vous mal?","Où est-ce que vous avez mal?","Où as-tu mal?"]}
+      ]
+    },
+    {
+      "id": "leisure", "title": "Wetter & Freizeit", "level": "A2", "colors": ["#0F8FA6","#0B6A7B"],
+      "desc": "Über das Wetter reden, Ausflüge planen, Tickets kaufen.",
+      "words": [
+        {"id":"leisure.w01","de":"das Wetter","t":"le temps"},
+        {"id":"leisure.w02","de":"die Sonne","t":"le soleil","pic":"☀️"},
+        {"id":"leisure.w03","de":"der Regen","t":"la pluie","pic":"🌧️"},
+        {"id":"leisure.w04","de":"der Wind","t":"le vent","pic":"💨"},
+        {"id":"leisure.w05","de":"heiß","t":"chaud"},
+        {"id":"leisure.w06","de":"kalt","t":"froid"},
+        {"id":"leisure.w07","de":"schwimmen","t":"nager","pic":"🏊"},
+        {"id":"leisure.w08","de":"wandern","t":["faire de la randonnée","randonner"]},
+        {"id":"leisure.w09","de":"der Ausflug","t":"l'excursion"},
+        {"id":"leisure.w10","de":"das Meer","t":"la mer","pic":"🌊"},
+        {"id":"leisure.w11","de":"der Berg","t":"la montagne","pic":"⛰️"},
+        {"id":"leisure.w12","de":"der Regenschirm","t":"le parapluie","pic":"☂️"},
+        {"id":"leisure.w13","de":"die Eintrittskarte","t":["le billet","l'entrée"],"pic":"🎟️"}
+      ],
+      "sentences": [
+        {"id":"leisure.s01","de":"Wie ist das Wetter heute?","t":"Quel temps fait-il aujourd'hui?"},
+        {"id":"leisure.s02","de":"Es ist sonnig und warm.","t":["Il fait beau et chaud.","Il y a du soleil et il fait chaud."]},
+        {"id":"leisure.s03","de":"Morgen soll es regnen.","t":["Il doit pleuvoir demain.","Il va pleuvoir demain."]},
+        {"id":"leisure.s04","de":"Lass uns an den Strand gehen!","t":"Allons à la plage!"},
+        {"id":"leisure.s05","de":"Kann man hier schwimmen?","t":["On peut nager ici?","Est-ce qu'on peut nager ici?"]},
+        {"id":"leisure.s06","de":"Wir möchten einen Ausflug in die Berge machen.","t":"Nous voudrions faire une excursion à la montagne."},
+        {"id":"leisure.s07","de":"Zwei Eintrittskarten, bitte.","t":["Deux billets, s'il vous plaît.","Deux entrées, s'il vous plaît."]},
+        {"id":"leisure.s08","de":"Es ist zu kalt zum Baden.","t":"Il fait trop froid pour se baigner."},
+        {"id":"leisure.s09","de":"Hast du einen Regenschirm?","t":["Tu as un parapluie?","As-tu un parapluie?"]},
+        {"id":"leisure.s10","de":"Was kann man hier unternehmen?","t":["Qu'est-ce qu'on peut faire ici?","Que peut-on faire ici?"]}
+      ]
+    },
+    {
+      "id": "past", "title": "Erlebnisse erzählen", "level": "A2", "colors": ["#B03CA8","#83287C"],
+      "desc": "In der Vergangenheit erzählen: was du gesehen und erlebt hast.",
+      "words": [
+        {"id":"past.w01","de":"letzte Woche","t":"la semaine dernière"},
+        {"id":"past.w02","de":"letztes Jahr","t":"l'année dernière"},
+        {"id":"past.w03","de":"vor zwei Tagen","t":"il y a deux jours"},
+        {"id":"past.w04","de":"schon","t":"déjà"},
+        {"id":"past.w05","de":"noch nie","t":"jamais"},
+        {"id":"past.w06","de":"besuchen","t":"visiter"},
+        {"id":"past.w07","de":"sehen","t":"voir","pic":"👀"},
+        {"id":"past.w08","de":"reisen","t":"voyager"},
+        {"id":"past.w09","de":"vergessen","t":"oublier"},
+        {"id":"past.w10","de":"verlieren","t":"perdre"},
+        {"id":"past.w11","de":"ankommen","t":"arriver"},
+        {"id":"past.w12","de":"der Urlaub","t":"les vacances","pic":"🏝️"},
+        {"id":"past.w13","de":"die Reise","t":"le voyage","pic":"🧳"},
+        {"id":"past.w14","de":"das Foto","t":"la photo","pic":"📷"}
+      ],
+      "sentences": [
+        {"id":"past.s01","de":"Gestern war ich im Museum.","t":["Hier, je suis allé au musée.","Hier je suis allé au musée.","Hier, je suis allée au musée.","Hier, j'étais au musée."]},
+        {"id":"past.s02","de":"Wir sind letzte Woche angekommen.","t":["Nous sommes arrivés la semaine dernière.","Nous sommes arrivées la semaine dernière."]},
+        {"id":"past.s03","de":"Hast du schon die Altstadt gesehen?","t":["Tu as déjà vu la vieille ville?","As-tu déjà vu la vieille ville?"]},
+        {"id":"past.s04","de":"Ich habe meinen Pass im Hotel vergessen.","t":"J'ai oublié mon passeport à l'hôtel."},
+        {"id":"past.s05","de":"Das Essen gestern Abend war fantastisch.","t":"Le repas d'hier soir était fantastique."},
+        {"id":"past.s06","de":"Wir waren noch nie in Lissabon.","t":"Nous ne sommes jamais allés à Lisbonne."},
+        {"id":"past.s07","de":"Vor zwei Tagen haben wir einen Ausflug gemacht.","t":["Il y a deux jours, nous avons fait une excursion.","Il y a deux jours nous avons fait une excursion.","Nous avons fait une excursion il y a deux jours."]},
+        {"id":"past.s08","de":"Letztes Jahr sind wir nach Spanien gereist.","t":["L'année dernière, nous avons voyagé en Espagne.","L'année dernière nous avons voyagé en Espagne.","Nous avons voyagé en Espagne l'année dernière."]},
+        {"id":"past.s09","de":"Wie war dein Urlaub?","t":["Comment se sont passées tes vacances?","C'était comment, tes vacances?","Comment étaient tes vacances?"]},
+        {"id":"past.s10","de":"Ich habe meine Tasche im Bus verloren.","t":"J'ai perdu mon sac dans le bus."}
+      ]
+    },
+    {
+      "id": "plans", "title": "Pläne machen", "level": "A2", "colors": ["#50667F","#3A4C60"],
+      "desc": "Verabreden, einladen, zu- und absagen.",
+      "words": [
+        {"id":"plans.w01","de":"heute Abend","t":"ce soir"},
+        {"id":"plans.w02","de":"morgen früh","t":"demain matin"},
+        {"id":"plans.w03","de":"das Wochenende","t":"le week-end"},
+        {"id":"plans.w04","de":"treffen","t":["retrouver","rencontrer"]},
+        {"id":"plans.w05","de":"einladen","t":"inviter"},
+        {"id":"plans.w06","de":"planen","t":["prévoir","planifier"]},
+        {"id":"plans.w07","de":"frei","t":"libre"},
+        {"id":"plans.w08","de":"das Konzert","t":"le concert","pic":"🎵"},
+        {"id":"plans.w09","de":"das Kino","t":"le cinéma","pic":"🎬"},
+        {"id":"plans.w10","de":"vielleicht","t":"peut-être"},
+        {"id":"plans.w11","de":"klar","t":["bien sûr","d'accord"]},
+        {"id":"plans.w12","de":"leider","t":"malheureusement"},
+        {"id":"plans.w13","de":"zusammen","t":"ensemble"}
+      ],
+      "sentences": [
+        {"id":"plans.s01","de":"Was machst du heute Abend?","t":["Qu'est-ce que tu fais ce soir?","Tu fais quoi ce soir?"]},
+        {"id":"plans.s02","de":"Morgen fahren wir in die Stadt.","t":["Demain, nous allons en ville.","Demain nous allons en ville.","Nous allons en ville demain."]},
+        {"id":"plans.s03","de":"Hast du am Wochenende Zeit?","t":["Tu es libre ce week-end?","Tu as le temps ce week-end?","Es-tu libre ce week-end?"]},
+        {"id":"plans.s04","de":"Wollen wir zusammen essen gehen?","t":["On va manger ensemble?","Tu veux qu'on aille manger ensemble?"]},
+        {"id":"plans.s05","de":"Ich lade dich ein.","t":"Je t'invite."},
+        {"id":"plans.s06","de":"Wir treffen uns um acht vor dem Hotel.","t":["On se retrouve à huit heures devant l'hôtel.","Nous nous retrouvons à huit heures devant l'hôtel."]},
+        {"id":"plans.s07","de":"Leider kann ich morgen nicht.","t":["Malheureusement, je ne peux pas demain.","Désolé, demain je ne peux pas."]},
+        {"id":"plans.s08","de":"Vielleicht gehen wir ins Kino.","t":["On ira peut-être au cinéma.","Peut-être qu'on ira au cinéma.","Nous irons peut-être au cinéma."]},
+        {"id":"plans.s09","de":"Wann fängt das Konzert an?","t":["Quand commence le concert?","À quelle heure commence le concert?"]},
+        {"id":"plans.s10","de":"Klar, gerne!","t":["Bien sûr, avec plaisir!","Avec plaisir!"]}
+      ]
+    },
+    {
+      "id": "problems", "title": "Probleme lösen", "level": "B1", "colors": ["#D0542A","#9E3D1C"],
+      "desc": "Höflich reklamieren, um Hilfe bitten, Lösungen finden.",
+      "words": [
+        {"id":"problems.w01","de":"das Problem","t":"le problème"},
+        {"id":"problems.w02","de":"kaputt","t":["cassé","en panne"]},
+        {"id":"problems.w03","de":"die Beschwerde","t":["la réclamation","la plainte"]},
+        {"id":"problems.w04","de":"umtauschen","t":"échanger"},
+        {"id":"problems.w05","de":"erstatten","t":"rembourser"},
+        {"id":"problems.w06","de":"falsch","t":["faux","incorrect"]},
+        {"id":"problems.w07","de":"dringend","t":"urgent"},
+        {"id":"problems.w08","de":"der Verantwortliche","t":["le responsable","le gérant"]},
+        {"id":"problems.w09","de":"die Lösung","t":"la solution"},
+        {"id":"problems.w10","de":"reparieren","t":"réparer","pic":"🔧"},
+        {"id":"problems.w11","de":"warten","t":"attendre","pic":"⏳"},
+        {"id":"problems.w12","de":"funktionieren","t":["fonctionner","marcher"]},
+        {"id":"problems.w13","de":"die Heizung","t":"le chauffage","pic":"🔥"}
+      ],
+      "sentences": [
+        {"id":"problems.s01","de":"Könnte ich bitte mit dem Verantwortlichen sprechen?","t":["Pourrais-je parler au responsable, s'il vous plaît?","Est-ce que je pourrais parler au responsable?"]},
+        {"id":"problems.s02","de":"Die Rechnung stimmt leider nicht.","t":["Malheureusement, l'addition n'est pas correcte.","Je crois qu'il y a une erreur dans l'addition."]},
+        {"id":"problems.s03","de":"Wir haben vor einer Stunde bestellt.","t":"Nous avons commandé il y a une heure."},
+        {"id":"problems.s04","de":"Könnten Sie das bitte reparieren?","t":["Pourriez-vous réparer ça, s'il vous plaît?","Pouvez-vous réparer ça?"]},
+        {"id":"problems.s05","de":"Ich möchte das umtauschen.","t":["Je voudrais échanger ceci.","Je voudrais échanger ça."]},
+        {"id":"problems.s06","de":"Kann ich mein Geld zurückbekommen?","t":["Est-ce que je peux être remboursé?","Je peux me faire rembourser?","Pouvez-vous me rembourser?"]},
+        {"id":"problems.s07","de":"Das ist nicht das, was ich bestellt habe.","t":"Ce n'est pas ce que j'ai commandé."},
+        {"id":"problems.s08","de":"Es wäre nett, wenn Sie uns helfen könnten.","t":"Ce serait gentil si vous pouviez nous aider."},
+        {"id":"problems.s09","de":"Wie lange müssen wir noch warten?","t":["Combien de temps devons-nous encore attendre?","On doit attendre encore combien de temps?"]},
+        {"id":"problems.s10","de":"Die Heizung funktioniert seit gestern nicht.","t":["Le chauffage ne marche pas depuis hier.","Le chauffage ne fonctionne pas depuis hier."]}
+      ]
+    },
+    {
+      "id": "opinions", "title": "Meinungen & Gespräche", "level": "B1", "colors": ["#6E4BD8","#5135A8"],
+      "desc": "Meinung sagen, zustimmen, widersprechen, Vorschläge machen.",
+      "words": [
+        {"id":"opinions.w01","de":"die Meinung","t":["l'avis","l'opinion"]},
+        {"id":"opinions.w02","de":"denken","t":"penser","pic":"🤔"},
+        {"id":"opinions.w03","de":"glauben","t":"croire"},
+        {"id":"opinions.w04","de":"einverstanden","t":"d'accord","pic":"🤝"},
+        {"id":"opinions.w05","de":"wichtig","t":"important"},
+        {"id":"opinions.w06","de":"interessant","t":"intéressant"},
+        {"id":"opinions.w07","de":"langweilig","t":"ennuyeux","pic":"🥱"},
+        {"id":"opinions.w08","de":"schön","t":["beau","joli"]},
+        {"id":"opinions.w09","de":"eigentlich","t":"en fait"},
+        {"id":"opinions.w10","de":"vorschlagen","t":"proposer"},
+        {"id":"opinions.w11","de":"der Unterschied","t":"la différence"},
+        {"id":"opinions.w12","de":"die Erfahrung","t":"l'expérience"},
+        {"id":"opinions.w13","de":"die Sprache","t":"la langue","pic":"💬"}
+      ],
+      "sentences": [
+        {"id":"opinions.s01","de":"Was hältst du davon?","t":["Qu'est-ce que tu en penses?","Tu en penses quoi?"]},
+        {"id":"opinions.s02","de":"Ich finde, dass die Stadt sehr schön ist.","t":"Je trouve que la ville est très belle."},
+        {"id":"opinions.s03","de":"Da bin ich ganz deiner Meinung.","t":"Je suis tout à fait d'accord avec toi."},
+        {"id":"opinions.s04","de":"Das sehe ich anders.","t":["Je vois les choses autrement.","Je ne suis pas d'accord."]},
+        {"id":"opinions.s05","de":"Wenn ich mehr Zeit hätte, würde ich länger bleiben.","t":"Si j'avais plus de temps, je resterais plus longtemps."},
+        {"id":"opinions.s06","de":"Ich schlage vor, dass wir morgen früh losfahren.","t":["Je propose qu'on parte demain matin.","Je propose que nous partions demain matin."]},
+        {"id":"opinions.s07","de":"Das war eine tolle Erfahrung.","t":["C'était une super expérience.","C'était une expérience géniale."]},
+        {"id":"opinions.s08","de":"Eigentlich wollte ich ans Meer fahren.","t":"En fait, je voulais aller à la mer."},
+        {"id":"opinions.s09","de":"Was ist der Unterschied zwischen den beiden?","t":"Quelle est la différence entre les deux?"},
+        {"id":"opinions.s10","de":"Es ist wichtig, die Sprache ein bisschen zu sprechen.","t":["C'est important de parler un peu la langue.","Il est important de parler un peu la langue."]}
+      ]
+    },
+    {
+      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
+      "desc": "Über Beruf, Familie und Hobbys plaudern.",
+      "words": [
+        {"id":"smalltalk.w01","de":"der Beruf","t":["le métier","la profession"]},
+        {"id":"smalltalk.w02","de":"die Arbeit","t":"le travail","pic":"💼"},
+        {"id":"smalltalk.w03","de":"das Hobby","t":["le loisir","le passe-temps","le hobby"]},
+        {"id":"smalltalk.w04","de":"verheiratet","t":["marié","mariée"],"pic":"💍"},
+        {"id":"smalltalk.w05","de":"die Kinder","t":"les enfants"},
+        {"id":"smalltalk.w06","de":"wohnen","t":["habiter","vivre"],"pic":"🏠"},
+        {"id":"smalltalk.w07","de":"mögen","t":"aimer"},
+        {"id":"smalltalk.w08","de":"kochen","t":["cuisiner","faire la cuisine"],"pic":"🍳"},
+        {"id":"smalltalk.w09","de":"der Sport","t":"le sport","pic":"🏃"},
+        {"id":"smalltalk.w10","de":"die Musik","t":"la musique","pic":"🎵"},
+        {"id":"smalltalk.w11","de":"das erste Mal","t":"la première fois"},
+        {"id":"smalltalk.w12","de":"die Freizeit","t":"le temps libre"}
+      ],
+      "sentences": [
+        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["Qu'est-ce que tu fais dans la vie?","Tu fais quoi dans la vie?","Quel est ton métier?"]},
+        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":["Je travaille comme professeure.","Je suis professeure.","Je travaille comme professeur."]},
+        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["C'est la première fois que tu viens ici?","Tu es ici pour la première fois?"]},
+        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":"J'habite près de Munich."},
+        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":["Pendant mon temps libre, j'aime cuisiner.","Pendant mon temps libre j'aime cuisiner.","J'aime cuisiner pendant mon temps libre."]},
+        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["Je suis marié et j'ai deux enfants.","Je suis mariée et j'ai deux enfants."]},
+        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["Tu restes combien de temps ici?","Combien de temps restes-tu ici?"]},
+        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":["Tu fais du sport?","Est-ce que tu fais du sport?"]},
+        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["J'ai été ravi de te rencontrer.","J'ai été ravie de te rencontrer.","C'était sympa de te rencontrer."]},
+        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":"Restons en contact!"}
+      ]
+    },
+    {
+      "id": "car", "title": "Mietwagen & Tanken", "level": "B1", "colors": ["#1E5AA8","#153F78"],
+      "desc": "Auto mieten, tanken, parken und mit Pannen umgehen.",
+      "words": [
+        {"id":"car.w01","de":"der Mietwagen","t":"la voiture de location","pic":"🚗"},
+        {"id":"car.w02","de":"tanken","t":"faire le plein"},
+        {"id":"car.w03","de":"die Tankstelle","t":["la station-service","la station d'essence"],"pic":"⛽"},
+        {"id":"car.w04","de":"der Führerschein","t":"le permis de conduire","pic":"🪪"},
+        {"id":"car.w05","de":"parken","t":["se garer","stationner"],"pic":"🅿️"},
+        {"id":"car.w06","de":"die Versicherung","t":"l'assurance"},
+        {"id":"car.w07","de":"die Panne","t":"la panne"},
+        {"id":"car.w08","de":"der Reifen","t":"le pneu","pic":"🛞"},
+        {"id":"car.w09","de":"die Autobahn","t":"l'autoroute","pic":"🛣️"},
+        {"id":"car.w10","de":"die Maut","t":"le péage"},
+        {"id":"car.w11","de":"die Kaution","t":"la caution"},
+        {"id":"car.w12","de":"voll","t":"plein"},
+        {"id":"car.w13","de":"leer","t":"vide"}
+      ],
+      "sentences": [
+        {"id":"car.s01","de":"Ich habe einen Mietwagen reserviert.","t":"J'ai réservé une voiture de location."},
+        {"id":"car.s02","de":"Ist die Versicherung im Preis inbegriffen?","t":["L'assurance est-elle comprise dans le prix?","Est-ce que l'assurance est comprise dans le prix?"]},
+        {"id":"car.s03","de":"Muss ich das Auto vollgetankt zurückgeben?","t":["Je dois rendre la voiture avec le plein?","Dois-je rendre la voiture avec le plein?"]},
+        {"id":"car.s04","de":"Wo kann ich hier parken?","t":["Où est-ce que je peux me garer ici?","Où puis-je me garer ici?"]},
+        {"id":"car.s05","de":"Wir hatten eine Panne auf der Autobahn.","t":"Nous sommes tombés en panne sur l'autoroute."},
+        {"id":"car.s06","de":"Der Reifen ist platt.","t":["Le pneu est crevé.","J'ai un pneu crevé."]},
+        {"id":"car.s07","de":"Volltanken, bitte.","t":"Le plein, s'il vous plaît."},
+        {"id":"car.s08","de":"Wie hoch ist die Kaution?","t":["Quel est le montant de la caution?","La caution est de combien?"]},
+        {"id":"car.s09","de":"Ich brauche Ihren Führerschein und eine Kreditkarte.","t":["J'ai besoin de votre permis de conduire et d'une carte de crédit.","J'ai besoin de votre permis et d'une carte bancaire."]},
+        {"id":"car.s10","de":"Muss man auf dieser Straße Maut zahlen?","t":["Il faut payer un péage sur cette route?","Est-ce qu'il y a un péage sur cette route?"]}
+      ]
+    },
+    {
+      "id": "doctor", "title": "Arzt & Apotheke", "level": "B1", "colors": ["#3F6212","#2C450D"],
+      "desc": "Beschwerden genau beschreiben, Medikamente verstehen.",
+      "words": [
+        {"id":"doctor.w01","de":"das Rezept","t":"l'ordonnance","pic":"📄"},
+        {"id":"doctor.w02","de":"die Erkältung","t":"le rhume","pic":"🤧"},
+        {"id":"doctor.w03","de":"der Husten","t":"la toux"},
+        {"id":"doctor.w04","de":"der Durchfall","t":"la diarrhée"},
+        {"id":"doctor.w05","de":"der Sonnenbrand","t":"le coup de soleil"},
+        {"id":"doctor.w06","de":"die Krankenversicherung","t":"l'assurance maladie"},
+        {"id":"doctor.w07","de":"die Salbe","t":"la pommade"},
+        {"id":"doctor.w08","de":"der Termin","t":"le rendez-vous","pic":"📅"},
+        {"id":"doctor.w09","de":"verschreiben","t":"prescrire"},
+        {"id":"doctor.w10","de":"der Knöchel","t":"la cheville","pic":"🦶"},
+        {"id":"doctor.w11","de":"der Zahnarzt","t":"le dentiste","pic":"🦷"},
+        {"id":"doctor.w12","de":"schwanger","t":"enceinte","pic":"🤰"},
+        {"id":"doctor.w13","de":"die Nebenwirkung","t":"l'effet secondaire"},
+        {"id":"doctor.w14","de":"dreimal täglich","t":"trois fois par jour"}
+      ],
+      "sentences": [
+        {"id":"doctor.s01","de":"Ich hätte gern einen Termin beim Arzt.","t":["Je voudrais un rendez-vous chez le médecin.","Je voudrais prendre rendez-vous chez le médecin."]},
+        {"id":"doctor.s02","de":"Seit drei Tagen habe ich Husten und Fieber.","t":"J'ai de la toux et de la fièvre depuis trois jours."},
+        {"id":"doctor.s03","de":"Ich habe mir den Knöchel verstaucht.","t":["Je me suis foulé la cheville.","Je me suis foulée la cheville."]},
+        {"id":"doctor.s04","de":"Brauche ich dafür ein Rezept?","t":["J'ai besoin d'une ordonnance pour ça?","Faut-il une ordonnance pour ça?"]},
+        {"id":"doctor.s05","de":"Nehmen Sie die Tabletten dreimal täglich nach dem Essen.","t":"Prenez les comprimés trois fois par jour après les repas."},
+        {"id":"doctor.s06","de":"Haben Sie etwas gegen Sonnenbrand?","t":["Vous avez quelque chose contre les coups de soleil?","Avez-vous quelque chose contre les coups de soleil?"]},
+        {"id":"doctor.s07","de":"Gibt es Nebenwirkungen?","t":["Est-ce qu'il y a des effets secondaires?","Il y a des effets secondaires?"]},
+        {"id":"doctor.s08","de":"Ich bin schwanger.","t":"Je suis enceinte."},
+        {"id":"doctor.s09","de":"Mir tut ein Zahn weh.","t":["J'ai mal à une dent.","J'ai mal aux dents."]},
+        {"id":"doctor.s10","de":"Zahlt meine Krankenversicherung das?","t":["Mon assurance maladie rembourse-t-elle ça?","Est-ce que mon assurance maladie paie ça?"]}
+      ]
+    },
+    {
+      "id": "culture", "title": "Sehenswürdigkeiten & Kultur", "level": "B1", "colors": ["#9D174D","#6F1036"],
+      "desc": "Führungen, Eintritt, Ausstellungen und Geschichte.",
+      "words": [
+        {"id":"culture.w01","de":"die Sehenswürdigkeit","t":["le monument","le site touristique"]},
+        {"id":"culture.w02","de":"die Führung","t":"la visite guidée"},
+        {"id":"culture.w03","de":"die Ausstellung","t":"l'exposition","pic":"🖼️"},
+        {"id":"culture.w04","de":"die Ermäßigung","t":["la réduction","le tarif réduit"]},
+        {"id":"culture.w05","de":"das Schloss","t":"le château","pic":"🏰"},
+        {"id":"culture.w06","de":"die Kathedrale","t":"la cathédrale"},
+        {"id":"culture.w07","de":"der Reiseführer","t":"le guide"},
+        {"id":"culture.w08","de":"das Jahrhundert","t":"le siècle"},
+        {"id":"culture.w09","de":"berühmt","t":["célèbre","connu"],"pic":"⭐"},
+        {"id":"culture.w10","de":"fotografieren","t":["photographier","prendre des photos"],"pic":"📸"},
+        {"id":"culture.w11","de":"die Öffnungszeiten","t":"les horaires d'ouverture"},
+        {"id":"culture.w12","de":"der Markt","t":"le marché","pic":"🧺"}
+      ],
+      "sentences": [
+        {"id":"culture.s01","de":"Gibt es eine Ermäßigung für Studenten?","t":["Il y a une réduction pour les étudiants?","Y a-t-il une réduction pour les étudiants?"]},
+        {"id":"culture.s02","de":"Wann beginnt die nächste Führung?","t":["Quand commence la prochaine visite guidée?","À quelle heure commence la prochaine visite guidée?"]},
+        {"id":"culture.s03","de":"Darf man hier fotografieren?","t":["On peut prendre des photos ici?","Est-ce qu'on a le droit de prendre des photos ici?"]},
+        {"id":"culture.s04","de":"Die Kathedrale wurde im dreizehnten Jahrhundert gebaut.","t":["La cathédrale a été construite au treizième siècle.","La cathédrale a été construite au XIIIe siècle.","La cathédrale a été construite au 13e siècle."]},
+        {"id":"culture.s05","de":"Was muss man in dieser Stadt unbedingt sehen?","t":"Qu'est-ce qu'il faut absolument voir dans cette ville?"},
+        {"id":"culture.s06","de":"Die Ausstellung hat mir sehr gut gefallen.","t":["L'exposition m'a beaucoup plu.","J'ai beaucoup aimé l'exposition."]},
+        {"id":"culture.s07","de":"Bis wann hat der Markt geöffnet?","t":["Jusqu'à quelle heure le marché est-il ouvert?","Le marché est ouvert jusqu'à quelle heure?"]},
+        {"id":"culture.s08","de":"Gibt es eine Führung auf Deutsch?","t":["Il y a une visite guidée en allemand?","Y a-t-il une visite guidée en allemand?"]},
+        {"id":"culture.s09","de":"Das Schloss ist eine der berühmtesten Sehenswürdigkeiten des Landes.","t":"Le château est l'un des monuments les plus célèbres du pays."},
+        {"id":"culture.s10","de":"Wie viel kostet der Eintritt?","t":["Combien coûte l'entrée?","C'est combien, l'entrée?"]}
+      ]
+    },
+    {
+      "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
+      "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
+      "words": [
+        {"id":"negotiate.w01","de":"der Kompromiss","t":"le compromis"},
+        {"id":"negotiate.w02","de":"das Angebot","t":"l'offre"},
+        {"id":"negotiate.w03","de":"der Vorteil","t":"l'avantage"},
+        {"id":"negotiate.w04","de":"der Nachteil","t":"l'inconvénient"},
+        {"id":"negotiate.w05","de":"überzeugen","t":"convaincre"},
+        {"id":"negotiate.w06","de":"verhandeln","t":"négocier"},
+        {"id":"negotiate.w07","de":"die Bedingung","t":"la condition"},
+        {"id":"negotiate.w08","de":"deshalb","t":["c'est pourquoi","donc","pour cette raison"]},
+        {"id":"negotiate.w09","de":"trotzdem","t":["quand même","pourtant","malgré tout"]},
+        {"id":"negotiate.w10","de":"obwohl","t":["bien que","même si"]},
+        {"id":"negotiate.w11","de":"zufrieden","t":"satisfait"},
+        {"id":"negotiate.w12","de":"die Entscheidung","t":"la décision"},
+        {"id":"negotiate.w13","de":"vernünftig","t":"raisonnable"}
+      ],
+      "sentences": [
+        {"id":"negotiate.s01","de":"Wäre es möglich, den Preis etwas zu senken?","t":"Serait-il possible de baisser un peu le prix?"},
+        {"id":"negotiate.s02","de":"Unter einer Bedingung bin ich einverstanden.","t":"Je suis d'accord à une condition."},
+        {"id":"negotiate.s03","de":"Obwohl das Hotel teuer war, hat es sich gelohnt.","t":["Bien que l'hôtel ait été cher, ça valait la peine.","Même si l'hôtel était cher, ça valait le coup."]},
+        {"id":"negotiate.s04","de":"Das ist ein vernünftiges Angebot.","t":"C'est une offre raisonnable."},
+        {"id":"negotiate.s05","de":"Ich verstehe Ihren Standpunkt, trotzdem sehe ich das anders.","t":["Je comprends votre point de vue, mais je vois quand même les choses autrement.","Je comprends votre point de vue, pourtant je vois les choses autrement."]},
+        {"id":"negotiate.s06","de":"Hätten wir früher gebucht, wäre es billiger gewesen.","t":["Si nous avions réservé plus tôt, ça aurait été moins cher.","Si on avait réservé plus tôt, ça aurait été moins cher."]},
+        {"id":"negotiate.s07","de":"Der größte Vorteil ist die Lage.","t":["Le plus grand avantage, c'est l'emplacement.","Le principal avantage est l'emplacement."]},
+        {"id":"negotiate.s08","de":"Man hat mir gesagt, dass das Museum montags geschlossen ist.","t":["On m'a dit que le musée est fermé le lundi.","On m'a dit que le musée était fermé le lundi."]},
+        {"id":"negotiate.s09","de":"Lassen Sie mich darüber nachdenken.","t":"Laissez-moi y réfléchir."},
+        {"id":"negotiate.s10","de":"Wir sind mit der Lösung sehr zufrieden.","t":"Nous sommes très satisfaits de la solution."}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "restaurant", "title": "Im Restaurant", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Haben Sie reserviert?","t":"Bonsoir! Vous avez réservé?"},
+          "a": [
+            {"de":"Nein, einen Tisch für zwei, bitte.","t":"Non, une table pour deux, s'il vous plaît."},
+            {"de":"Ich möchte die Rechnung.","t":"Je voudrais l'addition."},
+            {"de":"Es ist drei Uhr.","t":"Il est trois heures."}
+          ] },
+        { "p": {"de":"Was möchten Sie trinken?","t":"Qu'est-ce que vous voulez boire?"},
+          "a": [
+            {"de":"Zwei Wasser, bitte.","t":"Deux eaux, s'il vous plaît."},
+            {"de":"Wo ist der Bahnhof?","t":"Où est la gare?"},
+            {"de":"Ich habe Kopfschmerzen.","t":"J'ai mal à la tête."}
+          ] },
+        { "p": {"de":"Haben Sie schon gewählt?","t":"Vous avez choisi?"},
+          "a": [
+            {"de":"Ja, ich nehme den Fisch.","t":"Oui, je prends le poisson."},
+            {"de":"Ja, ich habe einen Hund.","t":"Oui, j'ai un chien."},
+            {"de":"Nein, ich komme aus Deutschland.","t":"Non, je viens d'Allemagne."}
+          ] },
+        { "p": {"de":"Hat es Ihnen geschmeckt?","t":"Ça vous a plu?"},
+          "a": [
+            {"de":"Ja, sehr lecker! Die Rechnung, bitte.","t":"Oui, délicieux! L'addition, s'il vous plaît."},
+            {"de":"Zwei Fahrkarten, bitte.","t":"Deux billets, s'il vous plaît."},
+            {"de":"Wo ist die Apotheke?","t":"Où est la pharmacie?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi", "title": "Im Taxi", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
+      "turns": [
+        { "p": {"de":"Hallo! Wohin möchten Sie?","t":"Bonjour! Où voulez-vous aller?"},
+          "a": [
+            {"de":"Zum Flughafen, bitte.","t":"À l'aéroport, s'il vous plaît."},
+            {"de":"Ein Bier, bitte.","t":"Une bière, s'il vous plaît."},
+            {"de":"Ich heiße Anna.","t":"Je m'appelle Anna."}
+          ] },
+        { "p": {"de":"Haben Sie Gepäck?","t":"Vous avez des bagages?"},
+          "a": [
+            {"de":"Ja, einen Koffer.","t":"Oui, une valise."},
+            {"de":"Ja, ich bin Vegetarier.","t":"Oui, je suis végétarien."},
+            {"de":"Nein, es ist zu teuer.","t":"Non, c'est trop cher."}
+          ] },
+        { "p": {"de":"Es gibt viel Verkehr. Es dauert etwa vierzig Minuten.","t":"Il y a beaucoup de circulation. Ça prend environ quarante minutes."},
+          "a": [
+            {"de":"Kein Problem. Wie viel kostet die Fahrt?","t":"Pas de problème. Combien coûte la course?"},
+            {"de":"Guten Morgen!","t":"Bonjour!"},
+            {"de":"Ich habe meinen Schlüssel verloren.","t":"J'ai perdu ma clé."}
+          ] },
+        { "p": {"de":"Etwa fünfzig Euro.","t":"Environ cinquante euros."},
+          "a": [
+            {"de":"In Ordnung. Kann ich mit Karte zahlen?","t":"D'accord. Je peux payer par carte?"},
+            {"de":"Die Suppe ist kalt.","t":"La soupe est froide."},
+            {"de":"Ich habe zwei Schwestern.","t":"J'ai deux sœurs."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Bonjour! Je peux vous aider?"},
+          "a": [
+            {"de":"Ja, ich habe eine Reservierung.","t":"Oui, j'ai une réservation."},
+            {"de":"Ja, ich habe Fieber.","t":"Oui, j'ai de la fièvre."},
+            {"de":"Nein, ich nehme den Bus.","t":"Non, je prends le bus."}
+          ] },
+        { "p": {"de":"Auf welchen Namen, bitte?","t":"À quel nom, s'il vous plaît?"},
+          "a": [
+            {"de":"Auf den Namen Weber.","t":"Au nom de Weber."},
+            {"de":"Für zwei Nächte, bitte.","t":"Pour deux nuits, s'il vous plaît."},
+            {"de":"Der Kaffee ist lecker.","t":"Le café est délicieux."}
+          ] },
+        { "p": {"de":"Ihr Zimmer ist im dritten Stock. Hier ist Ihr Schlüssel.","t":"Votre chambre est au troisième étage. Voici votre clé."},
+          "a": [
+            {"de":"Danke! Wann gibt es Frühstück?","t":"Merci! Le petit-déjeuner est à quelle heure?"},
+            {"de":"Ich suche einen Supermarkt.","t":"Je cherche un supermarché."},
+            {"de":"Das Museum ist rechts.","t":"Le musée est à droite."}
+          ] },
+        { "p": {"de":"Von sieben bis zehn Uhr.","t":"De sept heures à dix heures."},
+          "a": [
+            {"de":"Perfekt, vielen Dank!","t":"Parfait, merci beaucoup!"},
+            {"de":"Wie spät ist es?","t":"Quelle heure est-il?"},
+            {"de":"Ich bin allergisch gegen Nüsse.","t":"Je suis allergique aux noix."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy", "title": "In der Apotheke", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
+      "turns": [
+        { "p": {"de":"Guten Tag, was kann ich für Sie tun?","t":"Bonjour, qu'est-ce que je peux faire pour vous?"},
+          "a": [
+            {"de":"Ich habe Halsschmerzen.","t":"J'ai mal à la gorge."},
+            {"de":"Ich nehme es.","t":"Je le prends."},
+            {"de":"Wo ist der Strand?","t":"Où est la plage?"}
+          ] },
+        { "p": {"de":"Seit wann haben Sie das?","t":"Depuis quand vous avez ça?"},
+          "a": [
+            {"de":"Seit zwei Tagen.","t":"Depuis deux jours."},
+            {"de":"Um acht Uhr.","t":"À huit heures."},
+            {"de":"Zwei Kilometer.","t":"Deux kilomètres."}
+          ] },
+        { "p": {"de":"Haben Sie auch Fieber?","t":"Vous avez aussi de la fièvre?"},
+          "a": [
+            {"de":"Nein, kein Fieber.","t":"Non, pas de fièvre."},
+            {"de":"Nein, kein Zucker.","t":"Non, pas de sucre."},
+            {"de":"Ja, mit Karte.","t":"Oui, par carte."}
+          ] },
+        { "p": {"de":"Nehmen Sie diese Tabletten dreimal täglich.","t":"Prenez ces comprimés trois fois par jour."},
+          "a": [
+            {"de":"Danke. Brauche ich ein Rezept?","t":"Merci. J'ai besoin d'une ordonnance?"},
+            {"de":"Danke. Ist das Frühstück inklusive?","t":"Merci. Le petit-déjeuner est compris?"},
+            {"de":"Ja, zwei Bier, bitte.","t":"Oui, deux bières, s'il vous plaît."}
+          ] }
+      ]
+    }
+  ]
+}

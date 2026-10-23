@@ -1,0 +1,29 @@
+# Cloudflare Worker for Betterlingo: API (accounts, encrypted saves, friends) and the language packs.
+# Setup and deployment: see README.md, "Backend einrichten".
+name = "betterlingo"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+# Language packs from ../packs, built into ./public by `npm run build` (node ../tools/packs.mjs build).
+[assets]
+directory = "./public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "betterlingo"
+database_id = "REPLACE-WITH-YOUR-DATABASE-ID"   # printed by: npx wrangler d1 create betterlingo
+
+# Abuse protection per IP address. The address is only used for counting and is not stored.
+[[ratelimits]]
+name = "LIMIT_API"
+namespace_id = "1001"
+simple = { limit = 120, period = 60 }
+
+[[ratelimits]]
+name = "LIMIT_STRICT"
+namespace_id = "1002"
+simple = { limit = 10, period = 60 }
+
+# Daily clean-up: accounts unused for 12 months, old content reports.
+[triggers]
+crons = ["17 3 * * *"]

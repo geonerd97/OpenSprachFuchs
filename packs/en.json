@@ -1,0 +1,807 @@
+{
+  "format": 1,
+  "code": "en",
+  "name": "Englisch",
+  "short": "EN",
+  "voice": "en-US",
+  "color": "#2456E8",
+  "note": "Amerikanisches Englisch",
+  "articles": "^(the|a|an|to) ",
+  "gapSkip": ["i","a","an","the"],
+  "glossary": {
+    "the": "der/die/das",
+    "a": "ein/eine",
+    "an": "ein/eine",
+    "is": "ist",
+    "are": "sind / bist",
+    "am": "bin",
+    "i": "ich",
+    "you": "du / Sie",
+    "he": "er",
+    "she": "sie",
+    "it": "es",
+    "we": "wir",
+    "they": "sie",
+    "my": "mein/meine",
+    "your": "dein / Ihr",
+    "to": "zu / nach",
+    "in": "in",
+    "at": "an / um",
+    "on": "auf / an",
+    "for": "für",
+    "with": "mit",
+    "and": "und",
+    "not": "nicht",
+    "do": "tun (Hilfsverb)",
+    "don't": "nicht (tun)",
+    "can": "kann / können",
+    "what": "was",
+    "where": "wo",
+    "how": "wie",
+    "this": "dies",
+    "that": "das / dass",
+    "have": "haben",
+    "has": "hat",
+    "would": "würde",
+    "like": "mögen / wie",
+    "very": "sehr",
+    "too": "zu / auch",
+    "of": "von",
+    "was": "war",
+    "there": "dort / es gibt",
+    "me": "mich / mir",
+    "us": "uns"
+  },
+  "units": [
+    {
+      "id": "basics", "title": "Erste Worte", "level": "A1", "colors": ["#2456E8","#1A3FB0"],
+      "desc": "Grüßen, bitten, danken: die Wörter für jeden Tag.",
+      "words": [
+        {"id":"basics.w01","de":"hallo","t":["hello","hi"],"pic":"👋"},
+        {"id":"basics.w02","de":"tschüss","t":["goodbye","bye"]},
+        {"id":"basics.w03","de":"bitte","t":"please"},
+        {"id":"basics.w04","de":"danke","t":["thank you","thanks"],"pic":"🙏"},
+        {"id":"basics.w05","de":"ja","t":"yes","pic":"✅"},
+        {"id":"basics.w06","de":"nein","t":"no","pic":"❌"},
+        {"id":"basics.w07","de":"Entschuldigung","t":["excuse me","sorry"]},
+        {"id":"basics.w08","de":"es tut mir leid","t":["I'm sorry","sorry"]},
+        {"id":"basics.w09","de":"guten Morgen","t":"good morning","pic":"🌅"},
+        {"id":"basics.w10","de":"guten Abend","t":"good evening"},
+        {"id":"basics.w11","de":"gute Nacht","t":"good night","pic":"🌙"},
+        {"id":"basics.w12","de":"gern geschehen","t":["you're welcome","no problem"]},
+        {"id":"basics.w13","de":"in Ordnung","t":["okay","all right","ok"]}
+      ],
+      "sentences": [
+        {"id":"basics.s01","de":["Hallo, wie geht es dir?","Hallo, wie geht's?","Hallo, wie geht es Ihnen?"],"t":["Hello, how are you?","Hi, how are you?"]},
+        {"id":"basics.s02","de":"Mir geht es gut, danke.","t":["I am fine, thank you.","I am fine, thanks.","I am good, thanks."]},
+        {"id":"basics.s03","de":"Guten Morgen!","t":"Good morning!"},
+        {"id":"basics.s04","de":["Vielen Dank!","Danke schön!"],"t":["Thank you very much!","Thanks a lot!"]},
+        {"id":"basics.s05","de":"Entschuldigung, sprechen Sie Deutsch?","t":"Excuse me, do you speak German?"},
+        {"id":"basics.s06","de":"Ja, bitte.","t":"Yes, please."},
+        {"id":"basics.s07","de":"Nein, danke.","t":["No, thank you.","No, thanks."]},
+        {"id":"basics.s08","de":"Gern geschehen.","t":["You're welcome.","No problem."]},
+        {"id":"basics.s09","de":"Es tut mir leid.","t":["I'm sorry.","Sorry."]},
+        {"id":"basics.s10","de":"Bis morgen!","t":"See you tomorrow!"},
+        {"id":"basics.s11","de":"Einen schönen Tag noch!","t":["Have a nice day!","Have a good day!"]}
+      ]
+    },
+    {
+      "id": "talk", "title": "Sich verständigen", "level": "A1", "colors": ["#8C3FC8","#682C99"],
+      "desc": "Vorstellen, nachfragen und sagen, wenn du etwas nicht verstehst.",
+      "words": [
+        {"id":"talk.w01","de":"ich","t":"I"},
+        {"id":"talk.w02","de":"du / Sie","t":"you"},
+        {"id":"talk.w03","de":"der Name","t":"name"},
+        {"id":"talk.w04","de":"Deutschland","t":"Germany"},
+        {"id":"talk.w05","de":"Deutsch","t":"German"},
+        {"id":"talk.w06","de":"sprechen","t":"speak"},
+        {"id":"talk.w07","de":"verstehen","t":"understand"},
+        {"id":"talk.w08","de":"langsam","t":["slowly","slow"],"pic":"🐢"},
+        {"id":"talk.w09","de":"wiederholen","t":"repeat"},
+        {"id":"talk.w10","de":"ein bisschen","t":["a little","a bit"]},
+        {"id":"talk.w11","de":"wo","t":"where"},
+        {"id":"talk.w12","de":"was","t":"what"},
+        {"id":"talk.w13","de":"wie","t":"how"},
+        {"id":"talk.w14","de":"warum","t":"why"}
+      ],
+      "sentences": [
+        {"id":"talk.s01","de":["Ich heiße Anna.","Mein Name ist Anna."],"t":["My name is Anna.","I am Anna."]},
+        {"id":"talk.s02","de":["Wie heißt du?","Wie heißen Sie?","Wie ist dein Name?"],"t":"What is your name?"},
+        {"id":"talk.s03","de":"Ich komme aus Deutschland.","t":["I am from Germany.","I come from Germany."]},
+        {"id":"talk.s04","de":["Woher kommst du?","Woher kommen Sie?"],"t":"Where are you from?"},
+        {"id":"talk.s05","de":"Ich spreche ein bisschen Englisch.","t":["I speak a little English.","I speak a bit of English."]},
+        {"id":"talk.s06","de":["Ich verstehe nicht.","Ich verstehe das nicht."],"t":["I don't understand.","I do not understand."]},
+        {"id":"talk.s07","de":"Können Sie das bitte wiederholen?","t":["Can you repeat that, please?","Could you repeat that, please?"]},
+        {"id":"talk.s08","de":"Bitte sprechen Sie langsamer.","t":["Please speak more slowly.","Please speak slower."]},
+        {"id":"talk.s09","de":"Was bedeutet das?","t":["What does that mean?","What does this mean?"]},
+        {"id":"talk.s10","de":"Wie sagt man das auf Englisch?","t":"How do you say that in English?"},
+        {"id":"talk.s11","de":["Freut mich!","Freut mich, dich kennenzulernen."],"t":["Nice to meet you!","Pleased to meet you!"]}
+      ]
+    },
+    {
+      "id": "money", "title": "Zahlen & Bezahlen", "level": "A1", "colors": ["#0E8C80","#08665D"],
+      "desc": "Preise verstehen, bezahlen, mit Karte oder bar.",
+      "words": [
+        {"id":"money.w01","de":"eins","t":"one"},
+        {"id":"money.w02","de":"zwei","t":"two"},
+        {"id":"money.w03","de":"drei","t":"three"},
+        {"id":"money.w04","de":"vier","t":"four"},
+        {"id":"money.w05","de":"fünf","t":"five"},
+        {"id":"money.w06","de":"zehn","t":"ten"},
+        {"id":"money.w07","de":"zwanzig","t":"twenty"},
+        {"id":"money.w08","de":"hundert","t":["hundred","one hundred"]},
+        {"id":"money.w09","de":"der Euro","t":"euro","pic":"💶"},
+        {"id":"money.w10","de":"das Geld","t":"money","pic":"💰"},
+        {"id":"money.w11","de":"die Karte","t":"card","pic":"💳"},
+        {"id":"money.w12","de":"die Quittung","t":"receipt","pic":"🧾"},
+        {"id":"money.w13","de":"teuer","t":"expensive"},
+        {"id":"money.w14","de":"billig","t":["cheap","inexpensive"]}
+      ],
+      "sentences": [
+        {"id":"money.s01","de":"Wie viel kostet das?","t":["How much is this?","How much does this cost?","How much is it?","How much does it cost?"]},
+        {"id":"money.s02","de":"Das kostet zehn Euro.","t":["It costs ten euros.","That is ten euros."]},
+        {"id":"money.s03","de":"Das ist zu teuer.","t":["That is too expensive.","It is too expensive."]},
+        {"id":"money.s04","de":"Kann ich mit Karte zahlen?","t":["Can I pay by card?","Can I pay with a card?"]},
+        {"id":"money.s05","de":"Ich zahle bar.","t":["I will pay in cash.","I pay in cash.","I'll pay cash."]},
+        {"id":"money.s06","de":"Haben Sie etwas Günstigeres?","t":["Do you have anything cheaper?","Do you have something cheaper?"]},
+        {"id":"money.s07","de":"Die Quittung, bitte.","t":"The receipt, please."},
+        {"id":"money.s08","de":"Ich möchte zwei, bitte.","t":["I would like two, please.","Two, please."]},
+        {"id":"money.s09","de":"Wo ist ein Geldautomat?","t":["Where is an ATM?","Where is a cash machine?"]},
+        {"id":"money.s10","de":["Stimmt so.","Behalten Sie den Rest."],"t":"Keep the change."}
+      ]
+    },
+    {
+      "id": "time", "title": "Uhrzeit & Tage", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Öffnungszeiten, Uhrzeit und Verabredungen.",
+      "words": [
+        {"id":"time.w01","de":"heute","t":"today"},
+        {"id":"time.w02","de":"morgen","t":"tomorrow"},
+        {"id":"time.w03","de":"gestern","t":"yesterday"},
+        {"id":"time.w04","de":"jetzt","t":"now"},
+        {"id":"time.w05","de":"später","t":"later"},
+        {"id":"time.w06","de":"früh","t":"early"},
+        {"id":"time.w07","de":"die Stunde","t":"hour"},
+        {"id":"time.w08","de":"die Minute","t":"minute"},
+        {"id":"time.w09","de":"der Tag","t":"day"},
+        {"id":"time.w10","de":"die Woche","t":"week"},
+        {"id":"time.w11","de":"Samstag","t":"Saturday"},
+        {"id":"time.w12","de":"Sonntag","t":"Sunday"},
+        {"id":"time.w13","de":"offen","t":"open"},
+        {"id":"time.w14","de":"geschlossen","t":"closed"},
+        {"id":"time.w15","de":"die Uhr","t":"clock","pic":"🕒"}
+      ],
+      "sentences": [
+        {"id":"time.s01","de":["Wie spät ist es?","Wie viel Uhr ist es?"],"t":"What time is it?"},
+        {"id":"time.s02","de":"Es ist drei Uhr.","t":["It is three o'clock.","It is three."]},
+        {"id":"time.s03","de":"Wann öffnet das Museum?","t":"When does the museum open?"},
+        {"id":"time.s04","de":"Das Geschäft ist heute geschlossen.","t":["The shop is closed today.","The store is closed today."]},
+        {"id":"time.s05","de":"Ist es heute offen?","t":"Is it open today?"},
+        {"id":"time.s06","de":"Bis später!","t":"See you later!"},
+        {"id":"time.s07","de":"Wir bleiben eine Woche.","t":["We are staying for a week.","We are staying one week.","We stay for a week."]},
+        {"id":"time.s08","de":"Der Bus kommt in zehn Minuten.","t":["The bus comes in ten minutes.","The bus is coming in ten minutes."]},
+        {"id":"time.s09","de":"Heute ist Samstag.","t":["Today is Saturday.","It is Saturday today."]},
+        {"id":"time.s10","de":"Ich habe jetzt keine Zeit.","t":["I don't have time now.","I have no time now."]}
+      ]
+    },
+    {
+      "id": "food", "title": "Café & Restaurant", "level": "A1", "colors": ["#E2671B","#AE4C0F"],
+      "desc": "Tisch bestellen, Essen wählen, Allergien nennen, zahlen.",
+      "words": [
+        {"id":"food.w01","de":"der Kaffee","t":"coffee","pic":"☕"},
+        {"id":"food.w02","de":"der Tee","t":"tea","pic":"🍵"},
+        {"id":"food.w03","de":"das Wasser","t":"water","pic":"💧"},
+        {"id":"food.w04","de":"das Bier","t":"beer","pic":"🍺"},
+        {"id":"food.w05","de":"der Wein","t":"wine","pic":"🍷"},
+        {"id":"food.w06","de":"das Brot","t":"bread","pic":"🍞"},
+        {"id":"food.w07","de":"das Hähnchen","t":"chicken","pic":"🍗"},
+        {"id":"food.w08","de":"der Fisch","t":"fish","pic":"🐟"},
+        {"id":"food.w09","de":"der Salat","t":"salad","pic":"🥗"},
+        {"id":"food.w10","de":"die Speisekarte","t":"menu"},
+        {"id":"food.w11","de":"der Tisch","t":"table"},
+        {"id":"food.w12","de":"die Rechnung","t":["bill","check"]},
+        {"id":"food.w13","de":"das Frühstück","t":"breakfast"},
+        {"id":"food.w14","de":"das Abendessen","t":"dinner"},
+        {"id":"food.w15","de":"vegetarisch","t":"vegetarian"},
+        {"id":"food.w16","de":"lecker","t":["delicious","tasty"]}
+      ],
+      "sentences": [
+        {"id":"food.s01","de":"Einen Tisch für zwei, bitte.","t":"A table for two, please."},
+        {"id":"food.s02","de":"Die Speisekarte, bitte.","t":["The menu, please.","Can I have the menu, please?"]},
+        {"id":"food.s03","de":["Ich hätte gern einen Kaffee.","Ich möchte einen Kaffee."],"t":["I would like a coffee.","I'd like a coffee."]},
+        {"id":"food.s04","de":"Ein Bier, bitte.","t":["A beer, please.","One beer, please."]},
+        {"id":"food.s05","de":["Ich bin Vegetarier.","Ich bin Vegetarierin."],"t":["I am vegetarian.","I am a vegetarian."]},
+        {"id":"food.s06","de":"Ich bin allergisch gegen Nüsse.","t":"I am allergic to nuts."},
+        {"id":"food.s07","de":"Was empfehlen Sie?","t":["What do you recommend?","What would you recommend?"]},
+        {"id":"food.s08","de":"Die Rechnung, bitte.","t":["The bill, please.","The check, please."]},
+        {"id":"food.s09","de":"Das Essen ist sehr lecker.","t":["The food is very good.","The food is delicious.","The food is very tasty."]},
+        {"id":"food.s10","de":"Noch ein Wasser, bitte.","t":["Another water, please.","One more water, please."]}
+      ]
+    },
+    {
+      "id": "shop", "title": "Einkaufen", "level": "A1", "colors": ["#D2477F","#A1305D"],
+      "desc": "Supermarkt, Kleidung, Souvenirs: finden, anprobieren, kaufen.",
+      "words": [
+        {"id":"shop.w01","de":"der Supermarkt","t":"supermarket","pic":"🛒"},
+        {"id":"shop.w02","de":"das Geschäft","t":["shop","store"],"pic":"🏪"},
+        {"id":"shop.w03","de":"die Tüte","t":"bag","pic":"🛍️"},
+        {"id":"shop.w04","de":"die Flasche","t":"bottle","pic":"🍾"},
+        {"id":"shop.w05","de":"das Obst","t":"fruit","pic":"🍎"},
+        {"id":"shop.w06","de":"die Sonnencreme","t":["sunscreen","sun cream"],"pic":"🧴"},
+        {"id":"shop.w07","de":"das Souvenir","t":"souvenir","pic":"🎁"},
+        {"id":"shop.w08","de":"die Größe","t":"size"},
+        {"id":"shop.w09","de":"kaufen","t":"buy"},
+        {"id":"shop.w10","de":"suchen","t":"look for"},
+        {"id":"shop.w11","de":"anprobieren","t":"try on"},
+        {"id":"shop.w12","de":"groß","t":["big","large"]},
+        {"id":"shop.w13","de":"klein","t":["small","little"]}
+      ],
+      "sentences": [
+        {"id":"shop.s01","de":"Ich suche einen Supermarkt.","t":"I am looking for a supermarket."},
+        {"id":"shop.s02","de":"Haben Sie das in Größe M?","t":["Do you have this in size M?","Do you have this in a medium?"]},
+        {"id":"shop.s03","de":"Ich schaue nur, danke.","t":["I am just looking, thanks.","I am just looking, thank you."]},
+        {"id":"shop.s04","de":"Kann ich das anprobieren?","t":["Can I try this on?","Can I try it on?"]},
+        {"id":"shop.s05","de":"Ich nehme es.","t":["I will take it.","I'll take it."]},
+        {"id":"shop.s06","de":"Brauchen Sie eine Tüte?","t":"Do you need a bag?"},
+        {"id":"shop.s07","de":"Wann schließt der Laden?","t":["When does the shop close?","When does the store close?"]},
+        {"id":"shop.s08","de":"Eine Flasche Wasser, bitte.","t":"A bottle of water, please."},
+        {"id":"shop.s09","de":"Wo finde ich Sonnencreme?","t":["Where can I find sunscreen?","Where do I find sunscreen?"]},
+        {"id":"shop.s10","de":"Das ist zu klein.","t":["This is too small.","It is too small."]}
+      ]
+    },
+    {
+      "id": "way", "title": "Nach dem Weg fragen", "level": "A1", "colors": ["#4E8A1C","#386614"],
+      "desc": "Links, rechts, geradeaus: Wege erfragen und verstehen.",
+      "words": [
+        {"id":"way.w01","de":"links","t":"left"},
+        {"id":"way.w02","de":"rechts","t":"right"},
+        {"id":"way.w03","de":"geradeaus","t":["straight ahead","straight on"]},
+        {"id":"way.w04","de":"nah","t":["near","close"]},
+        {"id":"way.w05","de":"weit","t":"far"},
+        {"id":"way.w06","de":"die Straße","t":"street"},
+        {"id":"way.w07","de":"die Ecke","t":"corner"},
+        {"id":"way.w08","de":"die Toilette","t":["toilet","restroom","bathroom"],"pic":"🚻"},
+        {"id":"way.w09","de":"der Strand","t":"beach","pic":"🏖️"},
+        {"id":"way.w10","de":"die Altstadt","t":"old town"},
+        {"id":"way.w11","de":"der Stadtplan","t":"map","pic":"🗺️"},
+        {"id":"way.w12","de":"die Kirche","t":"church","pic":"⛪"},
+        {"id":"way.w13","de":"das Museum","t":"museum","pic":"🏛️"}
+      ],
+      "sentences": [
+        {"id":"way.s01","de":"Entschuldigung, wo ist die Toilette?","t":["Excuse me, where is the toilet?","Excuse me, where is the restroom?","Excuse me, where is the bathroom?"]},
+        {"id":"way.s02","de":"Wie komme ich zum Strand?","t":"How do I get to the beach?"},
+        {"id":"way.s03","de":["Gehen Sie geradeaus.","Geh geradeaus."],"t":["Go straight ahead.","Go straight on."]},
+        {"id":"way.s04","de":"Biegen Sie an der Ecke links ab.","t":"Turn left at the corner."},
+        {"id":"way.s05","de":"Ist es weit?","t":"Is it far?"},
+        {"id":"way.s06","de":"Es ist ganz in der Nähe.","t":["It is very close.","It is very near.","It is close by."]},
+        {"id":"way.s07","de":"Können Sie mir das auf der Karte zeigen?","t":["Can you show me on the map?","Could you show me on the map?"]},
+        {"id":"way.s08","de":"Ich habe mich verlaufen.","t":"I am lost."},
+        {"id":"way.s09","de":"Das Museum ist rechts.","t":"The museum is on the right."},
+        {"id":"way.s10","de":"Wo ist die Altstadt?","t":"Where is the old town?"}
+      ]
+    },
+    {
+      "id": "transport", "title": "Bus, Bahn & Taxi", "level": "A2", "colors": ["#4B50D6","#3438A6"],
+      "desc": "Tickets kaufen, Abfahrten finden, mit dem Taxi fahren.",
+      "words": [
+        {"id":"transport.w01","de":"der Zug","t":"train","pic":"🚆"},
+        {"id":"transport.w02","de":"der Bus","t":"bus","pic":"🚌"},
+        {"id":"transport.w03","de":"das Taxi","t":"taxi","pic":"🚕"},
+        {"id":"transport.w04","de":"das Auto","t":"car","pic":"🚗"},
+        {"id":"transport.w05","de":"der Flughafen","t":"airport","pic":"✈️"},
+        {"id":"transport.w06","de":"der Bahnhof","t":["station","train station"]},
+        {"id":"transport.w07","de":"die Haltestelle","t":["stop","bus stop"]},
+        {"id":"transport.w08","de":"die Fahrkarte","t":"ticket","pic":"🎫"},
+        {"id":"transport.w09","de":"das Gleis","t":"platform"},
+        {"id":"transport.w10","de":"die Abfahrt","t":"departure"},
+        {"id":"transport.w11","de":"die Ankunft","t":"arrival"},
+        {"id":"transport.w12","de":"die Verspätung","t":"delay"},
+        {"id":"transport.w13","de":"der Koffer","t":"suitcase","pic":"🧳"}
+      ],
+      "sentences": [
+        {"id":"transport.s01","de":"Eine Fahrkarte zum Flughafen, bitte.","t":"A ticket to the airport, please."},
+        {"id":"transport.s02","de":"Wann fährt der nächste Zug?","t":["When does the next train leave?","When is the next train?"]},
+        {"id":"transport.s03","de":"Von welchem Gleis fährt der Zug?","t":"Which platform does the train leave from?"},
+        {"id":"transport.s04","de":"Hält dieser Bus am Bahnhof?","t":"Does this bus stop at the station?"},
+        {"id":"transport.s05","de":"Der Zug hat Verspätung.","t":["The train is late.","The train is delayed."]},
+        {"id":"transport.s06","de":"Zum Flughafen, bitte.","t":"To the airport, please."},
+        {"id":"transport.s07","de":"Wo ist die Bushaltestelle?","t":"Where is the bus stop?"},
+        {"id":"transport.s08","de":"Ich möchte ein Auto mieten.","t":["I would like to rent a car.","I'd like to rent a car."]},
+        {"id":"transport.s09","de":"Mein Koffer ist nicht angekommen.","t":["My suitcase did not arrive.","My suitcase didn't arrive.","My suitcase has not arrived."]},
+        {"id":"transport.s10","de":"Muss ich umsteigen?","t":["Do I have to change trains?","Do I need to change?","Do I have to change?"]}
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "level": "A2", "colors": ["#B7791F","#8A5A12"],
+      "desc": "Einchecken, WLAN, Frühstück und kleine Probleme.",
+      "words": [
+        {"id":"hotel.w01","de":"das Hotel","t":"hotel","pic":"🏨"},
+        {"id":"hotel.w02","de":"das Zimmer","t":"room"},
+        {"id":"hotel.w03","de":"der Schlüssel","t":"key","pic":"🔑"},
+        {"id":"hotel.w04","de":"die Reservierung","t":["reservation","booking"]},
+        {"id":"hotel.w05","de":"das Bett","t":"bed","pic":"🛏️"},
+        {"id":"hotel.w06","de":"die Dusche","t":"shower","pic":"🚿"},
+        {"id":"hotel.w07","de":"das Handtuch","t":"towel"},
+        {"id":"hotel.w08","de":"das WLAN","t":["wifi","wi-fi"],"pic":"📶"},
+        {"id":"hotel.w09","de":"das Passwort","t":"password"},
+        {"id":"hotel.w10","de":"der Aufzug","t":["elevator","lift"],"pic":"🛗"},
+        {"id":"hotel.w11","de":"die Nacht","t":"night","pic":"🌙"},
+        {"id":"hotel.w12","de":"der Reisepass","t":"passport","pic":"🛂"},
+        {"id":"hotel.w13","de":"die Klimaanlage","t":"air conditioning","pic":"❄️"},
+        {"id":"hotel.w14","de":"laut","t":["loud","noisy"]}
+      ],
+      "sentences": [
+        {"id":"hotel.s01","de":"Ich habe eine Reservierung.","t":["I have a reservation.","I have a booking."]},
+        {"id":"hotel.s02","de":"Haben Sie ein Zimmer frei?","t":["Do you have a room available?","Do you have a free room?","Do you have any rooms available?"]},
+        {"id":"hotel.s03","de":"Für zwei Nächte, bitte.","t":"For two nights, please."},
+        {"id":"hotel.s04","de":"Wie ist das WLAN-Passwort?","t":["What is the wifi password?","What is the wi-fi password?"]},
+        {"id":"hotel.s05","de":"Ist das Frühstück inklusive?","t":"Is breakfast included?"},
+        {"id":"hotel.s06","de":"Die Dusche funktioniert nicht.","t":["The shower does not work.","The shower is not working."]},
+        {"id":"hotel.s07","de":"Können wir noch Handtücher bekommen?","t":["Can we have more towels?","Could we have more towels?","Can we get some more towels?"]},
+        {"id":"hotel.s08","de":"Wann ist der Check-out?","t":["What time is check-out?","When is check-out?"]},
+        {"id":"hotel.s09","de":"Ich habe meinen Schlüssel verloren.","t":["I have lost my key.","I lost my key."]},
+        {"id":"hotel.s10","de":"Das Zimmer ist zu laut.","t":["The room is too noisy.","The room is too loud."]}
+      ]
+    },
+    {
+      "id": "help", "title": "Notfall & Gesundheit", "level": "A2", "colors": ["#C93A3A","#962828"],
+      "desc": "Arzt, Apotheke, Polizei: Hilfe holen, wenn es darauf ankommt.",
+      "words": [
+        {"id":"help.w01","de":"Hilfe","t":"help","pic":"🆘"},
+        {"id":"help.w02","de":"der Arzt","t":"doctor","pic":"🩺"},
+        {"id":"help.w03","de":"das Krankenhaus","t":"hospital","pic":"🏥"},
+        {"id":"help.w04","de":"die Apotheke","t":["pharmacy","chemist"],"pic":"💊"},
+        {"id":"help.w05","de":"die Polizei","t":"police","pic":"🚓"},
+        {"id":"help.w06","de":"der Krankenwagen","t":"ambulance","pic":"🚑"},
+        {"id":"help.w07","de":"krank","t":["sick","ill"]},
+        {"id":"help.w08","de":"der Schmerz","t":"pain"},
+        {"id":"help.w09","de":"der Kopf","t":"head"},
+        {"id":"help.w10","de":"der Bauch","t":["stomach","belly"]},
+        {"id":"help.w11","de":"das Fieber","t":"fever","pic":"🤒"},
+        {"id":"help.w12","de":"der Notfall","t":"emergency"},
+        {"id":"help.w13","de":"die Tablette","t":["pill","tablet"]},
+        {"id":"help.w14","de":"gestohlen","t":"stolen"}
+      ],
+      "sentences": [
+        {"id":"help.s01","de":"Hilfe! Rufen Sie einen Krankenwagen!","t":"Help! Call an ambulance!"},
+        {"id":"help.s02","de":"Ich brauche einen Arzt.","t":"I need a doctor."},
+        {"id":"help.s03","de":"Wo ist die nächste Apotheke?","t":["Where is the nearest pharmacy?","Where is the nearest chemist?"]},
+        {"id":"help.s04","de":"Ich habe Kopfschmerzen.","t":"I have a headache."},
+        {"id":"help.s05","de":"Mir ist schlecht.","t":["I feel sick.","I feel nauseous."]},
+        {"id":"help.s06","de":"Mein Handy wurde gestohlen.","t":["My phone was stolen.","My mobile phone was stolen."]},
+        {"id":"help.s07","de":"Rufen Sie die Polizei!","t":"Call the police!"},
+        {"id":"help.s08","de":"Ich habe Fieber.","t":["I have a fever.","I have a temperature."]},
+        {"id":"help.s09","de":"Ich bin allergisch gegen Penicillin.","t":"I am allergic to penicillin."},
+        {"id":"help.s10","de":"Es ist ein Notfall.","t":["It is an emergency.","This is an emergency."]},
+        {"id":"help.s11","de":"Wo tut es weh?","t":"Where does it hurt?"}
+      ]
+    },
+    {
+      "id": "leisure", "title": "Wetter & Freizeit", "level": "A2", "colors": ["#0F8FA6","#0B6A7B"],
+      "desc": "Über das Wetter reden, Ausflüge planen, Tickets kaufen.",
+      "words": [
+        {"id":"leisure.w01","de":"das Wetter","t":"weather"},
+        {"id":"leisure.w02","de":"die Sonne","t":"sun","pic":"☀️"},
+        {"id":"leisure.w03","de":"der Regen","t":"rain","pic":"🌧️"},
+        {"id":"leisure.w04","de":"der Wind","t":"wind","pic":"💨"},
+        {"id":"leisure.w05","de":"heiß","t":"hot"},
+        {"id":"leisure.w06","de":"kalt","t":"cold"},
+        {"id":"leisure.w07","de":"schwimmen","t":"swim","pic":"🏊"},
+        {"id":"leisure.w08","de":"wandern","t":["hike","go hiking"]},
+        {"id":"leisure.w09","de":"der Ausflug","t":["trip","excursion","day trip"]},
+        {"id":"leisure.w10","de":"das Meer","t":"sea","pic":"🌊"},
+        {"id":"leisure.w11","de":"der Berg","t":"mountain","pic":"⛰️"},
+        {"id":"leisure.w12","de":"der Regenschirm","t":"umbrella","pic":"☂️"},
+        {"id":"leisure.w13","de":"die Eintrittskarte","t":["ticket","entrance ticket"],"pic":"🎟️"}
+      ],
+      "sentences": [
+        {"id":"leisure.s01","de":"Wie ist das Wetter heute?","t":["What is the weather like today?","How is the weather today?"]},
+        {"id":"leisure.s02","de":"Es ist sonnig und warm.","t":"It is sunny and warm."},
+        {"id":"leisure.s03","de":"Morgen soll es regnen.","t":["It is supposed to rain tomorrow.","It is going to rain tomorrow."]},
+        {"id":"leisure.s04","de":"Lass uns an den Strand gehen!","t":"Let's go to the beach!"},
+        {"id":"leisure.s05","de":"Kann man hier schwimmen?","t":["Can you swim here?","Is it possible to swim here?"]},
+        {"id":"leisure.s06","de":"Wir möchten einen Ausflug in die Berge machen.","t":["We would like to take a trip to the mountains.","We'd like to go on a trip to the mountains."]},
+        {"id":"leisure.s07","de":"Zwei Eintrittskarten, bitte.","t":"Two tickets, please."},
+        {"id":"leisure.s08","de":"Es ist zu kalt zum Baden.","t":["It is too cold to swim.","It is too cold for swimming."]},
+        {"id":"leisure.s09","de":"Hast du einen Regenschirm?","t":"Do you have an umbrella?"},
+        {"id":"leisure.s10","de":"Was kann man hier unternehmen?","t":["What can you do here?","What is there to do here?"]}
+      ]
+    },
+    {
+      "id": "past", "title": "Erlebnisse erzählen", "level": "A2", "colors": ["#B03CA8","#83287C"],
+      "desc": "In der Vergangenheit erzählen: was du gesehen und erlebt hast.",
+      "words": [
+        {"id":"past.w01","de":"letzte Woche","t":"last week"},
+        {"id":"past.w02","de":"letztes Jahr","t":"last year"},
+        {"id":"past.w03","de":"vor zwei Tagen","t":"two days ago"},
+        {"id":"past.w04","de":"schon","t":["already","yet"]},
+        {"id":"past.w05","de":"noch nie","t":["never","never before"]},
+        {"id":"past.w06","de":"besuchen","t":"visit"},
+        {"id":"past.w07","de":"sehen","t":"see","pic":"👀"},
+        {"id":"past.w08","de":"reisen","t":"travel"},
+        {"id":"past.w09","de":"vergessen","t":"forget"},
+        {"id":"past.w10","de":"verlieren","t":"lose"},
+        {"id":"past.w11","de":"ankommen","t":"arrive"},
+        {"id":"past.w12","de":"der Urlaub","t":["holiday","vacation"],"pic":"🏝️"},
+        {"id":"past.w13","de":"die Reise","t":["trip","journey"],"pic":"🧳"},
+        {"id":"past.w14","de":"das Foto","t":["photo","picture"],"pic":"📷"}
+      ],
+      "sentences": [
+        {"id":"past.s01","de":"Gestern war ich im Museum.","t":["Yesterday I was at the museum.","I was at the museum yesterday.","Yesterday I went to the museum."]},
+        {"id":"past.s02","de":"Wir sind letzte Woche angekommen.","t":"We arrived last week."},
+        {"id":"past.s03","de":"Hast du schon die Altstadt gesehen?","t":["Have you already seen the old town?","Have you seen the old town yet?","Did you see the old town?"]},
+        {"id":"past.s04","de":"Ich habe meinen Pass im Hotel vergessen.","t":["I forgot my passport at the hotel.","I left my passport at the hotel.","I have forgotten my passport at the hotel."]},
+        {"id":"past.s05","de":"Das Essen gestern Abend war fantastisch.","t":["The food last night was fantastic.","Dinner last night was fantastic."]},
+        {"id":"past.s06","de":"Wir waren noch nie in Lissabon.","t":"We have never been to Lisbon."},
+        {"id":"past.s07","de":"Vor zwei Tagen haben wir einen Ausflug gemacht.","t":["Two days ago we went on a trip.","We went on a trip two days ago.","Two days ago we took a trip."]},
+        {"id":"past.s08","de":"Letztes Jahr sind wir nach Spanien gereist.","t":["Last year we travelled to Spain.","Last year we traveled to Spain.","We travelled to Spain last year.","We traveled to Spain last year."]},
+        {"id":"past.s09","de":"Wie war dein Urlaub?","t":["How was your holiday?","How was your vacation?"]},
+        {"id":"past.s10","de":"Ich habe meine Tasche im Bus verloren.","t":["I lost my bag on the bus.","I have lost my bag on the bus."]}
+      ]
+    },
+    {
+      "id": "plans", "title": "Pläne machen", "level": "A2", "colors": ["#50667F","#3A4C60"],
+      "desc": "Verabreden, einladen, zu- und absagen.",
+      "words": [
+        {"id":"plans.w01","de":"heute Abend","t":["tonight","this evening"]},
+        {"id":"plans.w02","de":"morgen früh","t":"tomorrow morning"},
+        {"id":"plans.w03","de":"das Wochenende","t":"weekend"},
+        {"id":"plans.w04","de":"treffen","t":["meet","meet up"]},
+        {"id":"plans.w05","de":"einladen","t":"invite"},
+        {"id":"plans.w06","de":"planen","t":"plan"},
+        {"id":"plans.w07","de":"frei","t":"free"},
+        {"id":"plans.w08","de":"das Konzert","t":"concert","pic":"🎵"},
+        {"id":"plans.w09","de":"das Kino","t":["cinema","movies"],"pic":"🎬"},
+        {"id":"plans.w10","de":"vielleicht","t":["maybe","perhaps"]},
+        {"id":"plans.w11","de":"klar","t":["sure","of course"]},
+        {"id":"plans.w12","de":"leider","t":"unfortunately"},
+        {"id":"plans.w13","de":"zusammen","t":"together"}
+      ],
+      "sentences": [
+        {"id":"plans.s01","de":"Was machst du heute Abend?","t":["What are you doing tonight?","What are you doing this evening?"]},
+        {"id":"plans.s02","de":"Morgen fahren wir in die Stadt.","t":["Tomorrow we are going into town.","We are going into town tomorrow.","Tomorrow we are going to town."]},
+        {"id":"plans.s03","de":"Hast du am Wochenende Zeit?","t":["Are you free at the weekend?","Do you have time at the weekend?","Are you free this weekend?","Do you have time this weekend?"]},
+        {"id":"plans.s04","de":"Wollen wir zusammen essen gehen?","t":["Shall we go out to eat together?","Shall we go out for dinner together?","Do you want to go out to eat together?"]},
+        {"id":"plans.s05","de":"Ich lade dich ein.","t":["It's on me.","I'll pay.","My treat."]},
+        {"id":"plans.s06","de":"Wir treffen uns um acht vor dem Hotel.","t":["We will meet at eight in front of the hotel.","We'll meet at eight in front of the hotel.","Let's meet at eight in front of the hotel."]},
+        {"id":"plans.s07","de":"Leider kann ich morgen nicht.","t":["Unfortunately I can't tomorrow.","Unfortunately, I can't tomorrow.","Sorry, I can't make it tomorrow."]},
+        {"id":"plans.s08","de":"Vielleicht gehen wir ins Kino.","t":["Maybe we will go to the cinema.","Maybe we'll go to the cinema.","Maybe we'll go to the movies.","Perhaps we will go to the cinema."]},
+        {"id":"plans.s09","de":"Wann fängt das Konzert an?","t":["When does the concert start?","What time does the concert start?","When does the concert begin?"]},
+        {"id":"plans.s10","de":"Klar, gerne!","t":["Sure, I'd love to!","Of course, with pleasure!","Sure, gladly!"]}
+      ]
+    },
+    {
+      "id": "problems", "title": "Probleme lösen", "level": "B1", "colors": ["#D0542A","#9E3D1C"],
+      "desc": "Höflich reklamieren, um Hilfe bitten, Lösungen finden.",
+      "words": [
+        {"id":"problems.w01","de":"das Problem","t":"problem"},
+        {"id":"problems.w02","de":"kaputt","t":"broken"},
+        {"id":"problems.w03","de":"die Beschwerde","t":"complaint"},
+        {"id":"problems.w04","de":"umtauschen","t":"exchange"},
+        {"id":"problems.w05","de":"erstatten","t":"refund"},
+        {"id":"problems.w06","de":"falsch","t":["wrong","incorrect"]},
+        {"id":"problems.w07","de":"dringend","t":"urgent"},
+        {"id":"problems.w08","de":"der Verantwortliche","t":["manager","person in charge"]},
+        {"id":"problems.w09","de":"die Lösung","t":"solution"},
+        {"id":"problems.w10","de":"reparieren","t":["repair","fix"],"pic":"🔧"},
+        {"id":"problems.w11","de":"warten","t":"wait","pic":"⏳"},
+        {"id":"problems.w12","de":"funktionieren","t":"work"},
+        {"id":"problems.w13","de":"die Heizung","t":"heating","pic":"🔥"}
+      ],
+      "sentences": [
+        {"id":"problems.s01","de":"Könnte ich bitte mit dem Verantwortlichen sprechen?","t":["Could I speak to the manager, please?","Could I please speak to the manager?","Can I speak to the manager, please?"]},
+        {"id":"problems.s02","de":"Die Rechnung stimmt leider nicht.","t":["Unfortunately the bill is not correct.","Unfortunately, the bill is wrong.","I'm afraid the bill is wrong."]},
+        {"id":"problems.s03","de":"Wir haben vor einer Stunde bestellt.","t":"We ordered an hour ago."},
+        {"id":"problems.s04","de":"Könnten Sie das bitte reparieren?","t":["Could you repair that, please?","Could you fix that, please?","Could you please fix that?"]},
+        {"id":"problems.s05","de":"Ich möchte das umtauschen.","t":["I would like to exchange this.","I'd like to exchange this."]},
+        {"id":"problems.s06","de":"Kann ich mein Geld zurückbekommen?","t":["Can I get my money back?","Could I get a refund?","Can I have a refund?"]},
+        {"id":"problems.s07","de":"Das ist nicht das, was ich bestellt habe.","t":"This is not what I ordered."},
+        {"id":"problems.s08","de":"Es wäre nett, wenn Sie uns helfen könnten.","t":["It would be nice if you could help us.","It would be kind if you could help us."]},
+        {"id":"problems.s09","de":"Wie lange müssen wir noch warten?","t":["How much longer do we have to wait?","How long do we still have to wait?"]},
+        {"id":"problems.s10","de":"Die Heizung funktioniert seit gestern nicht.","t":["The heating has not been working since yesterday.","The heating hasn't worked since yesterday.","The heating has not worked since yesterday."]}
+      ]
+    },
+    {
+      "id": "opinions", "title": "Meinungen & Gespräche", "level": "B1", "colors": ["#6E4BD8","#5135A8"],
+      "desc": "Meinung sagen, zustimmen, widersprechen, Vorschläge machen.",
+      "words": [
+        {"id":"opinions.w01","de":"die Meinung","t":"opinion"},
+        {"id":"opinions.w02","de":"denken","t":"think","pic":"🤔"},
+        {"id":"opinions.w03","de":"glauben","t":"believe"},
+        {"id":"opinions.w04","de":"einverstanden","t":["agreed","in agreement"],"pic":"🤝"},
+        {"id":"opinions.w05","de":"wichtig","t":"important"},
+        {"id":"opinions.w06","de":"interessant","t":"interesting"},
+        {"id":"opinions.w07","de":"langweilig","t":"boring","pic":"🥱"},
+        {"id":"opinions.w08","de":"schön","t":["beautiful","nice","lovely"]},
+        {"id":"opinions.w09","de":"eigentlich","t":"actually"},
+        {"id":"opinions.w10","de":"vorschlagen","t":"suggest"},
+        {"id":"opinions.w11","de":"der Unterschied","t":"difference"},
+        {"id":"opinions.w12","de":"die Erfahrung","t":"experience"},
+        {"id":"opinions.w13","de":"die Sprache","t":"language","pic":"💬"}
+      ],
+      "sentences": [
+        {"id":"opinions.s01","de":"Was hältst du davon?","t":["What do you think about it?","What do you think of it?","What do you think?"]},
+        {"id":"opinions.s02","de":"Ich finde, dass die Stadt sehr schön ist.","t":["I think the city is very beautiful.","I think that the city is very beautiful.","I find the city very beautiful."]},
+        {"id":"opinions.s03","de":"Da bin ich ganz deiner Meinung.","t":["I completely agree with you.","I totally agree with you."]},
+        {"id":"opinions.s04","de":"Das sehe ich anders.","t":["I see it differently.","I see that differently."]},
+        {"id":"opinions.s05","de":"Wenn ich mehr Zeit hätte, würde ich länger bleiben.","t":["If I had more time, I would stay longer.","If I had more time I would stay longer.","If I had more time, I'd stay longer."]},
+        {"id":"opinions.s06","de":"Ich schlage vor, dass wir morgen früh losfahren.","t":["I suggest we leave tomorrow morning.","I suggest that we leave tomorrow morning.","I suggest leaving tomorrow morning."]},
+        {"id":"opinions.s07","de":"Das war eine tolle Erfahrung.","t":["That was a great experience.","It was a great experience."]},
+        {"id":"opinions.s08","de":"Eigentlich wollte ich ans Meer fahren.","t":["Actually, I wanted to go to the sea.","Actually I wanted to go to the seaside.","Actually, I wanted to go to the seaside."]},
+        {"id":"opinions.s09","de":"Was ist der Unterschied zwischen den beiden?","t":"What is the difference between the two?"},
+        {"id":"opinions.s10","de":"Es ist wichtig, die Sprache ein bisschen zu sprechen.","t":["It is important to speak the language a little.","It's important to speak a bit of the language."]}
+      ]
+    },
+    {
+      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
+      "desc": "Über Beruf, Familie und Hobbys plaudern.",
+      "words": [
+        {"id":"smalltalk.w01","de":"der Beruf","t":["job","profession","occupation"]},
+        {"id":"smalltalk.w02","de":"die Arbeit","t":["work","job"],"pic":"💼"},
+        {"id":"smalltalk.w03","de":"das Hobby","t":"hobby"},
+        {"id":"smalltalk.w04","de":"verheiratet","t":"married","pic":"💍"},
+        {"id":"smalltalk.w05","de":"die Kinder","t":["children","kids"]},
+        {"id":"smalltalk.w06","de":"wohnen","t":"live","pic":"🏠"},
+        {"id":"smalltalk.w07","de":"mögen","t":"like"},
+        {"id":"smalltalk.w08","de":"kochen","t":"cook","pic":"🍳"},
+        {"id":"smalltalk.w09","de":"der Sport","t":["sport","sports"],"pic":"🏃"},
+        {"id":"smalltalk.w10","de":"die Musik","t":"music","pic":"🎵"},
+        {"id":"smalltalk.w11","de":"das erste Mal","t":"first time"},
+        {"id":"smalltalk.w12","de":"die Freizeit","t":["free time","leisure time"]}
+      ],
+      "sentences": [
+        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["What do you do for a living?","What do you do?","What is your job?"]},
+        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":"I work as a teacher."},
+        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["Is this your first time here?","Are you here for the first time?"]},
+        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":"I live near Munich."},
+        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":["In my free time I like to cook.","In my free time I like cooking.","I like cooking in my free time."]},
+        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["I am married and have two children.","I am married and I have two children.","I am married with two children."]},
+        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["How long are you staying here?","How long will you stay here?"]},
+        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":["Do you do any sports?","Do you play sports?","Do you do sport?"]},
+        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["It was nice to meet you.","It was nice meeting you."]},
+        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":["Let's stay in touch!","Let's keep in touch!"]}
+      ]
+    },
+    {
+      "id": "car", "title": "Mietwagen & Tanken", "level": "B1", "colors": ["#1E5AA8","#153F78"],
+      "desc": "Auto mieten, tanken, parken und mit Pannen umgehen.",
+      "words": [
+        {"id":"car.w01","de":"der Mietwagen","t":["rental car","hire car"],"pic":"🚗"},
+        {"id":"car.w02","de":"tanken","t":["fill up","refuel","get petrol"]},
+        {"id":"car.w03","de":"die Tankstelle","t":["petrol station","gas station"],"pic":"⛽"},
+        {"id":"car.w04","de":"der Führerschein","t":["driving licence","driver's license","driving license"],"pic":"🪪"},
+        {"id":"car.w05","de":"parken","t":"park","pic":"🅿️"},
+        {"id":"car.w06","de":"die Versicherung","t":"insurance"},
+        {"id":"car.w07","de":"die Panne","t":"breakdown"},
+        {"id":"car.w08","de":"der Reifen","t":["tyre","tire"],"pic":"🛞"},
+        {"id":"car.w09","de":"die Autobahn","t":["motorway","highway","freeway"],"pic":"🛣️"},
+        {"id":"car.w10","de":"die Maut","t":"toll"},
+        {"id":"car.w11","de":"die Kaution","t":"deposit"},
+        {"id":"car.w12","de":"voll","t":"full"},
+        {"id":"car.w13","de":"leer","t":"empty"}
+      ],
+      "sentences": [
+        {"id":"car.s01","de":"Ich habe einen Mietwagen reserviert.","t":["I have reserved a rental car.","I have booked a rental car.","I booked a hire car.","I reserved a rental car."]},
+        {"id":"car.s02","de":"Ist die Versicherung im Preis inbegriffen?","t":["Is insurance included in the price?","Is the insurance included in the price?"]},
+        {"id":"car.s03","de":"Muss ich das Auto vollgetankt zurückgeben?","t":["Do I have to return the car with a full tank?","Do I need to return the car with a full tank?"]},
+        {"id":"car.s04","de":"Wo kann ich hier parken?","t":"Where can I park here?"},
+        {"id":"car.s05","de":"Wir hatten eine Panne auf der Autobahn.","t":["We had a breakdown on the motorway.","We broke down on the motorway.","We had a breakdown on the highway."]},
+        {"id":"car.s06","de":"Der Reifen ist platt.","t":["The tyre is flat.","The tire is flat.","We have a flat tyre."]},
+        {"id":"car.s07","de":"Volltanken, bitte.","t":["Fill it up, please.","A full tank, please."]},
+        {"id":"car.s08","de":"Wie hoch ist die Kaution?","t":"How much is the deposit?"},
+        {"id":"car.s09","de":"Ich brauche Ihren Führerschein und eine Kreditkarte.","t":["I need your driving licence and a credit card.","I need your driver's license and a credit card."]},
+        {"id":"car.s10","de":"Muss man auf dieser Straße Maut zahlen?","t":["Do you have to pay a toll on this road?","Is there a toll on this road?"]}
+      ]
+    },
+    {
+      "id": "doctor", "title": "Arzt & Apotheke", "level": "B1", "colors": ["#3F6212","#2C450D"],
+      "desc": "Beschwerden genau beschreiben, Medikamente verstehen.",
+      "words": [
+        {"id":"doctor.w01","de":"das Rezept","t":"prescription","pic":"📄"},
+        {"id":"doctor.w02","de":"die Erkältung","t":"cold","pic":"🤧"},
+        {"id":"doctor.w03","de":"der Husten","t":"cough"},
+        {"id":"doctor.w04","de":"der Durchfall","t":["diarrhoea","diarrhea"]},
+        {"id":"doctor.w05","de":"der Sonnenbrand","t":"sunburn"},
+        {"id":"doctor.w06","de":"die Krankenversicherung","t":"health insurance"},
+        {"id":"doctor.w07","de":"die Salbe","t":["ointment","cream"]},
+        {"id":"doctor.w08","de":"der Termin","t":"appointment","pic":"📅"},
+        {"id":"doctor.w09","de":"verschreiben","t":"prescribe"},
+        {"id":"doctor.w10","de":"der Knöchel","t":"ankle","pic":"🦶"},
+        {"id":"doctor.w11","de":"der Zahnarzt","t":"dentist","pic":"🦷"},
+        {"id":"doctor.w12","de":"schwanger","t":"pregnant","pic":"🤰"},
+        {"id":"doctor.w13","de":"die Nebenwirkung","t":"side effect"},
+        {"id":"doctor.w14","de":"dreimal täglich","t":"three times a day"}
+      ],
+      "sentences": [
+        {"id":"doctor.s01","de":"Ich hätte gern einen Termin beim Arzt.","t":["I would like a doctor's appointment.","I'd like an appointment with a doctor.","I would like to make an appointment with the doctor."]},
+        {"id":"doctor.s02","de":"Seit drei Tagen habe ich Husten und Fieber.","t":["I have had a cough and a fever for three days.","I've had a cough and a fever for three days."]},
+        {"id":"doctor.s03","de":"Ich habe mir den Knöchel verstaucht.","t":["I have sprained my ankle.","I sprained my ankle.","I've sprained my ankle."]},
+        {"id":"doctor.s04","de":"Brauche ich dafür ein Rezept?","t":["Do I need a prescription for this?","Do I need a prescription for that?"]},
+        {"id":"doctor.s05","de":"Nehmen Sie die Tabletten dreimal täglich nach dem Essen.","t":["Take the tablets three times a day after meals.","Take the pills three times a day after meals.","Take the tablets three times a day after eating."]},
+        {"id":"doctor.s06","de":"Haben Sie etwas gegen Sonnenbrand?","t":["Do you have anything for sunburn?","Do you have something for sunburn?"]},
+        {"id":"doctor.s07","de":"Gibt es Nebenwirkungen?","t":["Are there any side effects?","Are there side effects?"]},
+        {"id":"doctor.s08","de":"Ich bin schwanger.","t":"I am pregnant."},
+        {"id":"doctor.s09","de":"Mir tut ein Zahn weh.","t":["I have a toothache.","One of my teeth hurts.","My tooth hurts."]},
+        {"id":"doctor.s10","de":"Zahlt meine Krankenversicherung das?","t":["Does my health insurance pay for this?","Will my health insurance cover this?","Does my health insurance cover this?"]}
+      ]
+    },
+    {
+      "id": "culture", "title": "Sehenswürdigkeiten & Kultur", "level": "B1", "colors": ["#9D174D","#6F1036"],
+      "desc": "Führungen, Eintritt, Ausstellungen und Geschichte.",
+      "words": [
+        {"id":"culture.w01","de":"die Sehenswürdigkeit","t":["sight","attraction"]},
+        {"id":"culture.w02","de":"die Führung","t":["guided tour","tour"]},
+        {"id":"culture.w03","de":"die Ausstellung","t":"exhibition","pic":"🖼️"},
+        {"id":"culture.w04","de":"die Ermäßigung","t":["discount","reduction","concession"]},
+        {"id":"culture.w05","de":"das Schloss","t":["castle","palace"],"pic":"🏰"},
+        {"id":"culture.w06","de":"die Kathedrale","t":"cathedral"},
+        {"id":"culture.w07","de":"der Reiseführer","t":["guide","tour guide","guidebook"]},
+        {"id":"culture.w08","de":"das Jahrhundert","t":"century"},
+        {"id":"culture.w09","de":"berühmt","t":"famous","pic":"⭐"},
+        {"id":"culture.w10","de":"fotografieren","t":["take photos","photograph","take pictures"],"pic":"📸"},
+        {"id":"culture.w11","de":"die Öffnungszeiten","t":"opening hours"},
+        {"id":"culture.w12","de":"der Markt","t":"market","pic":"🧺"}
+      ],
+      "sentences": [
+        {"id":"culture.s01","de":"Gibt es eine Ermäßigung für Studenten?","t":["Is there a discount for students?","Is there a student discount?"]},
+        {"id":"culture.s02","de":"Wann beginnt die nächste Führung?","t":["When does the next guided tour start?","When does the next tour start?","What time is the next guided tour?"]},
+        {"id":"culture.s03","de":"Darf man hier fotografieren?","t":["Are you allowed to take photos here?","Can you take photos here?","Is photography allowed here?"]},
+        {"id":"culture.s04","de":"Die Kathedrale wurde im dreizehnten Jahrhundert gebaut.","t":["The cathedral was built in the thirteenth century.","The cathedral was built in the 13th century."]},
+        {"id":"culture.s05","de":"Was muss man in dieser Stadt unbedingt sehen?","t":["What is a must-see in this city?","What should you definitely see in this city?","What must you see in this city?"]},
+        {"id":"culture.s06","de":"Die Ausstellung hat mir sehr gut gefallen.","t":["I really liked the exhibition.","I liked the exhibition very much.","I enjoyed the exhibition very much."]},
+        {"id":"culture.s07","de":"Bis wann hat der Markt geöffnet?","t":["Until when is the market open?","How late is the market open?","Until what time is the market open?"]},
+        {"id":"culture.s08","de":"Gibt es eine Führung auf Deutsch?","t":["Is there a guided tour in German?","Is there a tour in German?"]},
+        {"id":"culture.s09","de":"Das Schloss ist eine der berühmtesten Sehenswürdigkeiten des Landes.","t":["The castle is one of the most famous sights in the country.","The castle is one of the country's most famous sights."]},
+        {"id":"culture.s10","de":"Wie viel kostet der Eintritt?","t":["How much is the admission?","How much is the entrance fee?","How much does entry cost?","How much is admission?"]}
+      ]
+    },
+    {
+      "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
+      "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
+      "words": [
+        {"id":"negotiate.w01","de":"der Kompromiss","t":"compromise"},
+        {"id":"negotiate.w02","de":"das Angebot","t":"offer"},
+        {"id":"negotiate.w03","de":"der Vorteil","t":"advantage"},
+        {"id":"negotiate.w04","de":"der Nachteil","t":"disadvantage"},
+        {"id":"negotiate.w05","de":"überzeugen","t":"convince"},
+        {"id":"negotiate.w06","de":"verhandeln","t":"negotiate"},
+        {"id":"negotiate.w07","de":"die Bedingung","t":"condition"},
+        {"id":"negotiate.w08","de":"deshalb","t":["therefore","that's why","so"]},
+        {"id":"negotiate.w09","de":"trotzdem","t":["nevertheless","still","even so"]},
+        {"id":"negotiate.w10","de":"obwohl","t":["although","even though"]},
+        {"id":"negotiate.w11","de":"zufrieden","t":["satisfied","happy","content"]},
+        {"id":"negotiate.w12","de":"die Entscheidung","t":"decision"},
+        {"id":"negotiate.w13","de":"vernünftig","t":["reasonable","sensible"]}
+      ],
+      "sentences": [
+        {"id":"negotiate.s01","de":"Wäre es möglich, den Preis etwas zu senken?","t":["Would it be possible to lower the price a little?","Would it be possible to reduce the price a bit?"]},
+        {"id":"negotiate.s02","de":"Unter einer Bedingung bin ich einverstanden.","t":["I agree on one condition.","I'll agree on one condition."]},
+        {"id":"negotiate.s03","de":"Obwohl das Hotel teuer war, hat es sich gelohnt.","t":["Although the hotel was expensive, it was worth it.","Even though the hotel was expensive, it was worth it."]},
+        {"id":"negotiate.s04","de":"Das ist ein vernünftiges Angebot.","t":["That is a reasonable offer.","This is a reasonable offer."]},
+        {"id":"negotiate.s05","de":"Ich verstehe Ihren Standpunkt, trotzdem sehe ich das anders.","t":["I understand your point of view, but I still see it differently.","I understand your point of view, nevertheless I see it differently."]},
+        {"id":"negotiate.s06","de":"Hätten wir früher gebucht, wäre es billiger gewesen.","t":["If we had booked earlier, it would have been cheaper.","Had we booked earlier, it would have been cheaper."]},
+        {"id":"negotiate.s07","de":"Der größte Vorteil ist die Lage.","t":["The biggest advantage is the location.","The greatest advantage is the location."]},
+        {"id":"negotiate.s08","de":"Man hat mir gesagt, dass das Museum montags geschlossen ist.","t":["I was told that the museum is closed on Mondays.","I was told the museum is closed on Mondays.","Someone told me that the museum is closed on Mondays."]},
+        {"id":"negotiate.s09","de":"Lassen Sie mich darüber nachdenken.","t":"Let me think about it."},
+        {"id":"negotiate.s10","de":"Wir sind mit der Lösung sehr zufrieden.","t":["We are very satisfied with the solution.","We are very happy with the solution."]}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "restaurant", "title": "Im Restaurant", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Haben Sie reserviert?","t":"Good evening! Do you have a reservation?"},
+          "a": [
+            {"de":"Nein, einen Tisch für zwei, bitte.","t":"No, a table for two, please."},
+            {"de":"Ich möchte die Rechnung.","t":"I would like the bill."},
+            {"de":"Es ist drei Uhr.","t":"It is three o'clock."}
+          ] },
+        { "p": {"de":"Was möchten Sie trinken?","t":"What would you like to drink?"},
+          "a": [
+            {"de":"Zwei Wasser, bitte.","t":"Two waters, please."},
+            {"de":"Wo ist der Bahnhof?","t":"Where is the train station?"},
+            {"de":"Ich habe Kopfschmerzen.","t":"I have a headache."}
+          ] },
+        { "p": {"de":"Haben Sie schon gewählt?","t":"Are you ready to order?"},
+          "a": [
+            {"de":"Ja, ich nehme den Fisch.","t":"Yes, I'll have the fish."},
+            {"de":"Ja, ich habe einen Hund.","t":"Yes, I have a dog."},
+            {"de":"Nein, ich komme aus Deutschland.","t":"No, I am from Germany."}
+          ] },
+        { "p": {"de":"Hat es Ihnen geschmeckt?","t":"Did you enjoy your meal?"},
+          "a": [
+            {"de":"Ja, sehr lecker! Die Rechnung, bitte.","t":"Yes, delicious! The bill, please."},
+            {"de":"Zwei Fahrkarten, bitte.","t":"Two tickets, please."},
+            {"de":"Wo ist die Apotheke?","t":"Where is the pharmacy?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi", "title": "Im Taxi", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
+      "turns": [
+        { "p": {"de":"Hallo! Wohin möchten Sie?","t":"Hello! Where would you like to go?"},
+          "a": [
+            {"de":"Zum Flughafen, bitte.","t":"To the airport, please."},
+            {"de":"Ein Bier, bitte.","t":"A beer, please."},
+            {"de":"Ich heiße Anna.","t":"My name is Anna."}
+          ] },
+        { "p": {"de":"Haben Sie Gepäck?","t":"Do you have any luggage?"},
+          "a": [
+            {"de":"Ja, einen Koffer.","t":"Yes, one suitcase."},
+            {"de":"Ja, ich bin Vegetarier.","t":"Yes, I am vegetarian."},
+            {"de":"Nein, es ist zu teuer.","t":"No, it is too expensive."}
+          ] },
+        { "p": {"de":"Es gibt viel Verkehr. Es dauert etwa vierzig Minuten.","t":"There is a lot of traffic. It takes about forty minutes."},
+          "a": [
+            {"de":"Kein Problem. Wie viel kostet die Fahrt?","t":"No problem. How much is the ride?"},
+            {"de":"Guten Morgen!","t":"Good morning!"},
+            {"de":"Ich habe meinen Schlüssel verloren.","t":"I have lost my key."}
+          ] },
+        { "p": {"de":"Etwa fünfzig Euro.","t":"About fifty euros."},
+          "a": [
+            {"de":"In Ordnung. Kann ich mit Karte zahlen?","t":"All right. Can I pay by card?"},
+            {"de":"Die Suppe ist kalt.","t":"The soup is cold."},
+            {"de":"Ich habe zwei Schwestern.","t":"I have two sisters."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Hello! Can I help you?"},
+          "a": [
+            {"de":"Ja, ich habe eine Reservierung.","t":"Yes, I have a reservation."},
+            {"de":"Ja, ich habe Fieber.","t":"Yes, I have a fever."},
+            {"de":"Nein, ich nehme den Bus.","t":"No, I'll take the bus."}
+          ] },
+        { "p": {"de":"Auf welchen Namen, bitte?","t":"Under what name, please?"},
+          "a": [
+            {"de":"Auf den Namen Weber.","t":"Under the name Weber."},
+            {"de":"Für zwei Nächte, bitte.","t":"For two nights, please."},
+            {"de":"Der Kaffee ist lecker.","t":"The coffee is delicious."}
+          ] },
+        { "p": {"de":"Ihr Zimmer ist im dritten Stock. Hier ist Ihr Schlüssel.","t":"Your room is on the third floor. Here is your key."},
+          "a": [
+            {"de":"Danke! Wann gibt es Frühstück?","t":"Thank you! When is breakfast?"},
+            {"de":"Ich suche einen Supermarkt.","t":"I am looking for a supermarket."},
+            {"de":"Das Museum ist rechts.","t":"The museum is on the right."}
+          ] },
+        { "p": {"de":"Von sieben bis zehn Uhr.","t":"From seven to ten o'clock."},
+          "a": [
+            {"de":"Perfekt, vielen Dank!","t":"Perfect, thank you very much!"},
+            {"de":"Wie spät ist es?","t":"What time is it?"},
+            {"de":"Ich bin allergisch gegen Nüsse.","t":"I am allergic to nuts."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy", "title": "In der Apotheke", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
+      "turns": [
+        { "p": {"de":"Guten Tag, was kann ich für Sie tun?","t":"Hello, what can I do for you?"},
+          "a": [
+            {"de":"Ich habe Halsschmerzen.","t":"I have a sore throat."},
+            {"de":"Ich nehme es.","t":"I'll take it."},
+            {"de":"Wo ist der Strand?","t":"Where is the beach?"}
+          ] },
+        { "p": {"de":"Seit wann haben Sie das?","t":"How long have you had it?"},
+          "a": [
+            {"de":"Seit zwei Tagen.","t":"For two days."},
+            {"de":"Um acht Uhr.","t":"At eight o'clock."},
+            {"de":"Zwei Kilometer.","t":"Two kilometres."}
+          ] },
+        { "p": {"de":"Haben Sie auch Fieber?","t":"Do you have a fever too?"},
+          "a": [
+            {"de":"Nein, kein Fieber.","t":"No, no fever."},
+            {"de":"Nein, kein Zucker.","t":"No, no sugar."},
+            {"de":"Ja, mit Karte.","t":"Yes, by card."}
+          ] },
+        { "p": {"de":"Nehmen Sie diese Tabletten dreimal täglich.","t":"Take these tablets three times a day."},
+          "a": [
+            {"de":"Danke. Brauche ich ein Rezept?","t":"Thank you. Do I need a prescription?"},
+            {"de":"Danke. Ist das Frühstück inklusive?","t":"Thank you. Is breakfast included?"},
+            {"de":"Ja, zwei Bier, bitte.","t":"Yes, two beers, please."}
+          ] }
+      ]
+    }
+  ]
+}

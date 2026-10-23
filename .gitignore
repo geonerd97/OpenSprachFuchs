@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+# Built from packs/ by tools/packs.mjs
+worker/public/
+worker/.wrangler/
+worker/.dev.vars
+.claude/
