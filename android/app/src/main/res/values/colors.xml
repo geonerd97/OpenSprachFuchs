@@ -2,4 +2,5 @@
 <resources>
     <!-- Same ground colour as the game background, so the system bars blend in. -->
     <color name="bg">#EDF0F6</color>
+    <color name="ic_launcher_bg">#FBF8F3</color>
 </resources>

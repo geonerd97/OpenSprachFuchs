@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/logo.webp" alt="Openlingo-Logo: ein Comic-Fuchs mit einem blauen O" width="160"></p>
+
 # Openlingo
 
 Eine freie Sprachlern-App für Android, inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch oder brasilianisches Portugiesisch** lernen wollen.

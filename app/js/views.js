@@ -68,7 +68,7 @@ function homeHTML() {
       <div class="nodes">${nodes}</div></section>`;
   }).join("");
   return `<header class="topbar"><div class="topbar-in">
-      <div class="brand"><span class="brand-mark">${logoSVG(30)}</span><span class="name">Openlingo</span></div>
+      <div class="brand"><span class="brand-mark">${logoHTML()}</span><span class="name">Openlingo</span></div>
       <div class="stats"><button class="langchip" data-act="courses" title="Du lernst ${C.name}. Sprache wechseln" aria-label="Sprache wechseln, aktuell ${C.name}">${C.code}${I.chev(14)}</button>
         <span class="stat flame ${streak ? "" : "off"}" title="Tage in Folge">${I.flame(22)}${streak}</span>
         <span class="stat xp" title="Gesamt-XP">${I.bolt(22)}${st.xp}</span>
@@ -450,17 +450,10 @@ function shopHTML() {
     ${ui.shopMsg ? `<p role="status" style="margin:0;font-weight:800;color:var(--good)">${esc(ui.shopMsg)}</p>` : ""}
     <div class="shop">${rows}</div>`;
 }
-/* The logo: a comic fox inside the "O" of Openlingo. Same drawing as the launcher icon (android/.../drawable/ic_launcher_foreground.xml). */
-const logoSVG = s => `<svg width="${s}" height="${s}" viewBox="21 21 66 66" aria-hidden="true">
-  <path fill="#fff" fill-rule="evenodd" d="M54,23a31,31 0 1,1 0,62a31,31 0 1,1 0,-62z M54,29a25,25 0 1,0 0,50a25,25 0 1,0 0,-50z"/>
-  <path fill="#F26B1D" d="M38,47 L42,33 L51,41 Z M70,47 L66,33 L57,41 Z M37,48 Q37,40 45,40 L63,40 Q71,40 71,48 L71,53 Q71,62 54,73 Q37,62 37,53 Z"/>
-  <path fill="#7A2E0B" d="M41.5,43 L43.2,37 L47.5,41 Z M66.5,43 L64.8,37 L60.5,41 Z"/>
-  <path fill="#fff" d="M37,53 Q45,54 54,62 Q63,54 71,53 Q71,62 54,73 Q37,62 37,53 Z"/>
-  <g fill="#15203A"><ellipse cx="47" cy="50" rx="2.6" ry="3.2"/><ellipse cx="61" cy="50" rx="2.6" ry="3.2"/><ellipse cx="54" cy="64.5" rx="3" ry="2.2"/></g>
-  <g fill="#fff"><circle cx="47.9" cy="48.9" r=".9"/><circle cx="61.9" cy="48.9" r=".9"/></g>
-  <path fill="none" stroke="#15203A" stroke-width="1.3" stroke-linecap="round" d="M51,68.5 Q54,70.5 57,68.5"/></svg>`;
+/* The logo: the Openlingo fox with the "O" (app/img/logo.webp; the launcher icon is cut out from the same picture). */
+const logoHTML = () => `<img class="logo" src="img/logo.webp" alt="" width="34" height="34">`;
 const modal = (title, body) => `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${title}</h2>${body}</div></div>`;
-const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoSVG(30)}</span><span class="name">Openlingo</span></div>`;
+const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">Openlingo</span></div>`;
 function welcomeHTML() {
   return `<div class="center"><div class="card">${brandHTML()}<h1>Sprachen lernen, frei und ohne Werbung</h1>
     <p class="muted" style="font-size:1.05rem">Für deinen Fortschritt bekommst du einen geheimen Schlüssel. Mehr braucht es nicht: keinen Namen, keine E-Mail, kein Passwort.</p>

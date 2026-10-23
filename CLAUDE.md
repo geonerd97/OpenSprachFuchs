@@ -32,7 +32,7 @@ Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige,
 - `audio.js`: Soundeffekte, Sprachausgabe über `AndroidBridge.speak` (im Desktop-Browser `speechSynthesis`), Hören/Sprechen pausieren, Spracherkennung nur in der App.
 - `exercises.js`: Lektionspläne, Antwortprüfung (`norm`, `lev`), Generatoren `GEN.*`, `generate()` mit Fallbacks.
 - `lesson.js`: Ablauf aller Runden (Lektion, Training, Einstufungstest, Blitzrunde, Gespräch, Meisterschaft), `finish()`.
-- `views.js`: Rendering. Logo `logoSVG()` (Comic-Fuchs im „O“, gleiche Zeichnung wie das Adaptive Icon `ic_launcher_foreground.xml`, keine Eule). Startseite mit **Tab-Leiste unten** (`TABS`: Lernweg, Üben, Freunde, Shop, Profil; `ui.tab`), Onboarding-Ansichten `welcome`/`newkey`/`signin`/`langs`, Dialoge (`modalHTML`), `PRIVACY_HTML`.
+- `views.js`: Rendering. Logo `logoHTML()` (`app/img/logo.webp`). Startseite mit **Tab-Leiste unten** (`TABS`: Lernweg, Üben, Freunde, Shop, Profil; `ui.tab`), Onboarding-Ansichten `welcome`/`newkey`/`signin`/`langs`, Dialoge (`modalHTML`), `PRIVACY_HTML`.
 - `main.js`: Klick-Delegation über `data-act`, Tastatur, Zurück-Taste (`window.openlingoBack`: Dialog → Lektion → Tab Lernweg → App verlassen), Start.
 
 ### Backend (`worker/src/index.js`)
@@ -62,7 +62,7 @@ Lernweg mit 20 Einheiten (A1–B2) à 4 Lektionen, Einstufungstest, Übungstypen
 
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
-- 2026-10-23: Umbenennung in Openlingo (vorher Betterlingo), Logo mit Fuchs.
+- 2026-10-23: Umbenennung in Openlingo (vorher Betterlingo). Logo vom Maintainer: Comic-Fuchs mit blauem „O“ (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon aus `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FBF8F3`). Keine Eule (Abgrenzung zu Duolingo).
 - 2026-10-23: Neuaufbau als Open-Source-Projekt: Android-only, Sprachpakete, Cloudflare-Backend mit anonymem Schlüssel-Konto und verschlüsselten Spielständen, Freunde (gemeinsame Serien, Geschenke), offline-fähig, Tab-Leiste unten. Pi-Server, Docker, Web-App/PWA, Thai und Dialekte entfernt.
 
 ## Mögliche nächste Schritte
