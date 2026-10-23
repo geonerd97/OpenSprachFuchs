@@ -9,7 +9,7 @@ Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige,
 - **Modular:** jede Sprache ist ein JSON-Paket (`packs/`), herunterladbar und aktualisierbar. Die App meldet Updates für Pakete (Prüfsumme) und für sich selbst (GitHub-Releases).
 - **Anonym und datensparsam:** Konto = zufälliger Schlüssel (4×4 Zeichen), keine Klar- oder Benutzernamen, Spielstand auf dem Handy verschlüsselt. Konto löschen und Datenschutzhinweis sind eingebaut. Alles, was neu an den Server geht, muss in `PRIVACY.md` und `PRIVACY_HTML` beschrieben werden.
 - **Freunde** über einen öffentlichen Freundescode (nicht den Schlüssel), max. 5, Namen nur lokal (im verschlüsselten Spielstand). Gemeinsame Serie pro Freund (Variante A), täglich ein kostenloses Geschenk (5 💎).
-- Backend kostenlos bei **Cloudflare** (Worker + D1 + statische Dateien).
+- Backend kostenlos bei **Cloudflare** (Worker + D1 + statische Dateien). Live unter `https://betterlingo.betterlingo-worker.workers.dev/`, D1-Datenbank `betterlingo` in Westeuropa (`weur`). Deploy: `cd worker && npm run deploy`.
 - **Keine Liga.** Thai, Schweizerdeutsch und Kölsch sollen später als Pakete nachgeliefert werden (alte Inhalte im Git-Verlauf vor dem Neuaufbau, Commit `4f6075d`). Das Paketformat braucht dafür noch Umschrift, `noTyping`/`noListen` und abweichende Stimme.
 
 ## Aufbau
@@ -39,6 +39,7 @@ Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige,
 Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PUT /api/save`, `POST /api/day`, `GET/POST /api/friends`, `POST /api/friends/:id/accept`, `DELETE /api/friends/:id`, `POST /api/friends/:id/gift`, `POST /api/gifts/claim`, `POST /api/report`, `GET /api/ping`. Statische Pakete unter `/packs/`.
 - Tabellen: `accounts` (auth-Hash, friend_code, created, seen, last_day, prev_day, save, saved_at), `friendships` (a, b, accepted, streak, streak_day, gift_a/b, gifts_for_a/b), `reports` (ohne Kontobezug).
 - Gemeinsame Serie: Beim Melden eines Lerntags zählt jede Freundschaft, deren anderer Teil denselben Tag als `last_day` oder `prev_day` hat.
+- Statische Pakete bekommen CORS über `public/_headers` (schreibt `tools/packs.mjs build`).
 - Rate Limiting per IP (Bindings `LIMIT_API`, `LIMIT_STRICT`, IP wird nicht gespeichert). Cron löscht täglich Konten nach 365 Tagen ohne Nutzung und alte Meldungen.
 - CORS `*`, weil die App von `https://appassets.androidplatform.net` kommt.
 
@@ -57,14 +58,14 @@ Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PU
 Lernweg mit 20 Einheiten (A1–B2) à 4 Lektionen, Einstufungstest, Übungstypen choice/choiceRev/listenWord/pic/bank/bankRev/listen/type/typeSent/gap/match/speak, Wörter antippen, Wortliste mit Suche, Spaced Repetition (Stufen 0–6), Gespräche (4 pro Sprache), Meisterschaft, Combo, Blitzrunde, Tagesaufgaben, Edelsteine und Shop (Serienschutz, Herzen, Doppel-XP, Pausenschutz), 10 Herzen mit Auffüllrunde, Hören/Sprechen pausieren, Rückstufung nach 14 Tagen Pause, Zurücksetzen ab Einheit, Statistik und 14 Abzeichen, tägliche Erinnerung. Antwortprüfung ignoriert Groß/klein und Satzzeichen, toleriert Akzente und kleine Tippfehler, englische Kurzformen werden aufgelöst.
 
 ## Prüfen
-`npm test` (Node ≥ 22.5): Paketprüfung, Spiellogik (10.800 Übungen in 4 Sprachen, 0 Fehler, dazu alle Tabs, Dialoge und App-Modus) und Backend (Konto, Verschlüsselung, Anmelden auf zweitem Gerät, Freunde, Serie, Geschenke, Limit, Löschen, Offline-Konto, Paket-Updates, Aufräumen). `./gradlew assembleDebug` in `android/` baut die APK. Das Deployment auf Cloudflare und ein Test auf einem echten Handy stehen noch aus.
+`npm test` (Node ≥ 22.5): Paketprüfung, Spiellogik (10.800 Übungen in 4 Sprachen, 0 Fehler, dazu alle Tabs, Dialoge und App-Modus) und Backend (Konto, Verschlüsselung, Anmelden auf zweitem Gerät, Freunde, Serie, Geschenke, Limit, Löschen, Offline-Konto, Paket-Updates, Aufräumen). `./gradlew assembleDebug` in `android/` baut die APK. Das Backend ist deployt und live geprüft (Konto, Spielstand, Lerntag, Freunde, Löschen, CORS). Ein Test auf einem echten Handy steht noch aus.
 
 ## Verlauf
 - Bis 2026-10-22: Version 1 als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen (siehe Git-Verlauf).
 - 2026-10-23: Neuaufbau als Open-Source-Projekt: Android-only, Sprachpakete, Cloudflare-Backend mit anonymem Schlüssel-Konto und verschlüsselten Spielständen, Freunde (gemeinsame Serien, Geschenke), offline-fähig, Tab-Leiste unten. Pi-Server, Docker, Web-App/PWA, Thai und Dialekte entfernt.
 
 ## Mögliche nächste Schritte
-- Backend deployen, `BACKEND_URL`, `GITHUB_REPO` und `OPERATOR` in `app/js/config.js` eintragen, `PRIVACY.md` mit Betreiberangaben ergänzen
+- `OPERATOR` in `app/js/config.js` und Betreiberangaben in `PRIVACY.md` eintragen (DSGVO), Auftragsverarbeitungsvertrag mit Cloudflare abschließen
 - Test auf einem echten Handy
 - Thai, Schweizerdeutsch, Kölsch als Pakete (Format erweitern)
 - Sprachpakete von Muttersprachlern prüfen lassen

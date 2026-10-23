@@ -125,6 +125,9 @@ function build() {
       size: Buffer.byteLength(body), sha256: createHash("sha256").update(body).digest("hex") });
   }
   writeFileSync(join(OUT, "index.json"), JSON.stringify(index));
+  // The app loads the packs from another origin (https://appassets.androidplatform.net), so they need CORS.
+  // Cloudflare serves static assets with the headers from public/_headers; short caching so updates arrive quickly.
+  writeFileSync(join(OUT, "..", "_headers"), "/packs/*\n  Access-Control-Allow-Origin: *\n  Cache-Control: public, max-age=300\n");
   console.log(`${packs.length} Sprachpakete nach worker/public/packs/ geschrieben:`, index.packs.map(p => `${p.code} (${Math.round(p.size / 1024)} KB)`).join(", "));
 }
 

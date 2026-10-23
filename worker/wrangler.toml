@@ -11,7 +11,7 @@ directory = "./public"
 [[d1_databases]]
 binding = "DB"
 database_name = "betterlingo"
-database_id = "REPLACE-WITH-YOUR-DATABASE-ID"   # printed by: npx wrangler d1 create betterlingo
+database_id = "dbb82ea0-aad7-4e52-9281-072ca1d1f25e"   # from: npx wrangler d1 create betterlingo --location weur
 
 # Abuse protection per IP address. The address is only used for counting and is not stored.
 [[ratelimits]]
