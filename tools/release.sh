@@ -22,13 +22,13 @@ echo "Baue Release $version …"
 (cd android && ./gradlew --console=plain clean assembleRelease)
 apk="android/app/build/outputs/apk/release/app-release.apk"
 [ -f "$apk" ] || { echo "Keine signierte APK gefunden ($apk)."; exit 1; }
-out="android/app/build/outputs/apk/release/betterlingo-$version.apk"
+out="android/app/build/outputs/apk/release/openlingo-$version.apk"
 cp "$apk" "$out"
 
 git tag "$tag"
 git push "$remote" "$tag"
 # Versions below 1.0 are experimental and published as pre-releases.
 flags=()
-case "$version" in 0.*) flags+=(--prerelease); title="Betterlingo $version (experimentell)";; *) title="Betterlingo $version";; esac
+case "$version" in 0.*) flags+=(--prerelease); title="Openlingo $version (experimentell)";; *) title="Openlingo $version";; esac
 gh release create "$tag" --repo "$repo" "$out" --title "$title" --generate-notes ${flags[@]+"${flags[@]}"}
 echo "Fertig: Release $tag veröffentlicht."

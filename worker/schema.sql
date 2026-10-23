@@ -1,5 +1,5 @@
--- Betterlingo backend: everything the server stores. No names, no e-mail addresses, no IP addresses.
--- Apply with: npx wrangler d1 execute betterlingo --remote --file=schema.sql
+-- Openlingo backend: everything the server stores. No names, no e-mail addresses, no IP addresses.
+-- Apply with: npx wrangler d1 execute openlingo --remote --file=schema.sql
 
 CREATE TABLE IF NOT EXISTS accounts (
   id          INTEGER PRIMARY KEY,

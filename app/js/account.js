@@ -5,9 +5,9 @@
      - an access token, sent as "Authorization: Bearer …" (the server stores only its SHA-256), and
      - an AES-GCM key that encrypts the whole save before upload.
    So the server holds no names and cannot read anyone's progress; nicknames for friends travel inside the encrypted save. */
-const ACCOUNT_KEY = "betterlingo-account";
+const ACCOUNT_KEY = "openlingo-account";
 const KEY_ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
-const KDF_SALT = "betterlingo/v1", KDF_ROUNDS = 150000;
+const KDF_SALT = "openlingo/v1", KDF_ROUNDS = 150000;
 const acct = { key: "", pending: false, token: "", aes: null, friendCode: "", status: "none", busy: false, again: false, timer: 0, note: "" };
 // status: "none" (no account, progress only on this device), "ok", "offline" (backend unreachable), "gone" (deleted elsewhere)
 
@@ -220,13 +220,13 @@ const newerVersion = (a, b) => { const p = v => String(v).replace(/^v/, "").spli
 async function checkAppUpdate() {
   if (!APP || !CONFIG.GITHUB_REPO || !st.settings.updates || !window.AndroidBridge.appVersion) return;
   let last = 0;
-  try { last = +localStorage.getItem("betterlingo-update-check") || 0; } catch (e) {}
+  try { last = +localStorage.getItem("openlingo-update-check") || 0; } catch (e) {}
   if (Date.now() - last < 864e5 && !ui.appUpdate) return;
   try {
     const r = await fetchTimeout(`https://api.github.com/repos/${CONFIG.GITHUB_REPO}/releases/latest`, { headers: { Accept: "application/vnd.github+json" } });
     if (!r.ok) return;
     const rel = await r.json();
-    localStorage.setItem("betterlingo-update-check", String(Date.now()));
+    localStorage.setItem("openlingo-update-check", String(Date.now()));
     if (newerVersion(rel.tag_name, window.AndroidBridge.appVersion())) { ui.appUpdate = { version: String(rel.tag_name).replace(/^v/, ""), url: rel.html_url }; render(); }
   } catch (e) {}
 }

@@ -17,11 +17,11 @@ function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl
     for (const f of packFiles()) {
       const text = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, "packs", f), "utf8")));
       const code = f.replace(".json", "");
-      store["betterlingo-pack-" + code] = text;
+      store["openlingo-pack-" + code] = text;
       shas[code] = createHash("sha256").update(text).digest("hex");
     }
-    store["betterlingo-packs"] = JSON.stringify(shas);
-    if (!store["betterlingo-state"]) store["betterlingo-state"] = JSON.stringify({ onboarded: true, course: "en" });
+    store["openlingo-packs"] = JSON.stringify(shas);
+    if (!store["openlingo-state"]) store["openlingo-state"] = JSON.stringify({ onboarded: true, course: "en" });
   }
   let clickHandler = null;
   global.speechSynthesis = { cancel() {}, speak() {} };

@@ -1,6 +1,6 @@
-# Cloudflare Worker for Betterlingo: API (accounts, encrypted saves, friends) and the language packs.
-# Setup and deployment: see README.md, "Backend einrichten".
-name = "betterlingo"
+# Cloudflare Worker for Openlingo: API (accounts, encrypted saves, friends) and the language packs.
+# Template: copy to wrangler.toml (not in Git) and enter your database_id. See README.md, "Backend einrichten".
+name = "openlingo"
 main = "src/index.js"
 compatibility_date = "2025-09-01"
 
@@ -10,8 +10,8 @@ directory = "./public"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "betterlingo"
-database_id = "dbb82ea0-aad7-4e52-9281-072ca1d1f25e"   # from: npx wrangler d1 create betterlingo --location weur
+database_name = "openlingo"
+database_id = "REPLACE-WITH-YOUR-DATABASE-ID"   # printed by: npx wrangler d1 create openlingo --location weur
 
 # Abuse protection per IP address. The address is only used for counting and is not stored.
 [[ratelimits]]

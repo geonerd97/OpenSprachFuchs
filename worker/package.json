@@ -1,13 +1,13 @@
 {
-  "name": "betterlingo-worker",
+  "name": "openlingo-worker",
   "private": true,
-  "description": "Cloudflare Worker for Betterlingo: accounts, encrypted saves, friends and language packs",
+  "description": "Cloudflare Worker for Openlingo: accounts, encrypted saves, friends and language packs",
   "type": "module",
   "scripts": {
     "build": "node ../tools/packs.mjs build",
     "dev": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
-    "schema": "wrangler d1 execute betterlingo --remote --file=schema.sql"
+    "schema": "wrangler d1 execute openlingo --remote --file=schema.sql"
   },
   "devDependencies": {
     "wrangler": "^4.30.0"

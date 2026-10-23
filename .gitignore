@@ -5,3 +5,4 @@ worker/public/
 worker/.wrangler/
 worker/.dev.vars
 .claude/
+worker/wrangler.toml

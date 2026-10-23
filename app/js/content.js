@@ -2,7 +2,7 @@
 /* ---------- Language packs ----------
    Every language is a JSON pack (format: packs/README.md). The app ships without any; the player downloads
    the languages they want from the backend, and they stay on the device. COURSES holds the installed packs. */
-const PACK_KEY = code => `betterlingo-pack-${code}`, PACKS_KEY = "betterlingo-packs";
+const PACK_KEY = code => `openlingo-pack-${code}`, PACKS_KEY = "openlingo-packs";
 let COURSES = {};          // code -> installed course
 let PACK_SHA = {};         // code -> sha256 of the installed pack (from the index it was downloaded with)
 let PACK_INDEX = null;     // the backend's packs/index.json once fetched: { packs: [{ code, name, sha256, ... }] }

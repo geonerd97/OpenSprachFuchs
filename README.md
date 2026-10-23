@@ -1,10 +1,10 @@
-# Betterlingo
+# Openlingo
 
 Eine freie Sprachlern-App für Android, inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch oder brasilianisches Portugiesisch** lernen wollen.
 
-Betterlingo ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duolingo zu tun.
+Openlingo ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duolingo zu tun.
 
-> ⚠️ **Experimentell:** Betterlingo ist in einer frühen Version (0.x). Funktionen, Datenformat und Backend können sich noch ändern, und es kann Fehler geben. Wichtige Lernfortschritte bitte nicht allein darauf verlassen.
+> ⚠️ **Experimentell:** Openlingo ist in einer frühen Version (0.x). Funktionen, Datenformat und Backend können sich noch ändern, und es kann Fehler geben. Wichtige Lernfortschritte bitte nicht allein darauf verlassen.
 
 ## Funktionen
 
@@ -78,25 +78,29 @@ Der kostenlose Tarif von Cloudflare reicht für ein kleines Projekt: 100.000 API
    npm install
    npx wrangler login
    ```
-2. Datenbank anlegen und die ausgegebene `database_id` in [`worker/wrangler.toml`](worker/wrangler.toml) eintragen:
+2. Die Vorlage für die Konfiguration kopieren. `wrangler.toml` bleibt lokal und kommt nicht in Git.
    ```bash
-   npx wrangler d1 create betterlingo
+   cp wrangler.example.toml wrangler.toml
    ```
-3. Tabellen anlegen:
+3. Datenbank anlegen (`weur` = Westeuropa) und die ausgegebene `database_id` in `worker/wrangler.toml` eintragen:
+   ```bash
+   npx wrangler d1 create openlingo --location weur
+   ```
+4. Tabellen anlegen:
    ```bash
    npm run schema
    ```
-4. Bauen und veröffentlichen. Das baut auch die Sprachpakete:
+5. Bauen und veröffentlichen. Das baut auch die Sprachpakete:
    ```bash
    npm run deploy
    ```
-   Wrangler zeigt danach die Adresse, z. B. `https://betterlingo.<dein-name>.workers.dev/`.
-5. Diese Adresse in [`app/js/config.js`](app/js/config.js) als `BACKEND_URL` eintragen. Dort gehören auch dein GitHub-Repository (`GITHUB_REPO`, für Update-Hinweise) und unter `OPERATOR` Name und Kontakt des Betreibers hin. Letzteres verlangt die DSGVO für den Datenschutzhinweis.
+   Wrangler zeigt danach die Adresse, z. B. `https://openlingo.<dein-name>.workers.dev/`.
+6. Diese Adresse in [`app/js/config.js`](app/js/config.js) als `BACKEND_URL` eintragen. Dort gehören auch dein GitHub-Repository (`GITHUB_REPO`, für Update-Hinweise) und unter `OPERATOR` Name und Kontakt des Betreibers hin. Letzteres verlangt die DSGVO für den Datenschutzhinweis.
 
 **Fehlermeldungen aus der App lesen** („Fehler melden“):
 
 ```bash
-npx wrangler d1 execute betterlingo --remote --command "SELECT * FROM reports ORDER BY id DESC LIMIT 50"
+npx wrangler d1 execute openlingo --remote --command "SELECT * FROM reports ORDER BY id DESC LIMIT 50"
 ```
 
 **Lokal testen:** `npm run dev` startet den Worker unter `http://localhost:8787`. Wird die App über `localhost` geöffnet, nutzt sie automatisch dieses Backend.
@@ -116,13 +120,13 @@ Releases müssen immer mit **demselben Schlüssel** signiert sein, sonst lassen 
 
 1. Einmalig einen Schlüssel erzeugen. **Datei und Passwörter gut sichern, nie ins Repository!**
    ```bash
-   keytool -genkeypair -v -keystore ~/betterlingo-release.jks -keyalg RSA -keysize 4096 -validity 10000 -alias betterlingo
+   keytool -genkeypair -v -keystore ~/openlingo-release.jks -keyalg RSA -keysize 4096 -validity 10000 -alias openlingo
    ```
 2. Die Datei `android/keystore.properties` anlegen. Sie steht in `.gitignore`.
    ```properties
-   storeFile=/Users/<du>/betterlingo-release.jks
+   storeFile=/Users/<du>/openlingo-release.jks
    storePassword=…
-   keyAlias=betterlingo
+   keyAlias=openlingo
    keyPassword=…
    ```
 3. In [`android/app/build.gradle.kts`](android/app/build.gradle.kts) `versionCode` um 1 erhöhen und `versionName` setzen, z. B. `0.0.2`.

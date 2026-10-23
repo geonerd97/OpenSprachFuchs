@@ -1,4 +1,4 @@
-/* Betterlingo backend on Cloudflare Workers + D1.
+/* Openlingo backend on Cloudflare Workers + D1.
  *
  * Accounts are anonymous: the app derives an access token from a secret key that never leaves the phone and
  * sends it as "Authorization: Bearer <64 hex>". The database keeps only the SHA-256 of that token. Saves arrive
@@ -232,7 +232,7 @@ async function handle(request, env) {
   const strict = (method === "POST" && (path === "/api/account" || path === "/api/friends" || path === "/api/report"));
   if (strict && await limited(env, "LIMIT_STRICT", path + ":" + ip)) return fail(429, "rate_limited");
 
-  if (path === "/api/ping") return json({ app: "betterlingo", ok: true });
+  if (path === "/api/ping") return json({ app: "openlingo", ok: true });
   if (path === "/api/report" && method === "POST") return report(request, env);
   if (path === "/api/account" && method === "POST") return createAccount(request, env);
 

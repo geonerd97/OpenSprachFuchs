@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Betterlingo"
+rootProject.name = "Openlingo"
 include(":app")

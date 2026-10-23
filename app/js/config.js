@@ -4,10 +4,10 @@
    GITHUB_REPO: "owner/name" of the repository with the APK releases; the app then points out new versions.
    Leave it empty to switch the update check off. */
 const CONFIG = {
-  BACKEND_URL: "https://betterlingo.betterlingo-worker.workers.dev/",
-  GITHUB_REPO: "geonerd97/Betterlingo",
+  BACKEND_URL: "https://openlingo.betterlingo-worker.workers.dev/",
+  GITHUB_REPO: "geonerd97/Openlingo",
   // Who runs the backend (name and contact), shown in the privacy notice. Required by the GDPR when you run it publicly.
-  OPERATOR: "geonerd97 betterlingo-info@gmx.net",
+  OPERATOR: "Martin Reger, E-Mail: openlingo@gmx.net",
 };
 
 /* Inside the Android app the page talks to the phone through window.AndroidBridge. */

@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    namespace = "de.betterlingo.app"
+    namespace = "de.openlingo.app"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "de.betterlingo.app"
+        applicationId = "de.openlingo.app"
         minSdk = 26
         targetSdk = 36
         versionCode = 3

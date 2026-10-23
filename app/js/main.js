@@ -65,7 +65,7 @@ app.addEventListener("click", e => {
     case "account": ui.pop = null; acct.note = ""; ui.showKey = false; ui.modal = "account"; render(); return;
     case "togglekey": ui.showKey = !ui.showKey; render(); return;
     case "copykey": copyText(acct.key, "Schlüssel kopiert."); return;
-    case "sharecode": shareText(`Lern mit mir auf Betterlingo! Mein Freundescode: ${acct.friendCode}`); return;
+    case "sharecode": shareText(`Lern mit mir auf Openlingo! Mein Freundescode: ${acct.friendCode}`); return;
     case "newcode": newFriendCode().then(render); return;
     case "signout": ui.modal = "signout"; render(); return;
     case "dosignout": signOut().then(() => { ui.modal = null; view = "welcome"; render(); }); return;
@@ -176,7 +176,7 @@ function openUrl(url) {
 }
 
 setInterval(() => { if (view === "home" && !ui.modal && !ui.pop && st.settings.hearts && st.hearts < MAX_HEARTS) render(); }, 60000);
-window.betterlingoBack = () => {
+window.openlingoBack = () => {
   if (ui.modal) { ui.modal = null; render(); return true; }
   if (ui.pop) { ui.pop = null; render(); return true; }
   if (view === "lesson") { ui.modal = "quit"; render(); return true; }
