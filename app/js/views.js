@@ -92,7 +92,7 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
       <p>${goal ? "Ziel erreicht. Deine Serie ist für heute gesichert." : "Schaff heute eine Lektion, damit deine Serie weiterläuft."}</p></div></div></div>
     <div class="panel"><h3>Tagesaufgaben</h3><div class="quests">${todaysQuests().map(q => { const v = Math.min(questValue(q), q.goal), ok = st.quests.claimed.includes(q.id);
       return `<div class="quest ${ok ? "done" : ""}"><span>${esc(q.text)}</span><small>${ok ? "✓ erledigt" : `${v} / ${q.goal}`}</small><span class="meter"><i style="width:${100 * v / q.goal}%"></i></span></div>`; }).join("")}</div>
-      <p class="muted">${st.quests.bonus ? "Alle geschafft, die Bonustruhe ist geöffnet." : "Je Aufgabe +10 XP und 5 💎. Alle drei öffnen eine Bonustruhe: +20 XP, 15 💎 und 3 Herzen."}</p></div>
+      <p class="muted">${st.quests.bonus ? "Alle geschafft, die Bonustruhe ist geöffnet." : `Je Aufgabe +10 XP und 5 💎. Alle drei öffnen eine Bonustruhe: +20 XP, 15 💎 und ${BONUS_HEARTS} Herzen.`}</p></div>
     <div class="panel"><h3>Üben</h3>${(() => { const n = dueWords().length; return n ? `<p><strong>${n} ${n === 1 ? "Vokabel ist" : "Vokabeln sind"} heute zur Wiederholung fällig.</strong></p>` : ""; })()}<p class="muted">Wiederhole Vokabeln und Sätze aus allen freigeschalteten Einheiten. Fällige Wörter und deine Fehler kommen zuerst dran${mistakes ? ` (${mistakes} Fehler offen)` : ""}.${st.settings.hearts ? ` Beim Üben lädst du Herzen auf: +1 pro ${RIGHT_PER_HEART} richtige Antworten.` : ""}</p>
       ${st.settings.hearts && st.hearts < MAX_HEARTS ? `<button class="btn heartbtn wide" data-act="refill">Herzen auffüllen (${st.hearts} von ${MAX_HEARTS})</button>` : ""}
       ${listenPaused() ? `<p class="muted">Hören ist bis ${pauseUntilText()} Uhr pausiert. <button class="linkbtn" data-act="resumelisten">Wieder einschalten</button></p>` : ""}
@@ -294,7 +294,7 @@ function failHTML() {
     <p class="muted">Du hattest ${PLACEMENT_MAX} Fehler. Kein Problem: Übe die Einheiten davor weiter oder versuch den Test später noch einmal.</p>
     <button class="btn wide" data-act="home">Zurück zum Lernpfad</button></div></div>`;
   return `<div class="center"><div class="card fail"><div class="trophy">${I.heart(64)}</div><h1>Keine Herzen mehr</h1>
-    <p class="muted">Lade sie mit Vokabeln wieder auf: +1 Herz pro ${RIGHT_PER_HEART} richtige Antworten. Außerdem kommt alle 20 Minuten ein Herz von selbst zurück, und in den Einstellungen kannst du Herzen ganz abschalten.</p>
+    <p class="muted">Lade sie mit Vokabeln wieder auf: +1 Herz pro ${RIGHT_PER_HEART} richtige Antworten. Außerdem kommt alle ${REGEN_MS / 60000} Minuten ein Herz von selbst zurück, und in den Einstellungen kannst du Herzen ganz abschalten.</p>
     <button class="btn heartbtn wide" data-act="refill">Herzen auffüllen</button><button class="btn ghost wide" data-act="home">Zurück zum Lernpfad</button></div></div>`;
 }
 function modalHTML() {

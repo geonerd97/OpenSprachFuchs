@@ -71,8 +71,10 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     val bars = insets.getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout() or WindowInsets.Type.ime())
                     v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
-                }
-                insets
+                    // Consumed here: newer WebViews would otherwise also report the bars to the page as
+                    // env(safe-area-inset-*), and the header and tab bar would keep a second, empty gap.
+                    WindowInsets.CONSUMED
+                } else insets
             }
         }
         setContentView(root)

@@ -3,7 +3,8 @@
    Progress always lives on the device (localStorage). With an account it is also backed up, encrypted (account.js).
    XP, streak, hearts and gems are shared by all languages; st.courses[code] keeps what belongs to one language. */
 const STORE = "opensprachfuchs-state";
-const LESSONS_PER_UNIT = 4, MAX_HEARTS = 10, REGEN_MS = 20 * 60 * 1000;
+// Hearts (issue #4, all halved): at most 5, one grows back every 40 minutes, the bonus chest gives 2.
+const LESSONS_PER_UNIT = 4, MAX_HEARTS = 5, REGEN_MS = 40 * 60 * 1000, BONUS_HEARTS = 2;
 const DEF = { gems: 20, freezes: 0, boostUntil: 0, history: {}, bestStreak: 0, badges: {}, perfect: 0, placementPassed: false, xp: 0, streak: 0,
   lastDay: null, day: null, dayLessons: 0, hearts: MAX_HEARTS, heartsTs: 0, course: "", courses: {}, lessons: 0, listenOffUntil: 0, speakOffUntil: 0,
   onboarded: false, friends: {}, dayReported: "", reportQueue: [],
@@ -12,6 +13,7 @@ function fromSaved(saved) {
   const s = Object.assign(JSON.parse(JSON.stringify(DEF)), saved || {});
   s.settings = Object.assign({}, DEF.settings, (saved && saved.settings) || {});
   s.savedAt = s.savedAt || 0;
+  s.hearts = Math.min(MAX_HEARTS, s.hearts); // saves from before the hearts were halved
   return s;
 }
 let st;
@@ -180,7 +182,7 @@ function claimQuests() {
   }
   if (!st.quests.bonus && qs.length && st.quests.claimed.length >= qs.length) {
     st.quests.bonus = true;
-    const h = giveHearts(3);
+    const h = giveHearts(BONUS_HEARTS);
     st.xp += 20; bump(dayRec(), "xp", 20); st.gems = (st.gems || 0) + 15;
     msgs.push(`🎁 Alle Tagesaufgaben geschafft: +20 XP, +15 💎${h ? ` und +${h} ${h === 1 ? "Herz" : "Herzen"}` : ""}`);
   }

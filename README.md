@@ -27,7 +27,7 @@ OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duo
   - Meisterschaft (Bronze, Silber, Gold)
   - Edelsteine und Shop
 - **Freunde:**
-  - bis zu 5 Freunde über einen Freundescode
+  - bis zu 100 Freunde über einen Freundescode
   - eine gemeinsame Serie mit jedem Freund
   - täglich ein kostenloses Geschenk (5 💎)
 - **Offline:** Alles außer Sicherung und Freunden funktioniert ohne Internet. Die Sprachpakete stecken in der App und kommen als Update vom Server.

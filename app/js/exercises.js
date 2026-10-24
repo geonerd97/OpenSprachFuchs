@@ -10,7 +10,7 @@ const PLANS = [
   ["typeSent", "match", "listen", "type", "bankRev", "gap", "typeSent", "speak", "bank", "type", "typeSent"],
 ];
 const REFILL_PLAN = ["choice", "choiceRev", "listenWord", "pic", "type", "match", "choiceRev", "type"];
-const RIGHT_PER_HEART = 3;
+const RIGHT_PER_HEART = 6; // practice rounds: +1 heart per 6 right answers
 const VOCAB_PLAN = ["choice", "choiceRev", "type", "match", "listenWord", "pic", "type", "choiceRev", "choice", "type", "listenWord", "match"];
 const MIX_PLAN = ["bank", "bankRev", "choice", "choiceRev", "gap", "listen", "typeSent", "type", "match", "bank", "listenWord", "speak"];
 // Mastery rounds: harder tasks, more typing and speaking.

@@ -4,7 +4,7 @@
    the other side accepts it. Each friendship has its own shared streak: days on which both finished a round.
    Once a day you can send each friend a free gift of GIFT_GEMS gems. Names for friends are chosen locally and
    stored only inside the encrypted save (st.friends), never readable on the server. */
-const MAX_FRIENDS = 5, GIFT_GEMS = 5;
+const MAX_FRIENDS = 100, GIFT_GEMS = 5;
 const friends = { list: [], gifts: 0, loaded: false, busy: false, note: "" };
 
 async function loadFriends() {

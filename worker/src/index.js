@@ -22,7 +22,7 @@
  * Everything else (the language packs under /packs/) is served from the static assets in ./public.
  */
 
-export const MAX_FRIENDS = 5;
+export const MAX_FRIENDS = 100; // per account, open requests included (keep in sync with app/js/friends.js)
 const MAX_SAVE_CHARS = 700_000;          // about 512 KB of encrypted data in base64
 const INACTIVE_DAYS = 365, REPORT_DAYS = 365;
 const CODE_ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"; // Crockford Base32, as in the app

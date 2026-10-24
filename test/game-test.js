@@ -110,13 +110,15 @@ if (!g.st.reportQueue.length || !g.st.reportQueue[0].item || g.st.reportQueue[0]
 g.statsHTML(); g.ui.bar = 3; g.statsHTML();
 if (!g.st.history || !Object.keys(g.st.history).length) fail("Tagesstatistik leer");
 
-// Hearts: practice refills +1 per 3 right answers.
+// Hearts (issue #4, halved): at most 5, +1 per 6 right answers, one every 40 minutes, older saves are capped.
+if (g.MAX_HEARTS !== 5) fail("Höchstzahl Herzen ist nicht 5", g.MAX_HEARTS);
+if (g.fromSaved({ hearts: 9, courses: {} }).hearts !== 5) fail("Alter Spielstand mit mehr als 5 Herzen nicht gekappt");
 g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = true; g.st.hearts = 0; g.st.heartsTs = Date.now();
 g.startTraining(true, true);
 if (g.L.queue.length + 1 < 7) fail("Auffüllrunde zu kurz", g.L.queue.length + 1);
 answerAll(g.L);
 if (g.view !== "result" || !g.result.refill) fail("Auffüllrunde endet nicht im Ergebnis", g.view);
-if (g.st.hearts < 2 || g.result.heartsGained !== g.st.hearts) fail("Auffüllrunde lädt nicht auf", g.st.hearts, g.result.heartsGained);
+if (g.st.hearts < 1 || g.result.heartsGained !== g.st.hearts) fail("Auffüllrunde lädt nicht auf", g.st.hearts, g.result.heartsGained);
 g.resultHTML(); g.ui.modal = "hearts"; g.modalHTML(); g.ui.modal = null;
 
 // Pausing listening mid-lesson turns every remaining audio task into a reading task.
@@ -205,12 +207,12 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
 
 // Gems and shop.
 {
-  g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = true; g.st.hearts = 10; g.st.boostUntil = 0;
+  g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = true; g.st.hearts = 5; g.st.boostUntil = 0;
   g.st.gems = 0; g.startLesson(0, 0); answerAll(g.L);
   if (g.result.gems < 5 || g.st.gems !== g.result.gems) fail("Edelsteine für Lektion fehlen", g.result.gems, g.st.gems);
   g.st.gems = 200; g.st.freezes = 0;
   if (!g.buy("freeze") || g.st.freezes !== 1 || g.st.gems !== 150) fail("Serienschutz kaufen klappt nicht");
-  g.st.hearts = 3; if (!g.buy("hearts") || g.st.hearts !== 10) fail("Herzen kaufen klappt nicht");
+  g.st.hearts = 2; if (!g.buy("hearts") || g.st.hearts !== 5) fail("Herzen kaufen klappt nicht");
   if (g.buy("hearts")) fail("Volle Herzen trotzdem verkauft");
   if (!g.buy("boost") || g.buy("boost")) fail("Doppel-XP falsch");
   g.cs().last = Date.now() - 1000;

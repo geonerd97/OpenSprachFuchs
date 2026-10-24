@@ -110,11 +110,19 @@ function fakeD1() {
   await anna.claimGifts();
   ok(anna.st.gems === gems + 5 && anna.friends.gifts === 0, "Geschenk nicht eingelöst", anna.st.gems - gems);
 
-  // Friend limit.
+  // Friend limit (100): Anna's list is filled up directly in the database, then two more players ask.
+  const { MAX_FRIENDS } = await import(path.join(ROOT, "worker", "src", "index.js"));
+  ok(MAX_FRIENDS === 100, "Freundeslimit ist nicht 100", MAX_FRIENDS);
+  const annaId = DB.db.prepare("SELECT id FROM accounts WHERE friend_code = ?").get(anna.acct.friendCode).id;
+  const have = DB.db.prepare("SELECT COUNT(*) n FROM friendships WHERE a = ? OR b = ?").get(annaId, annaId).n;
+  for (let i = have; i < MAX_FRIENDS - 1; i++) {
+    const id = DB.db.prepare("INSERT INTO accounts (auth, friend_code, created, seen) VALUES (?, ?, '2026-01-01', '2026-01-01') RETURNING id").get("x".repeat(60) + String(i).padStart(4, "0"), "T" + String(i).padStart(3, "0") + "-TEST").id;
+    DB.db.prepare("INSERT INTO friendships (a, b, accepted) VALUES (?, ?, 1)").run(id, annaId);
+  }
   const others = [];
-  for (let i = 0; i < 5; i++) { const o = loadGame({}, { fetch: appFetch }); await o.createAccount(); others.push(o); }
-  for (let i = 0; i < 4; i++) await others[i].addFriend(anna.acct.friendCode, "");
-  ok(!(await others[4].addFriend(anna.acct.friendCode, "")) && /Mehr als 5/.test(others[4].friends.note), "Freundeslimit greift nicht");
+  for (let i = 0; i < 2; i++) { const o = loadGame({}, { fetch: appFetch }); await o.createAccount(); others.push(o); }
+  ok(await others[0].addFriend(anna.acct.friendCode, ""), "100. Freund abgelehnt", others[0].friends.note);
+  ok(!(await others[1].addFriend(anna.acct.friendCode, "")) && /Mehr als 100/.test(others[1].friends.note), "Freundeslimit greift nicht", others[1].friends.note);
 
   // Ending a friendship removes it on both sides and drops the local name.
   await ben.removeFriend(ben.friends.list[0].id);
@@ -123,9 +131,10 @@ function fakeD1() {
 
   // Deleting the account removes everything on the server, the app keeps playing without account.
   const before = DB.db.prepare("SELECT COUNT(*) n FROM friendships").get().n;
+  const annas = DB.db.prepare("SELECT COUNT(*) n FROM friendships WHERE a = ? OR b = ?").get(annaId, annaId).n;
   await anna.deleteAccount();
   ok(anna.acct.status === "none" && !anna.store["opensprachfuchs-account"], "App: Konto nicht vom Gerät entfernt");
-  ok(DB.db.prepare("SELECT COUNT(*) n FROM friendships").get().n === before - 4, "Freundschaften nach Löschen übrig");
+  ok(DB.db.prepare("SELECT COUNT(*) n FROM friendships").get().n === before - annas && annas > 0, "Freundschaften nach Löschen übrig");
   ok(!(await wrong.signIn(anna.acct.key || "K7QM-4XD2-PL9A-H3TV")), "Gelöschtes Konto noch nutzbar");
 
   // Offline: an account made without connection is registered on the next start.
