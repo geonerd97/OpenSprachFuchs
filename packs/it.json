@@ -1,0 +1,1432 @@
+{
+  "format": 1,
+  "code": "it",
+  "name": "Italienisch",
+  "short": "IT",
+  "voice": "it-IT",
+  "color": "#0B8A5A",
+  "note": "Italienisch aus Italien",
+  "articles": "^(il |lo |la |l'|i |gli |le |un |uno |una |un')",
+  "gapSkip": ["il","lo","la","i","gli","le","un","uno","una","io","di","a"],
+  "glossary": {
+    "il": "der",
+    "lo": "der",
+    "la": "die",
+    "l'": "der/die/das",
+    "i": "die (Plural)",
+    "gli": "die (Plural)",
+    "le": "die (Plural) / ihr",
+    "un": "ein",
+    "una": "eine",
+    "io": "ich",
+    "tu": "du",
+    "lui": "er",
+    "lei": "sie / Sie",
+    "noi": "wir",
+    "voi": "ihr",
+    "è": "ist",
+    "sono": "ich bin / sie sind",
+    "sei": "du bist",
+    "ho": "ich habe",
+    "hai": "du hast",
+    "ha": "hat",
+    "e": "und",
+    "non": "nicht",
+    "di": "von",
+    "del": "vom",
+    "della": "von der",
+    "a": "in / nach / um",
+    "al": "zum",
+    "alla": "zur",
+    "in": "in",
+    "con": "mit",
+    "per": "für",
+    "mio": "mein",
+    "mia": "meine",
+    "che": "dass / was",
+    "dove": "wo",
+    "come": "wie",
+    "molto": "sehr / viel",
+    "mi": "mich / mir",
+    "ti": "dich / dir",
+    "si": "sich / man",
+    "c'è": "es gibt",
+    "più": "mehr",
+    "questo": "dieser / das",
+    "anche": "auch",
+    "ma": "aber"
+  },
+  "units": [
+    {
+      "id": "basics", "title": "Erste Worte", "level": "A1", "colors": ["#2456E8","#1A3FB0"],
+      "desc": "Grüßen, bitten, danken: die Wörter für jeden Tag.",
+      "words": [
+        {"id":"basics.w01","de":"hallo","t":["ciao","salve"],"pic":"👋"},
+        {"id":"basics.w02","de":"tschüss","t":["arrivederci","ciao"]},
+        {"id":"basics.w03","de":"bitte","t":["per favore","per piacere"]},
+        {"id":"basics.w04","de":"danke","t":"grazie","pic":"🙏"},
+        {"id":"basics.w05","de":"ja","t":"sì","pic":"✅"},
+        {"id":"basics.w06","de":"nein","t":"no","pic":"❌"},
+        {"id":"basics.w07","de":"Entschuldigung","t":["scusi","mi scusi","scusa","permesso"]},
+        {"id":"basics.w08","de":"es tut mir leid","t":"mi dispiace"},
+        {"id":"basics.w09","de":"guten Morgen","t":"buongiorno","pic":"🌅"},
+        {"id":"basics.w10","de":"guten Abend","t":"buonasera"},
+        {"id":"basics.w11","de":"gute Nacht","t":"buonanotte","pic":"🌙"},
+        {"id":"basics.w12","de":"gern geschehen","t":["prego","di niente","di nulla"]},
+        {"id":"basics.w13","de":"in Ordnung","t":["va bene","d'accordo","ok"]}
+      ],
+      "sentences": [
+        {"id":"basics.s01","de":["Hallo, wie geht es dir?","Hallo, wie geht's?","Hallo, wie geht es Ihnen?"],"t":["Ciao, come stai?","Ciao, come va?","Salve, come sta?"]},
+        {"id":"basics.s02","de":"Mir geht es gut, danke.","t":["Sto bene, grazie.","Bene, grazie."]},
+        {"id":"basics.s03","de":"Guten Morgen!","t":"Buongiorno!"},
+        {"id":"basics.s04","de":["Vielen Dank!","Danke schön!"],"t":["Grazie mille!","Molte grazie!"]},
+        {"id":"basics.s05","de":"Entschuldigung, sprechen Sie Deutsch?","t":["Scusi, parla tedesco?","Mi scusi, parla tedesco?"]},
+        {"id":"basics.s06","de":"Ja, bitte.","t":["Sì, grazie.","Sì, per favore."]},
+        {"id":"basics.s07","de":"Nein, danke.","t":"No, grazie."},
+        {"id":"basics.s08","de":"Gern geschehen.","t":["Prego.","Di niente."]},
+        {"id":"basics.s09","de":"Es tut mir leid.","t":"Mi dispiace."},
+        {"id":"basics.s10","de":"Bis morgen!","t":"A domani!"},
+        {"id":"basics.s11","de":"Einen schönen Tag noch!","t":"Buona giornata!"}
+      ]
+    },
+    {
+      "id": "talk", "title": "Sich verständigen", "level": "A1", "colors": ["#8C3FC8","#682C99"],
+      "desc": "Vorstellen, nachfragen und sagen, wenn du etwas nicht verstehst.",
+      "words": [
+        {"id":"talk.w01","de":"ich","t":"io"},
+        {"id":"talk.w02","de":"du / Sie","t":["tu","Lei"]},
+        {"id":"talk.w03","de":"der Name","t":"il nome"},
+        {"id":"talk.w04","de":"Deutschland","t":"la Germania"},
+        {"id":"talk.w05","de":"Deutsch","t":["il tedesco","tedesco"]},
+        {"id":"talk.w06","de":"sprechen","t":"parlare"},
+        {"id":"talk.w07","de":"verstehen","t":"capire"},
+        {"id":"talk.w08","de":"langsam","t":["piano","lentamente"],"pic":"🐢"},
+        {"id":"talk.w09","de":"wiederholen","t":"ripetere"},
+        {"id":"talk.w10","de":"ein bisschen","t":["un po'","un poco"]},
+        {"id":"talk.w11","de":"wo","t":"dove"},
+        {"id":"talk.w12","de":"was","t":["che cosa","cosa","che"]},
+        {"id":"talk.w13","de":"wie","t":"come"},
+        {"id":"talk.w14","de":"warum","t":"perché"}
+      ],
+      "sentences": [
+        {"id":"talk.s01","de":["Ich heiße Anna.","Mein Name ist Anna."],"t":["Mi chiamo Anna.","Sono Anna."]},
+        {"id":"talk.s02","de":["Wie heißt du?","Wie heißen Sie?","Wie ist dein Name?"],"t":["Come ti chiami?","Come si chiama?"]},
+        {"id":"talk.s03","de":"Ich komme aus Deutschland.","t":["Vengo dalla Germania.","Sono tedesco.","Sono tedesca."]},
+        {"id":"talk.s04","de":["Woher kommst du?","Woher kommen Sie?"],"t":["Di dove sei?","Da dove vieni?","Di dov'è?"]},
+        {"id":"talk.s05","de":"Ich spreche ein bisschen Englisch.","t":["Parlo un po' di inglese.","Parlo un po' inglese."]},
+        {"id":"talk.s06","de":["Ich verstehe nicht.","Ich verstehe das nicht."],"t":"Non capisco."},
+        {"id":"talk.s07","de":"Können Sie das bitte wiederholen?","t":["Può ripetere, per favore?","Può ripeterlo, per favore?"]},
+        {"id":"talk.s08","de":"Bitte sprechen Sie langsamer.","t":["Parli più piano, per favore.","Per favore, parli più lentamente."]},
+        {"id":"talk.s09","de":"Was bedeutet das?","t":["Che cosa significa?","Cosa vuol dire?","Che significa?"]},
+        {"id":"talk.s10","de":"Wie sagt man das auf Englisch?","t":"Come si dice in inglese?"},
+        {"id":"talk.s11","de":["Freut mich!","Freut mich, dich kennenzulernen."],"t":["Piacere!","Molto piacere!"]}
+      ]
+    },
+    {
+      "id": "money", "title": "Zahlen & Bezahlen", "level": "A1", "colors": ["#0E8C80","#08665D"],
+      "desc": "Preise verstehen, bezahlen, mit Karte oder bar.",
+      "words": [
+        {"id":"money.w01","de":"eins","t":"uno"},
+        {"id":"money.w02","de":"zwei","t":"due"},
+        {"id":"money.w03","de":"drei","t":"tre"},
+        {"id":"money.w04","de":"vier","t":"quattro"},
+        {"id":"money.w05","de":"fünf","t":"cinque"},
+        {"id":"money.w06","de":"zehn","t":"dieci"},
+        {"id":"money.w07","de":"zwanzig","t":"venti"},
+        {"id":"money.w08","de":"hundert","t":"cento"},
+        {"id":"money.w09","de":"der Euro","t":"l'euro","pic":"💶"},
+        {"id":"money.w10","de":"das Geld","t":["i soldi","il denaro"],"pic":"💰"},
+        {"id":"money.w11","de":"die Karte","t":["la carta","la carta di credito"],"pic":"💳"},
+        {"id":"money.w12","de":"die Quittung","t":["lo scontrino","la ricevuta"],"pic":"🧾"},
+        {"id":"money.w13","de":"teuer","t":"caro"},
+        {"id":"money.w14","de":"billig","t":"economico"}
+      ],
+      "sentences": [
+        {"id":"money.s01","de":"Wie viel kostet das?","t":["Quanto costa?","Quanto costa questo?"]},
+        {"id":"money.s02","de":"Das kostet zehn Euro.","t":"Costa dieci euro."},
+        {"id":"money.s03","de":"Das ist zu teuer.","t":"È troppo caro."},
+        {"id":"money.s04","de":"Kann ich mit Karte zahlen?","t":["Posso pagare con la carta?","Posso pagare con carta?"]},
+        {"id":"money.s05","de":"Ich zahle bar.","t":"Pago in contanti."},
+        {"id":"money.s06","de":"Haben Sie etwas Günstigeres?","t":"Ha qualcosa di più economico?"},
+        {"id":"money.s07","de":"Die Quittung, bitte.","t":["Lo scontrino, per favore.","La ricevuta, per favore."]},
+        {"id":"money.s08","de":"Ich möchte zwei, bitte.","t":["Ne vorrei due, per favore.","Due, per favore."]},
+        {"id":"money.s09","de":"Wo ist ein Geldautomat?","t":["Dov'è un bancomat?","Dove c'è un bancomat?"]},
+        {"id":"money.s10","de":["Stimmt so.","Behalten Sie den Rest."],"t":"Tenga il resto."}
+      ]
+    },
+    {
+      "id": "time", "title": "Uhrzeit & Tage", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Öffnungszeiten, Uhrzeit und Verabredungen.",
+      "words": [
+        {"id":"time.w01","de":"heute","t":"oggi"},
+        {"id":"time.w02","de":"morgen","t":"domani"},
+        {"id":"time.w03","de":"gestern","t":"ieri"},
+        {"id":"time.w04","de":"jetzt","t":["adesso","ora"]},
+        {"id":"time.w05","de":"später","t":["più tardi","dopo"]},
+        {"id":"time.w06","de":"früh","t":"presto"},
+        {"id":"time.w07","de":"die Stunde","t":"l'ora"},
+        {"id":"time.w08","de":"die Minute","t":"il minuto"},
+        {"id":"time.w09","de":"der Tag","t":"il giorno"},
+        {"id":"time.w10","de":"die Woche","t":"la settimana"},
+        {"id":"time.w11","de":"Samstag","t":"sabato"},
+        {"id":"time.w12","de":"Sonntag","t":"domenica"},
+        {"id":"time.w13","de":"offen","t":"aperto"},
+        {"id":"time.w14","de":"geschlossen","t":"chiuso"},
+        {"id":"time.w15","de":"die Uhr","t":"l'orologio","pic":"🕒"}
+      ],
+      "sentences": [
+        {"id":"time.s01","de":["Wie spät ist es?","Wie viel Uhr ist es?"],"t":["Che ore sono?","Che ora è?"]},
+        {"id":"time.s02","de":"Es ist drei Uhr.","t":"Sono le tre."},
+        {"id":"time.s03","de":"Wann öffnet das Museum?","t":["Quando apre il museo?","A che ora apre il museo?"]},
+        {"id":"time.s04","de":"Das Geschäft ist heute geschlossen.","t":["Il negozio oggi è chiuso.","Oggi il negozio è chiuso."]},
+        {"id":"time.s05","de":"Ist es heute offen?","t":["È aperto oggi?","Oggi è aperto?"]},
+        {"id":"time.s06","de":"Bis später!","t":["A più tardi!","A dopo!"]},
+        {"id":"time.s07","de":"Wir bleiben eine Woche.","t":["Restiamo una settimana.","Rimaniamo una settimana."]},
+        {"id":"time.s08","de":"Der Bus kommt in zehn Minuten.","t":["L'autobus arriva tra dieci minuti.","L'autobus arriva fra dieci minuti."]},
+        {"id":"time.s09","de":"Heute ist Samstag.","t":"Oggi è sabato."},
+        {"id":"time.s10","de":"Ich habe jetzt keine Zeit.","t":["Adesso non ho tempo.","Ora non ho tempo."]}
+      ]
+    },
+    {
+      "id": "food", "title": "Café & Restaurant", "level": "A1", "colors": ["#E2671B","#AE4C0F"],
+      "desc": "Tisch bestellen, Essen wählen, Allergien nennen, zahlen.",
+      "words": [
+        {"id":"food.w01","de":"der Kaffee","t":"il caffè","pic":"☕"},
+        {"id":"food.w02","de":"der Tee","t":"il tè","pic":"🍵"},
+        {"id":"food.w03","de":"das Wasser","t":"l'acqua","pic":"💧"},
+        {"id":"food.w04","de":"das Bier","t":"la birra","pic":"🍺"},
+        {"id":"food.w05","de":"der Wein","t":"il vino","pic":"🍷"},
+        {"id":"food.w06","de":"das Brot","t":"il pane","pic":"🍞"},
+        {"id":"food.w07","de":"das Hähnchen","t":"il pollo","pic":"🍗"},
+        {"id":"food.w08","de":"der Fisch","t":"il pesce","pic":"🐟"},
+        {"id":"food.w09","de":"der Salat","t":"l'insalata","pic":"🥗"},
+        {"id":"food.w10","de":"die Speisekarte","t":["il menù","il menu"]},
+        {"id":"food.w11","de":"der Tisch","t":"il tavolo"},
+        {"id":"food.w12","de":"die Rechnung","t":"il conto"},
+        {"id":"food.w13","de":"das Frühstück","t":"la colazione"},
+        {"id":"food.w14","de":"das Abendessen","t":"la cena"},
+        {"id":"food.w15","de":"vegetarisch","t":["vegetariano","vegetariana"]},
+        {"id":"food.w16","de":"lecker","t":["buonissimo","delizioso","buono"]}
+      ],
+      "sentences": [
+        {"id":"food.s01","de":"Einen Tisch für zwei, bitte.","t":"Un tavolo per due, per favore."},
+        {"id":"food.s02","de":"Die Speisekarte, bitte.","t":["Il menù, per favore.","Il menu, per favore."]},
+        {"id":"food.s03","de":["Ich hätte gern einen Kaffee.","Ich möchte einen Kaffee."],"t":["Vorrei un caffè.","Prendo un caffè."]},
+        {"id":"food.s04","de":"Ein Bier, bitte.","t":"Una birra, per favore."},
+        {"id":"food.s05","de":["Ich bin Vegetarier.","Ich bin Vegetarierin."],"t":["Sono vegetariano.","Sono vegetariana."]},
+        {"id":"food.s06","de":"Ich bin allergisch gegen Nüsse.","t":["Sono allergico alla frutta secca.","Sono allergica alla frutta secca.","Sono allergico alle noci."]},
+        {"id":"food.s07","de":"Was empfehlen Sie?","t":["Che cosa mi consiglia?","Cosa consiglia?"]},
+        {"id":"food.s08","de":"Die Rechnung, bitte.","t":"Il conto, per favore."},
+        {"id":"food.s09","de":"Das Essen ist sehr lecker.","t":["Il cibo è buonissimo.","Si mangia benissimo."]},
+        {"id":"food.s10","de":"Noch ein Wasser, bitte.","t":["Un'altra acqua, per favore.","Ancora un'acqua, per favore."]}
+      ]
+    },
+    {
+      "id": "shop", "title": "Einkaufen", "level": "A1", "colors": ["#D2477F","#A1305D"],
+      "desc": "Supermarkt, Kleidung, Souvenirs: finden, anprobieren, kaufen.",
+      "words": [
+        {"id":"shop.w01","de":"der Supermarkt","t":"il supermercato","pic":"🛒"},
+        {"id":"shop.w02","de":"das Geschäft","t":"il negozio","pic":"🏪"},
+        {"id":"shop.w03","de":"die Tüte","t":["la busta","il sacchetto"],"pic":"🛍️"},
+        {"id":"shop.w04","de":"die Flasche","t":"la bottiglia","pic":"🍾"},
+        {"id":"shop.w05","de":"das Obst","t":"la frutta","pic":"🍎"},
+        {"id":"shop.w06","de":"die Sonnencreme","t":"la crema solare","pic":"🧴"},
+        {"id":"shop.w07","de":"das Souvenir","t":["il souvenir","il ricordo"],"pic":"🎁"},
+        {"id":"shop.w08","de":"die Größe","t":"la taglia"},
+        {"id":"shop.w09","de":"kaufen","t":"comprare"},
+        {"id":"shop.w10","de":"suchen","t":"cercare"},
+        {"id":"shop.w11","de":"anprobieren","t":"provare"},
+        {"id":"shop.w12","de":"groß","t":"grande"},
+        {"id":"shop.w13","de":"klein","t":"piccolo"}
+      ],
+      "sentences": [
+        {"id":"shop.s01","de":"Ich suche einen Supermarkt.","t":["Cerco un supermercato.","Sto cercando un supermercato."]},
+        {"id":"shop.s02","de":"Haben Sie das in Größe M?","t":["Ce l'ha nella taglia M?","Ce l'avete nella taglia M?"]},
+        {"id":"shop.s03","de":"Ich schaue nur, danke.","t":["Sto solo guardando, grazie.","Do solo un'occhiata, grazie."]},
+        {"id":"shop.s04","de":"Kann ich das anprobieren?","t":["Posso provarlo?","Posso provare questo?"]},
+        {"id":"shop.s05","de":"Ich nehme es.","t":"Lo prendo."},
+        {"id":"shop.s06","de":"Brauchen Sie eine Tüte?","t":["Le serve una busta?","Vuole una busta?"]},
+        {"id":"shop.s07","de":"Wann schließt der Laden?","t":["Quando chiude il negozio?","A che ora chiude il negozio?"]},
+        {"id":"shop.s08","de":"Eine Flasche Wasser, bitte.","t":"Una bottiglia d'acqua, per favore."},
+        {"id":"shop.s09","de":"Wo finde ich Sonnencreme?","t":"Dove trovo la crema solare?"},
+        {"id":"shop.s10","de":"Das ist zu klein.","t":"È troppo piccolo."}
+      ]
+    },
+    {
+      "id": "way", "title": "Nach dem Weg fragen", "level": "A1", "colors": ["#4E8A1C","#386614"],
+      "desc": "Links, rechts, geradeaus: Wege erfragen und verstehen.",
+      "words": [
+        {"id":"way.w01","de":"links","t":["a sinistra","sinistra"]},
+        {"id":"way.w02","de":"rechts","t":["a destra","destra"]},
+        {"id":"way.w03","de":"geradeaus","t":["dritto","sempre dritto"]},
+        {"id":"way.w04","de":"nah","t":"vicino"},
+        {"id":"way.w05","de":"weit","t":"lontano"},
+        {"id":"way.w06","de":"die Straße","t":["la strada","la via"]},
+        {"id":"way.w07","de":"die Ecke","t":"l'angolo"},
+        {"id":"way.w08","de":"die Toilette","t":["il bagno","la toilette"],"pic":"🚻"},
+        {"id":"way.w09","de":"der Strand","t":"la spiaggia","pic":"🏖️"},
+        {"id":"way.w10","de":"die Altstadt","t":"il centro storico"},
+        {"id":"way.w11","de":"der Stadtplan","t":["la mappa","la piantina"],"pic":"🗺️"},
+        {"id":"way.w12","de":"die Kirche","t":"la chiesa","pic":"⛪"},
+        {"id":"way.w13","de":"das Museum","t":"il museo","pic":"🏛️"}
+      ],
+      "sentences": [
+        {"id":"way.s01","de":"Entschuldigung, wo ist die Toilette?","t":["Scusi, dov'è il bagno?","Mi scusi, dov'è il bagno?"]},
+        {"id":"way.s02","de":"Wie komme ich zum Strand?","t":["Come arrivo alla spiaggia?","Come si arriva alla spiaggia?"]},
+        {"id":"way.s03","de":["Gehen Sie geradeaus.","Geh geradeaus."],"t":["Vada sempre dritto.","Vada dritto."]},
+        {"id":"way.s04","de":"Biegen Sie an der Ecke links ab.","t":["All'angolo giri a sinistra.","Giri a sinistra all'angolo."]},
+        {"id":"way.s05","de":"Ist es weit?","t":"È lontano?"},
+        {"id":"way.s06","de":"Es ist ganz in der Nähe.","t":["È qui vicino.","È molto vicino."]},
+        {"id":"way.s07","de":"Können Sie mir das auf der Karte zeigen?","t":["Me lo può mostrare sulla mappa?","Può mostrarmelo sulla piantina?"]},
+        {"id":"way.s08","de":"Ich habe mich verlaufen.","t":["Mi sono perso.","Mi sono persa."]},
+        {"id":"way.s09","de":"Das Museum ist rechts.","t":"Il museo è a destra."},
+        {"id":"way.s10","de":"Wo ist die Altstadt?","t":"Dov'è il centro storico?"}
+      ]
+    },
+    {
+      "id": "family", "title": "Familie & Freunde", "level": "A1", "colors": ["#E0457B","#B02F5E"],
+      "desc": "Über die Familie sprechen und Freunde vorstellen.",
+      "words": [
+        {"id":"family.w01","de":"die Familie","t":"la famiglia","pic":"👨‍👩‍👧"},
+        {"id":"family.w02","de":"die Mutter","t":["la madre","la mamma"],"pic":"👩"},
+        {"id":"family.w03","de":"der Vater","t":["il padre","il papà"],"pic":"👨"},
+        {"id":"family.w04","de":"der Bruder","t":"il fratello"},
+        {"id":"family.w05","de":"die Schwester","t":"la sorella"},
+        {"id":"family.w06","de":"das Kind","t":["il bambino","la bambina"],"pic":"🧒"},
+        {"id":"family.w07","de":"der Sohn","t":"il figlio"},
+        {"id":"family.w08","de":"die Tochter","t":"la figlia"},
+        {"id":"family.w09","de":"die Eltern","t":"i genitori"},
+        {"id":"family.w10","de":"der Ehemann","t":"il marito"},
+        {"id":"family.w11","de":"die Ehefrau","t":"la moglie"},
+        {"id":"family.w12","de":"der Freund / die Freundin","t":["l'amico","l'amica"],"pic":"🤝"},
+        {"id":"family.w13","de":"die Großeltern","t":"i nonni","pic":"👵"},
+        {"id":"family.w14","de":"verheiratet","t":["sposato","sposata"],"pic":"💍"}
+      ],
+      "sentences": [
+        {"id":"family.s01","de":"Das ist meine Familie.","t":["Questa è la mia famiglia.","Ecco la mia famiglia."]},
+        {"id":"family.s02","de":"Ich habe einen Bruder und eine Schwester.","t":"Ho un fratello e una sorella."},
+        {"id":"family.s03","de":["Hast du Kinder?","Haben Sie Kinder?"],"t":["Hai figli?","Ha figli?"]},
+        {"id":"family.s04","de":"Wir haben zwei Kinder.","t":["Abbiamo due figli.","Abbiamo due bambini."]},
+        {"id":"family.s05","de":"Meine Tochter ist sechs Jahre alt.","t":"Mia figlia ha sei anni."},
+        {"id":"family.s06","de":["Bist du verheiratet?","Sind Sie verheiratet?"],"t":["Sei sposato?","Sei sposata?","È sposato?","È sposata?"]},
+        {"id":"family.s07","de":"Das ist mein Freund Paul.","t":["Questo è il mio amico Paul.","Lui è il mio amico Paul."]},
+        {"id":"family.s08","de":"Meine Eltern wohnen in Berlin.","t":["I miei genitori abitano a Berlino.","I miei genitori vivono a Berlino."]},
+        {"id":"family.s09","de":"Mein Vater arbeitet viel.","t":["Mio padre lavora molto.","Mio padre lavora tanto."]},
+        {"id":"family.s10","de":"Wir besuchen meine Großeltern.","t":["Andiamo a trovare i miei nonni.","Visitiamo i miei nonni."]}
+      ]
+    },
+    {
+      "id": "clothes", "title": "Farben & Kleidung", "level": "A1", "colors": ["#7C3AED","#5B21B6"],
+      "desc": "Farben benennen und Kleidung kaufen.",
+      "words": [
+        {"id":"clothes.w01","de":"rot","t":["rosso","rossa"],"pic":"🔴"},
+        {"id":"clothes.w02","de":"blau","t":["blu","azzurro"],"pic":"🔵"},
+        {"id":"clothes.w03","de":"grün","t":"verde","pic":"🟢"},
+        {"id":"clothes.w04","de":"gelb","t":["giallo","gialla"],"pic":"🟡"},
+        {"id":"clothes.w05","de":"schwarz","t":["nero","nera"],"pic":"⚫"},
+        {"id":"clothes.w06","de":"weiß","t":["bianco","bianca"],"pic":"⚪"},
+        {"id":"clothes.w07","de":"das T-Shirt","t":["la maglietta","la t-shirt"],"pic":"👕"},
+        {"id":"clothes.w08","de":"die Hose","t":"i pantaloni","pic":"👖"},
+        {"id":"clothes.w09","de":"das Kleid","t":["il vestito","l'abito"],"pic":"👗"},
+        {"id":"clothes.w10","de":"die Schuhe","t":"le scarpe","pic":"👟"},
+        {"id":"clothes.w11","de":"die Jacke","t":["la giacca","il giubbotto"],"pic":"🧥"},
+        {"id":"clothes.w12","de":"die Größe","t":"la taglia"},
+        {"id":"clothes.w13","de":"anprobieren","t":"provare"}
+      ],
+      "sentences": [
+        {"id":"clothes.s01","de":"Ich suche eine Jacke.","t":["Cerco una giacca.","Sto cercando una giacca."]},
+        {"id":"clothes.s02","de":"Haben Sie das in Blau?","t":["Ce l'ha in blu?","Ce l'avete in blu?"]},
+        {"id":"clothes.s03","de":"Welche Größe haben Sie?","t":["Che taglia porta?","Che taglia ha?"]},
+        {"id":"clothes.s04","de":"Kann ich das anprobieren?","t":["Posso provarlo?","Posso provarla?"]},
+        {"id":"clothes.s05","de":"Die Hose ist zu klein.","t":["I pantaloni sono troppo piccoli.","I pantaloni sono troppo stretti."]},
+        {"id":"clothes.s06","de":"Das Kleid ist sehr schön.","t":["Il vestito è molto bello.","Il vestito è bellissimo."]},
+        {"id":"clothes.s07","de":"Ich nehme die schwarzen Schuhe.","t":"Prendo le scarpe nere."},
+        {"id":"clothes.s08","de":"Meine Lieblingsfarbe ist Grün.","t":"Il mio colore preferito è il verde."},
+        {"id":"clothes.s09","de":"Das T-Shirt ist weiß.","t":"La maglietta è bianca."},
+        {"id":"clothes.s10","de":"Gibt es eine Umkleidekabine?","t":["C'è un camerino?","Avete un camerino?"]}
+      ]
+    },
+    {
+      "id": "home", "title": "Zuhause & Tagesablauf", "level": "A1", "colors": ["#0E7490","#155E75"],
+      "desc": "Die Wohnung beschreiben und vom Tag erzählen.",
+      "words": [
+        {"id":"home.w01","de":"das Haus","t":"la casa","pic":"🏠"},
+        {"id":"home.w02","de":"die Wohnung","t":"l'appartamento","pic":"🏢"},
+        {"id":"home.w03","de":"die Küche","t":"la cucina","pic":"🍳"},
+        {"id":"home.w04","de":"das Schlafzimmer","t":"la camera da letto","pic":"🛏️"},
+        {"id":"home.w05","de":"das Bad","t":"il bagno","pic":"🛁"},
+        {"id":"home.w06","de":"aufstehen","t":"alzarsi"},
+        {"id":"home.w07","de":"frühstücken","t":"fare colazione","pic":"🥐"},
+        {"id":"home.w08","de":"arbeiten","t":"lavorare","pic":"💼"},
+        {"id":"home.w09","de":"kochen","t":"cucinare"},
+        {"id":"home.w10","de":"schlafen","t":"dormire","pic":"😴"},
+        {"id":"home.w11","de":"morgens","t":["la mattina","di mattina"]},
+        {"id":"home.w12","de":"abends","t":["la sera","di sera"]},
+        {"id":"home.w13","de":"jeden Tag","t":["ogni giorno","tutti i giorni"]}
+      ],
+      "sentences": [
+        {"id":"home.s01","de":"Ich wohne in einer kleinen Wohnung.","t":["Abito in un piccolo appartamento.","Vivo in un appartamento piccolo."]},
+        {"id":"home.s02","de":"Die Küche ist groß.","t":"La cucina è grande."},
+        {"id":"home.s03","de":"Ich stehe um sieben Uhr auf.","t":"Mi alzo alle sette."},
+        {"id":"home.s04","de":"Morgens trinke ich Kaffee.","t":["La mattina bevo il caffè.","Di mattina bevo caffè."]},
+        {"id":"home.s05","de":"Ich arbeite von neun bis fünf.","t":"Lavoro dalle nove alle cinque."},
+        {"id":"home.s06","de":"Abends koche ich für meine Familie.","t":["La sera cucino per la mia famiglia.","Di sera cucino per la mia famiglia."]},
+        {"id":"home.s07","de":"Wo ist das Bad?","t":"Dov'è il bagno?"},
+        {"id":"home.s08","de":"Ich gehe um elf Uhr schlafen.","t":["Vado a dormire alle undici.","Vado a letto alle undici."]},
+        {"id":"home.s09","de":"Am Wochenende schlafe ich lange.","t":["Nel fine settimana dormo a lungo.","Il fine settimana dormo fino a tardi."]},
+        {"id":"home.s10","de":"Das Haus hat einen Garten.","t":"La casa ha un giardino."}
+      ]
+    },
+    {
+      "id": "transport", "title": "Bus, Bahn & Taxi", "level": "A2", "colors": ["#4B50D6","#3438A6"],
+      "desc": "Tickets kaufen, Abfahrten finden, mit dem Taxi fahren.",
+      "words": [
+        {"id":"transport.w01","de":"der Zug","t":"il treno","pic":"🚆"},
+        {"id":"transport.w02","de":"der Bus","t":["l'autobus","il pullman"],"pic":"🚌"},
+        {"id":"transport.w03","de":"das Taxi","t":"il taxi","pic":"🚕"},
+        {"id":"transport.w04","de":"das Auto","t":["la macchina","l'auto","la vettura"],"pic":"🚗"},
+        {"id":"transport.w05","de":"der Flughafen","t":"l'aeroporto","pic":"✈️"},
+        {"id":"transport.w06","de":"der Bahnhof","t":"la stazione"},
+        {"id":"transport.w07","de":"die Haltestelle","t":"la fermata"},
+        {"id":"transport.w08","de":"die Fahrkarte","t":"il biglietto","pic":"🎫"},
+        {"id":"transport.w09","de":"das Gleis","t":"il binario"},
+        {"id":"transport.w10","de":"die Abfahrt","t":"la partenza"},
+        {"id":"transport.w11","de":"die Ankunft","t":"l'arrivo"},
+        {"id":"transport.w12","de":"die Verspätung","t":"il ritardo"},
+        {"id":"transport.w13","de":"der Koffer","t":"la valigia","pic":"🧳"}
+      ],
+      "sentences": [
+        {"id":"transport.s01","de":"Eine Fahrkarte zum Flughafen, bitte.","t":"Un biglietto per l'aeroporto, per favore."},
+        {"id":"transport.s02","de":"Wann fährt der nächste Zug?","t":["Quando parte il prossimo treno?","A che ora parte il prossimo treno?"]},
+        {"id":"transport.s03","de":"Von welchem Gleis fährt der Zug?","t":["Da quale binario parte il treno?","Da che binario parte il treno?"]},
+        {"id":"transport.s04","de":"Hält dieser Bus am Bahnhof?","t":["Questo autobus si ferma alla stazione?","Questo autobus ferma alla stazione?"]},
+        {"id":"transport.s05","de":"Der Zug hat Verspätung.","t":"Il treno è in ritardo."},
+        {"id":"transport.s06","de":"Zum Flughafen, bitte.","t":"All'aeroporto, per favore."},
+        {"id":"transport.s07","de":"Wo ist die Bushaltestelle?","t":"Dov'è la fermata dell'autobus?"},
+        {"id":"transport.s08","de":"Ich möchte ein Auto mieten.","t":["Vorrei noleggiare una macchina.","Vorrei noleggiare un'auto."]},
+        {"id":"transport.s09","de":"Mein Koffer ist nicht angekommen.","t":"La mia valigia non è arrivata."},
+        {"id":"transport.s10","de":"Muss ich umsteigen?","t":["Devo cambiare treno?","Devo cambiare?"]}
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "level": "A2", "colors": ["#B7791F","#8A5A12"],
+      "desc": "Einchecken, WLAN, Frühstück und kleine Probleme.",
+      "words": [
+        {"id":"hotel.w01","de":"das Hotel","t":["l'albergo","l'hotel"],"pic":"🏨"},
+        {"id":"hotel.w02","de":"das Zimmer","t":["la camera","la stanza"]},
+        {"id":"hotel.w03","de":"der Schlüssel","t":"la chiave","pic":"🔑"},
+        {"id":"hotel.w04","de":"die Reservierung","t":"la prenotazione"},
+        {"id":"hotel.w05","de":"das Bett","t":"il letto","pic":"🛏️"},
+        {"id":"hotel.w06","de":"die Dusche","t":"la doccia","pic":"🚿"},
+        {"id":"hotel.w07","de":"das Handtuch","t":"l'asciugamano"},
+        {"id":"hotel.w08","de":"das WLAN","t":["il wifi","il wi-fi"],"pic":"📶"},
+        {"id":"hotel.w09","de":"das Passwort","t":"la password"},
+        {"id":"hotel.w10","de":"der Aufzug","t":"l'ascensore","pic":"🛗"},
+        {"id":"hotel.w11","de":"die Nacht","t":"la notte","pic":"🌙"},
+        {"id":"hotel.w12","de":"der Reisepass","t":"il passaporto","pic":"🛂"},
+        {"id":"hotel.w13","de":"die Klimaanlage","t":"l'aria condizionata","pic":"❄️"},
+        {"id":"hotel.w14","de":"laut","t":"rumoroso"}
+      ],
+      "sentences": [
+        {"id":"hotel.s01","de":"Ich habe eine Reservierung.","t":["Ho una prenotazione.","Ho prenotato."]},
+        {"id":"hotel.s02","de":"Haben Sie ein Zimmer frei?","t":["Avete una camera libera?","Ha una camera libera?"]},
+        {"id":"hotel.s03","de":"Für zwei Nächte, bitte.","t":"Per due notti, per favore."},
+        {"id":"hotel.s04","de":"Wie ist das WLAN-Passwort?","t":["Qual è la password del wifi?","Qual è la password del wi-fi?"]},
+        {"id":"hotel.s05","de":"Ist das Frühstück inklusive?","t":["La colazione è inclusa?","È inclusa la colazione?"]},
+        {"id":"hotel.s06","de":"Die Dusche funktioniert nicht.","t":"La doccia non funziona."},
+        {"id":"hotel.s07","de":"Können wir noch Handtücher bekommen?","t":["Possiamo avere altri asciugamani?","Potremmo avere altri asciugamani?"]},
+        {"id":"hotel.s08","de":"Wann ist der Check-out?","t":["A che ora è il check-out?","Quando è il check-out?"]},
+        {"id":"hotel.s09","de":"Ich habe meinen Schlüssel verloren.","t":["Ho perso la chiave.","Ho perso la mia chiave."]},
+        {"id":"hotel.s10","de":"Das Zimmer ist zu laut.","t":"La camera è troppo rumorosa."}
+      ]
+    },
+    {
+      "id": "help", "title": "Notfall & Gesundheit", "level": "A2", "colors": ["#C93A3A","#962828"],
+      "desc": "Arzt, Apotheke, Polizei: Hilfe holen, wenn es darauf ankommt.",
+      "words": [
+        {"id":"help.w01","de":"Hilfe","t":"aiuto","pic":"🆘"},
+        {"id":"help.w02","de":"der Arzt","t":["il medico","il dottore"],"pic":"🩺"},
+        {"id":"help.w03","de":"das Krankenhaus","t":"l'ospedale","pic":"🏥"},
+        {"id":"help.w04","de":"die Apotheke","t":"la farmacia","pic":"💊"},
+        {"id":"help.w05","de":"die Polizei","t":"la polizia","pic":"🚓"},
+        {"id":"help.w06","de":"der Krankenwagen","t":"l'ambulanza","pic":"🚑"},
+        {"id":"help.w07","de":"krank","t":["malato","malata"]},
+        {"id":"help.w08","de":"der Schmerz","t":"il dolore"},
+        {"id":"help.w09","de":"der Kopf","t":"la testa"},
+        {"id":"help.w10","de":"der Bauch","t":["la pancia","lo stomaco"]},
+        {"id":"help.w11","de":"das Fieber","t":"la febbre","pic":"🤒"},
+        {"id":"help.w12","de":"der Notfall","t":"l'emergenza"},
+        {"id":"help.w13","de":"die Tablette","t":["la pastiglia","la compressa","la pillola"]},
+        {"id":"help.w14","de":"gestohlen","t":["rubato","rubata"]}
+      ],
+      "sentences": [
+        {"id":"help.s01","de":"Hilfe! Rufen Sie einen Krankenwagen!","t":"Aiuto! Chiami un'ambulanza!"},
+        {"id":"help.s02","de":"Ich brauche einen Arzt.","t":["Ho bisogno di un medico.","Mi serve un medico."]},
+        {"id":"help.s03","de":"Wo ist die nächste Apotheke?","t":"Dov'è la farmacia più vicina?"},
+        {"id":"help.s04","de":"Ich habe Kopfschmerzen.","t":"Ho mal di testa."},
+        {"id":"help.s05","de":"Mir ist schlecht.","t":["Mi sento male.","Ho la nausea."]},
+        {"id":"help.s06","de":"Mein Handy wurde gestohlen.","t":["Mi hanno rubato il cellulare.","Il mio cellulare è stato rubato."]},
+        {"id":"help.s07","de":"Rufen Sie die Polizei!","t":"Chiami la polizia!"},
+        {"id":"help.s08","de":"Ich habe Fieber.","t":"Ho la febbre."},
+        {"id":"help.s09","de":"Ich bin allergisch gegen Penicillin.","t":["Sono allergico alla penicillina.","Sono allergica alla penicillina."]},
+        {"id":"help.s10","de":"Es ist ein Notfall.","t":"È un'emergenza."},
+        {"id":"help.s11","de":"Wo tut es weh?","t":["Dove le fa male?","Dove ti fa male?"]}
+      ]
+    },
+    {
+      "id": "leisure", "title": "Wetter & Freizeit", "level": "A2", "colors": ["#0F8FA6","#0B6A7B"],
+      "desc": "Über das Wetter reden, Ausflüge planen, Tickets kaufen.",
+      "words": [
+        {"id":"leisure.w01","de":"das Wetter","t":"il tempo"},
+        {"id":"leisure.w02","de":"die Sonne","t":"il sole","pic":"☀️"},
+        {"id":"leisure.w03","de":"der Regen","t":"la pioggia","pic":"🌧️"},
+        {"id":"leisure.w04","de":"der Wind","t":"il vento","pic":"💨"},
+        {"id":"leisure.w05","de":"heiß","t":"caldo"},
+        {"id":"leisure.w06","de":"kalt","t":"freddo"},
+        {"id":"leisure.w07","de":"schwimmen","t":"nuotare","pic":"🏊"},
+        {"id":"leisure.w08","de":"wandern","t":["fare escursioni","camminare"]},
+        {"id":"leisure.w09","de":"der Ausflug","t":["la gita","l'escursione"]},
+        {"id":"leisure.w10","de":"das Meer","t":"il mare","pic":"🌊"},
+        {"id":"leisure.w11","de":"der Berg","t":"la montagna","pic":"⛰️"},
+        {"id":"leisure.w12","de":"der Regenschirm","t":"l'ombrello","pic":"☂️"},
+        {"id":"leisure.w13","de":"die Eintrittskarte","t":"il biglietto","pic":"🎟️"}
+      ],
+      "sentences": [
+        {"id":"leisure.s01","de":"Wie ist das Wetter heute?","t":["Che tempo fa oggi?","Com'è il tempo oggi?"]},
+        {"id":"leisure.s02","de":"Es ist sonnig und warm.","t":["C'è il sole e fa caldo.","È soleggiato e fa caldo."]},
+        {"id":"leisure.s03","de":"Morgen soll es regnen.","t":["Domani dovrebbe piovere.","Domani pioverà."]},
+        {"id":"leisure.s04","de":"Lass uns an den Strand gehen!","t":["Andiamo in spiaggia!","Andiamo al mare!"]},
+        {"id":"leisure.s05","de":"Kann man hier schwimmen?","t":["Si può nuotare qui?","Qui si può fare il bagno?"]},
+        {"id":"leisure.s06","de":"Wir möchten einen Ausflug in die Berge machen.","t":"Vorremmo fare una gita in montagna."},
+        {"id":"leisure.s07","de":"Zwei Eintrittskarten, bitte.","t":"Due biglietti, per favore."},
+        {"id":"leisure.s08","de":"Es ist zu kalt zum Baden.","t":"Fa troppo freddo per fare il bagno."},
+        {"id":"leisure.s09","de":"Hast du einen Regenschirm?","t":"Hai un ombrello?"},
+        {"id":"leisure.s10","de":"Was kann man hier unternehmen?","t":["Che cosa si può fare qui?","Cosa c'è da fare qui?"]}
+      ]
+    },
+    {
+      "id": "past", "title": "Erlebnisse erzählen", "level": "A2", "colors": ["#B03CA8","#83287C"],
+      "desc": "In der Vergangenheit erzählen: was du gesehen und erlebt hast.",
+      "words": [
+        {"id":"past.w01","de":"letzte Woche","t":"la settimana scorsa"},
+        {"id":"past.w02","de":"letztes Jahr","t":"l'anno scorso"},
+        {"id":"past.w03","de":"vor zwei Tagen","t":"due giorni fa"},
+        {"id":"past.w04","de":"schon","t":"già"},
+        {"id":"past.w05","de":"noch nie","t":"mai"},
+        {"id":"past.w06","de":"besuchen","t":"visitare"},
+        {"id":"past.w07","de":"sehen","t":"vedere","pic":"👀"},
+        {"id":"past.w08","de":"reisen","t":"viaggiare"},
+        {"id":"past.w09","de":"vergessen","t":"dimenticare"},
+        {"id":"past.w10","de":"verlieren","t":"perdere"},
+        {"id":"past.w11","de":"ankommen","t":"arrivare"},
+        {"id":"past.w12","de":"der Urlaub","t":["le vacanze","la vacanza"],"pic":"🏝️"},
+        {"id":"past.w13","de":"die Reise","t":"il viaggio","pic":"🧳"},
+        {"id":"past.w14","de":"das Foto","t":"la foto","pic":"📷"}
+      ],
+      "sentences": [
+        {"id":"past.s01","de":"Gestern war ich im Museum.","t":["Ieri sono stato al museo.","Ieri sono stata al museo."]},
+        {"id":"past.s02","de":"Wir sind letzte Woche angekommen.","t":["Siamo arrivati la settimana scorsa.","Siamo arrivate la settimana scorsa."]},
+        {"id":"past.s03","de":"Hast du schon die Altstadt gesehen?","t":"Hai già visto il centro storico?"},
+        {"id":"past.s04","de":"Ich habe meinen Pass im Hotel vergessen.","t":["Ho dimenticato il passaporto in albergo.","Ho dimenticato il passaporto in hotel."]},
+        {"id":"past.s05","de":"Das Essen gestern Abend war fantastisch.","t":"La cena di ieri sera era fantastica."},
+        {"id":"past.s06","de":"Wir waren noch nie in Lissabon.","t":"Non siamo mai stati a Lisbona."},
+        {"id":"past.s07","de":"Vor zwei Tagen haben wir einen Ausflug gemacht.","t":"Due giorni fa abbiamo fatto una gita."},
+        {"id":"past.s08","de":"Letztes Jahr sind wir nach Spanien gereist.","t":["L'anno scorso siamo andati in Spagna.","L'anno scorso abbiamo viaggiato in Spagna."]},
+        {"id":"past.s09","de":"Wie war dein Urlaub?","t":["Come sono andate le vacanze?","Com'è andata la vacanza?"]},
+        {"id":"past.s10","de":"Ich habe meine Tasche im Bus verloren.","t":["Ho perso la borsa sull'autobus.","Ho perso la mia borsa sull'autobus."]}
+      ]
+    },
+    {
+      "id": "plans", "title": "Pläne machen", "level": "A2", "colors": ["#50667F","#3A4C60"],
+      "desc": "Verabreden, einladen, zu- und absagen.",
+      "words": [
+        {"id":"plans.w01","de":"heute Abend","t":"stasera"},
+        {"id":"plans.w02","de":"morgen früh","t":"domani mattina"},
+        {"id":"plans.w03","de":"das Wochenende","t":["il fine settimana","il weekend"]},
+        {"id":"plans.w04","de":"treffen","t":["incontrare","vedersi"]},
+        {"id":"plans.w05","de":"einladen","t":"invitare"},
+        {"id":"plans.w06","de":"planen","t":["programmare","pianificare"]},
+        {"id":"plans.w07","de":"frei","t":["libero","libera"]},
+        {"id":"plans.w08","de":"das Konzert","t":"il concerto","pic":"🎵"},
+        {"id":"plans.w09","de":"das Kino","t":"il cinema","pic":"🎬"},
+        {"id":"plans.w10","de":"vielleicht","t":"forse"},
+        {"id":"plans.w11","de":"klar","t":["certo","certamente"]},
+        {"id":"plans.w12","de":"leider","t":"purtroppo"},
+        {"id":"plans.w13","de":"zusammen","t":"insieme"}
+      ],
+      "sentences": [
+        {"id":"plans.s01","de":"Was machst du heute Abend?","t":["Che cosa fai stasera?","Cosa fai stasera?"]},
+        {"id":"plans.s02","de":"Morgen fahren wir in die Stadt.","t":"Domani andiamo in città."},
+        {"id":"plans.s03","de":"Hast du am Wochenende Zeit?","t":["Hai tempo nel fine settimana?","Sei libero nel weekend?"]},
+        {"id":"plans.s04","de":"Wollen wir zusammen essen gehen?","t":["Andiamo a mangiare insieme?","Andiamo a cena insieme?"]},
+        {"id":"plans.s05","de":"Ich lade dich ein.","t":["Ti offro io.","Offro io."]},
+        {"id":"plans.s06","de":"Wir treffen uns um acht vor dem Hotel.","t":["Ci vediamo alle otto davanti all'albergo.","Ci vediamo alle otto davanti all'hotel."]},
+        {"id":"plans.s07","de":"Leider kann ich morgen nicht.","t":"Purtroppo domani non posso."},
+        {"id":"plans.s08","de":"Vielleicht gehen wir ins Kino.","t":"Forse andiamo al cinema."},
+        {"id":"plans.s09","de":"Wann fängt das Konzert an?","t":["Quando comincia il concerto?","A che ora inizia il concerto?"]},
+        {"id":"plans.s10","de":"Klar, gerne!","t":"Certo, volentieri!"}
+      ]
+    },
+    {
+      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
+      "desc": "Über Beruf, Familie und Hobbys plaudern.",
+      "words": [
+        {"id":"smalltalk.w01","de":"der Beruf","t":["la professione","il lavoro"]},
+        {"id":"smalltalk.w02","de":"die Arbeit","t":"il lavoro","pic":"💼"},
+        {"id":"smalltalk.w03","de":"das Hobby","t":"l'hobby"},
+        {"id":"smalltalk.w04","de":"verheiratet","t":["sposato","sposata"],"pic":"💍"},
+        {"id":"smalltalk.w05","de":"die Kinder","t":["i figli","i bambini"]},
+        {"id":"smalltalk.w06","de":"wohnen","t":["abitare","vivere"],"pic":"🏠"},
+        {"id":"smalltalk.w07","de":"mögen","t":"piacere"},
+        {"id":"smalltalk.w08","de":"kochen","t":"cucinare","pic":"🍳"},
+        {"id":"smalltalk.w09","de":"der Sport","t":"lo sport","pic":"🏃"},
+        {"id":"smalltalk.w10","de":"die Musik","t":"la musica","pic":"🎵"},
+        {"id":"smalltalk.w11","de":"das erste Mal","t":"la prima volta"},
+        {"id":"smalltalk.w12","de":"die Freizeit","t":"il tempo libero"}
+      ],
+      "sentences": [
+        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["Che lavoro fai?","Di cosa ti occupi?"]},
+        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":["Faccio l'insegnante.","Lavoro come insegnante."]},
+        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["È la prima volta che vieni qui?","Sei qui per la prima volta?"]},
+        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":["Abito vicino a Monaco.","Vivo vicino a Monaco di Baviera."]},
+        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":"Nel tempo libero mi piace cucinare."},
+        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["Sono sposato e ho due figli.","Sono sposata e ho due figli."]},
+        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["Quanto tempo resti qui?","Per quanto tempo rimani?"]},
+        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":"Fai sport?"},
+        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["È stato un piacere conoscerti.","Piacere di averti conosciuto."]},
+        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":["Restiamo in contatto!","Teniamoci in contatto!"]}
+      ]
+    },
+    {
+      "id": "airport", "title": "Am Flughafen", "level": "A2", "colors": ["#2563EB","#1E40AF"],
+      "desc": "Einchecken, Gepäck aufgeben und das Gate finden.",
+      "words": [
+        {"id":"airport.w01","de":"der Flughafen","t":"l'aeroporto","pic":"🛫"},
+        {"id":"airport.w02","de":"der Flug","t":"il volo","pic":"✈️"},
+        {"id":"airport.w03","de":"der Reisepass","t":"il passaporto","pic":"🛂"},
+        {"id":"airport.w04","de":"die Bordkarte","t":"la carta d'imbarco","pic":"🎫"},
+        {"id":"airport.w05","de":"das Gepäck","t":["i bagagli","il bagaglio"],"pic":"🧳"},
+        {"id":"airport.w06","de":"der Koffer","t":"la valigia"},
+        {"id":"airport.w07","de":"das Handgepäck","t":"il bagaglio a mano","pic":"🎒"},
+        {"id":"airport.w08","de":"einchecken","t":"fare il check-in"},
+        {"id":"airport.w09","de":"die Verspätung","t":"il ritardo","pic":"⏰"},
+        {"id":"airport.w10","de":"der Ausgang (Gate)","t":["il gate","l'uscita"]},
+        {"id":"airport.w11","de":"die Ankunft","t":"l'arrivo","pic":"🛬"},
+        {"id":"airport.w12","de":"der Abflug","t":"la partenza"},
+        {"id":"airport.w13","de":"der Zoll","t":"la dogana"}
+      ],
+      "sentences": [
+        {"id":"airport.s01","de":"Wo kann ich einchecken?","t":"Dove posso fare il check-in?"},
+        {"id":"airport.s02","de":"Hier ist mein Reisepass.","t":"Ecco il mio passaporto."},
+        {"id":"airport.s03","de":"Ich habe einen Koffer und ein Handgepäck.","t":"Ho una valigia e un bagaglio a mano."},
+        {"id":"airport.s04","de":"Der Flug hat eine Stunde Verspätung.","t":"Il volo ha un'ora di ritardo."},
+        {"id":"airport.s05","de":"Von welchem Gate fliegen wir?","t":["Da quale gate partiamo?","Da che uscita partiamo?"]},
+        {"id":"airport.s06","de":"Ich habe einen Platz am Fenster.","t":["Ho un posto vicino al finestrino.","Ho il posto al finestrino."]},
+        {"id":"airport.s07","de":"Mein Koffer ist nicht angekommen.","t":"La mia valigia non è arrivata."},
+        {"id":"airport.s08","de":"Wann beginnt das Boarding?","t":["Quando inizia l'imbarco?","A che ora comincia l'imbarco?"]},
+        {"id":"airport.s09","de":"Haben Sie etwas zu verzollen?","t":"Ha qualcosa da dichiarare?"},
+        {"id":"airport.s10","de":"Der Flug nach Lissabon ist gestrichen.","t":["Il volo per Lisbona è cancellato.","Il volo per Lisbona è stato cancellato."]}
+      ]
+    },
+    {
+      "id": "beach", "title": "Am Strand", "level": "A2", "colors": ["#F59E0B","#B45309"],
+      "desc": "Sonne, Meer und alles, was man am Strand braucht.",
+      "words": [
+        {"id":"beach.w01","de":"der Strand","t":"la spiaggia","pic":"🏖️"},
+        {"id":"beach.w02","de":"das Meer","t":"il mare","pic":"🌊"},
+        {"id":"beach.w03","de":"die Sonne","t":"il sole","pic":"☀️"},
+        {"id":"beach.w04","de":"schwimmen","t":"nuotare","pic":"🏊"},
+        {"id":"beach.w05","de":"der Sonnenschirm","t":"l'ombrellone","pic":"⛱️"},
+        {"id":"beach.w06","de":"die Sonnencreme","t":"la crema solare","pic":"🧴"},
+        {"id":"beach.w07","de":"das Handtuch","t":["l'asciugamano","il telo mare"]},
+        {"id":"beach.w08","de":"die Welle","t":"l'onda"},
+        {"id":"beach.w09","de":"der Sand","t":"la sabbia"},
+        {"id":"beach.w10","de":"die Liege","t":["il lettino","la sdraio"]},
+        {"id":"beach.w11","de":"das Eis","t":"il gelato","pic":"🍦"},
+        {"id":"beach.w12","de":"der Rettungsschwimmer","t":"il bagnino","pic":"🛟"},
+        {"id":"beach.w13","de":"gefährlich","t":["pericoloso","pericolosa"],"pic":"⚠️"}
+      ],
+      "sentences": [
+        {"id":"beach.s01","de":"Gehen wir an den Strand!","t":["Andiamo in spiaggia!","Andiamo al mare!"]},
+        {"id":"beach.s02","de":"Das Wasser ist sehr kalt.","t":["L'acqua è molto fredda.","L'acqua è freddissima."]},
+        {"id":"beach.s03","de":"Kann man hier schwimmen?","t":["Si può nuotare qui?","Qui si può fare il bagno?"]},
+        {"id":"beach.s04","de":"Die Wellen sind heute hoch.","t":["Oggi le onde sono alte.","Le onde sono alte oggi."]},
+        {"id":"beach.s05","de":"Hast du Sonnencreme dabei?","t":["Hai la crema solare?","Hai portato la crema solare?"]},
+        {"id":"beach.s06","de":"Was kostet eine Liege?","t":"Quanto costa un lettino?"},
+        {"id":"beach.s07","de":"Ich möchte ein Eis.","t":["Vorrei un gelato.","Prendo un gelato."]},
+        {"id":"beach.s08","de":"Die Strömung ist gefährlich.","t":"La corrente è pericolosa."},
+        {"id":"beach.s09","de":"Wir liegen den ganzen Tag in der Sonne.","t":["Stiamo al sole tutto il giorno.","Restiamo al sole tutto il giorno."]},
+        {"id":"beach.s10","de":"Wo ist der Rettungsschwimmer?","t":"Dov'è il bagnino?"}
+      ]
+    },
+    {
+      "id": "phone", "title": "Handy & Internet", "level": "A2", "colors": ["#0891B2","#0E7490"],
+      "desc": "WLAN, SIM-Karte und Akku: unterwegs online bleiben.",
+      "words": [
+        {"id":"phone.w01","de":"das Handy","t":["il cellulare","il telefonino","il telefono"],"pic":"📱"},
+        {"id":"phone.w02","de":"das WLAN","t":["il wifi","il wi-fi"],"pic":"📶"},
+        {"id":"phone.w03","de":"das Passwort","t":"la password","pic":"🔑"},
+        {"id":"phone.w04","de":"die SIM-Karte","t":["la SIM","la scheda SIM"]},
+        {"id":"phone.w05","de":"das Ladegerät","t":["il caricabatterie","il caricatore"],"pic":"🔌"},
+        {"id":"phone.w06","de":"der Akku","t":"la batteria","pic":"🔋"},
+        {"id":"phone.w07","de":"die Nachricht","t":"il messaggio","pic":"💬"},
+        {"id":"phone.w08","de":"anrufen","t":["chiamare","telefonare"],"pic":"📞"},
+        {"id":"phone.w09","de":"die Telefonnummer","t":"il numero di telefono"},
+        {"id":"phone.w10","de":"das Foto","t":"la foto","pic":"📷"},
+        {"id":"phone.w11","de":"die App","t":["l'app","l'applicazione"]},
+        {"id":"phone.w12","de":"die Steckdose","t":"la presa"},
+        {"id":"phone.w13","de":"kaputt","t":["rotto","guasto"]}
+      ],
+      "sentences": [
+        {"id":"phone.s01","de":"Gibt es hier WLAN?","t":["C'è il wifi qui?","Avete il wifi?"]},
+        {"id":"phone.s02","de":"Wie ist das Passwort?","t":"Qual è la password?"},
+        {"id":"phone.s03","de":"Mein Akku ist leer.","t":["Ho la batteria scarica.","Il cellulare è scarico."]},
+        {"id":"phone.s04","de":"Kann ich mein Handy hier aufladen?","t":["Posso caricare il cellulare qui?","Posso ricaricare il telefono qui?"]},
+        {"id":"phone.s05","de":"Ich brauche eine SIM-Karte.","t":["Ho bisogno di una SIM.","Mi serve una scheda SIM."]},
+        {"id":"phone.s06","de":"Ich schicke dir eine Nachricht.","t":["Ti mando un messaggio.","Ti scrivo un messaggio."]},
+        {"id":"phone.s07","de":"Was ist deine Telefonnummer?","t":["Qual è il tuo numero di telefono?","Mi dai il tuo numero?"]},
+        {"id":"phone.s08","de":"Ich rufe dich morgen an.","t":"Ti chiamo domani."},
+        {"id":"phone.s09","de":"Das Internet ist sehr langsam.","t":["Internet è molto lento.","La connessione è molto lenta."]},
+        {"id":"phone.s10","de":"Kannst du ein Foto von uns machen?","t":["Puoi farci una foto?","Ci fai una foto?"]}
+      ]
+    },
+    {
+      "id": "problems", "title": "Probleme lösen", "level": "B1", "colors": ["#D0542A","#9E3D1C"],
+      "desc": "Höflich reklamieren, um Hilfe bitten, Lösungen finden.",
+      "words": [
+        {"id":"problems.w01","de":"das Problem","t":"il problema"},
+        {"id":"problems.w02","de":"kaputt","t":["rotto","guasto"]},
+        {"id":"problems.w03","de":"die Beschwerde","t":["il reclamo","la lamentela"]},
+        {"id":"problems.w04","de":"umtauschen","t":["cambiare","sostituire"]},
+        {"id":"problems.w05","de":"erstatten","t":"rimborsare"},
+        {"id":"problems.w06","de":"falsch","t":"sbagliato"},
+        {"id":"problems.w07","de":"dringend","t":"urgente"},
+        {"id":"problems.w08","de":"der Verantwortliche","t":"il responsabile"},
+        {"id":"problems.w09","de":"die Lösung","t":"la soluzione"},
+        {"id":"problems.w10","de":"reparieren","t":["riparare","aggiustare"],"pic":"🔧"},
+        {"id":"problems.w11","de":"warten","t":"aspettare","pic":"⏳"},
+        {"id":"problems.w12","de":"funktionieren","t":"funzionare"},
+        {"id":"problems.w13","de":"die Heizung","t":"il riscaldamento","pic":"🔥"}
+      ],
+      "sentences": [
+        {"id":"problems.s01","de":"Könnte ich bitte mit dem Verantwortlichen sprechen?","t":"Potrei parlare con il responsabile, per favore?"},
+        {"id":"problems.s02","de":"Die Rechnung stimmt leider nicht.","t":["Purtroppo il conto non è giusto.","Purtroppo il conto è sbagliato."]},
+        {"id":"problems.s03","de":"Wir haben vor einer Stunde bestellt.","t":"Abbiamo ordinato un'ora fa."},
+        {"id":"problems.s04","de":"Könnten Sie das bitte reparieren?","t":["Potrebbe ripararlo, per favore?","Potrebbe aggiustarlo, per favore?"]},
+        {"id":"problems.s05","de":"Ich möchte das umtauschen.","t":["Vorrei cambiarlo.","Vorrei cambiare questo."]},
+        {"id":"problems.s06","de":"Kann ich mein Geld zurückbekommen?","t":["Posso avere indietro i soldi?","Posso essere rimborsato?"]},
+        {"id":"problems.s07","de":"Das ist nicht das, was ich bestellt habe.","t":"Non è quello che ho ordinato."},
+        {"id":"problems.s08","de":"Es wäre nett, wenn Sie uns helfen könnten.","t":["Sarebbe gentile se ci potesse aiutare.","Sarebbe gentile se potesse aiutarci."]},
+        {"id":"problems.s09","de":"Wie lange müssen wir noch warten?","t":"Quanto dobbiamo ancora aspettare?"},
+        {"id":"problems.s10","de":"Die Heizung funktioniert seit gestern nicht.","t":"Il riscaldamento non funziona da ieri."}
+      ]
+    },
+    {
+      "id": "opinions", "title": "Meinungen & Gespräche", "level": "B1", "colors": ["#6E4BD8","#5135A8"],
+      "desc": "Meinung sagen, zustimmen, widersprechen, Vorschläge machen.",
+      "words": [
+        {"id":"opinions.w01","de":"die Meinung","t":["l'opinione","il parere"]},
+        {"id":"opinions.w02","de":"denken","t":"pensare","pic":"🤔"},
+        {"id":"opinions.w03","de":"glauben","t":"credere"},
+        {"id":"opinions.w04","de":"einverstanden","t":"d'accordo","pic":"🤝"},
+        {"id":"opinions.w05","de":"wichtig","t":"importante"},
+        {"id":"opinions.w06","de":"interessant","t":"interessante"},
+        {"id":"opinions.w07","de":"langweilig","t":["noioso","noiosa"],"pic":"🥱"},
+        {"id":"opinions.w08","de":"schön","t":["bello","bella"]},
+        {"id":"opinions.w09","de":"eigentlich","t":["in realtà","veramente"]},
+        {"id":"opinions.w10","de":"vorschlagen","t":["proporre","suggerire"]},
+        {"id":"opinions.w11","de":"der Unterschied","t":"la differenza"},
+        {"id":"opinions.w12","de":"die Erfahrung","t":"l'esperienza"},
+        {"id":"opinions.w13","de":"die Sprache","t":"la lingua","pic":"💬"}
+      ],
+      "sentences": [
+        {"id":"opinions.s01","de":"Was hältst du davon?","t":["Che ne pensi?","Cosa ne pensi?"]},
+        {"id":"opinions.s02","de":"Ich finde, dass die Stadt sehr schön ist.","t":["Trovo che la città sia molto bella.","Secondo me la città è molto bella."]},
+        {"id":"opinions.s03","de":"Da bin ich ganz deiner Meinung.","t":["Sono completamente d'accordo con te.","Sono pienamente d'accordo con te."]},
+        {"id":"opinions.s04","de":"Das sehe ich anders.","t":["Io la vedo diversamente.","Non la penso così."]},
+        {"id":"opinions.s05","de":"Wenn ich mehr Zeit hätte, würde ich länger bleiben.","t":["Se avessi più tempo, resterei più a lungo.","Se avessi più tempo, rimarrei più a lungo."]},
+        {"id":"opinions.s06","de":"Ich schlage vor, dass wir morgen früh losfahren.","t":["Propongo di partire domani mattina.","Suggerisco di partire domani mattina."]},
+        {"id":"opinions.s07","de":"Das war eine tolle Erfahrung.","t":["È stata un'esperienza fantastica.","È stata un'esperienza bellissima."]},
+        {"id":"opinions.s08","de":"Eigentlich wollte ich ans Meer fahren.","t":"In realtà volevo andare al mare."},
+        {"id":"opinions.s09","de":"Was ist der Unterschied zwischen den beiden?","t":["Qual è la differenza tra i due?","Che differenza c'è tra i due?"]},
+        {"id":"opinions.s10","de":"Es ist wichtig, die Sprache ein bisschen zu sprechen.","t":"È importante parlare un po' la lingua."}
+      ]
+    },
+    {
+      "id": "car", "title": "Mietwagen & Tanken", "level": "B1", "colors": ["#1E5AA8","#153F78"],
+      "desc": "Auto mieten, tanken, parken und mit Pannen umgehen.",
+      "words": [
+        {"id":"car.w01","de":"der Mietwagen","t":["l'auto a noleggio","la macchina a noleggio"],"pic":"🚗"},
+        {"id":"car.w02","de":"tanken","t":["fare benzina","fare il pieno"]},
+        {"id":"car.w03","de":"die Tankstelle","t":["il distributore","la stazione di servizio","il benzinaio"],"pic":"⛽"},
+        {"id":"car.w04","de":"der Führerschein","t":"la patente","pic":"🪪"},
+        {"id":"car.w05","de":"parken","t":"parcheggiare","pic":"🅿️"},
+        {"id":"car.w06","de":"die Versicherung","t":"l'assicurazione"},
+        {"id":"car.w07","de":"die Panne","t":["il guasto","il guasto alla macchina"]},
+        {"id":"car.w08","de":"der Reifen","t":["la gomma","lo pneumatico"],"pic":"🛞"},
+        {"id":"car.w09","de":"die Autobahn","t":"l'autostrada","pic":"🛣️"},
+        {"id":"car.w10","de":"die Maut","t":"il pedaggio"},
+        {"id":"car.w11","de":"die Kaution","t":["la cauzione","il deposito"]},
+        {"id":"car.w12","de":"voll","t":"pieno"},
+        {"id":"car.w13","de":"leer","t":"vuoto"}
+      ],
+      "sentences": [
+        {"id":"car.s01","de":"Ich habe einen Mietwagen reserviert.","t":["Ho prenotato un'auto a noleggio.","Ho prenotato una macchina a noleggio."]},
+        {"id":"car.s02","de":"Ist die Versicherung im Preis inbegriffen?","t":["L'assicurazione è compresa nel prezzo?","L'assicurazione è inclusa nel prezzo?"]},
+        {"id":"car.s03","de":"Muss ich das Auto vollgetankt zurückgeben?","t":["Devo riportare la macchina con il pieno?","Devo restituire l'auto con il pieno?"]},
+        {"id":"car.s04","de":"Wo kann ich hier parken?","t":["Dove posso parcheggiare qui?","Dove si può parcheggiare qui?"]},
+        {"id":"car.s05","de":"Wir hatten eine Panne auf der Autobahn.","t":"Abbiamo avuto un guasto in autostrada."},
+        {"id":"car.s06","de":"Der Reifen ist platt.","t":["La gomma è a terra.","Ho una gomma bucata."]},
+        {"id":"car.s07","de":"Volltanken, bitte.","t":"Il pieno, per favore."},
+        {"id":"car.s08","de":"Wie hoch ist die Kaution?","t":["Quant'è la cauzione?","A quanto ammonta la cauzione?"]},
+        {"id":"car.s09","de":"Ich brauche Ihren Führerschein und eine Kreditkarte.","t":["Mi servono la sua patente e una carta di credito.","Ho bisogno della sua patente e di una carta di credito."]},
+        {"id":"car.s10","de":"Muss man auf dieser Straße Maut zahlen?","t":["Si paga il pedaggio su questa strada?","Bisogna pagare il pedaggio su questa strada?"]}
+      ]
+    },
+    {
+      "id": "doctor", "title": "Arzt & Apotheke", "level": "B1", "colors": ["#3F6212","#2C450D"],
+      "desc": "Beschwerden genau beschreiben, Medikamente verstehen.",
+      "words": [
+        {"id":"doctor.w01","de":"das Rezept","t":"la ricetta","pic":"📄"},
+        {"id":"doctor.w02","de":"die Erkältung","t":"il raffreddore","pic":"🤧"},
+        {"id":"doctor.w03","de":"der Husten","t":"la tosse"},
+        {"id":"doctor.w04","de":"der Durchfall","t":"la diarrea"},
+        {"id":"doctor.w05","de":"der Sonnenbrand","t":["la scottatura","l'eritema solare"]},
+        {"id":"doctor.w06","de":"die Krankenversicherung","t":"l'assicurazione sanitaria"},
+        {"id":"doctor.w07","de":"die Salbe","t":["la pomata","la crema"]},
+        {"id":"doctor.w08","de":"der Termin","t":"l'appuntamento","pic":"📅"},
+        {"id":"doctor.w09","de":"verschreiben","t":"prescrivere"},
+        {"id":"doctor.w10","de":"der Knöchel","t":"la caviglia","pic":"🦶"},
+        {"id":"doctor.w11","de":"der Zahnarzt","t":"il dentista","pic":"🦷"},
+        {"id":"doctor.w12","de":"schwanger","t":"incinta","pic":"🤰"},
+        {"id":"doctor.w13","de":"die Nebenwirkung","t":"l'effetto collaterale"},
+        {"id":"doctor.w14","de":"dreimal täglich","t":"tre volte al giorno"}
+      ],
+      "sentences": [
+        {"id":"doctor.s01","de":"Ich hätte gern einen Termin beim Arzt.","t":["Vorrei un appuntamento dal medico.","Vorrei prendere un appuntamento dal dottore."]},
+        {"id":"doctor.s02","de":"Seit drei Tagen habe ich Husten und Fieber.","t":["Da tre giorni ho la tosse e la febbre.","Ho la tosse e la febbre da tre giorni."]},
+        {"id":"doctor.s03","de":"Ich habe mir den Knöchel verstaucht.","t":["Mi sono slogato la caviglia.","Mi sono slogata la caviglia.","Ho preso una storta alla caviglia."]},
+        {"id":"doctor.s04","de":"Brauche ich dafür ein Rezept?","t":["Ci vuole la ricetta?","Mi serve una ricetta per questo?"]},
+        {"id":"doctor.s05","de":"Nehmen Sie die Tabletten dreimal täglich nach dem Essen.","t":"Prenda le compresse tre volte al giorno dopo i pasti."},
+        {"id":"doctor.s06","de":"Haben Sie etwas gegen Sonnenbrand?","t":["Ha qualcosa per le scottature?","Ha qualcosa contro le scottature solari?"]},
+        {"id":"doctor.s07","de":"Gibt es Nebenwirkungen?","t":"Ci sono effetti collaterali?"},
+        {"id":"doctor.s08","de":"Ich bin schwanger.","t":"Sono incinta."},
+        {"id":"doctor.s09","de":"Mir tut ein Zahn weh.","t":["Mi fa male un dente.","Ho mal di denti."]},
+        {"id":"doctor.s10","de":"Zahlt meine Krankenversicherung das?","t":["La mia assicurazione sanitaria lo paga?","La mia assicurazione copre questo?"]}
+      ]
+    },
+    {
+      "id": "culture", "title": "Sehenswürdigkeiten & Kultur", "level": "B1", "colors": ["#9D174D","#6F1036"],
+      "desc": "Führungen, Eintritt, Ausstellungen und Geschichte.",
+      "words": [
+        {"id":"culture.w01","de":"die Sehenswürdigkeit","t":["l'attrazione","il monumento"]},
+        {"id":"culture.w02","de":"die Führung","t":"la visita guidata"},
+        {"id":"culture.w03","de":"die Ausstellung","t":"la mostra","pic":"🖼️"},
+        {"id":"culture.w04","de":"die Ermäßigung","t":["lo sconto","la riduzione"]},
+        {"id":"culture.w05","de":"das Schloss","t":"il castello","pic":"🏰"},
+        {"id":"culture.w06","de":"die Kathedrale","t":["la cattedrale","il duomo"]},
+        {"id":"culture.w07","de":"der Reiseführer","t":"la guida"},
+        {"id":"culture.w08","de":"das Jahrhundert","t":"il secolo"},
+        {"id":"culture.w09","de":"berühmt","t":["famoso","famosa"],"pic":"⭐"},
+        {"id":"culture.w10","de":"fotografieren","t":["fotografare","fare foto"],"pic":"📸"},
+        {"id":"culture.w11","de":"die Öffnungszeiten","t":["gli orari di apertura","l'orario di apertura"]},
+        {"id":"culture.w12","de":"der Markt","t":"il mercato","pic":"🧺"}
+      ],
+      "sentences": [
+        {"id":"culture.s01","de":"Gibt es eine Ermäßigung für Studenten?","t":["C'è uno sconto per studenti?","C'è una riduzione per studenti?"]},
+        {"id":"culture.s02","de":"Wann beginnt die nächste Führung?","t":["Quando inizia la prossima visita guidata?","A che ora comincia la prossima visita guidata?"]},
+        {"id":"culture.s03","de":"Darf man hier fotografieren?","t":["Si possono fare foto qui?","Qui è permesso fotografare?"]},
+        {"id":"culture.s04","de":"Die Kathedrale wurde im dreizehnten Jahrhundert gebaut.","t":["La cattedrale è stata costruita nel tredicesimo secolo.","La cattedrale fu costruita nel tredicesimo secolo."]},
+        {"id":"culture.s05","de":"Was muss man in dieser Stadt unbedingt sehen?","t":["Che cosa bisogna assolutamente vedere in questa città?","Cosa non si può perdere in questa città?"]},
+        {"id":"culture.s06","de":"Die Ausstellung hat mir sehr gut gefallen.","t":"La mostra mi è piaciuta molto."},
+        {"id":"culture.s07","de":"Bis wann hat der Markt geöffnet?","t":["Fino a quando è aperto il mercato?","Fino a che ora è aperto il mercato?"]},
+        {"id":"culture.s08","de":"Gibt es eine Führung auf Deutsch?","t":"C'è una visita guidata in tedesco?"},
+        {"id":"culture.s09","de":"Das Schloss ist eine der berühmtesten Sehenswürdigkeiten des Landes.","t":"Il castello è uno dei monumenti più famosi del paese."},
+        {"id":"culture.s10","de":"Wie viel kostet der Eintritt?","t":["Quanto costa l'ingresso?","Quanto costa il biglietto d'ingresso?"]}
+      ]
+    },
+    {
+      "id": "apartment", "title": "Wohnung mieten", "level": "B1", "colors": ["#0D9488","#0F766E"],
+      "desc": "Eine Ferienwohnung mieten und Probleme mit dem Vermieter klären.",
+      "words": [
+        {"id":"apartment.w01","de":"die Miete","t":"l'affitto","pic":"💶"},
+        {"id":"apartment.w02","de":"der Vermieter","t":["il proprietario","il padrone di casa"]},
+        {"id":"apartment.w03","de":"die Kaution","t":["la cauzione","il deposito"]},
+        {"id":"apartment.w04","de":"der Schlüssel","t":"la chiave","pic":"🔑"},
+        {"id":"apartment.w05","de":"die Heizung","t":"il riscaldamento","pic":"🔥"},
+        {"id":"apartment.w06","de":"die Klimaanlage","t":"l'aria condizionata","pic":"❄️"},
+        {"id":"apartment.w07","de":"die Waschmaschine","t":"la lavatrice","pic":"🧺"},
+        {"id":"apartment.w08","de":"der Müll","t":["la spazzatura","i rifiuti"],"pic":"🗑️"},
+        {"id":"apartment.w09","de":"der Nachbar / die Nachbarin","t":["il vicino","la vicina"]},
+        {"id":"apartment.w10","de":"laut","t":["rumoroso","rumorosa"],"pic":"🔊"},
+        {"id":"apartment.w11","de":"tropfen","t":["gocciolare","perdere"],"pic":"💧"},
+        {"id":"apartment.w12","de":"reparieren","t":["riparare","aggiustare"],"pic":"🔧"},
+        {"id":"apartment.w13","de":"im Voraus","t":["in anticipo","anticipatamente"]}
+      ],
+      "sentences": [
+        {"id":"apartment.s01","de":"Die Miete muss im Voraus bezahlt werden.","t":["L'affitto deve essere pagato in anticipo.","L'affitto va pagato in anticipo."]},
+        {"id":"apartment.s02","de":"Wann bekommen wir die Schlüssel?","t":["Quando riceviamo le chiavi?","Quando ci date le chiavi?"]},
+        {"id":"apartment.s03","de":"Die Heizung funktioniert nicht.","t":"Il riscaldamento non funziona."},
+        {"id":"apartment.s04","de":"Der Wasserhahn in der Küche tropft.","t":["Il rubinetto della cucina gocciola.","Il rubinetto in cucina perde."]},
+        {"id":"apartment.s05","de":"Können Sie das bitte reparieren lassen?","t":["Può farlo riparare, per favore?","Potrebbe farlo aggiustare, per favore?"]},
+        {"id":"apartment.s06","de":"Wo kommt der Müll hin?","t":["Dove si butta la spazzatura?","Dove mettiamo i rifiuti?"]},
+        {"id":"apartment.s07","de":"Die Nachbarn sind nachts sehr laut.","t":["Di notte i vicini sono molto rumorosi.","I vicini fanno molto rumore di notte."]},
+        {"id":"apartment.s08","de":"Bekommen wir die Kaution zurück?","t":["Ci restituite la cauzione?","Riavremo la cauzione?"]},
+        {"id":"apartment.s09","de":"Gibt es eine Waschmaschine in der Wohnung?","t":["C'è una lavatrice nell'appartamento?","Nell'appartamento c'è la lavatrice?"]},
+        {"id":"apartment.s10","de":"Wir reisen am Samstag um zehn Uhr ab.","t":["Partiamo sabato alle dieci.","Lasciamo l'appartamento sabato alle dieci."]}
+      ]
+    },
+    {
+      "id": "work", "title": "Arbeit & Beruf", "level": "B1", "colors": ["#475569","#334155"],
+      "desc": "Über den Beruf sprechen, Kollegen und den Arbeitsalltag.",
+      "words": [
+        {"id":"work.w01","de":"der Beruf","t":["la professione","il mestiere"],"pic":"💼"},
+        {"id":"work.w02","de":"die Firma","t":["l'azienda","la ditta"],"pic":"🏢"},
+        {"id":"work.w03","de":"der Kollege / die Kollegin","t":["il collega","la collega"]},
+        {"id":"work.w04","de":"der Chef / die Chefin","t":["il capo","la capa"]},
+        {"id":"work.w05","de":"das Büro","t":"l'ufficio","pic":"🖥️"},
+        {"id":"work.w06","de":"die Besprechung","t":"la riunione","pic":"📅"},
+        {"id":"work.w07","de":"das Gehalt","t":"lo stipendio","pic":"💰"},
+        {"id":"work.w08","de":"der Urlaub","t":["le ferie","le vacanze"],"pic":"🏝️"},
+        {"id":"work.w09","de":"die Überstunden","t":["gli straordinari","le ore di straordinario"],"pic":"⏱️"},
+        {"id":"work.w10","de":"selbstständig","t":["lavoratore autonomo","libero professionista"]},
+        {"id":"work.w11","de":"arbeitslos","t":["disoccupato","disoccupata"]},
+        {"id":"work.w12","de":"im Homeoffice arbeiten","t":["lavorare da casa","fare smart working"],"pic":"🏠"},
+        {"id":"work.w13","de":"die Erfahrung","t":"l'esperienza"}
+      ],
+      "sentences": [
+        {"id":"work.s01","de":["Was machst du beruflich?","Was machen Sie beruflich?"],"t":["Che lavoro fai?","Che lavoro fa?"]},
+        {"id":"work.s02","de":"Ich arbeite bei einer kleinen Firma.","t":["Lavoro in una piccola azienda.","Lavoro per una piccola ditta."]},
+        {"id":"work.s03","de":"Heute habe ich drei Besprechungen.","t":"Oggi ho tre riunioni."},
+        {"id":"work.s04","de":"Zweimal pro Woche arbeite ich im Homeoffice.","t":["Lavoro da casa due volte a settimana.","Due volte alla settimana lavoro da casa."]},
+        {"id":"work.s05","de":"Meine Kollegen sind sehr nett.","t":["I miei colleghi sono molto simpatici.","I miei colleghi sono molto gentili."]},
+        {"id":"work.s06","de":"Ich muss oft Überstunden machen.","t":["Devo spesso fare gli straordinari.","Spesso devo fare straordinari."]},
+        {"id":"work.s07","de":"Wie viele Urlaubstage hast du im Jahr?","t":"Quanti giorni di ferie hai all'anno?"},
+        {"id":"work.s08","de":"Seit zwei Jahren bin ich selbstständig.","t":["Da due anni lavoro in proprio.","Sono un libero professionista da due anni."]},
+        {"id":"work.s09","de":"Mein Chef ist diese Woche im Urlaub.","t":["Il mio capo è in ferie questa settimana.","Questa settimana il mio capo è in ferie."]},
+        {"id":"work.s10","de":"Ich habe viel Erfahrung in diesem Bereich.","t":["Ho molta esperienza in questo campo.","Ho molta esperienza in questo settore."]}
+      ]
+    },
+    {
+      "id": "cooking", "title": "Kochen & Rezepte", "level": "B1", "colors": ["#DC2626","#991B1B"],
+      "desc": "Zutaten einkaufen, Rezepte verstehen und zusammen kochen.",
+      "words": [
+        {"id":"cooking.w01","de":"das Rezept","t":"la ricetta","pic":"📖"},
+        {"id":"cooking.w02","de":"die Zutat","t":"l'ingrediente"},
+        {"id":"cooking.w03","de":"die Zwiebel","t":"la cipolla","pic":"🧅"},
+        {"id":"cooking.w04","de":"der Knoblauch","t":"l'aglio","pic":"🧄"},
+        {"id":"cooking.w05","de":"die Tomate","t":"il pomodoro","pic":"🍅"},
+        {"id":"cooking.w06","de":"das Öl","t":"l'olio","pic":"🫒"},
+        {"id":"cooking.w07","de":"das Salz","t":"il sale","pic":"🧂"},
+        {"id":"cooking.w08","de":"die Pfanne","t":"la padella","pic":"🍳"},
+        {"id":"cooking.w09","de":"schneiden","t":"tagliare","pic":"🔪"},
+        {"id":"cooking.w10","de":"braten","t":["friggere","rosolare"]},
+        {"id":"cooking.w11","de":"kochen (Wasser)","t":"bollire"},
+        {"id":"cooking.w12","de":"umrühren","t":["mescolare","girare"],"pic":"🥄"},
+        {"id":"cooking.w13","de":"scharf","t":"piccante","pic":"🌶️"}
+      ],
+      "sentences": [
+        {"id":"cooking.s01","de":"Hast du ein gutes Rezept für Paella?","t":"Hai una buona ricetta per la paella?"},
+        {"id":"cooking.s02","de":"Welche Zutaten brauchen wir?","t":["Di quali ingredienti abbiamo bisogno?","Quali ingredienti ci servono?"]},
+        {"id":"cooking.s03","de":"Schneide die Zwiebeln in kleine Stücke.","t":["Taglia le cipolle a pezzetti.","Taglia le cipolle a pezzi piccoli."]},
+        {"id":"cooking.s04","de":"Erhitze das Öl in der Pfanne.","t":["Scalda l'olio nella padella.","Fai scaldare l'olio in padella."]},
+        {"id":"cooking.s05","de":"Brate den Knoblauch kurz an.","t":["Fai rosolare l'aglio per un attimo.","Rosola brevemente l'aglio."]},
+        {"id":"cooking.s06","de":"Das Wasser muss kochen.","t":"L'acqua deve bollire."},
+        {"id":"cooking.s07","de":"Rühre ab und zu um.","t":["Mescola ogni tanto.","Gira di tanto in tanto."]},
+        {"id":"cooking.s08","de":"Es fehlt noch etwas Salz.","t":["Manca ancora un po' di sale.","Ci vuole ancora un po' di sale."]},
+        {"id":"cooking.s09","de":"Ich esse nicht gern scharf.","t":["Non mi piace il cibo piccante.","Non mi piace mangiare piccante."]},
+        {"id":"cooking.s10","de":"Das Essen ist in zwanzig Minuten fertig.","t":["Il pranzo è pronto tra venti minuti.","Si mangia tra venti minuti.","Il cibo sarà pronto tra venti minuti."]}
+      ]
+    },
+    {
+      "id": "bank", "title": "Bank & Geld", "level": "B1", "colors": ["#15803D","#166534"],
+      "desc": "Geld abheben, wechseln und Probleme mit der Karte lösen.",
+      "words": [
+        {"id":"bank.w01","de":"die Bank","t":"la banca","pic":"🏦"},
+        {"id":"bank.w02","de":"der Geldautomat","t":["il bancomat","lo sportello automatico"],"pic":"🏧"},
+        {"id":"bank.w03","de":"abheben","t":"prelevare"},
+        {"id":"bank.w04","de":"wechseln (Geld)","t":"cambiare","pic":"💱"},
+        {"id":"bank.w05","de":"der Wechselkurs","t":["il tasso di cambio","il cambio"]},
+        {"id":"bank.w06","de":"die Gebühr","t":["la commissione","la tariffa"]},
+        {"id":"bank.w07","de":"das Konto","t":"il conto"},
+        {"id":"bank.w08","de":"die Kreditkarte","t":"la carta di credito","pic":"💳"},
+        {"id":"bank.w09","de":"die Geheimzahl","t":["il PIN","il codice"]},
+        {"id":"bank.w10","de":"sperren","t":"bloccare","pic":"🔒"},
+        {"id":"bank.w11","de":"die Quittung","t":["la ricevuta","lo scontrino"],"pic":"🧾"},
+        {"id":"bank.w12","de":"das Bargeld","t":"i contanti","pic":"💵"},
+        {"id":"bank.w13","de":"überweisen","t":["fare un bonifico","trasferire"]}
+      ],
+      "sentences": [
+        {"id":"bank.s01","de":"Wo ist der nächste Geldautomat?","t":"Dov'è il bancomat più vicino?"},
+        {"id":"bank.s02","de":"Ich möchte Euro in Dollar wechseln.","t":"Vorrei cambiare euro in dollari."},
+        {"id":"bank.s03","de":"Wie ist der Wechselkurs heute?","t":["Qual è il cambio di oggi?","Qual è il tasso di cambio oggi?"]},
+        {"id":"bank.s04","de":"Der Automat hat meine Karte behalten.","t":["Il bancomat mi ha trattenuto la carta.","Il bancomat si è mangiato la carta."]},
+        {"id":"bank.s05","de":"Ich muss meine Karte sperren lassen.","t":["Devo far bloccare la carta.","Devo bloccare la mia carta."]},
+        {"id":"bank.s06","de":"Gibt es eine Gebühr?","t":["C'è una commissione?","Ci sono commissioni?"]},
+        {"id":"bank.s07","de":"Kann ich mit Karte zahlen oder nur bar?","t":"Posso pagare con la carta o solo in contanti?"},
+        {"id":"bank.s08","de":"Ich habe meine Geheimzahl vergessen.","t":["Ho dimenticato il PIN.","Ho dimenticato il codice."]},
+        {"id":"bank.s09","de":"Brauchen Sie eine Quittung?","t":["Le serve la ricevuta?","Vuole la ricevuta?"]},
+        {"id":"bank.s10","de":"Ich überweise dir das Geld morgen.","t":["Domani ti faccio il bonifico.","Ti mando i soldi domani."]}
+      ]
+    },
+    {
+      "id": "nature", "title": "Natur & Wandern", "level": "B1", "colors": ["#65A30D","#4D7C0F"],
+      "desc": "Wanderwege, Wetter in den Bergen und Tiere in der Natur.",
+      "words": [
+        {"id":"nature.w01","de":"der Berg","t":"la montagna","pic":"⛰️"},
+        {"id":"nature.w02","de":"der Wald","t":["il bosco","la foresta"],"pic":"🌲"},
+        {"id":"nature.w03","de":"der See","t":"il lago","pic":"🏞️"},
+        {"id":"nature.w04","de":"der Fluss","t":"il fiume"},
+        {"id":"nature.w05","de":"der Wanderweg","t":"il sentiero","pic":"🥾"},
+        {"id":"nature.w06","de":"wandern","t":["fare escursioni","camminare"]},
+        {"id":"nature.w07","de":"der Gipfel","t":["la cima","la vetta"]},
+        {"id":"nature.w08","de":"die Aussicht","t":["la vista","il panorama"],"pic":"🌄"},
+        {"id":"nature.w09","de":"das Gewitter","t":"il temporale","pic":"⛈️"},
+        {"id":"nature.w10","de":"die Wasserflasche","t":["la borraccia","la bottiglia d'acqua"],"pic":"🧴"},
+        {"id":"nature.w11","de":"der Vogel","t":"l'uccello","pic":"🐦"},
+        {"id":"nature.w12","de":"müde","t":["stanco","stanca"],"pic":"🥱"},
+        {"id":"nature.w13","de":"steil","t":["ripido","ripida"]}
+      ],
+      "sentences": [
+        {"id":"nature.s01","de":"Wie lange dauert die Wanderung?","t":["Quanto dura l'escursione?","Quanto tempo ci vuole per l'escursione?"]},
+        {"id":"nature.s02","de":"Der Weg ist ziemlich steil.","t":["Il sentiero è piuttosto ripido.","La strada è abbastanza ripida."]},
+        {"id":"nature.s03","de":"Von oben hat man eine tolle Aussicht.","t":["Da lassù c'è una vista fantastica.","Dalla cima la vista è stupenda."]},
+        {"id":"nature.s04","de":"Heute Nachmittag soll es Gewitter geben.","t":["Oggi pomeriggio dovrebbero esserci temporali.","Nel pomeriggio sono previsti temporali."]},
+        {"id":"nature.s05","de":"Nimm genug Wasser mit.","t":["Porta abbastanza acqua.","Prendi abbastanza acqua."]},
+        {"id":"nature.s06","de":"Wir sind um sechs Uhr losgegangen.","t":"Siamo partiti alle sei."},
+        {"id":"nature.s07","de":"Ich bin total müde.","t":["Sono stanchissimo.","Sono stanchissima.","Sono distrutto."]},
+        {"id":"nature.s08","de":"Darf man im See baden?","t":["Si può fare il bagno nel lago?","È permesso fare il bagno nel lago?"]},
+        {"id":"nature.s09","de":"Bitte bleibt auf dem Weg.","t":["Per favore, restate sul sentiero.","Per favore, non uscite dal sentiero."]},
+        {"id":"nature.s10","de":"Im Wald hört man viele Vögel.","t":"Nel bosco si sentono molti uccelli."}
+      ]
+    },
+    {
+      "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
+      "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
+      "words": [
+        {"id":"negotiate.w01","de":"der Kompromiss","t":"il compromesso"},
+        {"id":"negotiate.w02","de":"das Angebot","t":"l'offerta"},
+        {"id":"negotiate.w03","de":"der Vorteil","t":"il vantaggio"},
+        {"id":"negotiate.w04","de":"der Nachteil","t":"lo svantaggio"},
+        {"id":"negotiate.w05","de":"überzeugen","t":"convincere"},
+        {"id":"negotiate.w06","de":"verhandeln","t":["negoziare","trattare"]},
+        {"id":"negotiate.w07","de":"die Bedingung","t":"la condizione"},
+        {"id":"negotiate.w08","de":"deshalb","t":["quindi","perciò"]},
+        {"id":"negotiate.w09","de":"trotzdem","t":["comunque","tuttavia"]},
+        {"id":"negotiate.w10","de":"obwohl","t":["sebbene","anche se","benché"]},
+        {"id":"negotiate.w11","de":"zufrieden","t":["soddisfatto","soddisfatta"]},
+        {"id":"negotiate.w12","de":"die Entscheidung","t":"la decisione"},
+        {"id":"negotiate.w13","de":"vernünftig","t":"ragionevole"}
+      ],
+      "sentences": [
+        {"id":"negotiate.s01","de":"Wäre es möglich, den Preis etwas zu senken?","t":["Sarebbe possibile abbassare un po' il prezzo?","Sarebbe possibile fare uno sconto?"]},
+        {"id":"negotiate.s02","de":"Unter einer Bedingung bin ich einverstanden.","t":"Sono d'accordo a una condizione."},
+        {"id":"negotiate.s03","de":"Obwohl das Hotel teuer war, hat es sich gelohnt.","t":["Anche se l'albergo era caro, ne è valsa la pena.","Sebbene l'hotel fosse caro, ne è valsa la pena."]},
+        {"id":"negotiate.s04","de":"Das ist ein vernünftiges Angebot.","t":"È un'offerta ragionevole."},
+        {"id":"negotiate.s05","de":"Ich verstehe Ihren Standpunkt, trotzdem sehe ich das anders.","t":["Capisco il suo punto di vista, ma la vedo diversamente.","Capisco il suo punto di vista, tuttavia la penso diversamente."]},
+        {"id":"negotiate.s06","de":"Hätten wir früher gebucht, wäre es billiger gewesen.","t":["Se avessimo prenotato prima, sarebbe stato più economico.","Se avessimo prenotato prima, avremmo speso meno."]},
+        {"id":"negotiate.s07","de":"Der größte Vorteil ist die Lage.","t":["Il vantaggio più grande è la posizione.","Il vantaggio principale è la posizione."]},
+        {"id":"negotiate.s08","de":"Man hat mir gesagt, dass das Museum montags geschlossen ist.","t":"Mi hanno detto che il museo è chiuso il lunedì."},
+        {"id":"negotiate.s09","de":"Lassen Sie mich darüber nachdenken.","t":["Mi lasci pensare.","Ci devo pensare."]},
+        {"id":"negotiate.s10","de":"Wir sind mit der Lösung sehr zufrieden.","t":"Siamo molto soddisfatti della soluzione."}
+      ]
+    },
+    {
+      "id": "environment", "title": "Umwelt & Nachhaltigkeit", "level": "B2", "colors": ["#16A34A","#14532D"],
+      "desc": "Klimawandel, Müll vermeiden und nachhaltig reisen.",
+      "words": [
+        {"id":"environment.w01","de":"die Umwelt","t":"l'ambiente","pic":"🌍"},
+        {"id":"environment.w02","de":"der Klimawandel","t":"il cambiamento climatico","pic":"🌡️"},
+        {"id":"environment.w03","de":"nachhaltig","t":"sostenibile","pic":"♻️"},
+        {"id":"environment.w04","de":"die Verschmutzung","t":"l'inquinamento","pic":"🏭"},
+        {"id":"environment.w05","de":"erneuerbare Energie","t":["l'energia rinnovabile","le energie rinnovabili"],"pic":"☀️"},
+        {"id":"environment.w06","de":"vermeiden","t":"evitare"},
+        {"id":"environment.w07","de":"verschwenden","t":"sprecare"},
+        {"id":"environment.w08","de":"der Verbrauch","t":"il consumo"},
+        {"id":"environment.w09","de":"die Plastiktüte","t":["il sacchetto di plastica","la busta di plastica"],"pic":"🛍️"},
+        {"id":"environment.w10","de":"die Dürre","t":"la siccità","pic":"🏜️"},
+        {"id":"environment.w11","de":"schützen","t":["proteggere","tutelare"],"pic":"🛡️"},
+        {"id":"environment.w12","de":"der CO2-Ausstoß","t":"le emissioni di CO2"},
+        {"id":"environment.w13","de":"die Verantwortung","t":"la responsabilità"}
+      ],
+      "sentences": [
+        {"id":"environment.s01","de":"Wir sollten weniger Plastik verwenden.","t":"Dovremmo usare meno plastica."},
+        {"id":"environment.s02","de":"Der Klimawandel betrifft uns alle.","t":["Il cambiamento climatico riguarda tutti noi.","Il cambiamento climatico ci riguarda tutti."]},
+        {"id":"environment.s03","de":"Ich versuche, nachhaltiger zu reisen.","t":"Cerco di viaggiare in modo più sostenibile."},
+        {"id":"environment.s04","de":"Statt zu fliegen, nehmen wir den Zug.","t":["Invece di prendere l'aereo, prendiamo il treno.","Invece di volare, andiamo in treno."]},
+        {"id":"environment.s05","de":"In vielen Regionen gibt es eine schwere Dürre.","t":["In molte regioni c'è una grave siccità.","Molte regioni soffrono di una grave siccità."]},
+        {"id":"environment.s06","de":"Es ist wichtig, die Natur zu schützen.","t":"È importante proteggere la natura."},
+        {"id":"environment.s07","de":"Wir verschwenden zu viele Lebensmittel.","t":"Sprechiamo troppo cibo."},
+        {"id":"environment.s08","de":"Jeder trägt eine Verantwortung für die Umwelt.","t":["Ognuno ha una responsabilità verso l'ambiente.","Tutti abbiamo una responsabilità verso l'ambiente."]},
+        {"id":"environment.s09","de":"Die Stadt setzt auf erneuerbare Energie.","t":"La città punta sulle energie rinnovabili."},
+        {"id":"environment.s10","de":"Auch wenn es teurer ist, kaufe ich regional.","t":["Anche se costa di più, compro prodotti locali.","Anche se è più caro, compro a chilometro zero."]}
+      ]
+    },
+    {
+      "id": "media", "title": "Nachrichten & Medien", "level": "B2", "colors": ["#1D4ED8","#1E3A8A"],
+      "desc": "Über Nachrichten sprechen, Quellen prüfen und soziale Medien.",
+      "words": [
+        {"id":"media.w01","de":"die Nachrichten","t":["le notizie","il telegiornale"],"pic":"📰"},
+        {"id":"media.w02","de":"die Zeitung","t":"il giornale","pic":"🗞️"},
+        {"id":"media.w03","de":"der Artikel","t":"l'articolo"},
+        {"id":"media.w04","de":"die Quelle","t":"la fonte"},
+        {"id":"media.w05","de":"die Falschmeldung","t":["la notizia falsa","la fake news","la bufala"]},
+        {"id":"media.w06","de":"die sozialen Medien","t":["i social","i social network","i social media"],"pic":"📱"},
+        {"id":"media.w07","de":"die Meinungsfreiheit","t":["la libertà di espressione","la libertà di parola"]},
+        {"id":"media.w08","de":"die Schlagzeile","t":"il titolo"},
+        {"id":"media.w09","de":"berichten","t":["riferire","riportare"]},
+        {"id":"media.w10","de":"glaubwürdig","t":["credibile","affidabile"]},
+        {"id":"media.w11","de":"die Werbung","t":"la pubblicità","pic":"📢"},
+        {"id":"media.w12","de":"veröffentlichen","t":"pubblicare"},
+        {"id":"media.w13","de":"die Umfrage","t":"il sondaggio","pic":"📊"}
+      ],
+      "sentences": [
+        {"id":"media.s01","de":"Hast du heute die Nachrichten gesehen?","t":["Hai visto le notizie oggi?","Hai visto il telegiornale oggi?"]},
+        {"id":"media.s02","de":"Diese Quelle ist nicht glaubwürdig.","t":["Questa fonte non è affidabile.","Questa fonte non è credibile."]},
+        {"id":"media.s03","de":"Man sollte die Informationen immer überprüfen.","t":["Bisognerebbe sempre verificare le informazioni.","Le informazioni vanno sempre controllate."]},
+        {"id":"media.s04","de":"Die Zeitung hat einen langen Artikel darüber veröffentlicht.","t":["Il giornale ha pubblicato un lungo articolo su questo.","Il giornale ne ha pubblicato un lungo articolo."]},
+        {"id":"media.s05","de":"Viele junge Leute informieren sich über soziale Medien.","t":["Molti giovani si informano sui social.","Molti giovani si informano tramite i social network."]},
+        {"id":"media.s06","de":"Laut einer Umfrage sind die meisten dafür.","t":["Secondo un sondaggio, la maggior parte è favorevole.","Secondo un sondaggio, i più sono a favore."]},
+        {"id":"media.s07","de":"Die Schlagzeile ist übertrieben.","t":"Il titolo è esagerato."},
+        {"id":"media.s08","de":"Ich habe den Eindruck, dass das eine Falschmeldung ist.","t":["Ho l'impressione che sia una notizia falsa.","Ho l'impressione che sia una bufala."]},
+        {"id":"media.s09","de":"Die Meinungsfreiheit ist ein wichtiges Recht.","t":"La libertà di espressione è un diritto importante."},
+        {"id":"media.s10","de":"In der App gibt es viel zu viel Werbung.","t":["Nell'app c'è troppa pubblicità.","L'app ha troppa pubblicità."]}
+      ]
+    },
+    {
+      "id": "interview", "title": "Bewerbung & Vorstellungsgespräch", "level": "B2", "colors": ["#9333EA","#6B21A8"],
+      "desc": "Lebenslauf, Stärken und Fragen im Vorstellungsgespräch.",
+      "words": [
+        {"id":"interview.w01","de":"die Bewerbung","t":"la candidatura","pic":"📄"},
+        {"id":"interview.w02","de":"sich bewerben","t":"candidarsi"},
+        {"id":"interview.w03","de":"der Lebenslauf","t":["il curriculum","il CV"]},
+        {"id":"interview.w04","de":"das Vorstellungsgespräch","t":["il colloquio di lavoro","il colloquio"],"pic":"🤝"},
+        {"id":"interview.w05","de":"die Stelle","t":["il posto","la posizione"]},
+        {"id":"interview.w06","de":"die Stärke","t":"il punto di forza"},
+        {"id":"interview.w07","de":"die Schwäche","t":"il punto debole"},
+        {"id":"interview.w08","de":"die Ausbildung","t":"la formazione","pic":"🎓"},
+        {"id":"interview.w09","de":"die Gehaltsvorstellung","t":["le aspettative economiche","la richiesta di stipendio"]},
+        {"id":"interview.w10","de":"zuverlässig","t":"affidabile"},
+        {"id":"interview.w11","de":"die Probezeit","t":"il periodo di prova"},
+        {"id":"interview.w12","de":"die Teamarbeit","t":"il lavoro di squadra","pic":"👥"},
+        {"id":"interview.w13","de":"einstellen (Personal)","t":"assumere"}
+      ],
+      "sentences": [
+        {"id":"interview.s01","de":"Ich bewerbe mich um die Stelle als Grafikdesignerin.","t":["Mi candido per il posto di grafica.","Mi candido per la posizione di graphic designer."]},
+        {"id":"interview.s02","de":"Im Anhang finden Sie meinen Lebenslauf.","t":["In allegato trova il mio curriculum.","Le allego il mio curriculum."]},
+        {"id":"interview.s03","de":"Warum möchten Sie bei uns arbeiten?","t":["Perché vuole lavorare con noi?","Perché vorrebbe lavorare da noi?"]},
+        {"id":"interview.s04","de":"Was sind Ihre Stärken und Schwächen?","t":"Quali sono i suoi punti di forza e i suoi punti deboli?"},
+        {"id":"interview.s05","de":"Ich bin zuverlässig und arbeite gern im Team.","t":["Sono affidabile e mi piace lavorare in squadra.","Sono affidabile e lavoro volentieri in team."]},
+        {"id":"interview.s06","de":"Ich habe fünf Jahre Erfahrung im Vertrieb.","t":["Ho cinque anni di esperienza nelle vendite.","Ho cinque anni di esperienza nel settore vendite."]},
+        {"id":"interview.s07","de":"Wie hoch ist Ihre Gehaltsvorstellung?","t":["Quali sono le sue aspettative economiche?","Che stipendio si aspetta?"]},
+        {"id":"interview.s08","de":"Die Probezeit dauert sechs Monate.","t":"Il periodo di prova dura sei mesi."},
+        {"id":"interview.s09","de":"Wann könnten Sie anfangen?","t":["Quando potrebbe cominciare?","Quando potrebbe iniziare?"]},
+        {"id":"interview.s10","de":"Wir melden uns bis Ende der Woche bei Ihnen.","t":"La ricontatteremo entro la fine della settimana."}
+      ]
+    },
+    {
+      "id": "feelings", "title": "Gefühle & Beziehungen", "level": "B2", "colors": ["#DB2777","#9D174D"],
+      "desc": "Gefühle ausdrücken, Streit klären und über Beziehungen sprechen.",
+      "words": [
+        {"id":"feelings.w01","de":"das Gefühl","t":["il sentimento","la sensazione"],"pic":"💭"},
+        {"id":"feelings.w02","de":"glücklich","t":"felice","pic":"😊"},
+        {"id":"feelings.w03","de":"traurig","t":"triste","pic":"😢"},
+        {"id":"feelings.w04","de":"enttäuscht","t":["deluso","delusa"],"pic":"😞"},
+        {"id":"feelings.w05","de":"eifersüchtig","t":["geloso","gelosa"],"pic":"😒"},
+        {"id":"feelings.w06","de":"sich Sorgen machen","t":"preoccuparsi","pic":"😟"},
+        {"id":"feelings.w07","de":"der Streit","t":["la lite","il litigio"],"pic":"⚡"},
+        {"id":"feelings.w08","de":"sich versöhnen","t":["fare pace","riconciliarsi"],"pic":"🕊️"},
+        {"id":"feelings.w09","de":"vertrauen","t":"fidarsi"},
+        {"id":"feelings.w10","de":"sich verlieben","t":"innamorarsi","pic":"💘"},
+        {"id":"feelings.w11","de":"die Beziehung","t":["la relazione","il rapporto"],"pic":"💑"},
+        {"id":"feelings.w12","de":"vermissen","t":["mancare","sentire la mancanza di"],"pic":"🥺"},
+        {"id":"feelings.w13","de":"dankbar","t":["grato","grata"],"pic":"🙏"}
+      ],
+      "sentences": [
+        {"id":"feelings.s01","de":"Ich mache mir Sorgen um dich.","t":["Sono preoccupato per te.","Sono preoccupata per te.","Mi preoccupo per te."]},
+        {"id":"feelings.s02","de":"Ich bin ein bisschen enttäuscht.","t":["Sono un po' deluso.","Sono un po' delusa."]},
+        {"id":"feelings.s03","de":"Wir hatten gestern einen Streit.","t":["Ieri abbiamo litigato.","Ieri abbiamo avuto una lite."]},
+        {"id":"feelings.s04","de":"Inzwischen haben wir uns versöhnt.","t":["Nel frattempo abbiamo fatto pace.","Intanto abbiamo fatto pace."]},
+        {"id":"feelings.s05","de":"Es tut mir leid, dass ich dich verletzt habe.","t":["Mi dispiace di averti ferito.","Mi dispiace di averti ferita."]},
+        {"id":"feelings.s06","de":"Ich vermisse meine Familie sehr.","t":["Mi manca molto la mia famiglia.","La mia famiglia mi manca tanto."]},
+        {"id":"feelings.s07","de":"In einer Beziehung ist Vertrauen das Wichtigste.","t":"In una relazione la fiducia è la cosa più importante."},
+        {"id":"feelings.s08","de":"Sie hat sich im Urlaub verliebt.","t":["Si è innamorata in vacanza.","Si è innamorata durante le vacanze."]},
+        {"id":"feelings.s09","de":"Ich bin dir sehr dankbar für deine Hilfe.","t":["Ti sono molto grato per il tuo aiuto.","Ti sono molto grata per il tuo aiuto."]},
+        {"id":"feelings.s10","de":"Sei nicht so eifersüchtig!","t":["Non essere così geloso!","Non essere così gelosa!"]}
+      ]
+    },
+    {
+      "id": "authorities", "title": "Polizei & Behörden", "level": "B2", "colors": ["#1E3A8A","#172554"],
+      "desc": "Einen Diebstahl melden, Formulare ausfüllen und zur Botschaft gehen.",
+      "words": [
+        {"id":"authorities.w01","de":"die Polizei","t":"la polizia","pic":"🚓"},
+        {"id":"authorities.w02","de":"die Anzeige (Polizei)","t":"la denuncia"},
+        {"id":"authorities.w03","de":"der Diebstahl","t":"il furto","pic":"🕵️"},
+        {"id":"authorities.w04","de":"gestohlen","t":["rubato","rubata"]},
+        {"id":"authorities.w05","de":"die Botschaft","t":["l'ambasciata","il consolato"],"pic":"🏛️"},
+        {"id":"authorities.w06","de":"das Formular","t":"il modulo","pic":"📝"},
+        {"id":"authorities.w07","de":"ausfüllen","t":"compilare"},
+        {"id":"authorities.w08","de":"die Unterschrift","t":"la firma","pic":"✍️"},
+        {"id":"authorities.w09","de":"der Ausweis","t":["il documento d'identità","la carta d'identità","il documento"],"pic":"🪪"},
+        {"id":"authorities.w10","de":"der Zeuge / die Zeugin","t":["il testimone","la testimone"]},
+        {"id":"authorities.w11","de":"die Versicherung","t":"l'assicurazione","pic":"📑"},
+        {"id":"authorities.w12","de":"die Frist","t":["la scadenza","il termine"],"pic":"📆"},
+        {"id":"authorities.w13","de":"vorläufig","t":["provvisorio","provvisoria"]}
+      ],
+      "sentences": [
+        {"id":"authorities.s01","de":"Mir wurde der Geldbeutel gestohlen.","t":"Mi hanno rubato il portafoglio."},
+        {"id":"authorities.s02","de":"Ich möchte eine Anzeige erstatten.","t":["Vorrei sporgere denuncia.","Vorrei fare una denuncia."]},
+        {"id":"authorities.s03","de":"Wann und wo ist das passiert?","t":"Quando e dove è successo?"},
+        {"id":"authorities.s04","de":"Bitte füllen Sie dieses Formular aus.","t":["Compili questo modulo, per favore.","Per favore, compili questo modulo."]},
+        {"id":"authorities.s05","de":"Hier fehlt noch Ihre Unterschrift.","t":"Qui manca ancora la sua firma."},
+        {"id":"authorities.s06","de":"Ich habe meinen Reisepass verloren.","t":["Ho perso il passaporto.","Ho perso il mio passaporto."]},
+        {"id":"authorities.s07","de":"Die Botschaft stellt Ihnen einen vorläufigen Ausweis aus.","t":"L'ambasciata le rilascerà un documento provvisorio."},
+        {"id":"authorities.s08","de":"Brauche ich eine Kopie für die Versicherung?","t":["Mi serve una copia per l'assicurazione?","Ho bisogno di una copia per l'assicurazione?"]},
+        {"id":"authorities.s09","de":"Gab es Zeugen?","t":["C'erano dei testimoni?","Ci sono stati testimoni?"]},
+        {"id":"authorities.s10","de":"Die Frist endet am Freitag.","t":["La scadenza è venerdì.","Il termine scade venerdì."]}
+      ]
+    },
+    {
+      "id": "lifestyle", "title": "Gesund leben", "level": "B2", "colors": ["#059669","#065F46"],
+      "desc": "Ernährung, Sport, Schlaf und Stress im Alltag.",
+      "words": [
+        {"id":"lifestyle.w01","de":"die Ernährung","t":"l'alimentazione","pic":"🥗"},
+        {"id":"lifestyle.w02","de":"gesund","t":["sano","sana"],"pic":"💪"},
+        {"id":"lifestyle.w03","de":"der Stress","t":"lo stress","pic":"😫"},
+        {"id":"lifestyle.w04","de":"sich entspannen","t":"rilassarsi","pic":"🧘"},
+        {"id":"lifestyle.w05","de":"das Gewicht","t":"il peso","pic":"⚖️"},
+        {"id":"lifestyle.w06","de":"abnehmen","t":"dimagrire"},
+        {"id":"lifestyle.w07","de":"zunehmen","t":"ingrassare"},
+        {"id":"lifestyle.w08","de":"der Zucker","t":"lo zucchero","pic":"🍬"},
+        {"id":"lifestyle.w09","de":"trainieren","t":"allenarsi","pic":"🏋️"},
+        {"id":"lifestyle.w10","de":"das Fitnessstudio","t":"la palestra"},
+        {"id":"lifestyle.w11","de":"der Schlaf","t":"il sonno","pic":"🛌"},
+        {"id":"lifestyle.w12","de":"vegetarisch","t":["vegetariano","vegetariana"],"pic":"🥦"},
+        {"id":"lifestyle.w13","de":"die Gewohnheit","t":"l'abitudine"}
+      ],
+      "sentences": [
+        {"id":"lifestyle.s01","de":"Ich versuche, mich gesünder zu ernähren.","t":["Cerco di mangiare in modo più sano.","Sto cercando di alimentarmi meglio."]},
+        {"id":"lifestyle.s02","de":"Seit einem Monat esse ich keinen Zucker mehr.","t":"Da un mese non mangio più zucchero."},
+        {"id":"lifestyle.s03","de":"Dreimal pro Woche gehe ich ins Fitnessstudio.","t":["Vado in palestra tre volte a settimana.","Tre volte alla settimana vado in palestra."]},
+        {"id":"lifestyle.s04","de":"Zu viel Stress macht krank.","t":["Troppo stress fa ammalare.","Lo stress eccessivo fa male alla salute."]},
+        {"id":"lifestyle.s05","de":"Ich schlafe schlecht, wenn ich abends Kaffee trinke.","t":["Dormo male se bevo il caffè la sera.","Dormo male quando bevo caffè di sera."]},
+        {"id":"lifestyle.s06","de":"Beim Yoga kann ich mich gut entspannen.","t":["Con lo yoga riesco a rilassarmi bene.","Lo yoga mi aiuta a rilassarmi."]},
+        {"id":"lifestyle.s07","de":"Er hat zehn Kilo abgenommen.","t":["Ha perso dieci chili.","È dimagrito di dieci chili."]},
+        {"id":"lifestyle.s08","de":"Seit letztem Jahr bin ich Vegetarierin.","t":["Sono vegetariana dall'anno scorso.","Dall'anno scorso sono vegetariana."]},
+        {"id":"lifestyle.s09","de":"Es ist schwer, alte Gewohnheiten zu ändern.","t":"È difficile cambiare le vecchie abitudini."},
+        {"id":"lifestyle.s10","de":"Genug Schlaf ist genauso wichtig wie Sport.","t":"Dormire abbastanza è importante quanto fare sport."}
+      ]
+    },
+    {
+      "id": "tech", "title": "Technik & Digitales", "level": "B2", "colors": ["#4F46E5","#3730A3"],
+      "desc": "Geräte, Software, Datenschutz und technische Probleme lösen.",
+      "words": [
+        {"id":"tech.w01","de":"der Computer","t":"il computer","pic":"💻"},
+        {"id":"tech.w02","de":"das Update","t":"l'aggiornamento","pic":"🔄"},
+        {"id":"tech.w03","de":"herunterladen","t":"scaricare","pic":"⬇️"},
+        {"id":"tech.w04","de":"speichern","t":"salvare","pic":"💾"},
+        {"id":"tech.w05","de":"löschen","t":["cancellare","eliminare"],"pic":"🗑️"},
+        {"id":"tech.w06","de":"der Datenschutz","t":["la protezione dei dati","la privacy"],"pic":"🔐"},
+        {"id":"tech.w07","de":"das Konto (online)","t":"l'account"},
+        {"id":"tech.w08","de":"sich anmelden","t":["accedere","fare il login"]},
+        {"id":"tech.w09","de":"die Einstellungen","t":"le impostazioni","pic":"⚙️"},
+        {"id":"tech.w10","de":"der Bildschirm","t":"lo schermo","pic":"🖥️"},
+        {"id":"tech.w11","de":"abstürzen","t":["bloccarsi","piantarsi"],"pic":"💥"},
+        {"id":"tech.w12","de":"die Datei","t":"il file","pic":"📁"},
+        {"id":"tech.w13","de":"neu starten","t":"riavviare"}
+      ],
+      "sentences": [
+        {"id":"tech.s01","de":"Mein Computer ist schon wieder abgestürzt.","t":["Il mio computer si è bloccato di nuovo.","Il computer si è piantato un'altra volta."]},
+        {"id":"tech.s02","de":"Hast du schon versucht, ihn neu zu starten?","t":"Hai già provato a riavviarlo?"},
+        {"id":"tech.s03","de":"Ich muss erst das Update installieren.","t":"Prima devo installare l'aggiornamento."},
+        {"id":"tech.s04","de":"Ich kann mich nicht in mein Konto einloggen.","t":"Non riesco ad accedere al mio account."},
+        {"id":"tech.s05","de":"Vergiss nicht, die Datei zu speichern!","t":"Non dimenticare di salvare il file!"},
+        {"id":"tech.s06","de":"Wo finde ich die Einstellungen?","t":["Dove trovo le impostazioni?","Dove sono le impostazioni?"]},
+        {"id":"tech.s07","de":"Der Bildschirm bleibt schwarz.","t":["Lo schermo resta nero.","Lo schermo rimane nero."]},
+        {"id":"tech.s08","de":"Diese App sammelt zu viele Daten.","t":"Questa app raccoglie troppi dati."},
+        {"id":"tech.s09","de":"Ich habe aus Versehen alle Fotos gelöscht.","t":["Ho cancellato tutte le foto per sbaglio.","Per errore ho eliminato tutte le foto."]},
+        {"id":"tech.s10","de":"Du kannst die Datei hier herunterladen.","t":"Puoi scaricare il file qui."}
+      ]
+    },
+    {
+      "id": "travelrights", "title": "Reklamieren & Rechte", "level": "B2", "colors": ["#EA580C","#9A3412"],
+      "desc": "Bei Flugausfall, Überbuchung oder Mängeln seine Rechte einfordern.",
+      "words": [
+        {"id":"travelrights.w01","de":"die Entschädigung","t":["il risarcimento","l'indennizzo"],"pic":"💶"},
+        {"id":"travelrights.w02","de":"die Beschwerde","t":"il reclamo","pic":"📣"},
+        {"id":"travelrights.w03","de":"sich beschweren","t":["lamentarsi","fare reclamo"]},
+        {"id":"travelrights.w04","de":"überbucht","t":["in overbooking","sovraprenotato"]},
+        {"id":"travelrights.w05","de":"annulliert","t":["cancellato","annullato"],"pic":"❌"},
+        {"id":"travelrights.w06","de":"der Anspruch","t":"il diritto"},
+        {"id":"travelrights.w07","de":"die Erstattung","t":"il rimborso","pic":"↩️"},
+        {"id":"travelrights.w08","de":"der Mangel","t":["il difetto","il problema"]},
+        {"id":"travelrights.w09","de":"der Beleg","t":["la ricevuta","il giustificativo"],"pic":"🧾"},
+        {"id":"travelrights.w10","de":"verlangen","t":["pretendere","esigere"]},
+        {"id":"travelrights.w11","de":"der Ersatz","t":"la sostituzione"},
+        {"id":"travelrights.w12","de":"die Bedingungen","t":"le condizioni","pic":"📜"},
+        {"id":"travelrights.w13","de":"zuständig","t":["competente","responsabile"]}
+      ],
+      "sentences": [
+        {"id":"travelrights.s01","de":"Unser Flug wurde ohne Begründung annulliert.","t":"Il nostro volo è stato cancellato senza spiegazioni."},
+        {"id":"travelrights.s02","de":"Der Flug war überbucht, und wir mussten warten.","t":"Il volo era in overbooking e abbiamo dovuto aspettare."},
+        {"id":"travelrights.s03","de":"Wir haben Anspruch auf eine Entschädigung.","t":["Abbiamo diritto a un risarcimento.","Abbiamo diritto a un indennizzo."]},
+        {"id":"travelrights.s04","de":"Ich möchte mich beschweren.","t":["Vorrei fare un reclamo.","Vorrei presentare un reclamo."]},
+        {"id":"travelrights.s05","de":"Wer ist dafür zuständig?","t":["Chi è il responsabile?","Chi se ne occupa?"]},
+        {"id":"travelrights.s06","de":"Bitte heben Sie alle Belege auf.","t":"Per favore, conservi tutte le ricevute."},
+        {"id":"travelrights.s07","de":"Das Zimmer hatte mehrere Mängel.","t":["La camera aveva diversi difetti.","La camera aveva vari problemi."]},
+        {"id":"travelrights.s08","de":"Ich verlange eine vollständige Erstattung.","t":["Pretendo il rimborso completo.","Esigo un rimborso totale."]},
+        {"id":"travelrights.s09","de":"Laut den Bedingungen ist das nicht erlaubt.","t":["Secondo le condizioni non è permesso.","In base alle condizioni non è consentito."]},
+        {"id":"travelrights.s10","de":"Hätten Sie uns früher informiert, hätten wir umbuchen können.","t":["Se ci aveste avvisato prima, avremmo potuto cambiare il volo.","Se ci aveste informati prima, avremmo potuto cambiare la prenotazione."]}
+      ]
+    },
+    {
+      "id": "society", "title": "Gesellschaft & Zusammenleben", "level": "B2", "colors": ["#B45309","#78350F"],
+      "desc": "Über Zusammenleben, Wohnen in der Stadt und gesellschaftliche Themen diskutieren.",
+      "words": [
+        {"id":"society.w01","de":"die Gesellschaft","t":"la società","pic":"👥"},
+        {"id":"society.w02","de":"die Gleichberechtigung","t":["la parità dei diritti","l'uguaglianza"],"pic":"⚖️"},
+        {"id":"society.w03","de":"die Integration","t":"l'integrazione"},
+        {"id":"society.w04","de":"die Wohnungsnot","t":["l'emergenza abitativa","la carenza di alloggi"],"pic":"🏘️"},
+        {"id":"society.w05","de":"die Vielfalt","t":"la diversità","pic":"🌈"},
+        {"id":"society.w06","de":"das Ehrenamt","t":"il volontariato","pic":"🤲"},
+        {"id":"society.w07","de":"die Generation","t":"la generazione"},
+        {"id":"society.w08","de":"die Rente","t":"la pensione","pic":"👴"},
+        {"id":"society.w09","de":"die Wahl","t":"le elezioni","pic":"🗳️"},
+        {"id":"society.w10","de":"die Meinung","t":"l'opinione"},
+        {"id":"society.w11","de":"das Vorurteil","t":"il pregiudizio"},
+        {"id":"society.w12","de":"tolerant","t":"tollerante"},
+        {"id":"society.w13","de":"sich engagieren","t":"impegnarsi"}
+      ],
+      "sentences": [
+        {"id":"society.s01","de":"In vielen Großstädten steigen die Mieten stark.","t":["In molte grandi città gli affitti aumentano molto.","In tante grandi città gli affitti salgono parecchio."]},
+        {"id":"society.s02","de":"Meiner Meinung nach sollte Wohnen bezahlbar sein.","t":["Secondo me la casa dovrebbe essere accessibile.","Secondo me gli affitti dovrebbero essere accessibili."]},
+        {"id":"society.s03","de":"Sie engagiert sich ehrenamtlich in einem Verein.","t":["Fa volontariato in un'associazione.","Si impegna come volontaria in un'associazione."]},
+        {"id":"society.s04","de":"Die junge Generation sieht das anders.","t":["La nuova generazione la vede diversamente.","I giovani la vedono in modo diverso."]},
+        {"id":"society.s05","de":"Gleichberechtigung ist noch lange nicht erreicht.","t":["La parità dei diritti è ancora lontana.","Siamo ancora lontani dalla parità."]},
+        {"id":"society.s06","de":"Vielfalt macht eine Stadt lebendig.","t":["La diversità rende viva una città.","La diversità rende una città vivace."]},
+        {"id":"society.s07","de":"Man sollte Menschen ohne Vorurteile begegnen.","t":"Bisognerebbe incontrare le persone senza pregiudizi."},
+        {"id":"society.s08","de":"Gehst du am Sonntag wählen?","t":"Vai a votare domenica?"},
+        {"id":"society.s09","de":"Viele ältere Menschen machen sich Sorgen um ihre Rente.","t":"Molti anziani sono preoccupati per la loro pensione."},
+        {"id":"society.s10","de":"Obwohl wir verschiedener Meinung sind, respektiere ich dich.","t":["Anche se la pensiamo diversamente, ti rispetto.","Sebbene non siamo d'accordo, ti rispetto."]}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "restaurant", "title": "Im Restaurant", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Haben Sie reserviert?","t":"Buonasera! Avete prenotato?"},
+          "a": [
+            {"de":"Nein, einen Tisch für zwei, bitte.","t":"No, un tavolo per due, per favore."},
+            {"de":"Ich möchte die Rechnung.","t":"Vorrei il conto."},
+            {"de":"Es ist drei Uhr.","t":"Sono le tre."}
+          ] },
+        { "p": {"de":"Was möchten Sie trinken?","t":"Che cosa desiderate da bere?"},
+          "a": [
+            {"de":"Zwei Wasser, bitte.","t":"Due acque, per favore."},
+            {"de":"Wo ist der Bahnhof?","t":"Dov'è la stazione?"},
+            {"de":"Ich habe Kopfschmerzen.","t":"Ho mal di testa."}
+          ] },
+        { "p": {"de":"Haben Sie schon gewählt?","t":"Avete già scelto?"},
+          "a": [
+            {"de":"Ja, ich nehme den Fisch.","t":"Sì, prendo il pesce."},
+            {"de":"Ja, ich habe einen Hund.","t":"Sì, ho un cane."},
+            {"de":"Nein, ich komme aus Deutschland.","t":"No, vengo dalla Germania."}
+          ] },
+        { "p": {"de":"Hat es Ihnen geschmeckt?","t":"Vi è piaciuto?"},
+          "a": [
+            {"de":"Ja, sehr lecker! Die Rechnung, bitte.","t":"Sì, buonissimo! Il conto, per favore."},
+            {"de":"Zwei Fahrkarten, bitte.","t":"Due biglietti, per favore."},
+            {"de":"Wo ist die Apotheke?","t":"Dov'è la farmacia?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi", "title": "Im Taxi", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
+      "turns": [
+        { "p": {"de":"Hallo! Wohin möchten Sie?","t":"Buongiorno! Dove la porto?"},
+          "a": [
+            {"de":"Zum Flughafen, bitte.","t":"All'aeroporto, per favore."},
+            {"de":"Ein Bier, bitte.","t":"Una birra, per favore."},
+            {"de":"Ich heiße Anna.","t":"Mi chiamo Anna."}
+          ] },
+        { "p": {"de":"Haben Sie Gepäck?","t":"Ha bagagli?"},
+          "a": [
+            {"de":"Ja, einen Koffer.","t":"Sì, una valigia."},
+            {"de":"Ja, ich bin Vegetarier.","t":"Sì, sono vegetariano."},
+            {"de":"Nein, es ist zu teuer.","t":"No, è troppo caro."}
+          ] },
+        { "p": {"de":"Es gibt viel Verkehr. Es dauert etwa vierzig Minuten.","t":"C'è molto traffico. Ci vogliono circa quaranta minuti."},
+          "a": [
+            {"de":"Kein Problem. Wie viel kostet die Fahrt?","t":"Nessun problema. Quanto costa la corsa?"},
+            {"de":"Guten Morgen!","t":"Buongiorno!"},
+            {"de":"Ich habe meinen Schlüssel verloren.","t":"Ho perso la chiave."}
+          ] },
+        { "p": {"de":"Etwa fünfzig Euro.","t":"Circa cinquanta euro."},
+          "a": [
+            {"de":"In Ordnung. Kann ich mit Karte zahlen?","t":"Va bene. Posso pagare con la carta?"},
+            {"de":"Die Suppe ist kalt.","t":"La zuppa è fredda."},
+            {"de":"Ich habe zwei Schwestern.","t":"Ho due sorelle."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel", "title": "Im Hotel", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Buongiorno! Posso aiutarla?"},
+          "a": [
+            {"de":"Ja, ich habe eine Reservierung.","t":"Sì, ho una prenotazione."},
+            {"de":"Ja, ich habe Fieber.","t":"Sì, ho la febbre."},
+            {"de":"Nein, ich nehme den Bus.","t":"No, prendo l'autobus."}
+          ] },
+        { "p": {"de":"Auf welchen Namen, bitte?","t":"A che nome, prego?"},
+          "a": [
+            {"de":"Auf den Namen Weber.","t":"A nome Weber."},
+            {"de":"Für zwei Nächte, bitte.","t":"Per due notti, per favore."},
+            {"de":"Der Kaffee ist lecker.","t":"Il caffè è buonissimo."}
+          ] },
+        { "p": {"de":"Ihr Zimmer ist im dritten Stock. Hier ist Ihr Schlüssel.","t":"La sua camera è al terzo piano. Ecco la chiave."},
+          "a": [
+            {"de":"Danke! Wann gibt es Frühstück?","t":"Grazie! A che ora è la colazione?"},
+            {"de":"Ich suche einen Supermarkt.","t":"Cerco un supermercato."},
+            {"de":"Das Museum ist rechts.","t":"Il museo è a destra."}
+          ] },
+        { "p": {"de":"Von sieben bis zehn Uhr.","t":"Dalle sette alle dieci."},
+          "a": [
+            {"de":"Perfekt, vielen Dank!","t":"Perfetto, grazie mille!"},
+            {"de":"Wie spät ist es?","t":"Che ore sono?"},
+            {"de":"Ich bin allergisch gegen Nüsse.","t":"Sono allergico alla frutta secca."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy", "title": "In der Apotheke", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
+      "turns": [
+        { "p": {"de":"Guten Tag, was kann ich für Sie tun?","t":"Buongiorno, che cosa posso fare per lei?"},
+          "a": [
+            {"de":"Ich habe Halsschmerzen.","t":"Ho mal di gola."},
+            {"de":"Ich nehme es.","t":"Lo prendo."},
+            {"de":"Wo ist der Strand?","t":"Dov'è la spiaggia?"}
+          ] },
+        { "p": {"de":"Seit wann haben Sie das?","t":"Da quando ce l'ha?"},
+          "a": [
+            {"de":"Seit zwei Tagen.","t":"Da due giorni."},
+            {"de":"Um acht Uhr.","t":"Alle otto."},
+            {"de":"Zwei Kilometer.","t":"Due chilometri."}
+          ] },
+        { "p": {"de":"Haben Sie auch Fieber?","t":"Ha anche la febbre?"},
+          "a": [
+            {"de":"Nein, kein Fieber.","t":"No, niente febbre."},
+            {"de":"Nein, kein Zucker.","t":"No, senza zucchero."},
+            {"de":"Ja, mit Karte.","t":"Sì, con la carta."}
+          ] },
+        { "p": {"de":"Nehmen Sie diese Tabletten dreimal täglich.","t":"Prenda queste compresse tre volte al giorno."},
+          "a": [
+            {"de":"Danke. Brauche ich ein Rezept?","t":"Grazie. Ci vuole la ricetta?"},
+            {"de":"Danke. Ist das Frühstück inklusive?","t":"Grazie. La colazione è inclusa?"},
+            {"de":"Ja, zwei Bier, bitte.","t":"Sì, due birre, per favore."}
+          ] }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
-<p align="center"><img src="docs/logo.webp" alt="OpenSprachFuchs-Logo: ein Comic-Fuchs mit einem blauen O" width="160"></p>
+<p align="center"><img src="docs/logo.webp" alt="OpenSprachFuchs-Logo: ein lächelnder Comic-Fuchskopf" width="160"></p>
 
 # OpenSprachFuchs
 
-Eine freie Sprachlern-App für Android, inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch oder brasilianisches Portugiesisch** lernen wollen.
+Eine freie Sprachlern-App für Android, inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch oder brasilianisches Portugiesisch** lernen wollen.
 
 OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duolingo zu tun.
 

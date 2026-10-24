@@ -1,7 +1,7 @@
 # OpenSprachFuchs – freie Sprachlern-App für Android
 
 ## Worum es geht
-Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch und brasilianisches Portugiesisch** lernen. Die Oberfläche ist komplett auf Deutsch. Öffentlich auf GitHub: https://github.com/geonerd97/OpenSprachFuchs (Code MIT, Sprachpakete CC BY-SA 4.0, Konto `geonerd97`). Die APK baut der Maintainer lokal auf dem Mac und lädt sie als GitHub-Release hoch (`tools/release.sh`).
+Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch und brasilianisches Portugiesisch** lernen. Die Oberfläche ist komplett auf Deutsch. Öffentlich auf GitHub: https://github.com/geonerd97/OpenSprachFuchs (Code MIT, Sprachpakete CC BY-SA 4.0, Konto `geonerd97`). Die APK baut der Maintainer lokal auf dem Mac und lädt sie als GitHub-Release hoch (`tools/release.sh`).
 Verantwortlich/Kontakt: Martin Reger, opensprachfuchs@gmx.net (ohne Anschrift, Entscheidung des Maintainers).
 
 ## Grundsätze (Vorgaben des Maintainers)
@@ -26,7 +26,7 @@ Verantwortlich/Kontakt: Martin Reger, opensprachfuchs@gmx.net (ohne Anschrift, E
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten, Systemschriften. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
 | `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.3 (versionCode 5, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
-| `packs/` | Sprachpakete `en/fr/es/pt.json`, Format in `packs/README.md` |
+| `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
 | `tools/release.sh` | Tests, signierte Release-APK, GitHub-Release `v<versionName>` |
@@ -67,11 +67,12 @@ Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PU
 Lernweg mit 40 Einheiten à 4 Lektionen = 160 Lektionen pro Sprache, je 10 Einheiten in A1, A2, B1, B2 (in den Paketen nach Stufe sortiert; Reiter über dem Pfad: `levelsHTML`, `shownLevel`, `LEVEL_NAMES`, `ui.level`; nach der letzten Einheit einer Stufe öffnet sich der nächste Reiter; begonnene Einheiten bleiben offen), Einstufungstest, Übungstypen choice/choiceRev/listenWord/pic/bank/bankRev/listen/type/typeSent/gap/match/speak, Wörter antippen, Wortliste mit Suche, Spaced Repetition (Stufen 0–6), Gespräche (4 pro Sprache), Meisterschaft, Combo, Blitzrunde, Tagesaufgaben, Edelsteine und Shop (Serienschutz, Herzen, Doppel-XP, Pausenschutz), 5 Herzen (Issue #4: 1 Herz alle 40 Min., +1 pro 6 richtige Antworten beim Üben, Bonustruhe 2) mit Auffüllrunde, Hören/Sprechen pausieren, Rückstufung nach 14 Tagen Pause, Zurücksetzen ab Einheit, Statistik und 14 Abzeichen, tägliche Erinnerung. Antwortprüfung ignoriert Groß/klein und Satzzeichen, toleriert Akzente und kleine Tippfehler, englische Kurzformen werden aufgelöst.
 
 ## Prüfen
-`npm test` (Node ≥ 22.5): Paketprüfung, Spiellogik (21.600 Übungen in 4 Sprachen, 0 Fehler, dazu alle Tabs, Stufen-Reiter, Dialoge, App-Modus und Update-Prüfung) und Backend (Konto, Verschlüsselung, Anmelden auf zweitem Gerät, Freunde, Serie, Geschenke, Limit, Löschen, Offline-Konto, Paket-Updates, Aufräumen). `./gradlew assembleDebug` in `android/` baut die APK. Das Backend ist deployt und live geprüft (Konto, Spielstand, Lerntag, Freunde, Löschen, CORS). Ein Test auf einem echten Handy steht noch aus.
+`npm test` (Node ≥ 22.5): Paketprüfung, Spiellogik (27.000 Übungen in 5 Sprachen, 0 Fehler, dazu alle Tabs, Stufen-Reiter, Dialoge, App-Modus und Update-Prüfung) und Backend (Konto, Verschlüsselung, Anmelden auf zweitem Gerät, Freunde, Serie, Geschenke, Limit, Löschen, Offline-Konto, Paket-Updates, Aufräumen). `./gradlew assembleDebug` in `android/` baut die APK. Das Backend ist deployt und live geprüft (Konto, Spielstand, Lerntag, Freunde, Löschen, CORS). Ein Test auf einem echten Handy steht noch aus.
 
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
-- 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo vom Maintainer: Comic-Fuchs mit blauem „O“ (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon aus `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FBF8F3`). Keine Eule (Abgrenzung zu Duolingo).
+- 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo (seit 2026-10-24, vom Maintainer): lächelnder Comic-Fuchskopf (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon: ausgeschnittener Fuchs in `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FEF6E9`, 57 dp groß, damit die Ohren auch in runden Masken passen). Keine Eule (Abgrenzung zu Duolingo).
+- 2026-10-24: Italienisch als fünfte Sprache (alle 40 Einheiten und 4 Gespräche, `it-IT`, Übersetzung von Claude, ungeprüft). Neues Logo (Fuchskopf). Issue #1 geschlossen.
 - 2026-10-24: 20 neue Einheiten pro Sprache (A1: Familie, Kleidung, Zuhause; A2: Flughafen, Strand, Handy; B1: Wohnung, Arbeit, Kochen, Bank, Natur; B2: Umwelt, Medien, Bewerbung, Gefühle, Behörden, Gesund leben, Technik, Reklamieren, Gesellschaft), Stufen-Reiter im Lernweg. Übersetzungen von Claude, noch nicht von Muttersprachlern geprüft.
 - 2026-10-23/24: Repository öffentlich, Release 0.0.1 (APK nachträglich mit korrigiertem Update-Check ersetzt).
 - 2026-10-23: Neuaufbau als Open-Source-Projekt: Android-only, Sprachpakete, Cloudflare-Backend mit anonymem Schlüssel-Konto und verschlüsselten Spielständen, Freunde (gemeinsame Serien, Geschenke), offline-fähig, Tab-Leiste unten. Pi-Server, Docker, Web-App/PWA, Thai und Dialekte entfernt.
