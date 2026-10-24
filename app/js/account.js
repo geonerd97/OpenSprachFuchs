@@ -216,20 +216,53 @@ async function sendReports() {
 }
 const newerVersion = (a, b) => { const p = v => String(v).replace(/^v/, "").split(".").map(n => parseInt(n, 10) || 0); const x = p(a), y = p(b);
   for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); return false; };
-/** Once a day asks GitHub for the latest release and offers it when it is newer than the installed app. */
-async function checkAppUpdate() {
-  if (!APP || !CONFIG.GITHUB_REPO || !st.settings.updates || !window.AndroidBridge.appVersion) return;
-  let last = 0;
-  try { last = +localStorage.getItem("opensprachfuchs-update-check") || 0; } catch (e) {}
-  if (Date.now() - last < 864e5 && !ui.appUpdate) return;
+/* App updates from GitHub: at every start (at most every 6 hours) the app asks for the newest release. A newer one
+   is remembered until it is installed: a dialog appears once per version, the notice on the path stays, and the
+   download button fetches the APK directly. */
+const UPDATE_KEY = "opensprachfuchs-update", UPDATE_SEEN_KEY = "opensprachfuchs-update-seen", UPDATE_CHECK_KEY = "opensprachfuchs-update-check";
+const UPDATE_EVERY = 6 * 3600e3;
+const getItem = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+const setItem = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} };
+/** The bullet points of the release notes, without Markdown, for "Was ist neu". */
+function releaseNotes(body) {
+  return String(body || "").split("\n").map(l => l.trim()).filter(l => /^[-*] /.test(l)).slice(0, 6)
+    .map(l => l.replace(/^[-*] /, "").replace(/\*\*|__|`/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\s*\(#\d+\)/g, "").trim()).filter(Boolean);
+}
+function showUpdate(info) {
+  ui.appUpdate = info;
+  // The dialog comes once per version; afterwards the notice on the path and in the settings is enough.
+  if (getItem(UPDATE_SEEN_KEY) !== info.version && !ui.modal && (view === "home" || view === "langs")) { ui.modal = "appupdate"; setItem(UPDATE_SEEN_KEY, info.version); }
+  render();
+}
+async function checkAppUpdate(force = false) {
+  if (!APP || !CONFIG.GITHUB_REPO || !window.AndroidBridge.appVersion) return;
+  const current = window.AndroidBridge.appVersion();
+  let known = null;
+  try { known = JSON.parse(getItem(UPDATE_KEY)); } catch (e) {}
+  if (known && newerVersion(known.version, current)) showUpdate(known);
+  else if (known) { setItem(UPDATE_KEY, null); ui.appUpdate = null; } // installed meanwhile
+  if (!force && (!st.settings.updates || Date.now() - (+getItem(UPDATE_CHECK_KEY) || 0) < UPDATE_EVERY)) return;
+  if (force) { ui.updateNote = "Suche nach Updates …"; render(); }
   try {
     // Not /releases/latest: GitHub leaves pre-releases out there, and every 0.x version is one.
     const r = await fetchTimeout(`https://api.github.com/repos/${CONFIG.GITHUB_REPO}/releases?per_page=10`, { headers: { Accept: "application/vnd.github+json" } });
-    if (!r.ok) return;
+    if (!r.ok) throw new Error("github " + r.status);
     const list = await r.json();
     const rel = (Array.isArray(list) ? list : []).filter(x => !x.draft && x.tag_name).sort((x, y) => (newerVersion(x.tag_name, y.tag_name) ? -1 : 1))[0];
-    if (!rel) return;
-    localStorage.setItem("opensprachfuchs-update-check", String(Date.now()));
-    if (newerVersion(rel.tag_name, window.AndroidBridge.appVersion())) { ui.appUpdate = { version: String(rel.tag_name).replace(/^v/, ""), url: rel.html_url }; render(); }
-  } catch (e) {}
+    setItem(UPDATE_CHECK_KEY, String(Date.now()));
+    if (rel && newerVersion(rel.tag_name, current)) {
+      const apk = (rel.assets || []).find(a => /\.apk$/i.test(a.name || ""));
+      const info = { version: String(rel.tag_name).replace(/^v/, ""), url: rel.html_url, apk: apk ? apk.browser_download_url : "",
+        size: apk ? apk.size : 0, notes: releaseNotes(rel.body), pre: !!rel.prerelease };
+      setItem(UPDATE_KEY, JSON.stringify(info));
+      ui.updateNote = "";
+      showUpdate(info);
+    } else if (force) { ui.updateNote = `Du hast die neueste Version (${current}).`; render(); }
+  } catch (e) { if (force) { ui.updateNote = "GitHub ist gerade nicht erreichbar. Versuch es später noch einmal."; render(); } }
+}
+/** Download button: the APK itself (the phone's browser downloads it), otherwise the release page. */
+function downloadUpdate() {
+  if (!ui.appUpdate) return;
+  openUrl(ui.appUpdate.apk || ui.appUpdate.url);
+  ui.modal = null; render();
 }

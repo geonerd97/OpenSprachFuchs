@@ -337,21 +337,43 @@ g.view = "home";
   a.ui.modal = null;
 }
 
-// App updates: pre-releases count (every 0.x version is one), and only a newer version is offered.
+// App updates: pre-releases count, the APK is linked directly, the dialog comes once per version, the notice stays until installed.
 (async () => {
-  const releases = [{ tag_name: "v0.0.1", prerelease: true, draft: false, html_url: "u1" }, { tag_name: "v0.0.3", draft: true, html_url: "u3" },
-    { tag_name: "v0.0.2", prerelease: true, draft: false, html_url: "u2" }];
+  const releases = [{ tag_name: "v0.0.1", prerelease: true, draft: false, html_url: "u1", assets: [] }, { tag_name: "v0.0.3", draft: true, html_url: "u3" },
+    { tag_name: "v0.0.2", prerelease: true, draft: false, html_url: "u2", body: "## Neu\n- **Italienisch** als Sprache (#5)\n- [Logo](x) neu\n\nText",
+      assets: [{ name: "opensprachfuchs-0.0.2.apk", size: 1258291, browser_download_url: "https://github.com/x/releases/download/v0.0.2/opensprachfuchs-0.0.2.apk" }] }];
+  let online = true;
   const fetchImpl = async url => {
     if (/api\.github\.com/.test(url) && !/\/releases\?/.test(url)) fail("Update-Prüfung fragt die falsche Adresse ab", url);
-    if (!/api\.github\.com/.test(url)) throw new Error("offline"); // backend calls at start-up
+    if (!/api\.github\.com/.test(url) || !online) throw new Error("offline"); // backend calls at start-up
     return new Response(JSON.stringify(releases));
   };
-  const u = loadGame({ AndroidBridge: { appVersion: () => "0.0.1", setReminder() {}, reportDay() {}, speak() {}, stop() {} } }, { fetch: fetchImpl });
-  await u.checkAppUpdate();
-  if (!u.ui.appUpdate || u.ui.appUpdate.version !== "0.0.2" || u.ui.appUpdate.url !== "u2") fail("App-Update (Vorabversion) nicht erkannt", JSON.stringify(u.ui.appUpdate));
-  const same = loadGame({ AndroidBridge: { appVersion: () => "0.0.2", setReminder() {}, reportDay() {}, speak() {}, stop() {} } }, { fetch: fetchImpl });
-  await same.checkAppUpdate();
-  if (same.ui.appUpdate) fail("App-Update angeboten, obwohl die Version aktuell ist");
+  const opened = [], bridge = v => ({ appVersion: () => v, setReminder() {}, reportDay() {}, speak() {}, stop() {}, openUrl: u => opened.push(u) });
+  const store = { "opensprachfuchs-state": JSON.stringify({ onboarded: true, course: "en" }) };
+  const u = loadGame({ AndroidBridge: bridge("0.0.1") }, { fetch: fetchImpl, store });
+  u.view = "home"; u.ui.modal = null;
+  await u.checkAppUpdate(true);
+  const up = u.ui.appUpdate;
+  if (!up || up.version !== "0.0.2" || up.url !== "u2" || !/\.apk$/.test(up.apk)) fail("App-Update (Vorabversion) nicht erkannt", JSON.stringify(up));
+  else {
+    if (JSON.stringify(up.notes) !== JSON.stringify(["Italienisch als Sprache", "Logo neu"])) fail("Was ist neu falsch", JSON.stringify(up.notes));
+    if (u.ui.modal !== "appupdate" || !u.modalHTML().includes("Herunterladen · 1,2 MB")) fail("Update-Dialog fehlt", u.ui.modal);
+    u.click("openupdate");
+    if (opened[0] !== up.apk || u.ui.modal) fail("Download öffnet nicht die APK", opened[0]);
+    u.ui.tab = "path"; if (!u.homeHTML().includes("Neue App-Version 0.0.2")) fail("Update-Hinweis im Lernweg fehlt");
+  }
+  // Next start, offline: the remembered update is still shown, but the dialog does not come again.
+  online = false;
+  const again = loadGame({ AndroidBridge: bridge("0.0.1") }, { fetch: fetchImpl, store });
+  again.view = "home"; again.ui.modal = null; await again.checkAppUpdate();
+  if (!again.ui.appUpdate || again.ui.modal === "appupdate") fail("Gemerktes Update falsch angezeigt", again.ui.modal);
+  // After installing 0.0.2 the notice disappears; a manual check reports that the app is current.
+  online = true;
+  const same = loadGame({ AndroidBridge: bridge("0.0.2") }, { fetch: fetchImpl, store });
+  await same.checkAppUpdate(true);
+  if (same.ui.appUpdate || store["opensprachfuchs-update"]) fail("App-Update angeboten, obwohl die Version aktuell ist");
+  if (!/neueste Version \(0\.0\.2\)/.test(same.ui.updateNote || "")) fail("Manuelle Prüfung meldet nichts", same.ui.updateNote);
+  same.ui.modal = "settings"; if (!same.modalHTML().includes("neueste Version")) fail("Ergebnis der Prüfung fehlt in den Einstellungen");
   console.log(`Übungen: ${count}, Fehler: ${errors}`, JSON.stringify(types));
 process.exit(errors ? 1 : 0);
 })();

@@ -364,6 +364,14 @@ function modalHTML() {
       <button class="btn ghost wide" data-act="managepacks">Sprachen herunterladen oder entfernen</button>`);
   }
   if (ui.modal === "packs") return modal("Sprachen verwalten", packListHTML());
+  if (ui.modal === "appupdate" && ui.appUpdate) {
+    const u = ui.appUpdate, current = APP && window.AndroidBridge.appVersion ? window.AndroidBridge.appVersion() : "";
+    return modal(`🦊 Version ${esc(u.version)} ist da`, `<p class="muted">Du hast ${current ? `Version ${esc(current)}` : "eine ältere Version"}. Die neue installiert sich über die alte, dein Fortschritt bleibt erhalten.${u.pre ? " Es ist eine experimentelle Vorabversion." : ""}</p>
+      ${u.notes && u.notes.length ? `<div><b>Was ist neu</b><ul class="muted update-notes">${u.notes.map(n => `<li>${esc(n)}</li>`).join("")}</ul></div>` : ""}
+      <button class="btn good wide" data-act="openupdate">Herunterladen${u.size ? ` · ${(u.size / 1048576).toFixed(1).replace(".", ",")} MB` : ""}</button>
+      <p class="muted">Nach dem Download die Datei öffnen. Beim ersten Mal fragt Android, ob Installationen aus dieser Quelle erlaubt sind.</p>
+      <button class="btn ghost wide" data-act="releasepage">Auf GitHub ansehen</button><button class="btn ghost wide" data-act="closemodal">Später</button>`);
+  }
   if (ui.modal === "removepack") {
     const c = COURSES[ui.rp];
     return modal(`${esc(c.name)} entfernen?`, `<p class="muted">Das Sprachpaket wird vom Gerät gelöscht. Dein Fortschritt in ${esc(c.name)} bleibt erhalten und ist wieder da, wenn du die Sprache neu herunterlädst.</p>
@@ -436,7 +444,9 @@ function modalHTML() {
       ${st.settings.reminder ? `<div class="toggle"><span>Uhrzeit<small>Wann die Erinnerung kommen soll</small></span><input id="reminderTime" class="time-input" type="time" value="${esc(st.settings.reminderTime)}" aria-label="Uhrzeit der Erinnerung"></div>` : ""}` : ""}
     ${tg("decay", "Rückstufung bei Pause", `Nach ${DECAY_DAYS} Tagen ohne Üben geht es in der Sprache eine Lektion zurück`)}
     ${tg("hearts", "Herzen", "Fehler kosten ein Herz")}
-    ${APP && CONFIG.GITHUB_REPO ? tg("updates", "Nach App-Updates suchen", "Einmal am Tag bei GitHub nach einer neuen Version fragen") : ""}</div>
+    ${APP && CONFIG.GITHUB_REPO ? tg("updates", "Nach App-Updates suchen", "Beim Start bei GitHub nach einer neuen Version fragen (höchstens alle 6 Stunden)") : ""}</div>
+    ${APP && CONFIG.GITHUB_REPO ? `<div style="display:grid;gap:.4rem">${ui.appUpdate ? `<button class="btn good wide" data-act="updateinfo">Version ${esc(ui.appUpdate.version)} herunterladen</button>`
+      : `<button class="btn ghost wide" data-act="checkupdate">Jetzt nach Updates suchen</button>`}${ui.updateNote ? `<small class="muted" role="status">${esc(ui.updateNote)}</small>` : ""}</div>` : ""}
     <button class="btn wide" data-act="closemodal">Fertig</button>
     <button class="btn ghost wide" data-act="account">Konto & Freundescode</button>
     <button class="btn ghost wide" data-act="managepacks">Sprachen verwalten</button>
@@ -521,8 +531,10 @@ function noticesHTML() {
   const ups = packUpdates(), out = [];
   if (ups.length) out.push(`<div class="panel notice"><h3>Neue Inhalte</h3><p class="muted">Für ${ups.map(c => esc(COURSES[c].name)).join(", ")} gibt es ein Update mit Verbesserungen.</p>
     ${ups.map(c => `<button class="btn gold wide" data-act="getpack" data-c="${c}" ${packs.busy ? "disabled" : ""}>${packs.busy === c ? "Lädt …" : `${esc(COURSES[c].name)} aktualisieren`}</button>`).join("")}</div>`);
-  if (ui.appUpdate) out.push(`<div class="panel notice"><h3>App-Update</h3><p class="muted">Version ${esc(ui.appUpdate.version)} ist erschienen.</p>
-    <button class="btn wide" data-act="openupdate">Herunterladen</button><button class="linkbtn" data-act="dismissupdate">Später</button></div>`);
+  if (ui.appUpdate && !ui.updateHidden) out.push(`<div class="panel notice"><h3>🦊 Neue App-Version ${esc(ui.appUpdate.version)}</h3>
+    <p class="muted">Die neue Version installiert sich über die alte, dein Fortschritt bleibt erhalten.</p>
+    <button class="btn wide" data-act="openupdate">Herunterladen${ui.appUpdate.size ? ` · ${(ui.appUpdate.size / 1048576).toFixed(1).replace(".", ",")} MB` : ""}</button>
+    <div class="row" style="justify-content:space-between"><button class="linkbtn" data-act="updateinfo">Was ist neu?</button><button class="linkbtn" data-act="dismissupdate">Später</button></div></div>`);
   if (acct.status === "gone") out.push(`<div class="panel notice"><h3>Konto nicht gefunden</h3><p class="muted">${accountLine()}</p><button class="btn ghost wide" data-act="account">Konto</button></div>`);
   return out.join("");
 }
@@ -556,6 +568,6 @@ const PRIVACY_HTML = `<div class="privacy">
     <li>Freundschaften: wer mit wem, gemeinsame Serie, an welchem Tag ein Geschenk verschickt wurde</li></ul>
   <p class="muted">Deine Freunde sehen deinen Freundescode, ob du heute gelernt hast und eure gemeinsame Serie. Namen für Freunde vergibst du selbst; sie liegen nur verschlüsselt in deinem Spielstand.</p>
   <h3>Fehlermeldungen</h3><p class="muted">„Fehler melden“ schickt Aufgabe, erwartete Lösung, deine Antwort und deine Notiz ohne Bezug zu deinem Konto. Schreib bitte nichts Persönliches hinein.</p>
-  <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt einmal am Tag bei GitHub an (abschaltbar)." : ""}</p>
+  <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt beim Start, höchstens alle 6 Stunden, bei GitHub an (abschaltbar)." : ""}</p>
   <h3>Löschen</h3><p class="muted">Unter Profil → Konto → „Konto löschen“ wird alles sofort vom Server entfernt. Konten, die 12 Monate nicht genutzt werden, löscht der Server von selbst.</p>
   ${CONFIG.OPERATOR ? `<h3>Verantwortlich</h3><p class="muted">${esc(CONFIG.OPERATOR)}</p>` : ""}</div>`;

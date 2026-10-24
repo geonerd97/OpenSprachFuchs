@@ -337,3 +337,4 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 .level.on b { color: var(--accent); }
 .level.locked:not(.on) { opacity: .7; }
 .level-hint { margin-top: -.3rem; }
+.update-notes { margin: .3rem 0 0; padding-left: 1.2rem; display: grid; gap: .2rem; }

@@ -55,7 +55,7 @@ flowchart LR
   A -- "HTTPS: verschlüsselter Spielstand,<br>Freunde, Paket-Updates" --> W[Cloudflare Worker]
   W --- D[(D1-Datenbank)]
   W --- S[Sprachpakete<br>statische Dateien]
-  A -. "einmal täglich: neue Version?" .-> G[GitHub Releases]
+  A -. "beim Start, max. alle 6 Std.: neue Version?" .-> G[GitHub Releases]
 ```
 
 ## Schnellstart für Entwickler
