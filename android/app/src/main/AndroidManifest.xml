@@ -28,6 +28,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:label="@string/launcher_name"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|density|fontScale|uiMode"
             android:exported="true"
             android:launchMode="singleTask"

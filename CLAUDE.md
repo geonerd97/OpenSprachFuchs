@@ -55,7 +55,7 @@ Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PU
 ### Android
 - Gradle 9.5, AGP 9.3.3, compileSdk/targetSdk 36, minSdk 26.
 - Vor jedem Build führt `buildPacks` (Exec, Node; Pfad über `-PnodePath`) `tools/packs.mjs build` aus. `copyWeb` synchronisiert `../app` und die gebauten Pakete nach `app/src/main/assets/` (gitignored).
-- `MainActivity.kt`: WebView über `WebViewAssetLoader`, nur HTTPS (keine Cleartext-Konfiguration mehr).
+- `MainActivity.kt`: WebView über `WebViewAssetLoader`, nur HTTPS (keine Cleartext-Konfiguration mehr). Name unter dem Icon: „SprachFuchs“ (`launcher_name`), sonst „OpenSprachFuchs“ (`app_name`).
 - Brücke `AndroidBridge`:
   - `speak`, `speakQueued` (nach dem aktuellen Satz), `stop`, `hasVoice`
   - `canRecognize`, `startListening`, `stopListening`

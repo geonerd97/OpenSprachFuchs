@@ -64,7 +64,7 @@ function homeHTML() {
         ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${LESSON_NAMES[li]}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
     }).join("");
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
-      <div><div class="eyebrow">${C.name} · ${u.level} · Einheit ${nth} von ${perLevel} · ${u.words.length} Wörter</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
+      <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, Einheit ${nth} von ${perLevel}, ${u.words.length} Wörter">${esc(C.code)} – Stufe ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= LESSONS_PER_UNIT && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
         ${open ? `<button class="wordsbtn" data-act="words" data-u="${ui_}">Wörter</button>`
         : `<button class="wordsbtn test" data-act="placement" data-u="${ui_}" title="Einstufungstest: Einheiten überspringen">Test</button>`}</div></div>

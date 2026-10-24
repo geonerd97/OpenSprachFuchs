@@ -74,7 +74,7 @@ for (const code of codes) {
   if (g.UNITS().map(u => u.level).join() !== [...g.UNITS().map(u => u.level)].sort().join()) fail("Einheiten nicht nach Stufe sortiert");
   g.cs().progress = {};
   let h = g.homeHTML();
-  if (!h.includes('data-act="level" data-l="B2"') || (h.match(/class="unit-head/g) || []).length !== 10 || !h.includes("Einheit 1 von 10")) fail("Stufen-Reiter oder A1-Pfad fehlen");
+  if (!h.includes('data-act="level" data-l="B2"') || (h.match(/class="unit-head/g) || []).length !== 10 || !h.includes("– Stufe 1 von 10")) fail("Stufen-Reiter oder A1-Pfad fehlen");
   g.click("level", { l: "B1" }); h = g.homeHTML();
   const b1 = g.UNITS().find(u => u.level === "B1");
   if (!h.includes(b1.title) || h.includes(g.UNITS()[0].title + "</h2>") || !h.includes("noch gesperrt")) fail("Reiter B1 zeigt nicht B1");
