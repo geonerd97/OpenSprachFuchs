@@ -59,7 +59,7 @@ function homeHTML() {
       const id = `${ui_}-${li}`;
       const pop = ui.pop === id && state !== "locked" ? `<div class="pop" role="dialog" style="--c:${u.c[0]}"><h3>${LESSON_NAMES[li]}</h3><p>${LESSON_DESC[li]} Lektion ${li + 1} von ${LESSONS_PER_UNIT}.</p>
         <button class="btn wide" data-act="start" data-u="${ui_}" data-l="${li}">${state === "done" ? "Wiederholen +10 XP" : "Starten +10 XP"}</button></div>` : "";
-      return `<div class="node-wrap" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">
+      return `<div class="node-wrap" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
         ${state === "current" && ui.pop !== id ? `<span class="start-tag">START</span>` : ""}
         ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${LESSON_NAMES[li]}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
     }).join("");
@@ -238,7 +238,7 @@ function resultHTML() {
   const r = result;
   const line = r.streakUp ? `<strong style="color:var(--flame)">${r.streakUp} ${r.streakUp === 1 ? "Tag" : "Tage"}</strong> in Folge. Tagesziel erreicht, bis morgen!`
     : r.goal ? "Tagesziel erreicht!" : "";
-  return `<div class="center"><div class="card"><div class="trophy">${I.trophy(64)}</div>
+  return `<div class="center"><div class="card">${foxCheerHTML(r.perfect || !!r.master || !!(r.blitz && r.blitz.record))}
     <h1>${r.master ? `${MEDALS[r.master.level]} ${MEDAL_NAMES[r.master.level]} für „${esc(r.master.title)}“!` : r.dialog ? "Gespräch geschafft!" : r.blitz ? `Blitzrunde: ${r.blitz.score} richtig!` : r.placement ? "Test bestanden!" : r.refill ? "Herzen aufgeladen!" : r.vocab ? "Vokabeln geübt!" : r.training ? "Training geschafft!" : r.unitDone ? "Einheit abgeschlossen!" : r.perfect ? "Fehlerfrei!" : "Lektion geschafft!"}</h1>
     ${r.heartsGained ? `<p class="stat heart" style="font-size:1.15rem;justify-content:center;font-weight:800">${I.heart(24)} +${r.heartsGained} ${r.heartsGained === 1 ? "Herz" : "Herzen"}</p>`
       : r.refill && st.settings.hearts && st.hearts < MAX_HEARTS ? `<p class="muted">Für ein Herz braucht es ${RIGHT_PER_HEART} richtige Antworten. Versuch es gleich noch einmal!</p>` : ""}
@@ -290,13 +290,13 @@ function statsHTML() {
     <section style="display:grid;gap:.8rem"><h2>Abzeichen (${Object.keys(st.badges || {}).length} von ${BADGES.length})</h2><div class="badges">${badges}</div></section></main>`;
 }
 function failHTML() {
-  if (ui.fail === "master") return `<div class="center"><div class="card fail"><div class="trophy">${I.x(64)}</div><h1>Noch nicht gemeistert</h1>
+  if (ui.fail === "master") return `<div class="center"><div class="card fail">${foxSadHTML()}<h1>Noch nicht gemeistert</h1>
     <p class="muted">Für ${MEDAL_NAMES[ui.ml + 1]} sind höchstens ${MASTER_ALLOWED[ui.ml]} ${MASTER_ALLOWED[ui.ml] === 1 ? "Fehler" : "Fehler"} erlaubt. Versuch es gleich noch einmal, die Aufgaben sind jedes Mal andere.</p>
     <button class="btn gold wide" data-act="startmaster" data-u="${ui.mu}">Noch einmal</button><button class="btn ghost wide" data-act="home">Zurück zum Lernpfad</button></div></div>`;
-  if (ui.fail === "placement") return `<div class="center"><div class="card fail"><div class="trophy">${I.x(64)}</div><h1>Test nicht bestanden</h1>
+  if (ui.fail === "placement") return `<div class="center"><div class="card fail">${foxSadHTML()}<h1>Test nicht bestanden</h1>
     <p class="muted">Du hattest ${PLACEMENT_MAX} Fehler. Kein Problem: Übe die Einheiten davor weiter oder versuch den Test später noch einmal.</p>
     <button class="btn wide" data-act="home">Zurück zum Lernpfad</button></div></div>`;
-  return `<div class="center"><div class="card fail"><div class="trophy">${I.heart(64)}</div><h1>Keine Herzen mehr</h1>
+  return `<div class="center"><div class="card fail">${foxSadHTML()}<h1>Keine Herzen mehr</h1>
     <p class="muted">Lade sie mit Vokabeln wieder auf: +1 Herz pro ${RIGHT_PER_HEART} richtige Antworten. Außerdem kommt alle ${REGEN_MS / 60000} Minuten ein Herz von selbst zurück, und in den Einstellungen kannst du Herzen ganz abschalten.</p>
     <button class="btn heartbtn wide" data-act="refill">Herzen auffüllen</button><button class="btn ghost wide" data-act="home">Zurück zum Lernpfad</button></div></div>`;
 }
@@ -493,6 +493,22 @@ function dialogsHTML() {
   }).join("");
   return `<div class="panel"><h3>Gespräche</h3><p class="muted">Kleine Szenen aus dem Urlaub: Wähle im Gespräch die passende Antwort.</p>${rows}</div>`;
 }
+/* The fox from the logo: next to the current lesson on the path (tap it), cheering after every round, a bit sad when it didn't work out. */
+const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!" };
+function foxLine() {
+  const streak = shownStreak(), lines = [FOX_HELLO[CODE] || "Los geht's!", "Ich glaub an dich!", "Eine Lektion am Tag reicht schon!", "Du schaffst das!", "Auf zur nächsten Lektion!"];
+  if (streak > 1) lines.push(`🔥 ${streak} Tage in Folge!`);
+  if (st.dayLessons >= 1) lines.push("Tagesziel geschafft, stark!");
+  if (dueWords().length) lines.push(`${dueWords().length} Vokabeln wollen wiederholt werden.`);
+  if (st.hearts < 3 && st.settings.hearts) lines.push("Üben füllt deine Herzen auf ❤️");
+  const seed = [...dayStr()].reduce((a, ch) => a + ch.charCodeAt(0), 0);
+  return lines[(seed + (ui.foxN || 0)) % lines.length];
+}
+const foxHTML = side => `<button class="path-fox ${side} ${Date.now() < (ui.foxHopUntil || 0) ? "hop" : ""}" data-act="fox" aria-label="Fuchs sagt: ${esc(foxLine())}">
+  <span class="fox-say" aria-hidden="true">${esc(foxLine())}</span><img src="img/fox.webp" alt="" width="64" height="64"></button>`;
+const foxCheerHTML = big => `<div class="fox-cheer ${big ? "flip" : ""}" aria-hidden="true"><img src="img/fox.webp" alt="" width="136" height="136">
+  <span class="spark s1">✨</span><span class="spark s2">${big ? "🌟" : "⭐"}</span><span class="spark s3">✨</span>${big ? `<span class="spark s4">🎉</span>` : ""}</div>`;
+const foxSadHTML = () => `<div class="fox-sad" aria-hidden="true"><img src="img/fox.webp" alt="" width="120" height="120"><span class="fox-say">Kopf hoch!</span></div>`;
 const modal = (title, body) => `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${title}</h2>${body}</div></div>`;
 const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>`;
 function welcomeHTML() {

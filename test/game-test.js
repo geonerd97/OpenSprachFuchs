@@ -83,6 +83,17 @@ for (const code of codes) {
   g.cs().progress = {}; g.ui.level = null;
 }
 
+// The fox: next to the current lesson on the path, a new line when tapped, cheering on the result screen.
+{
+  g.setCourse("es"); g.st.course = "es"; g.view = "home"; g.ui.tab = "path"; g.ui.level = null; g.ui.pop = null;
+  const before = g.homeHTML();
+  if ((before.match(/class="path-fox/g) || []).length !== 1 || !before.includes("img/fox.webp")) fail("Fuchs auf dem Lernweg fehlt");
+  const say = h => (h.match(/class="fox-say"[^>]*>([^<]*)</) || [])[1];
+  g.click("fox");
+  const after = g.homeHTML();
+  if (!after.includes("path-fox") || say(after) === say(before) || !after.includes(" hop")) fail("Fuchs reagiert nicht aufs Antippen", say(before), say(after));
+}
+
 // Shared answer helper for flows below: answers every task correctly through the real check().
 function answerAll(L) {
   for (let guard = 0; guard < 80 && g.view === "lesson"; guard++) {
@@ -189,6 +200,7 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   const before = g.st.xp;
   answerAll(g.L);
   if (g.view !== "result") fail("Combo-Lektion endet nicht");
+  else if (!g.resultHTML().includes("fox-cheer flip")) fail("Jubelnder Fuchs nach fehlerfreier Lektion fehlt");
   else if (g.result.bestCombo < 10 || g.result.comboBonus < 4) fail("Combo-Bonus fehlt", g.result.bestCombo, g.result.comboBonus);
   if (g.st.xp - before < 10 + 5 + g.result.comboBonus) fail("Combo-Bonus nicht gutgeschrieben");
 }

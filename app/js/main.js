@@ -40,6 +40,7 @@ app.addEventListener("click", e => {
     case "nospeak": pauseSpeaking(); return;
     case "resumespeak": resumeSpeaking(); return;
     case "dialog": ui.pop = null; startDialog(ds.id); return;
+    case "fox": ui.foxN = (ui.foxN || 0) + 1; ui.foxHopUntil = Date.now() + 700; sfx("tap"); render(); return;
     case "dgroup": ui.dgroup = ui.dgroup === ds.g ? null : ds.g; render(); return;
     case "dlg": dialogPick(+ds.i); return;
     case "master": ui.pop = null; ui.mu = +ds.u; ui.modal = "master"; render(); return;

@@ -347,3 +347,30 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 .dlist { display: grid; gap: .45rem; margin: -.2rem 0 .3rem .6rem; }
 .btn.dlg-item { display: flex; justify-content: space-between; align-items: center; gap: .6rem; text-align: left; text-transform: none; letter-spacing: 0; font-size: .92rem; padding: .6rem .8rem; }
 .btn.dlg-item small { display: block; font-weight: 500; color: var(--ink-2); font-size: .78rem; }
+
+/* The fox: on the path next to the current lesson, cheering on the result screen, sad when a round failed.
+   Everything stands still with "reduce motion" (see the rule at the top). */
+.path-fox { position: absolute; top: 2.4rem; width: 64px; border: 0; background: none; padding: 0; z-index: 2; animation: fox-bob 2.6s ease-in-out infinite; }
+.path-fox.left { right: calc(100% + .7rem); }
+.path-fox.right { left: calc(100% + .7rem); }
+.path-fox img { display: block; width: 64px; height: 64px; filter: drop-shadow(0 3px 2px rgba(0, 0, 0, .25)); }
+.path-fox.hop { animation: fox-hop .7s cubic-bezier(.3, .7, .4, 1); }
+.fox-say { position: absolute; bottom: calc(100% + .35rem); left: 50%; transform: translateX(-50%); width: max-content; max-width: 140px; background: var(--surface); color: var(--ink);
+  border: 2px solid var(--line); border-radius: 12px; padding: .3rem .55rem; font-size: .75rem; font-weight: 700; line-height: 1.25; text-align: center; animation: say-in .35s ease-out; }
+.fox-say::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border: 6px solid transparent; border-top-color: var(--line); }
+.fox-cheer { position: relative; width: 150px; height: 150px; display: grid; place-items: center; }
+.fox-cheer img { width: 136px; height: 136px; filter: drop-shadow(0 6px 4px rgba(0, 0, 0, .25)); animation: fox-cheer .8s cubic-bezier(.3, 1.4, .5, 1) both, fox-jump 1.4s ease-in-out .9s infinite; }
+.fox-cheer.flip img { animation: fox-cheer .8s cubic-bezier(.3, 1.4, .5, 1) both, fox-flip 1.1s ease-in-out .9s, fox-jump 1.4s ease-in-out 2.1s infinite; }
+.spark { position: absolute; font-size: 1.4rem; opacity: 0; animation: spark 1.6s ease-out infinite; }
+.spark.s1 { top: 6%; left: 2%; animation-delay: .6s; } .spark.s2 { top: 0; right: 4%; animation-delay: 1s; }
+.spark.s3 { bottom: 14%; left: -6%; animation-delay: 1.4s; } .spark.s4 { bottom: 10%; right: -6%; animation-delay: .8s; }
+.fox-sad { position: relative; width: 140px; height: 140px; display: grid; place-items: end center; margin-top: 2.2rem; }
+.fox-sad img { width: 120px; height: 120px; filter: saturate(.75) drop-shadow(0 5px 4px rgba(0, 0, 0, .25)); animation: fox-sad 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes fox-bob { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-5px) rotate(3deg); } }
+@keyframes fox-hop { 0% { transform: none; } 20% { transform: scale(1.12, .84); } 50% { transform: translateY(-26px) scale(.94, 1.08) rotate(-10deg); } 80% { transform: scale(1.08, .92); } 100% { transform: none; } }
+@keyframes say-in { from { opacity: 0; transform: translate(-50%, 6px) scale(.9); } to { opacity: 1; transform: translateX(-50%); } }
+@keyframes fox-cheer { 0% { transform: translateY(50px) scale(.5); opacity: 0; } 50% { transform: translateY(-28px) scale(1.05); opacity: 1; } 75% { transform: scale(1.08, .9); } 100% { transform: none; opacity: 1; } }
+@keyframes fox-jump { 0%, 60%, 100% { transform: none; } 20% { transform: scale(1.06, .92); } 40% { transform: translateY(-18px) rotate(-4deg); } }
+@keyframes fox-flip { 0% { transform: none; } 45% { transform: translateY(-48px) rotate(180deg); } 80% { transform: translateY(-10px) rotate(340deg); } 100% { transform: rotate(360deg); } }
+@keyframes fox-sad { 0%, 100% { transform: rotate(-5deg) translateY(4px); } 50% { transform: rotate(5deg) translateY(4px); } }
+@keyframes spark { 0% { opacity: 0; transform: scale(.3); } 40% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0; transform: translateY(-22px) scale(.7); } }

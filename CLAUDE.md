@@ -41,7 +41,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 - `audio.js`: Soundeffekte, Sprachausgabe über `AndroidBridge.speak` (im Desktop-Browser `speechSynthesis`), Hören/Sprechen pausieren, Spracherkennung nur in der App.
 - `exercises.js`: Lektionspläne, Antwortprüfung (`norm`, `lev`), Generatoren `GEN.*`, `generate()` mit Fallbacks.
 - `lesson.js`: Ablauf aller Runden (Lektion, Training, Einstufungstest, Blitzrunde, Gespräch, Meisterschaft), `finish()`.
-- `views.js`: Rendering. Logo `logoHTML()` (`app/img/logo.webp`). Startseite mit **Tab-Leiste unten** (`TABS`: Lernweg, Üben, Freunde, Shop, Profil; `ui.tab`), Onboarding-Ansichten `welcome`/`newkey`/`signin`/`langs`, Dialoge (`modalHTML`), `PRIVACY_HTML`.
+- `views.js`: Rendering. Logo `logoHTML()` (`app/img/logo.webp`). Animierter Fuchs (`app/img/fox.webp`, freigestellt): `foxHTML` neben der aktuellen Lektion mit Sprechblase (`foxLine`, Antippen = Hüpfer und neuer Satz), `foxCheerHTML` auf dem Ergebnis (Salto bei fehlerfrei, Meisterschaft, Blitz-Rekord), `foxSadHTML` auf den Fehlerseiten; nur CSS-Animationen, „Bewegung reduzieren“ stoppt sie. Startseite mit **Tab-Leiste unten** (`TABS`: Lernweg, Üben, Freunde, Shop, Profil; `ui.tab`), Onboarding-Ansichten `welcome`/`newkey`/`signin`/`langs`, Dialoge (`modalHTML`), `PRIVACY_HTML`.
 - `main.js`: Klick-Delegation über `data-act`, Tastatur, Zurück-Taste (`window.opensprachfuchsBack`: Dialog → Lektion → Tab Lernweg → App verlassen), Start.
 
 ### Backend (`worker/src/index.js`)
