@@ -162,3 +162,4 @@ Korrekturen an den Übersetzungen und neue Sprachen sind sehr willkommen. Wie da
 
 - Code: [MIT](LICENSE)
 - Sprachpakete in `packs/`: [CC BY-SA 4.0](packs/LICENSE)
+- Schrift Nunito in `app/fonts/`: [SIL Open Font License 1.1](app/fonts/OFL.txt)

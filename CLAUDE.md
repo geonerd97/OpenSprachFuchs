@@ -24,7 +24,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 ## Aufbau
 | Pfad | Inhalt |
 |---|---|
-| `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten, Systemschriften. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
+| `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten. Schrift Nunito als Datei in der App (`app/fonts/nunito.woff2`, variabel, nur Latin-Teilmenge, 39 KB, SIL OFL in `app/fonts/OFL.txt`, aus `@fontsource-variable/nunito` 5.3.0); Grundstärke 650, Überschriften 800, Systemschrift nur als Rückfall. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
 | `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.7 (versionCode 9, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
@@ -92,4 +92,3 @@ Lernweg mit 80 Einheiten à 4 Lektionen = 320 Lektionen pro Sprache, je 20 Einhe
 - Rückmeldungen aus den Handy-Tests (Issues)
 - Thai, Schweizerdeutsch, Kölsch als Pakete (Format erweitern)
 - Sprachpakete von Muttersprachlern prüfen lassen
-- Eigene Schriftart als Datei in der App (aktuell Systemschrift, keine Google Fonts wegen Datenschutz/offline)

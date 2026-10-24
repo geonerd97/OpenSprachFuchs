@@ -482,11 +482,12 @@ function levelsHTML() {
   const tabs = levelsOf().map(l => {
     const idx = UNITS.map((u, i) => i).filter(i => UNITS[i].level === l), fin = idx.filter(i => done(UNITS[i].id) >= LESSONS_PER_UNIT).length;
     const locked = !unitUnlocked(idx[0]), all = fin === idx.length;
-    return `<button class="level ${l === cur ? "on" : ""} ${locked ? "locked" : ""}" role="tab" aria-selected="${l === cur}" data-act="level" data-l="${l}">
-      <b>${l}${all ? " ✓" : locked ? ` ${I.lock(12)}` : ""}</b><small>${LEVEL_NAMES[l] || ""}</small><span class="meter"><i style="width:${100 * fin / idx.length}%"></i></span><small>${fin} / ${idx.length}</small></button>`;
+    return `<button class="level ${l === cur ? "on" : ""} ${locked ? "locked" : ""}" role="tab" aria-selected="${l === cur}" data-act="level" data-l="${l}"
+      title="${l}: ${fin} von ${idx.length} Einheiten geschafft" aria-label="${LEVEL_NAMES[l] || l}, ${fin} von ${idx.length} Einheiten">
+      <b><span>${LEVEL_NAMES[l] || l}</span>${all ? " ✓" : locked ? I.lock(11) : ""}</b><span class="meter"><i style="width:${100 * fin / idx.length}%"></i></span></button>`;
   }).join("");
   const first = UNITS.findIndex(u => u.level === cur);
-  const hint = first > 0 && !unitUnlocked(first) ? `<p class="muted level-hint">${cur} ist noch gesperrt. Schließ die Einheiten davor ab oder spring mit dem Einstufungstest („Test“ an einer Einheit) direkt hierher.</p>` : "";
+  const hint = first > 0 && !unitUnlocked(first) ? `<p class="muted level-hint">${LEVEL_NAMES[cur] || cur} ist noch gesperrt. Schließ die Einheiten davor ab oder spring mit dem Einstufungstest („Test“ an einer Einheit) direkt hierher.</p>` : "";
   return `<div class="levels" role="tablist" aria-label="Niveaustufen">${tabs}</div>${hint}`;
 }
 /* Conversations, grouped by category (restaurant, taxi, ...): a row per category with its progress; tapping it shows its dialogues. */
