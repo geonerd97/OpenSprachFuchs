@@ -52,6 +52,18 @@ for (const code of codes) {
   g.ui.modal = null;
 }
 
+// Tap hints: every word in a sentence or dialogue line can be tapped for a translation (numbers aside).
+for (const code of codes) {
+  g.setCourse(code);
+  const C = g.COURSES[code], texts = [];
+  for (const u of C.units) for (const s of u.sentences) texts.push([].concat(s.t)[0]);
+  for (const d of C.dialogs) for (const t of d.turns) texts.push(t.p.t, ...t.a.map(a => a.t));
+  const missing = new Set();
+  for (const t of texts) for (const w of g.hintSpans(t, "t").replace(/<button[^>]*>.*?<\/button>/g, " ").split(" "))
+    if (w.trim() && !/^[\d.,:%€$?!¿¡-]+$/.test(w.trim())) missing.add(w.trim());
+  if (missing.size) fail(`Tipp-Hilfe fehlt (${code})`, [...missing].slice(0, 20).join(", "));
+}
+
 // Tabs: the path only on "Lernweg", practice only on "Üben"; Android's back button returns to the path first.
 {
   g.setCourse("en"); g.st.course = "en"; g.view = "home";
