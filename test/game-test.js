@@ -66,6 +66,23 @@ for (const code of codes) {
   if (global.window.opensprachfuchsBack()) fail("Zurück auf dem Lernweg sollte die App verlassen");
 }
 
+// Level tabs: the path shows one level (10 units each), the tab switches it, started units stay open.
+{
+  g.setCourse("en"); g.st.course = "en"; g.view = "home"; g.ui.tab = "path"; g.ui.level = null;
+  const levels = ["A1", "A2", "B1", "B2"];
+  for (const l of levels) if (g.UNITS().filter(u => u.level === l).length !== 10) fail("Stufe hat nicht 10 Einheiten", l);
+  if (g.UNITS().map(u => u.level).join() !== [...g.UNITS().map(u => u.level)].sort().join()) fail("Einheiten nicht nach Stufe sortiert");
+  g.cs().progress = {};
+  let h = g.homeHTML();
+  if (!h.includes('data-act="level" data-l="B2"') || (h.match(/class="unit-head/g) || []).length !== 10 || !h.includes("Einheit 1 von 10")) fail("Stufen-Reiter oder A1-Pfad fehlen");
+  g.click("level", { l: "B1" }); h = g.homeHTML();
+  const b1 = g.UNITS().find(u => u.level === "B1");
+  if (!h.includes(b1.title) || h.includes(g.UNITS()[0].title + "</h2>") || !h.includes("noch gesperrt")) fail("Reiter B1 zeigt nicht B1");
+  g.cs().progress[b1.id] = 1;
+  if (!g.homeHTML().includes(`data-act="words" data-u="${g.UNITS().indexOf(b1)}"`)) fail("Begonnene Einheit nach Umsortierung gesperrt");
+  g.cs().progress = {}; g.ui.level = null;
+}
+
 // Shared answer helper for flows below: answers every task correctly through the real check().
 function answerAll(L) {
   for (let guard = 0; guard < 80 && g.view === "lesson"; guard++) {
@@ -174,6 +191,16 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   if (g.view !== "result") fail("Combo-Lektion endet nicht");
   else if (g.result.bestCombo < 10 || g.result.comboBonus < 4) fail("Combo-Bonus fehlt", g.result.bestCombo, g.result.comboBonus);
   if (g.st.xp - before < 10 + 5 + g.result.comboBonus) fail("Combo-Bonus nicht gutgeschrieben");
+}
+
+// Finishing the last A1 unit opens the A2 tab.
+{
+  g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = false; g.ui.level = "A1";
+  for (let i = 0; i < 9; i++) g.cs().progress[g.UNITS()[i].id] = 4;
+  g.cs().progress[g.UNITS()[9].id] = 3;
+  g.startLesson(9, 3); answerAll(g.L);
+  if (g.view !== "result" || g.ui.level !== "A2") fail("Nach der letzten A1-Einheit nicht zu A2 gewechselt", g.view, g.ui.level);
+  g.ui.level = null; g.cs().progress = {};
 }
 
 // Blitz round: one tap answers, the score counts right answers, the end of time finishes the round with a record.

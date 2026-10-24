@@ -55,7 +55,18 @@ function loseHeart() {
   st.hearts = Math.max(0, st.hearts - 1); save();
 }
 const done = (id, code) => cs(code).progress[id] || 0;
-const unitUnlocked = i => i === 0 || done(UNITS[i - 1].id) >= LESSONS_PER_UNIT;
+// A unit opens when the one before is finished; one that was already started stays open (e.g. after the path was re-sorted).
+const unitUnlocked = i => i === 0 || done(UNITS[i - 1].id) >= LESSONS_PER_UNIT || done(UNITS[i].id) > 0;
+/* Levels (GER/CEFR): the path is shown one level at a time, picked in the tabs above it. */
+const LEVEL_NAMES = { A1: "Einstieg", A2: "Grundlagen", B1: "Mittelstufe", B2: "Erweitert", C1: "Fachkundig", C2: "Profi" };
+const levelsOf = () => [...new Set(UNITS.map(u => u.level))];
+// The level to show: the one picked in the tabs, otherwise the level of the first unfinished, open unit.
+function shownLevel() {
+  const levels = levelsOf();
+  if (ui.level && levels.includes(ui.level)) return ui.level;
+  const i = UNITS.findIndex((u, k) => unitUnlocked(k) && done(u.id) < LESSONS_PER_UNIT);
+  return i >= 0 ? UNITS[i].level : levels[levels.length - 1] || "A1";
+}
 /* Spaced repetition for words (Leitner boxes): each correct answer moves a word to a longer interval,
    a wrong one sends it back to box 0. "Vokabeln üben" picks due words first. */
 const SRS_DAYS = [0, 1, 2, 4, 8, 16, 32];

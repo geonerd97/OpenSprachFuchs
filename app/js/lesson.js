@@ -284,6 +284,9 @@ function finish() {
   gems += fresh.length * 10;
   st.gems = (st.gems || 0) + gems;
   if (L.kind === "lesson") { const id = UNITS[L.unit].id; if (L.lesson === done(id)) cs().progress[id] = done(id) + 1; }
+  // Finishing the last unit of a level opens the next level's tab on the path.
+  const nextUnit = UNITS[L.unit + 1];
+  if ((L.kind === "lesson" || L.kind === "placement") && nextUnit && done(UNITS[L.unit].id) >= LESSONS_PER_UNIT && nextUnit.level !== UNITS[L.unit].level) ui.level = nextUnit.level;
   let heartsGained = 0;
   if (L.kind === "training" && st.settings.hearts) {
     syncHearts();

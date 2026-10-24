@@ -325,3 +325,15 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 
 .card .brand-mark { width: 112px; height: 112px; }
 .card .brand-mark .logo { border-radius: 26px; }
+
+/* Level tabs above the path: A1, A2, B1, B2 with progress */
+.levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: .45rem; }
+.level { border: 2px solid var(--line); border-bottom-width: 4px; border-radius: 14px; background: var(--surface); padding: .5rem .3rem .45rem; display: grid; justify-items: center; gap: .15rem; min-width: 0; }
+.level b { font-size: 1.05rem; font-weight: 800; display: inline-flex; align-items: center; gap: .2rem; }
+.level small { font-size: .68rem; color: var(--ink-2); font-weight: 700; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.level .meter { width: 80%; height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.level .meter i { display: block; height: 100%; background: var(--good); border-radius: 99px; }
+.level.on { border-color: var(--accent); background: var(--accent-soft); }
+.level.on b { color: var(--accent); }
+.level.locked:not(.on) { opacity: .7; }
+.level-hint { margin-top: -.3rem; }

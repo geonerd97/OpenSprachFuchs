@@ -49,11 +49,12 @@ app.addEventListener("click", e => {
     case "refill": startTraining(true, true); return;
     case "hearts": ui.pop = null; ui.modal = "hearts"; render(); return;
     case "courses": ui.pop = null; ui.modal = "courses"; render(); return;
-    case "pickcourse": st.course = ds.c; setCourse(ds.c); save(); ui.modal = null; sfx("tap"); render(); window.scrollTo(0, 0); return;
+    case "level": ui.pop = null; ui.level = ds.l; sfx("tap"); render(); return;
+    case "pickcourse": ui.level = null; st.course = ds.c; setCourse(ds.c); save(); ui.modal = null; sfx("tap"); render(); window.scrollTo(0, 0); return;
     case "settings": ui.modal = "settings"; render(); return;
     case "managepacks": ui.pop = null; packs.error = ""; ui.modal = "packs"; render(); fetchPackIndex().catch(() => { packs.error = "Keine Verbindung zum Server."; }).then(render); return;
     case "reloadpacks": packs.error = ""; render(); fetchPackIndex().catch(() => { packs.error = "Keine Verbindung zum Server."; }).then(render); return;
-    case "getpack": downloadPack(ds.c).then(() => { if (view === "langs" && UNITS.length) { view = "home"; ui.modal = null; render(); } }); return;
+    case "getpack": downloadPack(ds.c).then(() => { if (view === "langs" && UNITS.length) { view = "home"; ui.modal = null; render(); window.scrollTo(0, 0); } }); return;
     case "removepack": ui.rp = ds.c; ui.modal = "removepack"; render(); return;
     case "doremovepack": removePack(ui.rp); if (st.course === ui.rp) { st.course = Object.keys(COURSES)[0] || ""; setCourse(st.course); save(); } ui.modal = "packs"; render(); return;
     case "createaccount": acct.note = ""; createAccount().then(() => { st.onboarded = true; save(); ui.modal = null; view = "newkey"; render(); loadFriends(); }); return;

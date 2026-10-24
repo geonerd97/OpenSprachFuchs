@@ -46,8 +46,11 @@ function homeHTML() {
   const streak = shownStreak(), goal = st.dayLessons >= 1, mistakes = cs().mistakes.length;
   let nextH = "";
   if (st.settings.hearts && st.hearts < MAX_HEARTS) { const m = Math.ceil((REGEN_MS - (Date.now() - st.heartsTs)) / 60000); nextH = `Nächstes Herz in ${Math.max(1, m)} Min.`; }
-  let gi = 0;
+  let gi = 0, nth = 0;
+  const level = shownLevel(), perLevel = UNITS.filter(x => x.level === level).length;
   const units = UNITS.map((u, ui_) => {
+    if (u.level !== level) return "";
+    nth++;
     const open = unitUnlocked(ui_), d = done(u.id);
     const nodes = [...Array(LESSONS_PER_UNIT).keys()].map(li => {
       const off = Math.round(Math.sin(gi++ * 0.95) * 62);
@@ -61,7 +64,7 @@ function homeHTML() {
         ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${LESSON_NAMES[li]}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
     }).join("");
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
-      <div><div class="eyebrow">${C.name} · Einheit ${ui_ + 1} · ${u.words.length} Wörter</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
+      <div><div class="eyebrow">${C.name} · ${u.level} · Einheit ${nth} von ${perLevel} · ${u.words.length} Wörter</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= LESSONS_PER_UNIT && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
         ${open ? `<button class="wordsbtn" data-act="words" data-u="${ui_}">Wörter</button>`
         : `<button class="wordsbtn test" data-act="placement" data-u="${ui_}" title="Einstufungstest: Einheiten überspringen">Test</button>`}</div></div>
@@ -116,6 +119,7 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
     ${ui.decay && ui.decay.length ? `<div class="panel" role="status" style="border-color:var(--gold)"><h3>Lange nicht geübt</h3>
       ${ui.decay.map(n => `<p class="muted">${esc((COURSES[n.code] || { name: n.code }).name)}: ${n.days} Tage Pause, deshalb ${n.lost === 1 ? "eine Lektion" : n.lost + " Lektionen"} zurück. Wiederhol sie, und du bist schnell wieder da.</p>`).join("")}
       <button class="btn ghost wide" data-act="dismissdecay">Verstanden</button></div>` : ""}
+    ${levelsHTML()}
     <div class="path">${units}</div>`;
 }
 
@@ -452,6 +456,19 @@ function shopHTML() {
 }
 /* The logo: the OpenSprachFuchs fox with the "O" (app/img/logo.webp; the launcher icon is cut out from the same picture). */
 const logoHTML = () => `<img class="logo" src="img/logo.webp" alt="" width="34" height="34">`;
+/* Tabs for the levels (A1, A2, B1, B2) above the path, each with its progress. */
+function levelsHTML() {
+  const cur = shownLevel();
+  const tabs = levelsOf().map(l => {
+    const idx = UNITS.map((u, i) => i).filter(i => UNITS[i].level === l), fin = idx.filter(i => done(UNITS[i].id) >= LESSONS_PER_UNIT).length;
+    const locked = !unitUnlocked(idx[0]), all = fin === idx.length;
+    return `<button class="level ${l === cur ? "on" : ""} ${locked ? "locked" : ""}" role="tab" aria-selected="${l === cur}" data-act="level" data-l="${l}">
+      <b>${l}${all ? " ✓" : locked ? ` ${I.lock(12)}` : ""}</b><small>${LEVEL_NAMES[l] || ""}</small><span class="meter"><i style="width:${100 * fin / idx.length}%"></i></span><small>${fin} / ${idx.length}</small></button>`;
+  }).join("");
+  const first = UNITS.findIndex(u => u.level === cur);
+  const hint = first > 0 && !unitUnlocked(first) ? `<p class="muted level-hint">${cur} ist noch gesperrt. Schließ die Einheiten davor ab oder spring mit dem Einstufungstest („Test“ an einer Einheit) direkt hierher.</p>` : "";
+  return `<div class="levels" role="tablist" aria-label="Niveaustufen">${tabs}</div>${hint}`;
+}
 const modal = (title, body) => `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${title}</h2>${body}</div></div>`;
 const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>`;
 function welcomeHTML() {

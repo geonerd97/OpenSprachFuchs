@@ -276,6 +276,100 @@
       ]
     },
     {
+      "id": "family", "title": "Familie & Freunde", "level": "A1", "colors": ["#E0457B","#B02F5E"],
+      "desc": "Über die Familie sprechen und Freunde vorstellen.",
+      "words": [
+        {"id":"family.w01","de":"die Familie","t":"la familia","pic":"👨‍👩‍👧"},
+        {"id":"family.w02","de":"die Mutter","t":["la madre","la mamá"],"pic":"👩"},
+        {"id":"family.w03","de":"der Vater","t":["el padre","el papá"],"pic":"👨"},
+        {"id":"family.w04","de":"der Bruder","t":"el hermano"},
+        {"id":"family.w05","de":"die Schwester","t":"la hermana"},
+        {"id":"family.w06","de":"das Kind","t":["el niño","la niña"],"pic":"🧒"},
+        {"id":"family.w07","de":"der Sohn","t":"el hijo"},
+        {"id":"family.w08","de":"die Tochter","t":"la hija"},
+        {"id":"family.w09","de":"die Eltern","t":"los padres"},
+        {"id":"family.w10","de":"der Ehemann","t":["el marido","el esposo"]},
+        {"id":"family.w11","de":"die Ehefrau","t":["la mujer","la esposa"]},
+        {"id":"family.w12","de":"der Freund / die Freundin","t":["el amigo","la amiga"],"pic":"🤝"},
+        {"id":"family.w13","de":"die Großeltern","t":"los abuelos","pic":"👵"},
+        {"id":"family.w14","de":"verheiratet","t":["casado","casada"],"pic":"💍"}
+      ],
+      "sentences": [
+        {"id":"family.s01","de":"Das ist meine Familie.","t":"Esta es mi familia."},
+        {"id":"family.s02","de":"Ich habe einen Bruder und eine Schwester.","t":"Tengo un hermano y una hermana."},
+        {"id":"family.s03","de":["Hast du Kinder?","Haben Sie Kinder?"],"t":["¿Tienes hijos?","¿Tiene hijos?"]},
+        {"id":"family.s04","de":"Wir haben zwei Kinder.","t":"Tenemos dos hijos."},
+        {"id":"family.s05","de":"Meine Tochter ist sechs Jahre alt.","t":"Mi hija tiene seis años."},
+        {"id":"family.s06","de":["Bist du verheiratet?","Sind Sie verheiratet?"],"t":["¿Estás casado?","¿Estás casada?","¿Está casado?","¿Está casada?"]},
+        {"id":"family.s07","de":"Das ist mein Freund Paul.","t":["Este es mi amigo Paul.","Él es mi amigo Paul."]},
+        {"id":"family.s08","de":"Meine Eltern wohnen in Berlin.","t":"Mis padres viven en Berlín."},
+        {"id":"family.s09","de":"Mein Vater arbeitet viel.","t":"Mi padre trabaja mucho."},
+        {"id":"family.s10","de":"Wir besuchen meine Großeltern.","t":["Visitamos a mis abuelos.","Vamos a visitar a mis abuelos."]}
+      ]
+    },
+    {
+      "id": "clothes", "title": "Farben & Kleidung", "level": "A1", "colors": ["#7C3AED","#5B21B6"],
+      "desc": "Farben benennen und Kleidung kaufen.",
+      "words": [
+        {"id":"clothes.w01","de":"rot","t":["rojo","roja"],"pic":"🔴"},
+        {"id":"clothes.w02","de":"blau","t":"azul","pic":"🔵"},
+        {"id":"clothes.w03","de":"grün","t":"verde","pic":"🟢"},
+        {"id":"clothes.w04","de":"gelb","t":["amarillo","amarilla"],"pic":"🟡"},
+        {"id":"clothes.w05","de":"schwarz","t":["negro","negra"],"pic":"⚫"},
+        {"id":"clothes.w06","de":"weiß","t":["blanco","blanca"],"pic":"⚪"},
+        {"id":"clothes.w07","de":"das T-Shirt","t":"la camiseta","pic":"👕"},
+        {"id":"clothes.w08","de":"die Hose","t":"los pantalones","pic":"👖"},
+        {"id":"clothes.w09","de":"das Kleid","t":"el vestido","pic":"👗"},
+        {"id":"clothes.w10","de":"die Schuhe","t":"los zapatos","pic":"👟"},
+        {"id":"clothes.w11","de":"die Jacke","t":["la chaqueta","la cazadora"],"pic":"🧥"},
+        {"id":"clothes.w12","de":"die Größe","t":"la talla"},
+        {"id":"clothes.w13","de":"anprobieren","t":"probarse"}
+      ],
+      "sentences": [
+        {"id":"clothes.s01","de":"Ich suche eine Jacke.","t":"Busco una chaqueta."},
+        {"id":"clothes.s02","de":"Haben Sie das in Blau?","t":["¿Lo tiene en azul?","¿Tiene esto en azul?"]},
+        {"id":"clothes.s03","de":"Welche Größe haben Sie?","t":["¿Qué talla tiene?","¿Qué talla usa?"]},
+        {"id":"clothes.s04","de":"Kann ich das anprobieren?","t":["¿Puedo probármelo?","¿Me lo puedo probar?"]},
+        {"id":"clothes.s05","de":"Die Hose ist zu klein.","t":"Los pantalones son demasiado pequeños."},
+        {"id":"clothes.s06","de":"Das Kleid ist sehr schön.","t":["El vestido es muy bonito.","El vestido es precioso."]},
+        {"id":"clothes.s07","de":"Ich nehme die schwarzen Schuhe.","t":["Me llevo los zapatos negros.","Me quedo con los zapatos negros."]},
+        {"id":"clothes.s08","de":"Meine Lieblingsfarbe ist Grün.","t":["Mi color favorito es el verde.","Mi color preferido es el verde."]},
+        {"id":"clothes.s09","de":"Das T-Shirt ist weiß.","t":"La camiseta es blanca."},
+        {"id":"clothes.s10","de":"Gibt es eine Umkleidekabine?","t":"¿Hay un probador?"}
+      ]
+    },
+    {
+      "id": "home", "title": "Zuhause & Tagesablauf", "level": "A1", "colors": ["#0E7490","#155E75"],
+      "desc": "Die Wohnung beschreiben und vom Tag erzählen.",
+      "words": [
+        {"id":"home.w01","de":"das Haus","t":"la casa","pic":"🏠"},
+        {"id":"home.w02","de":"die Wohnung","t":["el piso","el apartamento"],"pic":"🏢"},
+        {"id":"home.w03","de":"die Küche","t":"la cocina","pic":"🍳"},
+        {"id":"home.w04","de":"das Schlafzimmer","t":["el dormitorio","la habitación"],"pic":"🛏️"},
+        {"id":"home.w05","de":"das Bad","t":"el baño","pic":"🛁"},
+        {"id":"home.w06","de":"aufstehen","t":"levantarse"},
+        {"id":"home.w07","de":"frühstücken","t":"desayunar","pic":"🥐"},
+        {"id":"home.w08","de":"arbeiten","t":"trabajar","pic":"💼"},
+        {"id":"home.w09","de":"kochen","t":"cocinar"},
+        {"id":"home.w10","de":"schlafen","t":"dormir","pic":"😴"},
+        {"id":"home.w11","de":"morgens","t":"por la mañana"},
+        {"id":"home.w12","de":"abends","t":["por la noche","por la tarde"]},
+        {"id":"home.w13","de":"jeden Tag","t":"todos los días"}
+      ],
+      "sentences": [
+        {"id":"home.s01","de":"Ich wohne in einer kleinen Wohnung.","t":["Vivo en un piso pequeño.","Vivo en un apartamento pequeño."]},
+        {"id":"home.s02","de":"Die Küche ist groß.","t":"La cocina es grande."},
+        {"id":"home.s03","de":"Ich stehe um sieben Uhr auf.","t":"Me levanto a las siete."},
+        {"id":"home.s04","de":"Morgens trinke ich Kaffee.","t":["Por la mañana tomo café.","Por las mañanas tomo café."]},
+        {"id":"home.s05","de":"Ich arbeite von neun bis fünf.","t":"Trabajo de nueve a cinco."},
+        {"id":"home.s06","de":"Abends koche ich für meine Familie.","t":"Por la noche cocino para mi familia."},
+        {"id":"home.s07","de":"Wo ist das Bad?","t":"¿Dónde está el baño?"},
+        {"id":"home.s08","de":"Ich gehe um elf Uhr schlafen.","t":["Me acuesto a las once.","Me voy a dormir a las once."]},
+        {"id":"home.s09","de":"Am Wochenende schlafe ich lange.","t":["Los fines de semana duermo mucho.","El fin de semana duermo hasta tarde."]},
+        {"id":"home.s10","de":"Das Haus hat einen Garten.","t":["La casa tiene jardín.","La casa tiene un jardín."]}
+      ]
+    },
+    {
       "id": "transport", "title": "Bus, Bahn & Taxi", "level": "A2", "colors": ["#4B50D6","#3438A6"],
       "desc": "Tickets kaufen, Abfahrten finden, mit dem Taxi fahren.",
       "words": [
@@ -466,6 +560,129 @@
       ]
     },
     {
+      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
+      "desc": "Über Beruf, Familie und Hobbys plaudern.",
+      "words": [
+        {"id":"smalltalk.w01","de":"der Beruf","t":["la profesión","el trabajo"]},
+        {"id":"smalltalk.w02","de":"die Arbeit","t":"el trabajo","pic":"💼"},
+        {"id":"smalltalk.w03","de":"das Hobby","t":["el pasatiempo","la afición","el hobby"]},
+        {"id":"smalltalk.w04","de":"verheiratet","t":["casado","casada"],"pic":"💍"},
+        {"id":"smalltalk.w05","de":"die Kinder","t":["los hijos","los niños"]},
+        {"id":"smalltalk.w06","de":"wohnen","t":"vivir","pic":"🏠"},
+        {"id":"smalltalk.w07","de":"mögen","t":"gustar"},
+        {"id":"smalltalk.w08","de":"kochen","t":"cocinar","pic":"🍳"},
+        {"id":"smalltalk.w09","de":"der Sport","t":"el deporte","pic":"🏃"},
+        {"id":"smalltalk.w10","de":"die Musik","t":"la música","pic":"🎵"},
+        {"id":"smalltalk.w11","de":"das erste Mal","t":"la primera vez"},
+        {"id":"smalltalk.w12","de":"die Freizeit","t":"el tiempo libre"}
+      ],
+      "sentences": [
+        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["¿A qué te dedicas?","¿En qué trabajas?"]},
+        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":["Trabajo de profesora.","Trabajo como profesora.","Soy profesora."]},
+        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["¿Es la primera vez que vienes aquí?","¿Es tu primera vez aquí?"]},
+        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":["Vivo cerca de Múnich.","Yo vivo cerca de Múnich."]},
+        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":"En mi tiempo libre me gusta cocinar."},
+        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["Estoy casado y tengo dos hijos.","Estoy casada y tengo dos hijos."]},
+        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["¿Cuánto tiempo te quedas aquí?","¿Cuánto tiempo vas a quedarte?"]},
+        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":"¿Haces deporte?"},
+        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["Ha sido un placer conocerte.","Fue un placer conocerte.","Me alegró conocerte."]},
+        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":["¡Sigamos en contacto!","¡Mantengámonos en contacto!"]}
+      ]
+    },
+    {
+      "id": "airport", "title": "Am Flughafen", "level": "A2", "colors": ["#2563EB","#1E40AF"],
+      "desc": "Einchecken, Gepäck aufgeben und das Gate finden.",
+      "words": [
+        {"id":"airport.w01","de":"der Flughafen","t":"el aeropuerto","pic":"🛫"},
+        {"id":"airport.w02","de":"der Flug","t":"el vuelo","pic":"✈️"},
+        {"id":"airport.w03","de":"der Reisepass","t":"el pasaporte","pic":"🛂"},
+        {"id":"airport.w04","de":"die Bordkarte","t":"la tarjeta de embarque","pic":"🎫"},
+        {"id":"airport.w05","de":"das Gepäck","t":"el equipaje","pic":"🧳"},
+        {"id":"airport.w06","de":"der Koffer","t":"la maleta"},
+        {"id":"airport.w07","de":"das Handgepäck","t":"el equipaje de mano","pic":"🎒"},
+        {"id":"airport.w08","de":"einchecken","t":["facturar","hacer el check-in"]},
+        {"id":"airport.w09","de":"die Verspätung","t":"el retraso","pic":"⏰"},
+        {"id":"airport.w10","de":"der Ausgang (Gate)","t":"la puerta de embarque"},
+        {"id":"airport.w11","de":"die Ankunft","t":"la llegada","pic":"🛬"},
+        {"id":"airport.w12","de":"der Abflug","t":"la salida"},
+        {"id":"airport.w13","de":"der Zoll","t":"la aduana"}
+      ],
+      "sentences": [
+        {"id":"airport.s01","de":"Wo kann ich einchecken?","t":["¿Dónde puedo facturar?","¿Dónde puedo hacer el check-in?"]},
+        {"id":"airport.s02","de":"Hier ist mein Reisepass.","t":"Aquí tiene mi pasaporte."},
+        {"id":"airport.s03","de":"Ich habe einen Koffer und ein Handgepäck.","t":"Tengo una maleta y un equipaje de mano."},
+        {"id":"airport.s04","de":"Der Flug hat eine Stunde Verspätung.","t":"El vuelo tiene una hora de retraso."},
+        {"id":"airport.s05","de":"Von welchem Gate fliegen wir?","t":["¿De qué puerta salimos?","¿Desde qué puerta sale el vuelo?"]},
+        {"id":"airport.s06","de":"Ich habe einen Platz am Fenster.","t":["Tengo un asiento de ventanilla.","Tengo asiento junto a la ventanilla."]},
+        {"id":"airport.s07","de":"Mein Koffer ist nicht angekommen.","t":"Mi maleta no ha llegado."},
+        {"id":"airport.s08","de":"Wann beginnt das Boarding?","t":["¿A qué hora empieza el embarque?","¿Cuándo empieza el embarque?"]},
+        {"id":"airport.s09","de":"Haben Sie etwas zu verzollen?","t":"¿Tiene algo que declarar?"},
+        {"id":"airport.s10","de":"Der Flug nach Lissabon ist gestrichen.","t":["El vuelo a Lisboa está cancelado.","El vuelo a Lisboa ha sido cancelado."]}
+      ]
+    },
+    {
+      "id": "beach", "title": "Am Strand", "level": "A2", "colors": ["#F59E0B","#B45309"],
+      "desc": "Sonne, Meer und alles, was man am Strand braucht.",
+      "words": [
+        {"id":"beach.w01","de":"der Strand","t":"la playa","pic":"🏖️"},
+        {"id":"beach.w02","de":"das Meer","t":"el mar","pic":"🌊"},
+        {"id":"beach.w03","de":"die Sonne","t":"el sol","pic":"☀️"},
+        {"id":"beach.w04","de":"schwimmen","t":"nadar","pic":"🏊"},
+        {"id":"beach.w05","de":"der Sonnenschirm","t":"la sombrilla","pic":"⛱️"},
+        {"id":"beach.w06","de":"die Sonnencreme","t":["la crema solar","el protector solar"],"pic":"🧴"},
+        {"id":"beach.w07","de":"das Handtuch","t":"la toalla"},
+        {"id":"beach.w08","de":"die Welle","t":"la ola"},
+        {"id":"beach.w09","de":"der Sand","t":"la arena"},
+        {"id":"beach.w10","de":"die Liege","t":["la tumbona","la hamaca"]},
+        {"id":"beach.w11","de":"das Eis","t":"el helado","pic":"🍦"},
+        {"id":"beach.w12","de":"der Rettungsschwimmer","t":"el socorrista","pic":"🛟"},
+        {"id":"beach.w13","de":"gefährlich","t":["peligroso","peligrosa"],"pic":"⚠️"}
+      ],
+      "sentences": [
+        {"id":"beach.s01","de":"Gehen wir an den Strand!","t":"¡Vamos a la playa!"},
+        {"id":"beach.s02","de":"Das Wasser ist sehr kalt.","t":"El agua está muy fría."},
+        {"id":"beach.s03","de":"Kann man hier schwimmen?","t":"¿Se puede nadar aquí?"},
+        {"id":"beach.s04","de":"Die Wellen sind heute hoch.","t":["Hoy las olas son altas.","Las olas están altas hoy."]},
+        {"id":"beach.s05","de":"Hast du Sonnencreme dabei?","t":["¿Llevas crema solar?","¿Tienes protector solar?"]},
+        {"id":"beach.s06","de":"Was kostet eine Liege?","t":["¿Cuánto cuesta una tumbona?","¿Cuánto vale una tumbona?"]},
+        {"id":"beach.s07","de":"Ich möchte ein Eis.","t":["Quiero un helado.","Quisiera un helado."]},
+        {"id":"beach.s08","de":"Die Strömung ist gefährlich.","t":"La corriente es peligrosa."},
+        {"id":"beach.s09","de":"Wir liegen den ganzen Tag in der Sonne.","t":["Estamos todo el día al sol.","Pasamos todo el día al sol."]},
+        {"id":"beach.s10","de":"Wo ist der Rettungsschwimmer?","t":"¿Dónde está el socorrista?"}
+      ]
+    },
+    {
+      "id": "phone", "title": "Handy & Internet", "level": "A2", "colors": ["#0891B2","#0E7490"],
+      "desc": "WLAN, SIM-Karte und Akku: unterwegs online bleiben.",
+      "words": [
+        {"id":"phone.w01","de":"das Handy","t":["el móvil","el teléfono"],"pic":"📱"},
+        {"id":"phone.w02","de":"das WLAN","t":["el wifi","el wi-fi"],"pic":"📶"},
+        {"id":"phone.w03","de":"das Passwort","t":"la contraseña","pic":"🔑"},
+        {"id":"phone.w04","de":"die SIM-Karte","t":"la tarjeta SIM"},
+        {"id":"phone.w05","de":"das Ladegerät","t":"el cargador","pic":"🔌"},
+        {"id":"phone.w06","de":"der Akku","t":"la batería","pic":"🔋"},
+        {"id":"phone.w07","de":"die Nachricht","t":"el mensaje","pic":"💬"},
+        {"id":"phone.w08","de":"anrufen","t":"llamar","pic":"📞"},
+        {"id":"phone.w09","de":"die Telefonnummer","t":"el número de teléfono"},
+        {"id":"phone.w10","de":"das Foto","t":"la foto","pic":"📷"},
+        {"id":"phone.w11","de":"die App","t":["la aplicación","la app"]},
+        {"id":"phone.w12","de":"die Steckdose","t":"el enchufe"},
+        {"id":"phone.w13","de":"kaputt","t":["roto","estropeado"]}
+      ],
+      "sentences": [
+        {"id":"phone.s01","de":"Gibt es hier WLAN?","t":["¿Hay wifi aquí?","¿Tienen wifi?"]},
+        {"id":"phone.s02","de":"Wie ist das Passwort?","t":"¿Cuál es la contraseña?"},
+        {"id":"phone.s03","de":"Mein Akku ist leer.","t":["Me he quedado sin batería.","Mi batería está descargada."]},
+        {"id":"phone.s04","de":"Kann ich mein Handy hier aufladen?","t":["¿Puedo cargar el móvil aquí?","¿Puedo cargar mi móvil aquí?"]},
+        {"id":"phone.s05","de":"Ich brauche eine SIM-Karte.","t":"Necesito una tarjeta SIM."},
+        {"id":"phone.s06","de":"Ich schicke dir eine Nachricht.","t":["Te mando un mensaje.","Te envío un mensaje."]},
+        {"id":"phone.s07","de":"Was ist deine Telefonnummer?","t":["¿Cuál es tu número de teléfono?","¿Cuál es tu número?"]},
+        {"id":"phone.s08","de":"Ich rufe dich morgen an.","t":"Te llamo mañana."},
+        {"id":"phone.s09","de":"Das Internet ist sehr langsam.","t":"Internet va muy lento."},
+        {"id":"phone.s10","de":"Kannst du ein Foto von uns machen?","t":["¿Puedes hacernos una foto?","¿Nos puedes hacer una foto?"]}
+      ]
+    },
+    {
       "id": "problems", "title": "Probleme lösen", "level": "B1", "colors": ["#D0542A","#9E3D1C"],
       "desc": "Höflich reklamieren, um Hilfe bitten, Lösungen finden.",
       "words": [
@@ -525,36 +742,6 @@
         {"id":"opinions.s08","de":"Eigentlich wollte ich ans Meer fahren.","t":["En realidad, quería ir al mar.","En realidad quería ir a la playa."]},
         {"id":"opinions.s09","de":"Was ist der Unterschied zwischen den beiden?","t":"¿Cuál es la diferencia entre los dos?"},
         {"id":"opinions.s10","de":"Es ist wichtig, die Sprache ein bisschen zu sprechen.","t":["Es importante hablar un poco el idioma.","Es importante hablar un poco la lengua."]}
-      ]
-    },
-    {
-      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
-      "desc": "Über Beruf, Familie und Hobbys plaudern.",
-      "words": [
-        {"id":"smalltalk.w01","de":"der Beruf","t":["la profesión","el trabajo"]},
-        {"id":"smalltalk.w02","de":"die Arbeit","t":"el trabajo","pic":"💼"},
-        {"id":"smalltalk.w03","de":"das Hobby","t":["el pasatiempo","la afición","el hobby"]},
-        {"id":"smalltalk.w04","de":"verheiratet","t":["casado","casada"],"pic":"💍"},
-        {"id":"smalltalk.w05","de":"die Kinder","t":["los hijos","los niños"]},
-        {"id":"smalltalk.w06","de":"wohnen","t":"vivir","pic":"🏠"},
-        {"id":"smalltalk.w07","de":"mögen","t":"gustar"},
-        {"id":"smalltalk.w08","de":"kochen","t":"cocinar","pic":"🍳"},
-        {"id":"smalltalk.w09","de":"der Sport","t":"el deporte","pic":"🏃"},
-        {"id":"smalltalk.w10","de":"die Musik","t":"la música","pic":"🎵"},
-        {"id":"smalltalk.w11","de":"das erste Mal","t":"la primera vez"},
-        {"id":"smalltalk.w12","de":"die Freizeit","t":"el tiempo libre"}
-      ],
-      "sentences": [
-        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["¿A qué te dedicas?","¿En qué trabajas?"]},
-        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":["Trabajo de profesora.","Trabajo como profesora.","Soy profesora."]},
-        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["¿Es la primera vez que vienes aquí?","¿Es tu primera vez aquí?"]},
-        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":["Vivo cerca de Múnich.","Yo vivo cerca de Múnich."]},
-        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":"En mi tiempo libre me gusta cocinar."},
-        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["Estoy casado y tengo dos hijos.","Estoy casada y tengo dos hijos."]},
-        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["¿Cuánto tiempo te quedas aquí?","¿Cuánto tiempo vas a quedarte?"]},
-        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":"¿Haces deporte?"},
-        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["Ha sido un placer conocerte.","Fue un placer conocerte.","Me alegró conocerte."]},
-        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":["¡Sigamos en contacto!","¡Mantengámonos en contacto!"]}
       ]
     },
     {
@@ -651,6 +838,161 @@
       ]
     },
     {
+      "id": "apartment", "title": "Wohnung mieten", "level": "B1", "colors": ["#0D9488","#0F766E"],
+      "desc": "Eine Ferienwohnung mieten und Probleme mit dem Vermieter klären.",
+      "words": [
+        {"id":"apartment.w01","de":"die Miete","t":"el alquiler","pic":"💶"},
+        {"id":"apartment.w02","de":"der Vermieter","t":["el casero","el propietario"]},
+        {"id":"apartment.w03","de":"die Kaution","t":"la fianza"},
+        {"id":"apartment.w04","de":"der Schlüssel","t":"la llave","pic":"🔑"},
+        {"id":"apartment.w05","de":"die Heizung","t":"la calefacción","pic":"🔥"},
+        {"id":"apartment.w06","de":"die Klimaanlage","t":"el aire acondicionado","pic":"❄️"},
+        {"id":"apartment.w07","de":"die Waschmaschine","t":"la lavadora","pic":"🧺"},
+        {"id":"apartment.w08","de":"der Müll","t":"la basura","pic":"🗑️"},
+        {"id":"apartment.w09","de":"der Nachbar / die Nachbarin","t":["el vecino","la vecina"]},
+        {"id":"apartment.w10","de":"laut","t":["ruidoso","fuerte"],"pic":"🔊"},
+        {"id":"apartment.w11","de":"tropfen","t":"gotear","pic":"💧"},
+        {"id":"apartment.w12","de":"reparieren","t":["reparar","arreglar"],"pic":"🔧"},
+        {"id":"apartment.w13","de":"im Voraus","t":["por adelantado","por anticipado"]}
+      ],
+      "sentences": [
+        {"id":"apartment.s01","de":"Die Miete muss im Voraus bezahlt werden.","t":["El alquiler se paga por adelantado.","El alquiler hay que pagarlo por adelantado."]},
+        {"id":"apartment.s02","de":"Wann bekommen wir die Schlüssel?","t":"¿Cuándo nos dan las llaves?"},
+        {"id":"apartment.s03","de":"Die Heizung funktioniert nicht.","t":"La calefacción no funciona."},
+        {"id":"apartment.s04","de":"Der Wasserhahn in der Küche tropft.","t":"El grifo de la cocina gotea."},
+        {"id":"apartment.s05","de":"Können Sie das bitte reparieren lassen?","t":["¿Podría mandar a arreglarlo, por favor?","¿Puede hacer que lo reparen, por favor?"]},
+        {"id":"apartment.s06","de":"Wo kommt der Müll hin?","t":["¿Dónde se tira la basura?","¿Dónde dejamos la basura?"]},
+        {"id":"apartment.s07","de":"Die Nachbarn sind nachts sehr laut.","t":["Los vecinos hacen mucho ruido por la noche.","Los vecinos son muy ruidosos por la noche."]},
+        {"id":"apartment.s08","de":"Bekommen wir die Kaution zurück?","t":"¿Nos devuelven la fianza?"},
+        {"id":"apartment.s09","de":"Gibt es eine Waschmaschine in der Wohnung?","t":["¿Hay lavadora en el piso?","¿Hay lavadora en el apartamento?"]},
+        {"id":"apartment.s10","de":"Wir reisen am Samstag um zehn Uhr ab.","t":"Nos vamos el sábado a las diez."}
+      ]
+    },
+    {
+      "id": "work", "title": "Arbeit & Beruf", "level": "B1", "colors": ["#475569","#334155"],
+      "desc": "Über den Beruf sprechen, Kollegen und den Arbeitsalltag.",
+      "words": [
+        {"id":"work.w01","de":"der Beruf","t":["la profesión","el oficio"],"pic":"💼"},
+        {"id":"work.w02","de":"die Firma","t":"la empresa","pic":"🏢"},
+        {"id":"work.w03","de":"der Kollege / die Kollegin","t":["el compañero","la compañera","el colega"]},
+        {"id":"work.w04","de":"der Chef / die Chefin","t":["el jefe","la jefa"]},
+        {"id":"work.w05","de":"das Büro","t":"la oficina","pic":"🖥️"},
+        {"id":"work.w06","de":"die Besprechung","t":"la reunión","pic":"📅"},
+        {"id":"work.w07","de":"das Gehalt","t":["el sueldo","el salario"],"pic":"💰"},
+        {"id":"work.w08","de":"der Urlaub","t":"las vacaciones","pic":"🏝️"},
+        {"id":"work.w09","de":"die Überstunden","t":"las horas extra","pic":"⏱️"},
+        {"id":"work.w10","de":"selbstständig","t":["autónomo","autónoma"]},
+        {"id":"work.w11","de":"arbeitslos","t":["en paro","desempleado"]},
+        {"id":"work.w12","de":"im Homeoffice arbeiten","t":["teletrabajar","trabajar desde casa"],"pic":"🏠"},
+        {"id":"work.w13","de":"die Erfahrung","t":"la experiencia"}
+      ],
+      "sentences": [
+        {"id":"work.s01","de":["Was machst du beruflich?","Was machen Sie beruflich?"],"t":["¿A qué te dedicas?","¿A qué se dedica?"]},
+        {"id":"work.s02","de":"Ich arbeite bei einer kleinen Firma.","t":"Trabajo en una empresa pequeña."},
+        {"id":"work.s03","de":"Heute habe ich drei Besprechungen.","t":"Hoy tengo tres reuniones."},
+        {"id":"work.s04","de":"Zweimal pro Woche arbeite ich im Homeoffice.","t":["Teletrabajo dos veces por semana.","Trabajo desde casa dos veces por semana."]},
+        {"id":"work.s05","de":"Meine Kollegen sind sehr nett.","t":["Mis compañeros son muy majos.","Mis compañeros son muy simpáticos."]},
+        {"id":"work.s06","de":"Ich muss oft Überstunden machen.","t":["A menudo tengo que hacer horas extra.","Muchas veces tengo que hacer horas extra."]},
+        {"id":"work.s07","de":"Wie viele Urlaubstage hast du im Jahr?","t":"¿Cuántos días de vacaciones tienes al año?"},
+        {"id":"work.s08","de":"Seit zwei Jahren bin ich selbstständig.","t":["Soy autónomo desde hace dos años.","Soy autónoma desde hace dos años."]},
+        {"id":"work.s09","de":"Mein Chef ist diese Woche im Urlaub.","t":"Mi jefe está de vacaciones esta semana."},
+        {"id":"work.s10","de":"Ich habe viel Erfahrung in diesem Bereich.","t":["Tengo mucha experiencia en este campo.","Tengo mucha experiencia en este sector."]}
+      ]
+    },
+    {
+      "id": "cooking", "title": "Kochen & Rezepte", "level": "B1", "colors": ["#DC2626","#991B1B"],
+      "desc": "Zutaten einkaufen, Rezepte verstehen und zusammen kochen.",
+      "words": [
+        {"id":"cooking.w01","de":"das Rezept","t":"la receta","pic":"📖"},
+        {"id":"cooking.w02","de":"die Zutat","t":"el ingrediente"},
+        {"id":"cooking.w03","de":"die Zwiebel","t":"la cebolla","pic":"🧅"},
+        {"id":"cooking.w04","de":"der Knoblauch","t":"el ajo","pic":"🧄"},
+        {"id":"cooking.w05","de":"die Tomate","t":"el tomate","pic":"🍅"},
+        {"id":"cooking.w06","de":"das Öl","t":"el aceite","pic":"🫒"},
+        {"id":"cooking.w07","de":"das Salz","t":"la sal","pic":"🧂"},
+        {"id":"cooking.w08","de":"die Pfanne","t":"la sartén","pic":"🍳"},
+        {"id":"cooking.w09","de":"schneiden","t":"cortar","pic":"🔪"},
+        {"id":"cooking.w10","de":"braten","t":"freír"},
+        {"id":"cooking.w11","de":"kochen (Wasser)","t":"hervir"},
+        {"id":"cooking.w12","de":"umrühren","t":"remover","pic":"🥄"},
+        {"id":"cooking.w13","de":"scharf","t":"picante","pic":"🌶️"}
+      ],
+      "sentences": [
+        {"id":"cooking.s01","de":"Hast du ein gutes Rezept für Paella?","t":"¿Tienes una buena receta de paella?"},
+        {"id":"cooking.s02","de":"Welche Zutaten brauchen wir?","t":"¿Qué ingredientes necesitamos?"},
+        {"id":"cooking.s03","de":"Schneide die Zwiebeln in kleine Stücke.","t":"Corta las cebollas en trozos pequeños."},
+        {"id":"cooking.s04","de":"Erhitze das Öl in der Pfanne.","t":"Calienta el aceite en la sartén."},
+        {"id":"cooking.s05","de":"Brate den Knoblauch kurz an.","t":["Sofríe el ajo un momento.","Fríe el ajo un momento."]},
+        {"id":"cooking.s06","de":"Das Wasser muss kochen.","t":"El agua tiene que hervir."},
+        {"id":"cooking.s07","de":"Rühre ab und zu um.","t":"Remueve de vez en cuando."},
+        {"id":"cooking.s08","de":"Es fehlt noch etwas Salz.","t":"Le falta un poco de sal."},
+        {"id":"cooking.s09","de":"Ich esse nicht gern scharf.","t":"No me gusta la comida picante."},
+        {"id":"cooking.s10","de":"Das Essen ist in zwanzig Minuten fertig.","t":"La comida estará lista en veinte minutos."}
+      ]
+    },
+    {
+      "id": "bank", "title": "Bank & Geld", "level": "B1", "colors": ["#15803D","#166534"],
+      "desc": "Geld abheben, wechseln und Probleme mit der Karte lösen.",
+      "words": [
+        {"id":"bank.w01","de":"die Bank","t":"el banco","pic":"🏦"},
+        {"id":"bank.w02","de":"der Geldautomat","t":["el cajero","el cajero automático"],"pic":"🏧"},
+        {"id":"bank.w03","de":"abheben","t":["sacar","retirar"]},
+        {"id":"bank.w04","de":"wechseln (Geld)","t":"cambiar","pic":"💱"},
+        {"id":"bank.w05","de":"der Wechselkurs","t":["el tipo de cambio","la tasa de cambio"]},
+        {"id":"bank.w06","de":"die Gebühr","t":["la comisión","la tarifa"]},
+        {"id":"bank.w07","de":"das Konto","t":"la cuenta"},
+        {"id":"bank.w08","de":"die Kreditkarte","t":"la tarjeta de crédito","pic":"💳"},
+        {"id":"bank.w09","de":"die Geheimzahl","t":["el PIN","el número secreto"]},
+        {"id":"bank.w10","de":"sperren","t":["bloquear","anular"],"pic":"🔒"},
+        {"id":"bank.w11","de":"die Quittung","t":["el recibo","el comprobante"],"pic":"🧾"},
+        {"id":"bank.w12","de":"das Bargeld","t":["el efectivo","el dinero en efectivo"],"pic":"💵"},
+        {"id":"bank.w13","de":"überweisen","t":["transferir","hacer una transferencia"]}
+      ],
+      "sentences": [
+        {"id":"bank.s01","de":"Wo ist der nächste Geldautomat?","t":"¿Dónde está el cajero más cercano?"},
+        {"id":"bank.s02","de":"Ich möchte Euro in Dollar wechseln.","t":["Quisiera cambiar euros por dólares.","Quiero cambiar euros a dólares."]},
+        {"id":"bank.s03","de":"Wie ist der Wechselkurs heute?","t":["¿A cuánto está el cambio hoy?","¿Cuál es el tipo de cambio hoy?"]},
+        {"id":"bank.s04","de":"Der Automat hat meine Karte behalten.","t":["El cajero se ha tragado mi tarjeta.","El cajero se ha quedado con mi tarjeta."]},
+        {"id":"bank.s05","de":"Ich muss meine Karte sperren lassen.","t":["Tengo que bloquear mi tarjeta.","Tengo que anular mi tarjeta."]},
+        {"id":"bank.s06","de":"Gibt es eine Gebühr?","t":["¿Hay alguna comisión?","¿Cobran comisión?"]},
+        {"id":"bank.s07","de":"Kann ich mit Karte zahlen oder nur bar?","t":"¿Puedo pagar con tarjeta o solo en efectivo?"},
+        {"id":"bank.s08","de":"Ich habe meine Geheimzahl vergessen.","t":["He olvidado mi PIN.","Se me ha olvidado el PIN."]},
+        {"id":"bank.s09","de":"Brauchen Sie eine Quittung?","t":["¿Necesita el recibo?","¿Quiere el comprobante?"]},
+        {"id":"bank.s10","de":"Ich überweise dir das Geld morgen.","t":["Te hago la transferencia mañana.","Mañana te transfiero el dinero."]}
+      ]
+    },
+    {
+      "id": "nature", "title": "Natur & Wandern", "level": "B1", "colors": ["#65A30D","#4D7C0F"],
+      "desc": "Wanderwege, Wetter in den Bergen und Tiere in der Natur.",
+      "words": [
+        {"id":"nature.w01","de":"der Berg","t":"la montaña","pic":"⛰️"},
+        {"id":"nature.w02","de":"der Wald","t":"el bosque","pic":"🌲"},
+        {"id":"nature.w03","de":"der See","t":"el lago","pic":"🏞️"},
+        {"id":"nature.w04","de":"der Fluss","t":"el río"},
+        {"id":"nature.w05","de":"der Wanderweg","t":["el sendero","la ruta"],"pic":"🥾"},
+        {"id":"nature.w06","de":"wandern","t":["hacer senderismo","caminar"]},
+        {"id":"nature.w07","de":"der Gipfel","t":"la cima"},
+        {"id":"nature.w08","de":"die Aussicht","t":"las vistas","pic":"🌄"},
+        {"id":"nature.w09","de":"das Gewitter","t":"la tormenta","pic":"⛈️"},
+        {"id":"nature.w10","de":"die Wasserflasche","t":["la botella de agua","la cantimplora"],"pic":"🧴"},
+        {"id":"nature.w11","de":"der Vogel","t":"el pájaro","pic":"🐦"},
+        {"id":"nature.w12","de":"müde","t":["cansado","cansada"],"pic":"🥱"},
+        {"id":"nature.w13","de":"steil","t":"empinado"}
+      ],
+      "sentences": [
+        {"id":"nature.s01","de":"Wie lange dauert die Wanderung?","t":["¿Cuánto dura la ruta?","¿Cuánto se tarda en hacer la ruta?"]},
+        {"id":"nature.s02","de":"Der Weg ist ziemlich steil.","t":"El camino es bastante empinado."},
+        {"id":"nature.s03","de":"Von oben hat man eine tolle Aussicht.","t":["Desde arriba hay unas vistas preciosas.","Desde arriba las vistas son increíbles."]},
+        {"id":"nature.s04","de":"Heute Nachmittag soll es Gewitter geben.","t":["Esta tarde va a haber tormenta.","Han dicho que esta tarde habrá tormentas."]},
+        {"id":"nature.s05","de":"Nimm genug Wasser mit.","t":["Llévate suficiente agua.","Lleva suficiente agua."]},
+        {"id":"nature.s06","de":"Wir sind um sechs Uhr losgegangen.","t":"Salimos a las seis."},
+        {"id":"nature.s07","de":"Ich bin total müde.","t":["Estoy agotado.","Estoy agotada.","Estoy muy cansado."]},
+        {"id":"nature.s08","de":"Darf man im See baden?","t":["¿Se puede bañar uno en el lago?","¿Está permitido bañarse en el lago?"]},
+        {"id":"nature.s09","de":"Bitte bleibt auf dem Weg.","t":["Por favor, no salgáis del camino.","Por favor, quedaos en el sendero."]},
+        {"id":"nature.s10","de":"Im Wald hört man viele Vögel.","t":"En el bosque se oyen muchos pájaros."}
+      ]
+    },
+    {
       "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
       "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
       "words": [
@@ -679,6 +1021,285 @@
         {"id":"negotiate.s08","de":"Man hat mir gesagt, dass das Museum montags geschlossen ist.","t":["Me dijeron que el museo cierra los lunes.","Me han dicho que el museo está cerrado los lunes."]},
         {"id":"negotiate.s09","de":"Lassen Sie mich darüber nachdenken.","t":["Déjeme pensarlo.","Déjeme que lo piense."]},
         {"id":"negotiate.s10","de":"Wir sind mit der Lösung sehr zufrieden.","t":"Estamos muy satisfechos con la solución."}
+      ]
+    },
+    {
+      "id": "environment", "title": "Umwelt & Nachhaltigkeit", "level": "B2", "colors": ["#16A34A","#14532D"],
+      "desc": "Klimawandel, Müll vermeiden und nachhaltig reisen.",
+      "words": [
+        {"id":"environment.w01","de":"die Umwelt","t":"el medio ambiente","pic":"🌍"},
+        {"id":"environment.w02","de":"der Klimawandel","t":"el cambio climático","pic":"🌡️"},
+        {"id":"environment.w03","de":"nachhaltig","t":"sostenible","pic":"♻️"},
+        {"id":"environment.w04","de":"die Verschmutzung","t":"la contaminación","pic":"🏭"},
+        {"id":"environment.w05","de":"erneuerbare Energie","t":["la energía renovable","las energías renovables"],"pic":"☀️"},
+        {"id":"environment.w06","de":"vermeiden","t":"evitar"},
+        {"id":"environment.w07","de":"verschwenden","t":["desperdiciar","malgastar"]},
+        {"id":"environment.w08","de":"der Verbrauch","t":"el consumo"},
+        {"id":"environment.w09","de":"die Plastiktüte","t":"la bolsa de plástico","pic":"🛍️"},
+        {"id":"environment.w10","de":"die Dürre","t":"la sequía","pic":"🏜️"},
+        {"id":"environment.w11","de":"schützen","t":"proteger","pic":"🛡️"},
+        {"id":"environment.w12","de":"der CO2-Ausstoß","t":"las emisiones de CO2"},
+        {"id":"environment.w13","de":"die Verantwortung","t":"la responsabilidad"}
+      ],
+      "sentences": [
+        {"id":"environment.s01","de":"Wir sollten weniger Plastik verwenden.","t":"Deberíamos usar menos plástico."},
+        {"id":"environment.s02","de":"Der Klimawandel betrifft uns alle.","t":"El cambio climático nos afecta a todos."},
+        {"id":"environment.s03","de":"Ich versuche, nachhaltiger zu reisen.","t":"Intento viajar de forma más sostenible."},
+        {"id":"environment.s04","de":"Statt zu fliegen, nehmen wir den Zug.","t":["En lugar de volar, cogemos el tren.","En vez de ir en avión, vamos en tren."]},
+        {"id":"environment.s05","de":"In vielen Regionen gibt es eine schwere Dürre.","t":["Muchas regiones sufren una sequía grave.","Hay una sequía grave en muchas regiones."]},
+        {"id":"environment.s06","de":"Es ist wichtig, die Natur zu schützen.","t":"Es importante proteger la naturaleza."},
+        {"id":"environment.s07","de":"Wir verschwenden zu viele Lebensmittel.","t":"Desperdiciamos demasiada comida."},
+        {"id":"environment.s08","de":"Jeder trägt eine Verantwortung für die Umwelt.","t":"Todos tenemos una responsabilidad con el medio ambiente."},
+        {"id":"environment.s09","de":"Die Stadt setzt auf erneuerbare Energie.","t":"La ciudad apuesta por las energías renovables."},
+        {"id":"environment.s10","de":"Auch wenn es teurer ist, kaufe ich regional.","t":["Aunque sea más caro, compro productos locales.","Aunque es más caro, compro productos de la zona."]}
+      ]
+    },
+    {
+      "id": "media", "title": "Nachrichten & Medien", "level": "B2", "colors": ["#1D4ED8","#1E3A8A"],
+      "desc": "Über Nachrichten sprechen, Quellen prüfen und soziale Medien.",
+      "words": [
+        {"id":"media.w01","de":"die Nachrichten","t":"las noticias","pic":"📰"},
+        {"id":"media.w02","de":"die Zeitung","t":"el periódico","pic":"🗞️"},
+        {"id":"media.w03","de":"der Artikel","t":"el artículo"},
+        {"id":"media.w04","de":"die Quelle","t":"la fuente"},
+        {"id":"media.w05","de":"die Falschmeldung","t":["la noticia falsa","el bulo"]},
+        {"id":"media.w06","de":"die sozialen Medien","t":"las redes sociales","pic":"📱"},
+        {"id":"media.w07","de":"die Meinungsfreiheit","t":"la libertad de expresión"},
+        {"id":"media.w08","de":"die Schlagzeile","t":"el titular"},
+        {"id":"media.w09","de":"berichten","t":["informar","informar sobre"]},
+        {"id":"media.w10","de":"glaubwürdig","t":["creíble","fiable"]},
+        {"id":"media.w11","de":"die Werbung","t":"la publicidad","pic":"📢"},
+        {"id":"media.w12","de":"veröffentlichen","t":"publicar"},
+        {"id":"media.w13","de":"die Umfrage","t":"la encuesta","pic":"📊"}
+      ],
+      "sentences": [
+        {"id":"media.s01","de":"Hast du heute die Nachrichten gesehen?","t":"¿Has visto las noticias hoy?"},
+        {"id":"media.s02","de":"Diese Quelle ist nicht glaubwürdig.","t":["Esta fuente no es fiable.","Esta fuente no es creíble."]},
+        {"id":"media.s03","de":"Man sollte die Informationen immer überprüfen.","t":["Siempre hay que comprobar la información.","Siempre se debería verificar la información."]},
+        {"id":"media.s04","de":"Die Zeitung hat einen langen Artikel darüber veröffentlicht.","t":["El periódico ha publicado un artículo largo sobre eso.","El periódico publicó un largo artículo sobre el tema."]},
+        {"id":"media.s05","de":"Viele junge Leute informieren sich über soziale Medien.","t":["Muchos jóvenes se informan por las redes sociales.","Muchos jóvenes se informan a través de las redes sociales."]},
+        {"id":"media.s06","de":"Laut einer Umfrage sind die meisten dafür.","t":"Según una encuesta, la mayoría está a favor."},
+        {"id":"media.s07","de":"Die Schlagzeile ist übertrieben.","t":"El titular es exagerado."},
+        {"id":"media.s08","de":"Ich habe den Eindruck, dass das eine Falschmeldung ist.","t":["Tengo la impresión de que es una noticia falsa.","Me da la impresión de que es un bulo."]},
+        {"id":"media.s09","de":"Die Meinungsfreiheit ist ein wichtiges Recht.","t":"La libertad de expresión es un derecho importante."},
+        {"id":"media.s10","de":"In der App gibt es viel zu viel Werbung.","t":"En la aplicación hay demasiada publicidad."}
+      ]
+    },
+    {
+      "id": "interview", "title": "Bewerbung & Vorstellungsgespräch", "level": "B2", "colors": ["#9333EA","#6B21A8"],
+      "desc": "Lebenslauf, Stärken und Fragen im Vorstellungsgespräch.",
+      "words": [
+        {"id":"interview.w01","de":"die Bewerbung","t":"la solicitud","pic":"📄"},
+        {"id":"interview.w02","de":"sich bewerben","t":["presentarse","postularse","solicitar"]},
+        {"id":"interview.w03","de":"der Lebenslauf","t":["el currículum","el CV"]},
+        {"id":"interview.w04","de":"das Vorstellungsgespräch","t":["la entrevista de trabajo","la entrevista"],"pic":"🤝"},
+        {"id":"interview.w05","de":"die Stelle","t":["el puesto","el empleo"]},
+        {"id":"interview.w06","de":"die Stärke","t":["el punto fuerte","la fortaleza"]},
+        {"id":"interview.w07","de":"die Schwäche","t":["el punto débil","la debilidad"]},
+        {"id":"interview.w08","de":"die Ausbildung","t":"la formación","pic":"🎓"},
+        {"id":"interview.w09","de":"die Gehaltsvorstellung","t":"las expectativas salariales"},
+        {"id":"interview.w10","de":"zuverlässig","t":["fiable","responsable"]},
+        {"id":"interview.w11","de":"die Probezeit","t":"el periodo de prueba"},
+        {"id":"interview.w12","de":"die Teamarbeit","t":"el trabajo en equipo","pic":"👥"},
+        {"id":"interview.w13","de":"einstellen (Personal)","t":"contratar"}
+      ],
+      "sentences": [
+        {"id":"interview.s01","de":"Ich bewerbe mich um die Stelle als Grafikdesignerin.","t":["Me presento al puesto de diseñadora gráfica.","Solicito el puesto de diseñadora gráfica."]},
+        {"id":"interview.s02","de":"Im Anhang finden Sie meinen Lebenslauf.","t":["Adjunto le envío mi currículum.","En el archivo adjunto encontrará mi currículum."]},
+        {"id":"interview.s03","de":"Warum möchten Sie bei uns arbeiten?","t":"¿Por qué quiere trabajar con nosotros?"},
+        {"id":"interview.s04","de":"Was sind Ihre Stärken und Schwächen?","t":"¿Cuáles son sus puntos fuertes y débiles?"},
+        {"id":"interview.s05","de":"Ich bin zuverlässig und arbeite gern im Team.","t":["Soy responsable y me gusta trabajar en equipo.","Soy fiable y me gusta trabajar en equipo."]},
+        {"id":"interview.s06","de":"Ich habe fünf Jahre Erfahrung im Vertrieb.","t":"Tengo cinco años de experiencia en ventas."},
+        {"id":"interview.s07","de":"Wie hoch ist Ihre Gehaltsvorstellung?","t":"¿Cuáles son sus expectativas salariales?"},
+        {"id":"interview.s08","de":"Die Probezeit dauert sechs Monate.","t":"El periodo de prueba dura seis meses."},
+        {"id":"interview.s09","de":"Wann könnten Sie anfangen?","t":"¿Cuándo podría empezar?"},
+        {"id":"interview.s10","de":"Wir melden uns bis Ende der Woche bei Ihnen.","t":"Nos pondremos en contacto con usted antes del final de la semana."}
+      ]
+    },
+    {
+      "id": "feelings", "title": "Gefühle & Beziehungen", "level": "B2", "colors": ["#DB2777","#9D174D"],
+      "desc": "Gefühle ausdrücken, Streit klären und über Beziehungen sprechen.",
+      "words": [
+        {"id":"feelings.w01","de":"das Gefühl","t":"el sentimiento","pic":"💭"},
+        {"id":"feelings.w02","de":"glücklich","t":"feliz","pic":"😊"},
+        {"id":"feelings.w03","de":"traurig","t":"triste","pic":"😢"},
+        {"id":"feelings.w04","de":"enttäuscht","t":["decepcionado","decepcionada"],"pic":"😞"},
+        {"id":"feelings.w05","de":"eifersüchtig","t":["celoso","celosa"],"pic":"😒"},
+        {"id":"feelings.w06","de":"sich Sorgen machen","t":"preocuparse","pic":"😟"},
+        {"id":"feelings.w07","de":"der Streit","t":["la pelea","la discusión"],"pic":"⚡"},
+        {"id":"feelings.w08","de":"sich versöhnen","t":["reconciliarse","hacer las paces"],"pic":"🕊️"},
+        {"id":"feelings.w09","de":"vertrauen","t":"confiar"},
+        {"id":"feelings.w10","de":"sich verlieben","t":"enamorarse","pic":"💘"},
+        {"id":"feelings.w11","de":"die Beziehung","t":"la relación","pic":"💑"},
+        {"id":"feelings.w12","de":"vermissen","t":["echar de menos","extrañar"],"pic":"🥺"},
+        {"id":"feelings.w13","de":"dankbar","t":["agradecido","agradecida"],"pic":"🙏"}
+      ],
+      "sentences": [
+        {"id":"feelings.s01","de":"Ich mache mir Sorgen um dich.","t":["Estoy preocupado por ti.","Estoy preocupada por ti.","Me preocupo por ti."]},
+        {"id":"feelings.s02","de":"Ich bin ein bisschen enttäuscht.","t":["Estoy un poco decepcionado.","Estoy un poco decepcionada."]},
+        {"id":"feelings.s03","de":"Wir hatten gestern einen Streit.","t":["Ayer tuvimos una pelea.","Ayer discutimos."]},
+        {"id":"feelings.s04","de":"Inzwischen haben wir uns versöhnt.","t":["Ya hemos hecho las paces.","Mientras tanto nos hemos reconciliado."]},
+        {"id":"feelings.s05","de":"Es tut mir leid, dass ich dich verletzt habe.","t":["Siento haberte hecho daño.","Lo siento por haberte hecho daño."]},
+        {"id":"feelings.s06","de":"Ich vermisse meine Familie sehr.","t":["Echo mucho de menos a mi familia.","Extraño mucho a mi familia."]},
+        {"id":"feelings.s07","de":"In einer Beziehung ist Vertrauen das Wichtigste.","t":"En una relación, la confianza es lo más importante."},
+        {"id":"feelings.s08","de":"Sie hat sich im Urlaub verliebt.","t":["Se enamoró en las vacaciones.","Se enamoró durante las vacaciones."]},
+        {"id":"feelings.s09","de":"Ich bin dir sehr dankbar für deine Hilfe.","t":["Te estoy muy agradecido por tu ayuda.","Te estoy muy agradecida por tu ayuda."]},
+        {"id":"feelings.s10","de":"Sei nicht so eifersüchtig!","t":["¡No seas tan celoso!","¡No seas tan celosa!"]}
+      ]
+    },
+    {
+      "id": "authorities", "title": "Polizei & Behörden", "level": "B2", "colors": ["#1E3A8A","#172554"],
+      "desc": "Einen Diebstahl melden, Formulare ausfüllen und zur Botschaft gehen.",
+      "words": [
+        {"id":"authorities.w01","de":"die Polizei","t":"la policía","pic":"🚓"},
+        {"id":"authorities.w02","de":"die Anzeige (Polizei)","t":"la denuncia"},
+        {"id":"authorities.w03","de":"der Diebstahl","t":"el robo","pic":"🕵️"},
+        {"id":"authorities.w04","de":"gestohlen","t":["robado","robada"]},
+        {"id":"authorities.w05","de":"die Botschaft","t":"la embajada","pic":"🏛️"},
+        {"id":"authorities.w06","de":"das Formular","t":"el formulario","pic":"📝"},
+        {"id":"authorities.w07","de":"ausfüllen","t":"rellenar"},
+        {"id":"authorities.w08","de":"die Unterschrift","t":"la firma","pic":"✍️"},
+        {"id":"authorities.w09","de":"der Ausweis","t":["el carné de identidad","el DNI","el documento de identidad"],"pic":"🪪"},
+        {"id":"authorities.w10","de":"der Zeuge / die Zeugin","t":["el testigo","la testigo"]},
+        {"id":"authorities.w11","de":"die Versicherung","t":"el seguro","pic":"📑"},
+        {"id":"authorities.w12","de":"die Frist","t":"el plazo","pic":"📆"},
+        {"id":"authorities.w13","de":"vorläufig","t":["provisional","temporal"]}
+      ],
+      "sentences": [
+        {"id":"authorities.s01","de":"Mir wurde der Geldbeutel gestohlen.","t":"Me han robado la cartera."},
+        {"id":"authorities.s02","de":"Ich möchte eine Anzeige erstatten.","t":["Quiero poner una denuncia.","Quisiera poner una denuncia."]},
+        {"id":"authorities.s03","de":"Wann und wo ist das passiert?","t":["¿Cuándo y dónde ocurrió?","¿Cuándo y dónde pasó?"]},
+        {"id":"authorities.s04","de":"Bitte füllen Sie dieses Formular aus.","t":"Por favor, rellene este formulario."},
+        {"id":"authorities.s05","de":"Hier fehlt noch Ihre Unterschrift.","t":["Aquí falta todavía su firma.","Aquí falta su firma."]},
+        {"id":"authorities.s06","de":"Ich habe meinen Reisepass verloren.","t":["He perdido el pasaporte.","He perdido mi pasaporte."]},
+        {"id":"authorities.s07","de":"Die Botschaft stellt Ihnen einen vorläufigen Ausweis aus.","t":"La embajada le expedirá un documento provisional."},
+        {"id":"authorities.s08","de":"Brauche ich eine Kopie für die Versicherung?","t":"¿Necesito una copia para el seguro?"},
+        {"id":"authorities.s09","de":"Gab es Zeugen?","t":["¿Hubo testigos?","¿Había testigos?"]},
+        {"id":"authorities.s10","de":"Die Frist endet am Freitag.","t":["El plazo termina el viernes.","El plazo acaba el viernes."]}
+      ]
+    },
+    {
+      "id": "lifestyle", "title": "Gesund leben", "level": "B2", "colors": ["#059669","#065F46"],
+      "desc": "Ernährung, Sport, Schlaf und Stress im Alltag.",
+      "words": [
+        {"id":"lifestyle.w01","de":"die Ernährung","t":"la alimentación","pic":"🥗"},
+        {"id":"lifestyle.w02","de":"gesund","t":["sano","saludable"],"pic":"💪"},
+        {"id":"lifestyle.w03","de":"der Stress","t":"el estrés","pic":"😫"},
+        {"id":"lifestyle.w04","de":"sich entspannen","t":["relajarse","descansar"],"pic":"🧘"},
+        {"id":"lifestyle.w05","de":"das Gewicht","t":"el peso","pic":"⚖️"},
+        {"id":"lifestyle.w06","de":"abnehmen","t":"adelgazar"},
+        {"id":"lifestyle.w07","de":"zunehmen","t":"engordar"},
+        {"id":"lifestyle.w08","de":"der Zucker","t":"el azúcar","pic":"🍬"},
+        {"id":"lifestyle.w09","de":"trainieren","t":["entrenar","hacer ejercicio"],"pic":"🏋️"},
+        {"id":"lifestyle.w10","de":"das Fitnessstudio","t":"el gimnasio"},
+        {"id":"lifestyle.w11","de":"der Schlaf","t":"el sueño","pic":"🛌"},
+        {"id":"lifestyle.w12","de":"vegetarisch","t":["vegetariano","vegetariana"],"pic":"🥦"},
+        {"id":"lifestyle.w13","de":"die Gewohnheit","t":"el hábito"}
+      ],
+      "sentences": [
+        {"id":"lifestyle.s01","de":"Ich versuche, mich gesünder zu ernähren.","t":["Intento comer de forma más sana.","Intento alimentarme mejor."]},
+        {"id":"lifestyle.s02","de":"Seit einem Monat esse ich keinen Zucker mehr.","t":"Hace un mes que no como azúcar."},
+        {"id":"lifestyle.s03","de":"Dreimal pro Woche gehe ich ins Fitnessstudio.","t":"Voy al gimnasio tres veces por semana."},
+        {"id":"lifestyle.s04","de":"Zu viel Stress macht krank.","t":["Demasiado estrés te hace enfermar.","El exceso de estrés enferma."]},
+        {"id":"lifestyle.s05","de":"Ich schlafe schlecht, wenn ich abends Kaffee trinke.","t":"Duermo mal si tomo café por la noche."},
+        {"id":"lifestyle.s06","de":"Beim Yoga kann ich mich gut entspannen.","t":["Con el yoga me relajo mucho.","El yoga me ayuda a relajarme."]},
+        {"id":"lifestyle.s07","de":"Er hat zehn Kilo abgenommen.","t":["Ha adelgazado diez kilos.","Ha perdido diez kilos."]},
+        {"id":"lifestyle.s08","de":"Seit letztem Jahr bin ich Vegetarierin.","t":"Soy vegetariana desde el año pasado."},
+        {"id":"lifestyle.s09","de":"Es ist schwer, alte Gewohnheiten zu ändern.","t":["Es difícil cambiar los viejos hábitos.","Cuesta cambiar los hábitos de siempre."]},
+        {"id":"lifestyle.s10","de":"Genug Schlaf ist genauso wichtig wie Sport.","t":"Dormir lo suficiente es tan importante como hacer deporte."}
+      ]
+    },
+    {
+      "id": "tech", "title": "Technik & Digitales", "level": "B2", "colors": ["#4F46E5","#3730A3"],
+      "desc": "Geräte, Software, Datenschutz und technische Probleme lösen.",
+      "words": [
+        {"id":"tech.w01","de":"der Computer","t":"el ordenador","pic":"💻"},
+        {"id":"tech.w02","de":"das Update","t":"la actualización","pic":"🔄"},
+        {"id":"tech.w03","de":"herunterladen","t":"descargar","pic":"⬇️"},
+        {"id":"tech.w04","de":"speichern","t":"guardar","pic":"💾"},
+        {"id":"tech.w05","de":"löschen","t":["borrar","eliminar"],"pic":"🗑️"},
+        {"id":"tech.w06","de":"der Datenschutz","t":"la protección de datos","pic":"🔐"},
+        {"id":"tech.w07","de":"das Konto (online)","t":"la cuenta"},
+        {"id":"tech.w08","de":"sich anmelden","t":["iniciar sesión","entrar"]},
+        {"id":"tech.w09","de":"die Einstellungen","t":"los ajustes","pic":"⚙️"},
+        {"id":"tech.w10","de":"der Bildschirm","t":"la pantalla","pic":"🖥️"},
+        {"id":"tech.w11","de":"abstürzen","t":["bloquearse","colgarse"],"pic":"💥"},
+        {"id":"tech.w12","de":"die Datei","t":"el archivo","pic":"📁"},
+        {"id":"tech.w13","de":"neu starten","t":"reiniciar"}
+      ],
+      "sentences": [
+        {"id":"tech.s01","de":"Mein Computer ist schon wieder abgestürzt.","t":["Se me ha vuelto a colgar el ordenador.","Mi ordenador se ha bloqueado otra vez."]},
+        {"id":"tech.s02","de":"Hast du schon versucht, ihn neu zu starten?","t":["¿Ya has probado a reiniciarlo?","¿Has intentado reiniciarlo?"]},
+        {"id":"tech.s03","de":"Ich muss erst das Update installieren.","t":"Primero tengo que instalar la actualización."},
+        {"id":"tech.s04","de":"Ich kann mich nicht in mein Konto einloggen.","t":["No puedo entrar en mi cuenta.","No consigo iniciar sesión en mi cuenta."]},
+        {"id":"tech.s05","de":"Vergiss nicht, die Datei zu speichern!","t":"¡No olvides guardar el archivo!"},
+        {"id":"tech.s06","de":"Wo finde ich die Einstellungen?","t":["¿Dónde están los ajustes?","¿Dónde encuentro los ajustes?"]},
+        {"id":"tech.s07","de":"Der Bildschirm bleibt schwarz.","t":"La pantalla se queda en negro."},
+        {"id":"tech.s08","de":"Diese App sammelt zu viele Daten.","t":"Esta aplicación recopila demasiados datos."},
+        {"id":"tech.s09","de":"Ich habe aus Versehen alle Fotos gelöscht.","t":["He borrado todas las fotos sin querer.","Borré todas las fotos sin querer."]},
+        {"id":"tech.s10","de":"Du kannst die Datei hier herunterladen.","t":"Puedes descargar el archivo aquí."}
+      ]
+    },
+    {
+      "id": "travelrights", "title": "Reklamieren & Rechte", "level": "B2", "colors": ["#EA580C","#9A3412"],
+      "desc": "Bei Flugausfall, Überbuchung oder Mängeln seine Rechte einfordern.",
+      "words": [
+        {"id":"travelrights.w01","de":"die Entschädigung","t":["la indemnización","la compensación"],"pic":"💶"},
+        {"id":"travelrights.w02","de":"die Beschwerde","t":["la reclamación","la queja"],"pic":"📣"},
+        {"id":"travelrights.w03","de":"sich beschweren","t":["quejarse","reclamar"]},
+        {"id":"travelrights.w04","de":"überbucht","t":["con overbooking","sobrevendido"]},
+        {"id":"travelrights.w05","de":"annulliert","t":["cancelado","cancelada"],"pic":"❌"},
+        {"id":"travelrights.w06","de":"der Anspruch","t":"el derecho"},
+        {"id":"travelrights.w07","de":"die Erstattung","t":["el reembolso","la devolución"],"pic":"↩️"},
+        {"id":"travelrights.w08","de":"der Mangel","t":["el defecto","la deficiencia"]},
+        {"id":"travelrights.w09","de":"der Beleg","t":["el comprobante","el justificante"],"pic":"🧾"},
+        {"id":"travelrights.w10","de":"verlangen","t":"exigir"},
+        {"id":"travelrights.w11","de":"der Ersatz","t":["el sustituto","el reemplazo"]},
+        {"id":"travelrights.w12","de":"die Bedingungen","t":"las condiciones","pic":"📜"},
+        {"id":"travelrights.w13","de":"zuständig","t":["responsable","competente"]}
+      ],
+      "sentences": [
+        {"id":"travelrights.s01","de":"Unser Flug wurde ohne Begründung annulliert.","t":["Nos han cancelado el vuelo sin ninguna explicación.","Cancelaron nuestro vuelo sin explicación."]},
+        {"id":"travelrights.s02","de":"Der Flug war überbucht, und wir mussten warten.","t":"El vuelo tenía overbooking y tuvimos que esperar."},
+        {"id":"travelrights.s03","de":"Wir haben Anspruch auf eine Entschädigung.","t":"Tenemos derecho a una indemnización."},
+        {"id":"travelrights.s04","de":"Ich möchte mich beschweren.","t":["Quisiera poner una reclamación.","Quiero presentar una queja."]},
+        {"id":"travelrights.s05","de":"Wer ist dafür zuständig?","t":["¿Quién es el responsable de esto?","¿Quién se encarga de esto?"]},
+        {"id":"travelrights.s06","de":"Bitte heben Sie alle Belege auf.","t":"Por favor, guarde todos los comprobantes."},
+        {"id":"travelrights.s07","de":"Das Zimmer hatte mehrere Mängel.","t":"La habitación tenía varios defectos."},
+        {"id":"travelrights.s08","de":"Ich verlange eine vollständige Erstattung.","t":["Exijo un reembolso completo.","Exijo la devolución completa."]},
+        {"id":"travelrights.s09","de":"Laut den Bedingungen ist das nicht erlaubt.","t":"Según las condiciones, eso no está permitido."},
+        {"id":"travelrights.s10","de":"Hätten Sie uns früher informiert, hätten wir umbuchen können.","t":"Si nos hubieran avisado antes, habríamos podido cambiar el vuelo."}
+      ]
+    },
+    {
+      "id": "society", "title": "Gesellschaft & Zusammenleben", "level": "B2", "colors": ["#B45309","#78350F"],
+      "desc": "Über Zusammenleben, Wohnen in der Stadt und gesellschaftliche Themen diskutieren.",
+      "words": [
+        {"id":"society.w01","de":"die Gesellschaft","t":"la sociedad","pic":"👥"},
+        {"id":"society.w02","de":"die Gleichberechtigung","t":"la igualdad","pic":"⚖️"},
+        {"id":"society.w03","de":"die Integration","t":"la integración"},
+        {"id":"society.w04","de":"die Wohnungsnot","t":["la falta de vivienda","la crisis de la vivienda"],"pic":"🏘️"},
+        {"id":"society.w05","de":"die Vielfalt","t":"la diversidad","pic":"🌈"},
+        {"id":"society.w06","de":"das Ehrenamt","t":"el voluntariado","pic":"🤲"},
+        {"id":"society.w07","de":"die Generation","t":"la generación"},
+        {"id":"society.w08","de":"die Rente","t":"la pensión","pic":"👴"},
+        {"id":"society.w09","de":"die Wahl","t":"las elecciones","pic":"🗳️"},
+        {"id":"society.w10","de":"die Meinung","t":"la opinión"},
+        {"id":"society.w11","de":"das Vorurteil","t":"el prejuicio"},
+        {"id":"society.w12","de":"tolerant","t":"tolerante"},
+        {"id":"society.w13","de":"sich engagieren","t":["comprometerse","implicarse"]}
+      ],
+      "sentences": [
+        {"id":"society.s01","de":"In vielen Großstädten steigen die Mieten stark.","t":"En muchas grandes ciudades los alquileres suben mucho."},
+        {"id":"society.s02","de":"Meiner Meinung nach sollte Wohnen bezahlbar sein.","t":["En mi opinión, la vivienda debería ser asequible.","Para mí, la vivienda debería ser asequible."]},
+        {"id":"society.s03","de":"Sie engagiert sich ehrenamtlich in einem Verein.","t":["Hace voluntariado en una asociación.","Colabora como voluntaria en una asociación."]},
+        {"id":"society.s04","de":"Die junge Generation sieht das anders.","t":["La generación joven lo ve de otra manera.","Los jóvenes lo ven de otra forma."]},
+        {"id":"society.s05","de":"Gleichberechtigung ist noch lange nicht erreicht.","t":["La igualdad todavía está lejos de conseguirse.","Todavía queda mucho para alcanzar la igualdad."]},
+        {"id":"society.s06","de":"Vielfalt macht eine Stadt lebendig.","t":["La diversidad da vida a una ciudad.","La diversidad hace que una ciudad esté viva."]},
+        {"id":"society.s07","de":"Man sollte Menschen ohne Vorurteile begegnen.","t":"Hay que tratar a las personas sin prejuicios."},
+        {"id":"society.s08","de":"Gehst du am Sonntag wählen?","t":"¿Vas a votar el domingo?"},
+        {"id":"society.s09","de":"Viele ältere Menschen machen sich Sorgen um ihre Rente.","t":"Muchas personas mayores están preocupadas por su pensión."},
+        {"id":"society.s10","de":"Obwohl wir verschiedener Meinung sind, respektiere ich dich.","t":["Aunque no pensemos igual, te respeto.","Aunque tengamos opiniones distintas, te respeto."]}
       ]
     }
   ],

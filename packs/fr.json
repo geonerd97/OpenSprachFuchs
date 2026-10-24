@@ -277,6 +277,100 @@
       ]
     },
     {
+      "id": "family", "title": "Familie & Freunde", "level": "A1", "colors": ["#E0457B","#B02F5E"],
+      "desc": "Über die Familie sprechen und Freunde vorstellen.",
+      "words": [
+        {"id":"family.w01","de":"die Familie","t":"la famille","pic":"👨‍👩‍👧"},
+        {"id":"family.w02","de":"die Mutter","t":["la mère","la maman"],"pic":"👩"},
+        {"id":"family.w03","de":"der Vater","t":["le père","le papa"],"pic":"👨"},
+        {"id":"family.w04","de":"der Bruder","t":"le frère"},
+        {"id":"family.w05","de":"die Schwester","t":"la sœur"},
+        {"id":"family.w06","de":"das Kind","t":"l'enfant","pic":"🧒"},
+        {"id":"family.w07","de":"der Sohn","t":"le fils"},
+        {"id":"family.w08","de":"die Tochter","t":"la fille"},
+        {"id":"family.w09","de":"die Eltern","t":"les parents"},
+        {"id":"family.w10","de":"der Ehemann","t":"le mari"},
+        {"id":"family.w11","de":"die Ehefrau","t":["la femme","l'épouse"]},
+        {"id":"family.w12","de":"der Freund / die Freundin","t":["l'ami","l'amie"],"pic":"🤝"},
+        {"id":"family.w13","de":"die Großeltern","t":"les grands-parents","pic":"👵"},
+        {"id":"family.w14","de":"verheiratet","t":["marié","mariée"],"pic":"💍"}
+      ],
+      "sentences": [
+        {"id":"family.s01","de":"Das ist meine Familie.","t":["C'est ma famille.","Voici ma famille."]},
+        {"id":"family.s02","de":"Ich habe einen Bruder und eine Schwester.","t":"J'ai un frère et une sœur."},
+        {"id":"family.s03","de":["Hast du Kinder?","Haben Sie Kinder?"],"t":["Tu as des enfants?","Vous avez des enfants?","As-tu des enfants?"]},
+        {"id":"family.s04","de":"Wir haben zwei Kinder.","t":["Nous avons deux enfants.","On a deux enfants."]},
+        {"id":"family.s05","de":"Meine Tochter ist sechs Jahre alt.","t":"Ma fille a six ans."},
+        {"id":"family.s06","de":["Bist du verheiratet?","Sind Sie verheiratet?"],"t":["Tu es marié?","Tu es mariée?","Vous êtes marié?","Vous êtes mariée?"]},
+        {"id":"family.s07","de":"Das ist mein Freund Paul.","t":["C'est mon ami Paul.","Voici mon ami Paul."]},
+        {"id":"family.s08","de":"Meine Eltern wohnen in Berlin.","t":["Mes parents habitent à Berlin.","Mes parents vivent à Berlin."]},
+        {"id":"family.s09","de":"Mein Vater arbeitet viel.","t":"Mon père travaille beaucoup."},
+        {"id":"family.s10","de":"Wir besuchen meine Großeltern.","t":["Nous rendons visite à mes grands-parents.","On rend visite à mes grands-parents."]}
+      ]
+    },
+    {
+      "id": "clothes", "title": "Farben & Kleidung", "level": "A1", "colors": ["#7C3AED","#5B21B6"],
+      "desc": "Farben benennen und Kleidung kaufen.",
+      "words": [
+        {"id":"clothes.w01","de":"rot","t":"rouge","pic":"🔴"},
+        {"id":"clothes.w02","de":"blau","t":["bleu","bleue"],"pic":"🔵"},
+        {"id":"clothes.w03","de":"grün","t":["vert","verte"],"pic":"🟢"},
+        {"id":"clothes.w04","de":"gelb","t":"jaune","pic":"🟡"},
+        {"id":"clothes.w05","de":"schwarz","t":["noir","noire"],"pic":"⚫"},
+        {"id":"clothes.w06","de":"weiß","t":["blanc","blanche"],"pic":"⚪"},
+        {"id":"clothes.w07","de":"das T-Shirt","t":["le t-shirt","le tee-shirt"],"pic":"👕"},
+        {"id":"clothes.w08","de":"die Hose","t":"le pantalon","pic":"👖"},
+        {"id":"clothes.w09","de":"das Kleid","t":"la robe","pic":"👗"},
+        {"id":"clothes.w10","de":"die Schuhe","t":"les chaussures","pic":"👟"},
+        {"id":"clothes.w11","de":"die Jacke","t":["la veste","le blouson"],"pic":"🧥"},
+        {"id":"clothes.w12","de":"die Größe","t":"la taille"},
+        {"id":"clothes.w13","de":"anprobieren","t":"essayer"}
+      ],
+      "sentences": [
+        {"id":"clothes.s01","de":"Ich suche eine Jacke.","t":["Je cherche une veste.","Je cherche un blouson."]},
+        {"id":"clothes.s02","de":"Haben Sie das in Blau?","t":["Vous l'avez en bleu?","Vous avez ça en bleu?"]},
+        {"id":"clothes.s03","de":"Welche Größe haben Sie?","t":["Quelle est votre taille?","Vous faites quelle taille?"]},
+        {"id":"clothes.s04","de":"Kann ich das anprobieren?","t":["Je peux l'essayer?","Je peux essayer ça?"]},
+        {"id":"clothes.s05","de":"Die Hose ist zu klein.","t":"Le pantalon est trop petit."},
+        {"id":"clothes.s06","de":"Das Kleid ist sehr schön.","t":"La robe est très belle."},
+        {"id":"clothes.s07","de":"Ich nehme die schwarzen Schuhe.","t":"Je prends les chaussures noires."},
+        {"id":"clothes.s08","de":"Meine Lieblingsfarbe ist Grün.","t":"Ma couleur préférée est le vert."},
+        {"id":"clothes.s09","de":"Das T-Shirt ist weiß.","t":["Le t-shirt est blanc.","Le tee-shirt est blanc."]},
+        {"id":"clothes.s10","de":"Gibt es eine Umkleidekabine?","t":["Il y a une cabine d'essayage?","Est-ce qu'il y a une cabine d'essayage?"]}
+      ]
+    },
+    {
+      "id": "home", "title": "Zuhause & Tagesablauf", "level": "A1", "colors": ["#0E7490","#155E75"],
+      "desc": "Die Wohnung beschreiben und vom Tag erzählen.",
+      "words": [
+        {"id":"home.w01","de":"das Haus","t":"la maison","pic":"🏠"},
+        {"id":"home.w02","de":"die Wohnung","t":"l'appartement","pic":"🏢"},
+        {"id":"home.w03","de":"die Küche","t":"la cuisine","pic":"🍳"},
+        {"id":"home.w04","de":"das Schlafzimmer","t":"la chambre","pic":"🛏️"},
+        {"id":"home.w05","de":"das Bad","t":"la salle de bain","pic":"🛁"},
+        {"id":"home.w06","de":"aufstehen","t":"se lever"},
+        {"id":"home.w07","de":"frühstücken","t":"prendre le petit-déjeuner","pic":"🥐"},
+        {"id":"home.w08","de":"arbeiten","t":"travailler","pic":"💼"},
+        {"id":"home.w09","de":"kochen","t":["cuisiner","faire la cuisine"]},
+        {"id":"home.w10","de":"schlafen","t":"dormir","pic":"😴"},
+        {"id":"home.w11","de":"morgens","t":"le matin"},
+        {"id":"home.w12","de":"abends","t":"le soir"},
+        {"id":"home.w13","de":"jeden Tag","t":"tous les jours"}
+      ],
+      "sentences": [
+        {"id":"home.s01","de":"Ich wohne in einer kleinen Wohnung.","t":"J'habite dans un petit appartement."},
+        {"id":"home.s02","de":"Die Küche ist groß.","t":"La cuisine est grande."},
+        {"id":"home.s03","de":"Ich stehe um sieben Uhr auf.","t":"Je me lève à sept heures."},
+        {"id":"home.s04","de":"Morgens trinke ich Kaffee.","t":["Le matin, je bois du café.","Le matin je bois du café."]},
+        {"id":"home.s05","de":"Ich arbeite von neun bis fünf.","t":"Je travaille de neuf heures à cinq heures."},
+        {"id":"home.s06","de":"Abends koche ich für meine Familie.","t":["Le soir, je cuisine pour ma famille.","Le soir je fais la cuisine pour ma famille."]},
+        {"id":"home.s07","de":"Wo ist das Bad?","t":"Où est la salle de bain?"},
+        {"id":"home.s08","de":"Ich gehe um elf Uhr schlafen.","t":["Je vais me coucher à onze heures.","Je me couche à onze heures."]},
+        {"id":"home.s09","de":"Am Wochenende schlafe ich lange.","t":["Le week-end, je fais la grasse matinée.","Le week-end je dors longtemps."]},
+        {"id":"home.s10","de":"Das Haus hat einen Garten.","t":"La maison a un jardin."}
+      ]
+    },
+    {
       "id": "transport", "title": "Bus, Bahn & Taxi", "level": "A2", "colors": ["#4B50D6","#3438A6"],
       "desc": "Tickets kaufen, Abfahrten finden, mit dem Taxi fahren.",
       "words": [
@@ -467,6 +561,129 @@
       ]
     },
     {
+      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
+      "desc": "Über Beruf, Familie und Hobbys plaudern.",
+      "words": [
+        {"id":"smalltalk.w01","de":"der Beruf","t":["le métier","la profession"]},
+        {"id":"smalltalk.w02","de":"die Arbeit","t":"le travail","pic":"💼"},
+        {"id":"smalltalk.w03","de":"das Hobby","t":["le loisir","le passe-temps","le hobby"]},
+        {"id":"smalltalk.w04","de":"verheiratet","t":["marié","mariée"],"pic":"💍"},
+        {"id":"smalltalk.w05","de":"die Kinder","t":"les enfants"},
+        {"id":"smalltalk.w06","de":"wohnen","t":["habiter","vivre"],"pic":"🏠"},
+        {"id":"smalltalk.w07","de":"mögen","t":"aimer"},
+        {"id":"smalltalk.w08","de":"kochen","t":["cuisiner","faire la cuisine"],"pic":"🍳"},
+        {"id":"smalltalk.w09","de":"der Sport","t":"le sport","pic":"🏃"},
+        {"id":"smalltalk.w10","de":"die Musik","t":"la musique","pic":"🎵"},
+        {"id":"smalltalk.w11","de":"das erste Mal","t":"la première fois"},
+        {"id":"smalltalk.w12","de":"die Freizeit","t":"le temps libre"}
+      ],
+      "sentences": [
+        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["Qu'est-ce que tu fais dans la vie?","Tu fais quoi dans la vie?","Quel est ton métier?"]},
+        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":["Je travaille comme professeure.","Je suis professeure.","Je travaille comme professeur."]},
+        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["C'est la première fois que tu viens ici?","Tu es ici pour la première fois?"]},
+        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":"J'habite près de Munich."},
+        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":["Pendant mon temps libre, j'aime cuisiner.","Pendant mon temps libre j'aime cuisiner.","J'aime cuisiner pendant mon temps libre."]},
+        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["Je suis marié et j'ai deux enfants.","Je suis mariée et j'ai deux enfants."]},
+        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["Tu restes combien de temps ici?","Combien de temps restes-tu ici?"]},
+        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":["Tu fais du sport?","Est-ce que tu fais du sport?"]},
+        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["J'ai été ravi de te rencontrer.","J'ai été ravie de te rencontrer.","C'était sympa de te rencontrer."]},
+        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":"Restons en contact!"}
+      ]
+    },
+    {
+      "id": "airport", "title": "Am Flughafen", "level": "A2", "colors": ["#2563EB","#1E40AF"],
+      "desc": "Einchecken, Gepäck aufgeben und das Gate finden.",
+      "words": [
+        {"id":"airport.w01","de":"der Flughafen","t":"l'aéroport","pic":"🛫"},
+        {"id":"airport.w02","de":"der Flug","t":"le vol","pic":"✈️"},
+        {"id":"airport.w03","de":"der Reisepass","t":"le passeport","pic":"🛂"},
+        {"id":"airport.w04","de":"die Bordkarte","t":"la carte d'embarquement","pic":"🎫"},
+        {"id":"airport.w05","de":"das Gepäck","t":"les bagages","pic":"🧳"},
+        {"id":"airport.w06","de":"der Koffer","t":"la valise"},
+        {"id":"airport.w07","de":"das Handgepäck","t":"le bagage à main","pic":"🎒"},
+        {"id":"airport.w08","de":"einchecken","t":"s'enregistrer"},
+        {"id":"airport.w09","de":"die Verspätung","t":"le retard","pic":"⏰"},
+        {"id":"airport.w10","de":"der Ausgang (Gate)","t":["la porte","la porte d'embarquement"]},
+        {"id":"airport.w11","de":"die Ankunft","t":"l'arrivée","pic":"🛬"},
+        {"id":"airport.w12","de":"der Abflug","t":"le départ"},
+        {"id":"airport.w13","de":"der Zoll","t":"la douane"}
+      ],
+      "sentences": [
+        {"id":"airport.s01","de":"Wo kann ich einchecken?","t":["Où est-ce que je peux m'enregistrer?","Où puis-je m'enregistrer?"]},
+        {"id":"airport.s02","de":"Hier ist mein Reisepass.","t":"Voici mon passeport."},
+        {"id":"airport.s03","de":"Ich habe einen Koffer und ein Handgepäck.","t":"J'ai une valise et un bagage à main."},
+        {"id":"airport.s04","de":"Der Flug hat eine Stunde Verspätung.","t":"Le vol a une heure de retard."},
+        {"id":"airport.s05","de":"Von welchem Gate fliegen wir?","t":["On part de quelle porte?","De quelle porte partons-nous?"]},
+        {"id":"airport.s06","de":"Ich habe einen Platz am Fenster.","t":["J'ai une place côté hublot.","J'ai une place près du hublot."]},
+        {"id":"airport.s07","de":"Mein Koffer ist nicht angekommen.","t":"Ma valise n'est pas arrivée."},
+        {"id":"airport.s08","de":"Wann beginnt das Boarding?","t":["L'embarquement commence à quelle heure?","Quand commence l'embarquement?"]},
+        {"id":"airport.s09","de":"Haben Sie etwas zu verzollen?","t":["Vous avez quelque chose à déclarer?","Avez-vous quelque chose à déclarer?"]},
+        {"id":"airport.s10","de":"Der Flug nach Lissabon ist gestrichen.","t":"Le vol pour Lisbonne est annulé."}
+      ]
+    },
+    {
+      "id": "beach", "title": "Am Strand", "level": "A2", "colors": ["#F59E0B","#B45309"],
+      "desc": "Sonne, Meer und alles, was man am Strand braucht.",
+      "words": [
+        {"id":"beach.w01","de":"der Strand","t":"la plage","pic":"🏖️"},
+        {"id":"beach.w02","de":"das Meer","t":"la mer","pic":"🌊"},
+        {"id":"beach.w03","de":"die Sonne","t":"le soleil","pic":"☀️"},
+        {"id":"beach.w04","de":"schwimmen","t":"nager","pic":"🏊"},
+        {"id":"beach.w05","de":"der Sonnenschirm","t":"le parasol","pic":"⛱️"},
+        {"id":"beach.w06","de":"die Sonnencreme","t":"la crème solaire","pic":"🧴"},
+        {"id":"beach.w07","de":"das Handtuch","t":"la serviette"},
+        {"id":"beach.w08","de":"die Welle","t":"la vague"},
+        {"id":"beach.w09","de":"der Sand","t":"le sable"},
+        {"id":"beach.w10","de":"die Liege","t":["le transat","la chaise longue"]},
+        {"id":"beach.w11","de":"das Eis","t":"la glace","pic":"🍦"},
+        {"id":"beach.w12","de":"der Rettungsschwimmer","t":"le maître-nageur","pic":"🛟"},
+        {"id":"beach.w13","de":"gefährlich","t":["dangereux","dangereuse"],"pic":"⚠️"}
+      ],
+      "sentences": [
+        {"id":"beach.s01","de":"Gehen wir an den Strand!","t":["Allons à la plage!","On va à la plage!"]},
+        {"id":"beach.s02","de":"Das Wasser ist sehr kalt.","t":"L'eau est très froide."},
+        {"id":"beach.s03","de":"Kann man hier schwimmen?","t":["On peut nager ici?","Est-ce qu'on peut nager ici?"]},
+        {"id":"beach.s04","de":"Die Wellen sind heute hoch.","t":["Les vagues sont hautes aujourd'hui.","Les vagues sont grosses aujourd'hui."]},
+        {"id":"beach.s05","de":"Hast du Sonnencreme dabei?","t":["Tu as de la crème solaire?","Tu as pris de la crème solaire?"]},
+        {"id":"beach.s06","de":"Was kostet eine Liege?","t":["Combien coûte un transat?","C'est combien, un transat?"]},
+        {"id":"beach.s07","de":"Ich möchte ein Eis.","t":"Je voudrais une glace."},
+        {"id":"beach.s08","de":"Die Strömung ist gefährlich.","t":"Le courant est dangereux."},
+        {"id":"beach.s09","de":"Wir liegen den ganzen Tag in der Sonne.","t":["Nous restons au soleil toute la journée.","On reste au soleil toute la journée."]},
+        {"id":"beach.s10","de":"Wo ist der Rettungsschwimmer?","t":"Où est le maître-nageur?"}
+      ]
+    },
+    {
+      "id": "phone", "title": "Handy & Internet", "level": "A2", "colors": ["#0891B2","#0E7490"],
+      "desc": "WLAN, SIM-Karte und Akku: unterwegs online bleiben.",
+      "words": [
+        {"id":"phone.w01","de":"das Handy","t":["le portable","le téléphone"],"pic":"📱"},
+        {"id":"phone.w02","de":"das WLAN","t":["le wifi","le wi-fi"],"pic":"📶"},
+        {"id":"phone.w03","de":"das Passwort","t":"le mot de passe","pic":"🔑"},
+        {"id":"phone.w04","de":"die SIM-Karte","t":"la carte SIM"},
+        {"id":"phone.w05","de":"das Ladegerät","t":"le chargeur","pic":"🔌"},
+        {"id":"phone.w06","de":"der Akku","t":"la batterie","pic":"🔋"},
+        {"id":"phone.w07","de":"die Nachricht","t":"le message","pic":"💬"},
+        {"id":"phone.w08","de":"anrufen","t":["appeler","téléphoner"],"pic":"📞"},
+        {"id":"phone.w09","de":"die Telefonnummer","t":"le numéro de téléphone"},
+        {"id":"phone.w10","de":"das Foto","t":"la photo","pic":"📷"},
+        {"id":"phone.w11","de":"die App","t":"l'application"},
+        {"id":"phone.w12","de":"die Steckdose","t":"la prise"},
+        {"id":"phone.w13","de":"kaputt","t":["cassé","en panne"]}
+      ],
+      "sentences": [
+        {"id":"phone.s01","de":"Gibt es hier WLAN?","t":["Il y a du wifi ici?","Vous avez le wifi?"]},
+        {"id":"phone.s02","de":"Wie ist das Passwort?","t":["Quel est le mot de passe?","C'est quoi le mot de passe?"]},
+        {"id":"phone.s03","de":"Mein Akku ist leer.","t":["Ma batterie est vide.","Je n'ai plus de batterie."]},
+        {"id":"phone.s04","de":"Kann ich mein Handy hier aufladen?","t":["Je peux recharger mon portable ici?","Je peux charger mon téléphone ici?"]},
+        {"id":"phone.s05","de":"Ich brauche eine SIM-Karte.","t":"J'ai besoin d'une carte SIM."},
+        {"id":"phone.s06","de":"Ich schicke dir eine Nachricht.","t":"Je t'envoie un message."},
+        {"id":"phone.s07","de":"Was ist deine Telefonnummer?","t":["Quel est ton numéro de téléphone?","C'est quoi ton numéro?"]},
+        {"id":"phone.s08","de":"Ich rufe dich morgen an.","t":"Je t'appelle demain."},
+        {"id":"phone.s09","de":"Das Internet ist sehr langsam.","t":"Internet est très lent."},
+        {"id":"phone.s10","de":"Kannst du ein Foto von uns machen?","t":["Tu peux nous prendre en photo?","Tu peux prendre une photo de nous?"]}
+      ]
+    },
+    {
       "id": "problems", "title": "Probleme lösen", "level": "B1", "colors": ["#D0542A","#9E3D1C"],
       "desc": "Höflich reklamieren, um Hilfe bitten, Lösungen finden.",
       "words": [
@@ -526,36 +743,6 @@
         {"id":"opinions.s08","de":"Eigentlich wollte ich ans Meer fahren.","t":"En fait, je voulais aller à la mer."},
         {"id":"opinions.s09","de":"Was ist der Unterschied zwischen den beiden?","t":"Quelle est la différence entre les deux?"},
         {"id":"opinions.s10","de":"Es ist wichtig, die Sprache ein bisschen zu sprechen.","t":["C'est important de parler un peu la langue.","Il est important de parler un peu la langue."]}
-      ]
-    },
-    {
-      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
-      "desc": "Über Beruf, Familie und Hobbys plaudern.",
-      "words": [
-        {"id":"smalltalk.w01","de":"der Beruf","t":["le métier","la profession"]},
-        {"id":"smalltalk.w02","de":"die Arbeit","t":"le travail","pic":"💼"},
-        {"id":"smalltalk.w03","de":"das Hobby","t":["le loisir","le passe-temps","le hobby"]},
-        {"id":"smalltalk.w04","de":"verheiratet","t":["marié","mariée"],"pic":"💍"},
-        {"id":"smalltalk.w05","de":"die Kinder","t":"les enfants"},
-        {"id":"smalltalk.w06","de":"wohnen","t":["habiter","vivre"],"pic":"🏠"},
-        {"id":"smalltalk.w07","de":"mögen","t":"aimer"},
-        {"id":"smalltalk.w08","de":"kochen","t":["cuisiner","faire la cuisine"],"pic":"🍳"},
-        {"id":"smalltalk.w09","de":"der Sport","t":"le sport","pic":"🏃"},
-        {"id":"smalltalk.w10","de":"die Musik","t":"la musique","pic":"🎵"},
-        {"id":"smalltalk.w11","de":"das erste Mal","t":"la première fois"},
-        {"id":"smalltalk.w12","de":"die Freizeit","t":"le temps libre"}
-      ],
-      "sentences": [
-        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["Qu'est-ce que tu fais dans la vie?","Tu fais quoi dans la vie?","Quel est ton métier?"]},
-        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":["Je travaille comme professeure.","Je suis professeure.","Je travaille comme professeur."]},
-        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["C'est la première fois que tu viens ici?","Tu es ici pour la première fois?"]},
-        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":"J'habite près de Munich."},
-        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":["Pendant mon temps libre, j'aime cuisiner.","Pendant mon temps libre j'aime cuisiner.","J'aime cuisiner pendant mon temps libre."]},
-        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["Je suis marié et j'ai deux enfants.","Je suis mariée et j'ai deux enfants."]},
-        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["Tu restes combien de temps ici?","Combien de temps restes-tu ici?"]},
-        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":["Tu fais du sport?","Est-ce que tu fais du sport?"]},
-        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["J'ai été ravi de te rencontrer.","J'ai été ravie de te rencontrer.","C'était sympa de te rencontrer."]},
-        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":"Restons en contact!"}
       ]
     },
     {
@@ -652,6 +839,161 @@
       ]
     },
     {
+      "id": "apartment", "title": "Wohnung mieten", "level": "B1", "colors": ["#0D9488","#0F766E"],
+      "desc": "Eine Ferienwohnung mieten und Probleme mit dem Vermieter klären.",
+      "words": [
+        {"id":"apartment.w01","de":"die Miete","t":"le loyer","pic":"💶"},
+        {"id":"apartment.w02","de":"der Vermieter","t":["le propriétaire","le bailleur"]},
+        {"id":"apartment.w03","de":"die Kaution","t":["la caution","le dépôt de garantie"]},
+        {"id":"apartment.w04","de":"der Schlüssel","t":"la clé","pic":"🔑"},
+        {"id":"apartment.w05","de":"die Heizung","t":"le chauffage","pic":"🔥"},
+        {"id":"apartment.w06","de":"die Klimaanlage","t":["la climatisation","la clim"],"pic":"❄️"},
+        {"id":"apartment.w07","de":"die Waschmaschine","t":"la machine à laver","pic":"🧺"},
+        {"id":"apartment.w08","de":"der Müll","t":"les poubelles","pic":"🗑️"},
+        {"id":"apartment.w09","de":"der Nachbar / die Nachbarin","t":["le voisin","la voisine"]},
+        {"id":"apartment.w10","de":"laut","t":["bruyant","fort"],"pic":"🔊"},
+        {"id":"apartment.w11","de":"tropfen","t":["goutter","fuir"],"pic":"💧"},
+        {"id":"apartment.w12","de":"reparieren","t":"réparer","pic":"🔧"},
+        {"id":"apartment.w13","de":"im Voraus","t":"à l'avance"}
+      ],
+      "sentences": [
+        {"id":"apartment.s01","de":"Die Miete muss im Voraus bezahlt werden.","t":"Le loyer doit être payé à l'avance."},
+        {"id":"apartment.s02","de":"Wann bekommen wir die Schlüssel?","t":["Quand est-ce qu'on aura les clés?","Quand recevons-nous les clés?"]},
+        {"id":"apartment.s03","de":"Die Heizung funktioniert nicht.","t":["Le chauffage ne marche pas.","Le chauffage ne fonctionne pas."]},
+        {"id":"apartment.s04","de":"Der Wasserhahn in der Küche tropft.","t":["Le robinet de la cuisine goutte.","Le robinet de la cuisine fuit."]},
+        {"id":"apartment.s05","de":"Können Sie das bitte reparieren lassen?","t":"Vous pouvez le faire réparer, s'il vous plaît?"},
+        {"id":"apartment.s06","de":"Wo kommt der Müll hin?","t":["Où est-ce qu'on met les poubelles?","Où faut-il mettre les poubelles?"]},
+        {"id":"apartment.s07","de":"Die Nachbarn sind nachts sehr laut.","t":"Les voisins sont très bruyants la nuit."},
+        {"id":"apartment.s08","de":"Bekommen wir die Kaution zurück?","t":["On récupère la caution?","Est-ce qu'on récupère la caution?"]},
+        {"id":"apartment.s09","de":"Gibt es eine Waschmaschine in der Wohnung?","t":"Il y a une machine à laver dans l'appartement?"},
+        {"id":"apartment.s10","de":"Wir reisen am Samstag um zehn Uhr ab.","t":["Nous partons samedi à dix heures.","On part samedi à dix heures."]}
+      ]
+    },
+    {
+      "id": "work", "title": "Arbeit & Beruf", "level": "B1", "colors": ["#475569","#334155"],
+      "desc": "Über den Beruf sprechen, Kollegen und den Arbeitsalltag.",
+      "words": [
+        {"id":"work.w01","de":"der Beruf","t":["le métier","la profession"],"pic":"💼"},
+        {"id":"work.w02","de":"die Firma","t":["l'entreprise","la société","la boîte"],"pic":"🏢"},
+        {"id":"work.w03","de":"der Kollege / die Kollegin","t":["le collègue","la collègue"]},
+        {"id":"work.w04","de":"der Chef / die Chefin","t":["le chef","la cheffe","le patron"]},
+        {"id":"work.w05","de":"das Büro","t":"le bureau","pic":"🖥️"},
+        {"id":"work.w06","de":"die Besprechung","t":"la réunion","pic":"📅"},
+        {"id":"work.w07","de":"das Gehalt","t":"le salaire","pic":"💰"},
+        {"id":"work.w08","de":"der Urlaub","t":["les vacances","le congé"],"pic":"🏝️"},
+        {"id":"work.w09","de":"die Überstunden","t":"les heures supplémentaires","pic":"⏱️"},
+        {"id":"work.w10","de":"selbstständig","t":["indépendant","indépendante"]},
+        {"id":"work.w11","de":"arbeitslos","t":"au chômage"},
+        {"id":"work.w12","de":"im Homeoffice arbeiten","t":["télétravailler","travailler à domicile"],"pic":"🏠"},
+        {"id":"work.w13","de":"die Erfahrung","t":"l'expérience"}
+      ],
+      "sentences": [
+        {"id":"work.s01","de":["Was machst du beruflich?","Was machen Sie beruflich?"],"t":["Qu'est-ce que tu fais dans la vie?","Vous faites quoi dans la vie?"]},
+        {"id":"work.s02","de":"Ich arbeite bei einer kleinen Firma.","t":"Je travaille dans une petite entreprise."},
+        {"id":"work.s03","de":"Heute habe ich drei Besprechungen.","t":["Aujourd'hui, j'ai trois réunions.","J'ai trois réunions aujourd'hui."]},
+        {"id":"work.s04","de":"Zweimal pro Woche arbeite ich im Homeoffice.","t":["Je télétravaille deux fois par semaine.","Je travaille à la maison deux fois par semaine."]},
+        {"id":"work.s05","de":"Meine Kollegen sind sehr nett.","t":["Mes collègues sont très sympas.","Mes collègues sont très gentils."]},
+        {"id":"work.s06","de":"Ich muss oft Überstunden machen.","t":"Je dois souvent faire des heures supplémentaires."},
+        {"id":"work.s07","de":"Wie viele Urlaubstage hast du im Jahr?","t":["Tu as combien de jours de congé par an?","Combien de jours de vacances as-tu par an?"]},
+        {"id":"work.s08","de":"Seit zwei Jahren bin ich selbstständig.","t":["Je suis indépendant depuis deux ans.","Je suis indépendante depuis deux ans."]},
+        {"id":"work.s09","de":"Mein Chef ist diese Woche im Urlaub.","t":"Mon chef est en vacances cette semaine."},
+        {"id":"work.s10","de":"Ich habe viel Erfahrung in diesem Bereich.","t":"J'ai beaucoup d'expérience dans ce domaine."}
+      ]
+    },
+    {
+      "id": "cooking", "title": "Kochen & Rezepte", "level": "B1", "colors": ["#DC2626","#991B1B"],
+      "desc": "Zutaten einkaufen, Rezepte verstehen und zusammen kochen.",
+      "words": [
+        {"id":"cooking.w01","de":"das Rezept","t":"la recette","pic":"📖"},
+        {"id":"cooking.w02","de":"die Zutat","t":"l'ingrédient"},
+        {"id":"cooking.w03","de":"die Zwiebel","t":"l'oignon","pic":"🧅"},
+        {"id":"cooking.w04","de":"der Knoblauch","t":"l'ail","pic":"🧄"},
+        {"id":"cooking.w05","de":"die Tomate","t":"la tomate","pic":"🍅"},
+        {"id":"cooking.w06","de":"das Öl","t":"l'huile","pic":"🫒"},
+        {"id":"cooking.w07","de":"das Salz","t":"le sel","pic":"🧂"},
+        {"id":"cooking.w08","de":"die Pfanne","t":"la poêle","pic":"🍳"},
+        {"id":"cooking.w09","de":"schneiden","t":"couper","pic":"🔪"},
+        {"id":"cooking.w10","de":"braten","t":["faire revenir","faire frire"]},
+        {"id":"cooking.w11","de":"kochen (Wasser)","t":["faire bouillir","bouillir"]},
+        {"id":"cooking.w12","de":"umrühren","t":"remuer","pic":"🥄"},
+        {"id":"cooking.w13","de":"scharf","t":["piquant","épicé"],"pic":"🌶️"}
+      ],
+      "sentences": [
+        {"id":"cooking.s01","de":"Hast du ein gutes Rezept für Paella?","t":"Tu as une bonne recette de paella?"},
+        {"id":"cooking.s02","de":"Welche Zutaten brauchen wir?","t":["De quels ingrédients avons-nous besoin?","On a besoin de quels ingrédients?"]},
+        {"id":"cooking.s03","de":"Schneide die Zwiebeln in kleine Stücke.","t":"Coupe les oignons en petits morceaux."},
+        {"id":"cooking.s04","de":"Erhitze das Öl in der Pfanne.","t":"Fais chauffer l'huile dans la poêle."},
+        {"id":"cooking.s05","de":"Brate den Knoblauch kurz an.","t":["Fais revenir l'ail rapidement.","Fais revenir l'ail quelques instants."]},
+        {"id":"cooking.s06","de":"Das Wasser muss kochen.","t":"L'eau doit bouillir."},
+        {"id":"cooking.s07","de":"Rühre ab und zu um.","t":"Remue de temps en temps."},
+        {"id":"cooking.s08","de":"Es fehlt noch etwas Salz.","t":"Il manque encore un peu de sel."},
+        {"id":"cooking.s09","de":"Ich esse nicht gern scharf.","t":["Je n'aime pas manger épicé.","Je n'aime pas la nourriture épicée."]},
+        {"id":"cooking.s10","de":"Das Essen ist in zwanzig Minuten fertig.","t":["Le repas sera prêt dans vingt minutes.","Le repas est prêt dans vingt minutes."]}
+      ]
+    },
+    {
+      "id": "bank", "title": "Bank & Geld", "level": "B1", "colors": ["#15803D","#166534"],
+      "desc": "Geld abheben, wechseln und Probleme mit der Karte lösen.",
+      "words": [
+        {"id":"bank.w01","de":"die Bank","t":"la banque","pic":"🏦"},
+        {"id":"bank.w02","de":"der Geldautomat","t":["le distributeur","le distributeur automatique"],"pic":"🏧"},
+        {"id":"bank.w03","de":"abheben","t":"retirer"},
+        {"id":"bank.w04","de":"wechseln (Geld)","t":"changer","pic":"💱"},
+        {"id":"bank.w05","de":"der Wechselkurs","t":"le taux de change"},
+        {"id":"bank.w06","de":"die Gebühr","t":["les frais","la commission"]},
+        {"id":"bank.w07","de":"das Konto","t":"le compte"},
+        {"id":"bank.w08","de":"die Kreditkarte","t":"la carte de crédit","pic":"💳"},
+        {"id":"bank.w09","de":"die Geheimzahl","t":["le code","le code PIN"]},
+        {"id":"bank.w10","de":"sperren","t":["bloquer","faire opposition"],"pic":"🔒"},
+        {"id":"bank.w11","de":"die Quittung","t":["le reçu","le ticket"],"pic":"🧾"},
+        {"id":"bank.w12","de":"das Bargeld","t":["les espèces","le liquide"],"pic":"💵"},
+        {"id":"bank.w13","de":"überweisen","t":["virer","faire un virement"]}
+      ],
+      "sentences": [
+        {"id":"bank.s01","de":"Wo ist der nächste Geldautomat?","t":"Où est le distributeur le plus proche?"},
+        {"id":"bank.s02","de":"Ich möchte Euro in Dollar wechseln.","t":"Je voudrais changer des euros en dollars."},
+        {"id":"bank.s03","de":"Wie ist der Wechselkurs heute?","t":"Quel est le taux de change aujourd'hui?"},
+        {"id":"bank.s04","de":"Der Automat hat meine Karte behalten.","t":["Le distributeur a gardé ma carte.","Le distributeur a avalé ma carte."]},
+        {"id":"bank.s05","de":"Ich muss meine Karte sperren lassen.","t":["Je dois faire opposition sur ma carte.","Je dois faire bloquer ma carte."]},
+        {"id":"bank.s06","de":"Gibt es eine Gebühr?","t":["Il y a des frais?","Est-ce qu'il y a des frais?"]},
+        {"id":"bank.s07","de":"Kann ich mit Karte zahlen oder nur bar?","t":"Je peux payer par carte ou seulement en espèces?"},
+        {"id":"bank.s08","de":"Ich habe meine Geheimzahl vergessen.","t":"J'ai oublié mon code."},
+        {"id":"bank.s09","de":"Brauchen Sie eine Quittung?","t":["Vous avez besoin d'un reçu?","Vous voulez un reçu?"]},
+        {"id":"bank.s10","de":"Ich überweise dir das Geld morgen.","t":["Je te fais le virement demain.","Je te vire l'argent demain."]}
+      ]
+    },
+    {
+      "id": "nature", "title": "Natur & Wandern", "level": "B1", "colors": ["#65A30D","#4D7C0F"],
+      "desc": "Wanderwege, Wetter in den Bergen und Tiere in der Natur.",
+      "words": [
+        {"id":"nature.w01","de":"der Berg","t":"la montagne","pic":"⛰️"},
+        {"id":"nature.w02","de":"der Wald","t":"la forêt","pic":"🌲"},
+        {"id":"nature.w03","de":"der See","t":"le lac","pic":"🏞️"},
+        {"id":"nature.w04","de":"der Fluss","t":"la rivière"},
+        {"id":"nature.w05","de":"der Wanderweg","t":["le sentier","le chemin de randonnée"],"pic":"🥾"},
+        {"id":"nature.w06","de":"wandern","t":["randonner","faire de la randonnée"]},
+        {"id":"nature.w07","de":"der Gipfel","t":"le sommet"},
+        {"id":"nature.w08","de":"die Aussicht","t":"la vue","pic":"🌄"},
+        {"id":"nature.w09","de":"das Gewitter","t":"l'orage","pic":"⛈️"},
+        {"id":"nature.w10","de":"die Wasserflasche","t":["la gourde","la bouteille d'eau"],"pic":"🧴"},
+        {"id":"nature.w11","de":"der Vogel","t":"l'oiseau","pic":"🐦"},
+        {"id":"nature.w12","de":"müde","t":["fatigué","fatiguée"],"pic":"🥱"},
+        {"id":"nature.w13","de":"steil","t":"raide"}
+      ],
+      "sentences": [
+        {"id":"nature.s01","de":"Wie lange dauert die Wanderung?","t":["La randonnée dure combien de temps?","Combien de temps dure la randonnée?"]},
+        {"id":"nature.s02","de":"Der Weg ist ziemlich steil.","t":"Le chemin est assez raide."},
+        {"id":"nature.s03","de":"Von oben hat man eine tolle Aussicht.","t":["D'en haut, on a une vue magnifique.","Du sommet, la vue est magnifique."]},
+        {"id":"nature.s04","de":"Heute Nachmittag soll es Gewitter geben.","t":["Il doit y avoir des orages cet après-midi.","Ils annoncent des orages cet après-midi."]},
+        {"id":"nature.s05","de":"Nimm genug Wasser mit.","t":["Prends assez d'eau.","Emporte assez d'eau."]},
+        {"id":"nature.s06","de":"Wir sind um sechs Uhr losgegangen.","t":["Nous sommes partis à six heures.","On est partis à six heures."]},
+        {"id":"nature.s07","de":"Ich bin total müde.","t":["Je suis complètement crevé.","Je suis vraiment fatigué.","Je suis vraiment fatiguée."]},
+        {"id":"nature.s08","de":"Darf man im See baden?","t":["On a le droit de se baigner dans le lac?","On peut se baigner dans le lac?"]},
+        {"id":"nature.s09","de":"Bitte bleibt auf dem Weg.","t":["Restez sur le chemin, s'il vous plaît.","Merci de rester sur le sentier."]},
+        {"id":"nature.s10","de":"Im Wald hört man viele Vögel.","t":"Dans la forêt, on entend beaucoup d'oiseaux."}
+      ]
+    },
+    {
       "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
       "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
       "words": [
@@ -680,6 +1022,285 @@
         {"id":"negotiate.s08","de":"Man hat mir gesagt, dass das Museum montags geschlossen ist.","t":["On m'a dit que le musée est fermé le lundi.","On m'a dit que le musée était fermé le lundi."]},
         {"id":"negotiate.s09","de":"Lassen Sie mich darüber nachdenken.","t":"Laissez-moi y réfléchir."},
         {"id":"negotiate.s10","de":"Wir sind mit der Lösung sehr zufrieden.","t":"Nous sommes très satisfaits de la solution."}
+      ]
+    },
+    {
+      "id": "environment", "title": "Umwelt & Nachhaltigkeit", "level": "B2", "colors": ["#16A34A","#14532D"],
+      "desc": "Klimawandel, Müll vermeiden und nachhaltig reisen.",
+      "words": [
+        {"id":"environment.w01","de":"die Umwelt","t":"l'environnement","pic":"🌍"},
+        {"id":"environment.w02","de":"der Klimawandel","t":"le changement climatique","pic":"🌡️"},
+        {"id":"environment.w03","de":"nachhaltig","t":"durable","pic":"♻️"},
+        {"id":"environment.w04","de":"die Verschmutzung","t":"la pollution","pic":"🏭"},
+        {"id":"environment.w05","de":"erneuerbare Energie","t":["l'énergie renouvelable","les énergies renouvelables"],"pic":"☀️"},
+        {"id":"environment.w06","de":"vermeiden","t":"éviter"},
+        {"id":"environment.w07","de":"verschwenden","t":"gaspiller"},
+        {"id":"environment.w08","de":"der Verbrauch","t":"la consommation"},
+        {"id":"environment.w09","de":"die Plastiktüte","t":["le sac plastique","le sac en plastique"],"pic":"🛍️"},
+        {"id":"environment.w10","de":"die Dürre","t":"la sécheresse","pic":"🏜️"},
+        {"id":"environment.w11","de":"schützen","t":"protéger","pic":"🛡️"},
+        {"id":"environment.w12","de":"der CO2-Ausstoß","t":"les émissions de CO2"},
+        {"id":"environment.w13","de":"die Verantwortung","t":"la responsabilité"}
+      ],
+      "sentences": [
+        {"id":"environment.s01","de":"Wir sollten weniger Plastik verwenden.","t":["Nous devrions utiliser moins de plastique.","On devrait utiliser moins de plastique."]},
+        {"id":"environment.s02","de":"Der Klimawandel betrifft uns alle.","t":"Le changement climatique nous concerne tous."},
+        {"id":"environment.s03","de":"Ich versuche, nachhaltiger zu reisen.","t":"J'essaie de voyager de manière plus durable."},
+        {"id":"environment.s04","de":"Statt zu fliegen, nehmen wir den Zug.","t":["Au lieu de prendre l'avion, nous prenons le train.","Au lieu de prendre l'avion, on prend le train."]},
+        {"id":"environment.s05","de":"In vielen Regionen gibt es eine schwere Dürre.","t":["Beaucoup de régions connaissent une grave sécheresse.","Il y a une grave sécheresse dans beaucoup de régions."]},
+        {"id":"environment.s06","de":"Es ist wichtig, die Natur zu schützen.","t":["Il est important de protéger la nature.","C'est important de protéger la nature."]},
+        {"id":"environment.s07","de":"Wir verschwenden zu viele Lebensmittel.","t":["Nous gaspillons trop de nourriture.","On gaspille trop de nourriture."]},
+        {"id":"environment.s08","de":"Jeder trägt eine Verantwortung für die Umwelt.","t":"Chacun a une responsabilité envers l'environnement."},
+        {"id":"environment.s09","de":"Die Stadt setzt auf erneuerbare Energie.","t":"La ville mise sur les énergies renouvelables."},
+        {"id":"environment.s10","de":"Auch wenn es teurer ist, kaufe ich regional.","t":["Même si c'est plus cher, j'achète local.","Même si c'est plus cher, j'achète des produits locaux."]}
+      ]
+    },
+    {
+      "id": "media", "title": "Nachrichten & Medien", "level": "B2", "colors": ["#1D4ED8","#1E3A8A"],
+      "desc": "Über Nachrichten sprechen, Quellen prüfen und soziale Medien.",
+      "words": [
+        {"id":"media.w01","de":"die Nachrichten","t":"les informations","pic":"📰"},
+        {"id":"media.w02","de":"die Zeitung","t":"le journal","pic":"🗞️"},
+        {"id":"media.w03","de":"der Artikel","t":"l'article"},
+        {"id":"media.w04","de":"die Quelle","t":"la source"},
+        {"id":"media.w05","de":"die Falschmeldung","t":["la fausse information","l'infox"]},
+        {"id":"media.w06","de":"die sozialen Medien","t":"les réseaux sociaux","pic":"📱"},
+        {"id":"media.w07","de":"die Meinungsfreiheit","t":"la liberté d'expression"},
+        {"id":"media.w08","de":"die Schlagzeile","t":"le gros titre"},
+        {"id":"media.w09","de":"berichten","t":["rapporter","faire un reportage"]},
+        {"id":"media.w10","de":"glaubwürdig","t":["crédible","fiable"]},
+        {"id":"media.w11","de":"die Werbung","t":"la publicité","pic":"📢"},
+        {"id":"media.w12","de":"veröffentlichen","t":"publier"},
+        {"id":"media.w13","de":"die Umfrage","t":["le sondage","l'enquête"],"pic":"📊"}
+      ],
+      "sentences": [
+        {"id":"media.s01","de":"Hast du heute die Nachrichten gesehen?","t":["Tu as vu les informations aujourd'hui?","Tu as regardé les infos aujourd'hui?"]},
+        {"id":"media.s02","de":"Diese Quelle ist nicht glaubwürdig.","t":["Cette source n'est pas fiable.","Cette source n'est pas crédible."]},
+        {"id":"media.s03","de":"Man sollte die Informationen immer überprüfen.","t":["Il faut toujours vérifier les informations.","On devrait toujours vérifier les informations."]},
+        {"id":"media.s04","de":"Die Zeitung hat einen langen Artikel darüber veröffentlicht.","t":["Le journal a publié un long article là-dessus.","Le journal a publié un long article à ce sujet."]},
+        {"id":"media.s05","de":"Viele junge Leute informieren sich über soziale Medien.","t":"Beaucoup de jeunes s'informent sur les réseaux sociaux."},
+        {"id":"media.s06","de":"Laut einer Umfrage sind die meisten dafür.","t":["Selon un sondage, la plupart sont pour.","D'après un sondage, la plupart sont pour."]},
+        {"id":"media.s07","de":"Die Schlagzeile ist übertrieben.","t":["Le titre est exagéré.","Le gros titre est exagéré."]},
+        {"id":"media.s08","de":"Ich habe den Eindruck, dass das eine Falschmeldung ist.","t":["J'ai l'impression que c'est une fausse information.","J'ai l'impression que c'est une infox."]},
+        {"id":"media.s09","de":"Die Meinungsfreiheit ist ein wichtiges Recht.","t":"La liberté d'expression est un droit important."},
+        {"id":"media.s10","de":"In der App gibt es viel zu viel Werbung.","t":"Il y a beaucoup trop de publicité dans l'application."}
+      ]
+    },
+    {
+      "id": "interview", "title": "Bewerbung & Vorstellungsgespräch", "level": "B2", "colors": ["#9333EA","#6B21A8"],
+      "desc": "Lebenslauf, Stärken und Fragen im Vorstellungsgespräch.",
+      "words": [
+        {"id":"interview.w01","de":"die Bewerbung","t":"la candidature","pic":"📄"},
+        {"id":"interview.w02","de":"sich bewerben","t":["postuler","poser sa candidature"]},
+        {"id":"interview.w03","de":"der Lebenslauf","t":"le CV"},
+        {"id":"interview.w04","de":"das Vorstellungsgespräch","t":["l'entretien d'embauche","l'entretien"],"pic":"🤝"},
+        {"id":"interview.w05","de":"die Stelle","t":["le poste","l'emploi"]},
+        {"id":"interview.w06","de":"die Stärke","t":["le point fort","la force"]},
+        {"id":"interview.w07","de":"die Schwäche","t":["le point faible","la faiblesse"]},
+        {"id":"interview.w08","de":"die Ausbildung","t":"la formation","pic":"🎓"},
+        {"id":"interview.w09","de":"die Gehaltsvorstellung","t":"les prétentions salariales"},
+        {"id":"interview.w10","de":"zuverlässig","t":["fiable","sérieux","sérieuse"]},
+        {"id":"interview.w11","de":"die Probezeit","t":"la période d'essai"},
+        {"id":"interview.w12","de":"die Teamarbeit","t":"le travail d'équipe","pic":"👥"},
+        {"id":"interview.w13","de":"einstellen (Personal)","t":["embaucher","recruter"]}
+      ],
+      "sentences": [
+        {"id":"interview.s01","de":"Ich bewerbe mich um die Stelle als Grafikdesignerin.","t":"Je postule pour le poste de graphiste."},
+        {"id":"interview.s02","de":"Im Anhang finden Sie meinen Lebenslauf.","t":["Vous trouverez mon CV en pièce jointe.","Veuillez trouver ci-joint mon CV."]},
+        {"id":"interview.s03","de":"Warum möchten Sie bei uns arbeiten?","t":["Pourquoi voulez-vous travailler chez nous?","Pourquoi souhaitez-vous travailler chez nous?"]},
+        {"id":"interview.s04","de":"Was sind Ihre Stärken und Schwächen?","t":"Quels sont vos points forts et vos points faibles?"},
+        {"id":"interview.s05","de":"Ich bin zuverlässig und arbeite gern im Team.","t":"Je suis fiable et j'aime travailler en équipe."},
+        {"id":"interview.s06","de":"Ich habe fünf Jahre Erfahrung im Vertrieb.","t":"J'ai cinq ans d'expérience dans la vente."},
+        {"id":"interview.s07","de":"Wie hoch ist Ihre Gehaltsvorstellung?","t":"Quelles sont vos prétentions salariales?"},
+        {"id":"interview.s08","de":"Die Probezeit dauert sechs Monate.","t":"La période d'essai dure six mois."},
+        {"id":"interview.s09","de":"Wann könnten Sie anfangen?","t":"Quand pourriez-vous commencer?"},
+        {"id":"interview.s10","de":"Wir melden uns bis Ende der Woche bei Ihnen.","t":"Nous vous recontacterons d'ici la fin de la semaine."}
+      ]
+    },
+    {
+      "id": "feelings", "title": "Gefühle & Beziehungen", "level": "B2", "colors": ["#DB2777","#9D174D"],
+      "desc": "Gefühle ausdrücken, Streit klären und über Beziehungen sprechen.",
+      "words": [
+        {"id":"feelings.w01","de":"das Gefühl","t":"le sentiment","pic":"💭"},
+        {"id":"feelings.w02","de":"glücklich","t":"heureux","pic":"😊"},
+        {"id":"feelings.w03","de":"traurig","t":"triste","pic":"😢"},
+        {"id":"feelings.w04","de":"enttäuscht","t":["déçu","déçue"],"pic":"😞"},
+        {"id":"feelings.w05","de":"eifersüchtig","t":["jaloux","jalouse"],"pic":"😒"},
+        {"id":"feelings.w06","de":"sich Sorgen machen","t":"s'inquiéter","pic":"😟"},
+        {"id":"feelings.w07","de":"der Streit","t":"la dispute","pic":"⚡"},
+        {"id":"feelings.w08","de":"sich versöhnen","t":"se réconcilier","pic":"🕊️"},
+        {"id":"feelings.w09","de":"vertrauen","t":"faire confiance"},
+        {"id":"feelings.w10","de":"sich verlieben","t":"tomber amoureux","pic":"💘"},
+        {"id":"feelings.w11","de":"die Beziehung","t":"la relation","pic":"💑"},
+        {"id":"feelings.w12","de":"vermissen","t":"manquer","pic":"🥺"},
+        {"id":"feelings.w13","de":"dankbar","t":["reconnaissant","reconnaissante"],"pic":"🙏"}
+      ],
+      "sentences": [
+        {"id":"feelings.s01","de":"Ich mache mir Sorgen um dich.","t":"Je m'inquiète pour toi."},
+        {"id":"feelings.s02","de":"Ich bin ein bisschen enttäuscht.","t":["Je suis un peu déçu.","Je suis un peu déçue."]},
+        {"id":"feelings.s03","de":"Wir hatten gestern einen Streit.","t":["Nous nous sommes disputés hier.","On s'est disputés hier."]},
+        {"id":"feelings.s04","de":"Inzwischen haben wir uns versöhnt.","t":["Depuis, nous nous sommes réconciliés.","Entre-temps, on s'est réconciliés."]},
+        {"id":"feelings.s05","de":"Es tut mir leid, dass ich dich verletzt habe.","t":["Je suis désolé de t'avoir blessé.","Je suis désolée de t'avoir blessée.","Je suis désolé de t'avoir fait de la peine."]},
+        {"id":"feelings.s06","de":"Ich vermisse meine Familie sehr.","t":"Ma famille me manque beaucoup."},
+        {"id":"feelings.s07","de":"In einer Beziehung ist Vertrauen das Wichtigste.","t":"Dans une relation, la confiance est le plus important."},
+        {"id":"feelings.s08","de":"Sie hat sich im Urlaub verliebt.","t":"Elle est tombée amoureuse pendant les vacances."},
+        {"id":"feelings.s09","de":"Ich bin dir sehr dankbar für deine Hilfe.","t":["Je te suis très reconnaissant pour ton aide.","Je te suis très reconnaissante pour ton aide."]},
+        {"id":"feelings.s10","de":"Sei nicht so eifersüchtig!","t":["Ne sois pas si jaloux!","Ne sois pas si jalouse!"]}
+      ]
+    },
+    {
+      "id": "authorities", "title": "Polizei & Behörden", "level": "B2", "colors": ["#1E3A8A","#172554"],
+      "desc": "Einen Diebstahl melden, Formulare ausfüllen und zur Botschaft gehen.",
+      "words": [
+        {"id":"authorities.w01","de":"die Polizei","t":"la police","pic":"🚓"},
+        {"id":"authorities.w02","de":"die Anzeige (Polizei)","t":["la plainte","la déclaration"]},
+        {"id":"authorities.w03","de":"der Diebstahl","t":"le vol","pic":"🕵️"},
+        {"id":"authorities.w04","de":"gestohlen","t":["volé","volée"]},
+        {"id":"authorities.w05","de":"die Botschaft","t":"l'ambassade","pic":"🏛️"},
+        {"id":"authorities.w06","de":"das Formular","t":"le formulaire","pic":"📝"},
+        {"id":"authorities.w07","de":"ausfüllen","t":"remplir"},
+        {"id":"authorities.w08","de":"die Unterschrift","t":"la signature","pic":"✍️"},
+        {"id":"authorities.w09","de":"der Ausweis","t":["la pièce d'identité","la carte d'identité"],"pic":"🪪"},
+        {"id":"authorities.w10","de":"der Zeuge / die Zeugin","t":"le témoin"},
+        {"id":"authorities.w11","de":"die Versicherung","t":"l'assurance","pic":"📑"},
+        {"id":"authorities.w12","de":"die Frist","t":"le délai","pic":"📆"},
+        {"id":"authorities.w13","de":"vorläufig","t":"provisoire"}
+      ],
+      "sentences": [
+        {"id":"authorities.s01","de":"Mir wurde der Geldbeutel gestohlen.","t":"On m'a volé mon portefeuille."},
+        {"id":"authorities.s02","de":"Ich möchte eine Anzeige erstatten.","t":"Je voudrais porter plainte."},
+        {"id":"authorities.s03","de":"Wann und wo ist das passiert?","t":["Quand et où est-ce que c'est arrivé?","Quand et où cela s'est-il passé?"]},
+        {"id":"authorities.s04","de":"Bitte füllen Sie dieses Formular aus.","t":["Veuillez remplir ce formulaire.","Remplissez ce formulaire, s'il vous plaît."]},
+        {"id":"authorities.s05","de":"Hier fehlt noch Ihre Unterschrift.","t":"Il manque encore votre signature ici."},
+        {"id":"authorities.s06","de":"Ich habe meinen Reisepass verloren.","t":"J'ai perdu mon passeport."},
+        {"id":"authorities.s07","de":"Die Botschaft stellt Ihnen einen vorläufigen Ausweis aus.","t":"L'ambassade vous délivrera un document provisoire."},
+        {"id":"authorities.s08","de":"Brauche ich eine Kopie für die Versicherung?","t":["J'ai besoin d'une copie pour l'assurance?","Est-ce qu'il me faut une copie pour l'assurance?"]},
+        {"id":"authorities.s09","de":"Gab es Zeugen?","t":["Il y avait des témoins?","Y a-t-il eu des témoins?"]},
+        {"id":"authorities.s10","de":"Die Frist endet am Freitag.","t":["Le délai se termine vendredi.","Le délai expire vendredi."]}
+      ]
+    },
+    {
+      "id": "lifestyle", "title": "Gesund leben", "level": "B2", "colors": ["#059669","#065F46"],
+      "desc": "Ernährung, Sport, Schlaf und Stress im Alltag.",
+      "words": [
+        {"id":"lifestyle.w01","de":"die Ernährung","t":"l'alimentation","pic":"🥗"},
+        {"id":"lifestyle.w02","de":"gesund","t":["sain","en bonne santé"],"pic":"💪"},
+        {"id":"lifestyle.w03","de":"der Stress","t":"le stress","pic":"😫"},
+        {"id":"lifestyle.w04","de":"sich entspannen","t":"se détendre","pic":"🧘"},
+        {"id":"lifestyle.w05","de":"das Gewicht","t":"le poids","pic":"⚖️"},
+        {"id":"lifestyle.w06","de":"abnehmen","t":"maigrir"},
+        {"id":"lifestyle.w07","de":"zunehmen","t":["grossir","prendre du poids"]},
+        {"id":"lifestyle.w08","de":"der Zucker","t":"le sucre","pic":"🍬"},
+        {"id":"lifestyle.w09","de":"trainieren","t":"s'entraîner","pic":"🏋️"},
+        {"id":"lifestyle.w10","de":"das Fitnessstudio","t":["la salle de sport","la salle de gym"]},
+        {"id":"lifestyle.w11","de":"der Schlaf","t":"le sommeil","pic":"🛌"},
+        {"id":"lifestyle.w12","de":"vegetarisch","t":["végétarien","végétarienne"],"pic":"🥦"},
+        {"id":"lifestyle.w13","de":"die Gewohnheit","t":"l'habitude"}
+      ],
+      "sentences": [
+        {"id":"lifestyle.s01","de":"Ich versuche, mich gesünder zu ernähren.","t":"J'essaie de manger plus sainement."},
+        {"id":"lifestyle.s02","de":"Seit einem Monat esse ich keinen Zucker mehr.","t":"Je ne mange plus de sucre depuis un mois."},
+        {"id":"lifestyle.s03","de":"Dreimal pro Woche gehe ich ins Fitnessstudio.","t":"Je vais à la salle de sport trois fois par semaine."},
+        {"id":"lifestyle.s04","de":"Zu viel Stress macht krank.","t":"Trop de stress rend malade."},
+        {"id":"lifestyle.s05","de":"Ich schlafe schlecht, wenn ich abends Kaffee trinke.","t":"Je dors mal quand je bois du café le soir."},
+        {"id":"lifestyle.s06","de":"Beim Yoga kann ich mich gut entspannen.","t":["Le yoga m'aide à me détendre.","Je me détends bien au yoga."]},
+        {"id":"lifestyle.s07","de":"Er hat zehn Kilo abgenommen.","t":"Il a perdu dix kilos."},
+        {"id":"lifestyle.s08","de":"Seit letztem Jahr bin ich Vegetarierin.","t":"Je suis végétarienne depuis l'année dernière."},
+        {"id":"lifestyle.s09","de":"Es ist schwer, alte Gewohnheiten zu ändern.","t":["C'est difficile de changer de vieilles habitudes.","Il est difficile de changer ses vieilles habitudes."]},
+        {"id":"lifestyle.s10","de":"Genug Schlaf ist genauso wichtig wie Sport.","t":["Dormir assez est aussi important que le sport.","Un sommeil suffisant est aussi important que le sport."]}
+      ]
+    },
+    {
+      "id": "tech", "title": "Technik & Digitales", "level": "B2", "colors": ["#4F46E5","#3730A3"],
+      "desc": "Geräte, Software, Datenschutz und technische Probleme lösen.",
+      "words": [
+        {"id":"tech.w01","de":"der Computer","t":"l'ordinateur","pic":"💻"},
+        {"id":"tech.w02","de":"das Update","t":"la mise à jour","pic":"🔄"},
+        {"id":"tech.w03","de":"herunterladen","t":"télécharger","pic":"⬇️"},
+        {"id":"tech.w04","de":"speichern","t":["enregistrer","sauvegarder"],"pic":"💾"},
+        {"id":"tech.w05","de":"löschen","t":["supprimer","effacer"],"pic":"🗑️"},
+        {"id":"tech.w06","de":"der Datenschutz","t":"la protection des données","pic":"🔐"},
+        {"id":"tech.w07","de":"das Konto (online)","t":"le compte"},
+        {"id":"tech.w08","de":"sich anmelden","t":"se connecter"},
+        {"id":"tech.w09","de":"die Einstellungen","t":"les paramètres","pic":"⚙️"},
+        {"id":"tech.w10","de":"der Bildschirm","t":"l'écran","pic":"🖥️"},
+        {"id":"tech.w11","de":"abstürzen","t":"planter","pic":"💥"},
+        {"id":"tech.w12","de":"die Datei","t":"le fichier","pic":"📁"},
+        {"id":"tech.w13","de":"neu starten","t":"redémarrer"}
+      ],
+      "sentences": [
+        {"id":"tech.s01","de":"Mein Computer ist schon wieder abgestürzt.","t":"Mon ordinateur a encore planté."},
+        {"id":"tech.s02","de":"Hast du schon versucht, ihn neu zu starten?","t":"Tu as déjà essayé de le redémarrer?"},
+        {"id":"tech.s03","de":"Ich muss erst das Update installieren.","t":"Je dois d'abord installer la mise à jour."},
+        {"id":"tech.s04","de":"Ich kann mich nicht in mein Konto einloggen.","t":"Je n'arrive pas à me connecter à mon compte."},
+        {"id":"tech.s05","de":"Vergiss nicht, die Datei zu speichern!","t":"N'oublie pas d'enregistrer le fichier!"},
+        {"id":"tech.s06","de":"Wo finde ich die Einstellungen?","t":["Où est-ce que je trouve les paramètres?","Où sont les paramètres?"]},
+        {"id":"tech.s07","de":"Der Bildschirm bleibt schwarz.","t":"L'écran reste noir."},
+        {"id":"tech.s08","de":"Diese App sammelt zu viele Daten.","t":"Cette application collecte trop de données."},
+        {"id":"tech.s09","de":"Ich habe aus Versehen alle Fotos gelöscht.","t":"J'ai supprimé toutes les photos par erreur."},
+        {"id":"tech.s10","de":"Du kannst die Datei hier herunterladen.","t":"Tu peux télécharger le fichier ici."}
+      ]
+    },
+    {
+      "id": "travelrights", "title": "Reklamieren & Rechte", "level": "B2", "colors": ["#EA580C","#9A3412"],
+      "desc": "Bei Flugausfall, Überbuchung oder Mängeln seine Rechte einfordern.",
+      "words": [
+        {"id":"travelrights.w01","de":"die Entschädigung","t":["l'indemnisation","le dédommagement"],"pic":"💶"},
+        {"id":"travelrights.w02","de":"die Beschwerde","t":["la réclamation","la plainte"],"pic":"📣"},
+        {"id":"travelrights.w03","de":"sich beschweren","t":["se plaindre","faire une réclamation"]},
+        {"id":"travelrights.w04","de":"überbucht","t":["surbooké","en surréservation"]},
+        {"id":"travelrights.w05","de":"annulliert","t":["annulé","annulée"],"pic":"❌"},
+        {"id":"travelrights.w06","de":"der Anspruch","t":"le droit"},
+        {"id":"travelrights.w07","de":"die Erstattung","t":"le remboursement","pic":"↩️"},
+        {"id":"travelrights.w08","de":"der Mangel","t":["le défaut","le problème"]},
+        {"id":"travelrights.w09","de":"der Beleg","t":["le justificatif","le reçu"],"pic":"🧾"},
+        {"id":"travelrights.w10","de":"verlangen","t":"exiger"},
+        {"id":"travelrights.w11","de":"der Ersatz","t":"le remplacement"},
+        {"id":"travelrights.w12","de":"die Bedingungen","t":"les conditions","pic":"📜"},
+        {"id":"travelrights.w13","de":"zuständig","t":["compétent","responsable"]}
+      ],
+      "sentences": [
+        {"id":"travelrights.s01","de":"Unser Flug wurde ohne Begründung annulliert.","t":"Notre vol a été annulé sans explication."},
+        {"id":"travelrights.s02","de":"Der Flug war überbucht, und wir mussten warten.","t":"Le vol était surbooké et nous avons dû attendre."},
+        {"id":"travelrights.s03","de":"Wir haben Anspruch auf eine Entschädigung.","t":"Nous avons droit à une indemnisation."},
+        {"id":"travelrights.s04","de":"Ich möchte mich beschweren.","t":["Je voudrais faire une réclamation.","Je voudrais me plaindre."]},
+        {"id":"travelrights.s05","de":"Wer ist dafür zuständig?","t":["Qui est responsable de ça?","Qui s'en occupe?"]},
+        {"id":"travelrights.s06","de":"Bitte heben Sie alle Belege auf.","t":["Veuillez garder tous les justificatifs.","Gardez tous les reçus, s'il vous plaît."]},
+        {"id":"travelrights.s07","de":"Das Zimmer hatte mehrere Mängel.","t":"La chambre avait plusieurs défauts."},
+        {"id":"travelrights.s08","de":"Ich verlange eine vollständige Erstattung.","t":["J'exige un remboursement complet.","Je demande un remboursement intégral."]},
+        {"id":"travelrights.s09","de":"Laut den Bedingungen ist das nicht erlaubt.","t":"D'après les conditions, ce n'est pas autorisé."},
+        {"id":"travelrights.s10","de":"Hätten Sie uns früher informiert, hätten wir umbuchen können.","t":"Si vous nous aviez prévenus plus tôt, nous aurions pu changer de vol."}
+      ]
+    },
+    {
+      "id": "society", "title": "Gesellschaft & Zusammenleben", "level": "B2", "colors": ["#B45309","#78350F"],
+      "desc": "Über Zusammenleben, Wohnen in der Stadt und gesellschaftliche Themen diskutieren.",
+      "words": [
+        {"id":"society.w01","de":"die Gesellschaft","t":"la société","pic":"👥"},
+        {"id":"society.w02","de":"die Gleichberechtigung","t":["l'égalité des droits","l'égalité"],"pic":"⚖️"},
+        {"id":"society.w03","de":"die Integration","t":"l'intégration"},
+        {"id":"society.w04","de":"die Wohnungsnot","t":["la crise du logement","la pénurie de logements"],"pic":"🏘️"},
+        {"id":"society.w05","de":"die Vielfalt","t":"la diversité","pic":"🌈"},
+        {"id":"society.w06","de":"das Ehrenamt","t":"le bénévolat","pic":"🤲"},
+        {"id":"society.w07","de":"die Generation","t":"la génération"},
+        {"id":"society.w08","de":"die Rente","t":"la retraite","pic":"👴"},
+        {"id":"society.w09","de":"die Wahl","t":"l'élection","pic":"🗳️"},
+        {"id":"society.w10","de":"die Meinung","t":"l'avis"},
+        {"id":"society.w11","de":"das Vorurteil","t":"le préjugé"},
+        {"id":"society.w12","de":"tolerant","t":"tolérant"},
+        {"id":"society.w13","de":"sich engagieren","t":"s'engager"}
+      ],
+      "sentences": [
+        {"id":"society.s01","de":"In vielen Großstädten steigen die Mieten stark.","t":"Dans beaucoup de grandes villes, les loyers augmentent fortement."},
+        {"id":"society.s02","de":"Meiner Meinung nach sollte Wohnen bezahlbar sein.","t":"À mon avis, le logement devrait être abordable."},
+        {"id":"society.s03","de":"Sie engagiert sich ehrenamtlich in einem Verein.","t":"Elle fait du bénévolat dans une association."},
+        {"id":"society.s04","de":"Die junge Generation sieht das anders.","t":["La jeune génération voit les choses autrement.","Les jeunes voient ça autrement."]},
+        {"id":"society.s05","de":"Gleichberechtigung ist noch lange nicht erreicht.","t":"L'égalité est encore loin d'être atteinte."},
+        {"id":"society.s06","de":"Vielfalt macht eine Stadt lebendig.","t":"La diversité rend une ville vivante."},
+        {"id":"society.s07","de":"Man sollte Menschen ohne Vorurteile begegnen.","t":["Il faut aller vers les autres sans préjugés.","On devrait rencontrer les gens sans préjugés."]},
+        {"id":"society.s08","de":"Gehst du am Sonntag wählen?","t":"Tu vas voter dimanche?"},
+        {"id":"society.s09","de":"Viele ältere Menschen machen sich Sorgen um ihre Rente.","t":"Beaucoup de personnes âgées s'inquiètent pour leur retraite."},
+        {"id":"society.s10","de":"Obwohl wir verschiedener Meinung sind, respektiere ich dich.","t":"Bien que nous ne soyons pas d'accord, je te respecte."}
       ]
     }
   ],

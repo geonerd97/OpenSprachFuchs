@@ -280,6 +280,100 @@
       ]
     },
     {
+      "id": "family", "title": "Familie & Freunde", "level": "A1", "colors": ["#E0457B","#B02F5E"],
+      "desc": "Über die Familie sprechen und Freunde vorstellen.",
+      "words": [
+        {"id":"family.w01","de":"die Familie","t":"family","pic":"👨‍👩‍👧"},
+        {"id":"family.w02","de":"die Mutter","t":["mother","mom"],"pic":"👩"},
+        {"id":"family.w03","de":"der Vater","t":["father","dad"],"pic":"👨"},
+        {"id":"family.w04","de":"der Bruder","t":"brother"},
+        {"id":"family.w05","de":"die Schwester","t":"sister"},
+        {"id":"family.w06","de":"das Kind","t":["child","kid"],"pic":"🧒"},
+        {"id":"family.w07","de":"der Sohn","t":"son"},
+        {"id":"family.w08","de":"die Tochter","t":"daughter"},
+        {"id":"family.w09","de":"die Eltern","t":"parents"},
+        {"id":"family.w10","de":"der Ehemann","t":"husband"},
+        {"id":"family.w11","de":"die Ehefrau","t":"wife"},
+        {"id":"family.w12","de":"der Freund / die Freundin","t":"friend","pic":"🤝"},
+        {"id":"family.w13","de":"die Großeltern","t":"grandparents","pic":"👵"},
+        {"id":"family.w14","de":"verheiratet","t":"married","pic":"💍"}
+      ],
+      "sentences": [
+        {"id":"family.s01","de":"Das ist meine Familie.","t":"This is my family."},
+        {"id":"family.s02","de":"Ich habe einen Bruder und eine Schwester.","t":"I have a brother and a sister."},
+        {"id":"family.s03","de":["Hast du Kinder?","Haben Sie Kinder?"],"t":["Do you have children?","Do you have kids?"]},
+        {"id":"family.s04","de":"Wir haben zwei Kinder.","t":["We have two children.","We have two kids."]},
+        {"id":"family.s05","de":"Meine Tochter ist sechs Jahre alt.","t":["My daughter is six years old.","My daughter is six."]},
+        {"id":"family.s06","de":["Bist du verheiratet?","Sind Sie verheiratet?"],"t":"Are you married?"},
+        {"id":"family.s07","de":"Das ist mein Freund Paul.","t":"This is my friend Paul."},
+        {"id":"family.s08","de":"Meine Eltern wohnen in Berlin.","t":"My parents live in Berlin."},
+        {"id":"family.s09","de":"Mein Vater arbeitet viel.","t":"My father works a lot."},
+        {"id":"family.s10","de":"Wir besuchen meine Großeltern.","t":["We are visiting my grandparents.","We visit my grandparents."]}
+      ]
+    },
+    {
+      "id": "clothes", "title": "Farben & Kleidung", "level": "A1", "colors": ["#7C3AED","#5B21B6"],
+      "desc": "Farben benennen und Kleidung kaufen.",
+      "words": [
+        {"id":"clothes.w01","de":"rot","t":"red","pic":"🔴"},
+        {"id":"clothes.w02","de":"blau","t":"blue","pic":"🔵"},
+        {"id":"clothes.w03","de":"grün","t":"green","pic":"🟢"},
+        {"id":"clothes.w04","de":"gelb","t":"yellow","pic":"🟡"},
+        {"id":"clothes.w05","de":"schwarz","t":"black","pic":"⚫"},
+        {"id":"clothes.w06","de":"weiß","t":"white","pic":"⚪"},
+        {"id":"clothes.w07","de":"das T-Shirt","t":["T-shirt","t-shirt","tee"],"pic":"👕"},
+        {"id":"clothes.w08","de":"die Hose","t":["pants","trousers"],"pic":"👖"},
+        {"id":"clothes.w09","de":"das Kleid","t":"dress","pic":"👗"},
+        {"id":"clothes.w10","de":"die Schuhe","t":"shoes","pic":"👟"},
+        {"id":"clothes.w11","de":"die Jacke","t":["jacket","coat"],"pic":"🧥"},
+        {"id":"clothes.w12","de":"die Größe","t":"size"},
+        {"id":"clothes.w13","de":"anprobieren","t":"to try on"}
+      ],
+      "sentences": [
+        {"id":"clothes.s01","de":"Ich suche eine Jacke.","t":["I'm looking for a jacket.","I am looking for a jacket."]},
+        {"id":"clothes.s02","de":"Haben Sie das in Blau?","t":["Do you have this in blue?","Do you have it in blue?"]},
+        {"id":"clothes.s03","de":"Welche Größe haben Sie?","t":["What size are you?","What size do you wear?"]},
+        {"id":"clothes.s04","de":"Kann ich das anprobieren?","t":["Can I try this on?","Can I try it on?"]},
+        {"id":"clothes.s05","de":"Die Hose ist zu klein.","t":["The pants are too small.","The trousers are too small."]},
+        {"id":"clothes.s06","de":"Das Kleid ist sehr schön.","t":["The dress is very pretty.","The dress is very beautiful.","The dress is very nice."]},
+        {"id":"clothes.s07","de":"Ich nehme die schwarzen Schuhe.","t":["I'll take the black shoes.","I will take the black shoes."]},
+        {"id":"clothes.s08","de":"Meine Lieblingsfarbe ist Grün.","t":["My favorite color is green.","My favourite colour is green."]},
+        {"id":"clothes.s09","de":"Das T-Shirt ist weiß.","t":["The T-shirt is white.","The t-shirt is white."]},
+        {"id":"clothes.s10","de":"Gibt es eine Umkleidekabine?","t":["Is there a fitting room?","Is there a changing room?"]}
+      ]
+    },
+    {
+      "id": "home", "title": "Zuhause & Tagesablauf", "level": "A1", "colors": ["#0E7490","#155E75"],
+      "desc": "Die Wohnung beschreiben und vom Tag erzählen.",
+      "words": [
+        {"id":"home.w01","de":"das Haus","t":"house","pic":"🏠"},
+        {"id":"home.w02","de":"die Wohnung","t":"apartment","pic":"🏢"},
+        {"id":"home.w03","de":"die Küche","t":"kitchen","pic":"🍳"},
+        {"id":"home.w04","de":"das Schlafzimmer","t":"bedroom","pic":"🛏️"},
+        {"id":"home.w05","de":"das Bad","t":"bathroom","pic":"🛁"},
+        {"id":"home.w06","de":"aufstehen","t":["to get up","to wake up"]},
+        {"id":"home.w07","de":"frühstücken","t":"to have breakfast","pic":"🥐"},
+        {"id":"home.w08","de":"arbeiten","t":"to work","pic":"💼"},
+        {"id":"home.w09","de":"kochen","t":"to cook"},
+        {"id":"home.w10","de":"schlafen","t":"to sleep","pic":"😴"},
+        {"id":"home.w11","de":"morgens","t":"in the morning"},
+        {"id":"home.w12","de":"abends","t":"in the evening"},
+        {"id":"home.w13","de":"jeden Tag","t":"every day"}
+      ],
+      "sentences": [
+        {"id":"home.s01","de":"Ich wohne in einer kleinen Wohnung.","t":["I live in a small apartment.","I live in a small flat."]},
+        {"id":"home.s02","de":"Die Küche ist groß.","t":"The kitchen is big."},
+        {"id":"home.s03","de":"Ich stehe um sieben Uhr auf.","t":["I get up at seven.","I get up at seven o'clock."]},
+        {"id":"home.s04","de":"Morgens trinke ich Kaffee.","t":["In the morning I drink coffee.","I drink coffee in the morning."]},
+        {"id":"home.s05","de":"Ich arbeite von neun bis fünf.","t":"I work from nine to five."},
+        {"id":"home.s06","de":"Abends koche ich für meine Familie.","t":["In the evening I cook for my family.","I cook for my family in the evening."]},
+        {"id":"home.s07","de":"Wo ist das Bad?","t":["Where is the bathroom?","Where's the bathroom?"]},
+        {"id":"home.s08","de":"Ich gehe um elf Uhr schlafen.","t":["I go to bed at eleven.","I go to sleep at eleven."]},
+        {"id":"home.s09","de":"Am Wochenende schlafe ich lange.","t":["On the weekend I sleep in.","I sleep in on the weekend.","At the weekend I sleep late."]},
+        {"id":"home.s10","de":"Das Haus hat einen Garten.","t":["The house has a garden.","The house has a yard."]}
+      ]
+    },
+    {
       "id": "transport", "title": "Bus, Bahn & Taxi", "level": "A2", "colors": ["#4B50D6","#3438A6"],
       "desc": "Tickets kaufen, Abfahrten finden, mit dem Taxi fahren.",
       "words": [
@@ -470,6 +564,129 @@
       ]
     },
     {
+      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
+      "desc": "Über Beruf, Familie und Hobbys plaudern.",
+      "words": [
+        {"id":"smalltalk.w01","de":"der Beruf","t":["job","profession","occupation"]},
+        {"id":"smalltalk.w02","de":"die Arbeit","t":["work","job"],"pic":"💼"},
+        {"id":"smalltalk.w03","de":"das Hobby","t":"hobby"},
+        {"id":"smalltalk.w04","de":"verheiratet","t":"married","pic":"💍"},
+        {"id":"smalltalk.w05","de":"die Kinder","t":["children","kids"]},
+        {"id":"smalltalk.w06","de":"wohnen","t":"live","pic":"🏠"},
+        {"id":"smalltalk.w07","de":"mögen","t":"like"},
+        {"id":"smalltalk.w08","de":"kochen","t":"cook","pic":"🍳"},
+        {"id":"smalltalk.w09","de":"der Sport","t":["sport","sports"],"pic":"🏃"},
+        {"id":"smalltalk.w10","de":"die Musik","t":"music","pic":"🎵"},
+        {"id":"smalltalk.w11","de":"das erste Mal","t":"first time"},
+        {"id":"smalltalk.w12","de":"die Freizeit","t":["free time","leisure time"]}
+      ],
+      "sentences": [
+        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["What do you do for a living?","What do you do?","What is your job?"]},
+        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":"I work as a teacher."},
+        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["Is this your first time here?","Are you here for the first time?"]},
+        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":"I live near Munich."},
+        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":["In my free time I like to cook.","In my free time I like cooking.","I like cooking in my free time."]},
+        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["I am married and have two children.","I am married and I have two children.","I am married with two children."]},
+        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["How long are you staying here?","How long will you stay here?"]},
+        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":["Do you do any sports?","Do you play sports?","Do you do sport?"]},
+        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["It was nice to meet you.","It was nice meeting you."]},
+        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":["Let's stay in touch!","Let's keep in touch!"]}
+      ]
+    },
+    {
+      "id": "airport", "title": "Am Flughafen", "level": "A2", "colors": ["#2563EB","#1E40AF"],
+      "desc": "Einchecken, Gepäck aufgeben und das Gate finden.",
+      "words": [
+        {"id":"airport.w01","de":"der Flughafen","t":"airport","pic":"🛫"},
+        {"id":"airport.w02","de":"der Flug","t":"flight","pic":"✈️"},
+        {"id":"airport.w03","de":"der Reisepass","t":"passport","pic":"🛂"},
+        {"id":"airport.w04","de":"die Bordkarte","t":"boarding pass","pic":"🎫"},
+        {"id":"airport.w05","de":"das Gepäck","t":["luggage","baggage"],"pic":"🧳"},
+        {"id":"airport.w06","de":"der Koffer","t":"suitcase"},
+        {"id":"airport.w07","de":"das Handgepäck","t":["carry-on","hand luggage","carry-on luggage"],"pic":"🎒"},
+        {"id":"airport.w08","de":"einchecken","t":"to check in"},
+        {"id":"airport.w09","de":"die Verspätung","t":"delay","pic":"⏰"},
+        {"id":"airport.w10","de":"der Ausgang (Gate)","t":"gate"},
+        {"id":"airport.w11","de":"die Ankunft","t":"arrival","pic":"🛬"},
+        {"id":"airport.w12","de":"der Abflug","t":"departure"},
+        {"id":"airport.w13","de":"der Zoll","t":"customs"}
+      ],
+      "sentences": [
+        {"id":"airport.s01","de":"Wo kann ich einchecken?","t":"Where can I check in?"},
+        {"id":"airport.s02","de":"Hier ist mein Reisepass.","t":["Here is my passport.","Here's my passport."]},
+        {"id":"airport.s03","de":"Ich habe einen Koffer und ein Handgepäck.","t":["I have one suitcase and a carry-on.","I have a suitcase and a carry-on."]},
+        {"id":"airport.s04","de":"Der Flug hat eine Stunde Verspätung.","t":["The flight is one hour late.","The flight is delayed by one hour.","The flight is an hour late."]},
+        {"id":"airport.s05","de":"Von welchem Gate fliegen wir?","t":["Which gate do we leave from?","What gate do we leave from?"]},
+        {"id":"airport.s06","de":"Ich habe einen Platz am Fenster.","t":["I have a window seat.","I have a seat by the window."]},
+        {"id":"airport.s07","de":"Mein Koffer ist nicht angekommen.","t":["My suitcase did not arrive.","My suitcase didn't arrive.","My suitcase hasn't arrived."]},
+        {"id":"airport.s08","de":"Wann beginnt das Boarding?","t":["When does boarding start?","When does boarding begin?"]},
+        {"id":"airport.s09","de":"Haben Sie etwas zu verzollen?","t":"Do you have anything to declare?"},
+        {"id":"airport.s10","de":"Der Flug nach Lissabon ist gestrichen.","t":["The flight to Lisbon is canceled.","The flight to Lisbon is cancelled.","The flight to Lisbon has been canceled."]}
+      ]
+    },
+    {
+      "id": "beach", "title": "Am Strand", "level": "A2", "colors": ["#F59E0B","#B45309"],
+      "desc": "Sonne, Meer und alles, was man am Strand braucht.",
+      "words": [
+        {"id":"beach.w01","de":"der Strand","t":"beach","pic":"🏖️"},
+        {"id":"beach.w02","de":"das Meer","t":["sea","ocean"],"pic":"🌊"},
+        {"id":"beach.w03","de":"die Sonne","t":"sun","pic":"☀️"},
+        {"id":"beach.w04","de":"schwimmen","t":"to swim","pic":"🏊"},
+        {"id":"beach.w05","de":"der Sonnenschirm","t":["beach umbrella","parasol","sunshade"],"pic":"⛱️"},
+        {"id":"beach.w06","de":"die Sonnencreme","t":["sunscreen","sun cream","sunblock"],"pic":"🧴"},
+        {"id":"beach.w07","de":"das Handtuch","t":"towel"},
+        {"id":"beach.w08","de":"die Welle","t":"wave"},
+        {"id":"beach.w09","de":"der Sand","t":"sand"},
+        {"id":"beach.w10","de":"die Liege","t":["lounger","sun lounger","deck chair"]},
+        {"id":"beach.w11","de":"das Eis","t":"ice cream","pic":"🍦"},
+        {"id":"beach.w12","de":"der Rettungsschwimmer","t":"lifeguard","pic":"🛟"},
+        {"id":"beach.w13","de":"gefährlich","t":"dangerous","pic":"⚠️"}
+      ],
+      "sentences": [
+        {"id":"beach.s01","de":"Gehen wir an den Strand!","t":"Let's go to the beach!"},
+        {"id":"beach.s02","de":"Das Wasser ist sehr kalt.","t":"The water is very cold."},
+        {"id":"beach.s03","de":"Kann man hier schwimmen?","t":["Can you swim here?","Can one swim here?","Is it okay to swim here?"]},
+        {"id":"beach.s04","de":"Die Wellen sind heute hoch.","t":["The waves are high today.","The waves are big today."]},
+        {"id":"beach.s05","de":"Hast du Sonnencreme dabei?","t":["Do you have sunscreen with you?","Did you bring sunscreen?","Do you have any sunscreen?"]},
+        {"id":"beach.s06","de":"Was kostet eine Liege?","t":["How much is a sun lounger?","How much does a lounger cost?","How much is a deck chair?"]},
+        {"id":"beach.s07","de":"Ich möchte ein Eis.","t":["I would like an ice cream.","I'd like an ice cream."]},
+        {"id":"beach.s08","de":"Die Strömung ist gefährlich.","t":"The current is dangerous."},
+        {"id":"beach.s09","de":"Wir liegen den ganzen Tag in der Sonne.","t":["We lie in the sun all day.","We are lying in the sun all day."]},
+        {"id":"beach.s10","de":"Wo ist der Rettungsschwimmer?","t":["Where is the lifeguard?","Where's the lifeguard?"]}
+      ]
+    },
+    {
+      "id": "phone", "title": "Handy & Internet", "level": "A2", "colors": ["#0891B2","#0E7490"],
+      "desc": "WLAN, SIM-Karte und Akku: unterwegs online bleiben.",
+      "words": [
+        {"id":"phone.w01","de":"das Handy","t":["cell phone","mobile phone","phone"],"pic":"📱"},
+        {"id":"phone.w02","de":"das WLAN","t":["Wi-Fi","wifi"],"pic":"📶"},
+        {"id":"phone.w03","de":"das Passwort","t":"password","pic":"🔑"},
+        {"id":"phone.w04","de":"die SIM-Karte","t":"SIM card"},
+        {"id":"phone.w05","de":"das Ladegerät","t":"charger","pic":"🔌"},
+        {"id":"phone.w06","de":"der Akku","t":"battery","pic":"🔋"},
+        {"id":"phone.w07","de":"die Nachricht","t":"message","pic":"💬"},
+        {"id":"phone.w08","de":"anrufen","t":"to call","pic":"📞"},
+        {"id":"phone.w09","de":"die Telefonnummer","t":["phone number","telephone number"]},
+        {"id":"phone.w10","de":"das Foto","t":["photo","picture"],"pic":"📷"},
+        {"id":"phone.w11","de":"die App","t":"app"},
+        {"id":"phone.w12","de":"die Steckdose","t":["outlet","socket","power outlet"]},
+        {"id":"phone.w13","de":"kaputt","t":"broken"}
+      ],
+      "sentences": [
+        {"id":"phone.s01","de":"Gibt es hier WLAN?","t":["Is there Wi-Fi here?","Is there wifi here?","Do you have Wi-Fi?"]},
+        {"id":"phone.s02","de":"Wie ist das Passwort?","t":["What is the password?","What's the password?"]},
+        {"id":"phone.s03","de":"Mein Akku ist leer.","t":["My battery is dead.","My battery is empty.","My phone is dead."]},
+        {"id":"phone.s04","de":"Kann ich mein Handy hier aufladen?","t":"Can I charge my phone here?"},
+        {"id":"phone.s05","de":"Ich brauche eine SIM-Karte.","t":"I need a SIM card."},
+        {"id":"phone.s06","de":"Ich schicke dir eine Nachricht.","t":["I'll send you a message.","I will send you a message.","I'm sending you a message."]},
+        {"id":"phone.s07","de":"Was ist deine Telefonnummer?","t":["What is your phone number?","What's your phone number?"]},
+        {"id":"phone.s08","de":"Ich rufe dich morgen an.","t":["I'll call you tomorrow.","I will call you tomorrow."]},
+        {"id":"phone.s09","de":"Das Internet ist sehr langsam.","t":"The internet is very slow."},
+        {"id":"phone.s10","de":"Kannst du ein Foto von uns machen?","t":["Can you take a photo of us?","Could you take a picture of us?"]}
+      ]
+    },
+    {
       "id": "problems", "title": "Probleme lösen", "level": "B1", "colors": ["#D0542A","#9E3D1C"],
       "desc": "Höflich reklamieren, um Hilfe bitten, Lösungen finden.",
       "words": [
@@ -529,36 +746,6 @@
         {"id":"opinions.s08","de":"Eigentlich wollte ich ans Meer fahren.","t":["Actually, I wanted to go to the sea.","Actually I wanted to go to the seaside.","Actually, I wanted to go to the seaside."]},
         {"id":"opinions.s09","de":"Was ist der Unterschied zwischen den beiden?","t":"What is the difference between the two?"},
         {"id":"opinions.s10","de":"Es ist wichtig, die Sprache ein bisschen zu sprechen.","t":["It is important to speak the language a little.","It's important to speak a bit of the language."]}
-      ]
-    },
-    {
-      "id": "smalltalk", "title": "Smalltalk & Kennenlernen", "level": "A2", "colors": ["#2E8B57","#1F6340"],
-      "desc": "Über Beruf, Familie und Hobbys plaudern.",
-      "words": [
-        {"id":"smalltalk.w01","de":"der Beruf","t":["job","profession","occupation"]},
-        {"id":"smalltalk.w02","de":"die Arbeit","t":["work","job"],"pic":"💼"},
-        {"id":"smalltalk.w03","de":"das Hobby","t":"hobby"},
-        {"id":"smalltalk.w04","de":"verheiratet","t":"married","pic":"💍"},
-        {"id":"smalltalk.w05","de":"die Kinder","t":["children","kids"]},
-        {"id":"smalltalk.w06","de":"wohnen","t":"live","pic":"🏠"},
-        {"id":"smalltalk.w07","de":"mögen","t":"like"},
-        {"id":"smalltalk.w08","de":"kochen","t":"cook","pic":"🍳"},
-        {"id":"smalltalk.w09","de":"der Sport","t":["sport","sports"],"pic":"🏃"},
-        {"id":"smalltalk.w10","de":"die Musik","t":"music","pic":"🎵"},
-        {"id":"smalltalk.w11","de":"das erste Mal","t":"first time"},
-        {"id":"smalltalk.w12","de":"die Freizeit","t":["free time","leisure time"]}
-      ],
-      "sentences": [
-        {"id":"smalltalk.s01","de":"Was machst du beruflich?","t":["What do you do for a living?","What do you do?","What is your job?"]},
-        {"id":"smalltalk.s02","de":"Ich arbeite als Lehrerin.","t":"I work as a teacher."},
-        {"id":"smalltalk.s03","de":"Bist du zum ersten Mal hier?","t":["Is this your first time here?","Are you here for the first time?"]},
-        {"id":"smalltalk.s04","de":"Ich wohne in der Nähe von München.","t":"I live near Munich."},
-        {"id":"smalltalk.s05","de":"In meiner Freizeit koche ich gern.","t":["In my free time I like to cook.","In my free time I like cooking.","I like cooking in my free time."]},
-        {"id":"smalltalk.s06","de":"Ich bin verheiratet und habe zwei Kinder.","t":["I am married and have two children.","I am married and I have two children.","I am married with two children."]},
-        {"id":"smalltalk.s07","de":"Wie lange bleibst du hier?","t":["How long are you staying here?","How long will you stay here?"]},
-        {"id":"smalltalk.s08","de":"Treibst du Sport?","t":["Do you do any sports?","Do you play sports?","Do you do sport?"]},
-        {"id":"smalltalk.s09","de":"Es war schön, dich kennenzulernen.","t":["It was nice to meet you.","It was nice meeting you."]},
-        {"id":"smalltalk.s10","de":"Lass uns in Kontakt bleiben!","t":["Let's stay in touch!","Let's keep in touch!"]}
       ]
     },
     {
@@ -655,6 +842,161 @@
       ]
     },
     {
+      "id": "apartment", "title": "Wohnung mieten", "level": "B1", "colors": ["#0D9488","#0F766E"],
+      "desc": "Eine Ferienwohnung mieten und Probleme mit dem Vermieter klären.",
+      "words": [
+        {"id":"apartment.w01","de":"die Miete","t":"rent","pic":"💶"},
+        {"id":"apartment.w02","de":"der Vermieter","t":["landlord","host"]},
+        {"id":"apartment.w03","de":"die Kaution","t":["deposit","security deposit"]},
+        {"id":"apartment.w04","de":"der Schlüssel","t":"key","pic":"🔑"},
+        {"id":"apartment.w05","de":"die Heizung","t":"heating","pic":"🔥"},
+        {"id":"apartment.w06","de":"die Klimaanlage","t":["air conditioning","AC","air conditioner"],"pic":"❄️"},
+        {"id":"apartment.w07","de":"die Waschmaschine","t":"washing machine","pic":"🧺"},
+        {"id":"apartment.w08","de":"der Müll","t":["trash","garbage","rubbish"],"pic":"🗑️"},
+        {"id":"apartment.w09","de":"der Nachbar / die Nachbarin","t":["neighbor","neighbour"]},
+        {"id":"apartment.w10","de":"laut","t":["loud","noisy"],"pic":"🔊"},
+        {"id":"apartment.w11","de":"tropfen","t":["to drip","to leak"],"pic":"💧"},
+        {"id":"apartment.w12","de":"reparieren","t":["to repair","to fix"],"pic":"🔧"},
+        {"id":"apartment.w13","de":"im Voraus","t":"in advance"}
+      ],
+      "sentences": [
+        {"id":"apartment.s01","de":"Die Miete muss im Voraus bezahlt werden.","t":["The rent must be paid in advance.","The rent has to be paid in advance."]},
+        {"id":"apartment.s02","de":"Wann bekommen wir die Schlüssel?","t":["When do we get the keys?","When will we get the keys?"]},
+        {"id":"apartment.s03","de":"Die Heizung funktioniert nicht.","t":["The heating doesn't work.","The heating does not work.","The heating isn't working."]},
+        {"id":"apartment.s04","de":"Der Wasserhahn in der Küche tropft.","t":["The kitchen faucet is dripping.","The tap in the kitchen is dripping."]},
+        {"id":"apartment.s05","de":"Können Sie das bitte reparieren lassen?","t":["Could you please have it repaired?","Can you please get it fixed?"]},
+        {"id":"apartment.s06","de":"Wo kommt der Müll hin?","t":["Where does the trash go?","Where does the garbage go?","Where do we put the rubbish?"]},
+        {"id":"apartment.s07","de":"Die Nachbarn sind nachts sehr laut.","t":["The neighbors are very loud at night.","The neighbours are very noisy at night."]},
+        {"id":"apartment.s08","de":"Bekommen wir die Kaution zurück?","t":["Will we get the deposit back?","Do we get the deposit back?"]},
+        {"id":"apartment.s09","de":"Gibt es eine Waschmaschine in der Wohnung?","t":["Is there a washing machine in the apartment?","Is there a washer in the apartment?"]},
+        {"id":"apartment.s10","de":"Wir reisen am Samstag um zehn Uhr ab.","t":["We are leaving on Saturday at ten.","We're checking out on Saturday at ten."]}
+      ]
+    },
+    {
+      "id": "work", "title": "Arbeit & Beruf", "level": "B1", "colors": ["#475569","#334155"],
+      "desc": "Über den Beruf sprechen, Kollegen und den Arbeitsalltag.",
+      "words": [
+        {"id":"work.w01","de":"der Beruf","t":["job","profession","occupation"],"pic":"💼"},
+        {"id":"work.w02","de":"die Firma","t":"company","pic":"🏢"},
+        {"id":"work.w03","de":"der Kollege / die Kollegin","t":["colleague","coworker"]},
+        {"id":"work.w04","de":"der Chef / die Chefin","t":"boss"},
+        {"id":"work.w05","de":"das Büro","t":"office","pic":"🖥️"},
+        {"id":"work.w06","de":"die Besprechung","t":"meeting","pic":"📅"},
+        {"id":"work.w07","de":"das Gehalt","t":["salary","pay"],"pic":"💰"},
+        {"id":"work.w08","de":"der Urlaub","t":["vacation","holiday","time off"],"pic":"🏝️"},
+        {"id":"work.w09","de":"die Überstunden","t":"overtime","pic":"⏱️"},
+        {"id":"work.w10","de":"selbstständig","t":"self-employed"},
+        {"id":"work.w11","de":"arbeitslos","t":"unemployed"},
+        {"id":"work.w12","de":"im Homeoffice arbeiten","t":"to work from home","pic":"🏠"},
+        {"id":"work.w13","de":"die Erfahrung","t":"experience"}
+      ],
+      "sentences": [
+        {"id":"work.s01","de":["Was machst du beruflich?","Was machen Sie beruflich?"],"t":["What do you do for a living?","What do you do?"]},
+        {"id":"work.s02","de":"Ich arbeite bei einer kleinen Firma.","t":["I work for a small company.","I work at a small company."]},
+        {"id":"work.s03","de":"Heute habe ich drei Besprechungen.","t":["Today I have three meetings.","I have three meetings today."]},
+        {"id":"work.s04","de":"Zweimal pro Woche arbeite ich im Homeoffice.","t":["I work from home twice a week.","Twice a week I work from home."]},
+        {"id":"work.s05","de":"Meine Kollegen sind sehr nett.","t":["My colleagues are very nice.","My coworkers are very nice."]},
+        {"id":"work.s06","de":"Ich muss oft Überstunden machen.","t":["I often have to work overtime.","I often have to do overtime."]},
+        {"id":"work.s07","de":"Wie viele Urlaubstage hast du im Jahr?","t":["How many vacation days do you have a year?","How many days off do you get per year?"]},
+        {"id":"work.s08","de":"Seit zwei Jahren bin ich selbstständig.","t":["I have been self-employed for two years.","I've been self-employed for two years."]},
+        {"id":"work.s09","de":"Mein Chef ist diese Woche im Urlaub.","t":["My boss is on vacation this week.","My boss is on holiday this week."]},
+        {"id":"work.s10","de":"Ich habe viel Erfahrung in diesem Bereich.","t":["I have a lot of experience in this field.","I have lots of experience in this area."]}
+      ]
+    },
+    {
+      "id": "cooking", "title": "Kochen & Rezepte", "level": "B1", "colors": ["#DC2626","#991B1B"],
+      "desc": "Zutaten einkaufen, Rezepte verstehen und zusammen kochen.",
+      "words": [
+        {"id":"cooking.w01","de":"das Rezept","t":"recipe","pic":"📖"},
+        {"id":"cooking.w02","de":"die Zutat","t":"ingredient"},
+        {"id":"cooking.w03","de":"die Zwiebel","t":"onion","pic":"🧅"},
+        {"id":"cooking.w04","de":"der Knoblauch","t":"garlic","pic":"🧄"},
+        {"id":"cooking.w05","de":"die Tomate","t":"tomato","pic":"🍅"},
+        {"id":"cooking.w06","de":"das Öl","t":"oil","pic":"🫒"},
+        {"id":"cooking.w07","de":"das Salz","t":"salt","pic":"🧂"},
+        {"id":"cooking.w08","de":"die Pfanne","t":["pan","frying pan"],"pic":"🍳"},
+        {"id":"cooking.w09","de":"schneiden","t":"to cut","pic":"🔪"},
+        {"id":"cooking.w10","de":"braten","t":"to fry"},
+        {"id":"cooking.w11","de":"kochen (Wasser)","t":"to boil"},
+        {"id":"cooking.w12","de":"umrühren","t":"to stir","pic":"🥄"},
+        {"id":"cooking.w13","de":"scharf","t":"spicy","pic":"🌶️"}
+      ],
+      "sentences": [
+        {"id":"cooking.s01","de":"Hast du ein gutes Rezept für Paella?","t":["Do you have a good recipe for paella?","Do you have a good paella recipe?"]},
+        {"id":"cooking.s02","de":"Welche Zutaten brauchen wir?","t":["Which ingredients do we need?","What ingredients do we need?"]},
+        {"id":"cooking.s03","de":"Schneide die Zwiebeln in kleine Stücke.","t":["Cut the onions into small pieces.","Chop the onions into small pieces."]},
+        {"id":"cooking.s04","de":"Erhitze das Öl in der Pfanne.","t":["Heat the oil in the pan.","Heat the oil in the frying pan."]},
+        {"id":"cooking.s05","de":"Brate den Knoblauch kurz an.","t":["Fry the garlic briefly.","Briefly fry the garlic."]},
+        {"id":"cooking.s06","de":"Das Wasser muss kochen.","t":["The water has to boil.","The water must boil."]},
+        {"id":"cooking.s07","de":"Rühre ab und zu um.","t":["Stir from time to time.","Stir every now and then.","Stir occasionally."]},
+        {"id":"cooking.s08","de":"Es fehlt noch etwas Salz.","t":["It still needs a little salt.","It needs a bit more salt."]},
+        {"id":"cooking.s09","de":"Ich esse nicht gern scharf.","t":["I don't like spicy food.","I do not like spicy food."]},
+        {"id":"cooking.s10","de":"Das Essen ist in zwanzig Minuten fertig.","t":["The food will be ready in twenty minutes.","Dinner will be ready in twenty minutes."]}
+      ]
+    },
+    {
+      "id": "bank", "title": "Bank & Geld", "level": "B1", "colors": ["#15803D","#166534"],
+      "desc": "Geld abheben, wechseln und Probleme mit der Karte lösen.",
+      "words": [
+        {"id":"bank.w01","de":"die Bank","t":"bank","pic":"🏦"},
+        {"id":"bank.w02","de":"der Geldautomat","t":["ATM","cash machine"],"pic":"🏧"},
+        {"id":"bank.w03","de":"abheben","t":"to withdraw"},
+        {"id":"bank.w04","de":"wechseln (Geld)","t":["to exchange","to change"],"pic":"💱"},
+        {"id":"bank.w05","de":"der Wechselkurs","t":"exchange rate"},
+        {"id":"bank.w06","de":"die Gebühr","t":"fee"},
+        {"id":"bank.w07","de":"das Konto","t":"account"},
+        {"id":"bank.w08","de":"die Kreditkarte","t":"credit card","pic":"💳"},
+        {"id":"bank.w09","de":"die Geheimzahl","t":["PIN","PIN number"]},
+        {"id":"bank.w10","de":"sperren","t":["to block","to cancel"],"pic":"🔒"},
+        {"id":"bank.w11","de":"die Quittung","t":"receipt","pic":"🧾"},
+        {"id":"bank.w12","de":"das Bargeld","t":"cash","pic":"💵"},
+        {"id":"bank.w13","de":"überweisen","t":"to transfer"}
+      ],
+      "sentences": [
+        {"id":"bank.s01","de":"Wo ist der nächste Geldautomat?","t":["Where is the nearest ATM?","Where's the nearest cash machine?"]},
+        {"id":"bank.s02","de":"Ich möchte Euro in Dollar wechseln.","t":["I would like to exchange euros for dollars.","I'd like to change euros into dollars."]},
+        {"id":"bank.s03","de":"Wie ist der Wechselkurs heute?","t":["What is the exchange rate today?","What's today's exchange rate?"]},
+        {"id":"bank.s04","de":"Der Automat hat meine Karte behalten.","t":["The ATM kept my card.","The machine swallowed my card."]},
+        {"id":"bank.s05","de":"Ich muss meine Karte sperren lassen.","t":["I need to block my card.","I have to cancel my card."]},
+        {"id":"bank.s06","de":"Gibt es eine Gebühr?","t":["Is there a fee?","Is there a charge?"]},
+        {"id":"bank.s07","de":"Kann ich mit Karte zahlen oder nur bar?","t":["Can I pay by card or only in cash?","Can I pay by card or cash only?"]},
+        {"id":"bank.s08","de":"Ich habe meine Geheimzahl vergessen.","t":["I forgot my PIN.","I have forgotten my PIN."]},
+        {"id":"bank.s09","de":"Brauchen Sie eine Quittung?","t":["Do you need a receipt?","Would you like a receipt?"]},
+        {"id":"bank.s10","de":"Ich überweise dir das Geld morgen.","t":["I'll transfer you the money tomorrow.","I will send you the money tomorrow."]}
+      ]
+    },
+    {
+      "id": "nature", "title": "Natur & Wandern", "level": "B1", "colors": ["#65A30D","#4D7C0F"],
+      "desc": "Wanderwege, Wetter in den Bergen und Tiere in der Natur.",
+      "words": [
+        {"id":"nature.w01","de":"der Berg","t":"mountain","pic":"⛰️"},
+        {"id":"nature.w02","de":"der Wald","t":["forest","woods"],"pic":"🌲"},
+        {"id":"nature.w03","de":"der See","t":"lake","pic":"🏞️"},
+        {"id":"nature.w04","de":"der Fluss","t":"river"},
+        {"id":"nature.w05","de":"der Wanderweg","t":["hiking trail","trail","path"],"pic":"🥾"},
+        {"id":"nature.w06","de":"wandern","t":"to hike"},
+        {"id":"nature.w07","de":"der Gipfel","t":["summit","peak","top"]},
+        {"id":"nature.w08","de":"die Aussicht","t":"view","pic":"🌄"},
+        {"id":"nature.w09","de":"das Gewitter","t":["thunderstorm","storm"],"pic":"⛈️"},
+        {"id":"nature.w10","de":"die Wasserflasche","t":"water bottle","pic":"🧴"},
+        {"id":"nature.w11","de":"der Vogel","t":"bird","pic":"🐦"},
+        {"id":"nature.w12","de":"müde","t":"tired","pic":"🥱"},
+        {"id":"nature.w13","de":"steil","t":"steep"}
+      ],
+      "sentences": [
+        {"id":"nature.s01","de":"Wie lange dauert die Wanderung?","t":["How long is the hike?","How long does the hike take?"]},
+        {"id":"nature.s02","de":"Der Weg ist ziemlich steil.","t":["The path is quite steep.","The trail is pretty steep."]},
+        {"id":"nature.s03","de":"Von oben hat man eine tolle Aussicht.","t":["From the top you have a great view.","There's a great view from the top."]},
+        {"id":"nature.s04","de":"Heute Nachmittag soll es Gewitter geben.","t":["There are supposed to be thunderstorms this afternoon.","Thunderstorms are expected this afternoon."]},
+        {"id":"nature.s05","de":"Nimm genug Wasser mit.","t":["Take enough water with you.","Bring enough water."]},
+        {"id":"nature.s06","de":"Wir sind um sechs Uhr losgegangen.","t":["We set off at six.","We left at six o'clock.","We started at six."]},
+        {"id":"nature.s07","de":"Ich bin total müde.","t":["I am totally tired.","I'm completely exhausted.","I'm really tired."]},
+        {"id":"nature.s08","de":"Darf man im See baden?","t":["Is swimming allowed in the lake?","Can you swim in the lake?"]},
+        {"id":"nature.s09","de":"Bitte bleibt auf dem Weg.","t":["Please stay on the path.","Please stay on the trail."]},
+        {"id":"nature.s10","de":"Im Wald hört man viele Vögel.","t":["You can hear lots of birds in the forest.","In the forest you hear many birds."]}
+      ]
+    },
+    {
       "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
       "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
       "words": [
@@ -683,6 +1025,285 @@
         {"id":"negotiate.s08","de":"Man hat mir gesagt, dass das Museum montags geschlossen ist.","t":["I was told that the museum is closed on Mondays.","I was told the museum is closed on Mondays.","Someone told me that the museum is closed on Mondays."]},
         {"id":"negotiate.s09","de":"Lassen Sie mich darüber nachdenken.","t":"Let me think about it."},
         {"id":"negotiate.s10","de":"Wir sind mit der Lösung sehr zufrieden.","t":["We are very satisfied with the solution.","We are very happy with the solution."]}
+      ]
+    },
+    {
+      "id": "environment", "title": "Umwelt & Nachhaltigkeit", "level": "B2", "colors": ["#16A34A","#14532D"],
+      "desc": "Klimawandel, Müll vermeiden und nachhaltig reisen.",
+      "words": [
+        {"id":"environment.w01","de":"die Umwelt","t":"environment","pic":"🌍"},
+        {"id":"environment.w02","de":"der Klimawandel","t":"climate change","pic":"🌡️"},
+        {"id":"environment.w03","de":"nachhaltig","t":"sustainable","pic":"♻️"},
+        {"id":"environment.w04","de":"die Verschmutzung","t":"pollution","pic":"🏭"},
+        {"id":"environment.w05","de":"erneuerbare Energie","t":"renewable energy","pic":"☀️"},
+        {"id":"environment.w06","de":"vermeiden","t":"to avoid"},
+        {"id":"environment.w07","de":"verschwenden","t":"to waste"},
+        {"id":"environment.w08","de":"der Verbrauch","t":"consumption"},
+        {"id":"environment.w09","de":"die Plastiktüte","t":"plastic bag","pic":"🛍️"},
+        {"id":"environment.w10","de":"die Dürre","t":"drought","pic":"🏜️"},
+        {"id":"environment.w11","de":"schützen","t":"to protect","pic":"🛡️"},
+        {"id":"environment.w12","de":"der CO2-Ausstoß","t":["CO2 emissions","carbon emissions"]},
+        {"id":"environment.w13","de":"die Verantwortung","t":"responsibility"}
+      ],
+      "sentences": [
+        {"id":"environment.s01","de":"Wir sollten weniger Plastik verwenden.","t":"We should use less plastic."},
+        {"id":"environment.s02","de":"Der Klimawandel betrifft uns alle.","t":["Climate change affects all of us.","Climate change affects us all."]},
+        {"id":"environment.s03","de":"Ich versuche, nachhaltiger zu reisen.","t":["I try to travel more sustainably.","I am trying to travel more sustainably."]},
+        {"id":"environment.s04","de":"Statt zu fliegen, nehmen wir den Zug.","t":["Instead of flying, we take the train.","We're taking the train instead of flying."]},
+        {"id":"environment.s05","de":"In vielen Regionen gibt es eine schwere Dürre.","t":["Many regions are suffering from a severe drought.","There is a severe drought in many regions."]},
+        {"id":"environment.s06","de":"Es ist wichtig, die Natur zu schützen.","t":["It is important to protect nature.","It's important to protect nature."]},
+        {"id":"environment.s07","de":"Wir verschwenden zu viele Lebensmittel.","t":"We waste too much food."},
+        {"id":"environment.s08","de":"Jeder trägt eine Verantwortung für die Umwelt.","t":["Everyone has a responsibility for the environment.","Everyone is responsible for the environment."]},
+        {"id":"environment.s09","de":"Die Stadt setzt auf erneuerbare Energie.","t":["The city relies on renewable energy.","The city is betting on renewable energy."]},
+        {"id":"environment.s10","de":"Auch wenn es teurer ist, kaufe ich regional.","t":["Even if it is more expensive, I buy local.","Even though it's more expensive, I buy local products."]}
+      ]
+    },
+    {
+      "id": "media", "title": "Nachrichten & Medien", "level": "B2", "colors": ["#1D4ED8","#1E3A8A"],
+      "desc": "Über Nachrichten sprechen, Quellen prüfen und soziale Medien.",
+      "words": [
+        {"id":"media.w01","de":"die Nachrichten","t":"news","pic":"📰"},
+        {"id":"media.w02","de":"die Zeitung","t":"newspaper","pic":"🗞️"},
+        {"id":"media.w03","de":"der Artikel","t":"article"},
+        {"id":"media.w04","de":"die Quelle","t":"source"},
+        {"id":"media.w05","de":"die Falschmeldung","t":["fake news","false report"]},
+        {"id":"media.w06","de":"die sozialen Medien","t":"social media","pic":"📱"},
+        {"id":"media.w07","de":"die Meinungsfreiheit","t":["freedom of speech","freedom of expression"]},
+        {"id":"media.w08","de":"die Schlagzeile","t":"headline"},
+        {"id":"media.w09","de":"berichten","t":"to report"},
+        {"id":"media.w10","de":"glaubwürdig","t":["credible","trustworthy","reliable"]},
+        {"id":"media.w11","de":"die Werbung","t":["advertising","ads","advertisement"],"pic":"📢"},
+        {"id":"media.w12","de":"veröffentlichen","t":"to publish"},
+        {"id":"media.w13","de":"die Umfrage","t":["survey","poll"],"pic":"📊"}
+      ],
+      "sentences": [
+        {"id":"media.s01","de":"Hast du heute die Nachrichten gesehen?","t":["Did you see the news today?","Have you seen the news today?"]},
+        {"id":"media.s02","de":"Diese Quelle ist nicht glaubwürdig.","t":["This source is not credible.","This source isn't reliable."]},
+        {"id":"media.s03","de":"Man sollte die Informationen immer überprüfen.","t":["You should always check the information.","One should always verify the information."]},
+        {"id":"media.s04","de":"Die Zeitung hat einen langen Artikel darüber veröffentlicht.","t":"The newspaper published a long article about it."},
+        {"id":"media.s05","de":"Viele junge Leute informieren sich über soziale Medien.","t":["Many young people get their news from social media.","A lot of young people get informed through social media."]},
+        {"id":"media.s06","de":"Laut einer Umfrage sind die meisten dafür.","t":["According to a poll, most people are in favor.","According to a survey, most are in favour."]},
+        {"id":"media.s07","de":"Die Schlagzeile ist übertrieben.","t":["The headline is exaggerated.","The headline is over the top."]},
+        {"id":"media.s08","de":"Ich habe den Eindruck, dass das eine Falschmeldung ist.","t":["I have the impression that this is fake news.","I get the feeling that this is fake news."]},
+        {"id":"media.s09","de":"Die Meinungsfreiheit ist ein wichtiges Recht.","t":["Freedom of speech is an important right.","Freedom of expression is an important right."]},
+        {"id":"media.s10","de":"In der App gibt es viel zu viel Werbung.","t":["There are way too many ads in the app.","The app has far too much advertising."]}
+      ]
+    },
+    {
+      "id": "interview", "title": "Bewerbung & Vorstellungsgespräch", "level": "B2", "colors": ["#9333EA","#6B21A8"],
+      "desc": "Lebenslauf, Stärken und Fragen im Vorstellungsgespräch.",
+      "words": [
+        {"id":"interview.w01","de":"die Bewerbung","t":"application","pic":"📄"},
+        {"id":"interview.w02","de":"sich bewerben","t":"to apply"},
+        {"id":"interview.w03","de":"der Lebenslauf","t":["CV","résumé","resume"]},
+        {"id":"interview.w04","de":"das Vorstellungsgespräch","t":["job interview","interview"],"pic":"🤝"},
+        {"id":"interview.w05","de":"die Stelle","t":["position","job"]},
+        {"id":"interview.w06","de":"die Stärke","t":"strength"},
+        {"id":"interview.w07","de":"die Schwäche","t":"weakness"},
+        {"id":"interview.w08","de":"die Ausbildung","t":["training","education","apprenticeship"],"pic":"🎓"},
+        {"id":"interview.w09","de":"die Gehaltsvorstellung","t":["salary expectations","salary expectation"]},
+        {"id":"interview.w10","de":"zuverlässig","t":["reliable","dependable"]},
+        {"id":"interview.w11","de":"die Probezeit","t":["probation period","probationary period","trial period"]},
+        {"id":"interview.w12","de":"die Teamarbeit","t":"teamwork","pic":"👥"},
+        {"id":"interview.w13","de":"einstellen (Personal)","t":"to hire"}
+      ],
+      "sentences": [
+        {"id":"interview.s01","de":"Ich bewerbe mich um die Stelle als Grafikdesignerin.","t":["I'm applying for the position of graphic designer.","I am applying for the graphic designer position."]},
+        {"id":"interview.s02","de":"Im Anhang finden Sie meinen Lebenslauf.","t":["Please find my CV attached.","Attached you will find my résumé.","Please find my resume attached."]},
+        {"id":"interview.s03","de":"Warum möchten Sie bei uns arbeiten?","t":["Why do you want to work for us?","Why would you like to work with us?"]},
+        {"id":"interview.s04","de":"Was sind Ihre Stärken und Schwächen?","t":"What are your strengths and weaknesses?"},
+        {"id":"interview.s05","de":"Ich bin zuverlässig und arbeite gern im Team.","t":["I am reliable and I like working in a team.","I'm reliable and enjoy teamwork."]},
+        {"id":"interview.s06","de":"Ich habe fünf Jahre Erfahrung im Vertrieb.","t":"I have five years of experience in sales."},
+        {"id":"interview.s07","de":"Wie hoch ist Ihre Gehaltsvorstellung?","t":["What are your salary expectations?","What salary are you expecting?"]},
+        {"id":"interview.s08","de":"Die Probezeit dauert sechs Monate.","t":["The probation period lasts six months.","The trial period is six months."]},
+        {"id":"interview.s09","de":"Wann könnten Sie anfangen?","t":["When could you start?","When would you be able to start?"]},
+        {"id":"interview.s10","de":"Wir melden uns bis Ende der Woche bei Ihnen.","t":["We will get back to you by the end of the week.","We'll get back to you by the end of the week."]}
+      ]
+    },
+    {
+      "id": "feelings", "title": "Gefühle & Beziehungen", "level": "B2", "colors": ["#DB2777","#9D174D"],
+      "desc": "Gefühle ausdrücken, Streit klären und über Beziehungen sprechen.",
+      "words": [
+        {"id":"feelings.w01","de":"das Gefühl","t":"feeling","pic":"💭"},
+        {"id":"feelings.w02","de":"glücklich","t":"happy","pic":"😊"},
+        {"id":"feelings.w03","de":"traurig","t":"sad","pic":"😢"},
+        {"id":"feelings.w04","de":"enttäuscht","t":"disappointed","pic":"😞"},
+        {"id":"feelings.w05","de":"eifersüchtig","t":"jealous","pic":"😒"},
+        {"id":"feelings.w06","de":"sich Sorgen machen","t":"to worry","pic":"😟"},
+        {"id":"feelings.w07","de":"der Streit","t":["argument","fight","quarrel"],"pic":"⚡"},
+        {"id":"feelings.w08","de":"sich versöhnen","t":["to make up","to reconcile"],"pic":"🕊️"},
+        {"id":"feelings.w09","de":"vertrauen","t":"to trust"},
+        {"id":"feelings.w10","de":"sich verlieben","t":"to fall in love","pic":"💘"},
+        {"id":"feelings.w11","de":"die Beziehung","t":"relationship","pic":"💑"},
+        {"id":"feelings.w12","de":"vermissen","t":"to miss","pic":"🥺"},
+        {"id":"feelings.w13","de":"dankbar","t":"grateful","pic":"🙏"}
+      ],
+      "sentences": [
+        {"id":"feelings.s01","de":"Ich mache mir Sorgen um dich.","t":["I'm worried about you.","I am worried about you."]},
+        {"id":"feelings.s02","de":"Ich bin ein bisschen enttäuscht.","t":["I'm a little disappointed.","I am a bit disappointed."]},
+        {"id":"feelings.s03","de":"Wir hatten gestern einen Streit.","t":["We had an argument yesterday.","We had a fight yesterday."]},
+        {"id":"feelings.s04","de":"Inzwischen haben wir uns versöhnt.","t":["We have made up in the meantime.","We've made up since then."]},
+        {"id":"feelings.s05","de":"Es tut mir leid, dass ich dich verletzt habe.","t":["I'm sorry that I hurt you.","I am sorry I hurt you."]},
+        {"id":"feelings.s06","de":"Ich vermisse meine Familie sehr.","t":["I miss my family a lot.","I really miss my family."]},
+        {"id":"feelings.s07","de":"In einer Beziehung ist Vertrauen das Wichtigste.","t":["In a relationship, trust is the most important thing.","Trust is the most important thing in a relationship."]},
+        {"id":"feelings.s08","de":"Sie hat sich im Urlaub verliebt.","t":["She fell in love on vacation.","She fell in love on holiday."]},
+        {"id":"feelings.s09","de":"Ich bin dir sehr dankbar für deine Hilfe.","t":["I'm very grateful for your help.","I am very grateful to you for your help."]},
+        {"id":"feelings.s10","de":"Sei nicht so eifersüchtig!","t":"Don't be so jealous!"}
+      ]
+    },
+    {
+      "id": "authorities", "title": "Polizei & Behörden", "level": "B2", "colors": ["#1E3A8A","#172554"],
+      "desc": "Einen Diebstahl melden, Formulare ausfüllen und zur Botschaft gehen.",
+      "words": [
+        {"id":"authorities.w01","de":"die Polizei","t":"police","pic":"🚓"},
+        {"id":"authorities.w02","de":"die Anzeige (Polizei)","t":["police report","report"]},
+        {"id":"authorities.w03","de":"der Diebstahl","t":"theft","pic":"🕵️"},
+        {"id":"authorities.w04","de":"gestohlen","t":"stolen"},
+        {"id":"authorities.w05","de":"die Botschaft","t":"embassy","pic":"🏛️"},
+        {"id":"authorities.w06","de":"das Formular","t":"form","pic":"📝"},
+        {"id":"authorities.w07","de":"ausfüllen","t":"to fill out"},
+        {"id":"authorities.w08","de":"die Unterschrift","t":"signature","pic":"✍️"},
+        {"id":"authorities.w09","de":"der Ausweis","t":["ID","ID card","identity card"],"pic":"🪪"},
+        {"id":"authorities.w10","de":"der Zeuge / die Zeugin","t":"witness"},
+        {"id":"authorities.w11","de":"die Versicherung","t":"insurance","pic":"📑"},
+        {"id":"authorities.w12","de":"die Frist","t":"deadline","pic":"📆"},
+        {"id":"authorities.w13","de":"vorläufig","t":["temporary","provisional"]}
+      ],
+      "sentences": [
+        {"id":"authorities.s01","de":"Mir wurde der Geldbeutel gestohlen.","t":["My wallet was stolen.","Someone stole my wallet."]},
+        {"id":"authorities.s02","de":"Ich möchte eine Anzeige erstatten.","t":["I would like to file a police report.","I'd like to report a crime."]},
+        {"id":"authorities.s03","de":"Wann und wo ist das passiert?","t":["When and where did it happen?","When and where did this happen?"]},
+        {"id":"authorities.s04","de":"Bitte füllen Sie dieses Formular aus.","t":["Please fill out this form.","Please fill in this form."]},
+        {"id":"authorities.s05","de":"Hier fehlt noch Ihre Unterschrift.","t":["Your signature is still missing here.","We still need your signature here."]},
+        {"id":"authorities.s06","de":"Ich habe meinen Reisepass verloren.","t":["I have lost my passport.","I lost my passport."]},
+        {"id":"authorities.s07","de":"Die Botschaft stellt Ihnen einen vorläufigen Ausweis aus.","t":["The embassy will issue you a temporary ID.","The embassy will give you a provisional document."]},
+        {"id":"authorities.s08","de":"Brauche ich eine Kopie für die Versicherung?","t":["Do I need a copy for the insurance?","Do I need a copy for my insurance company?"]},
+        {"id":"authorities.s09","de":"Gab es Zeugen?","t":["Were there any witnesses?","Were there witnesses?"]},
+        {"id":"authorities.s10","de":"Die Frist endet am Freitag.","t":["The deadline is on Friday.","The deadline ends on Friday."]}
+      ]
+    },
+    {
+      "id": "lifestyle", "title": "Gesund leben", "level": "B2", "colors": ["#059669","#065F46"],
+      "desc": "Ernährung, Sport, Schlaf und Stress im Alltag.",
+      "words": [
+        {"id":"lifestyle.w01","de":"die Ernährung","t":["diet","nutrition"],"pic":"🥗"},
+        {"id":"lifestyle.w02","de":"gesund","t":"healthy","pic":"💪"},
+        {"id":"lifestyle.w03","de":"der Stress","t":"stress","pic":"😫"},
+        {"id":"lifestyle.w04","de":"sich entspannen","t":"to relax","pic":"🧘"},
+        {"id":"lifestyle.w05","de":"das Gewicht","t":"weight","pic":"⚖️"},
+        {"id":"lifestyle.w06","de":"abnehmen","t":"to lose weight"},
+        {"id":"lifestyle.w07","de":"zunehmen","t":"to gain weight"},
+        {"id":"lifestyle.w08","de":"der Zucker","t":"sugar","pic":"🍬"},
+        {"id":"lifestyle.w09","de":"trainieren","t":["to work out","to train","to exercise"],"pic":"🏋️"},
+        {"id":"lifestyle.w10","de":"das Fitnessstudio","t":["gym","fitness studio"]},
+        {"id":"lifestyle.w11","de":"der Schlaf","t":"sleep","pic":"🛌"},
+        {"id":"lifestyle.w12","de":"vegetarisch","t":"vegetarian","pic":"🥦"},
+        {"id":"lifestyle.w13","de":"die Gewohnheit","t":"habit"}
+      ],
+      "sentences": [
+        {"id":"lifestyle.s01","de":"Ich versuche, mich gesünder zu ernähren.","t":["I'm trying to eat healthier.","I am trying to eat more healthily."]},
+        {"id":"lifestyle.s02","de":"Seit einem Monat esse ich keinen Zucker mehr.","t":["I haven't eaten sugar for a month.","I have not eaten any sugar for a month."]},
+        {"id":"lifestyle.s03","de":"Dreimal pro Woche gehe ich ins Fitnessstudio.","t":"I go to the gym three times a week."},
+        {"id":"lifestyle.s04","de":"Zu viel Stress macht krank.","t":["Too much stress makes you sick.","Too much stress makes you ill."]},
+        {"id":"lifestyle.s05","de":"Ich schlafe schlecht, wenn ich abends Kaffee trinke.","t":["I sleep badly if I drink coffee in the evening.","I don't sleep well when I drink coffee at night."]},
+        {"id":"lifestyle.s06","de":"Beim Yoga kann ich mich gut entspannen.","t":["I can relax well doing yoga.","Yoga helps me relax."]},
+        {"id":"lifestyle.s07","de":"Er hat zehn Kilo abgenommen.","t":["He has lost ten kilos.","He lost ten kilos.","He lost ten kilograms."]},
+        {"id":"lifestyle.s08","de":"Seit letztem Jahr bin ich Vegetarierin.","t":["I have been a vegetarian since last year.","I've been vegetarian since last year."]},
+        {"id":"lifestyle.s09","de":"Es ist schwer, alte Gewohnheiten zu ändern.","t":["It's hard to change old habits.","It is difficult to change old habits."]},
+        {"id":"lifestyle.s10","de":"Genug Schlaf ist genauso wichtig wie Sport.","t":["Enough sleep is just as important as exercise.","Getting enough sleep is as important as sport."]}
+      ]
+    },
+    {
+      "id": "tech", "title": "Technik & Digitales", "level": "B2", "colors": ["#4F46E5","#3730A3"],
+      "desc": "Geräte, Software, Datenschutz und technische Probleme lösen.",
+      "words": [
+        {"id":"tech.w01","de":"der Computer","t":"computer","pic":"💻"},
+        {"id":"tech.w02","de":"das Update","t":"update","pic":"🔄"},
+        {"id":"tech.w03","de":"herunterladen","t":"to download","pic":"⬇️"},
+        {"id":"tech.w04","de":"speichern","t":"to save","pic":"💾"},
+        {"id":"tech.w05","de":"löschen","t":"to delete","pic":"🗑️"},
+        {"id":"tech.w06","de":"der Datenschutz","t":["data protection","privacy"],"pic":"🔐"},
+        {"id":"tech.w07","de":"das Konto (online)","t":["account","online account"]},
+        {"id":"tech.w08","de":"sich anmelden","t":["to log in","to sign in"]},
+        {"id":"tech.w09","de":"die Einstellungen","t":"settings","pic":"⚙️"},
+        {"id":"tech.w10","de":"der Bildschirm","t":"screen","pic":"🖥️"},
+        {"id":"tech.w11","de":"abstürzen","t":"to crash","pic":"💥"},
+        {"id":"tech.w12","de":"die Datei","t":"file","pic":"📁"},
+        {"id":"tech.w13","de":"neu starten","t":["to restart","to reboot"]}
+      ],
+      "sentences": [
+        {"id":"tech.s01","de":"Mein Computer ist schon wieder abgestürzt.","t":["My computer crashed again.","My computer has crashed again."]},
+        {"id":"tech.s02","de":"Hast du schon versucht, ihn neu zu starten?","t":["Have you tried restarting it?","Did you already try to restart it?"]},
+        {"id":"tech.s03","de":"Ich muss erst das Update installieren.","t":["I have to install the update first.","First I need to install the update."]},
+        {"id":"tech.s04","de":"Ich kann mich nicht in mein Konto einloggen.","t":["I can't log in to my account.","I cannot log into my account."]},
+        {"id":"tech.s05","de":"Vergiss nicht, die Datei zu speichern!","t":"Don't forget to save the file!"},
+        {"id":"tech.s06","de":"Wo finde ich die Einstellungen?","t":["Where can I find the settings?","Where are the settings?"]},
+        {"id":"tech.s07","de":"Der Bildschirm bleibt schwarz.","t":["The screen stays black.","The screen remains black."]},
+        {"id":"tech.s08","de":"Diese App sammelt zu viele Daten.","t":"This app collects too much data."},
+        {"id":"tech.s09","de":"Ich habe aus Versehen alle Fotos gelöscht.","t":["I accidentally deleted all the photos.","I deleted all the photos by mistake."]},
+        {"id":"tech.s10","de":"Du kannst die Datei hier herunterladen.","t":"You can download the file here."}
+      ]
+    },
+    {
+      "id": "travelrights", "title": "Reklamieren & Rechte", "level": "B2", "colors": ["#EA580C","#9A3412"],
+      "desc": "Bei Flugausfall, Überbuchung oder Mängeln seine Rechte einfordern.",
+      "words": [
+        {"id":"travelrights.w01","de":"die Entschädigung","t":"compensation","pic":"💶"},
+        {"id":"travelrights.w02","de":"die Beschwerde","t":"complaint","pic":"📣"},
+        {"id":"travelrights.w03","de":"sich beschweren","t":"to complain"},
+        {"id":"travelrights.w04","de":"überbucht","t":"overbooked"},
+        {"id":"travelrights.w05","de":"annulliert","t":["canceled","cancelled"],"pic":"❌"},
+        {"id":"travelrights.w06","de":"der Anspruch","t":["right","entitlement","claim"]},
+        {"id":"travelrights.w07","de":"die Erstattung","t":"refund","pic":"↩️"},
+        {"id":"travelrights.w08","de":"der Mangel","t":["defect","fault","shortcoming"]},
+        {"id":"travelrights.w09","de":"der Beleg","t":["receipt","proof"],"pic":"🧾"},
+        {"id":"travelrights.w10","de":"verlangen","t":"to demand"},
+        {"id":"travelrights.w11","de":"der Ersatz","t":["replacement","substitute"]},
+        {"id":"travelrights.w12","de":"die Bedingungen","t":["conditions","terms"],"pic":"📜"},
+        {"id":"travelrights.w13","de":"zuständig","t":"responsible"}
+      ],
+      "sentences": [
+        {"id":"travelrights.s01","de":"Unser Flug wurde ohne Begründung annulliert.","t":["Our flight was canceled without explanation.","Our flight was cancelled without any reason."]},
+        {"id":"travelrights.s02","de":"Der Flug war überbucht, und wir mussten warten.","t":["The flight was overbooked and we had to wait.","The flight was overbooked, and we had to wait."]},
+        {"id":"travelrights.s03","de":"Wir haben Anspruch auf eine Entschädigung.","t":["We are entitled to compensation.","We have a right to compensation."]},
+        {"id":"travelrights.s04","de":"Ich möchte mich beschweren.","t":["I would like to make a complaint.","I'd like to complain."]},
+        {"id":"travelrights.s05","de":"Wer ist dafür zuständig?","t":["Who is responsible for this?","Who is in charge of this?"]},
+        {"id":"travelrights.s06","de":"Bitte heben Sie alle Belege auf.","t":["Please keep all receipts.","Please keep all the receipts."]},
+        {"id":"travelrights.s07","de":"Das Zimmer hatte mehrere Mängel.","t":["The room had several defects.","The room had several problems."]},
+        {"id":"travelrights.s08","de":"Ich verlange eine vollständige Erstattung.","t":["I demand a full refund.","I am requesting a full refund."]},
+        {"id":"travelrights.s09","de":"Laut den Bedingungen ist das nicht erlaubt.","t":["According to the terms, this is not allowed.","According to the conditions, that's not allowed."]},
+        {"id":"travelrights.s10","de":"Hätten Sie uns früher informiert, hätten wir umbuchen können.","t":["If you had informed us earlier, we could have rebooked.","Had you told us earlier, we could have rebooked."]}
+      ]
+    },
+    {
+      "id": "society", "title": "Gesellschaft & Zusammenleben", "level": "B2", "colors": ["#B45309","#78350F"],
+      "desc": "Über Zusammenleben, Wohnen in der Stadt und gesellschaftliche Themen diskutieren.",
+      "words": [
+        {"id":"society.w01","de":"die Gesellschaft","t":"society","pic":"👥"},
+        {"id":"society.w02","de":"die Gleichberechtigung","t":["equality","equal rights"],"pic":"⚖️"},
+        {"id":"society.w03","de":"die Integration","t":"integration"},
+        {"id":"society.w04","de":"die Wohnungsnot","t":["housing shortage","housing crisis"],"pic":"🏘️"},
+        {"id":"society.w05","de":"die Vielfalt","t":"diversity","pic":"🌈"},
+        {"id":"society.w06","de":"das Ehrenamt","t":["volunteer work","volunteering"],"pic":"🤲"},
+        {"id":"society.w07","de":"die Generation","t":"generation"},
+        {"id":"society.w08","de":"die Rente","t":"pension","pic":"👴"},
+        {"id":"society.w09","de":"die Wahl","t":"election","pic":"🗳️"},
+        {"id":"society.w10","de":"die Meinung","t":"opinion"},
+        {"id":"society.w11","de":"das Vorurteil","t":"prejudice"},
+        {"id":"society.w12","de":"tolerant","t":"tolerant"},
+        {"id":"society.w13","de":"sich engagieren","t":["to get involved","to be involved","to volunteer"]}
+      ],
+      "sentences": [
+        {"id":"society.s01","de":"In vielen Großstädten steigen die Mieten stark.","t":"Rents are rising sharply in many big cities."},
+        {"id":"society.s02","de":"Meiner Meinung nach sollte Wohnen bezahlbar sein.","t":["In my opinion, housing should be affordable.","I think housing should be affordable."]},
+        {"id":"society.s03","de":"Sie engagiert sich ehrenamtlich in einem Verein.","t":["She volunteers at a club.","She does volunteer work for an association."]},
+        {"id":"society.s04","de":"Die junge Generation sieht das anders.","t":["The young generation sees it differently.","The younger generation sees it differently."]},
+        {"id":"society.s05","de":"Gleichberechtigung ist noch lange nicht erreicht.","t":["Equality is far from being achieved.","We are still far from equality."]},
+        {"id":"society.s06","de":"Vielfalt macht eine Stadt lebendig.","t":["Diversity makes a city lively.","Diversity brings a city to life."]},
+        {"id":"society.s07","de":"Man sollte Menschen ohne Vorurteile begegnen.","t":["One should meet people without prejudice.","You should approach people without prejudice."]},
+        {"id":"society.s08","de":"Gehst du am Sonntag wählen?","t":["Are you going to vote on Sunday?","Will you vote on Sunday?"]},
+        {"id":"society.s09","de":"Viele ältere Menschen machen sich Sorgen um ihre Rente.","t":["Many older people are worried about their pension.","A lot of elderly people worry about their pensions."]},
+        {"id":"society.s10","de":"Obwohl wir verschiedener Meinung sind, respektiere ich dich.","t":["Although we disagree, I respect you.","Even though we have different opinions, I respect you."]}
       ]
     }
   ],
