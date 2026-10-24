@@ -25,7 +25,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 | Pfad | Inhalt |
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten. Schrift Nunito als Datei in der App (`app/fonts/nunito.woff2`, variabel, nur Latin-Teilmenge, 39 KB, SIL OFL in `app/fonts/OFL.txt`, aus `@fontsource-variable/nunito` 5.3.0); Grundstärke 650, Überschriften 800, Systemschrift nur als Rückfall. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.7 (versionCode 9, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.8 (versionCode 10, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
