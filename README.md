@@ -18,7 +18,7 @@ OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duo
 
 ## Funktionen
 
-- **Lernweg** mit 40 Einheiten (160 Lektionen) pro Sprache: je 10 Einheiten in den Stufen A1, A2, B1 und B2, wählbar über Reiter, dazu ein Einstufungstest zum Überspringen
+- **Lernweg** mit 80 Einheiten (320 Lektionen) pro Sprache: je 20 Einheiten in den Stufen A1, A2, B1 und B2, wählbar über Reiter, dazu ein Einstufungstest zum Überspringen
 - **Übungen:**
   - Bilder und Paare zuordnen
   - Sätze aus Wortkarten bauen
