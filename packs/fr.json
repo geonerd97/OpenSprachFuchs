@@ -1304,9 +1304,15 @@
       ]
     }
   ],
+  "dialogGroups": {
+    "restaurant": {"title":"Im Restaurant","em":"🍽️"},
+    "taxi": {"title":"Im Taxi","em":"🚕"},
+    "hotel": {"title":"Im Hotel","em":"🏨"},
+    "pharmacy": {"title":"In der Apotheke","em":"💊"}
+  },
   "dialogs": [
     {
-      "id": "restaurant", "title": "Im Restaurant", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
+      "id": "restaurant", "group": "restaurant", "title": "Essen gehen", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
       "turns": [
         { "p": {"de":"Guten Abend! Haben Sie reserviert?","t":"Bonsoir! Vous avez réservé?"},
           "a": [
@@ -1335,7 +1341,123 @@
       ]
     },
     {
-      "id": "taxi", "title": "Im Taxi", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
+      "id": "restaurant-booking", "group": "restaurant", "title": "Tisch reservieren", "em": "📞", "desc": "Am Telefon einen Tisch für heute Abend reservieren.",
+      "turns": [
+        { "p": {"de":"Restaurant Sole, guten Tag!","t":"Restaurant Sole, bonjour!"},
+          "a": [
+            {"de":"Guten Tag, ich möchte einen Tisch reservieren.","t":"Bonjour, je voudrais réserver une table."},
+            {"de":"Ich habe meinen Koffer verloren.","t":"J'ai perdu ma valise."},
+            {"de":"Wo ist der Strand?","t":"Où est la plage?"}
+          ] },
+        { "p": {"de":"Für wann und für wie viele Personen?","t":"Pour quand et pour combien de personnes?"},
+          "a": [
+            {"de":"Für heute Abend um acht, vier Personen.","t":"Pour ce soir à vingt heures, quatre personnes."},
+            {"de":"Mit Karte, bitte.","t":"Par carte, s'il vous plaît."},
+            {"de":"Ich bin seit zwei Tagen hier.","t":"Je suis ici depuis deux jours."}
+          ] },
+        { "p": {"de":"Möchten Sie drinnen oder auf der Terrasse sitzen?","t":"Vous préférez être à l'intérieur ou en terrasse?"},
+          "a": [
+            {"de":"Auf der Terrasse, wenn es geht.","t":"En terrasse, si possible."},
+            {"de":"Zwei Kilo Tomaten, bitte.","t":"Deux kilos de tomates, s'il vous plaît."},
+            {"de":"Der Zug hat Verspätung.","t":"Le train a du retard."}
+          ] },
+        { "p": {"de":"Auf welchen Namen?","t":"À quel nom?"},
+          "a": [
+            {"de":"Auf den Namen Müller. Vielen Dank!","t":"Au nom de Müller. Merci beaucoup!"},
+            {"de":"Ich habe Bauchschmerzen.","t":"J'ai mal au ventre."},
+            {"de":"Um zehn Uhr fährt der Bus.","t":"Le bus part à dix heures."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-allergy", "group": "restaurant", "title": "Bestellen mit Allergie", "em": "🥜", "desc": "Nach Zutaten fragen und sicher bestellen.",
+      "turns": [
+        { "p": {"de":"Was darf ich Ihnen bringen?","t":"Qu'est-ce que je vous apporte?"},
+          "a": [
+            {"de":"Ist in der Soße Nüsse drin?","t":"Est-ce qu'il y a des noix dans la sauce?"},
+            {"de":"Ich fahre morgen nach Hause.","t":"Je rentre à la maison demain."},
+            {"de":"Mein Zimmer ist im zweiten Stock.","t":"Ma chambre est au deuxième étage."}
+          ] },
+        { "p": {"de":"Ja, da sind Walnüsse drin. Sind Sie allergisch?","t":"Oui, il y a des noix. Vous êtes allergique?"},
+          "a": [
+            {"de":"Ja, ich bin stark allergisch gegen Nüsse.","t":"Oui, je suis très allergique aux noix."},
+            {"de":"Ja, ein Einzelzimmer, bitte.","t":"Oui, une chambre simple, s'il vous plaît."},
+            {"de":"Nein, ich habe keine Kinder.","t":"Non, je n'ai pas d'enfants."}
+          ] },
+        { "p": {"de":"Dann empfehle ich Ihnen den gegrillten Fisch mit Gemüse.","t":"Alors je vous conseille le poisson grillé aux légumes."},
+          "a": [
+            {"de":"Gut, den nehme ich. Ohne Nüsse, bitte.","t":"D'accord, je prends ça. Sans noix, s'il vous plaît."},
+            {"de":"Gut, dann nehme ich den Bus.","t":"D'accord, alors je prends le bus."},
+            {"de":"Wo kann ich parken?","t":"Où est-ce que je peux me garer?"}
+          ] },
+        { "p": {"de":"Ich sage in der Küche Bescheid. Etwas zu trinken?","t":"Je préviens la cuisine. Quelque chose à boire?"},
+          "a": [
+            {"de":"Ein Glas Weißwein, bitte.","t":"Un verre de vin blanc, s'il vous plaît."},
+            {"de":"Eine Fahrkarte nach Rom, bitte.","t":"Un billet pour Rome, s'il vous plaît."},
+            {"de":"Größe M, bitte.","t":"Taille M, s'il vous plaît."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-complaint", "group": "restaurant", "title": "Etwas reklamieren", "em": "🍲", "desc": "Höflich sagen, dass mit dem Essen etwas nicht stimmt.",
+      "turns": [
+        { "p": {"de":"Ist alles in Ordnung?","t":"Tout va bien?"},
+          "a": [
+            {"de":"Leider nicht. Die Suppe ist kalt.","t":"Malheureusement non. La soupe est froide."},
+            {"de":"Ja, ich habe ein Doppelzimmer.","t":"Oui, j'ai une chambre double."},
+            {"de":"Ich komme aus Österreich.","t":"Je viens d'Autriche."}
+          ] },
+        { "p": {"de":"Oh, das tut mir leid! Ich bringe Ihnen sofort eine neue.","t":"Oh, je suis désolé! Je vous en apporte une autre tout de suite."},
+          "a": [
+            {"de":"Danke. Und ich habe eigentlich Reis bestellt, keine Nudeln.","t":"Merci. Et en fait, j'ai commandé du riz, pas des pâtes."},
+            {"de":"Danke. Wann fährt der letzte Zug?","t":"Merci. Le dernier train part à quelle heure?"},
+            {"de":"Danke. Ich habe Fieber.","t":"Merci. J'ai de la fièvre."}
+          ] },
+        { "p": {"de":"Entschuldigung, da ist ein Fehler passiert. Ich tausche es um.","t":"Pardon, il y a eu une erreur. Je vous le change."},
+          "a": [
+            {"de":"Kein Problem, das kann passieren.","t":"Pas de problème, ça arrive."},
+            {"de":"Kein Problem, ich nehme die Treppe.","t":"Pas de problème, je prends l'escalier."},
+            {"de":"Kein Problem, ich habe einen Regenschirm.","t":"Pas de problème, j'ai un parapluie."}
+          ] },
+        { "p": {"de":"Als Entschuldigung geht der Nachtisch aufs Haus.","t":"Pour nous excuser, le dessert est offert."},
+          "a": [
+            {"de":"Das ist sehr nett, vielen Dank!","t":"C'est très gentil, merci beaucoup!"},
+            {"de":"Das ist sehr weit, oder?","t":"C'est très loin, non?"},
+            {"de":"Das ist mein Reisepass.","t":"C'est mon passeport."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-breakfast", "group": "restaurant", "title": "Frühstück im Café", "em": "☕", "desc": "Kaffee, Croissant und Saft bestellen.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Was möchten Sie?","t":"Bonjour! Qu'est-ce que vous prenez?"},
+          "a": [
+            {"de":"Einen Milchkaffee und ein Croissant, bitte.","t":"Un café au lait et un croissant, s'il vous plaît."},
+            {"de":"Zwei Nächte, bitte.","t":"Deux nuits, s'il vous plaît."},
+            {"de":"Zum Bahnhof, bitte.","t":"À la gare, s'il vous plaît."}
+          ] },
+        { "p": {"de":"Möchten Sie auch einen frischen Orangensaft?","t":"Vous voulez aussi un jus d'orange pressé?"},
+          "a": [
+            {"de":"Ja, gern. Einen kleinen, bitte.","t":"Oui, volontiers. Un petit, s'il vous plaît."},
+            {"de":"Ja, ich habe eine Reservierung.","t":"Oui, j'ai une réservation."},
+            {"de":"Ja, es ist sehr steil.","t":"Oui, c'est très raide."}
+          ] },
+        { "p": {"de":"Zum Mitnehmen oder zum Hiertrinken?","t":"Sur place ou à emporter?"},
+          "a": [
+            {"de":"Zum Hiertrinken. Kann ich mich ans Fenster setzen?","t":"Sur place. Je peux m'asseoir près de la fenêtre?"},
+            {"de":"Zum Mitnehmen. Mein Flug ist gestrichen.","t":"À emporter. Mon vol est annulé."},
+            {"de":"Zum Hiertrinken. Ich brauche ein Rezept.","t":"Sur place. J'ai besoin d'une ordonnance."}
+          ] },
+        { "p": {"de":"Natürlich. Das macht sechs Euro fünfzig.","t":"Bien sûr. Ça fait six euros cinquante."},
+          "a": [
+            {"de":"Hier, bitte. Stimmt so.","t":"Voilà. Gardez la monnaie."},
+            {"de":"Hier, bitte. Das ist mein Ausweis.","t":"Voilà. C'est ma pièce d'identité."},
+            {"de":"Hier, bitte. Wo ist das Gleis?","t":"Voilà. Où est le quai?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi", "group": "taxi", "title": "Zum Flughafen", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
       "turns": [
         { "p": {"de":"Hallo! Wohin möchten Sie?","t":"Bonjour! Où voulez-vous aller?"},
           "a": [
@@ -1364,7 +1486,123 @@
       ]
     },
     {
-      "id": "hotel", "title": "Im Hotel", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
+      "id": "taxi-call", "group": "taxi", "title": "Taxi bestellen", "em": "📞", "desc": "Am Telefon ein Taxi zum Hotel rufen.",
+      "turns": [
+        { "p": {"de":"Taxizentrale, guten Abend!","t":"Centrale de taxis, bonsoir!"},
+          "a": [
+            {"de":"Guten Abend, ich brauche ein Taxi, bitte.","t":"Bonsoir, j'ai besoin d'un taxi, s'il vous plaît."},
+            {"de":"Guten Abend, einen Tisch für zwei.","t":"Bonsoir, une table pour deux."},
+            {"de":"Guten Abend, ich habe Halsschmerzen.","t":"Bonsoir, j'ai mal à la gorge."}
+          ] },
+        { "p": {"de":"Wo sollen wir Sie abholen?","t":"Où est-ce qu'on doit venir vous chercher?"},
+          "a": [
+            {"de":"Vor dem Hotel Miramar.","t":"Devant l'hôtel Miramar."},
+            {"de":"Mit Milch und Zucker.","t":"Avec du lait et du sucre."},
+            {"de":"Im dritten Stock.","t":"Au troisième étage."}
+          ] },
+        { "p": {"de":"Und wohin möchten Sie fahren?","t":"Et vous allez où?"},
+          "a": [
+            {"de":"In die Altstadt, zum Hauptplatz.","t":"Dans la vieille ville, sur la grand-place."},
+            {"de":"Zwei Kugeln Eis, bitte.","t":"Deux boules de glace, s'il vous plaît."},
+            {"de":"Ich habe es verloren.","t":"Je l'ai perdu."}
+          ] },
+        { "p": {"de":"Das Taxi ist in zehn Minuten da.","t":"Le taxi sera là dans dix minutes."},
+          "a": [
+            {"de":"Perfekt, danke. Bis gleich!","t":"Parfait, merci. À tout de suite!"},
+            {"de":"Perfekt, die Suppe ist lecker.","t":"Parfait, la soupe est délicieuse."},
+            {"de":"Perfekt, ich bin allergisch.","t":"Parfait, je suis allergique."}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-address", "group": "taxi", "title": "Mit Adresse zum Hotel", "em": "📍", "desc": "Eine Adresse zeigen und unterwegs nachfragen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Wohin geht's?","t":"Bonjour! On va où?"},
+          "a": [
+            {"de":"Zu dieser Adresse, bitte. Hier auf dem Handy.","t":"À cette adresse, s'il vous plaît. Ici, sur mon portable."},
+            {"de":"Eine Flasche Rotwein, bitte.","t":"Une bouteille de vin rouge, s'il vous plaît."},
+            {"de":"Zweimal täglich nach dem Essen.","t":"Deux fois par jour après le repas."}
+          ] },
+        { "p": {"de":"Ah, das ist in der Nähe vom Hafen.","t":"Ah, c'est près du port."},
+          "a": [
+            {"de":"Wie lange dauert die Fahrt ungefähr?","t":"Le trajet dure combien de temps environ?"},
+            {"de":"Wie viel kostet das Zimmer?","t":"Combien coûte la chambre?"},
+            {"de":"Haben Sie das in Rot?","t":"Vous l'avez en rouge?"}
+          ] },
+        { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"Environ quinze minutes, s'il n'y a pas de bouchons."},
+          "a": [
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"D'accord. Vous pourriez baisser un peu la clim?"},
+            {"de":"Gut. Ich nehme den Fisch.","t":"D'accord. Je prends le poisson."},
+            {"de":"Gut. Wo ist die Umkleidekabine?","t":"D'accord. Où est la cabine d'essayage?"}
+          ] },
+        { "p": {"de":"Wir sind da. Das Hotel ist dort links.","t":"On est arrivés. L'hôtel est là, à gauche."},
+          "a": [
+            {"de":"Vielen Dank! Was bin ich Ihnen schuldig?","t":"Merci beaucoup! Je vous dois combien?"},
+            {"de":"Vielen Dank! Ich habe Fieber.","t":"Merci beaucoup! J'ai de la fièvre."},
+            {"de":"Vielen Dank! Ein Bier, bitte.","t":"Merci beaucoup! Une bière, s'il vous plaît."}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-hurry", "group": "taxi", "title": "Eilig zum Bahnhof", "em": "⏱️", "desc": "Den Fahrer bitten, sich zu beeilen.",
+      "turns": [
+        { "p": {"de":"Wohin, bitte?","t":"Où allez-vous?"},
+          "a": [
+            {"de":"Zum Hauptbahnhof, bitte. Ich habe es eilig.","t":"À la gare centrale, s'il vous plaît. Je suis pressé."},
+            {"de":"Zum Arzt, ich habe Hunger.","t":"Chez le médecin, j'ai faim."},
+            {"de":"Ins Bett, ich bin müde.","t":"Au lit, je suis fatigué."}
+          ] },
+        { "p": {"de":"Wann fährt Ihr Zug?","t":"Votre train part à quelle heure?"},
+          "a": [
+            {"de":"In zwanzig Minuten. Schaffen wir das?","t":"Dans vingt minutes. On va y arriver?"},
+            {"de":"Mit Karte, wenn es geht.","t":"Par carte, si possible."},
+            {"de":"Am Fenster, bitte.","t":"Près de la fenêtre, s'il vous plaît."}
+          ] },
+        { "p": {"de":"Das wird knapp, aber ich nehme eine Abkürzung.","t":"Ça va être juste, mais je prends un raccourci."},
+          "a": [
+            {"de":"Super, vielen Dank!","t":"Super, merci beaucoup!"},
+            {"de":"Super, ich nehme die Suppe!","t":"Super, je prends la soupe!"},
+            {"de":"Super, mein Zimmer ist laut!","t":"Super, ma chambre est bruyante!"}
+          ] },
+        { "p": {"de":"So, wir sind da. Ihr Zug fährt vom Gleis drei.","t":"Voilà, on y est. Votre train part du quai trois."},
+          "a": [
+            {"de":"Danke! Hier sind dreißig Euro, stimmt so.","t":"Merci! Voilà trente euros, gardez la monnaie."},
+            {"de":"Danke! Ich bin Vegetarier.","t":"Merci! Je suis végétarien."},
+            {"de":"Danke! Wo ist der Strand?","t":"Merci! Où est la plage?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-receipt", "group": "taxi", "title": "Quittung & Umweg", "em": "🧾", "desc": "Nach einem Umweg fragen und eine Quittung bekommen.",
+      "turns": [
+        { "p": {"de":"Das macht fünfundvierzig Euro.","t":"Ça fait quarante-cinq euros."},
+          "a": [
+            {"de":"Fünfundvierzig? Letztes Mal hat es nur dreißig gekostet.","t":"Quarante-cinq? La dernière fois, c'était seulement trente."},
+            {"de":"Fünfundvierzig Minuten bis zum Strand?","t":"Quarante-cinq minutes jusqu'à la plage?"},
+            {"de":"Ich bin fünfundvierzig Jahre alt.","t":"J'ai quarante-cinq ans."}
+          ] },
+        { "p": {"de":"Die Brücke war gesperrt, deshalb musste ich einen Umweg fahren.","t":"Le pont était fermé, donc j'ai dû faire un détour."},
+          "a": [
+            {"de":"Ach so, verstehe. Das wusste ich nicht.","t":"Ah d'accord, je comprends. Je ne savais pas."},
+            {"de":"Ach so, dann nehme ich zwei Kugeln.","t":"Ah, alors je prends deux boules."},
+            {"de":"Ach so, ich habe eine Reservierung.","t":"Ah, j'ai une réservation."}
+          ] },
+        { "p": {"de":"Möchten Sie mit Karte oder bar zahlen?","t":"Vous payez par carte ou en espèces?"},
+          "a": [
+            {"de":"Mit Karte. Und ich brauche eine Quittung, bitte.","t":"Par carte. Et j'ai besoin d'un reçu, s'il vous plaît."},
+            {"de":"Mit Karte. Und ein Glas Wasser, bitte.","t":"Par carte. Et un verre d'eau, s'il vous plaît."},
+            {"de":"Mit Karte. Und ich habe keine Kinder.","t":"Par carte. Et je n'ai pas d'enfants."}
+          ] },
+        { "p": {"de":"Hier ist Ihre Quittung. Einen schönen Tag noch!","t":"Voici votre reçu. Bonne journée!"},
+          "a": [
+            {"de":"Danke, Ihnen auch!","t":"Merci, à vous aussi!"},
+            {"de":"Danke, mir ist schlecht!","t":"Merci, j'ai mal au cœur!"},
+            {"de":"Danke, für zwei Nächte!","t":"Merci, pour deux nuits!"}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel", "group": "hotel", "title": "Einchecken", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
       "turns": [
         { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Bonjour! Je peux vous aider?"},
           "a": [
@@ -1393,7 +1631,123 @@
       ]
     },
     {
-      "id": "pharmacy", "title": "In der Apotheke", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
+      "id": "hotel-walkin", "group": "hotel", "title": "Ohne Reservierung", "em": "🛎️", "desc": "Spontan nach einem freien Zimmer fragen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Was kann ich für Sie tun?","t":"Bonsoir! Que puis-je faire pour vous?"},
+          "a": [
+            {"de":"Haben Sie noch ein Zimmer für heute Nacht?","t":"Vous avez encore une chambre pour cette nuit?"},
+            {"de":"Ich hätte gern die Speisekarte.","t":"Je voudrais la carte."},
+            {"de":"Der Reifen ist platt.","t":"Le pneu est crevé."}
+          ] },
+        { "p": {"de":"Wir haben noch ein Doppelzimmer frei, aber nur mit Blick auf den Hof.","t":"Il nous reste une chambre double, mais seulement côté cour."},
+          "a": [
+            {"de":"Das ist kein Problem. Was kostet es pro Nacht?","t":"Ce n'est pas un problème. C'est combien la nuit?"},
+            {"de":"Das ist kein Problem. Ich habe Bauchschmerzen.","t":"Ce n'est pas un problème. J'ai mal au ventre."},
+            {"de":"Das ist kein Problem. Zum Bahnhof, bitte.","t":"Ce n'est pas un problème. À la gare, s'il vous plaît."}
+          ] },
+        { "p": {"de":"Hundertzehn Euro mit Frühstück.","t":"Cent dix euros avec le petit-déjeuner."},
+          "a": [
+            {"de":"Gut, ich nehme es für eine Nacht.","t":"D'accord, je la prends pour une nuit."},
+            {"de":"Gut, ich nehme die Nudeln.","t":"D'accord, je prends les pâtes."},
+            {"de":"Gut, ich fahre mit dem Bus.","t":"D'accord, je prends le bus."}
+          ] },
+        { "p": {"de":"Darf ich bitte Ihren Ausweis sehen?","t":"Je peux voir votre pièce d'identité, s'il vous plaît?"},
+          "a": [
+            {"de":"Natürlich, hier ist mein Reisepass.","t":"Bien sûr, voici mon passeport."},
+            {"de":"Natürlich, hier ist die Suppe.","t":"Bien sûr, voici la soupe."},
+            {"de":"Natürlich, ich habe Kopfschmerzen.","t":"Bien sûr, j'ai mal à la tête."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-problem", "group": "hotel", "title": "Problem mit dem Zimmer", "em": "🔧", "desc": "An der Rezeption melden, dass etwas kaputt ist.",
+      "turns": [
+        { "p": {"de":"Rezeption, guten Abend. Wie kann ich helfen?","t":"Réception, bonsoir. Je peux vous aider?"},
+          "a": [
+            {"de":"Die Klimaanlage in Zimmer 214 funktioniert nicht.","t":"La climatisation de la chambre 214 ne marche pas."},
+            {"de":"Ich hätte gern zwei Kugeln Vanille.","t":"Je voudrais deux boules à la vanille."},
+            {"de":"Ich komme aus der Schweiz.","t":"Je viens de Suisse."}
+          ] },
+        { "p": {"de":"Oh, das tut mir leid. Ich schicke sofort jemanden hoch.","t":"Oh, désolé. J'envoie quelqu'un tout de suite."},
+          "a": [
+            {"de":"Danke. Und das Licht im Bad geht auch nicht.","t":"Merci. Et la lumière de la salle de bain ne marche pas non plus."},
+            {"de":"Danke. Und zwei Fahrkarten nach Paris.","t":"Merci. Et deux billets pour Paris."},
+            {"de":"Danke. Und ich bin Vegetarier.","t":"Merci. Et je suis végétarien."}
+          ] },
+        { "p": {"de":"Wenn wir es nicht reparieren können, geben wir Ihnen ein anderes Zimmer.","t":"Si on ne peut pas le réparer, on vous donnera une autre chambre."},
+          "a": [
+            {"de":"Das wäre sehr nett, danke.","t":"Ce serait très gentil, merci."},
+            {"de":"Das wäre sehr scharf, danke.","t":"Ce serait très piquant, merci."},
+            {"de":"Das ist mein Bruder.","t":"C'est mon frère."}
+          ] },
+        { "p": {"de":"Der Techniker ist in fünf Minuten bei Ihnen.","t":"Le technicien sera chez vous dans cinq minutes."},
+          "a": [
+            {"de":"Perfekt, ich warte im Zimmer.","t":"Parfait, j'attends dans la chambre."},
+            {"de":"Perfekt, ich nehme den Zug.","t":"Parfait, je prends le train."},
+            {"de":"Perfekt, Größe L, bitte.","t":"Parfait, taille L, s'il vous plaît."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-tips", "group": "hotel", "title": "Tipps an der Rezeption", "em": "🗺️", "desc": "Nach Restaurants und Sehenswürdigkeiten fragen.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Haben Sie gut geschlafen?","t":"Bonjour! Vous avez bien dormi?"},
+          "a": [
+            {"de":"Ja, danke. Können Sie mir ein gutes Restaurant empfehlen?","t":"Oui, merci. Vous pouvez me conseiller un bon restaurant?"},
+            {"de":"Ja, danke. Mein Koffer ist kaputt.","t":"Oui, merci. Ma valise est cassée."},
+            {"de":"Ja, danke. Ich nehme den Fisch.","t":"Oui, merci. Je prends le poisson."}
+          ] },
+        { "p": {"de":"Gern! Das Lokal am Hafen ist sehr beliebt, besonders für Fisch.","t":"Avec plaisir! Le restaurant du port est très apprécié, surtout pour le poisson."},
+          "a": [
+            {"de":"Klingt gut. Muss man dort reservieren?","t":"Ça a l'air bien. Il faut réserver?"},
+            {"de":"Klingt gut. Ich habe Fieber.","t":"Ça a l'air bien. J'ai de la fièvre."},
+            {"de":"Klingt gut. Wo ist Gleis vier?","t":"Ça a l'air bien. Où est le quai quatre?"}
+          ] },
+        { "p": {"de":"Am Wochenende ja. Soll ich für Sie anrufen?","t":"Le week-end, oui. Vous voulez que j'appelle?"},
+          "a": [
+            {"de":"Ja, gern. Für heute Abend, zwei Personen.","t":"Oui, volontiers. Pour ce soir, deux personnes."},
+            {"de":"Ja, gern. Ein Eis mit Sahne.","t":"Oui, volontiers. Une glace avec de la chantilly."},
+            {"de":"Ja, gern. Ich habe meinen Schlüssel verloren.","t":"Oui, volontiers. J'ai perdu ma clé."}
+          ] },
+        { "p": {"de":"Erledigt! Und morgen sollten Sie unbedingt die Burg besichtigen.","t":"C'est fait! Et demain, il faut absolument visiter le château."},
+          "a": [
+            {"de":"Danke für die Tipps! Wie komme ich dorthin?","t":"Merci pour les conseils! Comment j'y vais?"},
+            {"de":"Danke für die Tipps! Ich bin schwanger.","t":"Merci pour les conseils! Je suis enceinte."},
+            {"de":"Danke für die Tipps! Die Suppe ist kalt.","t":"Merci pour les conseils! La soupe est froide."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-checkout", "group": "hotel", "title": "Auschecken", "em": "🧳", "desc": "Die Rechnung prüfen und das Gepäck abgeben.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Möchten Sie auschecken?","t":"Bonjour! Vous voulez régler votre note?"},
+          "a": [
+            {"de":"Ja, Zimmer 305. Hier ist der Schlüssel.","t":"Oui, chambre 305. Voici la clé."},
+            {"de":"Ja, einen Tisch am Fenster.","t":"Oui, une table près de la fenêtre."},
+            {"de":"Ja, ich habe Halsschmerzen.","t":"Oui, j'ai mal à la gorge."}
+          ] },
+        { "p": {"de":"Hier ist Ihre Rechnung. Hatten Sie etwas aus der Minibar?","t":"Voici votre note. Vous avez pris quelque chose au minibar?"},
+          "a": [
+            {"de":"Nein, nichts. Aber hier steht zweimal das Abendessen.","t":"Non, rien. Mais le dîner est compté deux fois ici."},
+            {"de":"Nein, nichts. Ich suche die Apotheke.","t":"Non, rien. Je cherche la pharmacie."},
+            {"de":"Nein, nichts. Der Bus kommt um acht.","t":"Non, rien. Le bus arrive à huit heures."}
+          ] },
+        { "p": {"de":"Sie haben recht, das korrigiere ich. Entschuldigung!","t":"Vous avez raison, je corrige. Désolé!"},
+          "a": [
+            {"de":"Kein Problem. Kann ich mein Gepäck bis heute Nachmittag hierlassen?","t":"Pas de problème. Je peux laisser mes bagages ici jusqu'à cet après-midi?"},
+            {"de":"Kein Problem. Ich nehme den Salat.","t":"Pas de problème. Je prends la salade."},
+            {"de":"Kein Problem. Ich bin verheiratet.","t":"Pas de problème. Je suis marié."}
+          ] },
+        { "p": {"de":"Natürlich, wir bewahren es für Sie auf. Gute Reise!","t":"Bien sûr, on vous les garde. Bon voyage!"},
+          "a": [
+            {"de":"Vielen Dank für alles! Es war sehr schön hier.","t":"Merci pour tout! C'était très agréable."},
+            {"de":"Vielen Dank! Wie viel kostet die Fahrkarte?","t":"Merci! Combien coûte le billet?"},
+            {"de":"Vielen Dank! Ich habe mir den Knöchel verstaucht.","t":"Merci! Je me suis tordu la cheville."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy", "group": "pharmacy", "title": "Halsschmerzen", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
       "turns": [
         { "p": {"de":"Guten Tag, was kann ich für Sie tun?","t":"Bonjour, qu'est-ce que je peux faire pour vous?"},
           "a": [
@@ -1418,6 +1772,122 @@
             {"de":"Danke. Brauche ich ein Rezept?","t":"Merci. J'ai besoin d'une ordonnance?"},
             {"de":"Danke. Ist das Frühstück inklusive?","t":"Merci. Le petit-déjeuner est compris?"},
             {"de":"Ja, zwei Bier, bitte.","t":"Oui, deux bières, s'il vous plaît."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-sunburn", "group": "pharmacy", "title": "Sonnenbrand", "em": "☀️", "desc": "Etwas gegen Sonnenbrand und eine gute Sonnencreme kaufen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Bonjour! Je peux vous aider?"},
+          "a": [
+            {"de":"Ja, ich habe einen starken Sonnenbrand.","t":"Oui, j'ai un gros coup de soleil."},
+            {"de":"Ja, einen Tisch für vier.","t":"Oui, une table pour quatre."},
+            {"de":"Ja, zum Flughafen.","t":"Oui, à l'aéroport."}
+          ] },
+        { "p": {"de":"Oh, das sieht schmerzhaft aus. Diese kühlende Creme hilft gut.","t":"Oh, ça a l'air douloureux. Cette crème rafraîchissante aide bien."},
+          "a": [
+            {"de":"Wie oft soll ich sie auftragen?","t":"Je dois l'appliquer combien de fois?"},
+            {"de":"Wie oft fährt der Bus?","t":"Le bus passe tous les combien?"},
+            {"de":"Wie viele Nächte bleiben Sie?","t":"Vous restez combien de nuits?"}
+          ] },
+        { "p": {"de":"Drei- bis viermal am Tag. Und bleiben Sie ein paar Tage aus der Sonne.","t":"Trois ou quatre fois par jour. Et évitez le soleil pendant quelques jours."},
+          "a": [
+            {"de":"Verstanden. Haben Sie auch Sonnencreme mit Faktor fünfzig?","t":"Compris. Vous avez aussi de la crème solaire indice cinquante?"},
+            {"de":"Verstanden. Zwei Bier, bitte.","t":"Compris. Deux bières, s'il vous plaît."},
+            {"de":"Verstanden. Wo ist der Ausgang zum Gate?","t":"Compris. Où est la porte d'embarquement?"}
+          ] },
+        { "p": {"de":"Ja, hier. Zusammen macht das achtzehn Euro.","t":"Oui, voilà. Ça fait dix-huit euros en tout."},
+          "a": [
+            {"de":"Danke, ich zahle mit Karte.","t":"Merci, je paie par carte."},
+            {"de":"Danke, ich bleibe zwei Wochen.","t":"Merci, je reste deux semaines."},
+            {"de":"Danke, ich nehme die Treppe.","t":"Merci, je prends l'escalier."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-stomach", "group": "pharmacy", "title": "Magenprobleme", "em": "🤢", "desc": "Durchfall und Übelkeit beschreiben und Rat bekommen.",
+      "turns": [
+        { "p": {"de":"Was fehlt Ihnen denn?","t":"Qu'est-ce qui ne va pas?"},
+          "a": [
+            {"de":"Mir ist seit gestern schlecht, und ich habe Durchfall.","t":"J'ai mal au cœur depuis hier, et j'ai la diarrhée."},
+            {"de":"Ich hätte gern ein Doppelzimmer.","t":"Je voudrais une chambre double."},
+            {"de":"Das Wasser ist warm.","t":"L'eau est chaude."}
+          ] },
+        { "p": {"de":"Haben Sie auch Fieber?","t":"Vous avez aussi de la fièvre?"},
+          "a": [
+            {"de":"Nein, aber ich bin sehr müde.","t":"Non, mais je suis très fatigué."},
+            {"de":"Nein, aber ich habe Hunger auf Pizza.","t":"Non, mais j'ai envie d'une pizza."},
+            {"de":"Nein, aber der Zug ist voll.","t":"Non, mais le train est plein."}
+          ] },
+        { "p": {"de":"Trinken Sie viel Wasser und essen Sie nur leichte Sachen, zum Beispiel Reis.","t":"Buvez beaucoup d'eau et mangez léger, par exemple du riz."},
+          "a": [
+            {"de":"Gibt es auch ein Medikament dagegen?","t":"Il y a aussi un médicament pour ça?"},
+            {"de":"Gibt es auch ein Zimmer mit Balkon?","t":"Il y a aussi une chambre avec balcon?"},
+            {"de":"Gibt es auch eine Führung auf Deutsch?","t":"Il y a aussi une visite en allemand?"}
+          ] },
+        { "p": {"de":"Ja, diese Tabletten. Wenn es in zwei Tagen nicht besser ist, gehen Sie zum Arzt.","t":"Oui, ces comprimés. Si ça ne va pas mieux dans deux jours, allez chez le médecin."},
+          "a": [
+            {"de":"Mache ich. Vielen Dank für Ihre Hilfe!","t":"D'accord. Merci beaucoup pour votre aide!"},
+            {"de":"Mache ich. Ein Eis, bitte!","t":"D'accord. Une glace, s'il vous plaît!"},
+            {"de":"Mache ich. Wo kann ich parken?","t":"D'accord. Où est-ce que je peux me garer?"}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-sting", "group": "pharmacy", "title": "Insektenstich", "em": "🦟", "desc": "Einen geschwollenen Mückenstich behandeln lassen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Was kann ich für Sie tun?","t":"Bonsoir! Qu'est-ce que je peux faire pour vous?"},
+          "a": [
+            {"de":"Mich hat etwas gestochen, und der Arm ist ganz geschwollen.","t":"Quelque chose m'a piqué, et mon bras est tout gonflé."},
+            {"de":"Ich möchte gern auschecken.","t":"Je voudrais partir et régler la note."},
+            {"de":"Ich nehme die Pizza.","t":"Je prends la pizza."}
+          ] },
+        { "p": {"de":"Zeigen Sie mal. Juckt es stark?","t":"Faites voir. Ça gratte beaucoup?"},
+          "a": [
+            {"de":"Ja, sehr. Und es tut weh.","t":"Oui, beaucoup. Et ça fait mal."},
+            {"de":"Ja, sehr. Und der Koffer ist schwer.","t":"Oui, beaucoup. Et la valise est lourde."},
+            {"de":"Ja, sehr. Und der Wein ist gut.","t":"Oui, beaucoup. Et le vin est bon."}
+          ] },
+        { "p": {"de":"Sind Sie gegen etwas allergisch?","t":"Vous êtes allergique à quelque chose?"},
+          "a": [
+            {"de":"Nicht dass ich wüsste.","t":"Pas à ma connaissance."},
+            {"de":"Nicht heute, morgen.","t":"Pas aujourd'hui, demain."},
+            {"de":"Nicht mit Milch, bitte.","t":"Pas avec du lait, s'il vous plaît."}
+          ] },
+        { "p": {"de":"Dann nehmen Sie dieses Gel. Wenn Sie Atemnot bekommen, rufen Sie sofort den Notruf.","t":"Alors prenez ce gel. Si vous avez du mal à respirer, appelez tout de suite les urgences."},
+          "a": [
+            {"de":"Gut, das mache ich. Danke!","t":"D'accord, je ferai ça. Merci!"},
+            {"de":"Gut, dann zwei Nächte.","t":"D'accord, alors deux nuits."},
+            {"de":"Gut, dann den Nachtisch.","t":"D'accord, alors le dessert."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-child", "group": "pharmacy", "title": "Fieber beim Kind", "em": "🧒", "desc": "Für ein krankes Kind etwas gegen Fieber holen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Was brauchen Sie?","t":"Bonjour! Qu'est-ce qu'il vous faut?"},
+          "a": [
+            {"de":"Meine Tochter hat Fieber. Sie ist vier Jahre alt.","t":"Ma fille a de la fièvre. Elle a quatre ans."},
+            {"de":"Mein Koffer hat Rollen.","t":"Ma valise a des roulettes."},
+            {"de":"Meine Tochter möchte schwimmen.","t":"Ma fille veut nager."}
+          ] },
+        { "p": {"de":"Wie hoch ist das Fieber?","t":"Elle a combien de fièvre?"},
+          "a": [
+            {"de":"Neununddreißig Grad, seit heute Morgen.","t":"Trente-neuf degrés, depuis ce matin."},
+            {"de":"Neununddreißig Euro, mit Frühstück.","t":"Trente-neuf euros, petit-déjeuner compris."},
+            {"de":"Neununddreißig Minuten zu Fuß.","t":"Trente-neuf minutes à pied."}
+          ] },
+        { "p": {"de":"Ich gebe Ihnen einen Fiebersaft für Kinder. Wie viel wiegt sie?","t":"Je vous donne un sirop contre la fièvre pour enfants. Elle pèse combien?"},
+          "a": [
+            {"de":"Ungefähr sechzehn Kilo.","t":"Environ seize kilos."},
+            {"de":"Ungefähr sechzehn Uhr.","t":"Vers seize heures."},
+            {"de":"Ungefähr sechzehn Kilometer.","t":"Environ seize kilomètres."}
+          ] },
+        { "p": {"de":"Dann geben Sie ihr acht Milliliter, höchstens viermal am Tag.","t":"Alors donnez-lui huit millilitres, quatre fois par jour au maximum."},
+          "a": [
+            {"de":"Danke. Und wann sollen wir zum Arzt gehen?","t":"Merci. Et quand faut-il aller chez le médecin?"},
+            {"de":"Danke. Und wann fährt die Fähre?","t":"Merci. Et le ferry part à quelle heure?"},
+            {"de":"Danke. Und wo ist die Umkleidekabine?","t":"Merci. Et où est la cabine d'essayage?"}
           ] }
       ]
     }

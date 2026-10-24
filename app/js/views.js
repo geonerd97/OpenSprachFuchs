@@ -103,8 +103,7 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
       <button class="btn wide" data-act="blitz">${I.bolt(18)} Blitzrunde (60 Sek.)${cs().blitzBest ? ` · Rekord ${cs().blitzBest}` : ""}</button><button class="btn ghost wide" data-act="train">Gemischtes Training</button>
       <button class="btn ghost wide" data-act="words" data-u="-1">Alle Wörter durchsuchen</button>
       ${speakPaused() ? `<p class="muted">Sprechen ist bis ${clockText(st.speakOffUntil)} Uhr pausiert. <button class="linkbtn" data-act="resumespeak">Wieder einschalten</button></p>` : ""}${nextH ? `<p class="muted">${nextH}</p>` : ""}</div>
-    ${dialogsFor(CODE).length ? `<div class="panel"><h3>Gespräche</h3><p class="muted">Kleine Szenen aus dem Urlaub: Wähle im Gespräch die passende Antwort.</p>
-      ${dialogsFor(CODE).map(d => `<button class="btn ghost wide" data-act="dialog" data-id="${d.id}">${d.em} ${esc(d.title)}${(cs().dialogs || {})[d.id] ? " ✓" : ""}</button>`).join("")}</div>` : ""}`;
+    ${dialogsHTML()}`;
   if (tab === "friends") return friendsPanelHTML();
   if (tab === "shop") return `<div class="panel"><h3>Shop</h3>${shopHTML()}</div>`;
   if (tab === "profile") return `
@@ -478,6 +477,21 @@ function levelsHTML() {
   const first = UNITS.findIndex(u => u.level === cur);
   const hint = first > 0 && !unitUnlocked(first) ? `<p class="muted level-hint">${cur} ist noch gesperrt. Schließ die Einheiten davor ab oder spring mit dem Einstufungstest („Test“ an einer Einheit) direkt hierher.</p>` : "";
   return `<div class="levels" role="tablist" aria-label="Niveaustufen">${tabs}</div>${hint}`;
+}
+/* Conversations, grouped by category (restaurant, taxi, ...): a row per category with its progress; tapping it shows its dialogues. */
+function dialogsHTML() {
+  const all = dialogsFor(CODE);
+  if (!all.length) return "";
+  const doneSet = cs().dialogs || {}, groups = C.dialogGroups || {}, order = [];
+  for (const d of all) { const g = d.group || d.id; if (!order.includes(g)) order.push(g); }
+  const rows = order.map(g => {
+    const list = all.filter(d => (d.group || d.id) === g), fin = list.filter(d => doneSet[d.id]).length, open = ui.dgroup === g;
+    const info = groups[g] || { title: list[0].title, em: list[0].em };
+    const items = open ? `<div class="dlist">${list.map(d => `<button class="btn ghost wide dlg-item" data-act="dialog" data-id="${d.id}"><span>${d.em}&nbsp; ${esc(d.title)}<small>${esc(d.desc || "")}</small></span>${doneSet[d.id] ? "✓" : ""}</button>`).join("")}</div>` : "";
+    return `<button class="dgroup ${open ? "on" : ""}" data-act="dgroup" data-g="${esc(g)}" aria-expanded="${open}"><span class="em" aria-hidden="true">${info.em}</span>
+      <span><b>${esc(info.title)}</b><small>${fin} / ${list.length} Gespräche${fin === list.length ? " ✓" : ""}</small></span>${I.chev(18)}</button>${items}`;
+  }).join("");
+  return `<div class="panel"><h3>Gespräche</h3><p class="muted">Kleine Szenen aus dem Urlaub: Wähle im Gespräch die passende Antwort.</p>${rows}</div>`;
 }
 const modal = (title, body) => `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${title}</h2>${body}</div></div>`;
 const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>`;

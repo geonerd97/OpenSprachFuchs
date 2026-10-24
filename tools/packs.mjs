@@ -73,6 +73,7 @@ export function checkPack(pack, file) {
     const at = `Gespräch ${di + 1} (${d.id})`;
     if (!/^[a-z0-9-]+$/.test(d.id || "")) err(at, "id nur aus a-z, 0-9 und -");
     uniq("d:" + d.id, at);
+    if (d.group !== undefined && !(pack.dialogGroups || {})[d.group]) err(at, `Kategorie „${d.group}“ fehlt in dialogGroups`);
     for (const k of ["title", "em", "desc"]) if (!isText(d[k])) err(at, `${k} fehlt`);
     if (!Array.isArray(d.turns) || !d.turns.length) { err(at, "keine Züge"); continue; }
     for (const [ti, t] of d.turns.entries()) {
@@ -91,9 +92,10 @@ export function formatPack(p) {
   const unit = u => `    {\n      "id": ${j(u.id)}, "title": ${j(u.title)}, "level": ${j(u.level)}, "colors": ${j(u.colors)},\n      "desc": ${j(u.desc)},\n`
     + `      "words": [\n${u.words.map(w => `        ${j(w)}`).join(",\n")}\n      ],\n`
     + `      "sentences": [\n${u.sentences.map(s => `        ${j(s)}`).join(",\n")}\n      ]\n    }`;
-  const dialog = d => `    {\n      "id": ${j(d.id)}, "title": ${j(d.title)}, "em": ${j(d.em)}, "desc": ${j(d.desc)},\n      "turns": [\n`
+  const dialog = d => `    {\n      "id": ${j(d.id)},${d.group ? ` "group": ${j(d.group)},` : ""} "title": ${j(d.title)}, "em": ${j(d.em)}, "desc": ${j(d.desc)},\n      "turns": [\n`
     + d.turns.map(t => `        { "p": ${j(t.p)},\n          "a": [\n${t.a.map(a => `            ${j(a)}`).join(",\n")}\n          ] }`).join(",\n") + "\n      ]\n    }";
-  return `{\n${head.join(",\n")},\n${gloss},\n  "units": [\n${p.units.map(unit).join(",\n")}\n  ],\n  "dialogs": [\n${(p.dialogs || []).map(dialog).join(",\n")}\n  ]\n}\n`;
+  const groups = p.dialogGroups ? `  "dialogGroups": {\n${Object.entries(p.dialogGroups).map(([k, v]) => `    ${j(k)}: ${j(v)}`).join(",\n")}\n  },\n` : "";
+  return `{\n${head.join(",\n")},\n${gloss},\n  "units": [\n${p.units.map(unit).join(",\n")}\n  ],\n${groups}  "dialogs": [\n${(p.dialogs || []).map(dialog).join(",\n")}\n  ]\n}\n`;
 }
 
 function checkAll() {

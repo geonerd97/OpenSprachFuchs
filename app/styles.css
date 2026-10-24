@@ -338,3 +338,12 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 .level.locked:not(.on) { opacity: .7; }
 .level-hint { margin-top: -.3rem; }
 .update-notes { margin: .3rem 0 0; padding-left: 1.2rem; display: grid; gap: .2rem; }
+/* Conversation categories */
+.dgroup { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .7rem; align-items: center; text-align: left; border: 2px solid var(--line); border-bottom-width: 4px; border-radius: 14px; background: var(--surface); padding: .7rem .8rem; }
+.dgroup .em { font-size: 1.6rem; }
+.dgroup b { display: block; } .dgroup small { color: var(--ink-2); font-size: .82rem; }
+.dgroup svg { transition: transform .15s; } .dgroup.on svg { transform: rotate(180deg); }
+.dgroup.on { border-color: var(--accent); }
+.dlist { display: grid; gap: .45rem; margin: -.2rem 0 .3rem .6rem; }
+.btn.dlg-item { display: flex; justify-content: space-between; align-items: center; gap: .6rem; text-align: left; text-transform: none; letter-spacing: 0; font-size: .92rem; padding: .6rem .8rem; }
+.btn.dlg-item small { display: block; font-weight: 500; color: var(--ink-2); font-size: .78rem; }

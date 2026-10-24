@@ -1311,9 +1311,15 @@
       ]
     }
   ],
+  "dialogGroups": {
+    "restaurant": {"title":"Im Restaurant","em":"🍽️"},
+    "taxi": {"title":"Im Taxi","em":"🚕"},
+    "hotel": {"title":"Im Hotel","em":"🏨"},
+    "pharmacy": {"title":"In der Apotheke","em":"💊"}
+  },
   "dialogs": [
     {
-      "id": "restaurant", "title": "Im Restaurant", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
+      "id": "restaurant", "group": "restaurant", "title": "Essen gehen", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
       "turns": [
         { "p": {"de":"Guten Abend! Haben Sie reserviert?","t":"Buonasera! Avete prenotato?"},
           "a": [
@@ -1342,7 +1348,123 @@
       ]
     },
     {
-      "id": "taxi", "title": "Im Taxi", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
+      "id": "restaurant-booking", "group": "restaurant", "title": "Tisch reservieren", "em": "📞", "desc": "Am Telefon einen Tisch für heute Abend reservieren.",
+      "turns": [
+        { "p": {"de":"Restaurant Sole, guten Tag!","t":"Ristorante Sole, buongiorno!"},
+          "a": [
+            {"de":"Guten Tag, ich möchte einen Tisch reservieren.","t":"Buongiorno, vorrei prenotare un tavolo."},
+            {"de":"Ich habe meinen Koffer verloren.","t":"Ho perso la valigia."},
+            {"de":"Wo ist der Strand?","t":"Dov'è la spiaggia?"}
+          ] },
+        { "p": {"de":"Für wann und für wie viele Personen?","t":"Per quando e per quante persone?"},
+          "a": [
+            {"de":"Für heute Abend um acht, vier Personen.","t":"Per stasera alle otto, quattro persone."},
+            {"de":"Mit Karte, bitte.","t":"Con la carta, per favore."},
+            {"de":"Ich bin seit zwei Tagen hier.","t":"Sono qui da due giorni."}
+          ] },
+        { "p": {"de":"Möchten Sie drinnen oder auf der Terrasse sitzen?","t":"Preferite stare dentro o in terrazza?"},
+          "a": [
+            {"de":"Auf der Terrasse, wenn es geht.","t":"In terrazza, se possibile."},
+            {"de":"Zwei Kilo Tomaten, bitte.","t":"Due chili di pomodori, per favore."},
+            {"de":"Der Zug hat Verspätung.","t":"Il treno è in ritardo."}
+          ] },
+        { "p": {"de":"Auf welchen Namen?","t":"A che nome?"},
+          "a": [
+            {"de":"Auf den Namen Müller. Vielen Dank!","t":"A nome Müller. Grazie mille!"},
+            {"de":"Ich habe Bauchschmerzen.","t":"Ho mal di pancia."},
+            {"de":"Um zehn Uhr fährt der Bus.","t":"L'autobus parte alle dieci."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-allergy", "group": "restaurant", "title": "Bestellen mit Allergie", "em": "🥜", "desc": "Nach Zutaten fragen und sicher bestellen.",
+      "turns": [
+        { "p": {"de":"Was darf ich Ihnen bringen?","t":"Cosa le porto?"},
+          "a": [
+            {"de":"Ist in der Soße Nüsse drin?","t":"Nella salsa ci sono noci?"},
+            {"de":"Ich fahre morgen nach Hause.","t":"Domani torno a casa."},
+            {"de":"Mein Zimmer ist im zweiten Stock.","t":"La mia camera è al secondo piano."}
+          ] },
+        { "p": {"de":"Ja, da sind Walnüsse drin. Sind Sie allergisch?","t":"Sì, ci sono le noci. È allergico?"},
+          "a": [
+            {"de":"Ja, ich bin stark allergisch gegen Nüsse.","t":"Sì, sono molto allergico alla frutta secca."},
+            {"de":"Ja, ein Einzelzimmer, bitte.","t":"Sì, una camera singola, per favore."},
+            {"de":"Nein, ich habe keine Kinder.","t":"No, non ho figli."}
+          ] },
+        { "p": {"de":"Dann empfehle ich Ihnen den gegrillten Fisch mit Gemüse.","t":"Allora le consiglio il pesce alla griglia con verdure."},
+          "a": [
+            {"de":"Gut, den nehme ich. Ohne Nüsse, bitte.","t":"Va bene, lo prendo. Senza noci, per favore."},
+            {"de":"Gut, dann nehme ich den Bus.","t":"Va bene, allora prendo l'autobus."},
+            {"de":"Wo kann ich parken?","t":"Dove posso parcheggiare?"}
+          ] },
+        { "p": {"de":"Ich sage in der Küche Bescheid. Etwas zu trinken?","t":"Avviso la cucina. Qualcosa da bere?"},
+          "a": [
+            {"de":"Ein Glas Weißwein, bitte.","t":"Un bicchiere di vino bianco, per favore."},
+            {"de":"Eine Fahrkarte nach Rom, bitte.","t":"Un biglietto per Roma, per favore."},
+            {"de":"Größe M, bitte.","t":"Taglia M, per favore."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-complaint", "group": "restaurant", "title": "Etwas reklamieren", "em": "🍲", "desc": "Höflich sagen, dass mit dem Essen etwas nicht stimmt.",
+      "turns": [
+        { "p": {"de":"Ist alles in Ordnung?","t":"Va tutto bene?"},
+          "a": [
+            {"de":"Leider nicht. Die Suppe ist kalt.","t":"Purtroppo no. La zuppa è fredda."},
+            {"de":"Ja, ich habe ein Doppelzimmer.","t":"Sì, ho una camera doppia."},
+            {"de":"Ich komme aus Österreich.","t":"Vengo dall'Austria."}
+          ] },
+        { "p": {"de":"Oh, das tut mir leid! Ich bringe Ihnen sofort eine neue.","t":"Oh, mi dispiace! Gliene porto subito un'altra."},
+          "a": [
+            {"de":"Danke. Und ich habe eigentlich Reis bestellt, keine Nudeln.","t":"Grazie. E in realtà ho ordinato riso, non pasta."},
+            {"de":"Danke. Wann fährt der letzte Zug?","t":"Grazie. A che ora parte l'ultimo treno?"},
+            {"de":"Danke. Ich habe Fieber.","t":"Grazie. Ho la febbre."}
+          ] },
+        { "p": {"de":"Entschuldigung, da ist ein Fehler passiert. Ich tausche es um.","t":"Scusi, c'è stato un errore. Glielo cambio."},
+          "a": [
+            {"de":"Kein Problem, das kann passieren.","t":"Nessun problema, può capitare."},
+            {"de":"Kein Problem, ich nehme die Treppe.","t":"Nessun problema, prendo le scale."},
+            {"de":"Kein Problem, ich habe einen Regenschirm.","t":"Nessun problema, ho l'ombrello."}
+          ] },
+        { "p": {"de":"Als Entschuldigung geht der Nachtisch aufs Haus.","t":"Per scusarci, il dolce lo offre la casa."},
+          "a": [
+            {"de":"Das ist sehr nett, vielen Dank!","t":"Molto gentile, grazie mille!"},
+            {"de":"Das ist sehr weit, oder?","t":"È molto lontano, vero?"},
+            {"de":"Das ist mein Reisepass.","t":"Questo è il mio passaporto."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-breakfast", "group": "restaurant", "title": "Frühstück im Café", "em": "☕", "desc": "Kaffee, Croissant und Saft bestellen.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Was möchten Sie?","t":"Buongiorno! Cosa prende?"},
+          "a": [
+            {"de":"Einen Milchkaffee und ein Croissant, bitte.","t":"Un cappuccino e un cornetto, per favore."},
+            {"de":"Zwei Nächte, bitte.","t":"Due notti, per favore."},
+            {"de":"Zum Bahnhof, bitte.","t":"Alla stazione, per favore."}
+          ] },
+        { "p": {"de":"Möchten Sie auch einen frischen Orangensaft?","t":"Vuole anche una spremuta d'arancia?"},
+          "a": [
+            {"de":"Ja, gern. Einen kleinen, bitte.","t":"Sì, volentieri. Una piccola, per favore."},
+            {"de":"Ja, ich habe eine Reservierung.","t":"Sì, ho una prenotazione."},
+            {"de":"Ja, es ist sehr steil.","t":"Sì, è molto ripido."}
+          ] },
+        { "p": {"de":"Zum Mitnehmen oder zum Hiertrinken?","t":"Qui o da portare via?"},
+          "a": [
+            {"de":"Zum Hiertrinken. Kann ich mich ans Fenster setzen?","t":"Qui. Posso sedermi vicino alla finestra?"},
+            {"de":"Zum Mitnehmen. Mein Flug ist gestrichen.","t":"Da portare via. Il mio volo è cancellato."},
+            {"de":"Zum Hiertrinken. Ich brauche ein Rezept.","t":"Qui. Ho bisogno di una ricetta."}
+          ] },
+        { "p": {"de":"Natürlich. Das macht sechs Euro fünfzig.","t":"Certo. Sono sei euro e cinquanta."},
+          "a": [
+            {"de":"Hier, bitte. Stimmt so.","t":"Ecco a lei. Tenga il resto."},
+            {"de":"Hier, bitte. Das ist mein Ausweis.","t":"Ecco. È il mio documento."},
+            {"de":"Hier, bitte. Wo ist das Gleis?","t":"Ecco. Dov'è il binario?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi", "group": "taxi", "title": "Zum Flughafen", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
       "turns": [
         { "p": {"de":"Hallo! Wohin möchten Sie?","t":"Buongiorno! Dove la porto?"},
           "a": [
@@ -1371,7 +1493,123 @@
       ]
     },
     {
-      "id": "hotel", "title": "Im Hotel", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
+      "id": "taxi-call", "group": "taxi", "title": "Taxi bestellen", "em": "📞", "desc": "Am Telefon ein Taxi zum Hotel rufen.",
+      "turns": [
+        { "p": {"de":"Taxizentrale, guten Abend!","t":"Radiotaxi, buonasera!"},
+          "a": [
+            {"de":"Guten Abend, ich brauche ein Taxi, bitte.","t":"Buonasera, avrei bisogno di un taxi, per favore."},
+            {"de":"Guten Abend, einen Tisch für zwei.","t":"Buonasera, un tavolo per due."},
+            {"de":"Guten Abend, ich habe Halsschmerzen.","t":"Buonasera, ho mal di gola."}
+          ] },
+        { "p": {"de":"Wo sollen wir Sie abholen?","t":"Dove la veniamo a prendere?"},
+          "a": [
+            {"de":"Vor dem Hotel Miramar.","t":"Davanti all'hotel Miramar."},
+            {"de":"Mit Milch und Zucker.","t":"Con latte e zucchero."},
+            {"de":"Im dritten Stock.","t":"Al terzo piano."}
+          ] },
+        { "p": {"de":"Und wohin möchten Sie fahren?","t":"E dove deve andare?"},
+          "a": [
+            {"de":"In die Altstadt, zum Hauptplatz.","t":"In centro storico, alla piazza principale."},
+            {"de":"Zwei Kugeln Eis, bitte.","t":"Due palline di gelato, per favore."},
+            {"de":"Ich habe es verloren.","t":"L'ho perso."}
+          ] },
+        { "p": {"de":"Das Taxi ist in zehn Minuten da.","t":"Il taxi arriva tra dieci minuti."},
+          "a": [
+            {"de":"Perfekt, danke. Bis gleich!","t":"Perfetto, grazie. A tra poco!"},
+            {"de":"Perfekt, die Suppe ist lecker.","t":"Perfetto, la zuppa è buona."},
+            {"de":"Perfekt, ich bin allergisch.","t":"Perfetto, sono allergico."}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-address", "group": "taxi", "title": "Mit Adresse zum Hotel", "em": "📍", "desc": "Eine Adresse zeigen und unterwegs nachfragen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Wohin geht's?","t":"Buongiorno! Dove andiamo?"},
+          "a": [
+            {"de":"Zu dieser Adresse, bitte. Hier auf dem Handy.","t":"A questo indirizzo, per favore. Qui sul cellulare."},
+            {"de":"Eine Flasche Rotwein, bitte.","t":"Una bottiglia di vino rosso, per favore."},
+            {"de":"Zweimal täglich nach dem Essen.","t":"Due volte al giorno dopo i pasti."}
+          ] },
+        { "p": {"de":"Ah, das ist in der Nähe vom Hafen.","t":"Ah, è vicino al porto."},
+          "a": [
+            {"de":"Wie lange dauert die Fahrt ungefähr?","t":"Quanto ci vuole più o meno?"},
+            {"de":"Wie viel kostet das Zimmer?","t":"Quanto costa la camera?"},
+            {"de":"Haben Sie das in Rot?","t":"Ce l'ha in rosso?"}
+          ] },
+        { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"Circa quindici minuti, se non c'è traffico."},
+          "a": [
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Bene. Potrebbe abbassare un po' l'aria condizionata?"},
+            {"de":"Gut. Ich nehme den Fisch.","t":"Bene. Prendo il pesce."},
+            {"de":"Gut. Wo ist die Umkleidekabine?","t":"Bene. Dov'è il camerino?"}
+          ] },
+        { "p": {"de":"Wir sind da. Das Hotel ist dort links.","t":"Siamo arrivati. L'albergo è lì a sinistra."},
+          "a": [
+            {"de":"Vielen Dank! Was bin ich Ihnen schuldig?","t":"Grazie mille! Quanto le devo?"},
+            {"de":"Vielen Dank! Ich habe Fieber.","t":"Grazie mille! Ho la febbre."},
+            {"de":"Vielen Dank! Ein Bier, bitte.","t":"Grazie mille! Una birra, per favore."}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-hurry", "group": "taxi", "title": "Eilig zum Bahnhof", "em": "⏱️", "desc": "Den Fahrer bitten, sich zu beeilen.",
+      "turns": [
+        { "p": {"de":"Wohin, bitte?","t":"Dove la porto?"},
+          "a": [
+            {"de":"Zum Hauptbahnhof, bitte. Ich habe es eilig.","t":"Alla stazione centrale, per favore. Ho fretta."},
+            {"de":"Zum Arzt, ich habe Hunger.","t":"Dal medico, ho fame."},
+            {"de":"Ins Bett, ich bin müde.","t":"A letto, sono stanco."}
+          ] },
+        { "p": {"de":"Wann fährt Ihr Zug?","t":"A che ora parte il suo treno?"},
+          "a": [
+            {"de":"In zwanzig Minuten. Schaffen wir das?","t":"Tra venti minuti. Ce la facciamo?"},
+            {"de":"Mit Karte, wenn es geht.","t":"Con la carta, se possibile."},
+            {"de":"Am Fenster, bitte.","t":"Vicino al finestrino, per favore."}
+          ] },
+        { "p": {"de":"Das wird knapp, aber ich nehme eine Abkürzung.","t":"Sarà dura, ma prendo una scorciatoia."},
+          "a": [
+            {"de":"Super, vielen Dank!","t":"Benissimo, grazie mille!"},
+            {"de":"Super, ich nehme die Suppe!","t":"Benissimo, prendo la zuppa!"},
+            {"de":"Super, mein Zimmer ist laut!","t":"Benissimo, la mia camera è rumorosa!"}
+          ] },
+        { "p": {"de":"So, wir sind da. Ihr Zug fährt vom Gleis drei.","t":"Eccoci. Il suo treno parte dal binario tre."},
+          "a": [
+            {"de":"Danke! Hier sind dreißig Euro, stimmt so.","t":"Grazie! Ecco trenta euro, tenga il resto."},
+            {"de":"Danke! Ich bin Vegetarier.","t":"Grazie! Sono vegetariano."},
+            {"de":"Danke! Wo ist der Strand?","t":"Grazie! Dov'è la spiaggia?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-receipt", "group": "taxi", "title": "Quittung & Umweg", "em": "🧾", "desc": "Nach einem Umweg fragen und eine Quittung bekommen.",
+      "turns": [
+        { "p": {"de":"Das macht fünfundvierzig Euro.","t":"Sono quarantacinque euro."},
+          "a": [
+            {"de":"Fünfundvierzig? Letztes Mal hat es nur dreißig gekostet.","t":"Quarantacinque? L'ultima volta costava solo trenta."},
+            {"de":"Fünfundvierzig Minuten bis zum Strand?","t":"Quarantacinque minuti fino alla spiaggia?"},
+            {"de":"Ich bin fünfundvierzig Jahre alt.","t":"Ho quarantacinque anni."}
+          ] },
+        { "p": {"de":"Die Brücke war gesperrt, deshalb musste ich einen Umweg fahren.","t":"Il ponte era chiuso, quindi ho dovuto fare una deviazione."},
+          "a": [
+            {"de":"Ach so, verstehe. Das wusste ich nicht.","t":"Ah, capisco. Non lo sapevo."},
+            {"de":"Ach so, dann nehme ich zwei Kugeln.","t":"Ah, allora prendo due palline."},
+            {"de":"Ach so, ich habe eine Reservierung.","t":"Ah, ho una prenotazione."}
+          ] },
+        { "p": {"de":"Möchten Sie mit Karte oder bar zahlen?","t":"Paga con la carta o in contanti?"},
+          "a": [
+            {"de":"Mit Karte. Und ich brauche eine Quittung, bitte.","t":"Con la carta. E mi serve la ricevuta, per favore."},
+            {"de":"Mit Karte. Und ein Glas Wasser, bitte.","t":"Con la carta. E un bicchiere d'acqua, per favore."},
+            {"de":"Mit Karte. Und ich habe keine Kinder.","t":"Con la carta. E non ho figli."}
+          ] },
+        { "p": {"de":"Hier ist Ihre Quittung. Einen schönen Tag noch!","t":"Ecco la ricevuta. Buona giornata!"},
+          "a": [
+            {"de":"Danke, Ihnen auch!","t":"Grazie, anche a lei!"},
+            {"de":"Danke, mir ist schlecht!","t":"Grazie, mi sento male!"},
+            {"de":"Danke, für zwei Nächte!","t":"Grazie, per due notti!"}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel", "group": "hotel", "title": "Einchecken", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
       "turns": [
         { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Buongiorno! Posso aiutarla?"},
           "a": [
@@ -1400,7 +1638,123 @@
       ]
     },
     {
-      "id": "pharmacy", "title": "In der Apotheke", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
+      "id": "hotel-walkin", "group": "hotel", "title": "Ohne Reservierung", "em": "🛎️", "desc": "Spontan nach einem freien Zimmer fragen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Was kann ich für Sie tun?","t":"Buonasera! Cosa posso fare per lei?"},
+          "a": [
+            {"de":"Haben Sie noch ein Zimmer für heute Nacht?","t":"Avete ancora una camera per stanotte?"},
+            {"de":"Ich hätte gern die Speisekarte.","t":"Vorrei il menù."},
+            {"de":"Der Reifen ist platt.","t":"La gomma è a terra."}
+          ] },
+        { "p": {"de":"Wir haben noch ein Doppelzimmer frei, aber nur mit Blick auf den Hof.","t":"Abbiamo ancora una doppia, ma solo con vista sul cortile."},
+          "a": [
+            {"de":"Das ist kein Problem. Was kostet es pro Nacht?","t":"Nessun problema. Quanto costa a notte?"},
+            {"de":"Das ist kein Problem. Ich habe Bauchschmerzen.","t":"Nessun problema. Ho mal di pancia."},
+            {"de":"Das ist kein Problem. Zum Bahnhof, bitte.","t":"Nessun problema. Alla stazione, per favore."}
+          ] },
+        { "p": {"de":"Hundertzehn Euro mit Frühstück.","t":"Centodieci euro con colazione."},
+          "a": [
+            {"de":"Gut, ich nehme es für eine Nacht.","t":"Va bene, la prendo per una notte."},
+            {"de":"Gut, ich nehme die Nudeln.","t":"Va bene, prendo la pasta."},
+            {"de":"Gut, ich fahre mit dem Bus.","t":"Va bene, vado in autobus."}
+          ] },
+        { "p": {"de":"Darf ich bitte Ihren Ausweis sehen?","t":"Posso vedere un documento, per favore?"},
+          "a": [
+            {"de":"Natürlich, hier ist mein Reisepass.","t":"Certo, ecco il mio passaporto."},
+            {"de":"Natürlich, hier ist die Suppe.","t":"Certo, ecco la zuppa."},
+            {"de":"Natürlich, ich habe Kopfschmerzen.","t":"Certo, ho mal di testa."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-problem", "group": "hotel", "title": "Problem mit dem Zimmer", "em": "🔧", "desc": "An der Rezeption melden, dass etwas kaputt ist.",
+      "turns": [
+        { "p": {"de":"Rezeption, guten Abend. Wie kann ich helfen?","t":"Reception, buonasera. Come posso aiutarla?"},
+          "a": [
+            {"de":"Die Klimaanlage in Zimmer 214 funktioniert nicht.","t":"L'aria condizionata nella camera 214 non funziona."},
+            {"de":"Ich hätte gern zwei Kugeln Vanille.","t":"Vorrei due palline di vaniglia."},
+            {"de":"Ich komme aus der Schweiz.","t":"Vengo dalla Svizzera."}
+          ] },
+        { "p": {"de":"Oh, das tut mir leid. Ich schicke sofort jemanden hoch.","t":"Oh, mi dispiace. Mando subito qualcuno."},
+          "a": [
+            {"de":"Danke. Und das Licht im Bad geht auch nicht.","t":"Grazie. E anche la luce in bagno non funziona."},
+            {"de":"Danke. Und zwei Fahrkarten nach Paris.","t":"Grazie. E due biglietti per Parigi."},
+            {"de":"Danke. Und ich bin Vegetarier.","t":"Grazie. E sono vegetariano."}
+          ] },
+        { "p": {"de":"Wenn wir es nicht reparieren können, geben wir Ihnen ein anderes Zimmer.","t":"Se non riusciamo a ripararla, le diamo un'altra camera."},
+          "a": [
+            {"de":"Das wäre sehr nett, danke.","t":"Sarebbe molto gentile, grazie."},
+            {"de":"Das wäre sehr scharf, danke.","t":"Sarebbe molto piccante, grazie."},
+            {"de":"Das ist mein Bruder.","t":"Questo è mio fratello."}
+          ] },
+        { "p": {"de":"Der Techniker ist in fünf Minuten bei Ihnen.","t":"Il tecnico sarà da lei tra cinque minuti."},
+          "a": [
+            {"de":"Perfekt, ich warte im Zimmer.","t":"Perfetto, aspetto in camera."},
+            {"de":"Perfekt, ich nehme den Zug.","t":"Perfetto, prendo il treno."},
+            {"de":"Perfekt, Größe L, bitte.","t":"Perfetto, taglia L, per favore."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-tips", "group": "hotel", "title": "Tipps an der Rezeption", "em": "🗺️", "desc": "Nach Restaurants und Sehenswürdigkeiten fragen.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Haben Sie gut geschlafen?","t":"Buongiorno! Ha dormito bene?"},
+          "a": [
+            {"de":"Ja, danke. Können Sie mir ein gutes Restaurant empfehlen?","t":"Sì, grazie. Mi può consigliare un buon ristorante?"},
+            {"de":"Ja, danke. Mein Koffer ist kaputt.","t":"Sì, grazie. La mia valigia è rotta."},
+            {"de":"Ja, danke. Ich nehme den Fisch.","t":"Sì, grazie. Prendo il pesce."}
+          ] },
+        { "p": {"de":"Gern! Das Lokal am Hafen ist sehr beliebt, besonders für Fisch.","t":"Volentieri! Il locale al porto è molto apprezzato, soprattutto per il pesce."},
+          "a": [
+            {"de":"Klingt gut. Muss man dort reservieren?","t":"Sembra buono. Bisogna prenotare?"},
+            {"de":"Klingt gut. Ich habe Fieber.","t":"Sembra buono. Ho la febbre."},
+            {"de":"Klingt gut. Wo ist Gleis vier?","t":"Sembra buono. Dov'è il binario quattro?"}
+          ] },
+        { "p": {"de":"Am Wochenende ja. Soll ich für Sie anrufen?","t":"Nel fine settimana sì. Vuole che chiami io?"},
+          "a": [
+            {"de":"Ja, gern. Für heute Abend, zwei Personen.","t":"Sì, grazie. Per stasera, due persone."},
+            {"de":"Ja, gern. Ein Eis mit Sahne.","t":"Sì, grazie. Un gelato con la panna."},
+            {"de":"Ja, gern. Ich habe meinen Schlüssel verloren.","t":"Sì, grazie. Ho perso la chiave."}
+          ] },
+        { "p": {"de":"Erledigt! Und morgen sollten Sie unbedingt die Burg besichtigen.","t":"Fatto! E domani deve assolutamente visitare il castello."},
+          "a": [
+            {"de":"Danke für die Tipps! Wie komme ich dorthin?","t":"Grazie dei consigli! Come ci arrivo?"},
+            {"de":"Danke für die Tipps! Ich bin schwanger.","t":"Grazie dei consigli! Sono incinta."},
+            {"de":"Danke für die Tipps! Die Suppe ist kalt.","t":"Grazie dei consigli! La zuppa è fredda."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-checkout", "group": "hotel", "title": "Auschecken", "em": "🧳", "desc": "Die Rechnung prüfen und das Gepäck abgeben.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Möchten Sie auschecken?","t":"Buongiorno! Vuole fare il check-out?"},
+          "a": [
+            {"de":"Ja, Zimmer 305. Hier ist der Schlüssel.","t":"Sì, camera 305. Ecco la chiave."},
+            {"de":"Ja, einen Tisch am Fenster.","t":"Sì, un tavolo vicino alla finestra."},
+            {"de":"Ja, ich habe Halsschmerzen.","t":"Sì, ho mal di gola."}
+          ] },
+        { "p": {"de":"Hier ist Ihre Rechnung. Hatten Sie etwas aus der Minibar?","t":"Ecco il conto. Ha preso qualcosa dal minibar?"},
+          "a": [
+            {"de":"Nein, nichts. Aber hier steht zweimal das Abendessen.","t":"No, niente. Ma qui la cena è segnata due volte."},
+            {"de":"Nein, nichts. Ich suche die Apotheke.","t":"No, niente. Cerco la farmacia."},
+            {"de":"Nein, nichts. Der Bus kommt um acht.","t":"No, niente. L'autobus arriva alle otto."}
+          ] },
+        { "p": {"de":"Sie haben recht, das korrigiere ich. Entschuldigung!","t":"Ha ragione, lo correggo. Mi scusi!"},
+          "a": [
+            {"de":"Kein Problem. Kann ich mein Gepäck bis heute Nachmittag hierlassen?","t":"Nessun problema. Posso lasciare i bagagli qui fino al pomeriggio?"},
+            {"de":"Kein Problem. Ich nehme den Salat.","t":"Nessun problema. Prendo l'insalata."},
+            {"de":"Kein Problem. Ich bin verheiratet.","t":"Nessun problema. Sono sposato."}
+          ] },
+        { "p": {"de":"Natürlich, wir bewahren es für Sie auf. Gute Reise!","t":"Certo, glieli teniamo noi. Buon viaggio!"},
+          "a": [
+            {"de":"Vielen Dank für alles! Es war sehr schön hier.","t":"Grazie di tutto! Si stava benissimo qui."},
+            {"de":"Vielen Dank! Wie viel kostet die Fahrkarte?","t":"Grazie! Quanto costa il biglietto?"},
+            {"de":"Vielen Dank! Ich habe mir den Knöchel verstaucht.","t":"Grazie! Mi sono slogato la caviglia."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy", "group": "pharmacy", "title": "Halsschmerzen", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
       "turns": [
         { "p": {"de":"Guten Tag, was kann ich für Sie tun?","t":"Buongiorno, che cosa posso fare per lei?"},
           "a": [
@@ -1425,6 +1779,122 @@
             {"de":"Danke. Brauche ich ein Rezept?","t":"Grazie. Ci vuole la ricetta?"},
             {"de":"Danke. Ist das Frühstück inklusive?","t":"Grazie. La colazione è inclusa?"},
             {"de":"Ja, zwei Bier, bitte.","t":"Sì, due birre, per favore."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-sunburn", "group": "pharmacy", "title": "Sonnenbrand", "em": "☀️", "desc": "Etwas gegen Sonnenbrand und eine gute Sonnencreme kaufen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Buongiorno! Posso aiutarla?"},
+          "a": [
+            {"de":"Ja, ich habe einen starken Sonnenbrand.","t":"Sì, ho una brutta scottatura."},
+            {"de":"Ja, einen Tisch für vier.","t":"Sì, un tavolo per quattro."},
+            {"de":"Ja, zum Flughafen.","t":"Sì, all'aeroporto."}
+          ] },
+        { "p": {"de":"Oh, das sieht schmerzhaft aus. Diese kühlende Creme hilft gut.","t":"Oh, sembra doloroso. Questa crema rinfrescante aiuta molto."},
+          "a": [
+            {"de":"Wie oft soll ich sie auftragen?","t":"Quante volte la devo mettere?"},
+            {"de":"Wie oft fährt der Bus?","t":"Ogni quanto passa l'autobus?"},
+            {"de":"Wie viele Nächte bleiben Sie?","t":"Quante notti si ferma?"}
+          ] },
+        { "p": {"de":"Drei- bis viermal am Tag. Und bleiben Sie ein paar Tage aus der Sonne.","t":"Tre o quattro volte al giorno. E stia lontano dal sole per qualche giorno."},
+          "a": [
+            {"de":"Verstanden. Haben Sie auch Sonnencreme mit Faktor fünfzig?","t":"Capito. Avete anche una crema solare protezione cinquanta?"},
+            {"de":"Verstanden. Zwei Bier, bitte.","t":"Capito. Due birre, per favore."},
+            {"de":"Verstanden. Wo ist der Ausgang zum Gate?","t":"Capito. Dov'è il gate?"}
+          ] },
+        { "p": {"de":"Ja, hier. Zusammen macht das achtzehn Euro.","t":"Sì, eccola. In tutto sono diciotto euro."},
+          "a": [
+            {"de":"Danke, ich zahle mit Karte.","t":"Grazie, pago con la carta."},
+            {"de":"Danke, ich bleibe zwei Wochen.","t":"Grazie, resto due settimane."},
+            {"de":"Danke, ich nehme die Treppe.","t":"Grazie, prendo le scale."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-stomach", "group": "pharmacy", "title": "Magenprobleme", "em": "🤢", "desc": "Durchfall und Übelkeit beschreiben und Rat bekommen.",
+      "turns": [
+        { "p": {"de":"Was fehlt Ihnen denn?","t":"Che cosa si sente?"},
+          "a": [
+            {"de":"Mir ist seit gestern schlecht, und ich habe Durchfall.","t":"Da ieri ho la nausea e la diarrea."},
+            {"de":"Ich hätte gern ein Doppelzimmer.","t":"Vorrei una camera doppia."},
+            {"de":"Das Wasser ist warm.","t":"L'acqua è calda."}
+          ] },
+        { "p": {"de":"Haben Sie auch Fieber?","t":"Ha anche la febbre?"},
+          "a": [
+            {"de":"Nein, aber ich bin sehr müde.","t":"No, ma sono molto stanco."},
+            {"de":"Nein, aber ich habe Hunger auf Pizza.","t":"No, ma ho voglia di pizza."},
+            {"de":"Nein, aber der Zug ist voll.","t":"No, ma il treno è pieno."}
+          ] },
+        { "p": {"de":"Trinken Sie viel Wasser und essen Sie nur leichte Sachen, zum Beispiel Reis.","t":"Beva molta acqua e mangi cose leggere, per esempio riso."},
+          "a": [
+            {"de":"Gibt es auch ein Medikament dagegen?","t":"C'è anche un farmaco per questo?"},
+            {"de":"Gibt es auch ein Zimmer mit Balkon?","t":"C'è anche una camera con balcone?"},
+            {"de":"Gibt es auch eine Führung auf Deutsch?","t":"C'è anche una visita guidata in tedesco?"}
+          ] },
+        { "p": {"de":"Ja, diese Tabletten. Wenn es in zwei Tagen nicht besser ist, gehen Sie zum Arzt.","t":"Sì, queste compresse. Se tra due giorni non va meglio, vada dal medico."},
+          "a": [
+            {"de":"Mache ich. Vielen Dank für Ihre Hilfe!","t":"Lo farò. Grazie mille per l'aiuto!"},
+            {"de":"Mache ich. Ein Eis, bitte!","t":"Lo farò. Un gelato, per favore!"},
+            {"de":"Mache ich. Wo kann ich parken?","t":"Lo farò. Dove posso parcheggiare?"}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-sting", "group": "pharmacy", "title": "Insektenstich", "em": "🦟", "desc": "Einen geschwollenen Mückenstich behandeln lassen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Was kann ich für Sie tun?","t":"Buonasera! Cosa posso fare per lei?"},
+          "a": [
+            {"de":"Mich hat etwas gestochen, und der Arm ist ganz geschwollen.","t":"Qualcosa mi ha punto e il braccio è tutto gonfio."},
+            {"de":"Ich möchte gern auschecken.","t":"Vorrei fare il check-out."},
+            {"de":"Ich nehme die Pizza.","t":"Prendo la pizza."}
+          ] },
+        { "p": {"de":"Zeigen Sie mal. Juckt es stark?","t":"Mi faccia vedere. Prude molto?"},
+          "a": [
+            {"de":"Ja, sehr. Und es tut weh.","t":"Sì, molto. E fa male."},
+            {"de":"Ja, sehr. Und der Koffer ist schwer.","t":"Sì, molto. E la valigia è pesante."},
+            {"de":"Ja, sehr. Und der Wein ist gut.","t":"Sì, molto. E il vino è buono."}
+          ] },
+        { "p": {"de":"Sind Sie gegen etwas allergisch?","t":"È allergico a qualcosa?"},
+          "a": [
+            {"de":"Nicht dass ich wüsste.","t":"Che io sappia, no."},
+            {"de":"Nicht heute, morgen.","t":"Non oggi, domani."},
+            {"de":"Nicht mit Milch, bitte.","t":"Senza latte, per favore."}
+          ] },
+        { "p": {"de":"Dann nehmen Sie dieses Gel. Wenn Sie Atemnot bekommen, rufen Sie sofort den Notruf.","t":"Allora usi questo gel. Se ha difficoltà a respirare, chiami subito il pronto soccorso."},
+          "a": [
+            {"de":"Gut, das mache ich. Danke!","t":"Va bene, lo farò. Grazie!"},
+            {"de":"Gut, dann zwei Nächte.","t":"Va bene, allora due notti."},
+            {"de":"Gut, dann den Nachtisch.","t":"Va bene, allora il dolce."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-child", "group": "pharmacy", "title": "Fieber beim Kind", "em": "🧒", "desc": "Für ein krankes Kind etwas gegen Fieber holen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Was brauchen Sie?","t":"Buongiorno! Di cosa ha bisogno?"},
+          "a": [
+            {"de":"Meine Tochter hat Fieber. Sie ist vier Jahre alt.","t":"Mia figlia ha la febbre. Ha quattro anni."},
+            {"de":"Mein Koffer hat Rollen.","t":"La mia valigia ha le ruote."},
+            {"de":"Meine Tochter möchte schwimmen.","t":"Mia figlia vuole nuotare."}
+          ] },
+        { "p": {"de":"Wie hoch ist das Fieber?","t":"Quanto ha di febbre?"},
+          "a": [
+            {"de":"Neununddreißig Grad, seit heute Morgen.","t":"Trentanove gradi, da stamattina."},
+            {"de":"Neununddreißig Euro, mit Frühstück.","t":"Trentanove euro, con colazione."},
+            {"de":"Neununddreißig Minuten zu Fuß.","t":"Trentanove minuti a piedi."}
+          ] },
+        { "p": {"de":"Ich gebe Ihnen einen Fiebersaft für Kinder. Wie viel wiegt sie?","t":"Le do uno sciroppo per la febbre per bambini. Quanto pesa?"},
+          "a": [
+            {"de":"Ungefähr sechzehn Kilo.","t":"Circa sedici chili."},
+            {"de":"Ungefähr sechzehn Uhr.","t":"Verso le sedici."},
+            {"de":"Ungefähr sechzehn Kilometer.","t":"Circa sedici chilometri."}
+          ] },
+        { "p": {"de":"Dann geben Sie ihr acht Milliliter, höchstens viermal am Tag.","t":"Allora le dia otto millilitri, al massimo quattro volte al giorno."},
+          "a": [
+            {"de":"Danke. Und wann sollen wir zum Arzt gehen?","t":"Grazie. E quando dobbiamo andare dal medico?"},
+            {"de":"Danke. Und wann fährt die Fähre?","t":"Grazie. E a che ora parte il traghetto?"},
+            {"de":"Danke. Und wo ist die Umkleidekabine?","t":"Grazie. E dov'è il camerino?"}
           ] }
       ]
     }

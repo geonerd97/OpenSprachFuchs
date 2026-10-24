@@ -1307,9 +1307,15 @@
       ]
     }
   ],
+  "dialogGroups": {
+    "restaurant": {"title":"Im Restaurant","em":"🍽️"},
+    "taxi": {"title":"Im Taxi","em":"🚕"},
+    "hotel": {"title":"Im Hotel","em":"🏨"},
+    "pharmacy": {"title":"In der Apotheke","em":"💊"}
+  },
   "dialogs": [
     {
-      "id": "restaurant", "title": "Im Restaurant", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
+      "id": "restaurant", "group": "restaurant", "title": "Essen gehen", "em": "🍽️", "desc": "Tisch bekommen, bestellen und zahlen.",
       "turns": [
         { "p": {"de":"Guten Abend! Haben Sie reserviert?","t":"Good evening! Do you have a reservation?"},
           "a": [
@@ -1338,7 +1344,123 @@
       ]
     },
     {
-      "id": "taxi", "title": "Im Taxi", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
+      "id": "restaurant-booking", "group": "restaurant", "title": "Tisch reservieren", "em": "📞", "desc": "Am Telefon einen Tisch für heute Abend reservieren.",
+      "turns": [
+        { "p": {"de":"Restaurant Sole, guten Tag!","t":"Sole Restaurant, hello!"},
+          "a": [
+            {"de":"Guten Tag, ich möchte einen Tisch reservieren.","t":"Hello, I would like to book a table."},
+            {"de":"Ich habe meinen Koffer verloren.","t":"I have lost my suitcase."},
+            {"de":"Wo ist der Strand?","t":"Where is the beach?"}
+          ] },
+        { "p": {"de":"Für wann und für wie viele Personen?","t":"For when and for how many people?"},
+          "a": [
+            {"de":"Für heute Abend um acht, vier Personen.","t":"For tonight at eight, four people."},
+            {"de":"Mit Karte, bitte.","t":"By card, please."},
+            {"de":"Ich bin seit zwei Tagen hier.","t":"I have been here for two days."}
+          ] },
+        { "p": {"de":"Möchten Sie drinnen oder auf der Terrasse sitzen?","t":"Would you like to sit inside or on the terrace?"},
+          "a": [
+            {"de":"Auf der Terrasse, wenn es geht.","t":"On the terrace, if possible."},
+            {"de":"Zwei Kilo Tomaten, bitte.","t":"Two kilos of tomatoes, please."},
+            {"de":"Der Zug hat Verspätung.","t":"The train is late."}
+          ] },
+        { "p": {"de":"Auf welchen Namen?","t":"Under what name?"},
+          "a": [
+            {"de":"Auf den Namen Müller. Vielen Dank!","t":"Under the name Müller. Thank you very much!"},
+            {"de":"Ich habe Bauchschmerzen.","t":"I have a stomachache."},
+            {"de":"Um zehn Uhr fährt der Bus.","t":"The bus leaves at ten."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-allergy", "group": "restaurant", "title": "Bestellen mit Allergie", "em": "🥜", "desc": "Nach Zutaten fragen und sicher bestellen.",
+      "turns": [
+        { "p": {"de":"Was darf ich Ihnen bringen?","t":"What can I get you?"},
+          "a": [
+            {"de":"Ist in der Soße Nüsse drin?","t":"Are there nuts in the sauce?"},
+            {"de":"Ich fahre morgen nach Hause.","t":"I am going home tomorrow."},
+            {"de":"Mein Zimmer ist im zweiten Stock.","t":"My room is on the second floor."}
+          ] },
+        { "p": {"de":"Ja, da sind Walnüsse drin. Sind Sie allergisch?","t":"Yes, it contains walnuts. Are you allergic?"},
+          "a": [
+            {"de":"Ja, ich bin stark allergisch gegen Nüsse.","t":"Yes, I am very allergic to nuts."},
+            {"de":"Ja, ein Einzelzimmer, bitte.","t":"Yes, a single room, please."},
+            {"de":"Nein, ich habe keine Kinder.","t":"No, I don't have children."}
+          ] },
+        { "p": {"de":"Dann empfehle ich Ihnen den gegrillten Fisch mit Gemüse.","t":"Then I recommend the grilled fish with vegetables."},
+          "a": [
+            {"de":"Gut, den nehme ich. Ohne Nüsse, bitte.","t":"Good, I'll have that. No nuts, please."},
+            {"de":"Gut, dann nehme ich den Bus.","t":"Good, then I'll take the bus."},
+            {"de":"Wo kann ich parken?","t":"Where can I park?"}
+          ] },
+        { "p": {"de":"Ich sage in der Küche Bescheid. Etwas zu trinken?","t":"I'll let the kitchen know. Something to drink?"},
+          "a": [
+            {"de":"Ein Glas Weißwein, bitte.","t":"A glass of white wine, please."},
+            {"de":"Eine Fahrkarte nach Rom, bitte.","t":"A ticket to Rome, please."},
+            {"de":"Größe M, bitte.","t":"Size M, please."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-complaint", "group": "restaurant", "title": "Etwas reklamieren", "em": "🍲", "desc": "Höflich sagen, dass mit dem Essen etwas nicht stimmt.",
+      "turns": [
+        { "p": {"de":"Ist alles in Ordnung?","t":"Is everything all right?"},
+          "a": [
+            {"de":"Leider nicht. Die Suppe ist kalt.","t":"Unfortunately not. The soup is cold."},
+            {"de":"Ja, ich habe ein Doppelzimmer.","t":"Yes, I have a double room."},
+            {"de":"Ich komme aus Österreich.","t":"I am from Austria."}
+          ] },
+        { "p": {"de":"Oh, das tut mir leid! Ich bringe Ihnen sofort eine neue.","t":"Oh, I'm sorry! I'll bring you a new one right away."},
+          "a": [
+            {"de":"Danke. Und ich habe eigentlich Reis bestellt, keine Nudeln.","t":"Thanks. And actually I ordered rice, not pasta."},
+            {"de":"Danke. Wann fährt der letzte Zug?","t":"Thanks. When does the last train leave?"},
+            {"de":"Danke. Ich habe Fieber.","t":"Thanks. I have a fever."}
+          ] },
+        { "p": {"de":"Entschuldigung, da ist ein Fehler passiert. Ich tausche es um.","t":"Sorry, there has been a mistake. I'll change it."},
+          "a": [
+            {"de":"Kein Problem, das kann passieren.","t":"No problem, it happens."},
+            {"de":"Kein Problem, ich nehme die Treppe.","t":"No problem, I'll take the stairs."},
+            {"de":"Kein Problem, ich habe einen Regenschirm.","t":"No problem, I have an umbrella."}
+          ] },
+        { "p": {"de":"Als Entschuldigung geht der Nachtisch aufs Haus.","t":"To apologise, the dessert is on the house."},
+          "a": [
+            {"de":"Das ist sehr nett, vielen Dank!","t":"That is very kind, thank you very much!"},
+            {"de":"Das ist sehr weit, oder?","t":"That is very far, isn't it?"},
+            {"de":"Das ist mein Reisepass.","t":"This is my passport."}
+          ] }
+      ]
+    },
+    {
+      "id": "restaurant-breakfast", "group": "restaurant", "title": "Frühstück im Café", "em": "☕", "desc": "Kaffee, Croissant und Saft bestellen.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Was möchten Sie?","t":"Good morning! What would you like?"},
+          "a": [
+            {"de":"Einen Milchkaffee und ein Croissant, bitte.","t":"A latte and a croissant, please."},
+            {"de":"Zwei Nächte, bitte.","t":"Two nights, please."},
+            {"de":"Zum Bahnhof, bitte.","t":"To the station, please."}
+          ] },
+        { "p": {"de":"Möchten Sie auch einen frischen Orangensaft?","t":"Would you also like a fresh orange juice?"},
+          "a": [
+            {"de":"Ja, gern. Einen kleinen, bitte.","t":"Yes, please. A small one."},
+            {"de":"Ja, ich habe eine Reservierung.","t":"Yes, I have a reservation."},
+            {"de":"Ja, es ist sehr steil.","t":"Yes, it is very steep."}
+          ] },
+        { "p": {"de":"Zum Mitnehmen oder zum Hiertrinken?","t":"To go or for here?"},
+          "a": [
+            {"de":"Zum Hiertrinken. Kann ich mich ans Fenster setzen?","t":"For here. Can I sit by the window?"},
+            {"de":"Zum Mitnehmen. Mein Flug ist gestrichen.","t":"To go. My flight is cancelled."},
+            {"de":"Zum Hiertrinken. Ich brauche ein Rezept.","t":"For here. I need a prescription."}
+          ] },
+        { "p": {"de":"Natürlich. Das macht sechs Euro fünfzig.","t":"Of course. That's six fifty."},
+          "a": [
+            {"de":"Hier, bitte. Stimmt so.","t":"Here you are. Keep the change."},
+            {"de":"Hier, bitte. Das ist mein Ausweis.","t":"Here you are. This is my ID."},
+            {"de":"Hier, bitte. Wo ist das Gleis?","t":"Here you are. Where is the platform?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi", "group": "taxi", "title": "Zum Flughafen", "em": "🚕", "desc": "Ziel nennen, Gepäck, Preis und Bezahlen.",
       "turns": [
         { "p": {"de":"Hallo! Wohin möchten Sie?","t":"Hello! Where would you like to go?"},
           "a": [
@@ -1367,7 +1489,123 @@
       ]
     },
     {
-      "id": "hotel", "title": "Im Hotel", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
+      "id": "taxi-call", "group": "taxi", "title": "Taxi bestellen", "em": "📞", "desc": "Am Telefon ein Taxi zum Hotel rufen.",
+      "turns": [
+        { "p": {"de":"Taxizentrale, guten Abend!","t":"Taxi service, good evening!"},
+          "a": [
+            {"de":"Guten Abend, ich brauche ein Taxi, bitte.","t":"Good evening, I need a taxi, please."},
+            {"de":"Guten Abend, einen Tisch für zwei.","t":"Good evening, a table for two."},
+            {"de":"Guten Abend, ich habe Halsschmerzen.","t":"Good evening, I have a sore throat."}
+          ] },
+        { "p": {"de":"Wo sollen wir Sie abholen?","t":"Where should we pick you up?"},
+          "a": [
+            {"de":"Vor dem Hotel Miramar.","t":"In front of the Hotel Miramar."},
+            {"de":"Mit Milch und Zucker.","t":"With milk and sugar."},
+            {"de":"Im dritten Stock.","t":"On the third floor."}
+          ] },
+        { "p": {"de":"Und wohin möchten Sie fahren?","t":"And where would you like to go?"},
+          "a": [
+            {"de":"In die Altstadt, zum Hauptplatz.","t":"To the old town, to the main square."},
+            {"de":"Zwei Kugeln Eis, bitte.","t":"Two scoops of ice cream, please."},
+            {"de":"Ich habe es verloren.","t":"I lost it."}
+          ] },
+        { "p": {"de":"Das Taxi ist in zehn Minuten da.","t":"The taxi will be there in ten minutes."},
+          "a": [
+            {"de":"Perfekt, danke. Bis gleich!","t":"Perfect, thanks. See you soon!"},
+            {"de":"Perfekt, die Suppe ist lecker.","t":"Perfect, the soup is delicious."},
+            {"de":"Perfekt, ich bin allergisch.","t":"Perfect, I am allergic."}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-address", "group": "taxi", "title": "Mit Adresse zum Hotel", "em": "📍", "desc": "Eine Adresse zeigen und unterwegs nachfragen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Wohin geht's?","t":"Hello! Where to?"},
+          "a": [
+            {"de":"Zu dieser Adresse, bitte. Hier auf dem Handy.","t":"To this address, please. Here on my phone."},
+            {"de":"Eine Flasche Rotwein, bitte.","t":"A bottle of red wine, please."},
+            {"de":"Zweimal täglich nach dem Essen.","t":"Twice a day after meals."}
+          ] },
+        { "p": {"de":"Ah, das ist in der Nähe vom Hafen.","t":"Ah, that's near the harbour."},
+          "a": [
+            {"de":"Wie lange dauert die Fahrt ungefähr?","t":"About how long is the ride?"},
+            {"de":"Wie viel kostet das Zimmer?","t":"How much is the room?"},
+            {"de":"Haben Sie das in Rot?","t":"Do you have this in red?"}
+          ] },
+        { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"About fifteen minutes if there's no traffic jam."},
+          "a": [
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Good. Could you turn the air conditioning down a bit?"},
+            {"de":"Gut. Ich nehme den Fisch.","t":"Good. I'll have the fish."},
+            {"de":"Gut. Wo ist die Umkleidekabine?","t":"Good. Where is the fitting room?"}
+          ] },
+        { "p": {"de":"Wir sind da. Das Hotel ist dort links.","t":"Here we are. The hotel is over there on the left."},
+          "a": [
+            {"de":"Vielen Dank! Was bin ich Ihnen schuldig?","t":"Thank you! What do I owe you?"},
+            {"de":"Vielen Dank! Ich habe Fieber.","t":"Thank you! I have a fever."},
+            {"de":"Vielen Dank! Ein Bier, bitte.","t":"Thank you! A beer, please."}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-hurry", "group": "taxi", "title": "Eilig zum Bahnhof", "em": "⏱️", "desc": "Den Fahrer bitten, sich zu beeilen.",
+      "turns": [
+        { "p": {"de":"Wohin, bitte?","t":"Where to, please?"},
+          "a": [
+            {"de":"Zum Hauptbahnhof, bitte. Ich habe es eilig.","t":"To the main station, please. I'm in a hurry."},
+            {"de":"Zum Arzt, ich habe Hunger.","t":"To the doctor, I'm hungry."},
+            {"de":"Ins Bett, ich bin müde.","t":"To bed, I'm tired."}
+          ] },
+        { "p": {"de":"Wann fährt Ihr Zug?","t":"When does your train leave?"},
+          "a": [
+            {"de":"In zwanzig Minuten. Schaffen wir das?","t":"In twenty minutes. Will we make it?"},
+            {"de":"Mit Karte, wenn es geht.","t":"By card, if possible."},
+            {"de":"Am Fenster, bitte.","t":"By the window, please."}
+          ] },
+        { "p": {"de":"Das wird knapp, aber ich nehme eine Abkürzung.","t":"It'll be tight, but I'll take a shortcut."},
+          "a": [
+            {"de":"Super, vielen Dank!","t":"Great, thank you so much!"},
+            {"de":"Super, ich nehme die Suppe!","t":"Great, I'll have the soup!"},
+            {"de":"Super, mein Zimmer ist laut!","t":"Great, my room is noisy!"}
+          ] },
+        { "p": {"de":"So, wir sind da. Ihr Zug fährt vom Gleis drei.","t":"Here we are. Your train leaves from platform three."},
+          "a": [
+            {"de":"Danke! Hier sind dreißig Euro, stimmt so.","t":"Thanks! Here's thirty euros, keep the change."},
+            {"de":"Danke! Ich bin Vegetarier.","t":"Thanks! I'm vegetarian."},
+            {"de":"Danke! Wo ist der Strand?","t":"Thanks! Where is the beach?"}
+          ] }
+      ]
+    },
+    {
+      "id": "taxi-receipt", "group": "taxi", "title": "Quittung & Umweg", "em": "🧾", "desc": "Nach einem Umweg fragen und eine Quittung bekommen.",
+      "turns": [
+        { "p": {"de":"Das macht fünfundvierzig Euro.","t":"That's forty-five euros."},
+          "a": [
+            {"de":"Fünfundvierzig? Letztes Mal hat es nur dreißig gekostet.","t":"Forty-five? Last time it was only thirty."},
+            {"de":"Fünfundvierzig Minuten bis zum Strand?","t":"Forty-five minutes to the beach?"},
+            {"de":"Ich bin fünfundvierzig Jahre alt.","t":"I am forty-five years old."}
+          ] },
+        { "p": {"de":"Die Brücke war gesperrt, deshalb musste ich einen Umweg fahren.","t":"The bridge was closed, so I had to take a detour."},
+          "a": [
+            {"de":"Ach so, verstehe. Das wusste ich nicht.","t":"Oh, I see. I didn't know that."},
+            {"de":"Ach so, dann nehme ich zwei Kugeln.","t":"Oh, then I'll take two scoops."},
+            {"de":"Ach so, ich habe eine Reservierung.","t":"Oh, I have a reservation."}
+          ] },
+        { "p": {"de":"Möchten Sie mit Karte oder bar zahlen?","t":"Would you like to pay by card or cash?"},
+          "a": [
+            {"de":"Mit Karte. Und ich brauche eine Quittung, bitte.","t":"By card. And I need a receipt, please."},
+            {"de":"Mit Karte. Und ein Glas Wasser, bitte.","t":"By card. And a glass of water, please."},
+            {"de":"Mit Karte. Und ich habe keine Kinder.","t":"By card. And I don't have children."}
+          ] },
+        { "p": {"de":"Hier ist Ihre Quittung. Einen schönen Tag noch!","t":"Here is your receipt. Have a nice day!"},
+          "a": [
+            {"de":"Danke, Ihnen auch!","t":"Thanks, you too!"},
+            {"de":"Danke, mir ist schlecht!","t":"Thanks, I feel sick!"},
+            {"de":"Danke, für zwei Nächte!","t":"Thanks, for two nights!"}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel", "group": "hotel", "title": "Einchecken", "em": "🏨", "desc": "Einchecken, Zimmer und Frühstück.",
       "turns": [
         { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Hello! Can I help you?"},
           "a": [
@@ -1396,7 +1634,123 @@
       ]
     },
     {
-      "id": "pharmacy", "title": "In der Apotheke", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
+      "id": "hotel-walkin", "group": "hotel", "title": "Ohne Reservierung", "em": "🛎️", "desc": "Spontan nach einem freien Zimmer fragen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Was kann ich für Sie tun?","t":"Good evening! What can I do for you?"},
+          "a": [
+            {"de":"Haben Sie noch ein Zimmer für heute Nacht?","t":"Do you still have a room for tonight?"},
+            {"de":"Ich hätte gern die Speisekarte.","t":"I'd like the menu."},
+            {"de":"Der Reifen ist platt.","t":"The tyre is flat."}
+          ] },
+        { "p": {"de":"Wir haben noch ein Doppelzimmer frei, aber nur mit Blick auf den Hof.","t":"We still have a double room, but only overlooking the courtyard."},
+          "a": [
+            {"de":"Das ist kein Problem. Was kostet es pro Nacht?","t":"That's no problem. How much is it per night?"},
+            {"de":"Das ist kein Problem. Ich habe Bauchschmerzen.","t":"That's no problem. I have a stomachache."},
+            {"de":"Das ist kein Problem. Zum Bahnhof, bitte.","t":"That's no problem. To the station, please."}
+          ] },
+        { "p": {"de":"Hundertzehn Euro mit Frühstück.","t":"A hundred and ten euros with breakfast."},
+          "a": [
+            {"de":"Gut, ich nehme es für eine Nacht.","t":"Good, I'll take it for one night."},
+            {"de":"Gut, ich nehme die Nudeln.","t":"Good, I'll have the pasta."},
+            {"de":"Gut, ich fahre mit dem Bus.","t":"Good, I'll go by bus."}
+          ] },
+        { "p": {"de":"Darf ich bitte Ihren Ausweis sehen?","t":"May I see your ID, please?"},
+          "a": [
+            {"de":"Natürlich, hier ist mein Reisepass.","t":"Of course, here is my passport."},
+            {"de":"Natürlich, hier ist die Suppe.","t":"Of course, here is the soup."},
+            {"de":"Natürlich, ich habe Kopfschmerzen.","t":"Of course, I have a headache."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-problem", "group": "hotel", "title": "Problem mit dem Zimmer", "em": "🔧", "desc": "An der Rezeption melden, dass etwas kaputt ist.",
+      "turns": [
+        { "p": {"de":"Rezeption, guten Abend. Wie kann ich helfen?","t":"Reception, good evening. How can I help?"},
+          "a": [
+            {"de":"Die Klimaanlage in Zimmer 214 funktioniert nicht.","t":"The air conditioning in room 214 isn't working."},
+            {"de":"Ich hätte gern zwei Kugeln Vanille.","t":"I'd like two scoops of vanilla."},
+            {"de":"Ich komme aus der Schweiz.","t":"I'm from Switzerland."}
+          ] },
+        { "p": {"de":"Oh, das tut mir leid. Ich schicke sofort jemanden hoch.","t":"Oh, I'm sorry. I'll send someone up right away."},
+          "a": [
+            {"de":"Danke. Und das Licht im Bad geht auch nicht.","t":"Thanks. And the light in the bathroom doesn't work either."},
+            {"de":"Danke. Und zwei Fahrkarten nach Paris.","t":"Thanks. And two tickets to Paris."},
+            {"de":"Danke. Und ich bin Vegetarier.","t":"Thanks. And I'm vegetarian."}
+          ] },
+        { "p": {"de":"Wenn wir es nicht reparieren können, geben wir Ihnen ein anderes Zimmer.","t":"If we can't fix it, we'll give you another room."},
+          "a": [
+            {"de":"Das wäre sehr nett, danke.","t":"That would be very kind, thanks."},
+            {"de":"Das wäre sehr scharf, danke.","t":"That would be very spicy, thanks."},
+            {"de":"Das ist mein Bruder.","t":"This is my brother."}
+          ] },
+        { "p": {"de":"Der Techniker ist in fünf Minuten bei Ihnen.","t":"The technician will be with you in five minutes."},
+          "a": [
+            {"de":"Perfekt, ich warte im Zimmer.","t":"Perfect, I'll wait in the room."},
+            {"de":"Perfekt, ich nehme den Zug.","t":"Perfect, I'll take the train."},
+            {"de":"Perfekt, Größe L, bitte.","t":"Perfect, size L, please."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-tips", "group": "hotel", "title": "Tipps an der Rezeption", "em": "🗺️", "desc": "Nach Restaurants und Sehenswürdigkeiten fragen.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Haben Sie gut geschlafen?","t":"Good morning! Did you sleep well?"},
+          "a": [
+            {"de":"Ja, danke. Können Sie mir ein gutes Restaurant empfehlen?","t":"Yes, thanks. Can you recommend a good restaurant?"},
+            {"de":"Ja, danke. Mein Koffer ist kaputt.","t":"Yes, thanks. My suitcase is broken."},
+            {"de":"Ja, danke. Ich nehme den Fisch.","t":"Yes, thanks. I'll have the fish."}
+          ] },
+        { "p": {"de":"Gern! Das Lokal am Hafen ist sehr beliebt, besonders für Fisch.","t":"Sure! The place by the harbour is very popular, especially for fish."},
+          "a": [
+            {"de":"Klingt gut. Muss man dort reservieren?","t":"Sounds good. Do you need to book there?"},
+            {"de":"Klingt gut. Ich habe Fieber.","t":"Sounds good. I have a fever."},
+            {"de":"Klingt gut. Wo ist Gleis vier?","t":"Sounds good. Where is platform four?"}
+          ] },
+        { "p": {"de":"Am Wochenende ja. Soll ich für Sie anrufen?","t":"At the weekend, yes. Shall I call for you?"},
+          "a": [
+            {"de":"Ja, gern. Für heute Abend, zwei Personen.","t":"Yes, please. For tonight, two people."},
+            {"de":"Ja, gern. Ein Eis mit Sahne.","t":"Yes, please. An ice cream with cream."},
+            {"de":"Ja, gern. Ich habe meinen Schlüssel verloren.","t":"Yes, please. I lost my key."}
+          ] },
+        { "p": {"de":"Erledigt! Und morgen sollten Sie unbedingt die Burg besichtigen.","t":"Done! And tomorrow you should definitely visit the castle."},
+          "a": [
+            {"de":"Danke für die Tipps! Wie komme ich dorthin?","t":"Thanks for the tips! How do I get there?"},
+            {"de":"Danke für die Tipps! Ich bin schwanger.","t":"Thanks for the tips! I'm pregnant."},
+            {"de":"Danke für die Tipps! Die Suppe ist kalt.","t":"Thanks for the tips! The soup is cold."}
+          ] }
+      ]
+    },
+    {
+      "id": "hotel-checkout", "group": "hotel", "title": "Auschecken", "em": "🧳", "desc": "Die Rechnung prüfen und das Gepäck abgeben.",
+      "turns": [
+        { "p": {"de":"Guten Morgen! Möchten Sie auschecken?","t":"Good morning! Would you like to check out?"},
+          "a": [
+            {"de":"Ja, Zimmer 305. Hier ist der Schlüssel.","t":"Yes, room 305. Here is the key."},
+            {"de":"Ja, einen Tisch am Fenster.","t":"Yes, a table by the window."},
+            {"de":"Ja, ich habe Halsschmerzen.","t":"Yes, I have a sore throat."}
+          ] },
+        { "p": {"de":"Hier ist Ihre Rechnung. Hatten Sie etwas aus der Minibar?","t":"Here is your bill. Did you have anything from the minibar?"},
+          "a": [
+            {"de":"Nein, nichts. Aber hier steht zweimal das Abendessen.","t":"No, nothing. But dinner is listed twice here."},
+            {"de":"Nein, nichts. Ich suche die Apotheke.","t":"No, nothing. I'm looking for the pharmacy."},
+            {"de":"Nein, nichts. Der Bus kommt um acht.","t":"No, nothing. The bus comes at eight."}
+          ] },
+        { "p": {"de":"Sie haben recht, das korrigiere ich. Entschuldigung!","t":"You're right, I'll correct that. Sorry!"},
+          "a": [
+            {"de":"Kein Problem. Kann ich mein Gepäck bis heute Nachmittag hierlassen?","t":"No problem. Can I leave my luggage here until this afternoon?"},
+            {"de":"Kein Problem. Ich nehme den Salat.","t":"No problem. I'll have the salad."},
+            {"de":"Kein Problem. Ich bin verheiratet.","t":"No problem. I'm married."}
+          ] },
+        { "p": {"de":"Natürlich, wir bewahren es für Sie auf. Gute Reise!","t":"Of course, we'll keep it for you. Have a good trip!"},
+          "a": [
+            {"de":"Vielen Dank für alles! Es war sehr schön hier.","t":"Thank you for everything! It was lovely here."},
+            {"de":"Vielen Dank! Wie viel kostet die Fahrkarte?","t":"Thank you! How much is the ticket?"},
+            {"de":"Vielen Dank! Ich habe mir den Knöchel verstaucht.","t":"Thank you! I sprained my ankle."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy", "group": "pharmacy", "title": "Halsschmerzen", "em": "💊", "desc": "Beschwerden schildern und Medikamente bekommen.",
       "turns": [
         { "p": {"de":"Guten Tag, was kann ich für Sie tun?","t":"Hello, what can I do for you?"},
           "a": [
@@ -1421,6 +1775,122 @@
             {"de":"Danke. Brauche ich ein Rezept?","t":"Thank you. Do I need a prescription?"},
             {"de":"Danke. Ist das Frühstück inklusive?","t":"Thank you. Is breakfast included?"},
             {"de":"Ja, zwei Bier, bitte.","t":"Yes, two beers, please."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-sunburn", "group": "pharmacy", "title": "Sonnenbrand", "em": "☀️", "desc": "Etwas gegen Sonnenbrand und eine gute Sonnencreme kaufen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Kann ich Ihnen helfen?","t":"Hello! Can I help you?"},
+          "a": [
+            {"de":"Ja, ich habe einen starken Sonnenbrand.","t":"Yes, I have a bad sunburn."},
+            {"de":"Ja, einen Tisch für vier.","t":"Yes, a table for four."},
+            {"de":"Ja, zum Flughafen.","t":"Yes, to the airport."}
+          ] },
+        { "p": {"de":"Oh, das sieht schmerzhaft aus. Diese kühlende Creme hilft gut.","t":"Oh, that looks painful. This cooling cream helps a lot."},
+          "a": [
+            {"de":"Wie oft soll ich sie auftragen?","t":"How often should I apply it?"},
+            {"de":"Wie oft fährt der Bus?","t":"How often does the bus run?"},
+            {"de":"Wie viele Nächte bleiben Sie?","t":"How many nights are you staying?"}
+          ] },
+        { "p": {"de":"Drei- bis viermal am Tag. Und bleiben Sie ein paar Tage aus der Sonne.","t":"Three or four times a day. And stay out of the sun for a few days."},
+          "a": [
+            {"de":"Verstanden. Haben Sie auch Sonnencreme mit Faktor fünfzig?","t":"Understood. Do you also have sunscreen with factor fifty?"},
+            {"de":"Verstanden. Zwei Bier, bitte.","t":"Understood. Two beers, please."},
+            {"de":"Verstanden. Wo ist der Ausgang zum Gate?","t":"Understood. Where is the way to the gate?"}
+          ] },
+        { "p": {"de":"Ja, hier. Zusammen macht das achtzehn Euro.","t":"Yes, here. That's eighteen euros altogether."},
+          "a": [
+            {"de":"Danke, ich zahle mit Karte.","t":"Thanks, I'll pay by card."},
+            {"de":"Danke, ich bleibe zwei Wochen.","t":"Thanks, I'm staying two weeks."},
+            {"de":"Danke, ich nehme die Treppe.","t":"Thanks, I'll take the stairs."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-stomach", "group": "pharmacy", "title": "Magenprobleme", "em": "🤢", "desc": "Durchfall und Übelkeit beschreiben und Rat bekommen.",
+      "turns": [
+        { "p": {"de":"Was fehlt Ihnen denn?","t":"What seems to be the problem?"},
+          "a": [
+            {"de":"Mir ist seit gestern schlecht, und ich habe Durchfall.","t":"I've felt sick since yesterday, and I have diarrhoea."},
+            {"de":"Ich hätte gern ein Doppelzimmer.","t":"I'd like a double room."},
+            {"de":"Das Wasser ist warm.","t":"The water is warm."}
+          ] },
+        { "p": {"de":"Haben Sie auch Fieber?","t":"Do you also have a fever?"},
+          "a": [
+            {"de":"Nein, aber ich bin sehr müde.","t":"No, but I'm very tired."},
+            {"de":"Nein, aber ich habe Hunger auf Pizza.","t":"No, but I fancy pizza."},
+            {"de":"Nein, aber der Zug ist voll.","t":"No, but the train is full."}
+          ] },
+        { "p": {"de":"Trinken Sie viel Wasser und essen Sie nur leichte Sachen, zum Beispiel Reis.","t":"Drink lots of water and eat only light food, for example rice."},
+          "a": [
+            {"de":"Gibt es auch ein Medikament dagegen?","t":"Is there also a medicine for it?"},
+            {"de":"Gibt es auch ein Zimmer mit Balkon?","t":"Is there also a room with a balcony?"},
+            {"de":"Gibt es auch eine Führung auf Deutsch?","t":"Is there also a tour in German?"}
+          ] },
+        { "p": {"de":"Ja, diese Tabletten. Wenn es in zwei Tagen nicht besser ist, gehen Sie zum Arzt.","t":"Yes, these tablets. If it isn't better in two days, see a doctor."},
+          "a": [
+            {"de":"Mache ich. Vielen Dank für Ihre Hilfe!","t":"I will. Thank you for your help!"},
+            {"de":"Mache ich. Ein Eis, bitte!","t":"I will. An ice cream, please!"},
+            {"de":"Mache ich. Wo kann ich parken?","t":"I will. Where can I park?"}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-sting", "group": "pharmacy", "title": "Insektenstich", "em": "🦟", "desc": "Einen geschwollenen Mückenstich behandeln lassen.",
+      "turns": [
+        { "p": {"de":"Guten Abend! Was kann ich für Sie tun?","t":"Good evening! What can I do for you?"},
+          "a": [
+            {"de":"Mich hat etwas gestochen, und der Arm ist ganz geschwollen.","t":"Something stung me, and my arm is all swollen."},
+            {"de":"Ich möchte gern auschecken.","t":"I'd like to check out."},
+            {"de":"Ich nehme die Pizza.","t":"I'll have the pizza."}
+          ] },
+        { "p": {"de":"Zeigen Sie mal. Juckt es stark?","t":"Let me see. Does it itch a lot?"},
+          "a": [
+            {"de":"Ja, sehr. Und es tut weh.","t":"Yes, a lot. And it hurts."},
+            {"de":"Ja, sehr. Und der Koffer ist schwer.","t":"Yes, a lot. And the suitcase is heavy."},
+            {"de":"Ja, sehr. Und der Wein ist gut.","t":"Yes, a lot. And the wine is good."}
+          ] },
+        { "p": {"de":"Sind Sie gegen etwas allergisch?","t":"Are you allergic to anything?"},
+          "a": [
+            {"de":"Nicht dass ich wüsste.","t":"Not that I know of."},
+            {"de":"Nicht heute, morgen.","t":"Not today, tomorrow."},
+            {"de":"Nicht mit Milch, bitte.","t":"Not with milk, please."}
+          ] },
+        { "p": {"de":"Dann nehmen Sie dieses Gel. Wenn Sie Atemnot bekommen, rufen Sie sofort den Notruf.","t":"Then use this gel. If you have trouble breathing, call the emergency number right away."},
+          "a": [
+            {"de":"Gut, das mache ich. Danke!","t":"All right, I'll do that. Thanks!"},
+            {"de":"Gut, dann zwei Nächte.","t":"All right, two nights then."},
+            {"de":"Gut, dann den Nachtisch.","t":"All right, the dessert then."}
+          ] }
+      ]
+    },
+    {
+      "id": "pharmacy-child", "group": "pharmacy", "title": "Fieber beim Kind", "em": "🧒", "desc": "Für ein krankes Kind etwas gegen Fieber holen.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Was brauchen Sie?","t":"Hello! What do you need?"},
+          "a": [
+            {"de":"Meine Tochter hat Fieber. Sie ist vier Jahre alt.","t":"My daughter has a fever. She is four years old."},
+            {"de":"Mein Koffer hat Rollen.","t":"My suitcase has wheels."},
+            {"de":"Meine Tochter möchte schwimmen.","t":"My daughter wants to swim."}
+          ] },
+        { "p": {"de":"Wie hoch ist das Fieber?","t":"How high is the fever?"},
+          "a": [
+            {"de":"Neununddreißig Grad, seit heute Morgen.","t":"Thirty-nine degrees, since this morning."},
+            {"de":"Neununddreißig Euro, mit Frühstück.","t":"Thirty-nine euros, with breakfast."},
+            {"de":"Neununddreißig Minuten zu Fuß.","t":"Thirty-nine minutes on foot."}
+          ] },
+        { "p": {"de":"Ich gebe Ihnen einen Fiebersaft für Kinder. Wie viel wiegt sie?","t":"I'll give you a fever syrup for children. How much does she weigh?"},
+          "a": [
+            {"de":"Ungefähr sechzehn Kilo.","t":"About sixteen kilos."},
+            {"de":"Ungefähr sechzehn Uhr.","t":"About four o'clock."},
+            {"de":"Ungefähr sechzehn Kilometer.","t":"About sixteen kilometres."}
+          ] },
+        { "p": {"de":"Dann geben Sie ihr acht Milliliter, höchstens viermal am Tag.","t":"Then give her eight millilitres, at most four times a day."},
+          "a": [
+            {"de":"Danke. Und wann sollen wir zum Arzt gehen?","t":"Thanks. And when should we see a doctor?"},
+            {"de":"Danke. Und wann fährt die Fähre?","t":"Thanks. And when does the ferry leave?"},
+            {"de":"Danke. Und wo ist die Umkleidekabine?","t":"Thanks. And where is the fitting room?"}
           ] }
       ]
     }

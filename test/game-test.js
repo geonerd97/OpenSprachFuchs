@@ -259,7 +259,15 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
 // Dialogues: every scene of every language can be played to the end; a wrong pick counts as a mistake.
 for (const code of codes) {
   g.setCourse(code); g.st.course = code;
-  if (g.dialogsFor(code).length !== 4) fail("Gesprächsanzahl", code);
+  if (g.dialogsFor(code).length !== 20) fail("Gesprächsanzahl", code, g.dialogsFor(code).length);
+  for (const grp of ["restaurant", "taxi", "hotel", "pharmacy"]) if (g.dialogsFor(code).filter(d => d.group === grp).length !== 5) fail("Nicht 5 Gespräche in", grp, code);
+  // Practice tab: categories with progress, a tap opens the five dialogues of one category.
+  g.ui.tab = "practice"; g.ui.dgroup = null; g.view = "home";
+  let h = g.homeHTML();
+  if ((h.match(/data-act="dgroup"/g) || []).length !== 4 || h.includes('data-act="dialog"')) fail("Gesprächs-Kategorien falsch", code);
+  g.click("dgroup", { g: "taxi" }); h = g.homeHTML();
+  if ((h.match(/data-act="dialog"/g) || []).length !== 5 || !h.includes("Im Taxi")) fail("Kategorie Taxi zeigt nicht 5 Gespräche", code);
+  g.ui.dgroup = null; g.ui.tab = "path";
   for (const sc of g.dialogsFor(code)) {
     g.startDialog(sc.id);
     let first = true;

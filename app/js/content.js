@@ -11,7 +11,7 @@ const packs = { busy: "", error: "", loading: false };
 const list = v => Array.isArray(v) ? v : [v];
 function courseFromPack(p) {
   return { code: p.short, name: p.name, voice: p.voice, c: p.color, note: p.note, art: new RegExp(p.articles || "(?!)", "i"),
-    skip: p.gapSkip || [], gloss: p.glossary || {}, units: p.units, dialogs: p.dialogs || [] };
+    skip: p.gapSkip || [], gloss: p.glossary || {}, units: p.units, dialogs: p.dialogs || [], dialogGroups: p.dialogGroups || {} };
 }
 function validPack(p) {
   return p && p.format === 1 && /^[a-z]{2,3}$/.test(p.code) && Array.isArray(p.units) && p.units.length > 0
