@@ -15,8 +15,8 @@ android {
         applicationId = "de.opensprachfuchs.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 5
-        versionName = "0.0.3"
+        versionCode = 6
+        versionName = "0.0.4"
     }
 
     // Release signing: android/keystore.properties (not in Git), see README "Release bauen".

@@ -25,7 +25,7 @@ Verantwortlich/Kontakt: Martin Reger, opensprachfuchs@gmx.net (ohne Anschrift, E
 | Pfad | Inhalt |
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten, Systemschriften. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.3 (versionCode 5, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.4 (versionCode 6, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
