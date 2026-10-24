@@ -93,7 +93,7 @@ function dialogPick(i) {
     d.log.push({ who: "p", line: sc.turns[d.turn].p });
     d.order = shuffle([0, 1, 2]);
     const next = d.log[d.log.length - 1].line.t;
-    if (!listenPaused()) setTimeout(() => { if (L && L.dlg === d) speak(next); }, 1400);
+    if (!listenPaused()) speak(next, false, true); // after your own line, not on top of it
   } else { L.checked = true; L.res = { ok: true, given: "" }; }
   save(); render();
 }

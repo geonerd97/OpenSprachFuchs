@@ -193,6 +193,18 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
             return available
         }
 
+        /** Speaks [text] after whatever is being said now (a short pause in between), e.g. the next line in a dialogue. */
+        @JavascriptInterface
+        fun speakQueued(text: String, lang: String, slow: Boolean): Boolean {
+            val engine = tts ?: return false
+            if (!ttsReady) return false
+            val available = engine.setLanguage(Locale.forLanguageTag(lang)) >= TextToSpeech.LANG_AVAILABLE
+            engine.setSpeechRate(if (slow) 0.6f else 0.95f)
+            engine.playSilentUtterance(500, TextToSpeech.QUEUE_ADD, "opensprachfuchs-pause")
+            engine.speak(text, TextToSpeech.QUEUE_ADD, null, "opensprachfuchs-next")
+            return available
+        }
+
         @JavascriptInterface
         fun stop() {
             tts?.stop()

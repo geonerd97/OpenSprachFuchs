@@ -57,7 +57,7 @@ Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PU
 - Vor jedem Build führt `buildPacks` (Exec, Node; Pfad über `-PnodePath`) `tools/packs.mjs build` aus. `copyWeb` synchronisiert `../app` und die gebauten Pakete nach `app/src/main/assets/` (gitignored).
 - `MainActivity.kt`: WebView über `WebViewAssetLoader`, nur HTTPS (keine Cleartext-Konfiguration mehr).
 - Brücke `AndroidBridge`:
-  - `speak`, `stop`, `hasVoice`
+  - `speak`, `speakQueued` (nach dem aktuellen Satz), `stop`, `hasVoice`
   - `canRecognize`, `startListening`, `stopListening`
   - `setReminder`, `reportDay` (für `Reminders.kt`)
   - `appVersion`, `copy`, `share`, `openUrl`
@@ -72,6 +72,7 @@ Lernweg mit 40 Einheiten à 4 Lektionen = 160 Lektionen pro Sprache, je 10 Einhe
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
 - 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo (seit 2026-10-24, vom Maintainer): lächelnder Comic-Fuchskopf (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon: ausgeschnittener Fuchs in `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FEF6E9`, 57 dp groß, damit die Ohren auch in runden Masken passen). Keine Eule (Abgrenzung zu Duolingo).
+- 2026-10-24: Issue #5 (Gespräche sprechen übereinander): Die Antwort des Gegenübers wird jetzt hinter den eigenen Satz in die Warteschlange der Sprachausgabe gestellt (`speak(text, slow, queued)`, Brücke `speakQueued` mit QUEUE_ADD und 0,5 s Pause) statt nach festen 1,4 s. Update-Mitteilung mit Dialog und direktem APK-Download.
 - 2026-10-24: Italienisch als fünfte Sprache (alle 40 Einheiten und 4 Gespräche, `it-IT`, Übersetzung von Claude, ungeprüft). Neues Logo (Fuchskopf). Issue #1 geschlossen.
 - 2026-10-24: 20 neue Einheiten pro Sprache (A1: Familie, Kleidung, Zuhause; A2: Flughafen, Strand, Handy; B1: Wohnung, Arbeit, Kochen, Bank, Natur; B2: Umwelt, Medien, Bewerbung, Gefühle, Behörden, Gesund leben, Technik, Reklamieren, Gesellschaft), Stufen-Reiter im Lernweg. Übersetzungen von Claude, noch nicht von Muttersprachlern geprüft.
 - 2026-10-23/24: Repository öffentlich, Release 0.0.1 (APK nachträglich mit korrigiertem Update-Check ersetzt).

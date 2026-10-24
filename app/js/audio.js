@@ -18,14 +18,23 @@ function sfx(kind) {
 }
 const browserTTS = () => typeof window !== "undefined" && "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined";
 const hasTTS = () => APP || browserTTS();
-function speak(text, slow) {
+/* speak() replaces whatever is being said; with `queued` the text waits until the current speech has finished
+   (dialogues: the partner answers after your line, instead of both talking at once, issue #5). */
+function speak(text, slow, queued) {
   if (!st.settings.audio) return;
-  if (APP) { try { window.AndroidBridge.speak(text, C.voice, !!slow); } catch (e) {} return; }
+  if (APP) {
+    try {
+      const b = window.AndroidBridge;
+      if (queued && b.speakQueued) b.speakQueued(text, C.voice, !!slow); else b.speak(text, C.voice, !!slow);
+    } catch (e) {}
+    return;
+  }
   if (!browserTTS()) return;
   try {
     const synth = speechSynthesis, u = new SpeechSynthesisUtterance(text);
     u.lang = C.voice; u.rate = slow ? .6 : .95;
-    synth.cancel(); synth.speak(u);
+    if (!queued) synth.cancel();
+    synth.speak(u);
   } catch (e) {}
 }
 function stopSpeaking() {

@@ -307,7 +307,7 @@ g.view = "home";
 // App mode: with an AndroidBridge the game speaks through the phone, listens for speaking tasks and handles back.
 {
   const spoken = [], calls = [];
-  const a = loadGame({ AndroidBridge: { speak: (t, lang) => { spoken.push(lang + ":" + t); return true; }, stop() {},
+  const a = loadGame({ AndroidBridge: { speak: (t, lang) => { spoken.push(lang + ":" + t); return true; }, speakQueued: (t, lang) => { spoken.push("queued:" + lang + ":" + t); return true; }, stop() {},
     canRecognize: () => true, startListening: lang => calls.push("listen:" + lang), stopListening() {}, appVersion: () => "0.0.1",
     setReminder: (on, h, m) => calls.push(`reminder:${on}:${h}:${m}`), reportDay: () => calls.push("day"), copy: t => calls.push("copy:" + t), share() {}, openUrl() {} } });
   a.st.settings.audio = true;
@@ -329,6 +329,16 @@ g.view = "home";
     if (!a.L.checked || a.L.res.ok) fail("App: falsch gesprochener Satz angenommen");
     a.L.cur = Object.assign({}, sp); a.L.checked = false; a.pauseSpeaking();
     if (a.L.cur.type !== "bank") fail("App: Sprechen pausieren wandelt die Aufgabe nicht um");
+  }
+  // Issue #5: in a dialogue the partner's next line waits for your own line (queued), it does not talk over it.
+  {
+    a.setCourse("fr"); a.st.course = "fr"; a.st.listenOffUntil = 0; a.st.settings.audio = true;
+    const sc = a.dialogsFor("fr")[0];
+    a.startDialog(sc.id); spoken.length = 0;
+    a.dialogPick(a.L.dlg.order.indexOf(0));
+    const mine = sc.turns[0].a[0].t, next = sc.turns[1].p.t;
+    if (spoken[0] !== "fr-FR:" + mine || spoken[1] !== "queued:fr-FR:" + next || spoken.length !== 2) fail("Gespräch: Sätze nicht nacheinander gesprochen", JSON.stringify(spoken));
+    a.ui.modal = null; a.setCourse("en"); a.st.course = "en";
   }
   a.ui.modal = "settings"; if (!a.modalHTML().includes('data-k="reminder"')) fail("App: Erinnerung fehlt in den Einstellungen");
   a.ui.modal = null;
