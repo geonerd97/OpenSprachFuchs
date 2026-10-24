@@ -93,6 +93,7 @@ async function ensureRegistered() {
 /** A new account: a fresh key, registered right away when online, otherwise on the next start. */
 async function createAccount() {
   await useKey(newKey(), true);
+  st.keyCreated = dayStr(); st.keyChecked = false; save();
   acct.status = "offline";
   if (await ensureRegistered()) { acct.status = "ok"; await pushSave(); }
 }
@@ -114,7 +115,7 @@ async function signIn(input) {
   if (s.status === 200 && s.data.data) {
     try { adopt(await decryptState(s.data.data, acct.aes), s.data.savedAt); } catch (e) { acct.note = "Der gesicherte Spielstand ließ sich nicht entschlüsseln."; }
   } else await pushSave();
-  st.onboarded = true; save();
+  st.onboarded = true; st.keyChecked = true; save();
   loadFriends(); checkPackUpdates();
   return true;
 }
@@ -168,6 +169,7 @@ async function initAccount() {
   if (r.status !== 200) return;
   acct.friendCode = r.data.friendCode || ""; acct.status = "ok";
   await pullSave();
+  if (!st.keyCreated) { st.keyCreated = dayStr(); save(); } // accounts from before the reminder: count from today
   await reportLearningDay();
   await loadFriends();
   if (view === "home" && !ui.modal) render();
@@ -199,6 +201,19 @@ async function reportLearningDay() {
   const day = st.lastDay;
   const r = await api("POST", "day", { day });
   if (r.status === 200) { st.dayReported = day; save(); loadFriends(); }
+}
+/* Key safety: 3 days after the account was made the app asks whether the key is written down, and lets the player
+   prove it with the last four characters. "Später" asks again a week later. Signing in with the key counts as proof. */
+const KEY_REMIND_DAYS = 3;
+function keyReminderDue(now = Date.now()) {
+  if (!acct.key || acct.status === "none" || acct.status === "gone" || st.keyChecked || !st.keyCreated) return false;
+  if (now < (st.keyRemindAt || 0)) return false;
+  return now - Date.parse(st.keyCreated + "T00:00:00") >= KEY_REMIND_DAYS * 864e5;
+}
+function checkKeyEnd(input) {
+  const want = acct.key.replace(/-/g, "").slice(-4), got = String(input || "").toUpperCase().replace(/O/g, "0").replace(/[IL]/g, "1").replace(/[^0-9A-Z]/g, "");
+  if (got === want) { st.keyChecked = true; ui.keyMsg = "Passt! Dein Schlüssel ist gesichert."; save(); return true; }
+  ui.keyMsg = "Das stimmt nicht. Schau dir den Schlüssel oben noch einmal genau an."; return false;
 }
 const accountLine = () => acct.status === "ok" ? "Dein Fortschritt ist verschlüsselt gesichert."
   : acct.status === "offline" ? "Gerade keine Verbindung. Auf diesem Gerät ist alles gespeichert."

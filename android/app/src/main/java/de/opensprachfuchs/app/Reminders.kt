@@ -32,7 +32,11 @@ object Reminders {
 
     fun report(c: Context, lastDay: String, streak: Int) {
         prefs(c).edit().putString("lastDay", lastDay).putInt("streak", streak).apply()
+        StreakWidget.updateAll(c)
     }
+
+    /** The last learning day (yyyy-MM-dd, "" if none) and the streak, as the page last reported them. */
+    fun state(c: Context): Pair<String, Int> = prefs(c).let { it.getString("lastDay", "") .orEmpty() to it.getInt("streak", 0) }
 
     /** (Re)arms the daily alarm; inexact, so no special alarm permission is needed. */
     fun schedule(c: Context) {

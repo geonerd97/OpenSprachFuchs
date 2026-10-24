@@ -3,4 +3,8 @@
     <!-- Same ground colour as the game background, so the system bars blend in. -->
     <color name="bg">#EDF0F6</color>
     <color name="ic_launcher_bg">#FEF6E9</color>
+    <!-- Home-screen widget -->
+    <color name="widget_bg">#FEF6E9</color>
+    <color name="widget_text">#15203A</color>
+    <color name="widget_sub">#57627B</color>
 </resources>

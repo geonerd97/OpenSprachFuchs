@@ -325,7 +325,7 @@ function modalHTML() {
   if (ui.modal === "report") {
     const ex = L.cur;
     return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>Fehler melden</h2>
-      <p class="muted">Stimmt eine Übersetzung nicht, fehlt eine richtige Lösung oder klingt etwas komisch? Die Meldung geht ohne Bezug zu deinem Konto an das Projekt, damit die Inhalte korrigiert werden können.</p>
+      <p class="muted">Stimmt eine Übersetzung nicht, fehlt eine richtige Lösung oder klingt etwas komisch? Die Meldung geht ohne Bezug zu deinem Konto an das Projekt und wird als öffentliches Issue auf GitHub gesammelt, damit die Inhalte korrigiert werden können. Bitte nichts Persönliches in die Notiz schreiben.</p>
       <div class="wlist"><div><small class="muted">Aufgabe</small><b style="display:block">${esc(promptText(ex))}</b></div>
         <div><small class="muted">Erwartet</small><b style="display:block">${esc(correctText(ex))}</b></div>
         ${L.res.given ? `<div><small class="muted">Deine Antwort</small><b style="display:block">${esc(L.res.given)}</b></div>` : ""}</div>
@@ -381,7 +381,9 @@ function modalHTML() {
     return modal("Konto", `${ok ? `<div class="keybox"><small class="muted">Dein geheimer Schlüssel</small>
         <b class="key">${ui.showKey ? esc(acct.key) : "••••-••••-••••-••••"}</b>
         <div class="row"><button class="btn ghost" data-act="togglekey">${ui.showKey ? "Verbergen" : "Anzeigen"}</button><button class="btn ghost" data-act="copykey">Kopieren</button></div>
+        <button class="linkbtn" data-act="toggleqr">${ui.showQR ? "QR-Code verbergen" : "Als QR-Code zeigen"}</button>${ui.showQR ? qrBox() : ""}
         <small class="muted">Mit dem Schlüssel holst du deinen Fortschritt auf ein neues Handy. Wer ihn kennt, hat Zugriff auf dein Konto. Gib ihn niemandem.</small></div>
+      ${!st.keyChecked ? `<button class="btn ghost wide" data-act="keycheck">🔑 Prüfen, ob mein Schlüssel stimmt</button>` : `<p class="muted">🔑 Schlüssel geprüft und gesichert.</p>`}
       ${acct.friendCode ? `<div class="keybox"><small class="muted">Dein Freundescode (darfst du weitergeben)</small><b class="key">${esc(acct.friendCode)}</b>
         <div class="row"><button class="btn ghost" data-act="sharecode">Teilen</button><button class="btn ghost" data-act="newcode">Neuen Code erstellen</button></div></div>` : ""}
       <p class="muted">${accountLine()}</p>` : `<p class="muted">${accountLine()} Mit einem Konto wird er verschlüsselt gesichert, und du kannst Freunde hinzufügen. Es braucht weder Namen noch E-Mail.</p>
@@ -391,6 +393,15 @@ function modalHTML() {
       ${ok ? `<button class="btn ghost wide" data-act="signout">Auf diesem Gerät abmelden</button><button class="btn ghost wide" data-act="deleteaccount">Konto löschen</button>` : ""}
       <button class="btn ghost wide" data-act="privacy">Datenschutz</button><button class="btn wide" data-act="closemodal">Schließen</button>`);
   }
+  if (ui.modal === "keycheck") return modal("🔑 Schlüssel prüfen", st.keyChecked ? `<p role="status">${esc(ui.keyMsg || "Dein Schlüssel ist gesichert.")}</p><button class="btn wide" data-act="closemodal">Fertig</button>` : `
+      <p class="muted">Schau auf deine Notiz (Zettel, Passwort-Manager …) und gib die <b>letzten vier Zeichen</b> deines Schlüssels ein.</p>
+      <input id="keyEnd" class="search key" maxlength="6" placeholder="z. B. H3TV" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Letzte vier Zeichen">
+      ${ui.keyMsg ? `<p class="muted" role="status">${esc(ui.keyMsg)}</p>` : ""}
+      <button class="btn wide" data-act="dokeycheck">Prüfen</button>
+      <details><summary class="muted">Ich habe ihn nicht notiert</summary><div class="keybox" style="margin-top:.6rem"><b class="key">${esc(acct.key)}</b>
+        <div class="row"><button class="btn ghost" data-act="copykey">Kopieren</button><button class="btn ghost" data-act="toggleqr">QR-Code</button></div>${ui.showQR ? qrBox() : ""}
+        <small class="muted">Jetzt aufschreiben oder im Passwort-Manager speichern, dann oben prüfen.</small></div></details>
+      <button class="btn ghost wide" data-act="closemodal">Später</button>`);
   if (ui.modal === "signout") return modal("Abmelden?", `<p class="muted">Schlüssel und Fortschritt werden von diesem Gerät entfernt. Im Konto bleibt alles gesichert und kommt mit deinem Schlüssel zurück.
       Hast du den Schlüssel notiert?</p><button class="btn bad wide" data-act="dosignout">Abmelden</button><button class="btn ghost wide" data-act="account">Abbrechen</button>`);
   if (ui.modal === "deleteaccount") return modal("Konto löschen?", `<p class="muted">Dein gesicherter Spielstand, deine Freundschaften und gemeinsamen Serien werden sofort und endgültig vom Server gelöscht.
@@ -509,6 +520,7 @@ const foxHTML = side => `<button class="path-fox ${side} ${Date.now() < (ui.foxH
 const foxCheerHTML = big => `<div class="fox-cheer ${big ? "flip" : ""}" aria-hidden="true"><img src="img/fox.webp" alt="" width="136" height="136">
   <span class="spark s1">✨</span><span class="spark s2">${big ? "🌟" : "⭐"}</span><span class="spark s3">✨</span>${big ? `<span class="spark s4">🎉</span>` : ""}</div>`;
 const foxSadHTML = () => `<div class="fox-sad" aria-hidden="true"><img src="img/fox.webp" alt="" width="120" height="120"><span class="fox-say">Kopf hoch!</span></div>`;
+const qrBox = () => `<div class="qrbox">${qrSVG(acct.key, 200)}<small class="muted">Auf dem neuen Handy mit der Kamera-App scannen, den Text kopieren und bei „Mit Schlüssel anmelden“ einfügen. Zeig den Code niemandem.</small></div>`;
 const modal = (title, body) => `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${title}</h2>${body}</div></div>`;
 const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>`;
 function welcomeHTML() {
@@ -565,6 +577,9 @@ function noticesHTML() {
     <p class="muted">Die neue Version installiert sich über die alte, dein Fortschritt bleibt erhalten.</p>
     <button class="btn wide" data-act="openupdate">Herunterladen${ui.appUpdate.size ? ` · ${(ui.appUpdate.size / 1048576).toFixed(1).replace(".", ",")} MB` : ""}</button>
     <div class="row" style="justify-content:space-between"><button class="linkbtn" data-act="updateinfo">Was ist neu?</button><button class="linkbtn" data-act="dismissupdate">Später</button></div></div>`);
+  if (keyReminderDue()) out.push(`<div class="panel notice"><h3>🔑 Ist dein Schlüssel sicher?</h3>
+    <p class="muted">Ohne deinen Schlüssel ist dein Fortschritt auf einem neuen Handy verloren. Prüf kurz, ob du ihn richtig notiert hast.</p>
+    <button class="btn wide" data-act="keycheck">Jetzt prüfen</button><button class="linkbtn" data-act="keylater">In einer Woche erinnern</button></div>`);
   if (acct.status === "gone") out.push(`<div class="panel notice"><h3>Konto nicht gefunden</h3><p class="muted">${accountLine()}</p><button class="btn ghost wide" data-act="account">Konto</button></div>`);
   return out.join("");
 }
@@ -597,7 +612,7 @@ const PRIVACY_HTML = `<div class="privacy">
     <li>dein öffentlicher Freundescode, der letzte Tag mit einer abgeschlossenen Runde, Tag der Anlage und der letzten Nutzung</li>
     <li>Freundschaften: wer mit wem, gemeinsame Serie, an welchem Tag ein Geschenk verschickt wurde</li></ul>
   <p class="muted">Deine Freunde sehen deinen Freundescode, ob du heute gelernt hast und eure gemeinsame Serie. Namen für Freunde vergibst du selbst; sie liegen nur verschlüsselt in deinem Spielstand.</p>
-  <h3>Fehlermeldungen</h3><p class="muted">„Fehler melden“ schickt Aufgabe, erwartete Lösung, deine Antwort und deine Notiz ohne Bezug zu deinem Konto. Schreib bitte nichts Persönliches hinein.</p>
+  <h3>Fehlermeldungen</h3><p class="muted">„Fehler melden“ schickt Aufgabe, erwartete Lösung, deine Antwort und deine Notiz ohne Bezug zu deinem Konto. Die Meldungen werden als öffentliche Issues auf GitHub gesammelt. Schreib bitte nichts Persönliches hinein.</p>
   <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt beim Start, höchstens alle 6 Stunden, bei GitHub an (abschaltbar)." : ""}</p>
   <h3>Löschen</h3><p class="muted">Unter Profil → Konto → „Konto löschen“ wird alles sofort vom Server entfernt. Konten, die 12 Monate nicht genutzt werden, löscht der Server von selbst.</p>
   ${CONFIG.OPERATOR ? `<h3>Verantwortlich</h3><p class="muted">${esc(CONFIG.OPERATOR)}</p>` : ""}</div>`;

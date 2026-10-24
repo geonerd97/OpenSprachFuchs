@@ -99,11 +99,17 @@ Der kostenlose Tarif von Cloudflare reicht für ein kleines Projekt: 100.000 API
    Wrangler zeigt danach die Adresse, z. B. `https://opensprachfuchs.<dein-name>.workers.dev/`.
 6. Diese Adresse in [`app/js/config.js`](app/js/config.js) als `BACKEND_URL` eintragen. Dort gehören auch dein GitHub-Repository (`GITHUB_REPO`, für Update-Hinweise) und unter `OPERATOR` Name und Kontakt des Betreibers hin. Letzteres verlangt die DSGVO für den Datenschutzhinweis.
 
-**Fehlermeldungen aus der App lesen** („Fehler melden“):
+**Fehlermeldungen aus der App** („Fehler melden“) ansehen und als GitHub-Issues anlegen (eines pro Sprache und Einheit, Label „Fehlermeldung“):
 
 ```bash
-npx wrangler d1 execute opensprachfuchs --remote --command "SELECT * FROM reports ORDER BY id DESC LIMIT 50"
+node tools/reports.mjs
 ```
+
+```bash
+node tools/reports.mjs --issues
+```
+
+Bestehende Datenbanken brauchen dafür einmal die Migration `worker/migrations/0001_reports_issue.sql`.
 
 **Lokal testen:** `npm run dev` startet den Worker unter `http://localhost:8787`. Wird die App über `localhost` geöffnet, nutzt sie automatisch dieses Backend.
 

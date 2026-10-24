@@ -47,7 +47,7 @@ Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO: Die Daten sind nötig, um die ge
 - die erwartete Lösung
 - deine Antwort und deine Notiz
 
-Bitte schreib nichts Persönliches in die Notiz. Meldungen werden nach spätestens einem Jahr gelöscht.
+Bitte schreib nichts Persönliches in die Notiz. Die Meldungen werden, gesammelt pro Einheit, als öffentliche Issues im GitHub-Repository des Projekts veröffentlicht, damit Mitwirkende die Inhalte korrigieren können. In der Datenbank werden sie nach spätestens einem Jahr gelöscht.
 
 ## Technik und Dienstleister
 

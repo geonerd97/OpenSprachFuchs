@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg">#0E1420</color>
+    <color name="widget_bg">#1B263B</color>
+    <color name="widget_text">#E7EBF4</color>
+    <color name="widget_sub">#9AA5BE</color>
 </resources>

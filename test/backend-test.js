@@ -66,11 +66,22 @@ function fakeD1() {
   const stored = DB.db.prepare("SELECT save FROM accounts").get().save;
   ok(stored && !stored.includes("123") && !Buffer.from(stored, "base64").toString("latin1").includes('"xp"'), "Spielstand unverschlüsselt auf dem Server");
 
+  // Key safety: no reminder right away, one after 3 days, the last four characters prove the key; QR code in the account dialog.
+  ok(!anna.keyReminderDue(), "Schlüssel-Erinnerung zu früh");
+  anna.st.keyCreated = "2020-01-01";
+  ok(anna.keyReminderDue(), "Schlüssel-Erinnerung nach 3 Tagen fehlt");
+  anna.ui.tab = "path"; anna.view = "home"; ok(anna.homeHTML().includes("Ist dein Schlüssel sicher?"), "Erinnerung nicht im Lernweg");
+  ok(!anna.checkKeyEnd("XXXX") && !anna.st.keyChecked, "Falsche Zeichen angenommen");
+  ok(anna.checkKeyEnd(anna.acct.key.slice(-4).toLowerCase()) && anna.st.keyChecked && !anna.keyReminderDue(), "Richtige Zeichen abgelehnt");
+  ok(anna.qrMatrix(anna.acct.key).length === 21 && anna.qrSVG(anna.acct.key).startsWith("<svg"), "QR-Code fehlt");
+  anna.ui.modal = "account"; anna.ui.showQR = true; ok(anna.modalHTML().includes('class="qr"'), "QR-Code nicht im Konto-Dialog"); anna.ui.modal = null;
+
   // Same key on a new phone: the encrypted save comes back. Typing variants of the key are accepted.
   const anna2 = loadGame({}, { fetch: appFetch, store: {} , packs: true });
   anna2.st.xp = 0;
   ok(await anna2.signIn(anna.acct.key.toLowerCase().replace(/-/g, " ").replace(/0/g, "o")), "App: Anmelden mit Schlüssel", anna2.acct.note);
   ok(anna2.st.xp === 123, "App: Spielstand nicht übernommen", anna2.st.xp);
+  ok(anna2.st.keyChecked, "Anmelden mit Schlüssel zählt nicht als geprüft");
   const wrong = loadGame({}, { fetch: appFetch });
   ok(!(await wrong.signIn("ZZZZ-ZZZZ-ZZZZ-ZZZZ")) && /kein Konto/.test(wrong.acct.note), "App: falscher Schlüssel angenommen");
   ok(!wrong.normalizeKey("ABC") && wrong.normalizeKey("k7qm 4xd2 pl9a h3tv") === "K7QM-4XD2-P19A-H3TV", "Schlüssel normalisieren");

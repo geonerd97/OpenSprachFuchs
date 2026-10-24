@@ -65,8 +65,12 @@ app.addEventListener("click", e => {
     case "gosignin": acct.note = ""; ui.modal = null; view = "signin"; render(); return;
     case "welcome": acct.note = ""; view = "welcome"; render(); return;
     case "dosignin": acct.busy = true; signIn((document.getElementById("keyInput") || {}).value).then(ok => { acct.busy = false; if (ok) { view = "home"; window.scrollTo(0, 0); } render(); }); return;
-    case "account": ui.pop = null; acct.note = ""; ui.showKey = false; ui.modal = "account"; render(); return;
+    case "account": ui.pop = null; acct.note = ""; ui.showKey = false; ui.showQR = false; ui.modal = "account"; render(); return;
     case "togglekey": ui.showKey = !ui.showKey; render(); return;
+    case "toggleqr": ui.showQR = !ui.showQR; render(); return;
+    case "keycheck": ui.pop = null; ui.keyMsg = ""; ui.showQR = false; ui.modal = "keycheck"; render(); return;
+    case "dokeycheck": if (checkKeyEnd(val("keyEnd"))) sfx("win"); render(); return;
+    case "keylater": st.keyRemindAt = Date.now() + 7 * 864e5; save(); render(); return;
     case "copykey": copyText(acct.key, "Schlüssel kopiert."); return;
     case "sharecode": shareText(`Lern mit mir auf OpenSprachFuchs! Mein Freundescode: ${acct.friendCode}`); return;
     case "newcode": newFriendCode().then(render); return;

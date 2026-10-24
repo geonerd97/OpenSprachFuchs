@@ -33,5 +33,6 @@ CREATE TABLE IF NOT EXISTS reports (
   id       INTEGER PRIMARY KEY,
   day      TEXT NOT NULL,
   course   TEXT, pack TEXT, unit TEXT, item TEXT, type TEXT,
-  task     TEXT, expected TEXT, given TEXT, note TEXT
+  task     TEXT, expected TEXT, given TEXT, note TEXT,
+  issue    INTEGER                 -- GitHub issue the report went into (tools/reports.mjs), NULL while open
 );
