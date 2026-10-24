@@ -7,7 +7,7 @@ const CONFIG = {
   BACKEND_URL: "https://opensprachfuchs.opensprachfuchs.workers.dev/",
   GITHUB_REPO: "geonerd97/OpenSprachFuchs",
   // Who runs the backend (name and contact), shown in the privacy notice. Required by the GDPR when you run it publicly.
-  OPERATOR: "Martin Reger, E-Mail: opensprachfuchs@gmx.net",
+  OPERATOR: "M. Reger, E-Mail: opensprachfuchs@gmx.net",
 };
 
 /* Inside the Android app the page talks to the phone through window.AndroidBridge. */

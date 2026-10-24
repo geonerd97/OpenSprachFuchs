@@ -2,7 +2,7 @@
 
 ## Worum es geht
 Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch und brasilianisches Portugiesisch** lernen. Die Oberfläche ist komplett auf Deutsch. Öffentlich auf GitHub: https://github.com/geonerd97/OpenSprachFuchs (Code MIT, Sprachpakete CC BY-SA 4.0, Konto `geonerd97`). Die APK baut der Maintainer lokal auf dem Mac und lädt sie als GitHub-Release hoch (`tools/release.sh`).
-Verantwortlich/Kontakt: Martin Reger, opensprachfuchs@gmx.net (ohne Anschrift, Entscheidung des Maintainers).
+Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt und ohne Anschrift, Entscheidung des Maintainers).
 
 ## Grundsätze (Vorgaben des Maintainers)
 - **Nur Android-App** (WebView), keine Web-App. Möglichst wenig Speicher; die APK ist ~1,5 MB.

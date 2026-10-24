@@ -2,7 +2,7 @@
 
 OpenSprachFuchs erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine Werbung, kein Tracking, keine Analyse- oder Absturzdienste und keine Schriftarten oder Skripte von Dritten. Dieser Text steht in kürzerer Form auch in der App (Profil → Datenschutz).
 
-**Verantwortlich** für das Backend unter `opensprachfuchs.opensprachfuchs.workers.dev`: Martin Reger, E-Mail: opensprachfuchs(at)gmx.net
+**Verantwortlich** für das Backend unter `opensprachfuchs.opensprachfuchs.workers.dev`: M. Reger, E-Mail: opensprachfuchs(at)gmx.net
 
 Wer OpenSprachFuchs mit einem eigenen Backend betreibt, ist dafür selbst verantwortlich und trägt seine Angaben hier und in `app/js/config.js` (`OPERATOR`) ein.
 
