@@ -15,8 +15,10 @@ android {
         applicationId = "de.opensprachfuchs.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 10
-        versionName = "0.0.8"
+        versionCode = 11
+        versionName = "0.0.9"
+        // Friend links (QR codes) open the app: the backend's host, see CONFIG.BACKEND_URL in app/js/config.js.
+        manifestPlaceholders["linkHost"] = "opensprachfuchs.opensprachfuchs.workers.dev"
     }
 
     // Release signing: android/keystore.properties (not in Git), see README "Release bauen".

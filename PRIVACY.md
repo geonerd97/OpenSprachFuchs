@@ -36,6 +36,8 @@ Für jede Freundschaft speichert er, wer mit wem befreundet ist, ob die Anfrage 
 
 Namen für Freunde vergibst du selbst. Sie liegen nur in deinem verschlüsselten Spielstand.
 
+**Dein eigener Name und dein QR-Code:** Im Profil kannst du dir einen Namen geben. Er liegt nur auf deinem Handy und verschlüsselt in deinem Spielstand, der Server bekommt ihn nie. Er verlässt dein Handy nur in deinem QR-Code bzw. dem geteilten Link (`…/f#Freundescode/Name`), und zwar an die Menschen, denen du den Code zeigst oder den Link schickst. Der Teil hinter `#` wird von Browsern nicht an den Server übertragen. Öffnet jemand den Link ohne App, lädt sein Browser nur eine kleine Seite vom Server, ohne Code und Name.
+
 Es werden **keine** Namen, E-Mail-Adressen, Telefonnummern, Gerätekennungen oder Standortdaten erhoben.
 
 Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO: Die Daten sind nötig, um die gewünschten Funktionen Sicherung und Freunde bereitzustellen.

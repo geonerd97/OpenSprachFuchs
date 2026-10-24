@@ -19,6 +19,7 @@ const I = {
 /* ---------- Rendering ---------- */
 const app = document.getElementById("app");
 function render() {
+  if (ui.pendingFriend && view === "home" && !ui.modal && UNITS.length) return openPendingFriend(); // opened through a friend's QR code
   syncHearts(); syncDay();
   if (view === "home" && !UNITS.length) view = "langs";
   if (view === "home") app.innerHTML = homeHTML();
@@ -107,6 +108,10 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
   if (tab === "friends") return friendsPanelHTML();
   if (tab === "shop") return `<div class="panel"><h3>Shop</h3>${shopHTML()}</div>`;
   if (tab === "profile") return `
+    <div class="panel"><h3>👤 ${st.myName ? esc(st.myName) : "Dein Name"}</h3>
+      <p class="muted">Bleibt auf deinem Handy (und verschlüsselt in deiner Sicherung). Freunde sehen ihn nur, wenn sie deinen QR-Code scannen.</p>
+      <div class="row"><input id="myName" class="search" value="${esc(st.myName || "")}" placeholder="z. B. Anna" maxlength="${MAX_MY_NAME}" autocomplete="off" aria-label="Dein Name">
+      <button class="btn ghost" data-act="savename">Speichern</button></div>${ui.nameSaved ? `<p class="muted" role="status">Gespeichert.</p>` : ""}</div>
     <div class="panel"><h3>${esc(C.name)}</h3><p class="muted">${courseDone(CODE)} von ${UNITS.length * LESSONS_PER_UNIT} Lektionen geschafft · ${st.xp} XP gesamt</p>
       <button class="btn wide" data-act="stats">Statistik & Abzeichen</button>
       <button class="btn ghost wide" data-act="courses">Sprache wechseln</button>
@@ -408,11 +413,23 @@ function modalHTML() {
       Auf diesem Gerät kannst du ohne Konto weiterspielen.</p>${acct.note ? `<p class="muted" role="status">${esc(acct.note)}</p>` : ""}
       <button class="btn bad wide" data-act="dodeleteaccount">Endgültig löschen</button><button class="btn ghost wide" data-act="account">Abbrechen</button>`);
   if (ui.modal === "privacy") return modal("Datenschutz", PRIVACY_HTML + `<button class="btn wide" data-act="closemodal">Schließen</button>`);
-  if (ui.modal === "addfriend") return modal("Freund hinzufügen", `<p class="muted">Frag nach dem Freundescode. Er steht in der App unter „Freunde“. Den Namen siehst nur du.</p>
-      <input id="friendCode" class="search" placeholder="Freundescode, z. B. 7KQM-X4D2" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" aria-label="Freundescode">
-      <input id="friendName" class="search" placeholder="Name (nur auf deinen Geräten)" autocomplete="off" maxlength="30" aria-label="Name">
+  if (ui.modal === "addfriend") {
+    const pre = ui.addPrefill || {};
+    return modal("Freund hinzufügen", `<p class="muted">${pre.code ? `${pre.name ? `<b>${esc(pre.name)}</b> möchte` : "Jemand möchte"} mit dir lernen. Schick eine Anfrage, dann seid ihr befreundet, sobald sie angenommen ist.`
+        : "Scanne den QR-Code deines Freundes mit der Kamera-App oder gib seinen Freundescode ein. Den Namen siehst nur du."}</p>
+      <input id="friendCode" class="search" value="${esc(pre.code || "")}" placeholder="Freundescode, z. B. 7KQM-X4D2" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" aria-label="Freundescode">
+      <input id="friendName" class="search" value="${esc(pre.name || "")}" placeholder="Name (nur auf deinen Geräten)" autocomplete="off" maxlength="30" aria-label="Name">
+      ${!acct.key || acct.status === "gone" ? `<p class="muted">Für Freunde brauchst du ein Konto. Es braucht weder Namen noch E-Mail.</p><button class="btn wide" data-act="account">Konto anlegen</button>`
+        : acct.status !== "ok" ? `<p class="muted">Gerade keine Verbindung. Versuch es gleich noch einmal.</p>` : ""}
       ${friends.note ? `<p class="muted" role="status">${esc(friends.note)}</p>` : ""}
-      <button class="btn wide" data-act="doaddfriend" ${friends.busy ? "disabled" : ""}>Anfrage schicken</button><button class="btn ghost wide" data-act="closemodal">Schließen</button>`);
+      <button class="btn wide" data-act="doaddfriend" ${friends.busy || acct.status !== "ok" ? "disabled" : ""}>Anfrage schicken</button><button class="btn ghost wide" data-act="closemodal">Schließen</button>`);
+  }
+  if (ui.modal === "myqr") return modal("Mein QR-Code", `<p class="muted">Lass deine Freunde diesen Code mit der Kamera-App scannen. Ihre App öffnet sich dann mit deinem Freundescode${st.myName ? " und deinem Namen" : ""}.</p>
+      ${st.myName ? "" : `<div class="row"><input id="myName" class="search" placeholder="Dein Name (optional)" maxlength="${MAX_MY_NAME}" autocomplete="off" aria-label="Dein Name"><button class="btn ghost" data-act="savename">Übernehmen</button></div>`}
+      <div class="qrbox">${qrSVG(friendLink(), 240, "QR-Code mit deinem Freundescode")}<b>${st.myName ? esc(st.myName) + " · " : ""}${esc(acct.friendCode)}</b></div>
+      <button class="btn ghost wide" data-act="sharecode">Link teilen</button>
+      <small class="muted">Der Code enthält deinen Freundescode${st.myName ? " und deinen Namen" : ""}, nicht deinen geheimen Schlüssel. Einen neuen Freundescode bekommst du unter „Konto & Freundescode“.</small>
+      <button class="btn wide" data-act="closemodal">Schließen</button>`);
   if (ui.modal === "friend") {
     const f = friends.list.find(x => String(x.id) === String(ui.fid));
     if (!f) return modal("Freund", `<p class="muted">Diese Freundschaft gibt es nicht mehr.</p><button class="btn wide" data-act="closemodal">Schließen</button>`);
@@ -600,7 +617,7 @@ function friendsPanelHTML() {
     ${friends.gifts ? `<button class="btn gold wide" data-act="claimgifts">🎁 ${friends.gifts} ${friends.gifts === 1 ? "Geschenk" : "Geschenke"} öffnen</button>` : ""}
     ${rows ? `<div class="friends">${rows}</div>` : `<p class="muted">Lernt zusammen: Wenn ihr beide an einem Tag eine Runde schafft, wächst eure gemeinsame Serie. Jeden Tag könnt ihr euch ${GIFT_GEMS} 💎 schenken.</p>`}
     ${friends.note && !ui.modal ? `<p class="muted" role="status">${esc(friends.note)}</p>` : ""}
-    ${acct.friendCode ? `<p class="muted">Dein Freundescode: <b>${esc(acct.friendCode)}</b> <button class="linkbtn" data-act="sharecode">Teilen</button></p>` : ""}
+    ${acct.friendCode ? `<button class="btn wide" data-act="myqr">📷 Mein QR-Code für Freunde</button>` : ""}
     ${acct.status === "offline" ? `<p class="muted">Gerade keine Verbindung. Freunde brauchen Internet, alles andere geht auch offline.</p>` : ""}
     ${friends.list.length < MAX_FRIENDS ? `<button class="btn ghost wide" data-act="addfriend" ${acct.status !== "ok" ? "disabled" : ""}>Freund hinzufügen</button>` : ""}</div>`;
 }
@@ -613,6 +630,7 @@ const PRIVACY_HTML = `<div class="privacy">
     <li>dein öffentlicher Freundescode, der letzte Tag mit einer abgeschlossenen Runde, Tag der Anlage und der letzten Nutzung</li>
     <li>Freundschaften: wer mit wem, gemeinsame Serie, an welchem Tag ein Geschenk verschickt wurde</li></ul>
   <p class="muted">Deine Freunde sehen deinen Freundescode, ob du heute gelernt hast und eure gemeinsame Serie. Namen für Freunde vergibst du selbst; sie liegen nur verschlüsselt in deinem Spielstand.</p>
+  <h3>Dein Name und QR-Code</h3><p class="muted">Deinen eigenen Namen bekommt der Server nie. Er steht nur auf deinem Handy, verschlüsselt im Spielstand und in deinem QR-Code bzw. Link, also bei denen, die ihn von dir bekommen. Code und Name stehen im Link hinter „#“; dieser Teil wird nicht an den Server geschickt.</p>
   <h3>Fehlermeldungen</h3><p class="muted">„Fehler melden“ schickt Aufgabe, erwartete Lösung, deine Antwort und deine Notiz ohne Bezug zu deinem Konto. Die Meldungen werden als öffentliche Issues auf GitHub gesammelt. Schreib bitte nichts Persönliches hinein.</p>
   <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt beim Start, höchstens alle 6 Stunden, bei GitHub an (abschaltbar)." : ""}</p>
   <h3>Löschen</h3><p class="muted">Unter Profil → Konto → „Konto löschen“ wird alles sofort vom Server entfernt. Konten, die 12 Monate nicht genutzt werden, löscht der Server von selbst.</p>

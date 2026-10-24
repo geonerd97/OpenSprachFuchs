@@ -25,7 +25,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 | Pfad | Inhalt |
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten. Schrift Nunito als Datei in der App (`app/fonts/nunito.woff2`, variabel, nur Latin-Teilmenge, 39 KB, SIL OFL in `app/fonts/OFL.txt`, aus `@fontsource-variable/nunito` 5.3.0); Grundstärke 650, Überschriften 800, Systemschrift nur als Rückfall. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.8 (versionCode 10, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.9 (versionCode 11, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
@@ -37,7 +37,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 - `content.js`: installierte Pakete in localStorage (`opensprachfuchs-pack-<code>`, Liste mit sha256 in `opensprachfuchs-packs`), `COURSES`, `fetchPackIndex` (Backend, sonst mitgelieferte `packs/`; nur Backend-Index zählt für Updates), `downloadPack`, `packUpdates`, `setCourse` → `UNITS` mit Wörtern `{id, t, alt, de, pic}` und Sätzen `{id, t, tAlt, de, deAlt}`, Tipp-Hilfe `HINT_T`/`HINT_DE`.
 - `state.js`: Spielstand `st` in `opensprachfuchs-state`, Serie, Herzen, SRS, Statistik, Abzeichen, Rückstufung, Tagesaufgaben, Shop. **Fortschritt hängt an festen IDs** (`w:basics.w01`, `s:…`), nicht am Text.
 - `account.js`: Schlüssel (Crockford Base32, 80 Bit) → PBKDF2-SHA256 (150.000 Runden) → Token (Bearer, Server speichert SHA-256) + AES-GCM-Schlüssel. Spielstand = base64([Version][IV][Chiffrat]), Version 1 = gzip. `createAccount` (offline möglich, `pending`), `signIn`, `initAccount`, `pushSave`/`pullSave` (neueres `savedAt` gewinnt, Server antwortet 409 bei älterem), `deleteAccount`, `signOut`, `reportLearningDay`, Fehlermeldungs-Warteschlange `st.reportQueue`, App-Update-Check `checkAppUpdate(force)` (GitHub `/releases?per_page=10`, nicht `/releases/latest`, weil das Pre-releases auslässt und alle 0.x-Versionen Pre-releases sind; beim Start höchstens alle 6 Std., abschaltbar, dazu „Jetzt nach Updates suchen“ in den Einstellungen). Ein gefundenes Update wird in `opensprachfuchs-update` gemerkt, bis es installiert ist: Dialog `appupdate` einmal pro Version (mit „Was ist neu“ aus den Release-Notizen), Hinweis im Lernweg, „Herunterladen“ öffnet direkt die APK (`downloadUpdate`).
-- `friends.js`: `loadFriends`, `addFriend`, `acceptFriend`, `removeFriend`, `sendGift`, `claimGifts`, `pairStreak` (gilt, solange `streakDay` heute oder gestern ist), Namen in `st.friends[id]`.
+- `friends.js`: eigener Name `st.myName` (max. 20 Zeichen, nur lokal/verschlüsselt im Spielstand, `setMyName`), Freundes-Link `friendLink()` = `BACKEND + "f#CODE/Name"` (Teil hinter `#` geht nie an den Server), `parseFriendLink` (auch `?c=&n=` von der Webseite), `handleFriendLink` öffnet „Freund hinzufügen“ vorausgefüllt (wartet bis zum Lernweg, nach Konto-Anlage weiter). Dialog `myqr` mit QR-Code. `loadFriends`, `addFriend`, `acceptFriend`, `removeFriend`, `sendGift`, `claimGifts`, `pairStreak` (gilt, solange `streakDay` heute oder gestern ist), Namen in `st.friends[id]`.
 - `audio.js`: Soundeffekte, Sprachausgabe über `AndroidBridge.speak` (im Desktop-Browser `speechSynthesis`), Hören/Sprechen pausieren, Spracherkennung nur in der App.
 - `exercises.js`: Lektionspläne, Antwortprüfung (`norm`, `lev`), Generatoren `GEN.*`, `generate()` mit Fallbacks.
 - `lesson.js`: Ablauf aller Runden (Lektion, Training, Einstufungstest, Blitzrunde, Gespräch, Meisterschaft), `finish()`.
@@ -45,7 +45,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 - `main.js`: Klick-Delegation über `data-act`, Tastatur, Zurück-Taste (`window.opensprachfuchsBack`: Dialog → Lektion → Tab Lernweg → App verlassen), Start.
 
 ### Backend (`worker/src/index.js`)
-Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PUT /api/save`, `POST /api/day`, `GET/POST /api/friends`, `POST /api/friends/:id/accept`, `DELETE /api/friends/:id`, `POST /api/friends/:id/gift`, `POST /api/gifts/claim`, `POST /api/report`, `GET /api/ping`. Statische Pakete unter `/packs/`.
+Routen: `GET /f` (Seite für Freundes-Links ohne App: liest Code/Name aus `#`, Button „In der App öffnen“ per `intent://…?c=&n=`, Download-Link), `GET /.well-known/assetlinks.json` (App Link für `de.opensprachfuchs.app`, Release-Zertifikat; Forks: `APP_PACKAGE`/`APP_CERT_SHA256`), `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PUT /api/save`, `POST /api/day`, `GET/POST /api/friends`, `POST /api/friends/:id/accept`, `DELETE /api/friends/:id`, `POST /api/friends/:id/gift`, `POST /api/gifts/claim`, `POST /api/report`, `GET /api/ping`. Statische Pakete unter `/packs/`.
 - Tabellen: `accounts` (auth-Hash, friend_code, created, seen, last_day, prev_day, save, saved_at), `friendships` (a, b, accepted, streak, streak_day, gift_a/b, gifts_for_a/b), `reports` (ohne Kontobezug).
 - Gemeinsame Serie: Beim Melden eines Lerntags zählt jede Freundschaft, deren anderer Teil denselben Tag als `last_day` oder `prev_day` hat.
 - Statische Pakete bekommen CORS über `public/_headers` (schreibt `tools/packs.mjs build`).
@@ -55,12 +55,14 @@ Routen: `POST/GET/DELETE /api/account`, `POST /api/account/friend-code`, `GET/PU
 ### Android
 - Gradle 9.5, AGP 9.3.3, compileSdk/targetSdk 36, minSdk 26.
 - Vor jedem Build führt `buildPacks` (Exec, Node; Pfad über `-PnodePath`) `tools/packs.mjs build` aus. `copyWeb` synchronisiert `../app` und die gebauten Pakete nach `app/src/main/assets/` (gitignored).
+- Freundes-Links: Intent-Filter mit `autoVerify` für `https://<linkHost>/f` (`manifestPlaceholders["linkHost"]` in `build.gradle.kts`), `onNewIntent` reicht sie an die Seite weiter.
 - `MainActivity.kt`: WebView über `WebViewAssetLoader`, nur HTTPS (keine Cleartext-Konfiguration mehr). Name unter dem Icon: „SprachFuchs“ (`launcher_name`), sonst „OpenSprachFuchs“ (`app_name`).
 - Brücke `AndroidBridge`:
   - `speak`, `speakQueued` (nach dem aktuellen Satz), `stop`, `hasVoice`
   - `canRecognize`, `startListening`, `stopListening`
   - `setReminder`, `reportDay` (für `Reminders.kt`)
   - `appVersion`, `copy`, `share`, `openUrl`
+  - `takeLink` (Freundes-Link, mit dem die App gestartet wurde; spätere kommen über `window.opensprachfuchsLink`)
 - Release-Signatur aus `android/keystore.properties` (gitignored).
 
 ## Inhalte und Funktionen (unverändert aus der Vorversion übernommen)
@@ -72,6 +74,8 @@ Lernweg mit 80 Einheiten à 4 Lektionen = 320 Lektionen pro Sprache, je 20 Einhe
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
 - 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo (seit 2026-10-24, vom Maintainer): lächelnder Comic-Fuchskopf (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon: ausgeschnittener Fuchs in `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FEF6E9`, 57 dp groß, damit die Ohren auch in runden Masken passen). Keine Eule (Abgrenzung zu Duolingo).
+- 2026-10-24: Eigener Name im Profil und QR-Code für Freunde (Link mit Freundescode und Name hinter `#`, App Link, Seite `/f`). QR-Encoder `app/js/qr.js` kann jetzt Version 1–10 und Byte-Modus (UTF-8), geprüft mit OpenCV (Standard- und Aruco-Detektor) an 430 Codes. Worker exportiert nur noch Funktionen (`friendLimit()`), weil `wrangler dev` andere Exporte ablehnt. Release 0.0.9.
+- 2026-10-24: Schrift Nunito, Stufen-Reiter nur mit Namen. Release 0.0.8.
 - 2026-10-24: 40 neue Einheiten pro Sprache, jetzt 20 je Stufe (A1: Tiere, Körper, Getränke, Obst & Gemüse, Stadt, Hobbys, Länder & Sprachen, Frühstück, Monate & Jahreszeiten, Menschen beschreiben; A2: Zugreise, Supermarkt, Post, Sport, Feste, Fahrrad, Camping, Souvenirs, Friseur & Pflege, Zu Besuch; B1: Panne & Werkstatt, Verloren & gefunden, Lernen & Studium, Musik, Filme & Serien, Haushalt, Reise planen, Umzug, Ernährung, Wetterbericht; B2: Wirtschaft, Politik, Wissenschaft, Kunst & Literatur, Verträge & Recht, Versicherungen, Stadt & Verkehr, Tourismus kritisch, Besprechungen, Geschichte). Neue Einheiten stehen am Ende ihrer Stufe. Übersetzungen von Claude, ungeprüft. Nur Backend-Deploy, kein App-Release.
 - 2026-10-24: Tipp-Hilfe für jedes Wort: Die Glossare der Pakete decken alle Wörter in Sätzen und Gesprächen (auch Antwortoptionen) ab; `game-test.js` prüft das (Zahlen ausgenommen). Release 0.0.7.
 - 2026-10-24: Schlüssel-Sicherheit (QR-Code `app/js/qr.js`, eigener Encoder Version 1-M alphanumerisch mit Maskenwahl, mit OpenCV an 500 Schlüsseln geprüft; Erinnerung 3 Tage nach Anlage, Prüfung über die letzten 4 Zeichen, `keyReminderDue`/`checkKeyEnd`, `st.keyCreated`/`keyChecked`/`keyRemindAt`). Startbildschirm-Widget `StreakWidget.kt` (2×1, Serie und Tagesziel aus `Reminders.state`, Aktualisierung bei `reportDay` und alle 30 Min.). Fehlermeldungen → GitHub-Issues mit `tools/reports.mjs` (Spalte `reports.issue`, Migration `worker/migrations/0001_reports_issue.sql`, Label „Fehlermeldung“; Meldungen sind damit öffentlich, steht im Datenschutz). GitHub-Actions-Workflow `.github/workflows/test.yml` (npm test + Android-Debug-Build).

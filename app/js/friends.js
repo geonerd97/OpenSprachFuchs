@@ -59,6 +59,39 @@ function renameFriend(id, name) {
   if (name.trim()) st.friends[id] = name.trim().slice(0, 30); else delete st.friends[id];
   save();
 }
+/* ---------- Friend link and QR code ----------
+   Your own name (st.myName) stays on the device and in the encrypted save. It only leaves the phone inside your QR code
+   or shared link: BACKEND + "f#CODE/Name". The part after "#" is never sent to any server; scanned with the camera,
+   the link opens the app (Android App Link) with the code and name filled in, otherwise a small page from the Worker. */
+const MAX_MY_NAME = 20; // keeps the QR code small enough to scan easily
+const cleanName = (s, max) => String(s || "").replace(/[\u0000-\u001f\u007f<>]/g, "").replace(/\s+/g, " ").trim().slice(0, max);
+function setMyName(name) { st.myName = cleanName(name, MAX_MY_NAME); save(); }
+const friendLink = () => acct.friendCode ? `${BACKEND}f#${acct.friendCode}${st.myName ? "/" + encodeURIComponent(st.myName) : ""}` : "";
+/** Reads a friend link ("…/f#7KQM-X4D2/Anna" or, from the web page's app button, "…/f?c=7KQM-X4D2&n=Anna"). */
+function parseFriendLink(url) {
+  let u;
+  try { u = new URL(String(url)); } catch (e) { return null; }
+  if (!/\/f\/?$/.test(u.pathname)) return null;
+  let code = u.searchParams.get("c") || "", name = u.searchParams.get("n") || "";
+  if (!code && u.hash) { const [c, ...n] = u.hash.slice(1).split("/"); code = c; name = n.join("/"); }
+  try { name = name && !u.searchParams.get("n") ? decodeURIComponent(name) : name; } catch (e) { name = ""; }
+  code = formatFriendCode(code);
+  return code ? { code, name: cleanName(name, 30) } : null;
+}
+/** Called when the app is opened through a friend link: shows "Freund hinzufügen" with code and name filled in. */
+function handleFriendLink(url) {
+  const f = parseFriendLink(url);
+  if (!f) return false;
+  ui.addPrefill = f; ui.pendingFriend = true;
+  openPendingFriend();
+  return true;
+}
+function openPendingFriend() {
+  if (!ui.pendingFriend || view !== "home") return; // during the welcome screens it waits until the path shows
+  ui.pendingFriend = false; friends.note = "";
+  if (acct.friendCode && formatFriendCode(acct.friendCode) === ui.addPrefill.code) { ui.addPrefill = null; friends.note = "Das ist dein eigener QR-Code."; ui.tab = "friends"; render(); return; }
+  ui.tab = "friends"; ui.modal = "addfriend"; render();
+}
 const sendGift = id => friendCall("POST", `friends/${id}/gift`, undefined, `Geschenk verschickt: ${GIFT_GEMS} 💎.`);
 async function claimGifts() {
   const r = await friendCall("POST", "gifts/claim", undefined, "");

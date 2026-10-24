@@ -332,7 +332,7 @@ g.srsUpdate("w:test", false);
 if (g.srs()["w:test"].box !== 0) fail("SRS: falsche Antwort setzt nicht zurück");
 
 // Every dialog renders (settings, account, privacy, languages, friends).
-for (const m of ["settings", "account", "privacy", "packs", "courses", "addfriend", "signout", "deleteaccount", "reset"]) { g.ui.modal = m; g.modalHTML(); }
+for (const m of ["settings", "account", "privacy", "packs", "courses", "addfriend", "myqr", "signout", "deleteaccount", "reset"]) { g.ui.modal = m; g.modalHTML(); }
 g.ui.modal = null;
 for (const v of ["welcome", "signin", "langs"]) { g.view = v; g.render(); }
 g.view = "home";

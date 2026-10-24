@@ -59,7 +59,7 @@ app.addEventListener("click", e => {
     case "getpack": downloadPack(ds.c).then(() => { if (view === "langs" && UNITS.length) { view = "home"; ui.modal = null; render(); window.scrollTo(0, 0); } }); return;
     case "removepack": ui.rp = ds.c; ui.modal = "removepack"; render(); return;
     case "doremovepack": removePack(ui.rp); if (st.course === ui.rp) { st.course = Object.keys(COURSES)[0] || ""; setCourse(st.course); save(); } ui.modal = "packs"; render(); return;
-    case "createaccount": acct.note = ""; createAccount().then(() => { st.onboarded = true; save(); ui.modal = null; view = "newkey"; render(); loadFriends(); }); return;
+    case "createaccount": acct.note = ""; createAccount().then(() => { st.onboarded = true; save(); ui.modal = null; ui.pendingFriend = !!ui.addPrefill; view = "newkey"; render(); loadFriends(); }); return;
     case "keydone": view = "home"; render(); window.scrollTo(0, 0); return;
     case "localonly": st.onboarded = true; save(); view = "home"; render(); return;
     case "gosignin": acct.note = ""; ui.modal = null; view = "signin"; render(); return;
@@ -72,15 +72,17 @@ app.addEventListener("click", e => {
     case "dokeycheck": if (checkKeyEnd(val("keyEnd"))) sfx("win"); render(); return;
     case "keylater": st.keyRemindAt = Date.now() + 7 * 864e5; save(); render(); return;
     case "copykey": copyText(acct.key, "Schlüssel kopiert."); return;
-    case "sharecode": shareText(`Lern mit mir auf OpenSprachFuchs! Mein Freundescode: ${acct.friendCode}`); return;
+    case "sharecode": shareText(`Lern mit mir auf OpenSprachFuchs! Mein Freundescode: ${acct.friendCode}\n${friendLink()}`); return;
+    case "myqr": ui.pop = null; ui.modal = "myqr"; render(); return;
+    case "savename": setMyName(val("myName")); ui.nameSaved = ui.modal !== "myqr"; render(); setTimeout(() => { ui.nameSaved = false; }, 0); return;
     case "newcode": newFriendCode().then(render); return;
     case "signout": ui.modal = "signout"; render(); return;
     case "dosignout": signOut().then(() => { ui.modal = null; view = "welcome"; render(); }); return;
     case "deleteaccount": acct.note = ""; ui.modal = "deleteaccount"; render(); return;
     case "dodeleteaccount": deleteAccount().then(ok => { if (ok) { ui.modal = "account"; acct.note = "Dein Konto wurde gelöscht."; } render(); }); return;
     case "privacy": ui.modal = "privacy"; render(); return;
-    case "addfriend": friends.note = ""; ui.modal = "addfriend"; render(); return;
-    case "doaddfriend": addFriend(val("friendCode"), val("friendName")).then(ok => { if (ok) ui.modal = null; render(); }); return;
+    case "addfriend": friends.note = ""; ui.addPrefill = null; ui.modal = "addfriend"; render(); return;
+    case "doaddfriend": addFriend(val("friendCode"), val("friendName")).then(ok => { if (ok) { ui.modal = null; ui.addPrefill = null; } render(); }); return;
     case "friend": friends.note = ""; ui.fid = ds.id; ui.modal = "friend"; render(); return;
     case "acceptfriend": acceptFriend(ds.id, val("friendName")).then(() => { ui.modal = null; render(); }); return;
     case "renamefriend": renameFriend(ds.id, val("friendName")); ui.modal = null; render(); return;
@@ -205,4 +207,8 @@ checkBadges();
 ui.decay = applyDecay();
 syncReminder(); reportDay();
 render();
-initAccount().then(() => { sendReports(); checkPackUpdates(); checkAppUpdate(); });
+// Friend links (QR code scanned with the camera): the link that started the app is handled once the account is known,
+// later ones arrive through opensprachfuchsLink.
+const startLink = APP && window.AndroidBridge.takeLink ? window.AndroidBridge.takeLink() : "";
+window.opensprachfuchsLink = url => { handleFriendLink(url); };
+initAccount().then(() => { if (startLink) handleFriendLink(startLink); sendReports(); checkPackUpdates(); checkAppUpdate(); });

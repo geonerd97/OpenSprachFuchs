@@ -41,6 +41,8 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
     @Volatile private var ttsReady = false
     private var recognizer: SpeechRecognizer? = null
     private var pendingLang: String? = null
+    /** A friend link that started the app; the page picks it up with `takeLink()` once it has loaded. */
+    @Volatile private var pendingLink: String? = null
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,12 +81,22 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         }
         setContentView(root)
 
-        if (savedInstanceState == null) web.loadUrl(START_URL) else web.restoreState(savedInstanceState)
+        if (savedInstanceState == null) { pendingLink = linkOf(intent); web.loadUrl(START_URL) } else web.restoreState(savedInstanceState)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             onBackInvokedDispatcher.registerOnBackInvokedCallback(OnBackInvokedDispatcher.PRIORITY_DEFAULT) { handleBack() }
         }
     }
+
+    /** Friend links while the app is already open go straight to the page (launchMode singleTask). */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        val link = linkOf(intent) ?: return
+        web.evaluateJavascript("window.opensprachfuchsLink && window.opensprachfuchsLink(${JSONObject.quote(link)})", null)
+    }
+
+    private fun linkOf(intent: Intent?): String? =
+        intent?.takeIf { it.action == Intent.ACTION_VIEW }?.data?.takeIf { it.scheme == "https" }?.toString()
 
     /** The game closes dialogs and leaves lessons itself; only on the home screen does the app go to the background. */
     private fun handleBack() {
@@ -246,6 +258,10 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
                 checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
             ) runOnUiThread { requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), REQ_NOTIFY) }
         }
+
+        /** The friend link that started the app, once (empty if there was none). */
+        @JavascriptInterface
+        fun takeLink(): String = (pendingLink ?: "").also { pendingLink = null }
 
         /** The installed version (versionName), for the update check against the GitHub releases. */
         @JavascriptInterface

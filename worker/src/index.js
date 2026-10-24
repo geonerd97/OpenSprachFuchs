@@ -22,7 +22,9 @@
  * Everything else (the language packs under /packs/) is served from the static assets in ./public.
  */
 
-export const MAX_FRIENDS = 100; // per account, open requests included (keep in sync with app/js/friends.js)
+const MAX_FRIENDS = 100; // per account, open requests included (keep in sync with app/js/friends.js)
+// Only functions may be exported next to the handler (wrangler dev refuses other values); the tests read the limit here.
+export const friendLimit = () => MAX_FRIENDS;
 const MAX_SAVE_CHARS = 700_000;          // about 512 KB of encrypted data in base64
 const INACTIVE_DAYS = 365, REPORT_DAYS = 365;
 const CODE_ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"; // Crockford Base32, as in the app
@@ -222,10 +224,42 @@ async function report(request, env) {
   return json({ ok: true });
 }
 
+/* ---------- Friend links ----------
+   A friend's QR code holds https://<backend>/f#CODE/Name. With the app installed, Android opens it directly
+   (App Link, verified through assetlinks.json); otherwise the browser shows this page. The part after "#" never
+   reaches the server: the page reads it in the browser and offers to open the app or to download it. */
+const APP_PACKAGE = "de.opensprachfuchs.app";
+// SHA-256 of the release signing certificate (apksigner verify --print-certs); forks set APP_CERT_SHA256.
+const APP_CERT = "89:96:52:44:FC:1B:D1:01:8E:74:CC:39:BE:D2:90:32:F2:E1:5E:E5:56:41:F8:99:FE:8B:C9:11:94:74:01:AB";
+const RELEASES = "https://github.com/geonerd97/OpenSprachFuchs/releases";
+const assetLinks = env => new Response(JSON.stringify([{ relation: ["delegate_permission/common.handle_all_urls"],
+  target: { namespace: "android_app", package_name: env.APP_PACKAGE || APP_PACKAGE, sha256_cert_fingerprints: (env.APP_CERT_SHA256 || APP_CERT).split(",") } }]),
+  { headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=3600" } });
+const friendPage = env => new Response(`<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>OpenSprachFuchs – Freundescode</title>
+<style>body{font:17px/1.5 system-ui,sans-serif;margin:0;background:#FEF6E9;color:#15203A;display:grid;place-items:center;min-height:100vh}
+main{max-width:26rem;padding:1.5rem;text-align:center}.code{font:700 1.6rem ui-monospace,monospace;letter-spacing:.08em;margin:.4rem 0 1rem}
+a{display:block;margin:.6rem 0;padding:.8rem;border-radius:14px;background:#2456E8;color:#fff;font-weight:700;text-decoration:none}a.alt{background:#fff;color:#2456E8;border:2px solid #2456E8}
+small{color:#57627B}</style></head><body><main><div style="font-size:3rem">🦊</div>
+<h1 id="t">Lern mit mir auf OpenSprachFuchs!</h1><p>Mein Freundescode:</p><div class="code" id="c">–</div>
+<a id="open" href="#">In der App öffnen</a><a class="alt" href="${RELEASES}">App herunterladen (Android)</a>
+<small>In der App unter „Freunde“ → „Freund hinzufügen“ kannst du den Code auch eintippen. Code und Name stehen nur in diesem Link und werden nicht an den Server geschickt.</small></main>
+<script>
+const [code, ...rest] = location.hash.slice(1).split("/"); let name = "";
+try { name = decodeURIComponent(rest.join("/")); } catch (e) {}
+const c = (code || "").toUpperCase().replace(/[^0-9A-Z-]/g, "").slice(0, 9);
+if (c) document.getElementById("c").textContent = c;
+if (name) document.getElementById("t").textContent = name.slice(0, 30) + " möchte mit dir auf OpenSprachFuchs lernen!";
+const q = "c=" + encodeURIComponent(c) + (name ? "&n=" + encodeURIComponent(name.slice(0, 30)) : "");
+document.getElementById("open").href = "intent://" + location.host + "/f?" + q + "#Intent;scheme=https;package=${env.APP_PACKAGE || APP_PACKAGE};S.browser_fallback_url=" + encodeURIComponent("${RELEASES}") + ";end";
+</script></body></html>`, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=3600", "Referrer-Policy": "no-referrer" } });
+
 /* ---------- Router ---------- */
 async function handle(request, env) {
   const url = new URL(request.url), path = url.pathname.replace(/\/+$/, ""), method = request.method;
   if (method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
+  if (path === "/.well-known/assetlinks.json") return assetLinks(env);
+  if (path === "/f" && method === "GET") return friendPage(env);
   if (!path.startsWith("/api/")) return env.ASSETS ? env.ASSETS.fetch(request) : fail(404, "not_found");
   const ip = request.headers.get("CF-Connecting-IP") || "local";
   if (await limited(env, "LIMIT_API", ip)) return fail(429, "rate_limited");

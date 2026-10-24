@@ -121,8 +121,33 @@ function fakeD1() {
   await anna.claimGifts();
   ok(anna.st.gems === gems + 5 && anna.friends.gifts === 0, "Geschenk nicht eingelöst", anna.st.gems - gems);
 
+  // QR code for friends: Anna's own name only travels in her link; Dora scans it, the app opens "Freund hinzufügen" filled in.
+  anna.setMyName("  Anna <Lü>  ");
+  const link = anna.friendLink();
+  ok(anna.st.myName === "Anna Lü" && link.endsWith("/f#" + anna.acct.friendCode + "/Anna%20L%C3%BC"), "Freundes-Link falsch", link);
+  ok(anna.qrSVG(link, 240).includes("<svg"), "QR-Code für den Freundes-Link fehlt");
+  const viaPage = anna.parseFriendLink("https://x.example/f?c=" + anna.acct.friendCode.toLowerCase() + "&n=Anna%20L%C3%BC");
+  ok(viaPage && viaPage.code === anna.acct.friendCode && viaPage.name === "Anna Lü", "Link von der Webseite nicht erkannt", JSON.stringify(viaPage));
+  ok(!anna.parseFriendLink("https://x.example/other#ABCD-EFGH") && !anna.parseFriendLink("kein link"), "Fremder Link als Freundes-Link erkannt");
+  const dora = loadGame({}, { fetch: appFetch });
+  await dora.createAccount();
+  dora.view = "welcome"; dora.handleFriendLink(link);
+  ok(dora.ui.modal !== "addfriend", "Dialog mitten im Willkommen-Bildschirm");
+  dora.view = "home"; dora.render();
+  ok(dora.ui.modal === "addfriend" && dora.ui.tab === "friends" && dora.modalHTML().includes('value="Anna Lü"') && dora.modalHTML().includes(anna.acct.friendCode), "Freund hinzufügen nicht vorausgefüllt");
+  ok(await dora.addFriend(dora.ui.addPrefill.code, dora.ui.addPrefill.name), "Anfrage über QR-Code", dora.friends.note);
+  ok(Object.values(dora.st.friends).includes("Anna Lü"), "Name aus dem QR-Code nicht übernommen");
+  ok(!JSON.stringify(DB.db.prepare("SELECT * FROM accounts").all()).includes("Anna"), "Eigener Name auf dem Server");
+  anna.handleFriendLink(link); anna.view = "home"; anna.render();
+  ok(anna.ui.modal !== "addfriend" && /eigener QR-Code/.test(anna.friends.note), "Eigener QR-Code nicht erkannt");
+  // Without the app the link shows a page from the Worker; assetlinks.json lets Android open the app directly.
+  const page = await call(B + "f");
+  ok(page.status === 200 && (await page.text()).includes("intent://"), "Seite für Freundes-Links fehlt");
+  const al = await (await call(B + ".well-known/assetlinks.json")).json();
+  ok(al[0].target.package_name === "de.opensprachfuchs.app" && /^89:96:52:44/.test(al[0].target.sha256_cert_fingerprints[0]), "assetlinks.json falsch");
+
   // Friend limit (100): Anna's list is filled up directly in the database, then two more players ask.
-  const { MAX_FRIENDS } = await import(path.join(ROOT, "worker", "src", "index.js"));
+  const MAX_FRIENDS = (await import(path.join(ROOT, "worker", "src", "index.js"))).friendLimit();
   ok(MAX_FRIENDS === 100, "Freundeslimit ist nicht 100", MAX_FRIENDS);
   const annaId = DB.db.prepare("SELECT id FROM accounts WHERE friend_code = ?").get(anna.acct.friendCode).id;
   const have = DB.db.prepare("SELECT COUNT(*) n FROM friendships WHERE a = ? OR b = ?").get(annaId, annaId).n;

@@ -37,6 +37,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- Friend links from QR codes (https://<backend>/f#CODE/Name) open the app directly (App Link,
+                 verified through /.well-known/assetlinks.json on the backend). -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="${linkHost}" android:path="/f" />
+            </intent-filter>
         </activity>
 
         <receiver
