@@ -25,7 +25,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 | Pfad | Inhalt |
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten, Systemschriften. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.6 (versionCode 8, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.7 (versionCode 9, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
@@ -72,6 +72,7 @@ Lernweg mit 40 Einheiten à 4 Lektionen = 160 Lektionen pro Sprache, je 10 Einhe
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
 - 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo (seit 2026-10-24, vom Maintainer): lächelnder Comic-Fuchskopf (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon: ausgeschnittener Fuchs in `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FEF6E9`, 57 dp groß, damit die Ohren auch in runden Masken passen). Keine Eule (Abgrenzung zu Duolingo).
+- 2026-10-24: Tipp-Hilfe für jedes Wort: Die Glossare der Pakete decken alle Wörter in Sätzen und Gesprächen (auch Antwortoptionen) ab; `game-test.js` prüft das (Zahlen ausgenommen). Release 0.0.7.
 - 2026-10-24: Schlüssel-Sicherheit (QR-Code `app/js/qr.js`, eigener Encoder Version 1-M alphanumerisch mit Maskenwahl, mit OpenCV an 500 Schlüsseln geprüft; Erinnerung 3 Tage nach Anlage, Prüfung über die letzten 4 Zeichen, `keyReminderDue`/`checkKeyEnd`, `st.keyCreated`/`keyChecked`/`keyRemindAt`). Startbildschirm-Widget `StreakWidget.kt` (2×1, Serie und Tagesziel aus `Reminders.state`, Aktualisierung bei `reportDay` und alle 30 Min.). Fehlermeldungen → GitHub-Issues mit `tools/reports.mjs` (Spalte `reports.issue`, Migration `worker/migrations/0001_reports_issue.sql`, Label „Fehlermeldung“; Meldungen sind damit öffentlich, steht im Datenschutz). GitHub-Actions-Workflow `.github/workflows/test.yml` (npm test + Android-Debug-Build).
 - 2026-10-24: Issue #6: 5 Gespräche pro Kategorie (Restaurant, Taxi, Hotel, Apotheke), 20 pro Sprache; Paketfeld `group` pro Gespräch und `dialogGroups` (Titel, Emoji); im Üben-Tab aufklappbare Kategorien mit Fortschritt (`dialogsHTML`, `ui.dgroup`).
 - 2026-10-24: Issue #5 (Gespräche sprechen übereinander): Die Antwort des Gegenübers wird jetzt hinter den eigenen Satz in die Warteschlange der Sprachausgabe gestellt (`speak(text, slow, queued)`, Brücke `speakQueued` mit QUEUE_ADD und 0,5 s Pause) statt nach festen 1,4 s. Update-Mitteilung mit Dialog und direktem APK-Download.
