@@ -8,6 +8,14 @@ OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duo
 
 > ⚠️ **Experimentell:** OpenSprachFuchs ist in einer frühen Version (0.x). Funktionen, Datenformat und Backend können sich noch ändern, und es kann Fehler geben. Wichtige Lernfortschritte bitte nicht allein darauf verlassen.
 
+## Screenshots
+
+| Lernweg mit Stufen | Lektion | Gespräch |
+|:---:|:---:|:---:|
+| <img src="docs/screenshots/lernweg.webp" width="220" alt="Lernweg mit Stufen-Reitern A1 bis B2 und dem Fuchs neben der aktuellen Lektion"> | <img src="docs/screenshots/lektion.webp" width="220" alt="Bildaufgabe mit richtiger Antwort"> | <img src="docs/screenshots/gespraech.webp" width="220" alt="Gespräch im Restaurant auf Italienisch"> |
+| **Geschafft!** | **Üben & Gespräche** | **Widget** |
+| <img src="docs/screenshots/ergebnis.webp" width="220" alt="Ergebnis mit jubelndem Fuchs"> | <img src="docs/screenshots/ueben.webp" width="220" alt="Gesprächs-Kategorien im Üben-Tab"> | <img src="docs/screenshots/widget.webp" width="220" alt="Widget mit Serie und Tagesziel auf dem Startbildschirm"> |
+
 ## Funktionen
 
 - **Lernweg** mit 40 Einheiten (160 Lektionen) pro Sprache: je 10 Einheiten in den Stufen A1, A2, B1 und B2, wählbar über Reiter, dazu ein Einstufungstest zum Überspringen

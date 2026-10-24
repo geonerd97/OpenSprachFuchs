@@ -3,5 +3,6 @@
     <string name="app_name">OpenSprachFuchs</string>
     <!-- Shorter name under the icon on the home screen, so launchers don't cut it off. -->
     <string name="launcher_name">SprachFuchs</string>
+    <string name="widget_name">Serie &amp; Tagesziel</string>
     <string name="widget_desc">Deine Serie und ob das Tagesziel geschafft ist</string>
 </resources>
