@@ -53,6 +53,7 @@ node tools/packs.mjs build    # prüfen und nach worker/public/packs/ bauen (mit
 - Jede Einheit braucht mindestens 4 Wörter. Bildaufgaben gibt es nur, wenn mindestens 4 Wörter ein Emoji (`pic`) haben.
 - Satzzeichen nicht frei stehend schreiben („Ça va?“, nicht „Ça va ?“), sonst überspringt der Lückentext den Satz.
 - Im Gespräch ist die erste der drei Antworten `a` die richtige; die App mischt sie.
+- Gespräche können zu Kategorien gehören: `"group": "restaurant"` am Gespräch und oben im Paket `"dialogGroups": {"restaurant": {"title": "Im Restaurant", "em": "🍽️"}}`. Die App zeigt die Kategorien aufklappbar mit Fortschritt.
 - `level` ist eines von A1, A2, B1, B2, C1, C2.
 
 Die Inhalte stehen unter [CC BY-SA 4.0](LICENSE).
