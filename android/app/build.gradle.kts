@@ -15,8 +15,8 @@ android {
         applicationId = "de.opensprachfuchs.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 12
-        versionName = "0.0.10"
+        versionCode = 13
+        versionName = "0.0.11"
         // Friend links (QR codes) open the app: the backend's host, see CONFIG.BACKEND_URL in app/js/config.js.
         manifestPlaceholders["linkHost"] = "opensprachfuchs.opensprachfuchs.workers.dev"
     }
