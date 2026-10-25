@@ -127,6 +127,8 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
     override fun onResume() {
         super.onResume()
         web.onResume()
+        // Back from installing a voice, for example: let the page check again.
+        web.evaluateJavascript("window.opensprachfuchsResume && window.opensprachfuchsResume()", null)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -229,6 +231,30 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         fun hasVoice(lang: String): Boolean {
             val engine = tts ?: return false
             return ttsReady && engine.isLanguageAvailable(Locale.forLanguageTag(lang)) >= TextToSpeech.LANG_AVAILABLE
+        }
+
+        /** The phone's voice for [lang]: "ok", "missing" (not downloaded), "none" (not supported) or "loading" (engine starting). */
+        @JavascriptInterface
+        fun voiceState(lang: String): String {
+            val engine = tts ?: return "none"
+            if (!ttsReady) return "loading"
+            return when (engine.isLanguageAvailable(Locale.forLanguageTag(lang))) {
+                TextToSpeech.LANG_MISSING_DATA -> "missing"
+                TextToSpeech.LANG_NOT_SUPPORTED -> "none"
+                else -> "ok"
+            }
+        }
+
+        /** Opens the voice download of the speech engine, or the text-to-speech settings if that is not offered. */
+        @JavascriptInterface
+        fun installVoice() {
+            runOnUiThread {
+                val install = Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                val settings = Intent("com.android.settings.TTS_SETTINGS").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                try { startActivity(install) } catch (e: Exception) {
+                    try { startActivity(settings) } catch (e2: Exception) { Toast.makeText(this@MainActivity, "Bitte in den Android-Einstellungen unter Sprachausgabe eine Stimme installieren.", Toast.LENGTH_LONG).show() }
+                }
+            }
         }
 
         /** Whether the phone has a speech recognition service at all. */

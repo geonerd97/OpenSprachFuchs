@@ -42,6 +42,11 @@ export function checkPack(pack, file) {
   if (!Array.isArray(pack.gapSkip)) err("gapSkip", "muss eine Liste sein");
   if (pack.glossary && typeof pack.glossary !== "object") err("glossary", "muss ein Objekt sein");
   if (pack.glossaryDe && typeof pack.glossaryDe !== "object") err("glossaryDe", "muss ein Objekt sein");
+  for (const x of pack.stories || []) {
+    if (!(pack.units || []).some(u => u.id === x.unit)) err(`stories ${x.id}`, `Einheit ${x.unit} gibt es nicht`);
+    if (!x.title || !Array.isArray(x.lines) || x.lines.length < 4 || x.lines.some(l => !l.t || !l.de)) err(`stories ${x.id}`, "braucht Titel und mindestens 4 Zeilen mit t und de");
+    if (!Array.isArray(x.questions) || !x.questions.length || x.questions.some(q => !q.q || !Array.isArray(q.a) || q.a.length !== 3)) err(`stories ${x.id}`, "jede Frage braucht q und genau 3 Antworten (die erste ist richtig)");
+  }
   if (!Array.isArray(pack.units) || !pack.units.length) { err("units", "keine Einheiten"); return { errors, warnings }; }
   const ids = new Set();
   const uniq = (id, where) => { if (ids.has(id)) err(where, `ID ${id} doppelt`); ids.add(id); };
@@ -96,8 +101,11 @@ export function formatPack(p) {
     + `      "sentences": [\n${u.sentences.map(s => `        ${j(s)}`).join(",\n")}\n      ]\n    }`;
   const dialog = d => `    {\n      "id": ${j(d.id)},${d.group ? ` "group": ${j(d.group)},` : ""} "title": ${j(d.title)}, "em": ${j(d.em)}, "desc": ${j(d.desc)},\n      "turns": [\n`
     + d.turns.map(t => `        { "p": ${j(t.p)},\n          "a": [\n${t.a.map(a => `            ${j(a)}`).join(",\n")}\n          ] }`).join(",\n") + "\n      ]\n    }";
+  const story = x => `    {\n      "id": ${j(x.id)}, "unit": ${j(x.unit)}, "title": ${j(x.title)}, "em": ${j(x.em)},\n      "lines": [\n${x.lines.map(l => `        ${j(l)}`).join(",\n")}\n      ],\n`
+    + `      "questions": [\n${x.questions.map(q => `        ${j(q)}`).join(",\n")}\n      ]\n    }`;
+  const stories = p.stories ? `,\n  "stories": [\n${p.stories.map(story).join(",\n")}\n  ]` : "";
   const groups = p.dialogGroups ? `  "dialogGroups": {\n${Object.entries(p.dialogGroups).map(([k, v]) => `    ${j(k)}: ${j(v)}`).join(",\n")}\n  },\n` : "";
-  return `{\n${head.join(",\n")},\n${gloss},\n  "units": [\n${p.units.map(unit).join(",\n")}\n  ],\n${groups}  "dialogs": [\n${(p.dialogs || []).map(dialog).join(",\n")}\n  ]\n}\n`;
+  return `{\n${head.join(",\n")},\n${gloss},\n  "units": [\n${p.units.map(unit).join(",\n")}\n  ],\n${groups}  "dialogs": [\n${(p.dialogs || []).map(dialog).join(",\n")}\n  ]${stories}\n}\n`;
 }
 
 function checkAll() {

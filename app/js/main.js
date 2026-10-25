@@ -33,6 +33,17 @@ app.addEventListener("click", e => {
       sfx("tap"); ui.pop = ui.pop === ds.id ? null : ds.id; render(); return;
     }
     case "start": startLesson(+ds.u, +ds.l); return;
+    case "bonus": startBonus(+ds.u); return;
+    case "installvoice": window.AndroidBridge.installVoice(); return;
+    case "voicehide": st.voiceHidden = Object.assign({}, st.voiceHidden, { [CODE]: true }); save(); render(); return;
+    case "ws": wordSearchTap(+ds.r, +ds.c); return;
+    case "scr": scrambleTap(+ds.i); return;
+    case "scrback": scrambleBack(); return;
+    case "mem": memoryTap(+ds.i); return;
+    case "guess": guessTap(ds.ch); return;
+    case "storyall": storyReadAll(); return;
+    case "storyquiz": storyToQuestions(); return;
+    case "storyq": storyAnswer(+ds.i); return;
     case "train": startTraining(false); return;
     case "vocab": startTraining(true); return;
     case "blitz": ui.modal = null; startBlitz(); return;
@@ -52,7 +63,7 @@ app.addEventListener("click", e => {
     case "hearts": ui.pop = null; ui.modal = "hearts"; render(); return;
     case "courses": ui.pop = null; ui.modal = "courses"; render(); return;
     case "level": ui.pop = null; ui.level = ds.l; sfx("tap"); render(); return;
-    case "pickcourse": ui.level = null; st.course = ds.c; setCourse(ds.c); save(); ui.modal = null; sfx("tap"); render(); window.scrollTo(0, 0); return;
+    case "pickcourse": ui.level = null; st.course = ds.c; setCourse(ds.c); save(); ui.modal = null; sfx("tap"); render(); window.scrollTo(0, 0); checkVoice(); return;
     case "settings": ui.updateNote = ""; ui.modal = "settings"; render(); return;
     case "managepacks": ui.pop = null; packs.error = ""; ui.modal = "packs"; render(); fetchPackIndex().catch(() => { packs.error = "Keine Verbindung zum Server."; }).then(render); return;
     case "reloadpacks": packs.error = ""; render(); fetchPackIndex().catch(() => { packs.error = "Keine Verbindung zum Server."; }).then(render); return;
@@ -211,9 +222,10 @@ if (!st.onboarded) {
 checkBadges();
 ui.decay = applyDecay();
 syncReminder(); reportDay();
-render(); scrollToCurrent();
+render(); scrollToCurrent(); checkVoice();
 // Friend links (QR code scanned with the camera): the link that started the app is handled once the account is known,
 // later ones arrive through opensprachfuchsLink.
 const startLink = APP && window.AndroidBridge.takeLink ? window.AndroidBridge.takeLink() : "";
 window.opensprachfuchsLink = url => { handleFriendLink(url); };
+window.opensprachfuchsResume = () => checkVoice();
 initAccount().then(() => { if (startLink) handleFriendLink(startLink); sendReports(); checkPackUpdates(); checkAppUpdate(); });

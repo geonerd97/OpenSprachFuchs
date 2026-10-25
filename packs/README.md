@@ -43,6 +43,13 @@ node tools/packs.mjs build    # prüfen und nach worker/public/packs/ bauen (mit
                {"de": "…", "t": "…"}, {"de": "…", "t": "…"}]}
       ]
     }
+  ],
+  "stories": [                       // Kurzgeschichten für die Sonderstation einer Einheit
+    {
+      "id": "food.story", "unit": "food", "title": "Im Café", "em": "☕",
+      "lines": [{"de": "Lena geht heute ins Café.", "t": "Aujourd'hui, Lena va au café."}],
+      "questions": [{"q": "Wo ist Lena?", "a": ["Im Café", "Im Hotel", "Im Park"]}]
+    }
   ]
 }
 ```
@@ -54,6 +61,7 @@ node tools/packs.mjs build    # prüfen und nach worker/public/packs/ bauen (mit
 - Jede Einheit braucht mindestens 4 Wörter. Bildaufgaben gibt es nur, wenn mindestens 4 Wörter ein Emoji (`pic`) haben.
 - Satzzeichen nicht frei stehend schreiben („Ça va?“, nicht „Ça va ?“), sonst überspringt der Lückentext den Satz.
 - Im Gespräch ist die erste der drei Antworten `a` die richtige; die App mischt sie.
+- Sonderstationen: Hat eine Einheit eine Geschichte (`stories[].unit`), ist ihr fünfter Knopf diese Geschichte; sonst ein Minispiel aus den Wörtern der Einheit. Jede Frage hat genau drei Antworten auf Deutsch, die erste ist richtig. Bisher hat jede fünfte Einheit einer Stufe eine Geschichte.
 - Gespräche können zu Kategorien gehören: `"group": "restaurant"` am Gespräch und oben im Paket `"dialogGroups": {"restaurant": {"title": "Im Restaurant", "em": "🍽️"}}`. Die App zeigt die Kategorien aufklappbar mit Fortschritt.
 - `level` ist eines von A1, A2, B1, B2, C1, C2.
 

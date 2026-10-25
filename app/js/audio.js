@@ -44,6 +44,16 @@ function stopSpeaking() {
 /* Listening can be paused for an hour; audio-only tasks then turn into reading tasks with the same answer. */
 const LISTEN_PAUSE_MS = 60 * 60 * 1000;
 const listenPaused = () => Date.now() < (st.listenOffUntil || 0);
+/* The phone's voice for the current language (app only): "ok", "missing", "none" or "loading"; checked when the
+   language changes and again once the speech engine has started. Without a voice, listening tasks become reading tasks. */
+const voice = { code: "", state: "ok" };
+function checkVoice(retry = 4) {
+  if (!APP || !window.AndroidBridge.voiceState) return;
+  voice.code = CODE; voice.state = window.AndroidBridge.voiceState(C.voice);
+  if (voice.state === "loading" && retry > 0) setTimeout(() => checkVoice(retry - 1), 1500);
+  else if (view === "home" && !ui.modal) render();
+}
+const noVoice = () => APP && voice.code === CODE && (voice.state === "missing" || voice.state === "none");
 const canListen = () => hasTTS() && st.settings.audio && st.settings.listen && !listenPaused();
 function degradeAudio(ex) {
   if (!ex) return ex;

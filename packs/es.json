@@ -1024,7 +1024,191 @@
     "templo": "Tempel",
     "romano": "römisch",
     "cambió": "veränderte",
-    "setenta": "siebzig"
+    "setenta": "siebzig",
+    "lena": "Lena (Name)",
+    "tom": "Tom (Name)",
+    "clara": "Clara (Name)",
+    "marco": "Marco (Name)",
+    "sara": "Sara (Name)",
+    "ben": "Ben (Name)",
+    "mia": "Mia (Name)",
+    "rossi": "Rossi (Name)",
+    "jonas": "Jonas (Name)",
+    "eva": "Eva (Name)",
+    "lisa": "Lisa (Name)",
+    "tim": "Tim (Name)",
+    "julia": "Julia (Name)",
+    "felix": "Felix (Name)",
+    "cafetería": "Café",
+    "camarero": "Kellner",
+    "pide": "bestellt",
+    "luego": "dann",
+    "toma": "trinkt / nimmt",
+    "come": "isst",
+    "escucha": "hört",
+    "busca": "sucht",
+    "encuentra": "findet",
+    "sigue": "geht weiter (siga recto = geradeaus)",
+    "detrás": "hinter",
+    "edificio": "Haus / Gebäude",
+    "llama": "heißt (se llama) / ruft an",
+    "simpática": "nett",
+    "rojas": "rot",
+    "tomamos": "trinken wir",
+    "pasado": "letzte / vergangen",
+    "fuimos": "fuhren",
+    "hizo": "(hizo buen tiempo = das Wetter war gut)",
+    "estupendo": "wunderbar",
+    "nadamos": "schwammen",
+    "comimos": "aßen",
+    "llovió": "regnete",
+    "encontraba": "fand",
+    "buscó": "suchte",
+    "pidió": "bat (pidió ayuda = bat um Hilfe)",
+    "novia": "Freundin",
+    "llamó": "rief an",
+    "repente": "(de repente = plötzlich)",
+    "sonó": "klingelte",
+    "nevera": "Kühlschrank",
+    "vacía": "leer",
+    "funcionaba": "funktionierte",
+    "amigos": "Freunde",
+    "preparan": "bereiten vor",
+    "sorpresa": "Überraschung",
+    "chocolate": "Schokolade",
+    "globos": "Luftballons",
+    "velas": "Kerzen",
+    "apagan": "machen aus",
+    "esperan": "warten",
+    "gritan": "rufen",
+    "ríe": "lacht",
+    "llora": "weint",
+    "alegría": "Freude",
+    "cenar": "zu Abend essen",
+    "llevamos": "brachten mit",
+    "señora": "Frau (Anrede)",
+    "recibió": "empfing",
+    "cariño": "Herzlichkeit",
+    "repetí": "nahm nach",
+    "hablamos": "redeten",
+    "reímos": "lachten",
+    "despedirnos": "zum Abschied",
+    "dijo": "sagte",
+    "volved": "kommt zurück",
+    "antiguo": "alt",
+    "contó": "erzählte",
+    "construido": "gebaut",
+    "quinientos": "fünfhundert",
+    "gran": "groß",
+    "salón": "Saal",
+    "cuadros": "Gemälde",
+    "artistas": "Künstler",
+    "podían": "konnte man / konnten",
+    "interesó": "interessierte",
+    "secreta": "geheim",
+    "estantería": "Regal",
+    "querían": "wollten",
+    "alpes": "Alpen",
+    "salieron": "gingen los",
+    "hacía": "(hacía sol = die Sonne schien)",
+    "horas": "Stunden",
+    "llegó": "kam",
+    "espesa": "dicht",
+    "apenas": "kaum",
+    "propuso": "schlug vor",
+    "volver": "zurückgehen",
+    "refugio": "Hütte",
+    "comieron": "aßen",
+    "jugaron": "spielten",
+    "cartas": "Karten / Briefe",
+    "siguiente": "nächste",
+    "cielo": "Himmel",
+    "ponían": "(ponerse de acuerdo = sich einigen)",
+    "prefería": "wollte lieber",
+    "eligieron": "wählten",
+    "ciencia": "Wissenschaft (ciencia ficción = Science-Fiction)",
+    "ficción": "(ciencia ficción = Science-Fiction)",
+    "eran": "waren",
+    "impresionantes": "beeindruckend",
+    "aburrida": "langweilig",
+    "incluso": "sogar",
+    "quedó": "(se quedó dormido = schlief ein)",
+    "rato": "Weile",
+    "elige": "wählt",
+    "anunciado": "angesagt",
+    "planeamos": "planten",
+    "pícnic": "Picknick",
+    "mediodía": "Mittag",
+    "nubes": "Wolken",
+    "pusieron": "wurden",
+    "oscuras": "dunkel",
+    "empezó": "begann",
+    "tronar": "donnern",
+    "fuerza": "Kraft (con fuerza = heftig)",
+    "recogimos": "packten ein",
+    "corrimos": "liefen",
+    "debajo": "unter",
+    "veía": "sah man",
+    "arcoíris": "Regenbogen",
+    "antigua": "alt / ehemalig",
+    "habían": "hatten",
+    "discutido": "gestritten",
+    "malentendido": "Missverständnis",
+    "tonto": "dumm",
+    "hablarse": "miteinander sprechen",
+    "decía": "stand / sagte",
+    "lamentaba": "bedauerte",
+    "principio": "Anfang",
+    "debía": "sollte",
+    "contestar": "antworten",
+    "echado": "(echar de menos = vermissen)",
+    "hablaron": "redeten",
+    "fin": "(por fin = endlich)",
+    "verse": "sich sehen",
+    "nuestra": "unsere",
+    "gente": "Leute",
+    "países": "Ländern",
+    "conocían": "kannten",
+    "organizar": "organisieren",
+    "trajo": "brachte",
+    "juegos": "Spiele",
+    "conversaciones": "Gespräche",
+    "simplemente": "einfach",
+    "desaparecieron": "verschwanden",
+    "ese": "dieser",
+    "ayudan": "helfen",
+    "cuidando": "beim Aufpassen (auf Kinder)",
+    "contrató": "schloss ab",
+    "barata": "günstig",
+    "primer": "erste",
+    "pagó": "bezahlte",
+    "segundo": "zweite",
+    "cobraron": "buchten ab",
+    "sesenta": "sechzig",
+    "enfadó": "(se enfadó = wurde wütend)",
+    "empleada": "Mitarbeiterin",
+    "señaló": "wies hin",
+    "valía": "galt",
+    "primeras": "ersten",
+    "además": "außerdem",
+    "atención": "Aufmerksamkeit",
+    "ordenando": "beim Aufräumen",
+    "madera": "Holz",
+    "desván": "Dachboden",
+    "bisabuelo": "Urgroßvater",
+    "emigrado": "ausgewandert",
+    "describía": "beschrieb",
+    "barco": "Schiff",
+    "escribía": "schrieb",
+    "duros": "schwer",
+    "fueron": "waren",
+    "primeros": "ersten",
+    "hogar": "Zuhause / Heimat",
+    "primera": "erste",
+    "propia": "eigene",
+    "aprendimos": "lernten",
+    "donde": "wo",
+    "vivía": "lebte"
   },
   "glossaryDe": {
     "vielen": "muchas (vielen Dank = muchas gracias)",
@@ -4502,6 +4686,296 @@
             {"de":"Danke. Und wann fährt die Fähre?","t":"Gracias. ¿Y a qué hora sale el ferry?"},
             {"de":"Danke. Und wo ist die Umkleidekabine?","t":"Gracias. ¿Y dónde está el probador?"}
           ] }
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "food.story", "unit": "food", "title": "Im Café", "em": "☕",
+      "lines": [
+        {"de":"Lena geht heute ins Café.","t":"Hoy Lena va a la cafetería."},
+        {"de":"Sie hat Hunger und Durst.","t":"Tiene hambre y sed."},
+        {"de":"Der Kellner ist sehr freundlich.","t":"El camarero es muy amable."},
+        {"de":"Lena bestellt einen Kaffee und ein Croissant.","t":"Lena pide un café y un cruasán."},
+        {"de":"Der Kaffee ist heiß und sehr gut.","t":"El café está caliente y muy bueno."},
+        {"de":"Dann kommt ihr Freund Paul.","t":"Luego llega su amigo Paul."},
+        {"de":"Paul möchte einen Tee mit Milch.","t":"Paul quiere un té con leche."},
+        {"de":"Am Ende bezahlt Paul die Rechnung.","t":"Al final Paul paga la cuenta."}
+      ],
+      "questions": [
+        {"q":"Wo ist Lena?","a":["Im Café","Im Hotel","Im Park"]},
+        {"q":"Was bestellt Lena?","a":["Einen Kaffee und ein Croissant","Einen Tee mit Milch","Ein Wasser"]},
+        {"q":"Wer bezahlt am Ende?","a":["Paul","Lena","Der Kellner"]}
+      ]
+    },
+    {
+      "id": "home.story", "unit": "home", "title": "Ein normaler Tag", "em": "🏠",
+      "lines": [
+        {"de":"Tom wohnt in einer kleinen Wohnung.","t":"Tom vive en un piso pequeño."},
+        {"de":"Er steht jeden Tag um sieben Uhr auf.","t":"Se levanta todos los días a las siete."},
+        {"de":"Zuerst duscht er und trinkt einen Kaffee.","t":"Primero se ducha y toma un café."},
+        {"de":"Dann fährt er mit dem Bus zur Arbeit.","t":"Luego va al trabajo en autobús."},
+        {"de":"Am Abend kocht er Nudeln.","t":"Por la noche cocina pasta."},
+        {"de":"Er isst in der Küche und hört Musik.","t":"Come en la cocina y escucha música."},
+        {"de":"Danach liest er ein Buch auf dem Sofa.","t":"Después lee un libro en el sofá."},
+        {"de":"Um elf Uhr geht er ins Bett.","t":"A las once se va a la cama."}
+      ],
+      "questions": [
+        {"q":"Wann steht Tom auf?","a":["Um sieben Uhr","Um elf Uhr","Am Abend"]},
+        {"q":"Wie fährt Tom zur Arbeit?","a":["Mit dem Bus","Mit dem Fahrrad","Mit dem Auto"]},
+        {"q":"Was macht Tom auf dem Sofa?","a":["Er liest ein Buch","Er kocht Nudeln","Er duscht"]}
+      ]
+    },
+    {
+      "id": "city.story", "unit": "city", "title": "Verlaufen in der Stadt", "em": "🗺️",
+      "lines": [
+        {"de":"Anna ist zum ersten Mal in Lissabon.","t":"Anna está en Lisboa por primera vez."},
+        {"de":"Sie sucht das Museum, aber sie findet es nicht.","t":"Busca el museo, pero no lo encuentra."},
+        {"de":"Sie fragt einen Mann auf der Straße.","t":"Pregunta a un hombre en la calle."},
+        {"de":"Der Mann sagt: „Gehen Sie geradeaus und dann links.“","t":"El hombre dice: \"Siga recto y luego a la izquierda.\""},
+        {"de":"„Das Museum ist neben der Kirche.“","t":"\"El museo está al lado de la iglesia.\""},
+        {"de":"Anna geht geradeaus, aber sie sieht keine Kirche.","t":"Anna sigue recto, pero no ve ninguna iglesia."},
+        {"de":"Dann sieht sie einen Park und eine Apotheke.","t":"Luego ve un parque y una farmacia."},
+        {"de":"Hinter der Apotheke ist die Kirche, und daneben das Museum!","t":"¡Detrás de la farmacia está la iglesia, y al lado el museo!"}
+      ],
+      "questions": [
+        {"q":"Was sucht Anna?","a":["Das Museum","Die Apotheke","Den Bahnhof"]},
+        {"q":"Wen fragt Anna?","a":["Einen Mann auf der Straße","Eine Polizistin","Ihre Freundin"]},
+        {"q":"Wo ist das Museum?","a":["Neben der Kirche","Im Park","Hinter dem Bahnhof"]}
+      ]
+    },
+    {
+      "id": "describe.story", "unit": "describe", "title": "Die neue Nachbarin", "em": "👫",
+      "lines": [
+        {"de":"Im Haus wohnt eine neue Nachbarin.","t":"En el edificio vive una nueva vecina."},
+        {"de":"Sie heißt Clara und ist sehr nett.","t":"Se llama Clara y es muy simpática."},
+        {"de":"Clara ist groß und hat lange blonde Haare.","t":"Clara es alta y tiene el pelo largo y rubio."},
+        {"de":"Sie trägt immer eine rote Brille.","t":"Siempre lleva gafas rojas."},
+        {"de":"Clara hat einen kleinen Hund.","t":"Clara tiene un perro pequeño."},
+        {"de":"Der Hund ist schwarz und sehr lustig.","t":"El perro es negro y muy gracioso."},
+        {"de":"Clara ist Lehrerin und spricht drei Sprachen.","t":"Clara es profesora y habla tres idiomas."},
+        {"de":"Am Samstag trinken wir zusammen Kaffee.","t":"El sábado tomamos un café juntos."}
+      ],
+      "questions": [
+        {"q":"Wie sieht Clara aus?","a":["Groß, mit langen blonden Haaren","Klein, mit kurzen Haaren","Groß, mit einem Bart"]},
+        {"q":"Was hat Clara?","a":["Einen kleinen Hund","Eine Katze","Zwei Kinder"]},
+        {"q":"Was ist Clara von Beruf?","a":["Lehrerin","Ärztin","Kellnerin"]}
+      ]
+    },
+    {
+      "id": "past.story", "unit": "past", "title": "Ein Wochenende am Meer", "em": "🏖️",
+      "lines": [
+        {"de":"Letztes Wochenende sind wir ans Meer gefahren.","t":"El fin de semana pasado fuimos a la playa."},
+        {"de":"Wir sind am Freitagabend mit dem Zug losgefahren.","t":"Salimos en tren el viernes por la noche."},
+        {"de":"Das Hotel war klein, aber sehr gemütlich.","t":"El hotel era pequeño, pero muy acogedor."},
+        {"de":"Am Samstag war das Wetter wunderbar.","t":"El sábado hizo un tiempo estupendo."},
+        {"de":"Wir sind geschwommen und haben in der Sonne gelegen.","t":"Nadamos y tomamos el sol."},
+        {"de":"Am Abend haben wir frischen Fisch gegessen.","t":"Por la noche comimos pescado fresco."},
+        {"de":"Am Sonntag hat es leider den ganzen Tag geregnet.","t":"El domingo, por desgracia, llovió todo el día."},
+        {"de":"Trotzdem war es ein tolles Wochenende.","t":"Aun así, fue un fin de semana genial."}
+      ],
+      "questions": [
+        {"q":"Wie sind sie ans Meer gefahren?","a":["Mit dem Zug","Mit dem Auto","Mit dem Flugzeug"]},
+        {"q":"Was haben sie am Samstagabend gegessen?","a":["Frischen Fisch","Pizza","Nudeln"]},
+        {"q":"Wie war das Wetter am Sonntag?","a":["Es hat geregnet","Es war sonnig","Es hat geschneit"]}
+      ]
+    },
+    {
+      "id": "phone.story", "unit": "phone", "title": "Das Handy ist weg", "em": "📱",
+      "lines": [
+        {"de":"Gestern Abend wollte Marco seine Mutter anrufen.","t":"Anoche Marco quería llamar a su madre."},
+        {"de":"Aber er konnte sein Handy nicht finden.","t":"Pero no encontraba el móvil."},
+        {"de":"Er hat in der Küche und im Bad gesucht.","t":"Buscó en la cocina y en el baño."},
+        {"de":"Dann hat er seine Freundin um Hilfe gebeten.","t":"Luego le pidió ayuda a su novia."},
+        {"de":"Sie hat Marcos Nummer angerufen.","t":"Ella llamó al número de Marco."},
+        {"de":"Plötzlich hat etwas im Kühlschrank geklingelt!","t":"¡De repente algo sonó en la nevera!"},
+        {"de":"Das Handy lag neben der Milch.","t":"El móvil estaba al lado de la leche."},
+        {"de":"Der Akku war fast leer, aber das Handy war kalt und funktionierte noch.","t":"La batería estaba casi vacía, pero el móvil estaba frío y todavía funcionaba."}
+      ],
+      "questions": [
+        {"q":"Wen wollte Marco anrufen?","a":["Seine Mutter","Seine Freundin","Seinen Chef"]},
+        {"q":"Wer hat ihm geholfen?","a":["Seine Freundin","Seine Mutter","Ein Nachbar"]},
+        {"q":"Wo war das Handy?","a":["Im Kühlschrank","Im Bad","Auf dem Sofa"]}
+      ]
+    },
+    {
+      "id": "party.story", "unit": "party", "title": "Die Überraschungsparty", "em": "🎂",
+      "lines": [
+        {"de":"Sara hat am Freitag Geburtstag.","t":"El viernes es el cumpleaños de Sara."},
+        {"de":"Ihre Freunde planen eine Überraschungsparty.","t":"Sus amigos preparan una fiesta sorpresa."},
+        {"de":"Ben backt einen großen Schokoladenkuchen.","t":"Ben hace una tarta grande de chocolate."},
+        {"de":"Mia kauft Luftballons und Kerzen.","t":"Mia compra globos y velas."},
+        {"de":"Um acht Uhr sind alle Gäste in der Wohnung.","t":"A las ocho todos los invitados están en el piso."},
+        {"de":"Sie machen das Licht aus und warten.","t":"Apagan la luz y esperan."},
+        {"de":"Als Sara die Tür öffnet, rufen alle: „Überraschung!“","t":"Cuando Sara abre la puerta, todos gritan: \"¡Sorpresa!\""},
+        {"de":"Sara lacht und weint gleichzeitig vor Freude.","t":"Sara ríe y llora de alegría a la vez."}
+      ],
+      "questions": [
+        {"q":"Was backt Ben?","a":["Einen Schokoladenkuchen","Brot","Kekse"]},
+        {"q":"Was kauft Mia?","a":["Luftballons und Kerzen","Blumen und Wein","Ein Geschenk"]},
+        {"q":"Was rufen alle, als Sara die Tür öffnet?","a":["„Überraschung!“","„Guten Abend!“","„Frohe Weihnachten!“"]}
+      ]
+    },
+    {
+      "id": "visit.story", "unit": "visit", "title": "Abendessen bei Familie Rossi", "em": "🍝",
+      "lines": [
+        {"de":"Am Sonntag waren wir bei Familie Rossi zum Abendessen eingeladen.","t":"El domingo estábamos invitados a cenar en casa de la familia Rossi."},
+        {"de":"Wir haben Blumen und eine Flasche Wein mitgebracht.","t":"Llevamos flores y una botella de vino."},
+        {"de":"Frau Rossi hat uns sehr herzlich begrüßt.","t":"La señora Rossi nos recibió con mucho cariño."},
+        {"de":"Zuerst gab es eine Suppe, dann Nudeln mit Tomatensoße.","t":"Primero hubo sopa y luego pasta con tomate."},
+        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"La comida estaba tan rica que repetí dos veces."},
+        {"de":"Zum Nachtisch gab es Eis mit Erdbeeren.","t":"De postre hubo helado con fresas."},
+        {"de":"Wir haben bis spät in die Nacht geredet und gelacht.","t":"Hablamos y nos reímos hasta muy tarde."},
+        {"de":"Beim Abschied hat Frau Rossi gesagt: „Kommt bald wieder!“","t":"Al despedirnos, la señora Rossi dijo: \"¡Volved pronto!\""}
+      ],
+      "questions": [
+        {"q":"Was haben sie mitgebracht?","a":["Blumen und Wein","Einen Kuchen","Schokolade"]},
+        {"q":"Was gab es zum Nachtisch?","a":["Eis mit Erdbeeren","Kuchen","Obstsalat"]},
+        {"q":"Was hat Frau Rossi beim Abschied gesagt?","a":["„Kommt bald wieder!“","„Gute Nacht!“","„Danke für die Blumen!“"]}
+      ]
+    },
+    {
+      "id": "culture.story", "unit": "culture", "title": "Die Führung im Museum", "em": "🏛️",
+      "lines": [
+        {"de":"Im Urlaub haben wir an einer Führung durch ein altes Schloss teilgenommen.","t":"En vacaciones hicimos una visita guiada por un castillo antiguo."},
+        {"de":"Die Führerin hat uns viel über die Geschichte des Schlosses erzählt.","t":"La guía nos contó mucho sobre la historia del castillo."},
+        {"de":"Es wurde vor fast fünfhundert Jahren gebaut.","t":"Fue construido hace casi quinientos años."},
+        {"de":"Im großen Saal hängen Gemälde von berühmten Künstlern.","t":"En el gran salón hay cuadros de artistas famosos."},
+        {"de":"Fotografieren war leider nicht erlaubt.","t":"Por desgracia, no se podían hacer fotos."},
+        {"de":"Am interessantesten fand ich die geheime Treppe hinter einem Bücherregal.","t":"Lo que más me interesó fue la escalera secreta detrás de una estantería."},
+        {"de":"Nach der Führung haben wir im Garten des Schlosses Kaffee getrunken.","t":"Después de la visita tomamos un café en el jardín del castillo."},
+        {"de":"Es hat sich wirklich gelohnt.","t":"Mereció mucho la pena."}
+      ],
+      "questions": [
+        {"q":"Wie alt ist das Schloss ungefähr?","a":["Fast fünfhundert Jahre","Hundert Jahre","Zweitausend Jahre"]},
+        {"q":"Was war nicht erlaubt?","a":["Fotografieren","Sprechen","Essen im Garten"]},
+        {"q":"Was war am interessantesten?","a":["Die geheime Treppe","Die Gemälde","Der Garten"]}
+      ]
+    },
+    {
+      "id": "nature.story", "unit": "nature", "title": "Die Wanderung im Nebel", "em": "🥾",
+      "lines": [
+        {"de":"Jonas und Eva wollten auf einen Berg in den Alpen wandern.","t":"Jonas y Eva querían subir a una montaña de los Alpes."},
+        {"de":"Sie sind früh am Morgen losgegangen, als die Sonne schien.","t":"Salieron temprano por la mañana, cuando hacía sol."},
+        {"de":"Nach zwei Stunden kam plötzlich dichter Nebel.","t":"Después de dos horas, de repente llegó una niebla espesa."},
+        {"de":"Sie konnten den Weg kaum noch sehen.","t":"Apenas podían ver el camino."},
+        {"de":"Eva hat vorgeschlagen, zur Hütte zurückzugehen.","t":"Eva propuso volver al refugio."},
+        {"de":"Jonas war enttäuscht, aber er wusste, dass sie recht hatte.","t":"Jonas estaba decepcionado, pero sabía que ella tenía razón."},
+        {"de":"In der Hütte haben sie heiße Suppe gegessen und Karten gespielt.","t":"En el refugio comieron sopa caliente y jugaron a las cartas."},
+        {"de":"Am nächsten Tag war der Himmel klar, und sie haben den Gipfel erreicht.","t":"Al día siguiente el cielo estaba despejado y llegaron a la cima."}
+      ],
+      "questions": [
+        {"q":"Was ist nach zwei Stunden passiert?","a":["Es kam dichter Nebel","Es hat geschneit","Jonas hat sich verletzt"]},
+        {"q":"Was hat Eva vorgeschlagen?","a":["Zur Hütte zurückzugehen","Weiterzugehen","Ein Taxi zu rufen"]},
+        {"q":"Wann haben sie den Gipfel erreicht?","a":["Am nächsten Tag","Am selben Abend","Gar nicht"]}
+      ]
+    },
+    {
+      "id": "film.story", "unit": "film", "title": "Der Kinoabend", "em": "🎬",
+      "lines": [
+        {"de":"Am Freitag wollten Lisa und ihre Freunde ins Kino gehen.","t":"El viernes Lisa y sus amigos querían ir al cine."},
+        {"de":"Aber sie konnten sich nicht auf einen Film einigen.","t":"Pero no se ponían de acuerdo sobre la película."},
+        {"de":"Lisa wollte eine Komödie sehen, Tim lieber einen Horrorfilm.","t":"Lisa quería ver una comedia y Tim prefería una de terror."},
+        {"de":"Schließlich haben sie einen Science-Fiction-Film gewählt.","t":"Al final eligieron una película de ciencia ficción."},
+        {"de":"Der Film lief in der Originalfassung mit Untertiteln.","t":"La película era en versión original con subtítulos."},
+        {"de":"Die Effekte waren beeindruckend, aber die Handlung war ziemlich langweilig.","t":"Los efectos eran impresionantes, pero la trama era bastante aburrida."},
+        {"de":"Tim ist sogar kurz eingeschlafen.","t":"Tim incluso se quedó dormido un rato."},
+        {"de":"Nächstes Mal darf Lisa den Film aussuchen.","t":"La próxima vez Lisa elige la película."}
+      ],
+      "questions": [
+        {"q":"Welchen Film wollte Lisa sehen?","a":["Eine Komödie","Einen Horrorfilm","Einen Liebesfilm"]},
+        {"q":"Wie war die Handlung des Films?","a":["Ziemlich langweilig","Sehr spannend","Sehr lustig"]},
+        {"q":"Wer darf nächstes Mal den Film aussuchen?","a":["Lisa","Tim","Niemand"]}
+      ]
+    },
+    {
+      "id": "forecast.story", "unit": "forecast", "title": "Das Gewitter", "em": "⛈️",
+      "lines": [
+        {"de":"Der Wetterbericht hatte für Samstag Sonne angesagt.","t":"El pronóstico había anunciado sol para el sábado."},
+        {"de":"Deshalb haben wir ein Picknick im Park geplant.","t":"Por eso planeamos un pícnic en el parque."},
+        {"de":"Am Mittag war der Himmel noch blau und es war sehr heiß.","t":"A mediodía el cielo todavía estaba azul y hacía mucho calor."},
+        {"de":"Doch am Nachmittag wurden die Wolken immer dunkler.","t":"Pero por la tarde las nubes se pusieron cada vez más oscuras."},
+        {"de":"Plötzlich hat es heftig gedonnert und geregnet.","t":"De repente empezó a tronar y a llover con fuerza."},
+        {"de":"Wir haben alles schnell eingepackt und sind unter eine Brücke gelaufen.","t":"Lo recogimos todo rápido y corrimos debajo de un puente."},
+        {"de":"Nach einer halben Stunde war das Gewitter vorbei.","t":"Después de media hora la tormenta había pasado."},
+        {"de":"Am Himmel war ein wunderschöner Regenbogen zu sehen.","t":"En el cielo se veía un arcoíris precioso."}
+      ],
+      "questions": [
+        {"q":"Was hatte der Wetterbericht angesagt?","a":["Sonne","Regen","Schnee"]},
+        {"q":"Wohin sind sie vor dem Gewitter gelaufen?","a":["Unter eine Brücke","In ein Café","Nach Hause"]},
+        {"q":"Was war nach dem Gewitter am Himmel?","a":["Ein Regenbogen","Ein Flugzeug","Viele Sterne"]}
+      ]
+    },
+    {
+      "id": "feelings.story", "unit": "feelings", "title": "Der Brief", "em": "💌",
+      "lines": [
+        {"de":"Nach zehn Jahren hat Julia einen Brief von ihrer alten Schulfreundin bekommen.","t":"Después de diez años, Julia recibió una carta de su antigua amiga del colegio."},
+        {"de":"Damals hatten sie sich wegen eines dummen Missverständnisses gestritten.","t":"Entonces habían discutido por un malentendido tonto."},
+        {"de":"Seitdem hatten sie nicht mehr miteinander gesprochen.","t":"Desde entonces no habían vuelto a hablarse."},
+        {"de":"In dem Brief stand, dass ihre Freundin die Sache sehr bereute.","t":"En la carta decía que su amiga lo lamentaba mucho."},
+        {"de":"Julia war zuerst unsicher, ob sie antworten sollte.","t":"Al principio Julia no sabía si debía contestar."},
+        {"de":"Dann hat sie gemerkt, wie sehr sie ihre Freundin vermisst hatte.","t":"Luego se dio cuenta de cuánto había echado de menos a su amiga."},
+        {"de":"Sie hat sie angerufen, und sie haben stundenlang geredet.","t":"La llamó y hablaron durante horas."},
+        {"de":"Nächsten Monat wollen sie sich endlich wiedersehen.","t":"El mes que viene por fin quieren volver a verse."}
+      ],
+      "questions": [
+        {"q":"Von wem hat Julia einen Brief bekommen?","a":["Von ihrer alten Schulfreundin","Von ihrer Mutter","Von ihrem Chef"]},
+        {"q":"Warum hatten sie sich gestritten?","a":["Wegen eines Missverständnisses","Wegen Geld","Wegen eines Mannes"]},
+        {"q":"Was wollen sie nächsten Monat machen?","a":["Sich wiedersehen","Zusammen umziehen","Eine Reise machen"]}
+      ]
+    },
+    {
+      "id": "society.story", "unit": "society", "title": "Das Nachbarschaftsfest", "em": "🤝",
+      "lines": [
+        {"de":"In unserer Straße wohnen Menschen aus über zwanzig Ländern.","t":"En nuestra calle vive gente de más de veinte países."},
+        {"de":"Trotzdem kannten sich die meisten Nachbarn kaum.","t":"Aun así, la mayoría de los vecinos apenas se conocían."},
+        {"de":"Deshalb hat eine ältere Dame vorgeschlagen, ein Straßenfest zu organisieren.","t":"Por eso una señora mayor propuso organizar una fiesta en la calle."},
+        {"de":"Jede Familie hat ein typisches Gericht aus ihrer Heimat mitgebracht.","t":"Cada familia trajo un plato típico de su país."},
+        {"de":"Es gab Musik, Spiele für die Kinder und viele gute Gespräche.","t":"Hubo música, juegos para los niños y muchas buenas conversaciones."},
+        {"de":"Viele Vorurteile sind an diesem Tag einfach verschwunden.","t":"Muchos prejuicios simplemente desaparecieron ese día."},
+        {"de":"Inzwischen helfen sich die Nachbarn gegenseitig beim Einkaufen und Babysitten.","t":"Ahora los vecinos se ayudan con la compra y cuidando a los niños."},
+        {"de":"Das Fest soll jetzt jedes Jahr stattfinden.","t":"Ahora la fiesta se va a celebrar todos los años."}
+      ],
+      "questions": [
+        {"q":"Wer hatte die Idee für das Fest?","a":["Eine ältere Dame","Der Bürgermeister","Die Kinder"]},
+        {"q":"Was hat jede Familie mitgebracht?","a":["Ein typisches Gericht","Ein Geschenk","Musik"]},
+        {"q":"Was hat sich nach dem Fest verändert?","a":["Die Nachbarn helfen sich gegenseitig","Alle sind umgezogen","Es gibt mehr Verkehr"]}
+      ]
+    },
+    {
+      "id": "contracts.story", "unit": "contracts", "title": "Das Kleingedruckte", "em": "📄",
+      "lines": [
+        {"de":"Felix hat online ein günstiges Fitnessstudio-Abo abgeschlossen.","t":"Felix contrató por internet una cuota de gimnasio barata."},
+        {"de":"Im ersten Monat hat er nur zehn Euro bezahlt.","t":"El primer mes solo pagó diez euros."},
+        {"de":"Im zweiten Monat wurden plötzlich sechzig Euro abgebucht.","t":"El segundo mes de repente le cobraron sesenta euros."},
+        {"de":"Felix war wütend und hat beim Studio angerufen.","t":"Felix se enfadó y llamó al gimnasio."},
+        {"de":"Die Mitarbeiterin hat ihn auf das Kleingedruckte im Vertrag hingewiesen.","t":"La empleada le señaló la letra pequeña del contrato."},
+        {"de":"Der günstige Preis galt nur für die ersten vier Wochen.","t":"El precio barato solo valía para las cuatro primeras semanas."},
+        {"de":"Außerdem läuft der Vertrag mindestens zwei Jahre.","t":"Además, el contrato dura por lo menos dos años."},
+        {"de":"Seitdem liest Felix jeden Vertrag ganz genau, bevor er unterschreibt.","t":"Desde entonces Felix lee cada contrato con mucha atención antes de firmar."}
+      ],
+      "questions": [
+        {"q":"Wie viel hat Felix im ersten Monat bezahlt?","a":["Zehn Euro","Sechzig Euro","Nichts"]},
+        {"q":"Wo stand die wichtige Information?","a":["Im Kleingedruckten","Auf der Webseite","In einer E-Mail"]},
+        {"q":"Wie lange läuft der Vertrag mindestens?","a":["Zwei Jahre","Vier Wochen","Ein Jahr"]}
+      ]
+    },
+    {
+      "id": "history.story", "unit": "history", "title": "Die Kiste auf dem Dachboden", "em": "📜",
+      "lines": [
+        {"de":"Beim Aufräumen haben wir auf dem Dachboden eine alte Holzkiste gefunden.","t":"Ordenando, encontramos una caja de madera antigua en el desván."},
+        {"de":"Darin lagen Briefe und Fotos von unserem Urgroßvater.","t":"Dentro había cartas y fotos de nuestro bisabuelo."},
+        {"de":"Er war vor hundert Jahren als junger Mann ausgewandert.","t":"Había emigrado de joven hace cien años."},
+        {"de":"In seinen Briefen beschrieb er die lange Reise mit dem Schiff.","t":"En sus cartas describía el largo viaje en barco."},
+        {"de":"Er schrieb auch, wie schwer die ersten Jahre in der neuen Heimat waren.","t":"También escribía lo duros que fueron los primeros años en su nuevo hogar."},
+        {"de":"Auf einem Foto sieht man ihn vor seinem ersten eigenen Laden.","t":"En una foto se le ve delante de su primera tienda propia."},
+        {"de":"Durch die Briefe haben wir viel über unsere Familiengeschichte gelernt.","t":"Gracias a las cartas aprendimos mucho sobre la historia de nuestra familia."},
+        {"de":"Jetzt wollen wir die Stadt besuchen, in der er damals gelebt hat.","t":"Ahora queremos visitar la ciudad donde vivía entonces."}
+      ],
+      "questions": [
+        {"q":"Was lag in der Kiste?","a":["Briefe und Fotos","Geld und Schmuck","Alte Bücher"]},
+        {"q":"Wie ist der Urgroßvater gereist?","a":["Mit dem Schiff","Mit dem Zug","Zu Fuß"]},
+        {"q":"Was sieht man auf einem Foto?","a":["Ihn vor seinem ersten Laden","Seine Hochzeit","Das Schiff"]}
       ]
     }
   ]

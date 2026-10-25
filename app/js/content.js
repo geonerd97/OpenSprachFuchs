@@ -11,7 +11,7 @@ const packs = { busy: "", error: "", loading: false };
 const list = v => Array.isArray(v) ? v : [v];
 function courseFromPack(p) {
   return { code: p.short, name: p.name, voice: p.voice, c: p.color, note: p.note, art: new RegExp(p.articles || "(?!)", "i"),
-    skip: p.gapSkip || [], gloss: p.glossary || {}, glossDe: p.glossaryDe || {}, units: p.units, dialogs: p.dialogs || [], dialogGroups: p.dialogGroups || {} };
+    skip: p.gapSkip || [], gloss: p.glossary || {}, glossDe: p.glossaryDe || {}, units: p.units, dialogs: p.dialogs || [], dialogGroups: p.dialogGroups || {}, stories: p.stories || [] };
 }
 function validPack(p) {
   return p && p.format === 1 && /^[a-z]{2,3}$/.test(p.code) && Array.isArray(p.units) && p.units.length > 0
@@ -98,7 +98,7 @@ function addHint(map, key, value) {
   if (!l.includes(value) && l.length < 3) l.push(value);
 }
 const unitsFor = code => (COURSES[code] && COURSES[code].units) || [];
-const EMPTY_COURSE = { code: "", name: "", voice: "de-DE", c: "#2456E8", note: "", art: /(?!)/, skip: [], gloss: {}, glossDe: {}, units: [], dialogs: [] };
+const EMPTY_COURSE = { code: "", name: "", voice: "de-DE", c: "#2456E8", note: "", art: /(?!)/, skip: [], gloss: {}, glossDe: {}, units: [], dialogs: [], stories: [] };
 
 let C = EMPTY_COURSE, CODE = "", UNITS = [], ALL_WORDS = [], ALL_SENTS = [], KEY_UNIT = {};
 function setCourse(code) {

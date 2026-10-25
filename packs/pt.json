@@ -980,7 +980,182 @@
     "romano": "römisch",
     "completamente": "völlig",
     "setenta": "siebzig",
-    "sofá": "Sofa"
+    "sofá": "Sofa",
+    "lena": "Lena (Name)",
+    "tom": "Tom (Name)",
+    "clara": "Clara (Name)",
+    "marco": "Marco (Name)",
+    "sara": "Sara (Name)",
+    "ben": "Ben (Name)",
+    "mia": "Mia (Name)",
+    "rossi": "Rossi (Name)",
+    "jonas": "Jonas (Name)",
+    "eva": "Eva (Name)",
+    "lisa": "Lisa (Name)",
+    "tim": "Tim (Name)",
+    "julia": "Julia (Name)",
+    "felix": "Felix (Name)",
+    "garçom": "Kellner",
+    "pede": "bestellt",
+    "paga": "bezahlt",
+    "mora": "wohnt",
+    "levanta": "(se levanta = steht auf)",
+    "toma": "nimmt / trinkt (toma banho = duscht)",
+    "banho": "Bad (tomar banho = duschen)",
+    "bebe": "trinkt",
+    "come": "isst",
+    "ouve": "hört",
+    "lê": "liest",
+    "procura": "sucht",
+    "nenhuma": "keine",
+    "atrás": "hinter",
+    "prédio": "Haus / Gebäude",
+    "chama": "(se chama = heißt)",
+    "simpática": "nett",
+    "vermelhos": "rot",
+    "passado": "letzte / vergangen",
+    "fomos": "fuhren",
+    "maravilhoso": "wunderbar",
+    "nadou": "schwamm",
+    "tomou": "nahm (tomou sol = sonnte sich)",
+    "comeu": "aß",
+    "fresco": "frisch",
+    "choveu": "regnete",
+    "conseguia": "konnte",
+    "procurou": "suchte",
+    "pediu": "bat",
+    "namorada": "Freundin",
+    "ligou": "rief an",
+    "repente": "(de repente = plötzlich)",
+    "tocou": "klingelte",
+    "geladeira": "Kühlschrank",
+    "acabando": "fast leer",
+    "gelado": "eiskalt",
+    "funcionava": "funktionierte",
+    "amigos": "Freunde",
+    "surpresa": "Überraschung",
+    "chocolate": "Schokolade",
+    "compra": "kauft",
+    "balões": "Luftballons",
+    "velas": "Kerzen",
+    "apagam": "machen aus",
+    "esperam": "warten",
+    "grita": "ruft",
+    "ri": "lacht",
+    "chora": "weint",
+    "alegria": "Freude",
+    "levou": "brachte mit",
+    "dona": "Frau (Anrede)",
+    "recebeu": "empfing",
+    "repeti": "nahm nach",
+    "conversou": "redete",
+    "riu": "lachte",
+    "despedida": "Abschied",
+    "disse": "sagte",
+    "voltem": "kommt wieder",
+    "antigo": "alt",
+    "contou": "erzählte",
+    "construído": "gebaut",
+    "quinhentos": "fünfhundert",
+    "salão": "Saal",
+    "quadros": "Gemälde",
+    "artistas": "Künstler",
+    "secreta": "geheim",
+    "estante": "Regal",
+    "visita": "Führung / Besuch",
+    "queriam": "wollten",
+    "alpes": "Alpen",
+    "saíram": "gingen los",
+    "fazia": "(fazia sol = die Sonne schien)",
+    "conseguiam": "konnten",
+    "sugeriu": "schlug vor",
+    "voltar": "zurückgehen",
+    "abrigo": "Hütte",
+    "tomaram": "aßen (Suppe)",
+    "jogaram": "spielten",
+    "cartas": "Karten / Briefe",
+    "seguinte": "nächste",
+    "céu": "Himmel",
+    "preferia": "wollte lieber",
+    "ficção": "(ficção científica = Science-Fiction)",
+    "científica": "wissenschaftlich",
+    "eram": "waren",
+    "impressionantes": "beeindruckend",
+    "cochilou": "nickte ein",
+    "escolhe": "wählt",
+    "anunciado": "angesagt",
+    "planejou": "plante",
+    "piquenique": "Picknick",
+    "meio-dia": "Mittag",
+    "nuvens": "Wolken",
+    "ficando": "werdend",
+    "cada": "(cada vez mais = immer mehr)",
+    "escuras": "dunkel",
+    "começou": "begann",
+    "trovejar": "donnern",
+    "guardou": "packte ein",
+    "correu": "lief",
+    "debaixo": "unter",
+    "dava": "(dava para ver = man konnte sehen)",
+    "arco-íris": "Regenbogen",
+    "antiga": "alt / ehemalig",
+    "naquela": "in jener",
+    "elas": "sie (Plural, weiblich)",
+    "tinham": "hatten",
+    "brigado": "gestritten",
+    "mal-entendido": "Missverständnis",
+    "bobo": "dumm",
+    "falado": "gesprochen",
+    "dizia": "sagte",
+    "arrependia": "bereute",
+    "acontecido": "passiert",
+    "começo": "Anfang",
+    "devia": "sollte",
+    "responder": "antworten",
+    "percebeu": "merkte",
+    "sentido": "(sentir falta = vermissen)",
+    "conversaram": "redeten",
+    "finalmente": "endlich",
+    "reencontrar": "wiedersehen",
+    "países": "Ländern",
+    "conhecia": "kannte",
+    "velha": "alt",
+    "organizar": "organisieren",
+    "brincadeiras": "Spiele",
+    "conversas": "Gespräche",
+    "preconceitos": "Vorurteile",
+    "simplesmente": "einfach",
+    "desapareceram": "verschwanden",
+    "naquele": "an jenem",
+    "ajudam": "helfen",
+    "compras": "Einkäufe",
+    "cuidando": "beim Aufpassen",
+    "acontecer": "stattfinden",
+    "pagou": "bezahlte",
+    "cobrados": "abgebucht",
+    "sessenta": "sechzig",
+    "bravo": "wütend",
+    "mostrou": "zeigte",
+    "valia": "galt",
+    "primeiras": "ersten",
+    "além": "(além disso = außerdem)",
+    "disso": "davon (além disso = außerdem)",
+    "arrumando": "beim Aufräumen",
+    "madeira": "Holz",
+    "sótão": "Dachboden",
+    "bisavô": "Urgroßvater",
+    "emigrado": "ausgewandert",
+    "descrevia": "beschrieb",
+    "longa": "lang",
+    "navio": "Schiff",
+    "escrevia": "schrieb",
+    "primeiros": "ersten",
+    "terra": "Land / Heimat",
+    "difíceis": "schwierig",
+    "primeira": "erste",
+    "dele": "sein / von ihm",
+    "aprendeu": "lernte",
+    "morava": "wohnte"
   },
   "glossaryDe": {
     "es": "(es gibt = tem / há)",
@@ -4482,6 +4657,296 @@
             {"de":"Danke. Und wann fährt die Fähre?","t":"Obrigado. E que horas sai a balsa?"},
             {"de":"Danke. Und wo ist die Umkleidekabine?","t":"Obrigado. E onde fica o provador?"}
           ] }
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "food.story", "unit": "food", "title": "Im Café", "em": "☕",
+      "lines": [
+        {"de":"Lena geht heute ins Café.","t":"Hoje a Lena vai ao café."},
+        {"de":"Sie hat Hunger und Durst.","t":"Ela está com fome e com sede."},
+        {"de":"Der Kellner ist sehr freundlich.","t":"O garçom é muito simpático."},
+        {"de":"Lena bestellt einen Kaffee und ein Croissant.","t":"A Lena pede um café e um croissant."},
+        {"de":"Der Kaffee ist heiß und sehr gut.","t":"O café está quente e muito bom."},
+        {"de":"Dann kommt ihr Freund Paul.","t":"Depois chega o amigo dela, o Paul."},
+        {"de":"Paul möchte einen Tee mit Milch.","t":"O Paul quer um chá com leite."},
+        {"de":"Am Ende bezahlt Paul die Rechnung.","t":"No final, o Paul paga a conta."}
+      ],
+      "questions": [
+        {"q":"Wo ist Lena?","a":["Im Café","Im Hotel","Im Park"]},
+        {"q":"Was bestellt Lena?","a":["Einen Kaffee und ein Croissant","Einen Tee mit Milch","Ein Wasser"]},
+        {"q":"Wer bezahlt am Ende?","a":["Paul","Lena","Der Kellner"]}
+      ]
+    },
+    {
+      "id": "home.story", "unit": "home", "title": "Ein normaler Tag", "em": "🏠",
+      "lines": [
+        {"de":"Tom wohnt in einer kleinen Wohnung.","t":"O Tom mora num apartamento pequeno."},
+        {"de":"Er steht jeden Tag um sieben Uhr auf.","t":"Ele se levanta todo dia às sete."},
+        {"de":"Zuerst duscht er und trinkt einen Kaffee.","t":"Primeiro ele toma banho e bebe um café."},
+        {"de":"Dann fährt er mit dem Bus zur Arbeit.","t":"Depois ele vai para o trabalho de ônibus."},
+        {"de":"Am Abend kocht er Nudeln.","t":"À noite ele faz macarrão."},
+        {"de":"Er isst in der Küche und hört Musik.","t":"Ele come na cozinha e ouve música."},
+        {"de":"Danach liest er ein Buch auf dem Sofa.","t":"Depois ele lê um livro no sofá."},
+        {"de":"Um elf Uhr geht er ins Bett.","t":"Às onze ele vai para a cama."}
+      ],
+      "questions": [
+        {"q":"Wann steht Tom auf?","a":["Um sieben Uhr","Um elf Uhr","Am Abend"]},
+        {"q":"Wie fährt Tom zur Arbeit?","a":["Mit dem Bus","Mit dem Fahrrad","Mit dem Auto"]},
+        {"q":"Was macht Tom auf dem Sofa?","a":["Er liest ein Buch","Er kocht Nudeln","Er duscht"]}
+      ]
+    },
+    {
+      "id": "city.story", "unit": "city", "title": "Verlaufen in der Stadt", "em": "🗺️",
+      "lines": [
+        {"de":"Anna ist zum ersten Mal in Lissabon.","t":"A Anna está em Lisboa pela primeira vez."},
+        {"de":"Sie sucht das Museum, aber sie findet es nicht.","t":"Ela procura o museu, mas não o encontra."},
+        {"de":"Sie fragt einen Mann auf der Straße.","t":"Ela pergunta a um homem na rua."},
+        {"de":"Der Mann sagt: „Gehen Sie geradeaus und dann links.“","t":"O homem diz: \"Siga em frente e depois vire à esquerda.\""},
+        {"de":"„Das Museum ist neben der Kirche.“","t":"\"O museu fica ao lado da igreja.\""},
+        {"de":"Anna geht geradeaus, aber sie sieht keine Kirche.","t":"A Anna segue em frente, mas não vê nenhuma igreja."},
+        {"de":"Dann sieht sie einen Park und eine Apotheke.","t":"Depois ela vê um parque e uma farmácia."},
+        {"de":"Hinter der Apotheke ist die Kirche, und daneben das Museum!","t":"Atrás da farmácia fica a igreja, e ao lado o museu!"}
+      ],
+      "questions": [
+        {"q":"Was sucht Anna?","a":["Das Museum","Die Apotheke","Den Bahnhof"]},
+        {"q":"Wen fragt Anna?","a":["Einen Mann auf der Straße","Eine Polizistin","Ihre Freundin"]},
+        {"q":"Wo ist das Museum?","a":["Neben der Kirche","Im Park","Hinter dem Bahnhof"]}
+      ]
+    },
+    {
+      "id": "describe.story", "unit": "describe", "title": "Die neue Nachbarin", "em": "👫",
+      "lines": [
+        {"de":"Im Haus wohnt eine neue Nachbarin.","t":"Uma vizinha nova mora no prédio."},
+        {"de":"Sie heißt Clara und ist sehr nett.","t":"Ela se chama Clara e é muito simpática."},
+        {"de":"Clara ist groß und hat lange blonde Haare.","t":"A Clara é alta e tem cabelo comprido e loiro."},
+        {"de":"Sie trägt immer eine rote Brille.","t":"Ela sempre usa óculos vermelhos."},
+        {"de":"Clara hat einen kleinen Hund.","t":"A Clara tem um cachorro pequeno."},
+        {"de":"Der Hund ist schwarz und sehr lustig.","t":"O cachorro é preto e muito engraçado."},
+        {"de":"Clara ist Lehrerin und spricht drei Sprachen.","t":"A Clara é professora e fala três línguas."},
+        {"de":"Am Samstag trinken wir zusammen Kaffee.","t":"No sábado a gente vai tomar café juntos."}
+      ],
+      "questions": [
+        {"q":"Wie sieht Clara aus?","a":["Groß, mit langen blonden Haaren","Klein, mit kurzen Haaren","Groß, mit einem Bart"]},
+        {"q":"Was hat Clara?","a":["Einen kleinen Hund","Eine Katze","Zwei Kinder"]},
+        {"q":"Was ist Clara von Beruf?","a":["Lehrerin","Ärztin","Kellnerin"]}
+      ]
+    },
+    {
+      "id": "past.story", "unit": "past", "title": "Ein Wochenende am Meer", "em": "🏖️",
+      "lines": [
+        {"de":"Letztes Wochenende sind wir ans Meer gefahren.","t":"No fim de semana passado nós fomos para a praia."},
+        {"de":"Wir sind am Freitagabend mit dem Zug losgefahren.","t":"Nós saímos de trem na sexta à noite."},
+        {"de":"Das Hotel war klein, aber sehr gemütlich.","t":"O hotel era pequeno, mas muito aconchegante."},
+        {"de":"Am Samstag war das Wetter wunderbar.","t":"No sábado o tempo estava maravilhoso."},
+        {"de":"Wir sind geschwommen und haben in der Sonne gelegen.","t":"A gente nadou e tomou sol."},
+        {"de":"Am Abend haben wir frischen Fisch gegessen.","t":"À noite a gente comeu peixe fresco."},
+        {"de":"Am Sonntag hat es leider den ganzen Tag geregnet.","t":"No domingo, infelizmente, choveu o dia todo."},
+        {"de":"Trotzdem war es ein tolles Wochenende.","t":"Mesmo assim, foi um fim de semana ótimo."}
+      ],
+      "questions": [
+        {"q":"Wie sind sie ans Meer gefahren?","a":["Mit dem Zug","Mit dem Auto","Mit dem Flugzeug"]},
+        {"q":"Was haben sie am Samstagabend gegessen?","a":["Frischen Fisch","Pizza","Nudeln"]},
+        {"q":"Wie war das Wetter am Sonntag?","a":["Es hat geregnet","Es war sonnig","Es hat geschneit"]}
+      ]
+    },
+    {
+      "id": "phone.story", "unit": "phone", "title": "Das Handy ist weg", "em": "📱",
+      "lines": [
+        {"de":"Gestern Abend wollte Marco seine Mutter anrufen.","t":"Ontem à noite o Marco queria ligar para a mãe."},
+        {"de":"Aber er konnte sein Handy nicht finden.","t":"Mas ele não conseguia achar o celular."},
+        {"de":"Er hat in der Küche und im Bad gesucht.","t":"Ele procurou na cozinha e no banheiro."},
+        {"de":"Dann hat er seine Freundin um Hilfe gebeten.","t":"Depois ele pediu ajuda para a namorada."},
+        {"de":"Sie hat Marcos Nummer angerufen.","t":"Ela ligou para o número do Marco."},
+        {"de":"Plötzlich hat etwas im Kühlschrank geklingelt!","t":"De repente, alguma coisa tocou na geladeira!"},
+        {"de":"Das Handy lag neben der Milch.","t":"O celular estava ao lado do leite."},
+        {"de":"Der Akku war fast leer, aber das Handy war kalt und funktionierte noch.","t":"A bateria estava quase acabando, mas o celular estava gelado e ainda funcionava."}
+      ],
+      "questions": [
+        {"q":"Wen wollte Marco anrufen?","a":["Seine Mutter","Seine Freundin","Seinen Chef"]},
+        {"q":"Wer hat ihm geholfen?","a":["Seine Freundin","Seine Mutter","Ein Nachbar"]},
+        {"q":"Wo war das Handy?","a":["Im Kühlschrank","Im Bad","Auf dem Sofa"]}
+      ]
+    },
+    {
+      "id": "party.story", "unit": "party", "title": "Die Überraschungsparty", "em": "🎂",
+      "lines": [
+        {"de":"Sara hat am Freitag Geburtstag.","t":"Sexta-feira é o aniversário da Sara."},
+        {"de":"Ihre Freunde planen eine Überraschungsparty.","t":"Os amigos dela estão planejando uma festa surpresa."},
+        {"de":"Ben backt einen großen Schokoladenkuchen.","t":"O Ben faz um bolo grande de chocolate."},
+        {"de":"Mia kauft Luftballons und Kerzen.","t":"A Mia compra balões e velas."},
+        {"de":"Um acht Uhr sind alle Gäste in der Wohnung.","t":"Às oito todos os convidados estão no apartamento."},
+        {"de":"Sie machen das Licht aus und warten.","t":"Eles apagam a luz e esperam."},
+        {"de":"Als Sara die Tür öffnet, rufen alle: „Überraschung!“","t":"Quando a Sara abre a porta, todo mundo grita: \"Surpresa!\""},
+        {"de":"Sara lacht und weint gleichzeitig vor Freude.","t":"A Sara ri e chora de alegria ao mesmo tempo."}
+      ],
+      "questions": [
+        {"q":"Was backt Ben?","a":["Einen Schokoladenkuchen","Brot","Kekse"]},
+        {"q":"Was kauft Mia?","a":["Luftballons und Kerzen","Blumen und Wein","Ein Geschenk"]},
+        {"q":"Was rufen alle, als Sara die Tür öffnet?","a":["„Überraschung!“","„Guten Abend!“","„Frohe Weihnachten!“"]}
+      ]
+    },
+    {
+      "id": "visit.story", "unit": "visit", "title": "Abendessen bei Familie Rossi", "em": "🍝",
+      "lines": [
+        {"de":"Am Sonntag waren wir bei Familie Rossi zum Abendessen eingeladen.","t":"No domingo a gente foi convidado para jantar na casa da família Rossi."},
+        {"de":"Wir haben Blumen und eine Flasche Wein mitgebracht.","t":"A gente levou flores e uma garrafa de vinho."},
+        {"de":"Frau Rossi hat uns sehr herzlich begrüßt.","t":"A dona Rossi nos recebeu com muito carinho."},
+        {"de":"Zuerst gab es eine Suppe, dann Nudeln mit Tomatensoße.","t":"Primeiro teve sopa, depois macarrão com molho de tomate."},
+        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"A comida estava tão gostosa que eu repeti duas vezes."},
+        {"de":"Zum Nachtisch gab es Eis mit Erdbeeren.","t":"De sobremesa teve sorvete com morangos."},
+        {"de":"Wir haben bis spät in die Nacht geredet und gelacht.","t":"A gente conversou e riu até tarde da noite."},
+        {"de":"Beim Abschied hat Frau Rossi gesagt: „Kommt bald wieder!“","t":"Na despedida, a dona Rossi disse: \"Voltem logo!\""}
+      ],
+      "questions": [
+        {"q":"Was haben sie mitgebracht?","a":["Blumen und Wein","Einen Kuchen","Schokolade"]},
+        {"q":"Was gab es zum Nachtisch?","a":["Eis mit Erdbeeren","Kuchen","Obstsalat"]},
+        {"q":"Was hat Frau Rossi beim Abschied gesagt?","a":["„Kommt bald wieder!“","„Gute Nacht!“","„Danke für die Blumen!“"]}
+      ]
+    },
+    {
+      "id": "culture.story", "unit": "culture", "title": "Die Führung im Museum", "em": "🏛️",
+      "lines": [
+        {"de":"Im Urlaub haben wir an einer Führung durch ein altes Schloss teilgenommen.","t":"Nas férias a gente fez uma visita guiada num castelo antigo."},
+        {"de":"Die Führerin hat uns viel über die Geschichte des Schlosses erzählt.","t":"A guia contou muita coisa sobre a história do castelo."},
+        {"de":"Es wurde vor fast fünfhundert Jahren gebaut.","t":"Ele foi construído há quase quinhentos anos."},
+        {"de":"Im großen Saal hängen Gemälde von berühmten Künstlern.","t":"No salão principal há quadros de artistas famosos."},
+        {"de":"Fotografieren war leider nicht erlaubt.","t":"Infelizmente não era permitido tirar fotos."},
+        {"de":"Am interessantesten fand ich die geheime Treppe hinter einem Bücherregal.","t":"O mais interessante foi a escada secreta atrás de uma estante."},
+        {"de":"Nach der Führung haben wir im Garten des Schlosses Kaffee getrunken.","t":"Depois da visita a gente tomou café no jardim do castelo."},
+        {"de":"Es hat sich wirklich gelohnt.","t":"Valeu muito a pena."}
+      ],
+      "questions": [
+        {"q":"Wie alt ist das Schloss ungefähr?","a":["Fast fünfhundert Jahre","Hundert Jahre","Zweitausend Jahre"]},
+        {"q":"Was war nicht erlaubt?","a":["Fotografieren","Sprechen","Essen im Garten"]},
+        {"q":"Was war am interessantesten?","a":["Die geheime Treppe","Die Gemälde","Der Garten"]}
+      ]
+    },
+    {
+      "id": "nature.story", "unit": "nature", "title": "Die Wanderung im Nebel", "em": "🥾",
+      "lines": [
+        {"de":"Jonas und Eva wollten auf einen Berg in den Alpen wandern.","t":"O Jonas e a Eva queriam subir uma montanha nos Alpes."},
+        {"de":"Sie sind früh am Morgen losgegangen, als die Sonne schien.","t":"Eles saíram cedo de manhã, quando fazia sol."},
+        {"de":"Nach zwei Stunden kam plötzlich dichter Nebel.","t":"Depois de duas horas, de repente chegou uma neblina forte."},
+        {"de":"Sie konnten den Weg kaum noch sehen.","t":"Eles quase não conseguiam ver a trilha."},
+        {"de":"Eva hat vorgeschlagen, zur Hütte zurückzugehen.","t":"A Eva sugeriu voltar para o abrigo."},
+        {"de":"Jonas war enttäuscht, aber er wusste, dass sie recht hatte.","t":"O Jonas ficou decepcionado, mas sabia que ela tinha razão."},
+        {"de":"In der Hütte haben sie heiße Suppe gegessen und Karten gespielt.","t":"No abrigo eles tomaram sopa quente e jogaram cartas."},
+        {"de":"Am nächsten Tag war der Himmel klar, und sie haben den Gipfel erreicht.","t":"No dia seguinte o céu estava limpo e eles chegaram ao topo."}
+      ],
+      "questions": [
+        {"q":"Was ist nach zwei Stunden passiert?","a":["Es kam dichter Nebel","Es hat geschneit","Jonas hat sich verletzt"]},
+        {"q":"Was hat Eva vorgeschlagen?","a":["Zur Hütte zurückzugehen","Weiterzugehen","Ein Taxi zu rufen"]},
+        {"q":"Wann haben sie den Gipfel erreicht?","a":["Am nächsten Tag","Am selben Abend","Gar nicht"]}
+      ]
+    },
+    {
+      "id": "film.story", "unit": "film", "title": "Der Kinoabend", "em": "🎬",
+      "lines": [
+        {"de":"Am Freitag wollten Lisa und ihre Freunde ins Kino gehen.","t":"Na sexta a Lisa e os amigos dela queriam ir ao cinema."},
+        {"de":"Aber sie konnten sich nicht auf einen Film einigen.","t":"Mas eles não conseguiam chegar a um acordo sobre o filme."},
+        {"de":"Lisa wollte eine Komödie sehen, Tim lieber einen Horrorfilm.","t":"A Lisa queria ver uma comédia, e o Tim preferia um filme de terror."},
+        {"de":"Schließlich haben sie einen Science-Fiction-Film gewählt.","t":"No final eles escolheram um filme de ficção científica."},
+        {"de":"Der Film lief in der Originalfassung mit Untertiteln.","t":"O filme estava na versão original com legendas."},
+        {"de":"Die Effekte waren beeindruckend, aber die Handlung war ziemlich langweilig.","t":"Os efeitos eram impressionantes, mas o enredo era bem chato."},
+        {"de":"Tim ist sogar kurz eingeschlafen.","t":"O Tim até cochilou um pouco."},
+        {"de":"Nächstes Mal darf Lisa den Film aussuchen.","t":"Da próxima vez quem escolhe o filme é a Lisa."}
+      ],
+      "questions": [
+        {"q":"Welchen Film wollte Lisa sehen?","a":["Eine Komödie","Einen Horrorfilm","Einen Liebesfilm"]},
+        {"q":"Wie war die Handlung des Films?","a":["Ziemlich langweilig","Sehr spannend","Sehr lustig"]},
+        {"q":"Wer darf nächstes Mal den Film aussuchen?","a":["Lisa","Tim","Niemand"]}
+      ]
+    },
+    {
+      "id": "forecast.story", "unit": "forecast", "title": "Das Gewitter", "em": "⛈️",
+      "lines": [
+        {"de":"Der Wetterbericht hatte für Samstag Sonne angesagt.","t":"A previsão do tempo tinha anunciado sol para sábado."},
+        {"de":"Deshalb haben wir ein Picknick im Park geplant.","t":"Por isso a gente planejou um piquenique no parque."},
+        {"de":"Am Mittag war der Himmel noch blau und es war sehr heiß.","t":"Ao meio-dia o céu ainda estava azul e fazia muito calor."},
+        {"de":"Doch am Nachmittag wurden die Wolken immer dunkler.","t":"Mas à tarde as nuvens foram ficando cada vez mais escuras."},
+        {"de":"Plötzlich hat es heftig gedonnert und geregnet.","t":"De repente começou a trovejar e a chover forte."},
+        {"de":"Wir haben alles schnell eingepackt und sind unter eine Brücke gelaufen.","t":"A gente guardou tudo rápido e correu para debaixo de uma ponte."},
+        {"de":"Nach einer halben Stunde war das Gewitter vorbei.","t":"Depois de meia hora a tempestade tinha passado."},
+        {"de":"Am Himmel war ein wunderschöner Regenbogen zu sehen.","t":"No céu dava para ver um arco-íris lindo."}
+      ],
+      "questions": [
+        {"q":"Was hatte der Wetterbericht angesagt?","a":["Sonne","Regen","Schnee"]},
+        {"q":"Wohin sind sie vor dem Gewitter gelaufen?","a":["Unter eine Brücke","In ein Café","Nach Hause"]},
+        {"q":"Was war nach dem Gewitter am Himmel?","a":["Ein Regenbogen","Ein Flugzeug","Viele Sterne"]}
+      ]
+    },
+    {
+      "id": "feelings.story", "unit": "feelings", "title": "Der Brief", "em": "💌",
+      "lines": [
+        {"de":"Nach zehn Jahren hat Julia einen Brief von ihrer alten Schulfreundin bekommen.","t":"Depois de dez anos, a Julia recebeu uma carta da sua antiga amiga de escola."},
+        {"de":"Damals hatten sie sich wegen eines dummen Missverständnisses gestritten.","t":"Naquela época elas tinham brigado por causa de um mal-entendido bobo."},
+        {"de":"Seitdem hatten sie nicht mehr miteinander gesprochen.","t":"Desde então elas não tinham mais se falado."},
+        {"de":"In dem Brief stand, dass ihre Freundin die Sache sehr bereute.","t":"Na carta, a amiga dizia que se arrependia muito do que tinha acontecido."},
+        {"de":"Julia war zuerst unsicher, ob sie antworten sollte.","t":"No começo a Julia não sabia se devia responder."},
+        {"de":"Dann hat sie gemerkt, wie sehr sie ihre Freundin vermisst hatte.","t":"Depois ela percebeu o quanto tinha sentido falta da amiga."},
+        {"de":"Sie hat sie angerufen, und sie haben stundenlang geredet.","t":"Ela ligou para ela, e as duas conversaram por horas."},
+        {"de":"Nächsten Monat wollen sie sich endlich wiedersehen.","t":"No mês que vem elas finalmente querem se reencontrar."}
+      ],
+      "questions": [
+        {"q":"Von wem hat Julia einen Brief bekommen?","a":["Von ihrer alten Schulfreundin","Von ihrer Mutter","Von ihrem Chef"]},
+        {"q":"Warum hatten sie sich gestritten?","a":["Wegen eines Missverständnisses","Wegen Geld","Wegen eines Mannes"]},
+        {"q":"Was wollen sie nächsten Monat machen?","a":["Sich wiedersehen","Zusammen umziehen","Eine Reise machen"]}
+      ]
+    },
+    {
+      "id": "society.story", "unit": "society", "title": "Das Nachbarschaftsfest", "em": "🤝",
+      "lines": [
+        {"de":"In unserer Straße wohnen Menschen aus über zwanzig Ländern.","t":"Na nossa rua moram pessoas de mais de vinte países."},
+        {"de":"Trotzdem kannten sich die meisten Nachbarn kaum.","t":"Mesmo assim, a maioria dos vizinhos quase não se conhecia."},
+        {"de":"Deshalb hat eine ältere Dame vorgeschlagen, ein Straßenfest zu organisieren.","t":"Por isso uma senhora mais velha sugeriu organizar uma festa na rua."},
+        {"de":"Jede Familie hat ein typisches Gericht aus ihrer Heimat mitgebracht.","t":"Cada família levou um prato típico do seu país."},
+        {"de":"Es gab Musik, Spiele für die Kinder und viele gute Gespräche.","t":"Teve música, brincadeiras para as crianças e muitas conversas boas."},
+        {"de":"Viele Vorurteile sind an diesem Tag einfach verschwunden.","t":"Muitos preconceitos simplesmente desapareceram naquele dia."},
+        {"de":"Inzwischen helfen sich die Nachbarn gegenseitig beim Einkaufen und Babysitten.","t":"Hoje em dia os vizinhos se ajudam com as compras e cuidando das crianças."},
+        {"de":"Das Fest soll jetzt jedes Jahr stattfinden.","t":"Agora a festa vai acontecer todo ano."}
+      ],
+      "questions": [
+        {"q":"Wer hatte die Idee für das Fest?","a":["Eine ältere Dame","Der Bürgermeister","Die Kinder"]},
+        {"q":"Was hat jede Familie mitgebracht?","a":["Ein typisches Gericht","Ein Geschenk","Musik"]},
+        {"q":"Was hat sich nach dem Fest verändert?","a":["Die Nachbarn helfen sich gegenseitig","Alle sind umgezogen","Es gibt mehr Verkehr"]}
+      ]
+    },
+    {
+      "id": "contracts.story", "unit": "contracts", "title": "Das Kleingedruckte", "em": "📄",
+      "lines": [
+        {"de":"Felix hat online ein günstiges Fitnessstudio-Abo abgeschlossen.","t":"O Felix assinou pela internet um plano de academia barato."},
+        {"de":"Im ersten Monat hat er nur zehn Euro bezahlt.","t":"No primeiro mês ele pagou só dez euros."},
+        {"de":"Im zweiten Monat wurden plötzlich sechzig Euro abgebucht.","t":"No segundo mês, de repente, foram cobrados sessenta euros."},
+        {"de":"Felix war wütend und hat beim Studio angerufen.","t":"O Felix ficou bravo e ligou para a academia."},
+        {"de":"Die Mitarbeiterin hat ihn auf das Kleingedruckte im Vertrag hingewiesen.","t":"A atendente mostrou as letras miúdas do contrato para ele."},
+        {"de":"Der günstige Preis galt nur für die ersten vier Wochen.","t":"O preço baixo só valia para as primeiras quatro semanas."},
+        {"de":"Außerdem läuft der Vertrag mindestens zwei Jahre.","t":"Além disso, o contrato dura pelo menos dois anos."},
+        {"de":"Seitdem liest Felix jeden Vertrag ganz genau, bevor er unterschreibt.","t":"Desde então o Felix lê cada contrato com muita atenção antes de assinar."}
+      ],
+      "questions": [
+        {"q":"Wie viel hat Felix im ersten Monat bezahlt?","a":["Zehn Euro","Sechzig Euro","Nichts"]},
+        {"q":"Wo stand die wichtige Information?","a":["Im Kleingedruckten","Auf der Webseite","In einer E-Mail"]},
+        {"q":"Wie lange läuft der Vertrag mindestens?","a":["Zwei Jahre","Vier Wochen","Ein Jahr"]}
+      ]
+    },
+    {
+      "id": "history.story", "unit": "history", "title": "Die Kiste auf dem Dachboden", "em": "📜",
+      "lines": [
+        {"de":"Beim Aufräumen haben wir auf dem Dachboden eine alte Holzkiste gefunden.","t":"Arrumando a casa, a gente encontrou uma caixa de madeira antiga no sótão."},
+        {"de":"Darin lagen Briefe und Fotos von unserem Urgroßvater.","t":"Dentro tinha cartas e fotos do nosso bisavô."},
+        {"de":"Er war vor hundert Jahren als junger Mann ausgewandert.","t":"Ele tinha emigrado quando era jovem, há cem anos."},
+        {"de":"In seinen Briefen beschrieb er die lange Reise mit dem Schiff.","t":"Nas cartas ele descrevia a longa viagem de navio."},
+        {"de":"Er schrieb auch, wie schwer die ersten Jahre in der neuen Heimat waren.","t":"Ele também escrevia como os primeiros anos na nova terra foram difíceis."},
+        {"de":"Auf einem Foto sieht man ihn vor seinem ersten eigenen Laden.","t":"Numa foto dá para ver ele na frente da primeira loja dele."},
+        {"de":"Durch die Briefe haben wir viel über unsere Familiengeschichte gelernt.","t":"Com as cartas a gente aprendeu muito sobre a história da nossa família."},
+        {"de":"Jetzt wollen wir die Stadt besuchen, in der er damals gelebt hat.","t":"Agora a gente quer visitar a cidade onde ele morava naquela época."}
+      ],
+      "questions": [
+        {"q":"Was lag in der Kiste?","a":["Briefe und Fotos","Geld und Schmuck","Alte Bücher"]},
+        {"q":"Wie ist der Urgroßvater gereist?","a":["Mit dem Schiff","Mit dem Zug","Zu Fuß"]},
+        {"q":"Was sieht man auf einem Foto?","a":["Ihn vor seinem ersten Laden","Seine Hochzeit","Das Schiff"]}
       ]
     }
   ]

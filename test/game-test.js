@@ -58,6 +58,7 @@ for (const code of codes) {
   const C = g.COURSES[code], texts = [];
   for (const u of C.units) for (const s of u.sentences) texts.push([].concat(s.t)[0]);
   for (const d of C.dialogs) for (const t of d.turns) texts.push(t.p.t, ...t.a.map(a => a.t));
+  for (const x of C.stories || []) for (const l of x.lines) texts.push(l.t);
   const missing = new Set();
   for (const t of texts) for (const w of g.hintSpans(t, "t").replace(/<button[^>]*>.*?<\/button>/g, " ").split(" "))
     if (w.trim() && !/^[\d.,:%€$?!¿¡-]+$/.test(w.trim())) missing.add(w.trim());
@@ -342,11 +343,76 @@ if (g.srs()["w:test"].box !== 1) fail("SRS: Wiederholung in derselben Sitzung z�
 g.srsUpdate("w:test", false);
 if (g.srs()["w:test"].box !== 0) fail("SRS: falsche Antwort setzt nicht zurück");
 
+// Bonus stations: every unit of every language can build its game; each kind can be won; the reward comes once.
+for (const code of codes) {
+  g.setCourse(code);
+  g.UNITS().forEach((u, i) => {
+    g.startBonus(i);
+    const G = g.L.game, n = G.kind === "wordsearch" || G.kind === "scramble" || G.kind === "memory" ? G.words.length : G.kind === "guess" ? G.words.length : G.story.lines.length;
+    if (n < 4) fail(`Sonderstation zu klein (${code}, ${u.id}, ${G.kind})`, n);
+    g.render();
+  });
+}
+g.view = "home";
+{
+  g.setCourse("en"); g.st.course = "en"; g.cs().bonus = {};
+  const solve = () => {
+    const G = g.L.game;
+    if (G.kind === "wordsearch") for (const w of G.words) { const a = w.cells[0], b = w.cells[w.cells.length - 1]; g.wordSearchTap(a[0], a[1]); g.wordSearchTap(b[0], b[1]); }
+    if (G.kind === "scramble") while (!g.L.checked) { const w = G.words[G.i], used = new Set(); for (const ch of w.word) { const j = G.tiles.findIndex((t, k) => t === ch && !used.has(k)); used.add(j); g.scrambleTap(j); } }
+    if (G.kind === "memory") for (let p = 0; p < G.words.length; p++) G.cards.forEach((c, i) => { if (c.p === p) g.memoryTap(i); });
+    if (G.kind === "guess") while (!g.L.checked) { for (const ch of new Set(G.words[G.i].word)) g.guessTap(ch); g.guessNext(G); }
+    if (G.kind === "story") { g.storyToQuestions(); while (!g.L.checked) g.storyAnswer(G.order.indexOf(0)); }
+  };
+  const kinds = new Set();
+  for (let i = 0; i < 4; i++) {
+    g.startBonus(i); kinds.add(g.L.game.kind); solve();
+    if (!g.L.checked || g.L.mistakes) fail("Sonderstation nicht lösbar", g.L.game.kind, g.L.mistakes);
+    const xp = g.st.xp, gems = g.st.gems; g.cont();
+    if (g.view !== "result" || !g.result.bonus || g.st.xp - xp < 15 || g.st.gems - gems < 5 || !g.bonusDone(g.UNITS()[i].id)) fail("Belohnung der Sonderstation fehlt", g.st.xp - xp, g.st.gems - gems);
+  }
+  if (kinds.size !== 4) fail("Minispiele wechseln sich nicht ab", [...kinds].join(","));
+  // Every fifth unit has a short story in every language.
+  for (const code of codes) { g.setCourse(code); const n = g.UNITS().filter((u, i) => g.bonusKind(i) === "story").length; if (n !== 16) fail(`Kurzgeschichten fehlen (${code})`, n); }
+  g.setCourse("en");
+  g.startBonus(4);
+  if (g.L.game.kind !== "story" || !g.exerciseHTML(g.L.cur).includes("Alles vorlesen")) fail("Kurzgeschichte an Stufe 5 fehlt", g.L.game.kind);
+  solve(); g.cont();
+  if (g.view !== "result" || !g.bonusDone(g.UNITS()[4].id)) fail("Kurzgeschichte nicht abschließbar");
+  g.startBonus(0); solve(); const xp = g.st.xp, gems = g.st.gems; g.cont();
+  if (g.st.xp - xp !== 5 || g.st.gems !== gems) fail("Wiederholung der Sonderstation falsch belohnt", g.st.xp - xp, g.st.gems - gems);
+  // The fifth node: locked until the four lessons are done, then open.
+  g.cs().progress = {}; g.ui.level = "A1"; g.view = "home"; g.ui.tab = "path";
+  if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation nicht gesperrt");
+  g.cs().progress[g.UNITS()[0].id] = 4;
+  if (!/bonus-node (bonus|done)/.test(g.homeHTML())) fail("Sonderstation nach vier Lektionen nicht offen");
+  g.cs().progress = {}; g.cs().bonus = {}; g.ui.level = null;
+}
+
 // Every dialog renders (settings, account, privacy, languages, friends).
 for (const m of ["settings", "account", "privacy", "packs", "courses", "addfriend", "myqr", "signout", "deleteaccount", "reset"]) { g.ui.modal = m; g.modalHTML(); }
 g.ui.modal = null;
 for (const v of ["welcome", "signin", "langs"]) { g.view = v; g.render(); }
 g.view = "home";
+
+// No voice on the phone for the language: a notice with an install button, and listening tasks turn into reading tasks.
+{
+  let installed = false;
+  const v = loadGame({ AndroidBridge: { speak: () => true, speakQueued: () => true, stop() {}, canRecognize: () => false, startListening() {}, stopListening() {}, appVersion: () => "0.0.10",
+    setReminder() {}, reportDay() {}, copy() {}, share() {}, openUrl() {}, takeLink: () => "", voiceState: lang => (lang === "it-IT" ? "missing" : "ok"), installVoice: () => { installed = true; } } });
+  v.st.settings.audio = true; v.setCourse("it"); v.st.course = "it"; v.view = "home"; v.ui.tab = "path"; v.ui.modal = null;
+  v.click("pickcourse", { c: "it" });
+  if (!v.homeHTML().includes("Keine Stimme für Italienisch")) fail("Hinweis bei fehlender Stimme fehlt");
+  v.click("installvoice");
+  if (!installed) fail("Stimme installieren öffnet nichts");
+  v.startLesson(0, 1);
+  const kinds = []; for (let i = 0; i < 40 && v.view === "lesson"; i++) { kinds.push(v.L.cur.type + (v.L.cur.audio ? ":audio" : "")); v.L.queue.length ? v.nextExercise() : v.cont(); }
+  if (kinds.some(k => k === "listen" || k.endsWith(":audio"))) fail("Hörübung trotz fehlender Stimme", kinds.join(","));
+  v.click("voicehide");
+  if (v.homeHTML().includes("Keine Stimme")) fail("Stimmen-Hinweis lässt sich nicht ausblenden");
+  v.click("pickcourse", { c: "en" });
+  if (v.homeHTML().includes("Keine Stimme")) fail("Stimmen-Hinweis für eine Sprache mit Stimme");
+}
 
 // App mode: with an AndroidBridge the game speaks through the phone, listens for speaking tasks and handles back.
 {

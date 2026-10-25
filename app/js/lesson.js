@@ -120,7 +120,7 @@ function nextExercise() {
     const n = L.cur.pairs.length;
     L.m = { left: shuffle([...Array(n).keys()]), right: shuffle([...Array(n).keys()]), done: new Set(), l: null, r: null, flash: null, okFlash: null };
   }
-  if (listenPaused()) L.cur = degradeAudio(L.cur);
+  if (listenPaused() || noVoice()) L.cur = degradeAudio(L.cur);
   else if (L.cur && L.cur.type === "listen") setTimeout(() => speak(L.cur.text), 350);
   else if (L.cur && L.cur.audio) setTimeout(() => speak(L.cur.item.t), 350);
 }
@@ -245,12 +245,13 @@ function finish() {
   syncDay();
   const perfect = L.mistakes === 0, goalBefore = st.dayLessons >= 1;
   clearInterval(blitzTimer);
-  let xp = L.kind === "blitz" ? Math.min(30, L.score) : L.kind === "placement" || L.kind === "master" ? 20 : L.kind === "training" ? 10 : 10 + (perfect ? 5 : 0);
+  const bonusFirst = L.kind === "bonus" && !bonusDone(UNITS[L.unit].id);
+  let xp = L.kind === "bonus" ? (bonusFirst ? BONUS_XP : BONUS_REPLAY_XP) : L.kind === "blitz" ? Math.min(30, L.score) : L.kind === "placement" || L.kind === "master" ? 20 : L.kind === "training" ? 10 : 10 + (perfect ? 5 : 0);
   const comboBonus = L.kind === "blitz" ? 0 : L.bonus || 0;
   xp += comboBonus;
   const boosted = Date.now() < (st.boostUntil || 0);
   if (boosted) xp *= 2;
-  let gems = L.kind === "lesson" ? 5 + (perfect ? 3 : 0) : L.kind === "placement" ? 10 : L.kind === "master" ? 5 + 3 * L.level : L.kind === "dialog" ? 4 : L.kind === "blitz" ? Math.floor(L.score / 5) : 2;
+  let gems = L.kind === "bonus" ? (bonusFirst ? BONUS_GEMS : 0) : L.kind === "lesson" ? 5 + (perfect ? 3 : 0) : L.kind === "placement" ? 10 : L.kind === "master" ? 5 + 3 * L.level : L.kind === "dialog" ? 4 : L.kind === "blitz" ? Math.floor(L.score / 5) : 2;
   st.xp += xp; st.dayLessons++; st.lessons++;
   const rec = dayRec(); rec.xp += xp; rec.lessons++;
   cs().last = Date.now();
@@ -268,6 +269,8 @@ function finish() {
     master = { title: UNITS[L.unit].title, level: c.mastery[id] };
   }
   if (L.kind === "dialog") { const c = cs(); c.dialogs = c.dialogs || {}; c.dialogs[L.scene.id] = true; dialog = L.scene.title; }
+  let bonus = "";
+  if (L.kind === "bonus") { const c = cs(); c.bonus = c.bonus || {}; c.bonus[UNITS[L.unit].id] = true; bonus = bonusTitle(L.game); }
   if (L.kind === "placement") { for (let i = 0; i <= L.unit; i++) cs().progress[UNITS[i].id] = LESSONS_PER_UNIT; st.placementPassed = true; }
   const before = shownStreak();
   let freezeUsed = 0;
@@ -301,7 +304,7 @@ function finish() {
   result = { xp, perfect, acc: Math.round(100 * L.done / Math.max(1, answered)), secs: Math.round((Date.now() - L.startedAt) / 1000),
     streakUp: st.streak > before ? st.streak : 0, goal: !goalBefore, training: L.kind === "training", vocab: !!L.vocab, badges: fresh,
     placement: L.kind === "placement" ? UNITS[L.unit].title : "", refill: !!L.refill, heartsGained,
-    comboBonus, bestCombo: L.bestCombo || 0, blitz, quests, gems, boosted, freezeUsed, master, dialog,
+    comboBonus, bestCombo: L.bestCombo || 0, blitz, quests, gems, boosted, freezeUsed, master, dialog, bonus,
     unitDone: L.kind === "lesson" && done(UNITS[L.unit].id) >= LESSONS_PER_UNIT && L.lesson === LESSONS_PER_UNIT - 1 };
   sfx("win"); view = "result"; L = null; render(); confetti(); reportDay(); reportLearningDay();
 }

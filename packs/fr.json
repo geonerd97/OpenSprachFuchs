@@ -1015,7 +1015,193 @@
     "ruines": "Ruinen",
     "temple": "Tempel",
     "romain": "römisch",
-    "soixante-dix": "siebzig"
+    "soixante-dix": "siebzig",
+    "lena": "Lena (Name)",
+    "tom": "Tom (Name)",
+    "clara": "Clara (Name)",
+    "marco": "Marco (Name)",
+    "sara": "Sara (Name)",
+    "ben": "Ben (Name)",
+    "mia": "Mia (Name)",
+    "rossi": "Rossi (Name)",
+    "jonas": "Jonas (Name)",
+    "eva": "Eva (Name)",
+    "lisa": "Lisa (Name)",
+    "tim": "Tim (Name)",
+    "julia": "Julia (Name)",
+    "felix": "Felix (Name)",
+    "serveur": "Kellner",
+    "commande": "bestellt",
+    "puis": "dann",
+    "voudrait": "möchte",
+    "habite": "wohnt",
+    "boit": "trinkt",
+    "ensuite": "danach / dann",
+    "écoute": "hört",
+    "homme": "Mann",
+    "d'église": "Kirche",
+    "derrière": "hinter",
+    "l'immeuble": "das Haus",
+    "s'appelle": "heißt",
+    "gentille": "nett",
+    "blonds": "blond",
+    "rouges": "rot",
+    "nagé": "geschwommen",
+    "restés": "geblieben",
+    "mangé": "gegessen",
+    "voulait": "wollte",
+    "sa": "seine / ihre",
+    "trouvait": "fand",
+    "cherché": "gesucht",
+    "salle": "Raum (salle de bains = Bad)",
+    "bains": "(salle de bains = Bad)",
+    "demandé": "gefragt / gebeten",
+    "l'aide": "die Hilfe",
+    "copine": "Freundin",
+    "appelé": "angerufen",
+    "sonné": "geklingelt",
+    "frigo": "Kühlschrank",
+    "marchait": "funktionierte",
+    "ses": "seine / ihre",
+    "amis": "Freunde",
+    "préparent": "bereiten vor",
+    "surprise": "Überraschung",
+    "chocolat": "Schokolade",
+    "achète": "kauft",
+    "ballons": "Luftballons",
+    "bougies": "Kerzen",
+    "invités": "Gäste / eingeladen",
+    "éteignent": "machen aus",
+    "attendent": "warten",
+    "crie": "ruft",
+    "rit": "lacht",
+    "pleure": "weint",
+    "joie": "Freude",
+    "étions": "waren",
+    "apporté": "mitgebracht",
+    "madame": "Frau (Anrede)",
+    "accueillis": "empfangen",
+    "chaleureusement": "herzlich",
+    "tellement": "so",
+    "resservi": "nachgenommen",
+    "parlé": "geredet",
+    "ri": "gelacht",
+    "jusque": "bis",
+    "tard": "spät",
+    "partant": "beim Gehen",
+    "revenez": "kommt wieder",
+    "construit": "gebaut",
+    "tableaux": "Gemälde",
+    "d'artistes": "von Künstlern",
+    "secret": "geheim",
+    "bu": "getrunken",
+    "voulaient": "wollten",
+    "alpes": "Alpen",
+    "brillait": "schien",
+    "bout": "Ende (au bout de = nach)",
+    "épais": "dicht",
+    "soudain": "plötzlich",
+    "voyaient": "sahen",
+    "proposé": "vorgeschlagen",
+    "retourner": "zurückgehen",
+    "refuge": "Hütte",
+    "savait": "wusste",
+    "qu'elle": "dass sie",
+    "joué": "gespielt",
+    "cartes": "Karten",
+    "lendemain": "am nächsten Tag",
+    "ciel": "Himmel",
+    "atteint": "erreicht",
+    "n'arrivaient": "schafften nicht",
+    "mettre": "(se mettre d'accord = sich einigen)",
+    "préférait": "wollte lieber",
+    "science-fiction": "Science-Fiction",
+    "passait": "lief (Film)",
+    "sous-titrée": "mit Untertiteln",
+    "étaient": "waren",
+    "impressionnants": "beeindruckend",
+    "ennuyeuse": "langweilig",
+    "s'est": "hat sich / ist",
+    "endormi": "eingeschlafen",
+    "choisit": "wählt aus",
+    "annoncé": "angesagt",
+    "pique-nique": "Picknick",
+    "midi": "Mittag",
+    "faisait": "(il faisait chaud = es war heiß)",
+    "nuages": "Wolken",
+    "devenus": "geworden",
+    "sombres": "dunkel",
+    "violents": "heftig",
+    "tonnerre": "Donner",
+    "rangé": "eingepackt",
+    "couru": "gelaufen",
+    "sous": "unter",
+    "fini": "vorbei",
+    "voyait": "sah",
+    "arc-en-ciel": "Regenbogen",
+    "vieille": "alt",
+    "d'école": "Schul-",
+    "elles": "sie (Plural, weiblich)",
+    "s'étaient": "hatten sich",
+    "disputées": "gestritten",
+    "malentendu": "Missverständnis",
+    "stupide": "dumm",
+    "disait": "sagte",
+    "regrettait": "bereute",
+    "début": "Anfang",
+    "devait": "sollte",
+    "répondre": "antworten",
+    "rendu": "(se rendre compte = merken)",
+    "lui": "ihr / ihm",
+    "manqué": "gefehlt",
+    "l'a": "hat sie",
+    "appelée": "angerufen",
+    "enfin": "endlich",
+    "revoir": "wiedersehen",
+    "gens": "Leute",
+    "connaissaient": "kannten",
+    "dame": "Dame",
+    "âgée": "älter",
+    "d'organiser": "zu organisieren",
+    "chaque": "jede",
+    "jeux": "Spiele",
+    "belles": "schön",
+    "conversations": "Gespräche",
+    "simplement": "einfach",
+    "disparu": "verschwunden",
+    "jour-là": "(ce jour-là = an diesem Tag)",
+    "désormais": "inzwischen / von nun an",
+    "s'entraident": "helfen sich gegenseitig",
+    "courses": "Einkäufe",
+    "souscrit": "abgeschlossen",
+    "ligne": "(en ligne = online)",
+    "abonnement": "Abo",
+    "premier": "erste",
+    "n'a": "hat nicht (n'a payé que = hat nur bezahlt)",
+    "soixante": "sechzig",
+    "prélevés": "abgebucht",
+    "furieux": "wütend",
+    "l'employée": "die Mitarbeiterin",
+    "montré": "gezeigt",
+    "bas": "niedrig",
+    "n'était": "war nur",
+    "valable": "gültig",
+    "premières": "ersten",
+    "attentivement": "aufmerksam / genau",
+    "rangeant": "beim Aufräumen",
+    "grenier": "Dachboden",
+    "arrière-grand-père": "Urgroßvater",
+    "émigré": "ausgewandert",
+    "décrivait": "beschrieb",
+    "bateau": "Schiff",
+    "écrivait": "schrieb",
+    "années": "Jahre",
+    "avaient": "hatten",
+    "difficiles": "schwierig",
+    "grâce": "dank (grâce à)",
+    "appris": "gelernt",
+    "voulons": "wollen",
+    "vivait": "lebte"
   },
   "glossaryDe": {
     "vielen": "beaucoup (vielen Dank = merci beaucoup)",
@@ -4457,6 +4643,296 @@
             {"de":"Danke. Und wann fährt die Fähre?","t":"Merci. Et le ferry part à quelle heure?"},
             {"de":"Danke. Und wo ist die Umkleidekabine?","t":"Merci. Et où est la cabine d'essayage?"}
           ] }
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "food.story", "unit": "food", "title": "Im Café", "em": "☕",
+      "lines": [
+        {"de":"Lena geht heute ins Café.","t":"Aujourd'hui, Lena va au café."},
+        {"de":"Sie hat Hunger und Durst.","t":"Elle a faim et soif."},
+        {"de":"Der Kellner ist sehr freundlich.","t":"Le serveur est très gentil."},
+        {"de":"Lena bestellt einen Kaffee und ein Croissant.","t":"Lena commande un café et un croissant."},
+        {"de":"Der Kaffee ist heiß und sehr gut.","t":"Le café est chaud et très bon."},
+        {"de":"Dann kommt ihr Freund Paul.","t":"Puis son ami Paul arrive."},
+        {"de":"Paul möchte einen Tee mit Milch.","t":"Paul voudrait un thé au lait."},
+        {"de":"Am Ende bezahlt Paul die Rechnung.","t":"À la fin, Paul paie l'addition."}
+      ],
+      "questions": [
+        {"q":"Wo ist Lena?","a":["Im Café","Im Hotel","Im Park"]},
+        {"q":"Was bestellt Lena?","a":["Einen Kaffee und ein Croissant","Einen Tee mit Milch","Ein Wasser"]},
+        {"q":"Wer bezahlt am Ende?","a":["Paul","Lena","Der Kellner"]}
+      ]
+    },
+    {
+      "id": "home.story", "unit": "home", "title": "Ein normaler Tag", "em": "🏠",
+      "lines": [
+        {"de":"Tom wohnt in einer kleinen Wohnung.","t":"Tom habite dans un petit appartement."},
+        {"de":"Er steht jeden Tag um sieben Uhr auf.","t":"Il se lève tous les jours à sept heures."},
+        {"de":"Zuerst duscht er und trinkt einen Kaffee.","t":"D'abord, il prend une douche et boit un café."},
+        {"de":"Dann fährt er mit dem Bus zur Arbeit.","t":"Ensuite, il va au travail en bus."},
+        {"de":"Am Abend kocht er Nudeln.","t":"Le soir, il fait des pâtes."},
+        {"de":"Er isst in der Küche und hört Musik.","t":"Il mange dans la cuisine et écoute de la musique."},
+        {"de":"Danach liest er ein Buch auf dem Sofa.","t":"Après, il lit un livre sur le canapé."},
+        {"de":"Um elf Uhr geht er ins Bett.","t":"À onze heures, il va au lit."}
+      ],
+      "questions": [
+        {"q":"Wann steht Tom auf?","a":["Um sieben Uhr","Um elf Uhr","Am Abend"]},
+        {"q":"Wie fährt Tom zur Arbeit?","a":["Mit dem Bus","Mit dem Fahrrad","Mit dem Auto"]},
+        {"q":"Was macht Tom auf dem Sofa?","a":["Er liest ein Buch","Er kocht Nudeln","Er duscht"]}
+      ]
+    },
+    {
+      "id": "city.story", "unit": "city", "title": "Verlaufen in der Stadt", "em": "🗺️",
+      "lines": [
+        {"de":"Anna ist zum ersten Mal in Lissabon.","t":"Anna est à Lisbonne pour la première fois."},
+        {"de":"Sie sucht das Museum, aber sie findet es nicht.","t":"Elle cherche le musée, mais elle ne le trouve pas."},
+        {"de":"Sie fragt einen Mann auf der Straße.","t":"Elle demande à un homme dans la rue."},
+        {"de":"Der Mann sagt: „Gehen Sie geradeaus und dann links.“","t":"L'homme dit: « Allez tout droit, puis à gauche. »"},
+        {"de":"„Das Museum ist neben der Kirche.“","t":"« Le musée est à côté de l'église. »"},
+        {"de":"Anna geht geradeaus, aber sie sieht keine Kirche.","t":"Anna va tout droit, mais elle ne voit pas d'église."},
+        {"de":"Dann sieht sie einen Park und eine Apotheke.","t":"Puis elle voit un parc et une pharmacie."},
+        {"de":"Hinter der Apotheke ist die Kirche, und daneben das Museum!","t":"Derrière la pharmacie, il y a l'église, et à côté le musée!"}
+      ],
+      "questions": [
+        {"q":"Was sucht Anna?","a":["Das Museum","Die Apotheke","Den Bahnhof"]},
+        {"q":"Wen fragt Anna?","a":["Einen Mann auf der Straße","Eine Polizistin","Ihre Freundin"]},
+        {"q":"Wo ist das Museum?","a":["Neben der Kirche","Im Park","Hinter dem Bahnhof"]}
+      ]
+    },
+    {
+      "id": "describe.story", "unit": "describe", "title": "Die neue Nachbarin", "em": "👫",
+      "lines": [
+        {"de":"Im Haus wohnt eine neue Nachbarin.","t":"Une nouvelle voisine habite dans l'immeuble."},
+        {"de":"Sie heißt Clara und ist sehr nett.","t":"Elle s'appelle Clara et elle est très gentille."},
+        {"de":"Clara ist groß und hat lange blonde Haare.","t":"Clara est grande et elle a les cheveux longs et blonds."},
+        {"de":"Sie trägt immer eine rote Brille.","t":"Elle porte toujours des lunettes rouges."},
+        {"de":"Clara hat einen kleinen Hund.","t":"Clara a un petit chien."},
+        {"de":"Der Hund ist schwarz und sehr lustig.","t":"Le chien est noir et très drôle."},
+        {"de":"Clara ist Lehrerin und spricht drei Sprachen.","t":"Clara est professeure et parle trois langues."},
+        {"de":"Am Samstag trinken wir zusammen Kaffee.","t":"Samedi, on boit un café ensemble."}
+      ],
+      "questions": [
+        {"q":"Wie sieht Clara aus?","a":["Groß, mit langen blonden Haaren","Klein, mit kurzen Haaren","Groß, mit einem Bart"]},
+        {"q":"Was hat Clara?","a":["Einen kleinen Hund","Eine Katze","Zwei Kinder"]},
+        {"q":"Was ist Clara von Beruf?","a":["Lehrerin","Ärztin","Kellnerin"]}
+      ]
+    },
+    {
+      "id": "past.story", "unit": "past", "title": "Ein Wochenende am Meer", "em": "🏖️",
+      "lines": [
+        {"de":"Letztes Wochenende sind wir ans Meer gefahren.","t":"Le week-end dernier, nous sommes allés à la mer."},
+        {"de":"Wir sind am Freitagabend mit dem Zug losgefahren.","t":"Nous sommes partis en train le vendredi soir."},
+        {"de":"Das Hotel war klein, aber sehr gemütlich.","t":"L'hôtel était petit, mais très confortable."},
+        {"de":"Am Samstag war das Wetter wunderbar.","t":"Samedi, il a fait un temps magnifique."},
+        {"de":"Wir sind geschwommen und haben in der Sonne gelegen.","t":"Nous avons nagé et nous sommes restés au soleil."},
+        {"de":"Am Abend haben wir frischen Fisch gegessen.","t":"Le soir, nous avons mangé du poisson frais."},
+        {"de":"Am Sonntag hat es leider den ganzen Tag geregnet.","t":"Dimanche, malheureusement, il a plu toute la journée."},
+        {"de":"Trotzdem war es ein tolles Wochenende.","t":"Malgré tout, c'était un super week-end."}
+      ],
+      "questions": [
+        {"q":"Wie sind sie ans Meer gefahren?","a":["Mit dem Zug","Mit dem Auto","Mit dem Flugzeug"]},
+        {"q":"Was haben sie am Samstagabend gegessen?","a":["Frischen Fisch","Pizza","Nudeln"]},
+        {"q":"Wie war das Wetter am Sonntag?","a":["Es hat geregnet","Es war sonnig","Es hat geschneit"]}
+      ]
+    },
+    {
+      "id": "phone.story", "unit": "phone", "title": "Das Handy ist weg", "em": "📱",
+      "lines": [
+        {"de":"Gestern Abend wollte Marco seine Mutter anrufen.","t":"Hier soir, Marco voulait appeler sa mère."},
+        {"de":"Aber er konnte sein Handy nicht finden.","t":"Mais il ne trouvait pas son portable."},
+        {"de":"Er hat in der Küche und im Bad gesucht.","t":"Il a cherché dans la cuisine et dans la salle de bains."},
+        {"de":"Dann hat er seine Freundin um Hilfe gebeten.","t":"Puis il a demandé de l'aide à sa copine."},
+        {"de":"Sie hat Marcos Nummer angerufen.","t":"Elle a appelé le numéro de Marco."},
+        {"de":"Plötzlich hat etwas im Kühlschrank geklingelt!","t":"Tout à coup, quelque chose a sonné dans le frigo!"},
+        {"de":"Das Handy lag neben der Milch.","t":"Le portable était à côté du lait."},
+        {"de":"Der Akku war fast leer, aber das Handy war kalt und funktionierte noch.","t":"La batterie était presque vide, mais le portable était froid et marchait encore."}
+      ],
+      "questions": [
+        {"q":"Wen wollte Marco anrufen?","a":["Seine Mutter","Seine Freundin","Seinen Chef"]},
+        {"q":"Wer hat ihm geholfen?","a":["Seine Freundin","Seine Mutter","Ein Nachbar"]},
+        {"q":"Wo war das Handy?","a":["Im Kühlschrank","Im Bad","Auf dem Sofa"]}
+      ]
+    },
+    {
+      "id": "party.story", "unit": "party", "title": "Die Überraschungsparty", "em": "🎂",
+      "lines": [
+        {"de":"Sara hat am Freitag Geburtstag.","t":"C'est l'anniversaire de Sara vendredi."},
+        {"de":"Ihre Freunde planen eine Überraschungsparty.","t":"Ses amis préparent une fête surprise."},
+        {"de":"Ben backt einen großen Schokoladenkuchen.","t":"Ben fait un grand gâteau au chocolat."},
+        {"de":"Mia kauft Luftballons und Kerzen.","t":"Mia achète des ballons et des bougies."},
+        {"de":"Um acht Uhr sind alle Gäste in der Wohnung.","t":"À huit heures, tous les invités sont dans l'appartement."},
+        {"de":"Sie machen das Licht aus und warten.","t":"Ils éteignent la lumière et attendent."},
+        {"de":"Als Sara die Tür öffnet, rufen alle: „Überraschung!“","t":"Quand Sara ouvre la porte, tout le monde crie: « Surprise! »"},
+        {"de":"Sara lacht und weint gleichzeitig vor Freude.","t":"Sara rit et pleure de joie en même temps."}
+      ],
+      "questions": [
+        {"q":"Was backt Ben?","a":["Einen Schokoladenkuchen","Brot","Kekse"]},
+        {"q":"Was kauft Mia?","a":["Luftballons und Kerzen","Blumen und Wein","Ein Geschenk"]},
+        {"q":"Was rufen alle, als Sara die Tür öffnet?","a":["„Überraschung!“","„Guten Abend!“","„Frohe Weihnachten!“"]}
+      ]
+    },
+    {
+      "id": "visit.story", "unit": "visit", "title": "Abendessen bei Familie Rossi", "em": "🍝",
+      "lines": [
+        {"de":"Am Sonntag waren wir bei Familie Rossi zum Abendessen eingeladen.","t":"Dimanche, nous étions invités à dîner chez la famille Rossi."},
+        {"de":"Wir haben Blumen und eine Flasche Wein mitgebracht.","t":"Nous avons apporté des fleurs et une bouteille de vin."},
+        {"de":"Frau Rossi hat uns sehr herzlich begrüßt.","t":"Madame Rossi nous a accueillis très chaleureusement."},
+        {"de":"Zuerst gab es eine Suppe, dann Nudeln mit Tomatensoße.","t":"D'abord il y avait une soupe, puis des pâtes à la sauce tomate."},
+        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"Le repas était tellement bon que je me suis resservi deux fois."},
+        {"de":"Zum Nachtisch gab es Eis mit Erdbeeren.","t":"Comme dessert, il y avait de la glace aux fraises."},
+        {"de":"Wir haben bis spät in die Nacht geredet und gelacht.","t":"Nous avons parlé et ri jusque tard dans la nuit."},
+        {"de":"Beim Abschied hat Frau Rossi gesagt: „Kommt bald wieder!“","t":"En partant, Madame Rossi a dit: « Revenez vite! »"}
+      ],
+      "questions": [
+        {"q":"Was haben sie mitgebracht?","a":["Blumen und Wein","Einen Kuchen","Schokolade"]},
+        {"q":"Was gab es zum Nachtisch?","a":["Eis mit Erdbeeren","Kuchen","Obstsalat"]},
+        {"q":"Was hat Frau Rossi beim Abschied gesagt?","a":["„Kommt bald wieder!“","„Gute Nacht!“","„Danke für die Blumen!“"]}
+      ]
+    },
+    {
+      "id": "culture.story", "unit": "culture", "title": "Die Führung im Museum", "em": "🏛️",
+      "lines": [
+        {"de":"Im Urlaub haben wir an einer Führung durch ein altes Schloss teilgenommen.","t":"En vacances, nous avons fait une visite guidée d'un vieux château."},
+        {"de":"Die Führerin hat uns viel über die Geschichte des Schlosses erzählt.","t":"La guide nous a beaucoup parlé de l'histoire du château."},
+        {"de":"Es wurde vor fast fünfhundert Jahren gebaut.","t":"Il a été construit il y a presque cinq cents ans."},
+        {"de":"Im großen Saal hängen Gemälde von berühmten Künstlern.","t":"Dans la grande salle, il y a des tableaux d'artistes célèbres."},
+        {"de":"Fotografieren war leider nicht erlaubt.","t":"Malheureusement, il était interdit de prendre des photos."},
+        {"de":"Am interessantesten fand ich die geheime Treppe hinter einem Bücherregal.","t":"Ce que j'ai trouvé le plus intéressant, c'est l'escalier secret derrière une bibliothèque."},
+        {"de":"Nach der Führung haben wir im Garten des Schlosses Kaffee getrunken.","t":"Après la visite, nous avons bu un café dans le jardin du château."},
+        {"de":"Es hat sich wirklich gelohnt.","t":"Ça valait vraiment la peine."}
+      ],
+      "questions": [
+        {"q":"Wie alt ist das Schloss ungefähr?","a":["Fast fünfhundert Jahre","Hundert Jahre","Zweitausend Jahre"]},
+        {"q":"Was war nicht erlaubt?","a":["Fotografieren","Sprechen","Essen im Garten"]},
+        {"q":"Was war am interessantesten?","a":["Die geheime Treppe","Die Gemälde","Der Garten"]}
+      ]
+    },
+    {
+      "id": "nature.story", "unit": "nature", "title": "Die Wanderung im Nebel", "em": "🥾",
+      "lines": [
+        {"de":"Jonas und Eva wollten auf einen Berg in den Alpen wandern.","t":"Jonas et Eva voulaient monter sur une montagne dans les Alpes."},
+        {"de":"Sie sind früh am Morgen losgegangen, als die Sonne schien.","t":"Ils sont partis tôt le matin, quand le soleil brillait."},
+        {"de":"Nach zwei Stunden kam plötzlich dichter Nebel.","t":"Au bout de deux heures, un brouillard épais est soudain arrivé."},
+        {"de":"Sie konnten den Weg kaum noch sehen.","t":"Ils voyaient à peine le chemin."},
+        {"de":"Eva hat vorgeschlagen, zur Hütte zurückzugehen.","t":"Eva a proposé de retourner au refuge."},
+        {"de":"Jonas war enttäuscht, aber er wusste, dass sie recht hatte.","t":"Jonas était déçu, mais il savait qu'elle avait raison."},
+        {"de":"In der Hütte haben sie heiße Suppe gegessen und Karten gespielt.","t":"Au refuge, ils ont mangé une soupe chaude et joué aux cartes."},
+        {"de":"Am nächsten Tag war der Himmel klar, und sie haben den Gipfel erreicht.","t":"Le lendemain, le ciel était dégagé et ils ont atteint le sommet."}
+      ],
+      "questions": [
+        {"q":"Was ist nach zwei Stunden passiert?","a":["Es kam dichter Nebel","Es hat geschneit","Jonas hat sich verletzt"]},
+        {"q":"Was hat Eva vorgeschlagen?","a":["Zur Hütte zurückzugehen","Weiterzugehen","Ein Taxi zu rufen"]},
+        {"q":"Wann haben sie den Gipfel erreicht?","a":["Am nächsten Tag","Am selben Abend","Gar nicht"]}
+      ]
+    },
+    {
+      "id": "film.story", "unit": "film", "title": "Der Kinoabend", "em": "🎬",
+      "lines": [
+        {"de":"Am Freitag wollten Lisa und ihre Freunde ins Kino gehen.","t":"Vendredi, Lisa et ses amis voulaient aller au cinéma."},
+        {"de":"Aber sie konnten sich nicht auf einen Film einigen.","t":"Mais ils n'arrivaient pas à se mettre d'accord sur un film."},
+        {"de":"Lisa wollte eine Komödie sehen, Tim lieber einen Horrorfilm.","t":"Lisa voulait voir une comédie, Tim préférait un film d'horreur."},
+        {"de":"Schließlich haben sie einen Science-Fiction-Film gewählt.","t":"Finalement, ils ont choisi un film de science-fiction."},
+        {"de":"Der Film lief in der Originalfassung mit Untertiteln.","t":"Le film passait en version originale sous-titrée."},
+        {"de":"Die Effekte waren beeindruckend, aber die Handlung war ziemlich langweilig.","t":"Les effets étaient impressionnants, mais l'intrigue était assez ennuyeuse."},
+        {"de":"Tim ist sogar kurz eingeschlafen.","t":"Tim s'est même endormi un moment."},
+        {"de":"Nächstes Mal darf Lisa den Film aussuchen.","t":"La prochaine fois, c'est Lisa qui choisit le film."}
+      ],
+      "questions": [
+        {"q":"Welchen Film wollte Lisa sehen?","a":["Eine Komödie","Einen Horrorfilm","Einen Liebesfilm"]},
+        {"q":"Wie war die Handlung des Films?","a":["Ziemlich langweilig","Sehr spannend","Sehr lustig"]},
+        {"q":"Wer darf nächstes Mal den Film aussuchen?","a":["Lisa","Tim","Niemand"]}
+      ]
+    },
+    {
+      "id": "forecast.story", "unit": "forecast", "title": "Das Gewitter", "em": "⛈️",
+      "lines": [
+        {"de":"Der Wetterbericht hatte für Samstag Sonne angesagt.","t":"La météo avait annoncé du soleil pour samedi."},
+        {"de":"Deshalb haben wir ein Picknick im Park geplant.","t":"C'est pourquoi nous avons prévu un pique-nique dans le parc."},
+        {"de":"Am Mittag war der Himmel noch blau und es war sehr heiß.","t":"À midi, le ciel était encore bleu et il faisait très chaud."},
+        {"de":"Doch am Nachmittag wurden die Wolken immer dunkler.","t":"Mais l'après-midi, les nuages sont devenus de plus en plus sombres."},
+        {"de":"Plötzlich hat es heftig gedonnert und geregnet.","t":"Tout à coup, il y a eu de violents coups de tonnerre et une forte pluie."},
+        {"de":"Wir haben alles schnell eingepackt und sind unter eine Brücke gelaufen.","t":"Nous avons vite tout rangé et nous avons couru sous un pont."},
+        {"de":"Nach einer halben Stunde war das Gewitter vorbei.","t":"Au bout d'une demi-heure, l'orage était fini."},
+        {"de":"Am Himmel war ein wunderschöner Regenbogen zu sehen.","t":"On voyait un magnifique arc-en-ciel dans le ciel."}
+      ],
+      "questions": [
+        {"q":"Was hatte der Wetterbericht angesagt?","a":["Sonne","Regen","Schnee"]},
+        {"q":"Wohin sind sie vor dem Gewitter gelaufen?","a":["Unter eine Brücke","In ein Café","Nach Hause"]},
+        {"q":"Was war nach dem Gewitter am Himmel?","a":["Ein Regenbogen","Ein Flugzeug","Viele Sterne"]}
+      ]
+    },
+    {
+      "id": "feelings.story", "unit": "feelings", "title": "Der Brief", "em": "💌",
+      "lines": [
+        {"de":"Nach zehn Jahren hat Julia einen Brief von ihrer alten Schulfreundin bekommen.","t":"Après dix ans, Julia a reçu une lettre de sa vieille amie d'école."},
+        {"de":"Damals hatten sie sich wegen eines dummen Missverständnisses gestritten.","t":"À l'époque, elles s'étaient disputées à cause d'un malentendu stupide."},
+        {"de":"Seitdem hatten sie nicht mehr miteinander gesprochen.","t":"Depuis, elles ne s'étaient plus parlé."},
+        {"de":"In dem Brief stand, dass ihre Freundin die Sache sehr bereute.","t":"Dans la lettre, son amie disait qu'elle regrettait beaucoup cette histoire."},
+        {"de":"Julia war zuerst unsicher, ob sie antworten sollte.","t":"Au début, Julia ne savait pas si elle devait répondre."},
+        {"de":"Dann hat sie gemerkt, wie sehr sie ihre Freundin vermisst hatte.","t":"Puis elle s'est rendu compte à quel point son amie lui avait manqué."},
+        {"de":"Sie hat sie angerufen, und sie haben stundenlang geredet.","t":"Elle l'a appelée, et elles ont parlé pendant des heures."},
+        {"de":"Nächsten Monat wollen sie sich endlich wiedersehen.","t":"Le mois prochain, elles veulent enfin se revoir."}
+      ],
+      "questions": [
+        {"q":"Von wem hat Julia einen Brief bekommen?","a":["Von ihrer alten Schulfreundin","Von ihrer Mutter","Von ihrem Chef"]},
+        {"q":"Warum hatten sie sich gestritten?","a":["Wegen eines Missverständnisses","Wegen Geld","Wegen eines Mannes"]},
+        {"q":"Was wollen sie nächsten Monat machen?","a":["Sich wiedersehen","Zusammen umziehen","Eine Reise machen"]}
+      ]
+    },
+    {
+      "id": "society.story", "unit": "society", "title": "Das Nachbarschaftsfest", "em": "🤝",
+      "lines": [
+        {"de":"In unserer Straße wohnen Menschen aus über zwanzig Ländern.","t":"Dans notre rue habitent des gens de plus de vingt pays."},
+        {"de":"Trotzdem kannten sich die meisten Nachbarn kaum.","t":"Pourtant, la plupart des voisins se connaissaient à peine."},
+        {"de":"Deshalb hat eine ältere Dame vorgeschlagen, ein Straßenfest zu organisieren.","t":"C'est pourquoi une dame âgée a proposé d'organiser une fête de quartier."},
+        {"de":"Jede Familie hat ein typisches Gericht aus ihrer Heimat mitgebracht.","t":"Chaque famille a apporté un plat typique de son pays."},
+        {"de":"Es gab Musik, Spiele für die Kinder und viele gute Gespräche.","t":"Il y avait de la musique, des jeux pour les enfants et beaucoup de belles conversations."},
+        {"de":"Viele Vorurteile sind an diesem Tag einfach verschwunden.","t":"Beaucoup de préjugés ont tout simplement disparu ce jour-là."},
+        {"de":"Inzwischen helfen sich die Nachbarn gegenseitig beim Einkaufen und Babysitten.","t":"Désormais, les voisins s'entraident pour les courses et la garde des enfants."},
+        {"de":"Das Fest soll jetzt jedes Jahr stattfinden.","t":"La fête doit maintenant avoir lieu chaque année."}
+      ],
+      "questions": [
+        {"q":"Wer hatte die Idee für das Fest?","a":["Eine ältere Dame","Der Bürgermeister","Die Kinder"]},
+        {"q":"Was hat jede Familie mitgebracht?","a":["Ein typisches Gericht","Ein Geschenk","Musik"]},
+        {"q":"Was hat sich nach dem Fest verändert?","a":["Die Nachbarn helfen sich gegenseitig","Alle sind umgezogen","Es gibt mehr Verkehr"]}
+      ]
+    },
+    {
+      "id": "contracts.story", "unit": "contracts", "title": "Das Kleingedruckte", "em": "📄",
+      "lines": [
+        {"de":"Felix hat online ein günstiges Fitnessstudio-Abo abgeschlossen.","t":"Felix a souscrit en ligne un abonnement de salle de sport bon marché."},
+        {"de":"Im ersten Monat hat er nur zehn Euro bezahlt.","t":"Le premier mois, il n'a payé que dix euros."},
+        {"de":"Im zweiten Monat wurden plötzlich sechzig Euro abgebucht.","t":"Le deuxième mois, soixante euros ont soudain été prélevés."},
+        {"de":"Felix war wütend und hat beim Studio angerufen.","t":"Felix était furieux et a appelé la salle de sport."},
+        {"de":"Die Mitarbeiterin hat ihn auf das Kleingedruckte im Vertrag hingewiesen.","t":"L'employée lui a montré les petits caractères du contrat."},
+        {"de":"Der günstige Preis galt nur für die ersten vier Wochen.","t":"Le prix bas n'était valable que pour les quatre premières semaines."},
+        {"de":"Außerdem läuft der Vertrag mindestens zwei Jahre.","t":"En plus, le contrat dure au moins deux ans."},
+        {"de":"Seitdem liest Felix jeden Vertrag ganz genau, bevor er unterschreibt.","t":"Depuis, Felix lit chaque contrat très attentivement avant de signer."}
+      ],
+      "questions": [
+        {"q":"Wie viel hat Felix im ersten Monat bezahlt?","a":["Zehn Euro","Sechzig Euro","Nichts"]},
+        {"q":"Wo stand die wichtige Information?","a":["Im Kleingedruckten","Auf der Webseite","In einer E-Mail"]},
+        {"q":"Wie lange läuft der Vertrag mindestens?","a":["Zwei Jahre","Vier Wochen","Ein Jahr"]}
+      ]
+    },
+    {
+      "id": "history.story", "unit": "history", "title": "Die Kiste auf dem Dachboden", "em": "📜",
+      "lines": [
+        {"de":"Beim Aufräumen haben wir auf dem Dachboden eine alte Holzkiste gefunden.","t":"En rangeant, nous avons trouvé une vieille caisse en bois dans le grenier."},
+        {"de":"Darin lagen Briefe und Fotos von unserem Urgroßvater.","t":"Dedans, il y avait des lettres et des photos de notre arrière-grand-père."},
+        {"de":"Er war vor hundert Jahren als junger Mann ausgewandert.","t":"Il avait émigré il y a cent ans, quand il était jeune."},
+        {"de":"In seinen Briefen beschrieb er die lange Reise mit dem Schiff.","t":"Dans ses lettres, il décrivait le long voyage en bateau."},
+        {"de":"Er schrieb auch, wie schwer die ersten Jahre in der neuen Heimat waren.","t":"Il écrivait aussi à quel point les premières années dans son nouveau pays avaient été difficiles."},
+        {"de":"Auf einem Foto sieht man ihn vor seinem ersten eigenen Laden.","t":"Sur une photo, on le voit devant son premier magasin."},
+        {"de":"Durch die Briefe haben wir viel über unsere Familiengeschichte gelernt.","t":"Grâce aux lettres, nous avons appris beaucoup de choses sur l'histoire de notre famille."},
+        {"de":"Jetzt wollen wir die Stadt besuchen, in der er damals gelebt hat.","t":"Maintenant, nous voulons visiter la ville où il vivait à l'époque."}
+      ],
+      "questions": [
+        {"q":"Was lag in der Kiste?","a":["Briefe und Fotos","Geld und Schmuck","Alte Bücher"]},
+        {"q":"Wie ist der Urgroßvater gereist?","a":["Mit dem Schiff","Mit dem Zug","Zu Fuß"]},
+        {"q":"Was sieht man auf einem Foto?","a":["Ihn vor seinem ersten Laden","Seine Hochzeit","Das Schiff"]}
       ]
     }
   ]

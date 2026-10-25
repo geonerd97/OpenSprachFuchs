@@ -383,3 +383,28 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 /* QR code with the key: always black on white so cameras read it */
 .qrbox { display: grid; gap: .5rem; justify-items: center; }
 .qr { background: #fff; border-radius: 12px; padding: 4px; width: min(200px, 70vw); height: auto; }
+
+/* Bonus stations (games.js): the fifth node of a unit and the mini games. */
+.node.bonus-node { --c: var(--gold); --cd: var(--gold-deep); width: 62px; height: 58px; font-size: 1.7rem; }
+.node.bonus-node.done { opacity: .85; }
+.node.bonus-node.locked { font-size: 1.2rem; }
+.ws-grid { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 3px; width: min(100%, 380px); margin-inline: auto; touch-action: manipulation; }
+.ws-cell { aspect-ratio: 1; border: 2px solid var(--line); border-radius: 8px; background: var(--surface); font-weight: 800; font-size: clamp(.85rem, 4.4vw, 1.15rem); padding: 0; color: var(--ink); }
+.ws-cell.sel { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.ws-cell.found { border-color: var(--good); background: var(--good-soft); color: var(--good-deep); }
+.ws-cell.flash { border-color: var(--bad); background: var(--bad-soft); color: var(--bad-deep); }
+.ws-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .4rem .9rem; justify-content: center; font-weight: 700; color: var(--ink-2); }
+.ws-list li.found { color: var(--good-deep); text-decoration: line-through; text-decoration-color: var(--good); }
+.scr-answer, .guess-word { display: flex; flex-wrap: wrap; gap: .3rem; justify-content: center; min-height: 3rem; }
+.scr-answer.shake { animation: shake .35s; }
+.scr-slot { width: 2.2rem; height: 2.6rem; border-bottom: 3px solid var(--ink-2); display: grid; place-items: center; font-weight: 800; font-size: 1.35rem; }
+.tile.used { opacity: .35; }
+.tile.used.good { opacity: 1; border-color: var(--good); background: var(--good-soft); color: var(--good-deep); }
+.mem-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; }
+.mem-card { min-height: 4.6rem; border: 2px solid var(--line); border-bottom-width: 4px; border-radius: 14px; background: var(--accent-soft); font-size: 1.6rem; font-weight: 800; padding: .3rem; overflow-wrap: anywhere; }
+.mem-card.up { background: var(--surface); font-size: .98rem; color: var(--ink); }
+.mem-card.up.de { color: var(--ink-2); }
+.mem-card.found { border-color: var(--good); background: var(--good-soft); color: var(--good-deep); }
+.story { display: grid; gap: .75rem; }
+.story-line { display: flex; gap: .5rem; align-items: flex-start; margin: 0; font-size: 1.12rem; line-height: 1.6; }
+.story-line details { font-size: .85rem; color: var(--ink-2); }

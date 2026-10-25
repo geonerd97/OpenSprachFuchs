@@ -63,7 +63,7 @@ function homeHTML() {
       return `<div class="node-wrap" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
         ${state === "current" && ui.pop !== id ? `<span class="start-tag">START</span>` : ""}
         ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${LESSON_NAMES[li]}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
-    }).join("");
+    }).join("") + bonusNodeHTML(u, ui_, open, Math.round(Math.sin(gi++ * 0.95) * 62));
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
       <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, Einheit ${nth} von ${perLevel}, ${u.words.length} Wörter">${esc(C.code)} – Stufe ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= LESSONS_PER_UNIT && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
@@ -189,6 +189,7 @@ function exerciseHTML(ex) {
         return `<button class="choice ${wrong ? "wrong" : ""}" data-act="dlg" data-i="${i}" ${wrong ? "disabled" : ""}><span class="num">${i + 1}</span><span>${esc(l.t)}${wrong ? `<small class="tr">„${esc(l.de)}“ passt hier nicht.</small>` : ""}</span></button>`; }).join("")}</div>` : "";
       return `<div class="tag">Gespräch</div><h2>${sc.em} ${esc(sc.title)}</h2><div class="chat">${bubbles}</div>${hintBox()}${opts}`;
     }
+    case "game": return gameHTML();
     case "match": {
       const m = L.m, cls = (side, i) => m.done.has(i) ? "done" : (m.flash && m.flash[side] === i) ? "flash" : (m.okFlash === i) ? "ok" : (m[side] === i ? "sel" : "");
       return `<div class="tag">Paare</div><h2>Finde die Paare</h2><div class="match">
@@ -200,6 +201,7 @@ function exerciseHTML(ex) {
 }
 function footerHTML() {
   const ex = L.cur;
+  if (ex && ex.type === "game") return gameFooterHTML();
   if (ex && ex.type === "dialog") return L.checked
     ? `<footer class="l-foot ok"><div class="l-foot-in"><div class="fb" role="status"><span class="ico">${I.check(32)}</span><div><h3>Gespräch geschafft!</h3>${L.combo >= 3 ? `<p class="combo-note">🔥 ${L.combo} in Folge</p>` : ""}</div></div>
       <button class="btn good" id="contBtn" data-act="cont">Weiter</button></div></footer>`
@@ -244,7 +246,7 @@ function resultHTML() {
   const line = r.streakUp ? `<strong style="color:var(--flame)">${r.streakUp} ${r.streakUp === 1 ? "Tag" : "Tage"}</strong> in Folge. Tagesziel erreicht, bis morgen!`
     : r.goal ? "Tagesziel erreicht!" : "";
   return `<div class="center"><div class="card">${foxCheerHTML(r.perfect || !!r.master || !!(r.blitz && r.blitz.record))}
-    <h1>${r.master ? `${MEDALS[r.master.level]} ${MEDAL_NAMES[r.master.level]} für „${esc(r.master.title)}“!` : r.dialog ? "Gespräch geschafft!" : r.blitz ? `Blitzrunde: ${r.blitz.score} richtig!` : r.placement ? "Test bestanden!" : r.refill ? "Herzen aufgeladen!" : r.vocab ? "Vokabeln geübt!" : r.training ? "Training geschafft!" : r.unitDone ? "Einheit abgeschlossen!" : r.perfect ? "Fehlerfrei!" : "Lektion geschafft!"}</h1>
+    <h1>${r.master ? `${MEDALS[r.master.level]} ${MEDAL_NAMES[r.master.level]} für „${esc(r.master.title)}“!` : r.dialog ? "Gespräch geschafft!" : r.bonus ? `${esc(r.bonus)} geschafft!` : r.blitz ? `Blitzrunde: ${r.blitz.score} richtig!` : r.placement ? "Test bestanden!" : r.refill ? "Herzen aufgeladen!" : r.vocab ? "Vokabeln geübt!" : r.training ? "Training geschafft!" : r.unitDone ? "Einheit abgeschlossen!" : r.perfect ? "Fehlerfrei!" : "Lektion geschafft!"}</h1>
     ${r.heartsGained ? `<p class="stat heart" style="font-size:1.15rem;justify-content:center;font-weight:800">${I.heart(24)} +${r.heartsGained} ${r.heartsGained === 1 ? "Herz" : "Herzen"}</p>`
       : r.refill && st.settings.hearts && st.hearts < MAX_HEARTS ? `<p class="muted">Für ein Herz braucht es ${RIGHT_PER_HEART} richtige Antworten. Versuch es gleich noch einmal!</p>` : ""}
     ${r.placement ? `<p class="muted" style="font-size:1.05rem">Alle Einheiten bis „${esc(r.placement)}“ sind jetzt freigeschaltet.</p>` : ""}
@@ -589,6 +591,11 @@ function langsHTML() {
 }
 function noticesHTML() {
   const ups = packUpdates(), out = [];
+  if (noVoice() && st.settings.audio && !(st.voiceHidden || {})[CODE]) out.push(`<div class="panel notice"><h3>🔇 Keine Stimme für ${esc(C.name)}</h3>
+    <p class="muted">${voice.state === "missing" ? `Die Sprachausgabe deines Handys hat die Stimme für ${esc(C.name)} noch nicht heruntergeladen.` : `Die Sprachausgabe deines Handys kann kein ${esc(C.name)}.`}
+    Bis dahin werden Hörübungen zu Leseübungen. Fehlt die Sprache ganz, hilft oft die kostenlose App „Speech Services by Google“ oder RHVoice.</p>
+    <button class="btn wide" data-act="installvoice">Stimme installieren</button>
+    <div class="row" style="justify-content:flex-end"><button class="linkbtn" data-act="voicehide">Nicht mehr anzeigen</button></div></div>`);
   if (ups.length) out.push(`<div class="panel notice"><h3>Neue Inhalte</h3><p class="muted">Für ${ups.map(c => esc(COURSES[c].name)).join(", ")} gibt es ein Update mit Verbesserungen.</p>
     ${ups.map(c => `<button class="btn gold wide" data-act="getpack" data-c="${c}" ${packs.busy ? "disabled" : ""}>${packs.busy === c ? "Lädt …" : `${esc(COURSES[c].name)} aktualisieren`}</button>`).join("")}</div>`);
   if (ui.appUpdate && !ui.updateHidden) out.push(`<div class="panel notice"><h3>🦊 Neue App-Version ${esc(ui.appUpdate.version)}</h3>

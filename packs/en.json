@@ -797,7 +797,168 @@
     "visited": "besichtigt",
     "roman": "römisch",
     "temple": "Tempel",
-    "seventy": "siebzig"
+    "seventy": "siebzig",
+    "lena": "Lena (Name)",
+    "tom": "Tom (Name)",
+    "clara": "Clara (Name)",
+    "marco": "Marco (Name)",
+    "sara": "Sara (Name)",
+    "ben": "Ben (Name)",
+    "mia": "Mia (Name)",
+    "rossi": "Rossi (Name)",
+    "jonas": "Jonas (Name)",
+    "eva": "Eva (Name)",
+    "lisa": "Lisa (Name)",
+    "tim": "Tim (Name)",
+    "julia": "Julia (Name)",
+    "felix": "Felix (Name)",
+    "café": "Café",
+    "waiter": "Kellner",
+    "friendly": "freundlich",
+    "orders": "bestellt",
+    "arrives": "kommt an",
+    "pays": "bezahlt",
+    "gets": "(gets up = steht auf)",
+    "drinks": "trinkt",
+    "cooks": "kocht",
+    "eats": "isst",
+    "listens": "hört (zu)",
+    "reads": "liest",
+    "goes": "geht",
+    "asks": "fragt",
+    "says": "sagt",
+    "behind": "hinter",
+    "building": "Haus / Gebäude",
+    "speaks": "spricht",
+    "having": "haben / trinken (having coffee)",
+    "wonderful": "wunderbar",
+    "swam": "schwammen",
+    "lay": "lagen",
+    "ate": "aßen",
+    "rained": "regnete",
+    "his": "sein / seine",
+    "couldn't": "konnte nicht",
+    "looked": "suchte (looked in = suchte in)",
+    "asked": "fragte / bat",
+    "girlfriend": "Freundin",
+    "called": "rief an",
+    "marco's": "Marcos",
+    "suddenly": "plötzlich",
+    "rang": "klingelte",
+    "fridge": "Kühlschrank",
+    "worked": "funktionierte",
+    "sara's": "Saras",
+    "friends": "Freunde",
+    "surprise": "Überraschung",
+    "bakes": "backt",
+    "chocolate": "Schokolade",
+    "buys": "kauft",
+    "balloons": "Luftballons",
+    "candles": "Kerzen",
+    "opens": "öffnet",
+    "shouts": "ruft",
+    "laughs": "lacht",
+    "cries": "weint",
+    "joy": "Freude",
+    "invited": "eingeladen",
+    "family's": "bei der Familie",
+    "brought": "mitgebracht",
+    "mrs": "Frau (Anrede)",
+    "welcomed": "begrüßte",
+    "warmly": "herzlich",
+    "seconds": "Nachschlag (had seconds = nachgenommen)",
+    "talked": "redeten",
+    "laughed": "lachten",
+    "said": "sagte",
+    "come": "komm / kommt",
+    "took": "machten (took a tour = nahmen an einer Führung teil)",
+    "hall": "Saal",
+    "paintings": "Gemälde",
+    "artists": "Künstler",
+    "wasn't": "war nicht",
+    "secret": "geheim",
+    "staircase": "Treppe",
+    "bookshelf": "Bücherregal",
+    "alps": "Alpen",
+    "while": "während / als",
+    "shining": "schien (Sonne)",
+    "hours": "Stunden",
+    "thick": "dicht",
+    "came": "kam",
+    "suggested": "schlug vor",
+    "hut": "Hütte",
+    "knew": "wusste",
+    "cards": "Karten",
+    "sky": "Himmel",
+    "clear": "klar",
+    "reached": "erreichten",
+    "rather": "lieber",
+    "chose": "wählten",
+    "science": "Wissenschaft (science fiction = Science-Fiction)",
+    "fiction": "Fiktion (science fiction = Science-Fiction)",
+    "shown": "gezeigt",
+    "impressive": "beeindruckend",
+    "asleep": "eingeschlafen (fell asleep)",
+    "choose": "aussuchen",
+    "predicted": "angesagt / vorhergesagt",
+    "sunshine": "Sonnenschein",
+    "planned": "planten",
+    "picnic": "Picknick",
+    "noon": "Mittag",
+    "clouds": "Wolken",
+    "darker": "dunkler",
+    "thunder": "Donner",
+    "quickly": "schnell",
+    "packed": "packten (packed up = einpacken)",
+    "ran": "liefen",
+    "rainbow": "Regenbogen",
+    "received": "bekam",
+    "argued": "stritten",
+    "silly": "dumm",
+    "misunderstanding": "Missverständnis",
+    "hadn't": "hatten nicht",
+    "spoken": "gesprochen",
+    "each": "(each other = einander)",
+    "other": "anderer (each other = einander)",
+    "deeply": "sehr / zutiefst",
+    "regretted": "bereute",
+    "happened": "passiert war",
+    "whether": "ob",
+    "reply": "antworten",
+    "realized": "merkte",
+    "finally": "endlich",
+    "countries": "Ländern",
+    "lady": "Dame",
+    "organizing": "organisieren",
+    "games": "Spiele",
+    "conversations": "Gespräche",
+    "prejudices": "Vorurteile",
+    "simply": "einfach",
+    "disappeared": "verschwanden",
+    "shopping": "Einkaufen",
+    "babysitting": "Babysitten",
+    "membership": "Mitgliedschaft / Abo",
+    "sixty": "sechzig",
+    "debited": "abgebucht",
+    "angry": "wütend",
+    "pointed": "wies hin (pointed to)",
+    "him": "ihn / ihm",
+    "low": "niedrig",
+    "applied": "galt",
+    "least": "(at least = mindestens)",
+    "signs": "unterschreibt",
+    "tidying": "aufräumen",
+    "wooden": "aus Holz",
+    "attic": "Dachboden",
+    "letters": "Briefe",
+    "great-grandfather": "Urgroßvater",
+    "emigrated": "ausgewandert",
+    "described": "beschrieb",
+    "ship": "Schiff",
+    "wrote": "schrieb",
+    "own": "eigen",
+    "learned": "lernten",
+    "lived": "lebte"
   },
   "glossaryDe": {
     "geht": "goes / is (wie geht's = how are you)",
@@ -4322,6 +4483,296 @@
             {"de":"Danke. Und wann fährt die Fähre?","t":"Thanks. And when does the ferry leave?"},
             {"de":"Danke. Und wo ist die Umkleidekabine?","t":"Thanks. And where is the fitting room?"}
           ] }
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "food.story", "unit": "food", "title": "Im Café", "em": "☕",
+      "lines": [
+        {"de":"Lena geht heute ins Café.","t":"Lena is going to the café today."},
+        {"de":"Sie hat Hunger und Durst.","t":"She is hungry and thirsty."},
+        {"de":"Der Kellner ist sehr freundlich.","t":"The waiter is very friendly."},
+        {"de":"Lena bestellt einen Kaffee und ein Croissant.","t":"Lena orders a coffee and a croissant."},
+        {"de":"Der Kaffee ist heiß und sehr gut.","t":"The coffee is hot and very good."},
+        {"de":"Dann kommt ihr Freund Paul.","t":"Then her friend Paul arrives."},
+        {"de":"Paul möchte einen Tee mit Milch.","t":"Paul would like a tea with milk."},
+        {"de":"Am Ende bezahlt Paul die Rechnung.","t":"In the end Paul pays the bill."}
+      ],
+      "questions": [
+        {"q":"Wo ist Lena?","a":["Im Café","Im Hotel","Im Park"]},
+        {"q":"Was bestellt Lena?","a":["Einen Kaffee und ein Croissant","Einen Tee mit Milch","Ein Wasser"]},
+        {"q":"Wer bezahlt am Ende?","a":["Paul","Lena","Der Kellner"]}
+      ]
+    },
+    {
+      "id": "home.story", "unit": "home", "title": "Ein normaler Tag", "em": "🏠",
+      "lines": [
+        {"de":"Tom wohnt in einer kleinen Wohnung.","t":"Tom lives in a small apartment."},
+        {"de":"Er steht jeden Tag um sieben Uhr auf.","t":"He gets up at seven o'clock every day."},
+        {"de":"Zuerst duscht er und trinkt einen Kaffee.","t":"First he takes a shower and drinks a coffee."},
+        {"de":"Dann fährt er mit dem Bus zur Arbeit.","t":"Then he takes the bus to work."},
+        {"de":"Am Abend kocht er Nudeln.","t":"In the evening he cooks pasta."},
+        {"de":"Er isst in der Küche und hört Musik.","t":"He eats in the kitchen and listens to music."},
+        {"de":"Danach liest er ein Buch auf dem Sofa.","t":"After that he reads a book on the sofa."},
+        {"de":"Um elf Uhr geht er ins Bett.","t":"At eleven o'clock he goes to bed."}
+      ],
+      "questions": [
+        {"q":"Wann steht Tom auf?","a":["Um sieben Uhr","Um elf Uhr","Am Abend"]},
+        {"q":"Wie fährt Tom zur Arbeit?","a":["Mit dem Bus","Mit dem Fahrrad","Mit dem Auto"]},
+        {"q":"Was macht Tom auf dem Sofa?","a":["Er liest ein Buch","Er kocht Nudeln","Er duscht"]}
+      ]
+    },
+    {
+      "id": "city.story", "unit": "city", "title": "Verlaufen in der Stadt", "em": "🗺️",
+      "lines": [
+        {"de":"Anna ist zum ersten Mal in Lissabon.","t":"Anna is in Lisbon for the first time."},
+        {"de":"Sie sucht das Museum, aber sie findet es nicht.","t":"She is looking for the museum, but she can't find it."},
+        {"de":"Sie fragt einen Mann auf der Straße.","t":"She asks a man on the street."},
+        {"de":"Der Mann sagt: „Gehen Sie geradeaus und dann links.“","t":"The man says: \"Go straight ahead and then left.\""},
+        {"de":"„Das Museum ist neben der Kirche.“","t":"\"The museum is next to the church.\""},
+        {"de":"Anna geht geradeaus, aber sie sieht keine Kirche.","t":"Anna goes straight ahead, but she doesn't see a church."},
+        {"de":"Dann sieht sie einen Park und eine Apotheke.","t":"Then she sees a park and a pharmacy."},
+        {"de":"Hinter der Apotheke ist die Kirche, und daneben das Museum!","t":"Behind the pharmacy is the church, and next to it the museum!"}
+      ],
+      "questions": [
+        {"q":"Was sucht Anna?","a":["Das Museum","Die Apotheke","Den Bahnhof"]},
+        {"q":"Wen fragt Anna?","a":["Einen Mann auf der Straße","Eine Polizistin","Ihre Freundin"]},
+        {"q":"Wo ist das Museum?","a":["Neben der Kirche","Im Park","Hinter dem Bahnhof"]}
+      ]
+    },
+    {
+      "id": "describe.story", "unit": "describe", "title": "Die neue Nachbarin", "em": "👫",
+      "lines": [
+        {"de":"Im Haus wohnt eine neue Nachbarin.","t":"A new neighbor lives in the building."},
+        {"de":"Sie heißt Clara und ist sehr nett.","t":"Her name is Clara and she is very nice."},
+        {"de":"Clara ist groß und hat lange blonde Haare.","t":"Clara is tall and has long blond hair."},
+        {"de":"Sie trägt immer eine rote Brille.","t":"She always wears red glasses."},
+        {"de":"Clara hat einen kleinen Hund.","t":"Clara has a small dog."},
+        {"de":"Der Hund ist schwarz und sehr lustig.","t":"The dog is black and very funny."},
+        {"de":"Clara ist Lehrerin und spricht drei Sprachen.","t":"Clara is a teacher and speaks three languages."},
+        {"de":"Am Samstag trinken wir zusammen Kaffee.","t":"On Saturday we're having coffee together."}
+      ],
+      "questions": [
+        {"q":"Wie sieht Clara aus?","a":["Groß, mit langen blonden Haaren","Klein, mit kurzen Haaren","Groß, mit einem Bart"]},
+        {"q":"Was hat Clara?","a":["Einen kleinen Hund","Eine Katze","Zwei Kinder"]},
+        {"q":"Was ist Clara von Beruf?","a":["Lehrerin","Ärztin","Kellnerin"]}
+      ]
+    },
+    {
+      "id": "past.story", "unit": "past", "title": "Ein Wochenende am Meer", "em": "🏖️",
+      "lines": [
+        {"de":"Letztes Wochenende sind wir ans Meer gefahren.","t":"Last weekend we went to the sea."},
+        {"de":"Wir sind am Freitagabend mit dem Zug losgefahren.","t":"We left by train on Friday evening."},
+        {"de":"Das Hotel war klein, aber sehr gemütlich.","t":"The hotel was small but very cozy."},
+        {"de":"Am Samstag war das Wetter wunderbar.","t":"On Saturday the weather was wonderful."},
+        {"de":"Wir sind geschwommen und haben in der Sonne gelegen.","t":"We swam and lay in the sun."},
+        {"de":"Am Abend haben wir frischen Fisch gegessen.","t":"In the evening we ate fresh fish."},
+        {"de":"Am Sonntag hat es leider den ganzen Tag geregnet.","t":"Unfortunately it rained all day on Sunday."},
+        {"de":"Trotzdem war es ein tolles Wochenende.","t":"Still, it was a great weekend."}
+      ],
+      "questions": [
+        {"q":"Wie sind sie ans Meer gefahren?","a":["Mit dem Zug","Mit dem Auto","Mit dem Flugzeug"]},
+        {"q":"Was haben sie am Samstagabend gegessen?","a":["Frischen Fisch","Pizza","Nudeln"]},
+        {"q":"Wie war das Wetter am Sonntag?","a":["Es hat geregnet","Es war sonnig","Es hat geschneit"]}
+      ]
+    },
+    {
+      "id": "phone.story", "unit": "phone", "title": "Das Handy ist weg", "em": "📱",
+      "lines": [
+        {"de":"Gestern Abend wollte Marco seine Mutter anrufen.","t":"Last night Marco wanted to call his mother."},
+        {"de":"Aber er konnte sein Handy nicht finden.","t":"But he couldn't find his phone."},
+        {"de":"Er hat in der Küche und im Bad gesucht.","t":"He looked in the kitchen and in the bathroom."},
+        {"de":"Dann hat er seine Freundin um Hilfe gebeten.","t":"Then he asked his girlfriend for help."},
+        {"de":"Sie hat Marcos Nummer angerufen.","t":"She called Marco's number."},
+        {"de":"Plötzlich hat etwas im Kühlschrank geklingelt!","t":"Suddenly something rang in the fridge!"},
+        {"de":"Das Handy lag neben der Milch.","t":"The phone was next to the milk."},
+        {"de":"Der Akku war fast leer, aber das Handy war kalt und funktionierte noch.","t":"The battery was almost dead, but the phone was cold and still worked."}
+      ],
+      "questions": [
+        {"q":"Wen wollte Marco anrufen?","a":["Seine Mutter","Seine Freundin","Seinen Chef"]},
+        {"q":"Wer hat ihm geholfen?","a":["Seine Freundin","Seine Mutter","Ein Nachbar"]},
+        {"q":"Wo war das Handy?","a":["Im Kühlschrank","Im Bad","Auf dem Sofa"]}
+      ]
+    },
+    {
+      "id": "party.story", "unit": "party", "title": "Die Überraschungsparty", "em": "🎂",
+      "lines": [
+        {"de":"Sara hat am Freitag Geburtstag.","t":"It's Sara's birthday on Friday."},
+        {"de":"Ihre Freunde planen eine Überraschungsparty.","t":"Her friends are planning a surprise party."},
+        {"de":"Ben backt einen großen Schokoladenkuchen.","t":"Ben bakes a big chocolate cake."},
+        {"de":"Mia kauft Luftballons und Kerzen.","t":"Mia buys balloons and candles."},
+        {"de":"Um acht Uhr sind alle Gäste in der Wohnung.","t":"At eight o'clock all the guests are in the apartment."},
+        {"de":"Sie machen das Licht aus und warten.","t":"They turn off the light and wait."},
+        {"de":"Als Sara die Tür öffnet, rufen alle: „Überraschung!“","t":"When Sara opens the door, everyone shouts: \"Surprise!\""},
+        {"de":"Sara lacht und weint gleichzeitig vor Freude.","t":"Sara laughs and cries with joy at the same time."}
+      ],
+      "questions": [
+        {"q":"Was backt Ben?","a":["Einen Schokoladenkuchen","Brot","Kekse"]},
+        {"q":"Was kauft Mia?","a":["Luftballons und Kerzen","Blumen und Wein","Ein Geschenk"]},
+        {"q":"Was rufen alle, als Sara die Tür öffnet?","a":["„Überraschung!“","„Guten Abend!“","„Frohe Weihnachten!“"]}
+      ]
+    },
+    {
+      "id": "visit.story", "unit": "visit", "title": "Abendessen bei Familie Rossi", "em": "🍝",
+      "lines": [
+        {"de":"Am Sonntag waren wir bei Familie Rossi zum Abendessen eingeladen.","t":"On Sunday we were invited to dinner at the Rossi family's."},
+        {"de":"Wir haben Blumen und eine Flasche Wein mitgebracht.","t":"We brought flowers and a bottle of wine."},
+        {"de":"Frau Rossi hat uns sehr herzlich begrüßt.","t":"Mrs. Rossi welcomed us very warmly."},
+        {"de":"Zuerst gab es eine Suppe, dann Nudeln mit Tomatensoße.","t":"First there was soup, then pasta with tomato sauce."},
+        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"The food was so delicious that I had seconds twice."},
+        {"de":"Zum Nachtisch gab es Eis mit Erdbeeren.","t":"For dessert there was ice cream with strawberries."},
+        {"de":"Wir haben bis spät in die Nacht geredet und gelacht.","t":"We talked and laughed until late at night."},
+        {"de":"Beim Abschied hat Frau Rossi gesagt: „Kommt bald wieder!“","t":"When we said goodbye, Mrs. Rossi said: \"Come back soon!\""}
+      ],
+      "questions": [
+        {"q":"Was haben sie mitgebracht?","a":["Blumen und Wein","Einen Kuchen","Schokolade"]},
+        {"q":"Was gab es zum Nachtisch?","a":["Eis mit Erdbeeren","Kuchen","Obstsalat"]},
+        {"q":"Was hat Frau Rossi beim Abschied gesagt?","a":["„Kommt bald wieder!“","„Gute Nacht!“","„Danke für die Blumen!“"]}
+      ]
+    },
+    {
+      "id": "culture.story", "unit": "culture", "title": "Die Führung im Museum", "em": "🏛️",
+      "lines": [
+        {"de":"Im Urlaub haben wir an einer Führung durch ein altes Schloss teilgenommen.","t":"On vacation we took a guided tour of an old castle."},
+        {"de":"Die Führerin hat uns viel über die Geschichte des Schlosses erzählt.","t":"The guide told us a lot about the history of the castle."},
+        {"de":"Es wurde vor fast fünfhundert Jahren gebaut.","t":"It was built almost five hundred years ago."},
+        {"de":"Im großen Saal hängen Gemälde von berühmten Künstlern.","t":"In the great hall there are paintings by famous artists."},
+        {"de":"Fotografieren war leider nicht erlaubt.","t":"Unfortunately, taking photos wasn't allowed."},
+        {"de":"Am interessantesten fand ich die geheime Treppe hinter einem Bücherregal.","t":"What I found most interesting was the secret staircase behind a bookshelf."},
+        {"de":"Nach der Führung haben wir im Garten des Schlosses Kaffee getrunken.","t":"After the tour we had coffee in the castle garden."},
+        {"de":"Es hat sich wirklich gelohnt.","t":"It was really worth it."}
+      ],
+      "questions": [
+        {"q":"Wie alt ist das Schloss ungefähr?","a":["Fast fünfhundert Jahre","Hundert Jahre","Zweitausend Jahre"]},
+        {"q":"Was war nicht erlaubt?","a":["Fotografieren","Sprechen","Essen im Garten"]},
+        {"q":"Was war am interessantesten?","a":["Die geheime Treppe","Die Gemälde","Der Garten"]}
+      ]
+    },
+    {
+      "id": "nature.story", "unit": "nature", "title": "Die Wanderung im Nebel", "em": "🥾",
+      "lines": [
+        {"de":"Jonas und Eva wollten auf einen Berg in den Alpen wandern.","t":"Jonas and Eva wanted to hike up a mountain in the Alps."},
+        {"de":"Sie sind früh am Morgen losgegangen, als die Sonne schien.","t":"They set off early in the morning while the sun was shining."},
+        {"de":"Nach zwei Stunden kam plötzlich dichter Nebel.","t":"After two hours, thick fog suddenly came in."},
+        {"de":"Sie konnten den Weg kaum noch sehen.","t":"They could hardly see the path anymore."},
+        {"de":"Eva hat vorgeschlagen, zur Hütte zurückzugehen.","t":"Eva suggested going back to the hut."},
+        {"de":"Jonas war enttäuscht, aber er wusste, dass sie recht hatte.","t":"Jonas was disappointed, but he knew she was right."},
+        {"de":"In der Hütte haben sie heiße Suppe gegessen und Karten gespielt.","t":"In the hut they ate hot soup and played cards."},
+        {"de":"Am nächsten Tag war der Himmel klar, und sie haben den Gipfel erreicht.","t":"The next day the sky was clear, and they reached the summit."}
+      ],
+      "questions": [
+        {"q":"Was ist nach zwei Stunden passiert?","a":["Es kam dichter Nebel","Es hat geschneit","Jonas hat sich verletzt"]},
+        {"q":"Was hat Eva vorgeschlagen?","a":["Zur Hütte zurückzugehen","Weiterzugehen","Ein Taxi zu rufen"]},
+        {"q":"Wann haben sie den Gipfel erreicht?","a":["Am nächsten Tag","Am selben Abend","Gar nicht"]}
+      ]
+    },
+    {
+      "id": "film.story", "unit": "film", "title": "Der Kinoabend", "em": "🎬",
+      "lines": [
+        {"de":"Am Freitag wollten Lisa und ihre Freunde ins Kino gehen.","t":"On Friday Lisa and her friends wanted to go to the movies."},
+        {"de":"Aber sie konnten sich nicht auf einen Film einigen.","t":"But they couldn't agree on a film."},
+        {"de":"Lisa wollte eine Komödie sehen, Tim lieber einen Horrorfilm.","t":"Lisa wanted to see a comedy, Tim would rather see a horror movie."},
+        {"de":"Schließlich haben sie einen Science-Fiction-Film gewählt.","t":"In the end they chose a science fiction film."},
+        {"de":"Der Film lief in der Originalfassung mit Untertiteln.","t":"The film was shown in the original version with subtitles."},
+        {"de":"Die Effekte waren beeindruckend, aber die Handlung war ziemlich langweilig.","t":"The effects were impressive, but the plot was pretty boring."},
+        {"de":"Tim ist sogar kurz eingeschlafen.","t":"Tim even fell asleep for a moment."},
+        {"de":"Nächstes Mal darf Lisa den Film aussuchen.","t":"Next time Lisa gets to choose the film."}
+      ],
+      "questions": [
+        {"q":"Welchen Film wollte Lisa sehen?","a":["Eine Komödie","Einen Horrorfilm","Einen Liebesfilm"]},
+        {"q":"Wie war die Handlung des Films?","a":["Ziemlich langweilig","Sehr spannend","Sehr lustig"]},
+        {"q":"Wer darf nächstes Mal den Film aussuchen?","a":["Lisa","Tim","Niemand"]}
+      ]
+    },
+    {
+      "id": "forecast.story", "unit": "forecast", "title": "Das Gewitter", "em": "⛈️",
+      "lines": [
+        {"de":"Der Wetterbericht hatte für Samstag Sonne angesagt.","t":"The weather forecast had predicted sunshine for Saturday."},
+        {"de":"Deshalb haben wir ein Picknick im Park geplant.","t":"That's why we planned a picnic in the park."},
+        {"de":"Am Mittag war der Himmel noch blau und es war sehr heiß.","t":"At noon the sky was still blue and it was very hot."},
+        {"de":"Doch am Nachmittag wurden die Wolken immer dunkler.","t":"But in the afternoon the clouds got darker and darker."},
+        {"de":"Plötzlich hat es heftig gedonnert und geregnet.","t":"Suddenly there was loud thunder and heavy rain."},
+        {"de":"Wir haben alles schnell eingepackt und sind unter eine Brücke gelaufen.","t":"We quickly packed everything up and ran under a bridge."},
+        {"de":"Nach einer halben Stunde war das Gewitter vorbei.","t":"After half an hour the storm was over."},
+        {"de":"Am Himmel war ein wunderschöner Regenbogen zu sehen.","t":"A beautiful rainbow could be seen in the sky."}
+      ],
+      "questions": [
+        {"q":"Was hatte der Wetterbericht angesagt?","a":["Sonne","Regen","Schnee"]},
+        {"q":"Wohin sind sie vor dem Gewitter gelaufen?","a":["Unter eine Brücke","In ein Café","Nach Hause"]},
+        {"q":"Was war nach dem Gewitter am Himmel?","a":["Ein Regenbogen","Ein Flugzeug","Viele Sterne"]}
+      ]
+    },
+    {
+      "id": "feelings.story", "unit": "feelings", "title": "Der Brief", "em": "💌",
+      "lines": [
+        {"de":"Nach zehn Jahren hat Julia einen Brief von ihrer alten Schulfreundin bekommen.","t":"After ten years, Julia received a letter from her old school friend."},
+        {"de":"Damals hatten sie sich wegen eines dummen Missverständnisses gestritten.","t":"Back then they had argued over a silly misunderstanding."},
+        {"de":"Seitdem hatten sie nicht mehr miteinander gesprochen.","t":"Since then they hadn't spoken to each other."},
+        {"de":"In dem Brief stand, dass ihre Freundin die Sache sehr bereute.","t":"The letter said that her friend deeply regretted what had happened."},
+        {"de":"Julia war zuerst unsicher, ob sie antworten sollte.","t":"At first Julia wasn't sure whether she should reply."},
+        {"de":"Dann hat sie gemerkt, wie sehr sie ihre Freundin vermisst hatte.","t":"Then she realized how much she had missed her friend."},
+        {"de":"Sie hat sie angerufen, und sie haben stundenlang geredet.","t":"She called her, and they talked for hours."},
+        {"de":"Nächsten Monat wollen sie sich endlich wiedersehen.","t":"Next month they finally want to see each other again."}
+      ],
+      "questions": [
+        {"q":"Von wem hat Julia einen Brief bekommen?","a":["Von ihrer alten Schulfreundin","Von ihrer Mutter","Von ihrem Chef"]},
+        {"q":"Warum hatten sie sich gestritten?","a":["Wegen eines Missverständnisses","Wegen Geld","Wegen eines Mannes"]},
+        {"q":"Was wollen sie nächsten Monat machen?","a":["Sich wiedersehen","Zusammen umziehen","Eine Reise machen"]}
+      ]
+    },
+    {
+      "id": "society.story", "unit": "society", "title": "Das Nachbarschaftsfest", "em": "🤝",
+      "lines": [
+        {"de":"In unserer Straße wohnen Menschen aus über zwanzig Ländern.","t":"People from more than twenty countries live on our street."},
+        {"de":"Trotzdem kannten sich die meisten Nachbarn kaum.","t":"Still, most of the neighbors hardly knew each other."},
+        {"de":"Deshalb hat eine ältere Dame vorgeschlagen, ein Straßenfest zu organisieren.","t":"That's why an older lady suggested organizing a street party."},
+        {"de":"Jede Familie hat ein typisches Gericht aus ihrer Heimat mitgebracht.","t":"Every family brought a typical dish from their home country."},
+        {"de":"Es gab Musik, Spiele für die Kinder und viele gute Gespräche.","t":"There was music, games for the children and lots of good conversations."},
+        {"de":"Viele Vorurteile sind an diesem Tag einfach verschwunden.","t":"Many prejudices simply disappeared that day."},
+        {"de":"Inzwischen helfen sich die Nachbarn gegenseitig beim Einkaufen und Babysitten.","t":"Now the neighbors help each other with shopping and babysitting."},
+        {"de":"Das Fest soll jetzt jedes Jahr stattfinden.","t":"The party is now supposed to take place every year."}
+      ],
+      "questions": [
+        {"q":"Wer hatte die Idee für das Fest?","a":["Eine ältere Dame","Der Bürgermeister","Die Kinder"]},
+        {"q":"Was hat jede Familie mitgebracht?","a":["Ein typisches Gericht","Ein Geschenk","Musik"]},
+        {"q":"Was hat sich nach dem Fest verändert?","a":["Die Nachbarn helfen sich gegenseitig","Alle sind umgezogen","Es gibt mehr Verkehr"]}
+      ]
+    },
+    {
+      "id": "contracts.story", "unit": "contracts", "title": "Das Kleingedruckte", "em": "📄",
+      "lines": [
+        {"de":"Felix hat online ein günstiges Fitnessstudio-Abo abgeschlossen.","t":"Felix signed up online for a cheap gym membership."},
+        {"de":"Im ersten Monat hat er nur zehn Euro bezahlt.","t":"In the first month he paid only ten euros."},
+        {"de":"Im zweiten Monat wurden plötzlich sechzig Euro abgebucht.","t":"In the second month sixty euros were suddenly debited."},
+        {"de":"Felix war wütend und hat beim Studio angerufen.","t":"Felix was angry and called the gym."},
+        {"de":"Die Mitarbeiterin hat ihn auf das Kleingedruckte im Vertrag hingewiesen.","t":"The employee pointed him to the small print in the contract."},
+        {"de":"Der günstige Preis galt nur für die ersten vier Wochen.","t":"The low price only applied to the first four weeks."},
+        {"de":"Außerdem läuft der Vertrag mindestens zwei Jahre.","t":"What's more, the contract runs for at least two years."},
+        {"de":"Seitdem liest Felix jeden Vertrag ganz genau, bevor er unterschreibt.","t":"Since then Felix has read every contract very carefully before he signs."}
+      ],
+      "questions": [
+        {"q":"Wie viel hat Felix im ersten Monat bezahlt?","a":["Zehn Euro","Sechzig Euro","Nichts"]},
+        {"q":"Wo stand die wichtige Information?","a":["Im Kleingedruckten","Auf der Webseite","In einer E-Mail"]},
+        {"q":"Wie lange läuft der Vertrag mindestens?","a":["Zwei Jahre","Vier Wochen","Ein Jahr"]}
+      ]
+    },
+    {
+      "id": "history.story", "unit": "history", "title": "Die Kiste auf dem Dachboden", "em": "📜",
+      "lines": [
+        {"de":"Beim Aufräumen haben wir auf dem Dachboden eine alte Holzkiste gefunden.","t":"While tidying up we found an old wooden box in the attic."},
+        {"de":"Darin lagen Briefe und Fotos von unserem Urgroßvater.","t":"Inside were letters and photos of our great-grandfather."},
+        {"de":"Er war vor hundert Jahren als junger Mann ausgewandert.","t":"He had emigrated as a young man a hundred years ago."},
+        {"de":"In seinen Briefen beschrieb er die lange Reise mit dem Schiff.","t":"In his letters he described the long journey by ship."},
+        {"de":"Er schrieb auch, wie schwer die ersten Jahre in der neuen Heimat waren.","t":"He also wrote about how hard the first years in his new home were."},
+        {"de":"Auf einem Foto sieht man ihn vor seinem ersten eigenen Laden.","t":"One photo shows him in front of his first own shop."},
+        {"de":"Durch die Briefe haben wir viel über unsere Familiengeschichte gelernt.","t":"Through the letters we learned a lot about our family history."},
+        {"de":"Jetzt wollen wir die Stadt besuchen, in der er damals gelebt hat.","t":"Now we want to visit the town where he lived back then."}
+      ],
+      "questions": [
+        {"q":"Was lag in der Kiste?","a":["Briefe und Fotos","Geld und Schmuck","Alte Bücher"]},
+        {"q":"Wie ist der Urgroßvater gereist?","a":["Mit dem Schiff","Mit dem Zug","Zu Fuß"]},
+        {"q":"Was sieht man auf einem Foto?","a":["Ihn vor seinem ersten Laden","Seine Hochzeit","Das Schiff"]}
       ]
     }
   ]
