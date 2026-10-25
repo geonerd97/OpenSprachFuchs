@@ -25,7 +25,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 | Pfad | Inhalt |
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten. Schrift Nunito als Datei in der App (`app/fonts/nunito.woff2`, variabel, nur Latin-Teilmenge, 39 KB, SIL OFL in `app/fonts/OFL.txt`, aus `@fontsource-variable/nunito` 5.3.0); Grundstärke 650, Überschriften 800, Systemschrift nur als Rückfall. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.11 (versionCode 13, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.12 (versionCode 14, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
@@ -76,7 +76,7 @@ Lernweg mit 80 Einheiten à 4 Lektionen = 320 Lektionen pro Sprache, je 20 Einhe
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
 - 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo (seit 2026-10-24, vom Maintainer): lächelnder Comic-Fuchskopf (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon: ausgeschnittener Fuchs in `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FEF6E9`, 57 dp groß, damit die Ohren auch in runden Masken passen). Keine Eule (Abgrenzung zu Duolingo).
-- 2026-10-25: Sonderstationen sind Pflicht für die nächste Einheit und so groß wie Lektionen; Lektionsknöpfe in der Farbe ihrer Einheit; Erklärung in der Wortsuche.
+- 2026-10-25: Sonderstationen sind Pflicht für die nächste Einheit und so groß wie Lektionen; Lektionsknöpfe in der Farbe ihrer Einheit; Erklärung in der Wortsuche. Release 0.0.12.
 - 2026-10-25: Sonderstationen (5. Knopf jeder Einheit: Minispiele und 16 Kurzgeschichten pro Sprache, Geschichten-Wörter im Glossar), Hinweis bei fehlender Stimme, keine roten Punkte über Lernweg/Üben, keine Scrollleiste. Release 0.0.11.
 - 2026-10-25: Issue #7: Nach einer Lektion, beim Start und beim Tab „Lernweg“ scrollt die App zur aktuellen Lektion (`scrollToCurrent` in `main.js`) statt an den Anfang. Issue #8: Tipp-Hilfe auch für jedes Wort der deutschen Sätze (Übersetzen in die Sprache): Glossar rückwärts plus neues Paketfeld `glossaryDe` (je 320–400 Einträge). Release 0.0.10.
 - 2026-10-24: Eigener Name im Profil und QR-Code für Freunde (Link mit Freundescode und Name hinter `#`, App Link, Seite `/f`). QR-Encoder `app/js/qr.js` kann jetzt Version 1–10 und Byte-Modus (UTF-8), geprüft mit OpenCV (Standard- und Aruco-Detektor) an 430 Codes. Worker exportiert nur noch Funktionen (`friendLimit()`), weil `wrangler dev` andere Exporte ablehnt. Release 0.0.9.
