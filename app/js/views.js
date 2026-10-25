@@ -84,8 +84,8 @@ function homeHTML() {
 }
 /* Home is split into tabs, switched in the bar at the bottom, so no page gets too long. */
 const TABS = [
-  { id: "path", em: "🗺️", name: "Lernweg", badge: () => packUpdates().length > 0 || !!ui.appUpdate },
-  { id: "practice", em: "🏋️", name: "Üben", badge: () => dueWords().length > 0 },
+  { id: "path", em: "🗺️", name: "Lernweg", badge: () => false }, // updates show as a notice on the path itself
+  { id: "practice", em: "🏋️", name: "Üben", badge: () => false },
   { id: "friends", em: "👥", name: "Freunde", badge: () => friends.gifts > 0 || friends.list.some(f => f.status === "incoming") },
   { id: "shop", em: "💎", name: "Shop", badge: () => false },
   { id: "profile", em: "👤", name: "Profil", badge: () => acct.status === "gone" },
