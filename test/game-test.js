@@ -62,6 +62,11 @@ for (const code of codes) {
   for (const t of texts) for (const w of g.hintSpans(t, "t").replace(/<button[^>]*>.*?<\/button>/g, " ").split(" "))
     if (w.trim() && !/^[\d.,:%€$?!¿¡-]+$/.test(w.trim())) missing.add(w.trim());
   if (missing.size) fail(`Tipp-Hilfe fehlt (${code})`, [...missing].slice(0, 20).join(", "));
+  // Issue #8: the German sentences shown for translating into the language need a hint for every word, too.
+  const missingDe = new Set();
+  for (const u of C.units) for (const z of u.sentences) for (const w of g.hintSpans([].concat(z.de)[0], "de").replace(/<button[^>]*>.*?<\/button>/g, " ").split(" "))
+    if (w.trim() && !/^[\d.,:%€$?!-]+$/.test(w.trim())) missingDe.add(w.trim());
+  if (missingDe.size) fail(`Tipp-Hilfe für Deutsch fehlt (${code})`, [...missingDe].slice(0, 20).join(", "));
 }
 
 // Tabs: the path only on "Lernweg", practice only on "Üben"; Android's back button returns to the path first.
@@ -225,6 +230,12 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   g.cs().progress[g.UNITS()[lastA1].id] = 3;
   g.startLesson(lastA1, 3); answerAll(g.L);
   if (g.view !== "result" || g.ui.level !== "A2") fail("Nach der letzten A1-Einheit nicht zu A2 gewechselt", g.view, g.ui.level);
+  // Issue #7: "Weiter" goes back to the path at the current lesson, not to the top.
+  const seen = [], qs = document.querySelector, top = window.scrollTo;
+  document.querySelector = sel => ({ scrollIntoView: o => seen.push([sel, o.block]) }); window.scrollTo = () => seen.push(["top"]);
+  g.ui.tab = "path"; g.click("home");
+  if (g.view !== "home" || JSON.stringify(seen) !== '[[".node.current","center"]]') fail("Nach der Lektion nicht zur aktuellen Lektion gescrollt", JSON.stringify(seen));
+  document.querySelector = qs; window.scrollTo = top;
   g.ui.level = null; g.cs().progress = {};
 }
 

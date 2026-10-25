@@ -41,6 +41,7 @@ export function checkPack(pack, file) {
   try { new RegExp(pack.articles || "(?!)", "i"); } catch (e) { err("articles", "kein gültiger regulärer Ausdruck"); }
   if (!Array.isArray(pack.gapSkip)) err("gapSkip", "muss eine Liste sein");
   if (pack.glossary && typeof pack.glossary !== "object") err("glossary", "muss ein Objekt sein");
+  if (pack.glossaryDe && typeof pack.glossaryDe !== "object") err("glossaryDe", "muss ein Objekt sein");
   if (!Array.isArray(pack.units) || !pack.units.length) { err("units", "keine Einheiten"); return { errors, warnings }; }
   const ids = new Set();
   const uniq = (id, where) => { if (ids.has(id)) err(where, `ID ${id} doppelt`); ids.add(id); };
@@ -88,7 +89,8 @@ export function checkPack(pack, file) {
 export function formatPack(p) {
   const j = v => JSON.stringify(v);
   const head = ["format", "code", "name", "short", "voice", "color", "note", "articles", "gapSkip"].map(k => `  ${j(k)}: ${j(p[k])}`);
-  const gloss = `  "glossary": {\n${Object.entries(p.glossary || {}).map(([k, v]) => `    ${j(k)}: ${j(v)}`).join(",\n")}\n  }`;
+  const obj = (name, o) => `  ${j(name)}: {\n${Object.entries(o || {}).map(([k, v]) => `    ${j(k)}: ${j(v)}`).join(",\n")}\n  }`;
+  const gloss = obj("glossary", p.glossary) + (p.glossaryDe ? ",\n" + obj("glossaryDe", p.glossaryDe) : "");
   const unit = u => `    {\n      "id": ${j(u.id)}, "title": ${j(u.title)}, "level": ${j(u.level)}, "colors": ${j(u.colors)},\n      "desc": ${j(u.desc)},\n`
     + `      "words": [\n${u.words.map(w => `        ${j(w)}`).join(",\n")}\n      ],\n`
     + `      "sentences": [\n${u.sentences.map(s => `        ${j(s)}`).join(",\n")}\n      ]\n    }`;

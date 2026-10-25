@@ -11,7 +11,7 @@ const packs = { busy: "", error: "", loading: false };
 const list = v => Array.isArray(v) ? v : [v];
 function courseFromPack(p) {
   return { code: p.short, name: p.name, voice: p.voice, c: p.color, note: p.note, art: new RegExp(p.articles || "(?!)", "i"),
-    skip: p.gapSkip || [], gloss: p.glossary || {}, units: p.units, dialogs: p.dialogs || [], dialogGroups: p.dialogGroups || {} };
+    skip: p.gapSkip || [], gloss: p.glossary || {}, glossDe: p.glossaryDe || {}, units: p.units, dialogs: p.dialogs || [], dialogGroups: p.dialogGroups || {} };
 }
 function validPack(p) {
   return p && p.format === 1 && /^[a-z]{2,3}$/.test(p.code) && Array.isArray(p.units) && p.units.length > 0
@@ -98,7 +98,7 @@ function addHint(map, key, value) {
   if (!l.includes(value) && l.length < 3) l.push(value);
 }
 const unitsFor = code => (COURSES[code] && COURSES[code].units) || [];
-const EMPTY_COURSE = { code: "", name: "", voice: "de-DE", c: "#2456E8", note: "", art: /(?!)/, skip: [], gloss: {}, units: [], dialogs: [] };
+const EMPTY_COURSE = { code: "", name: "", voice: "de-DE", c: "#2456E8", note: "", art: /(?!)/, skip: [], gloss: {}, glossDe: {}, units: [], dialogs: [] };
 
 let C = EMPTY_COURSE, CODE = "", UNITS = [], ALL_WORDS = [], ALL_SENTS = [], KEY_UNIT = {};
 function setCourse(code) {
@@ -118,6 +118,15 @@ function setCourse(code) {
     }
   }
   for (const [k, v] of Object.entries(C.gloss)) if (!HINT_T[cleanKey(k)]) addHint(HINT_T, k, v);
+  // German words in sentences (for translating into the language): the glossary read backwards ("is = ist" -> ist: is),
+  // for every German word the vocabulary does not cover. Explanations in brackets and longer phrases are left out.
+  const back = {};
+  for (const [k, v] of Object.entries(C.gloss)) for (const part of String(v).split("/")) {
+    const p = part.replace(/\(.*?\)/g, "").trim();
+    if (p && p.split(" ").length <= 3 && !HINT_DE[cleanKey(p)]) addHint(back, p, k);
+  }
+  for (const [k, v] of Object.entries(back)) if (!HINT_DE[k]) HINT_DE[k] = v;
+  for (const [k, v] of Object.entries(C.glossDe)) if (!HINT_DE[cleanKey(k)]) addHint(HINT_DE, k, v);
   KEY_UNIT = {};
   for (const u of UNITS) for (const x of [...u.words.map(w => "w:" + w.id), ...u.sentences.map(z => "s:" + z.id)]) KEY_UNIT[x] = u.id;
 }

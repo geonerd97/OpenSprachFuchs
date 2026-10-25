@@ -46,7 +46,7 @@ app.addEventListener("click", e => {
     case "master": ui.pop = null; ui.mu = +ds.u; ui.modal = "master"; render(); return;
     case "startmaster": ui.modal = null; startMaster(+ds.u); return;
     case "shop": ui.pop = null; ui.shopMsg = ""; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
-    case "tab": ui.pop = null; ui.shopMsg = ""; ui.tab = ds.tab; if (ds.tab === "friends") loadFriends(); render(); window.scrollTo(0, 0); return;
+    case "tab": ui.pop = null; ui.shopMsg = ""; ui.tab = ds.tab; if (ds.tab === "friends") loadFriends(); render(); scrollToCurrent(); return;
     case "buy": if (buy(ds.id)) sfx("win"); render(); return;
     case "refill": startTraining(true, true); return;
     case "hearts": ui.pop = null; ui.modal = "hearts"; render(); return;
@@ -115,7 +115,7 @@ app.addEventListener("click", e => {
     case "doresetfrom": resetCourseFrom(ui.ru); ui.modal = null; ui.pop = null; view = "home"; render(); window.scrollTo(0, 0); return;
     case "doreset": { const keep = { onboarded: true, course: st.course, friends: st.friends, dayReported: st.dayReported }; st = Object.assign(fromSaved(null), keep); setCourse(st.course); save(); ui.modal = null; render(); return; }
     case "closemodal": ui.modal = null; render(); return;
-    case "home": clearInterval(blitzTimer); ui.modal = null; L = null; view = "home"; render(); window.scrollTo(0, 0); return;
+    case "home": clearInterval(blitzTimer); ui.modal = null; L = null; view = "home"; render(); scrollToCurrent(); return;
     case "quit": ui.modal = "quit"; render(); return;
     case "say": speak(ds.t, !!ds.slow); return;
     case "hint":
@@ -172,6 +172,11 @@ document.addEventListener("keydown", e => {
   if ((ex.type === "bank" || ex.type === "listen") && e.key === "Backspace" && L.picked.length) { e.preventDefault(); L.picked.pop(); render(); }
 });
 /* Small helpers for the views above. */
+/** Back on the path (issue #7): show the current lesson instead of the top, so a long path needs no scrolling back. */
+function scrollToCurrent() {
+  const node = view === "home" && ui.tab === "path" && typeof document.querySelector === "function" ? document.querySelector(".node.current") : null;
+  if (node && node.scrollIntoView) node.scrollIntoView({ block: "center" }); else window.scrollTo(0, 0);
+}
 const val = id => ((document.getElementById(id) || {}).value || "");
 function toast(msg) { friends.note = msg; acct.note = msg; render(); }
 function copyText(text, msg) {
@@ -194,7 +199,7 @@ window.opensprachfuchsBack = () => {
   if (view === "lesson") { ui.modal = "quit"; render(); return true; }
   if (view === "home" && ui.tab !== "path") { ui.tab = "path"; render(); window.scrollTo(0, 0); return true; }
   if (view === "signin") { view = st.onboarded ? "home" : "welcome"; render(); return true; }
-  if (!["home", "welcome", "langs", "newkey"].includes(view)) { view = "home"; L = null; render(); window.scrollTo(0, 0); return true; }
+  if (!["home", "welcome", "langs", "newkey"].includes(view)) { view = "home"; L = null; render(); scrollToCurrent(); return true; }
   return false;
 };
 /* Start: first the welcome screen (once), then the language choice if no pack is installed yet. */
@@ -206,7 +211,7 @@ if (!st.onboarded) {
 checkBadges();
 ui.decay = applyDecay();
 syncReminder(); reportDay();
-render();
+render(); scrollToCurrent();
 // Friend links (QR code scanned with the camera): the link that started the app is handled once the account is known,
 // later ones arrive through opensprachfuchsLink.
 const startLink = APP && window.AndroidBridge.takeLink ? window.AndroidBridge.takeLink() : "";

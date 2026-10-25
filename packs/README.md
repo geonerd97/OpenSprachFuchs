@@ -20,7 +20,8 @@ node tools/packs.mjs build    # prüfen und nach worker/public/packs/ bauen (mit
   "note": "Französisch aus Frankreich",
   "articles": "^(le |la |les |un |une |l')",  // Artikel, die beim Wörter-Tippen weggelassen werden dürfen (RegExp, ohne Groß/klein)
   "gapSkip": ["le", "la", "je"],     // Wörter, die der Lückentext nie abfragt
-  "glossary": { "et": "und" },       // häufige Wörter für „Wörter antippen“ in Sätzen
+  "glossary": { "et": "und" },       // Wörter für „Wörter antippen“ in Sätzen (Sprache → Deutsch, rückwärts auch Deutsch → Sprache)
+  "glossaryDe": { "einen": "un" },   // deutsche Wörter, die das Glossar rückwärts nicht abdeckt (Deutsch → Sprache)
   "units": [
     {
       "id": "basics", "title": "Erste Worte", "level": "A1", "colors": ["#2456E8", "#1A3FB0"],
