@@ -56,7 +56,9 @@ function loseHeart() {
 }
 const done = (id, code) => cs(code).progress[id] || 0;
 // A unit opens when the one before is finished; one that was already started stays open (e.g. after the path was re-sorted).
-const unitUnlocked = i => i === 0 || done(UNITS[i - 1].id) >= LESSONS_PER_UNIT || done(UNITS[i].id) > 0;
+// A unit is complete with its four lessons and its bonus station (games.js); only then the next one opens.
+const unitComplete = i => done(UNITS[i].id) >= LESSONS_PER_UNIT && bonusDone(UNITS[i].id);
+const unitUnlocked = i => i === 0 || unitComplete(i - 1) || done(UNITS[i].id) > 0;
 /* Levels (GER/CEFR): the path is shown one level at a time, picked in the tabs above it. */
 const LEVEL_NAMES = { A1: "Einstieg", A2: "Grundlagen", B1: "Mittelstufe", B2: "Erweitert", C1: "Fachkundig", C2: "Profi" };
 const levelsOf = () => [...new Set(UNITS.map(u => u.level))];
@@ -64,7 +66,7 @@ const levelsOf = () => [...new Set(UNITS.map(u => u.level))];
 function shownLevel() {
   const levels = levelsOf();
   if (ui.level && levels.includes(ui.level)) return ui.level;
-  const i = UNITS.findIndex((u, k) => unitUnlocked(k) && done(u.id) < LESSONS_PER_UNIT);
+  const i = UNITS.findIndex((u, k) => unitUnlocked(k) && !unitComplete(k));
   return i >= 0 ? UNITS[i].level : levels[levels.length - 1] || "A1";
 }
 /* Spaced repetition for words (Leitner boxes): each correct answer moves a word to a longer interval,

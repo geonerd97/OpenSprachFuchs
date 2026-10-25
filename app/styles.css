@@ -107,9 +107,9 @@ svg { flex-shrink: 0; }
 .cefr { font: 800 .8rem var(--body); letter-spacing: .06em; border: 2px solid currentColor; border-radius: 8px; padding: .2rem .45rem; opacity: .9; }
 .nodes { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; padding-block: 1.6rem .4rem; }
 .node-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
-.node { --c: var(--accent); --cd: var(--accent-deep); width: 72px; height: 66px; border-radius: 50%; border: 0; background: var(--c);
-  box-shadow: 0 7px 0 var(--cd); display: grid; place-items: center; color: #fff; transition: transform .08s, box-shadow .08s; }
-.node:active { transform: translateY(6px); box-shadow: 0 1px 0 var(--cd); }
+.node { width: 72px; height: 66px; border-radius: 50%; border: 0; background: var(--c, var(--accent));
+  box-shadow: 0 7px 0 var(--cd, var(--accent-deep)); display: grid; place-items: center; color: #fff; transition: transform .08s, box-shadow .08s; }
+.node:active { transform: translateY(6px); box-shadow: 0 1px 0 var(--cd, var(--accent-deep)); }
 .node.locked { background: var(--lock); box-shadow: 0 7px 0 var(--lock-deep); color: var(--lock-deep); }
 /* Ring around the current lesson: a wrapper that stays put while the button presses down, with extra
    bottom padding so the ring also encloses the button's 7px 3D edge. */
@@ -385,7 +385,7 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 .qr { background: #fff; border-radius: 12px; padding: 4px; width: min(200px, 70vw); height: auto; }
 
 /* Bonus stations (games.js): the fifth node of a unit and the mini games. */
-.node.bonus-node { --c: var(--gold); --cd: var(--gold-deep); width: 62px; height: 58px; font-size: 1.7rem; }
+.node.bonus-node { --c: var(--gold); --cd: var(--gold-deep); font-size: 1.9rem; }
 .node.bonus-node.done { opacity: .85; }
 .node.bonus-node.locked { font-size: 1.2rem; }
 .ws-grid { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 3px; width: min(100%, 380px); margin-inline: auto; touch-action: manipulation; }

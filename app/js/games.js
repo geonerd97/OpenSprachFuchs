@@ -8,7 +8,7 @@ const BONUS_XP = 15, BONUS_GEMS = 5, BONUS_REPLAY_XP = 5;
 const GAME_KINDS = ["wordsearch", "scramble", "memory", "guess"];
 const GAME_INFO = {
   story: { em: "📖", name: "Kurzgeschichte", desc: "Lies und hör eine kurze Geschichte, dann beantworte drei Fragen." },
-  wordsearch: { em: "🔎", name: "Wortsuche", desc: "Finde die Wörter im Buchstabenraster: erst den ersten, dann den letzten Buchstaben antippen." },
+  wordsearch: { em: "🔎", name: "Wortsuche", desc: "Finde die Wörter im Buchstabenraster." },
   scramble: { em: "🔤", name: "Buchstabensalat", desc: "Bring die Buchstaben in die richtige Reihenfolge." },
   memory: { em: "🃏", name: "Memory", desc: "Deck die Karten auf und finde Wort und Übersetzung." },
   guess: { em: "❓", name: "Wortraten", desc: "Errate das Wort Buchstabe für Buchstabe." },
@@ -206,6 +206,7 @@ function gameHTML() {
       const cls = onWord(r, c) ? "found" : g.first && g.first[0] === r && g.first[1] === c ? "sel" : g.flash && g.flash.split(";").includes(`${r},${c}`) ? "flash" : "";
       return `<button class="ws-cell ${cls}" data-act="ws" data-r="${r}" data-c="${c}">${esc(ch)}</button>`; }).join("")).join("");
     return `<div class="tag">${info.em} ${info.name}</div><h2>Finde die Wörter</h2>
+      <p class="muted" style="margin:0">Tippe den <b>ersten</b> und dann den <b>letzten Buchstaben</b> eines Wortes. Die Wörter stehen waagerecht (von links nach rechts), senkrecht (von oben nach unten) oder diagonal.</p>
       <div class="ws-grid" style="--n:${g.N}">${cells}</div>
       <ul class="ws-list">${g.words.map((w, i) => `<li class="${g.found.has(i) ? "found" : ""}">${esc(w.de)}${g.found.has(i) ? ` = <b>${esc(w.t)}</b>` : ""}</li>`).join("")}</ul>`;
   }
@@ -241,12 +242,16 @@ function gameFooterHTML() {
     : g.kind === "memory" ? `${g.found.size} von ${g.words.length} Paaren` : g.kind === "story" ? "Wähle die passende Antwort." : GAME_INFO[g.kind].desc;
   return `<footer class="l-foot"><div class="l-foot-in"><p class="muted" style="margin:0">${note}</p></div></footer>`;
 }
-/** The fifth node of a unit on the path. */
+/** The fifth node of a unit on the path: open after the four lessons, and needed for the next unit. */
 function bonusNodeHTML(u, ui_, open, off) {
   const ready = open && done(u.id) >= LESSONS_PER_UNIT, kind = bonusKind(ui_), info = GAME_INFO[kind], fin = bonusDone(u.id), id = `${ui_}-b`;
-  const state = !ready ? "locked" : fin ? "done" : "bonus";
-  const pop = ui.pop === id && ready ? `<div class="pop" role="dialog" style="--c:var(--gold)"><h3>${info.em} ${kind === "story" ? esc(storyFor(u.id).title) : info.name}</h3><p>${info.desc} Freiwillig.</p>
-    <button class="btn gold wide" data-act="bonus" data-u="${ui_}">${fin ? `Nochmal spielen +${BONUS_REPLAY_XP} XP` : `Spielen +${BONUS_XP} XP · ${BONUS_GEMS} 💎`}</button></div>` : "";
-  return `<div class="node-wrap" style="transform:translateX(${off}px)"><button class="node bonus-node ${state}" data-act="node" data-id="${id}" data-state="${state === "locked" ? "locked" : "open"}"
-    aria-label="${u.title}, ${kind === "story" ? "Kurzgeschichte" : info.name}${state === "locked" ? ", noch gesperrt" : fin ? ", geschafft" : ""}"><span aria-hidden="true">${state === "locked" ? "🔒" : info.em}</span></button></div>${pop}`;
+  const state = !ready ? "locked" : fin ? "done" : "current", here = state === "current" && ui.pop !== id;
+  const next = UNITS[ui_ + 1];
+  const pop = ui.pop === id && ready ? `<div class="pop" role="dialog" style="--c:var(--gold)"><h3>${info.em} ${kind === "story" ? esc(storyFor(u.id).title) : info.name}</h3>
+    <p>${info.desc}${!fin && next ? " Danach öffnet sich die nächste Stufe." : ""}</p>
+    <button class="btn wide" data-act="bonus" data-u="${ui_}">${fin ? `Nochmal spielen +${BONUS_REPLAY_XP} XP` : `Spielen +${BONUS_XP} XP · ${BONUS_GEMS} 💎`}</button></div>` : "";
+  const icon = state === "locked" ? I.lock(26) : `<span aria-hidden="true">${info.em}</span>`;
+  return `<div class="node-wrap" style="transform:translateX(${off}px)">${here ? foxHTML(off > 0 ? "left" : "right") + `<span class="start-tag" style="--c:var(--gold-deep)">START</span>` : ""}
+    ${state === "current" ? `<span class="ring" style="--c:var(--gold)">` : ""}<button class="node bonus-node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state === "locked" ? "locked" : "open"}"
+    aria-label="${u.title}, ${kind === "story" ? "Kurzgeschichte" : info.name}${state === "locked" ? ", gesperrt" : fin ? ", geschafft" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
 }

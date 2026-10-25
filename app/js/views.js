@@ -499,7 +499,7 @@ const logoHTML = () => `<img class="logo" src="img/logo.webp" alt="" width="34" 
 function levelsHTML() {
   const cur = shownLevel();
   const tabs = levelsOf().map(l => {
-    const idx = UNITS.map((u, i) => i).filter(i => UNITS[i].level === l), fin = idx.filter(i => done(UNITS[i].id) >= LESSONS_PER_UNIT).length;
+    const idx = UNITS.map((u, i) => i).filter(i => UNITS[i].level === l), fin = idx.filter(i => unitComplete(i)).length;
     const locked = !unitUnlocked(idx[0]), all = fin === idx.length;
     return `<button class="level ${l === cur ? "on" : ""} ${locked ? "locked" : ""}" role="tab" aria-selected="${l === cur}" data-act="level" data-l="${l}"
       title="${l}: ${fin} von ${idx.length} Einheiten geschafft" aria-label="${LEVEL_NAMES[l] || l}, ${fin} von ${idx.length} Einheiten">

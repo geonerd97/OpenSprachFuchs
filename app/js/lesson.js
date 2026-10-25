@@ -271,7 +271,7 @@ function finish() {
   if (L.kind === "dialog") { const c = cs(); c.dialogs = c.dialogs || {}; c.dialogs[L.scene.id] = true; dialog = L.scene.title; }
   let bonus = "";
   if (L.kind === "bonus") { const c = cs(); c.bonus = c.bonus || {}; c.bonus[UNITS[L.unit].id] = true; bonus = bonusTitle(L.game); }
-  if (L.kind === "placement") { for (let i = 0; i <= L.unit; i++) cs().progress[UNITS[i].id] = LESSONS_PER_UNIT; st.placementPassed = true; }
+  if (L.kind === "placement") { const c = cs(); c.bonus = c.bonus || {}; for (let i = 0; i <= L.unit; i++) { c.progress[UNITS[i].id] = LESSONS_PER_UNIT; c.bonus[UNITS[i].id] = true; } st.placementPassed = true; }
   const before = shownStreak();
   let freezeUsed = 0;
   if (st.lastDay !== dayStr()) {
@@ -289,7 +289,7 @@ function finish() {
   if (L.kind === "lesson") { const id = UNITS[L.unit].id; if (L.lesson === done(id)) cs().progress[id] = done(id) + 1; }
   // Finishing the last unit of a level opens the next level's tab on the path.
   const nextUnit = UNITS[L.unit + 1];
-  if ((L.kind === "lesson" || L.kind === "placement") && nextUnit && done(UNITS[L.unit].id) >= LESSONS_PER_UNIT && nextUnit.level !== UNITS[L.unit].level) ui.level = nextUnit.level;
+  if ((L.kind === "lesson" || L.kind === "placement" || L.kind === "bonus") && nextUnit && unitComplete(L.unit) && nextUnit.level !== UNITS[L.unit].level) ui.level = nextUnit.level;
   let heartsGained = 0;
   if (L.kind === "training" && st.settings.hearts) {
     syncHearts();

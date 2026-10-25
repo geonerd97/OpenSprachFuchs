@@ -25,7 +25,7 @@ OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duo
   - Lückentext, Hören und selbst tippen
   - Nachsprechen über die Spracherkennung des Handys
   - Mini-Gespräche
-- **Sonderstationen:** nach den vier Lektionen jeder Stufe ein freiwilliger fünfter Knopf mit Extra-XP und Edelsteinen. Abwechselnd Wortsuche, Buchstabensalat, Memory und Wortraten mit den Wörtern der Stufe, an jeder fünften Stufe eine Kurzgeschichte zum Lesen und Hören mit Verständnisfragen
+- **Sonderstationen:** nach den vier Lektionen jeder Stufe ein fünfter Knopf mit Extra-XP und Edelsteinen, der die nächste Stufe öffnet. Abwechselnd Wortsuche, Buchstabensalat, Memory und Wortraten mit den Wörtern der Stufe, an jeder fünften Stufe eine Kurzgeschichte zum Lesen und Hören mit Verständnisfragen
 - **Lernhilfen:**
   - Wörter in Sätzen antippen zeigt die Übersetzung
   - Wortlisten mit Suche

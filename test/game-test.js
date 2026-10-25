@@ -227,10 +227,16 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
 {
   g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = false; g.ui.level = "A1";
   const lastA1 = g.UNITS().map(u => u.level).lastIndexOf("A1");
-  for (let i = 0; i < lastA1; i++) g.cs().progress[g.UNITS()[i].id] = 4;
+  g.cs().bonus = {};
+  for (let i = 0; i < lastA1; i++) { g.cs().progress[g.UNITS()[i].id] = 4; g.cs().bonus[g.UNITS()[i].id] = true; }
   g.cs().progress[g.UNITS()[lastA1].id] = 3;
   g.startLesson(lastA1, 3); answerAll(g.L);
-  if (g.view !== "result" || g.ui.level !== "A2") fail("Nach der letzten A1-Einheit nicht zu A2 gewechselt", g.view, g.ui.level);
+  // The bonus station is required: after the last lesson it is the next step, the next unit is still locked.
+  if (g.view !== "result" || g.ui.level !== "A1" || g.unitUnlocked(lastA1 + 1)) fail("Sonderstation nicht Pflicht", g.ui.level);
+  g.click("home");
+  if (!/bonus-node current/.test(g.homeHTML())) fail("Sonderstation ist nicht der nächste Schritt");
+  g.startBonus(lastA1); g.L.checked = true; g.L.res = { ok: true }; g.cont();
+  if (g.view !== "result" || g.ui.level !== "A2" || !g.unitUnlocked(lastA1 + 1)) fail("Nach der letzten A1-Einheit nicht zu A2 gewechselt", g.view, g.ui.level);
   // Issue #7: "Weiter" goes back to the path at the current lesson, not to the top.
   const seen = [], qs = document.querySelector, top = window.scrollTo;
   document.querySelector = sel => ({ scrollIntoView: o => seen.push([sel, o.block]) }); window.scrollTo = () => seen.push(["top"]);
@@ -385,7 +391,7 @@ g.view = "home";
   g.cs().progress = {}; g.ui.level = "A1"; g.view = "home"; g.ui.tab = "path";
   if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation nicht gesperrt");
   g.cs().progress[g.UNITS()[0].id] = 4;
-  if (!/bonus-node (bonus|done)/.test(g.homeHTML())) fail("Sonderstation nach vier Lektionen nicht offen");
+  if (!/bonus-node (current|done)/.test(g.homeHTML())) fail("Sonderstation nach vier Lektionen nicht offen");
   g.cs().progress = {}; g.cs().bonus = {}; g.ui.level = null;
 }
 
