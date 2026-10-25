@@ -1,5 +1,8 @@
 /* Nunito (SIL Open Font License, app/fonts/OFL.txt): one variable file for all weights, Latin incl. accents, bundled so it works offline and nothing is loaded from Google. */
 @font-face { font-family: "Nunito"; src: url("fonts/nunito.woff2") format("woff2"); font-weight: 200 1000; font-style: normal; font-display: swap; }
+/* No visible scroll bars (the page and inner lists still scroll by swiping). */
+html, * { scrollbar-width: none; }
+::-webkit-scrollbar { display: none; }
 /* Layout: sticky stats bar, lesson path as a winding column of round nodes; lessons take over the screen with a fixed check bar at the bottom. */
 :root {
   --bg: #EDF0F6; --surface: #FFFFFF; --surface-2: #F5F7FB; --line: #D6DCE8; --ink: #15203A; --ink-2: #57627B;

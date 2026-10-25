@@ -58,6 +58,9 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
             settings.domStorageEnabled = true
             // Listening tasks start their audio by themselves.
             settings.mediaPlaybackRequiresUserGesture = false
+            // No scroll bar at the edge, like a native app.
+            isVerticalScrollBarEnabled = false
+            isHorizontalScrollBarEnabled = false
             addJavascriptInterface(Bridge(), "AndroidBridge")
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? =
