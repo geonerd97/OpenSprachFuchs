@@ -244,7 +244,7 @@ function gameFooterHTML() {
 }
 /** The fifth node of a unit on the path: open after the four lessons, and needed for the next unit. */
 function bonusNodeHTML(u, ui_, open, off) {
-  const ready = open && done(u.id) >= LESSONS_PER_UNIT, kind = bonusKind(ui_), info = GAME_INFO[kind], fin = bonusDone(u.id), id = `${ui_}-b`;
+  const ready = open && done(u.id) >= lessonsOf(u), kind = bonusKind(ui_), info = GAME_INFO[kind], fin = bonusDone(u.id), id = `${ui_}-b`;
   const state = !ready ? "locked" : fin ? "done" : "current", here = state === "current" && ui.pop !== id;
   const next = UNITS[ui_ + 1];
   const pop = ui.pop === id && ready ? `<div class="pop" role="dialog" style="--c:var(--gold)"><h3>${info.em} ${kind === "story" ? esc(storyFor(u.id).title) : info.name}</h3>

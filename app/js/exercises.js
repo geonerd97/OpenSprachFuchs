@@ -1,14 +1,26 @@
 "use strict";
 /* ---------- Lesson plans ----------
-   Each lesson, practice round and test is a list of exercise kinds; generate() falls back when a kind does not fit. */
-const LESSON_NAMES = ["Wörter", "Wörter & Sätze", "Hören & Schreiben", "Abschluss"];
-const LESSON_DESC = ["Die neuen Vokabeln mit Bildern, Paaren und Hören.", "Vokabeln festigen und erste Sätze bauen.", "Hör genau hin und tipp selbst.", "Alles aus der Einheit, mit mehr Schreiben."];
-const PLANS = [
-  ["pic", "choice", "choiceRev", "match", "listenWord", "type", "pic", "choiceRev", "choice", "listenWord", "type", "match"],
-  ["choice", "bank", "choiceRev", "gap", "listenWord", "bank", "type", "bankRev", "match", "gap", "type"],
-  ["listen", "listenWord", "type", "bank", "gap", "typeSent", "choiceRev", "listen", "speak", "type", "match"],
-  ["typeSent", "match", "listen", "type", "bankRev", "gap", "typeSent", "speak", "bank", "type", "typeSent"],
-];
+   Each lesson, practice round and test is a list of exercise kinds; generate() falls back when a kind does not fit.
+   A unit has 4 lessons; in A1 it has 7, so beginners get more practice before the bonus station (lessonsOf in state.js). */
+const LESSON = {
+  words: { name: "Wörter", desc: "Die neuen Vokabeln mit Bildern, Paaren und Hören.",
+    plan: ["pic", "choice", "choiceRev", "match", "listenWord", "type", "pic", "choiceRev", "choice", "listenWord", "type", "match"] },
+  moreWords: { name: "Mehr Wörter", desc: "Die nächsten Vokabeln, dazu Wiederholung der ersten.",
+    plan: ["choice", "pic", "choiceRev", "listenWord", "match", "type", "choice", "choiceRev", "pic", "listenWord", "type", "match"] },
+  mixed: { name: "Wörter & Sätze", desc: "Vokabeln festigen und erste Sätze bauen.",
+    plan: ["choice", "bank", "choiceRev", "gap", "listenWord", "bank", "type", "bankRev", "match", "gap", "type"] },
+  sentences: { name: "Sätze bauen", desc: "Aus den Wörtern werden Sätze, in beide Richtungen.",
+    plan: ["bank", "choiceRev", "bankRev", "gap", "match", "bank", "listenWord", "bankRev", "gap", "type", "bank"] },
+  listen: { name: "Hören & Schreiben", desc: "Hör genau hin und tipp selbst.",
+    plan: ["listen", "listenWord", "type", "bank", "gap", "typeSent", "choiceRev", "listen", "speak", "type", "match"] },
+  speak: { name: "Sprechen & Verstehen", desc: "Nachsprechen, zuhören und Lücken füllen.",
+    plan: ["speak", "listen", "bankRev", "gap", "listenWord", "speak", "bank", "type", "listen", "match", "typeSent"] },
+  final: { name: "Abschluss", desc: "Alles aus der Einheit, mit mehr Schreiben.",
+    plan: ["typeSent", "match", "listen", "type", "bankRev", "gap", "typeSent", "speak", "bank", "type", "typeSent"] },
+};
+const LESSONS_4 = [LESSON.words, LESSON.mixed, LESSON.listen, LESSON.final];
+const LESSONS_7 = [LESSON.words, LESSON.moreWords, LESSON.mixed, LESSON.sentences, LESSON.listen, LESSON.speak, LESSON.final];
+const lessonsFor = u => lessonsOf(u) === LESSONS_7.length ? LESSONS_7 : LESSONS_4;
 const REFILL_PLAN = ["choice", "choiceRev", "listenWord", "pic", "type", "match", "choiceRev", "type"];
 const RIGHT_PER_HEART = 6; // practice rounds: +1 heart per 6 right answers
 const VOCAB_PLAN = ["choice", "choiceRev", "type", "match", "listenWord", "pic", "type", "choiceRev", "choice", "type", "listenWord", "match"];
@@ -135,12 +147,13 @@ const GEN = {
 };
 /* ---------- New words (issue #9) ----------
    A word is asked only after it was introduced: a card shows it with its meaning and in a sentence with tappable words.
-   A lesson brings in at most NEW_PER_LESSON new words; practice rounds stick to known words. */
-const NEW_PER_LESSON = 7;
+   A lesson brings in at most newPerLesson(unit) new words (7, in the longer A1 units 5); practice rounds stick to known words. */
+const NEW_PER_LESSON = 7, NEW_PER_LESSON_A1 = 5;
+const newPerLesson = u => lessonsOf(u) > LESSONS_PER_UNIT ? NEW_PER_LESSON_A1 : NEW_PER_LESSON;
 const seenWords = () => { const c = cs(); return c.seen || (c.seen = {}); };
 const wordKnown = w => !!(seenWords()[w.id] || srs()["w:" + w.id]);
-function lessonWords(words) {
-  const fresh = words.filter(w => !wordKnown(w)).slice(0, NEW_PER_LESSON);
+function lessonWords(words, n = NEW_PER_LESSON) {
+  const fresh = words.filter(w => !wordKnown(w)).slice(0, n);
   return { pool: words.filter(w => wordKnown(w) || fresh.includes(w)), fresh };
 }
 const knownOr = words => { const k = words.filter(wordKnown); return k.length >= 4 ? k : words; };

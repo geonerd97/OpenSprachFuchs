@@ -120,7 +120,7 @@ async function signIn(input) {
   return true;
 }
 function adopt(state, savedAt) {
-  st = fromSaved(state); st.savedAt = savedAt || st.savedAt;
+  st = fromSaved(state); st.savedAt = savedAt || st.savedAt; migrateLessons();
   try { localStorage.setItem(STORE, JSON.stringify(st)); } catch (e) {}
   setCourse(st.course);
   const notes = applyDecay(); if (notes.length) ui.decay = notes;

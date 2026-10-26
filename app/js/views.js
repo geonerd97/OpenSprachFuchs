@@ -52,21 +52,21 @@ function homeHTML() {
   const units = UNITS.map((u, ui_) => {
     if (u.level !== level) return "";
     nth++;
-    const open = unitUnlocked(ui_), d = done(u.id);
-    const nodes = [...Array(LESSONS_PER_UNIT).keys()].map(li => {
+    const open = unitUnlocked(ui_), d = done(u.id), ls = lessonsFor(u);
+    const nodes = ls.map((lesson, li) => {
       const off = Math.round(Math.sin(gi++ * 0.95) * 62);
       const state = !open || li > d ? "locked" : li === d ? "current" : "done";
-      const icon = state === "locked" ? I.lock(26) : state === "done" ? I.check(30) : li === LESSONS_PER_UNIT - 1 ? I.trophy(30) : I.star(30);
+      const icon = state === "locked" ? I.lock(26) : state === "done" ? I.check(30) : li === ls.length - 1 ? I.trophy(30) : I.star(30);
       const id = `${ui_}-${li}`;
-      const pop = ui.pop === id && state !== "locked" ? `<div class="pop" role="dialog" style="--c:${u.c[0]}"><h3>${LESSON_NAMES[li]}</h3><p>${LESSON_DESC[li]} Lektion ${li + 1} von ${LESSONS_PER_UNIT}.</p>
+      const pop = ui.pop === id && state !== "locked" ? `<div class="pop" role="dialog" style="--c:${u.c[0]}"><h3>${lesson.name}</h3><p>${lesson.desc} Lektion ${li + 1} von ${ls.length}.</p>
         <button class="btn wide" data-act="start" data-u="${ui_}" data-l="${li}">${state === "done" ? "Wiederholen +10 XP" : "Starten +10 XP"}</button></div>` : "";
       return `<div class="node-wrap" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
         ${state === "current" && ui.pop !== id ? `<span class="start-tag">START</span>` : ""}
-        ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${LESSON_NAMES[li]}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
+        ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
     }).join("") + bonusNodeHTML(u, ui_, open, Math.round(Math.sin(gi++ * 0.95) * 62));
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
       <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, Einheit ${nth} von ${perLevel}, ${u.words.length} Wörter">${esc(C.code)} – Stufe ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
-        ${open && done(u.id) >= LESSONS_PER_UNIT && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
+        ${open && done(u.id) >= ls.length && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
         ${open ? `<button class="wordsbtn" data-act="words" data-u="${ui_}">Wörter</button>`
         : `<button class="wordsbtn test" data-act="placement" data-u="${ui_}" title="Einstufungstest: Einheiten überspringen">Test</button>`}</div></div>
       <div class="nodes">${nodes}</div></section>`;
@@ -112,7 +112,7 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
       <p class="muted">Bleibt auf deinem Handy (und verschlüsselt in deiner Sicherung). Freunde sehen ihn nur, wenn sie deinen QR-Code scannen.</p>
       <div class="row"><input id="myName" class="search" value="${esc(st.myName || "")}" placeholder="z. B. Anna" maxlength="${MAX_MY_NAME}" autocomplete="off" aria-label="Dein Name">
       <button class="btn ghost" data-act="savename">Speichern</button></div>${ui.nameSaved ? `<p class="muted" role="status">Gespeichert.</p>` : ""}</div>
-    <div class="panel"><h3>${esc(C.name)}</h3><p class="muted">${courseDone(CODE)} von ${UNITS.length * LESSONS_PER_UNIT} Lektionen geschafft · ${st.xp} XP gesamt</p>
+    <div class="panel"><h3>${esc(C.name)}</h3><p class="muted">${courseDone(CODE)} von ${lessonsTotal(CODE)} Lektionen geschafft · ${st.xp} XP gesamt</p>
       <button class="btn wide" data-act="stats">Statistik & Abzeichen</button>
       <button class="btn ghost wide" data-act="courses">Sprache wechseln</button>
       <button class="btn ghost wide" data-act="managepacks">Sprachen verwalten</button></div>
@@ -287,7 +287,7 @@ function statsHTML() {
   const week = days.slice(7).reduce((a, x) => a + x.r.xp, 0);
   const langs = Object.entries(COURSES).map(([code, c]) => { const s = (st.courses[code] || {}).srs || {}, v = Object.values(s);
     return `<div class="lang" style="--c:${c.c}"><div class="row" style="align-items:center"><span class="code">${c.code}</span><b>${c.name}</b></div><dl>
-      <dt>Lektionen</dt><dd>${courseDone(code)} / ${unitsFor(code).length * LESSONS_PER_UNIT}</dd><dt>Wörter geübt</dt><dd>${v.filter(e => e.box >= 1).length}</dd>
+      <dt>Lektionen</dt><dd>${courseDone(code)} / ${lessonsTotal(code)}</dd><dt>Wörter geübt</dt><dd>${v.filter(e => e.box >= 1).length}</dd>
       <dt>Wörter sicher</dt><dd>${v.filter(e => e.box >= 3).length}</dd></dl></div>`; }).join("");
   const us = cs().unitStats || {};
   const ranked = UNITS.map(u => ({ u, e: us[u.id] })).filter(x => x.e && x.e.r + x.e.w >= 5).map(x => ({ ...x, a: x.e.r / (x.e.r + x.e.w) })).sort((a, b) => b.a - a.a);
@@ -350,7 +350,7 @@ function modalHTML() {
       <button class="btn wide" data-act="sendreport">Melden</button><button class="btn ghost wide" data-act="closemodal">Abbrechen</button></div></div>`;
   }
   if (ui.modal === "resetcourse") {
-    const rows = UNITS.map((u, i) => { const d = done(u.id), state = d >= LESSONS_PER_UNIT ? "fertig" : d ? `${d} von ${LESSONS_PER_UNIT} Lektionen` : "noch nicht begonnen";
+    const rows = UNITS.map((u, i) => { const d = done(u.id), state = d >= lessonsOf(u) ? "fertig" : d ? `${d} von ${lessonsOf(u)} Lektionen` : "noch nicht begonnen";
       return `<div class="wrow" style="grid-template-columns:minmax(0,1fr) auto"><span><b>${i + 1}. ${esc(u.title)}</b><small>${state}</small></span>
         <button class="btn ghost" style="padding:.5rem .8rem;font-size:.75rem" data-act="resetfrom" data-u="${i}">Ab hier</button></div>`; }).join("");
     return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${C.name} zurücksetzen</h2>
@@ -375,7 +375,7 @@ function modalHTML() {
   if (ui.modal === "shop") return modal("Shop", shopHTML() + `<button class="btn ghost wide" data-act="closemodal">Schließen</button>`);
   if (ui.modal === "courses") {
     const items = Object.entries(COURSES).map(([code, c]) => `<button class="course ${code === CODE ? "on" : ""}" data-act="pickcourse" data-c="${code}" style="--c:${c.c}">
-      <span class="code">${esc(c.code)}</span><span><b>${esc(c.name)}</b><small>${courseDone(code)} von ${unitsFor(code).length * LESSONS_PER_UNIT} Lektionen · ${esc(c.note)}</small></span></button>`).join("");
+      <span class="code">${esc(c.code)}</span><span><b>${esc(c.name)}</b><small>${courseDone(code)} von ${lessonsTotal(code)} Lektionen · ${esc(c.note)}</small></span></button>`).join("");
     return modal("Welche Sprache lernst du?", `<p class="muted">Jede Sprache hat ihren eigenen Lernpfad. XP, Serie und Herzen gelten für alle.</p><div class="courses">${items}</div>
       <button class="btn ghost wide" data-act="managepacks">Sprachen herunterladen oder entfernen</button>`);
   }
