@@ -12,6 +12,10 @@ const CONFIG = {
 
 /* Inside the Android app the page talks to the phone through window.AndroidBridge. */
 const APP = typeof window !== "undefined" && !!window.AndroidBridge;
+/* In a browser (web app, tools/web.mjs) the page can be added to the home screen and then runs on its own ("standalone"). */
+const WEB = !APP && typeof location !== "undefined" && /^https?:$/.test(location.protocol || "");
+const IOS = typeof navigator !== "undefined" && (/iPad|iPhone|iPod/.test(navigator.userAgent || "") || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
+function standalone() { try { return !!(navigator.standalone || matchMedia("(display-mode: standalone)").matches); } catch (e) { return false; } }
 /* During development (page opened from localhost) the local worker from `npx wrangler dev` is used. */
 const BACKEND = typeof location !== "undefined" && /^(localhost|127\.0\.0\.1)$/.test(location.hostname || "")
   ? "http://localhost:8787/" : CONFIG.BACKEND_URL.replace(/\/?$/, "/");

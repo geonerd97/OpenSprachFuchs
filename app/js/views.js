@@ -606,6 +606,12 @@ function noticesHTML() {
     Bis dahin werden Hörübungen zu Leseübungen. Fehlt die Sprache ganz, hilft oft die kostenlose App „Speech Services by Google“ oder RHVoice.</p>
     <button class="btn wide" data-act="installvoice">Stimme installieren</button>
     <div class="row" style="justify-content:flex-end"><button class="linkbtn" data-act="voicehide">Nicht mehr anzeigen</button></div></div>`);
+  if (WEB && !standalone() && !st.installHidden) out.push(`<div class="panel notice"><h3>📲 Als App installieren</h3>
+    <p class="muted">${IOS ? "Tippe in Safari auf „Teilen“ (Quadrat mit Pfeil) und dann auf „Zum Home-Bildschirm“." : ui.installPrompt ? "" : "Wähle im Browser-Menü „App installieren“ oder „Zum Startbildschirm hinzufügen“."}
+    Dann startet OpenSprachFuchs wie eine App, auch ohne Internet${IOS ? ", und Safari löscht deinen Fortschritt nicht nach 7 Tagen ohne Nutzung" : ""}.</p>
+    ${IOS ? `<p class="muted" style="font-size:.85rem">Am besten gleich zu Beginn: Die App auf dem Home-Bildschirm hat ihren eigenen Speicher. Fortschritt aus Safari nimmst du nur mit einem Konto mit.</p>` : ""}
+    ${ui.installPrompt ? `<button class="btn wide" data-act="install">Installieren</button>` : ""}
+    <div class="row" style="justify-content:flex-end"><button class="linkbtn" data-act="installhide">Nicht mehr anzeigen</button></div></div>`);
   if (ups.length) out.push(`<div class="panel notice"><h3>Neue Inhalte</h3><p class="muted">Für ${ups.map(c => esc(COURSES[c].name)).join(", ")} gibt es ein Update mit Verbesserungen.</p>
     ${ups.map(c => `<button class="btn gold wide" data-act="getpack" data-c="${c}" ${packs.busy ? "disabled" : ""}>${packs.busy === c ? "Lädt …" : `${esc(COURSES[c].name)} aktualisieren`}</button>`).join("")}</div>`);
   if (ui.appUpdate && !ui.updateHidden) out.push(`<div class="panel notice"><h3>🦊 Neue App-Version ${esc(ui.appUpdate.version)}</h3>
@@ -649,6 +655,6 @@ const PRIVACY_HTML = `<div class="privacy">
   <p class="muted">Deine Freunde sehen deinen Freundescode, ob du heute gelernt hast und eure gemeinsame Serie. Namen für Freunde vergibst du selbst; sie liegen nur verschlüsselt in deinem Spielstand.</p>
   <h3>Dein Name und QR-Code</h3><p class="muted">Deinen eigenen Namen bekommt der Server nie. Er steht nur auf deinem Handy, verschlüsselt im Spielstand und in deinem QR-Code bzw. Link, also bei denen, die ihn von dir bekommen. Code und Name stehen im Link hinter „#“; dieser Teil wird nicht an den Server geschickt.</p>
   <h3>Fehlermeldungen</h3><p class="muted">„Fehler melden“ schickt Aufgabe, erwartete Lösung, deine Antwort und deine Notiz ohne Bezug zu deinem Konto. Die Meldungen werden als öffentliche Issues auf GitHub gesammelt. Schreib bitte nichts Persönliches hinein.</p>
-  <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt beim Start, höchstens alle 6 Stunden, bei GitHub an (abschaltbar)." : ""}</p>
+  <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${APP && CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt beim Start, höchstens alle 6 Stunden, bei GitHub an (abschaltbar)." : ""}${WEB ? " Im Browser lädt die App ihre Dateien vom selben Server und speichert sie für die Nutzung ohne Internet; es gibt keine Cookies. Dein Fortschritt liegt im Speicher des Browsers." : ""}</p>
   <h3>Löschen</h3><p class="muted">Unter Profil → Konto → „Konto löschen“ wird alles sofort vom Server entfernt. Konten, die 12 Monate nicht genutzt werden, löscht der Server von selbst.</p>
   ${CONFIG.OPERATOR ? `<h3>Verantwortlich</h3><p class="muted">${esc(CONFIG.OPERATOR)}</p>` : ""}</div>`;

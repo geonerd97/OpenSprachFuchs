@@ -11,7 +11,7 @@ const packFiles = () => fs.readdirSync(path.join(ROOT, "packs")).filter(f => f.e
 const el = () => ({ innerHTML: "", insertAdjacentHTML() {}, addEventListener() {}, value: "", focus() {}, click() {}, disabled: false, style: {}, textContent: "" });
 
 /** A fresh game. `store` is the fake localStorage; packs are installed unless `packs: false`. */
-function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl } = {}) {
+function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl, web = false } = {}) {
   if (packs) {
     const shas = {};
     for (const f of packFiles()) {
@@ -31,7 +31,8 @@ function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl
     addEventListener() {}, querySelectorAll: () => [], querySelector: () => el() };
   // Each game gets its own storage, so several players can run side by side in one test.
   const localStorage = { getItem: k => (k in store ? store[k] : null), setItem: (k, v) => { store[k] = String(v); }, removeItem: k => { delete store[k]; } };
-  global.location = { protocol: "file:", hostname: "" };
+  // web: the page as the web app in a browser (https), otherwise opened from a file.
+  global.location = web ? { protocol: "https:", hostname: "example.org", origin: "https://example.org", pathname: "/", hash: "" } : { protocol: "file:", hostname: "" };
   global.setInterval = () => 0;
   global.setTimeout = () => 0;
   global.clearTimeout = () => {};
@@ -42,7 +43,7 @@ function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl
     resultHTML, BADGES, done, speak, generate, startRecognition, pauseSpeaking, COURSES, acct, friends, createAccount, signIn, initAccount, pushSave, pullSave,
     deleteAccount, signOut, addFriend, acceptFriend, removeFriend, sendGift, claimGifts, loadFriends, reportLearningDay, sendReports, newKey, normalizeKey,
     deriveKeys, encryptState, decryptState, pairStreak, checkAppUpdate, hintSpans, unitUnlocked, startBonus, bonusKind, gameWords, wordSearchTap, scrambleTap, memoryTap, guessTap, guessNext, storyToQuestions, storyAnswer, bonusDone, setMyName, friendLink, parseFriendLink, handleFriendLink, keyReminderDue, checkKeyEnd, qrMatrix, qrSVG, wordKnown, exWords, NEW_PER_LESSON, fetchPackIndex, downloadPack, removePack, packUpdates, installPack, PACK_SHA,
-    get PACK_INDEX() { return PACK_INDEX }, get result() { return result }, get L() { return L }, get st() { return st }, set st(v) { st = v },
+    get PACK_INDEX() { return PACK_INDEX }, get PRIVACY_HTML() { return PRIVACY_HTML }, get result() { return result }, get L() { return L }, get st() { return st }, set st(v) { st = v },
     get view() { return view }, set view(v) { view = v }, UNITS: () => UNITS`;
   const g = new Function("localStorage", SRC + `;return { ${exportsList} };`)(localStorage);
   g.click = (act, data = {}) => clickHandler({ target: { closest: () => ({ dataset: Object.assign({ act }, data) }) } });
