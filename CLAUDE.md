@@ -26,7 +26,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten. Schrift Nunito als Datei in der App (`app/fonts/nunito.woff2`, variabel, nur Latin-Teilmenge, 39 KB, SIL OFL in `app/fonts/OFL.txt`, aus `@fontsource-variable/nunito` 5.3.0); Grundstärke 650, Überschriften 800, Systemschrift nur als Rückfall. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
 | `web/` | Nur für die Web-App: `manifest.webmanifest`, Icons (aus `docs/logo.webp`, `icon-maskable.png` mit Rand für runde Masken), `sw.js` (Vorlage für den Service Worker) |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.13 (versionCode 15, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.14 (versionCode 16, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
@@ -78,6 +78,7 @@ Lernweg mit 80 Einheiten pro Sprache, je 20 in A1, A2, B1, B2; A1-Einheiten habe
 ## Verlauf
 - Bis 2026-10-22: Version 1 (damals „Betterlingo“) als einzelne HTML-Datei mit Raspberry-Pi-Server (Piper-Stimmen), 7 Sprachen; nicht im öffentlichen Verlauf.
 - 2026-10-23: Umbenennung in Openlingo, dann wegen Namensgleichheit mit anderen GitHub-Projekten in **OpenSprachFuchs** (technisch `opensprachfuchs`). Kontakt opensprachfuchs@gmx.net. Logo (seit 2026-10-24, vom Maintainer): lächelnder Comic-Fuchskopf (`docs/logo.webp`, App `app/img/logo.webp`, Launcher-Icon als Adaptive Icon: ausgeschnittener Fuchs in `mipmap-*/ic_launcher_foreground.webp` auf Creme `#FEF6E9`, 57 dp groß, damit die Ohren auch in runden Masken passen). Keine Eule (Abgrenzung zu Duolingo).
+- 2026-10-26: Wortkarten zeigen einen Beispielsatz mit dem Wort selbst; gibt es nur einen mit einer Alternative, nennt die Karte sie („So kommt ‚até logo‘ im Satz vor“, `exampleFor` gibt dann `form` zurück). Release 0.0.14.
 - 2026-10-26: Stufe A1 mit 7 Lektionen pro Einheit (plus Sonderstation) statt 4, nur mit den vorhandenen Wörtern: 4 Lektionen „Neue Wörter“ (je ein Viertel der Wörter, jedes dreimal geübt), dann Wörter & Sätze, Hören & Schreiben, Abschluss; alte, fertige A1-Einheiten bleiben fertig. Release 0.0.13 (mit Issue #9).
 - 2026-10-26: Web-App für iPhones und andere Geräte: `web/` (Manifest, Icons, Service Worker), `tools/web.mjs`, Worker liefert sie unter `/` aus; Hinweis „Als App installieren“, Freundes-Links „Im Browser lernen“, Datenschutz ergänzt. Seit 2026-10-26 live unter https://opensprachfuchs.opensprachfuchs.workers.dev/ (zusammen mit Release 0.0.13), noch nicht auf einem echten iPhone geprüft.
 - 2026-10-26: Issue #9: Neue Wörter werden vor der ersten Abfrage vorgestellt (Karte „Neues Wort“ mit Beispielsatz), höchstens 7 pro Lektion, Training und Blitzrunde nur mit bekannten Wörtern.
