@@ -16,7 +16,7 @@ if (codes.length !== packFiles().length) fail("Nicht alle Sprachpakete installie
 
 for (const code of codes) {
   g.st.course = code; g.setCourse(code); g.st.settings.hearts = false;
-  for (let u = 0; u < g.UNITS().length; u++) for (let li = 0; li < 4; li++) for (let rep = 0; rep < 3; rep++) {
+  for (let u = 0; u < g.UNITS().length; u++) for (let li = 0; li < g.lessonsOf(g.UNITS()[u]); li++) for (let rep = 0; rep < 3; rep++) {
     g.startLesson(u, li);
     const L = g.L;
     for (let guard = 0; g.view === "lesson" && guard < 60; guard++) {
@@ -76,6 +76,40 @@ console.log("Neue Wörter ohne Beispielsatz:", noSentence.size);
   g.resetCourseFrom(0);
   if (Object.keys(g.cs().seen || {}).length) fail("Zurücksetzen vergisst die eingeführten Wörter nicht");
   g.st.courses.it = { progress: {}, mistakes: [] };
+}
+
+// A1 units have 7 lessons plus the bonus station, the other levels 4. Saves from before keep finished A1 units finished.
+{
+  g.setCourse("fr"); g.st.course = "fr";
+  const a1 = g.UNITS().filter(u => u.level === "A1"), a2 = g.UNITS().find(u => u.level === "A2");
+  if (a1.some(u => g.lessonsOf(u) !== 7) || g.lessonsOf(a2) !== 4) fail("Lektionen pro Einheit falsch");
+  if (g.lessonsTotal("fr") !== 20 * 7 + (g.UNITS().length - 20) * 4) fail("Lektionen gesamt falsch", g.lessonsTotal("fr"));
+  g.st.courses.fr = { progress: {}, mistakes: [] }; g.ui.level = "A1"; g.ui.tab = "path"; g.view = "home";
+  const h = g.homeHTML();
+  if ((h.match(/data-id="0-\d"/g) || []).length !== 7) fail("A1-Einheit zeigt nicht 7 Lektionen");
+  g.ui.pop = "0-0"; if (!g.homeHTML().includes("Lektion 1 von 7")) fail("Lektionsinfo zeigt nicht 7"); g.ui.pop = null;
+  // The first four lessons bring in the unit's words in portions and practise each new word three times.
+  const seenNew = new Set();
+  for (let li = 0; li < 4; li++) {
+    g.startLesson(0, li);
+    const all = [g.L.cur, ...g.L.queue], fresh = all.filter(x => x.type === "intro").map(x => x.item.id);
+    if (!fresh.length || fresh.length > Math.ceil(a1[0].words.length / 4)) fail("A1: neue Wörter pro Lektion", li + 1, fresh.length);
+    for (const id of fresh) {
+      seenNew.add(id);
+      const n = all.filter(x => x.type !== "intro").reduce((k, x) => k + g.exWords(x).filter(w => w.id === id).length, 0);
+      if (n < 3) fail("A1: neues Wort zu selten geübt", li + 1, id, n);
+    }
+    for (const id of fresh) g.cs().seen[id] = 1;
+    g.L = null; g.view = "home";
+  }
+  if (seenNew.size !== a1[0].words.length) fail("A1: nach vier Lektionen nicht alle Wörter eingeführt", seenNew.size, a1[0].words.length);
+  g.st.courses.fr = { progress: { [a1[0].id]: 4, [a1[1].id]: 4, [a2.id]: 4 }, mistakes: [], bonus: { [a1[0].id]: true, [a2.id]: true } };
+  g.migrateLessons();
+  const p = g.st.courses.fr.progress;
+  if (p[a1[0].id] !== 7 || p[a1[1].id] !== 4 || p[a2.id] !== 4 || g.st.courses.fr.lessonsV !== 2) fail("Alte Spielstände falsch übernommen", JSON.stringify(p));
+  p[a1[1].id] = 4; g.migrateLessons();
+  if (p[a1[1].id] !== 4) fail("Übernahme läuft mehrfach");
+  g.st.courses.fr = { progress: {}, mistakes: [] }; g.ui.level = null;
 }
 
 // Tap hints: every word in a sentence or dialogue line can be tapped for a translation (numbers aside).
@@ -210,12 +244,12 @@ if (g.st.listenOffUntil !== 0) fail("Hören lässt sich nicht wieder einschalten
 
 // Resetting a course from a unit keeps earlier units and other courses.
 g.setCourse("es"); g.st.course = "es";
-for (const u of g.UNITS()) g.cs().progress[u.id] = 4;
+for (const u of g.UNITS()) g.cs().progress[u.id] = g.lessonsOf(u);
 const w1 = "w:" + g.UNITS()[1].words[0].id, w7 = "w:" + g.UNITS()[7].words[0].id;
 g.srsUpdate(w1, true); g.srsUpdate(w7, true);
 const frBefore = JSON.stringify(g.st.courses.fr);
 g.resetCourseFrom(5);
-if (g.done(g.UNITS()[4].id) !== 4 || g.done(g.UNITS()[5].id) !== 0 || g.done(g.UNITS()[19].id) !== 0) fail("Zurücksetzen ab Einheit 6 falsch");
+if (g.done(g.UNITS()[4].id) !== 7 || g.done(g.UNITS()[5].id) !== 0 || g.done(g.UNITS()[19].id) !== 0) fail("Zurücksetzen ab Einheit 6 falsch");
 if (!g.srs()[w1] || g.srs()[w7]) fail("Lernstufen falsch zurückgesetzt");
 if (JSON.stringify(g.st.courses.fr) !== frBefore) fail("Andere Sprache verändert");
 g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5; g.modalHTML(); g.ui.modal = null;
@@ -255,9 +289,9 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = false; g.ui.level = "A1";
   const lastA1 = g.UNITS().map(u => u.level).lastIndexOf("A1");
   g.cs().bonus = {};
-  for (let i = 0; i < lastA1; i++) { g.cs().progress[g.UNITS()[i].id] = 4; g.cs().bonus[g.UNITS()[i].id] = true; }
-  g.cs().progress[g.UNITS()[lastA1].id] = 3;
-  g.startLesson(lastA1, 3); answerAll(g.L);
+  for (let i = 0; i < lastA1; i++) { g.cs().progress[g.UNITS()[i].id] = 7; g.cs().bonus[g.UNITS()[i].id] = true; }
+  g.cs().progress[g.UNITS()[lastA1].id] = 6;
+  g.startLesson(lastA1, 6); answerAll(g.L);
   // The bonus station is required: after the last lesson it is the next step, the next unit is still locked.
   if (g.view !== "result" || g.ui.level !== "A1" || g.unitUnlocked(lastA1 + 1)) fail("Sonderstation nicht Pflicht", g.ui.level);
   g.click("home");
@@ -355,7 +389,7 @@ for (const code of codes) {
 
 // Mastery: a clean round raises the medal, too many mistakes end it without one.
 {
-  g.setCourse("es"); g.st.course = "es"; g.cs().progress[g.UNITS()[0].id] = 4; g.cs().mastery = {};
+  g.setCourse("es"); g.st.course = "es"; g.cs().progress[g.UNITS()[0].id] = 7; g.cs().mastery = {};
   g.startMaster(0);
   if (g.L.kind !== "master" || g.L.queue.length < 10) fail("Meisterschaft startet nicht");
   if (g.exerciseHTML(g.L.cur).includes('class="hw')) fail("Worthilfen in der Meisterschaft");
@@ -414,11 +448,13 @@ g.view = "home";
   if (g.view !== "result" || !g.bonusDone(g.UNITS()[4].id)) fail("Kurzgeschichte nicht abschließbar");
   g.startBonus(0); solve(); const xp = g.st.xp, gems = g.st.gems; g.cont();
   if (g.st.xp - xp !== 5 || g.st.gems !== gems) fail("Wiederholung der Sonderstation falsch belohnt", g.st.xp - xp, g.st.gems - gems);
-  // The fifth node: locked until the four lessons are done, then open.
+  // The bonus node: locked until all lessons of the unit are done (7 in A1), then open.
   g.cs().progress = {}; g.ui.level = "A1"; g.view = "home"; g.ui.tab = "path";
   if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation nicht gesperrt");
   g.cs().progress[g.UNITS()[0].id] = 4;
-  if (!/bonus-node (current|done)/.test(g.homeHTML())) fail("Sonderstation nach vier Lektionen nicht offen");
+  if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation in A1 schon nach vier Lektionen offen");
+  g.cs().progress[g.UNITS()[0].id] = 7;
+  if (!/bonus-node (current|done)/.test(g.homeHTML())) fail("Sonderstation nach sieben Lektionen nicht offen");
   g.cs().progress = {}; g.cs().bonus = {}; g.ui.level = null;
 }
 

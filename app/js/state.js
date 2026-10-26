@@ -4,7 +4,7 @@
    XP, streak, hearts and gems are shared by all languages; st.courses[code] keeps what belongs to one language. */
 const STORE = "opensprachfuchs-state";
 // Hearts (issue #4, all halved): at most 5, one grows back every 40 minutes, the bonus chest gives 2.
-const LESSONS_PER_UNIT = 4, MAX_HEARTS = 5, REGEN_MS = 40 * 60 * 1000, BONUS_HEARTS = 2;
+const LESSONS_PER_UNIT = 4, LESSONS_A1 = 7, MAX_HEARTS = 5, REGEN_MS = 40 * 60 * 1000, BONUS_HEARTS = 2;
 const DEF = { gems: 20, freezes: 0, boostUntil: 0, history: {}, bestStreak: 0, badges: {}, perfect: 0, placementPassed: false, xp: 0, streak: 0,
   lastDay: null, day: null, dayLessons: 0, hearts: MAX_HEARTS, heartsTs: 0, course: "", courses: {}, lessons: 0, listenOffUntil: 0, speakOffUntil: 0,
   onboarded: false, friends: {}, dayReported: "", reportQueue: [],
@@ -26,7 +26,21 @@ function save() {
   scheduleBackup();
 }
 
-const cs = (code = CODE) => st.courses[code] || (st.courses[code] = { progress: {}, mistakes: [] });
+const cs = (code = CODE) => st.courses[code] || (st.courses[code] = { progress: {}, mistakes: [], lessonsV: 2 });
+// Lessons per unit: 7 in A1 (since 2026-10-26), 4 elsewhere.
+const lessonsOf = u => u && u.level === "A1" ? LESSONS_A1 : LESSONS_PER_UNIT;
+const lessonsTotal = code => unitsFor(code).reduce((a, u) => a + lessonsOf(u), 0);
+/* Saves from before the longer A1 units: a unit finished then (4 lessons and its bonus station) stays finished,
+   so nobody loses progress or finds the next unit locked again. Runs once per course (lessonsV), also after a pull. */
+function migrateLessons() {
+  for (const [code, c] of Object.entries(st.courses || {})) {
+    const units = unitsFor(code);
+    if (c.lessonsV >= 2 || !units.length) continue;
+    for (const u of units) if (lessonsOf(u) > LESSONS_PER_UNIT && (c.progress || {})[u.id] >= LESSONS_PER_UNIT && (c.bonus || {})[u.id]) c.progress[u.id] = lessonsOf(u);
+    c.lessonsV = 2;
+  }
+}
+migrateLessons();
 
 const dayStr = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 const yesterday = () => { const d = new Date(); d.setDate(d.getDate() - 1); return dayStr(d); };
@@ -57,7 +71,7 @@ function loseHeart() {
 const done = (id, code) => cs(code).progress[id] || 0;
 // A unit opens when the one before is finished; one that was already started stays open (e.g. after the path was re-sorted).
 // A unit is complete with its four lessons and its bonus station (games.js); only then the next one opens.
-const unitComplete = i => done(UNITS[i].id) >= LESSONS_PER_UNIT && bonusDone(UNITS[i].id);
+const unitComplete = i => done(UNITS[i].id) >= lessonsOf(UNITS[i]) && bonusDone(UNITS[i].id);
 const unitUnlocked = i => i === 0 || unitComplete(i - 1) || done(UNITS[i].id) > 0;
 /* Levels (GER/CEFR): the path is shown one level at a time, picked in the tabs above it. */
 const LEVEL_NAMES = { A1: "Einstieg", A2: "Grundlagen", B1: "Mittelstufe", B2: "Erweitert", C1: "Fachkundig", C2: "Profi" };
@@ -99,7 +113,7 @@ function pruneHistory() {
   const keys = Object.keys(st.history || {}).sort();
   for (const k of keys.slice(0, Math.max(0, keys.length - 400))) delete st.history[k];
 }
-const unitsDone = code => unitsFor(code).filter(u => done(u.id, code) >= LESSONS_PER_UNIT).length;
+const unitsDone = code => unitsFor(code).filter(u => done(u.id, code) >= lessonsOf(u)).length;
 const sureWords = code => Object.values((st.courses[code] || {}).srs || {}).filter(e => e.box >= 3).length;
 const BADGES = [
   { id: "first", em: "🎉", name: "Erste Lektion", desc: "Die erste Lektion geschafft.", test: () => st.lessons >= 1 },
@@ -108,7 +122,7 @@ const BADGES = [
   { id: "streak30", em: "🏅", name: "30-Tage-Serie", desc: "Einen Monat lang jeden Tag gelernt.", test: () => st.bestStreak >= 30 },
   { id: "unit1", em: "🏁", name: "Erste Einheit", desc: "Eine Einheit komplett abgeschlossen.", test: () => Object.keys(COURSES).some(c => unitsDone(c) >= 1) },
   { id: "a1", em: "🎓", name: "A1 geschafft", desc: "Alle A1-Einheiten einer Sprache abgeschlossen.",
-    test: () => Object.keys(COURSES).some(c => unitsFor(c).filter(u => u.level === "A1").every(u => done(u.id, c) >= LESSONS_PER_UNIT)) },
+    test: () => Object.keys(COURSES).some(c => unitsFor(c).filter(u => u.level === "A1").every(u => done(u.id, c) >= lessonsOf(u))) },
   { id: "perfect10", em: "💎", name: "Zehnmal fehlerfrei", desc: "Zehn Lektionen ohne einen Fehler.", test: () => (st.perfect || 0) >= 10 },
   { id: "xp500", em: "⚡", name: "500 XP", desc: "500 Erfahrungspunkte gesammelt.", test: () => st.xp >= 500 },
   { id: "xp2000", em: "⚡", name: "2.000 XP", desc: "2.000 Erfahrungspunkte gesammelt.", test: () => st.xp >= 2000 },
@@ -227,4 +241,4 @@ function buy(id) {
   ui.shopMsg = `${it.name} gekauft.`;
   return true;
 }
-const courseDone = code => unitsFor(code).reduce((a, u) => a + Math.min(done(u.id, code), LESSONS_PER_UNIT), 0);
+const courseDone = code => unitsFor(code).reduce((a, u) => a + Math.min(done(u.id, code), lessonsOf(u)), 0);

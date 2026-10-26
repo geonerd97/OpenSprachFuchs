@@ -8,9 +8,10 @@ function startLesson(ui_, li) {
   syncHearts();
   if (st.settings.hearts && st.hearts <= 0) { ui.modal = "hearts"; render(); return; }
   const u = UNITS[ui_];
-  const { pool, fresh } = lessonWords(u.words);
+  const { pool, fresh } = lessonWords(u.words, newPerLesson(u));
   const p = { words: pool, sentences: u.sentences, used: new Set(), prefer: new Set([...cs().mistakes, ...fresh.map(w => "w:" + w.id)]) };
-  const queue = withIntros(PLANS[li].map(k => generate(k, p)).filter(Boolean), u.sentences);
+  if (lessonsOf(u) > LESSONS_PER_UNIT) Object.assign(p, { focus: new Set(fresh.map(w => "w:" + w.id)), repeat: WORD_REPEAT, count: {} });
+  const queue = withIntros(lessonsFor(u)[li].plan.map(k => generate(k, p)).filter(Boolean), u.sentences);
   beginLesson({ kind: "lesson", unit: ui_, lesson: li, queue });
 }
 function startTraining(vocab, refill) {
@@ -23,7 +24,7 @@ function startTraining(vocab, refill) {
 const PLACEMENT_PLAN = ["bank", "typeSent", "listenWord", "bankRev", "gap", "type", "listen", "choiceRev", "typeSent", "bankRev", "type", "bank"];
 const PLACEMENT_MAX = 3;
 function placementRange(target) {
-  let first = UNITS.findIndex(u => done(u.id) < LESSONS_PER_UNIT);
+  let first = UNITS.findIndex(u => done(u.id) < lessonsOf(u));
   if (first < 0 || first > target) first = target;
   return [first, target];
 }
@@ -274,7 +275,7 @@ function finish() {
   if (L.kind === "dialog") { const c = cs(); c.dialogs = c.dialogs || {}; c.dialogs[L.scene.id] = true; dialog = L.scene.title; }
   let bonus = "";
   if (L.kind === "bonus") { const c = cs(); c.bonus = c.bonus || {}; c.bonus[UNITS[L.unit].id] = true; bonus = bonusTitle(L.game); }
-  if (L.kind === "placement") { const c = cs(); c.bonus = c.bonus || {}; for (let i = 0; i <= L.unit; i++) { c.progress[UNITS[i].id] = LESSONS_PER_UNIT; c.bonus[UNITS[i].id] = true; } st.placementPassed = true; }
+  if (L.kind === "placement") { const c = cs(); c.bonus = c.bonus || {}; for (let i = 0; i <= L.unit; i++) { c.progress[UNITS[i].id] = lessonsOf(UNITS[i]); c.bonus[UNITS[i].id] = true; } st.placementPassed = true; }
   const before = shownStreak();
   let freezeUsed = 0;
   if (st.lastDay !== dayStr()) {
@@ -308,7 +309,7 @@ function finish() {
     streakUp: st.streak > before ? st.streak : 0, goal: !goalBefore, training: L.kind === "training", vocab: !!L.vocab, badges: fresh,
     placement: L.kind === "placement" ? UNITS[L.unit].title : "", refill: !!L.refill, heartsGained,
     comboBonus, bestCombo: L.bestCombo || 0, blitz, quests, gems, boosted, freezeUsed, master, dialog, bonus,
-    unitDone: L.kind === "lesson" && done(UNITS[L.unit].id) >= LESSONS_PER_UNIT && L.lesson === LESSONS_PER_UNIT - 1 };
+    unitDone: L.kind === "lesson" && done(UNITS[L.unit].id) >= lessonsOf(UNITS[L.unit]) && L.lesson === lessonsOf(UNITS[L.unit]) - 1 };
   sfx("win"); view = "result"; L = null; render(); confetti(); reportDay(); reportLearningDay();
 }
 

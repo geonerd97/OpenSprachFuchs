@@ -1,14 +1,23 @@
 "use strict";
 /* ---------- Lesson plans ----------
-   Each lesson, practice round and test is a list of exercise kinds; generate() falls back when a kind does not fit. */
-const LESSON_NAMES = ["Wörter", "Wörter & Sätze", "Hören & Schreiben", "Abschluss"];
-const LESSON_DESC = ["Die neuen Vokabeln mit Bildern, Paaren und Hören.", "Vokabeln festigen und erste Sätze bauen.", "Hör genau hin und tipp selbst.", "Alles aus der Einheit, mit mehr Schreiben."];
-const PLANS = [
-  ["pic", "choice", "choiceRev", "match", "listenWord", "type", "pic", "choiceRev", "choice", "listenWord", "type", "match"],
-  ["choice", "bank", "choiceRev", "gap", "listenWord", "bank", "type", "bankRev", "match", "gap", "type"],
-  ["listen", "listenWord", "type", "bank", "gap", "typeSent", "choiceRev", "listen", "speak", "type", "match"],
-  ["typeSent", "match", "listen", "type", "bankRev", "gap", "typeSent", "speak", "bank", "type", "typeSent"],
-];
+   Each lesson, practice round and test is a list of exercise kinds; generate() falls back when a kind does not fit.
+   A unit has 4 lessons; in A1 it has 7, so beginners get more practice before the bonus station (lessonsOf in state.js). */
+const LESSON = {
+  words: { name: "Wörter", desc: "Die neuen Vokabeln mit Bildern, Paaren und Hören.",
+    plan: ["pic", "choice", "choiceRev", "match", "listenWord", "type", "pic", "choiceRev", "choice", "listenWord", "type", "match"] },
+  newWords: { name: "Neue Wörter", desc: "Ein paar neue Vokabeln, jede dreimal geübt, dazu die von vorher.",
+    plan: ["pic", "choice", "choiceRev", "listenWord", "match", "type", "choice", "pic", "listenWord", "choiceRev", "type", "match", "choice", "type"] },
+  mixed: { name: "Wörter & Sätze", desc: "Vokabeln festigen und erste Sätze bauen.",
+    plan: ["choice", "bank", "choiceRev", "gap", "listenWord", "bank", "type", "bankRev", "match", "gap", "type"] },
+  listen: { name: "Hören & Schreiben", desc: "Hör genau hin und tipp selbst.",
+    plan: ["listen", "listenWord", "type", "bank", "gap", "typeSent", "choiceRev", "listen", "speak", "type", "match"] },
+  final: { name: "Abschluss", desc: "Alles aus der Einheit, mit mehr Schreiben.",
+    plan: ["typeSent", "match", "listen", "type", "bankRev", "gap", "typeSent", "speak", "bank", "type", "typeSent"] },
+};
+const LESSONS_4 = [LESSON.words, LESSON.mixed, LESSON.listen, LESSON.final];
+// A1: the unit's words come in four smaller portions, each practised more, before the usual three lessons.
+const LESSONS_7 = [LESSON.newWords, LESSON.newWords, LESSON.newWords, LESSON.newWords, LESSON.mixed, LESSON.listen, LESSON.final];
+const lessonsFor = u => lessonsOf(u) === LESSONS_7.length ? LESSONS_7 : LESSONS_4;
 const REFILL_PLAN = ["choice", "choiceRev", "listenWord", "pic", "type", "match", "choiceRev", "type"];
 const RIGHT_PER_HEART = 6; // practice rounds: +1 heart per 6 right answers
 const VOCAB_PLAN = ["choice", "choiceRev", "type", "match", "listenWord", "pic", "type", "choiceRev", "choice", "type", "listenWord", "match"];
@@ -43,13 +52,18 @@ const tokens = s => s.replace(/[.,!?¿¡]/g, "").split(" ").filter(Boolean);
 const bare = w => w.replace(C.art, "");
 
 /* ---------- Exercise generators ---------- */
+// Each item comes once per round, the round's new words (p.focus) up to p.repeat times, taken in turns.
 function takeFrom(p, items, kind) {
-  const keyOf = x => kind + ":" + x.id;
-  let cand = items.filter(x => !p.used.has(keyOf(x)));
+  const keyOf = x => kind + ":" + x.id, count = x => (p.count && p.count[keyOf(x)]) || 0;
+  const again = x => p.focus && p.focus.has(keyOf(x)) && count(x) < p.repeat;
+  let cand = items.filter(x => !p.used.has(keyOf(x)) || again(x));
   if (!cand.length) cand = items;
-  const pref = cand.filter(x => p.prefer.has(keyOf(x)));
+  const focus = p.focus ? cand.filter(x => p.focus.has(keyOf(x))) : [];
+  const least = focus.length ? Math.min(...focus.map(count)) : 0;
+  const pref = focus.length ? focus.filter(x => count(x) === least) : cand.filter(x => p.prefer.has(keyOf(x)));
   const x = pick(pref.length ? pref : cand);
   p.used.add(keyOf(x));
+  if (p.count) p.count[keyOf(x)] = count(x) + 1;
   return x;
 }
 function distractWords(p, w, n, field) {
@@ -135,12 +149,14 @@ const GEN = {
 };
 /* ---------- New words (issue #9) ----------
    A word is asked only after it was introduced: a card shows it with its meaning and in a sentence with tappable words.
-   A lesson brings in at most NEW_PER_LESSON new words; practice rounds stick to known words. */
-const NEW_PER_LESSON = 7;
+   A lesson brings in at most newPerLesson(unit) new words: 7, in A1 a quarter of the unit's words (mostly 3 or 4),
+   each practised WORD_REPEAT times in that lesson. Practice rounds stick to known words. */
+const NEW_PER_LESSON = 7, WORD_REPEAT = 3;
+const newPerLesson = u => lessonsOf(u) > LESSONS_PER_UNIT ? Math.ceil(u.words.length / 4) : NEW_PER_LESSON;
 const seenWords = () => { const c = cs(); return c.seen || (c.seen = {}); };
 const wordKnown = w => !!(seenWords()[w.id] || srs()["w:" + w.id]);
-function lessonWords(words) {
-  const fresh = words.filter(w => !wordKnown(w)).slice(0, NEW_PER_LESSON);
+function lessonWords(words, n = NEW_PER_LESSON) {
+  const fresh = words.filter(w => !wordKnown(w)).slice(0, n);
   return { pool: words.filter(w => wordKnown(w) || fresh.includes(w)), fresh };
 }
 const knownOr = words => { const k = words.filter(wordKnown); return k.length >= 4 ? k : words; };
