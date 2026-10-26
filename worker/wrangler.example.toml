@@ -1,6 +1,6 @@
 # Cloudflare Worker for OpenSprachFuchs: API (accounts, encrypted saves, friends) and the language packs.
 # Template: copy to wrangler.toml (not in Git) and enter your database_id. See README.md, "Backend einrichten".
-name = "opensprachfuchs"
+name = "app"
 main = "src/index.js"
 compatibility_date = "2025-09-01"
 

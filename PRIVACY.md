@@ -2,7 +2,7 @@
 
 OpenSprachFuchs erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine Werbung, kein Tracking, keine Analyse- oder Absturzdienste und keine Schriftarten oder Skripte von Dritten. Dieser Text steht in kürzerer Form auch in der App (Profil → Datenschutz).
 
-**Verantwortlich** für das Backend unter `opensprachfuchs.opensprachfuchs.workers.dev`: M. Reger, E-Mail: opensprachfuchs(at)gmx.net
+**Verantwortlich** für das Backend unter `app.opensprachfuchs.workers.dev` (früher `opensprachfuchs.opensprachfuchs.workers.dev`, läuft für ältere App-Versionen weiter): M. Reger, E-Mail: opensprachfuchs(at)gmx.net
 
 Wer OpenSprachFuchs mit einem eigenen Backend betreibt, ist dafür selbst verantwortlich und trägt seine Angaben hier und in `app/js/config.js` (`OPERATOR`) ein.
 
@@ -12,7 +12,7 @@ Alles bleibt auf deinem Handy: Fortschritt, Einstellungen und die Sprachpakete. 
 
 ## Im Browser (Web-App)
 
-OpenSprachFuchs läuft auch im Browser, zum Beispiel auf dem iPhone, unter `opensprachfuchs.opensprachfuchs.workers.dev`. Dann lädt dein Browser die Dateien der App (HTML, CSS, JavaScript, Bilder, Schrift) von diesem Server und legt sie für die Nutzung ohne Internet in seinem Speicher ab (Service Worker). Dabei werden keine Daten über dich übertragen, und es gibt keine Cookies. Fortschritt, Einstellungen, Sprachpakete und Schlüssel liegen im Speicher des Browsers (localStorage) auf deinem Gerät. Safari löscht diesen Speicher bei Webseiten, die 7 Tage nicht geöffnet wurden; für auf dem Home-Bildschirm installierte Web-Apps gilt das nicht. Mit Konto ist der Spielstand zusätzlich verschlüsselt gesichert. Die Suche nach App-Updates bei GitHub gibt es im Browser nicht.
+OpenSprachFuchs läuft auch im Browser, zum Beispiel auf dem iPhone, unter `app.opensprachfuchs.workers.dev`. Dann lädt dein Browser die Dateien der App (HTML, CSS, JavaScript, Bilder, Schrift) von diesem Server und legt sie für die Nutzung ohne Internet in seinem Speicher ab (Service Worker). Dabei werden keine Daten über dich übertragen, und es gibt keine Cookies. Fortschritt, Einstellungen, Sprachpakete und Schlüssel liegen im Speicher des Browsers (localStorage) auf deinem Gerät. Safari löscht diesen Speicher bei Webseiten, die 7 Tage nicht geöffnet wurden; für auf dem Home-Bildschirm installierte Web-Apps gilt das nicht. Mit Konto ist der Spielstand zusätzlich verschlüsselt gesichert. Die Suche nach App-Updates bei GitHub gibt es im Browser nicht.
 
 ## Mit Konto
 

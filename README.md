@@ -40,7 +40,7 @@ OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duo
   - eine gemeinsame Serie mit jedem Freund
   - täglich ein kostenloses Geschenk (5 💎)
 - **Offline:** Alles außer Sicherung und Freunden funktioniert ohne Internet. Die Sprachpakete stecken in der App und kommen als Update vom Server.
-- **Im Browser:** Die Web-App unter [opensprachfuchs.opensprachfuchs.workers.dev](https://opensprachfuchs.opensprachfuchs.workers.dev/) lässt sich auf den Home-Bildschirm legen (iPhone: Safari → Teilen → „Zum Home-Bildschirm“) und läuft dann auch offline. Erinnerung, Widget und Spracherkennung gibt es nur in der Android-App.
+- **Im Browser:** Die Web-App unter [app.opensprachfuchs.workers.dev](https://app.opensprachfuchs.workers.dev/) lässt sich auf den Home-Bildschirm legen (iPhone: Safari → Teilen → „Zum Home-Bildschirm“) und läuft dann auch offline. Erinnerung, Widget und Spracherkennung gibt es nur in der Android-App.
 - **Anonymes Konto:**
   - ein zufälliger Schlüssel statt Name, E-Mail oder Passwort
   - der Spielstand wird auf dem Handy verschlüsselt, bevor er gesichert wird

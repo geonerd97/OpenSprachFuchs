@@ -6,8 +6,9 @@
   "scripts": {
     "build": "node ../tools/packs.mjs build && node ../tools/web.mjs build",
     "dev": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy",
-    "schema": "wrangler d1 execute opensprachfuchs --remote --file=schema.sql"
+    "deploy": "npm run build && wrangler deploy && wrangler deploy --name opensprachfuchs",
+    "schema": "wrangler d1 execute opensprachfuchs --remote --file=schema.sql",
+    "//deploy": "Deploys the worker as app (app.<subdomain>.workers.dev) and under its old name opensprachfuchs, which app versions up to 0.0.14 and older friend links still use. Forks can drop the second deploy."
   },
   "devDependencies": {
     "wrangler": "^4.30.0"
