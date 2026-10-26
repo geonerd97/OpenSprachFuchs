@@ -195,7 +195,7 @@ function exerciseHTML(ex) {
         <div class="intro">${w.pic ? `<span class="em" aria-hidden="true">${w.pic}</span>` : ""}
           <button class="speak" data-act="say" data-t="${esc(w.t)}" aria-label="Vorlesen">${I.speaker(22)}</button>
           <div><b lang="${CODE}">${esc(w.t)}</b><span>${esc(w.de)}</span>${w.alt.length ? `<small>auch: ${w.alt.map(esc).join(", ")}</small>` : ""}</div></div>
-        ${z ? `<p class="muted" style="margin:0">So kommt es im Satz vor:</p>${bubble(z.t, CODE)}<details class="hint"><summary>Übersetzung</summary>${esc(z.de)}</details>` : ""}`;
+        ${z ? `<p class="muted" style="margin:0">${z.form ? `So kommt „${esc(z.form)}“ im Satz vor:` : "So kommt es im Satz vor:"}</p>${bubble(z.t, CODE)}<details class="hint"><summary>Übersetzung</summary>${esc(z.de)}</details>` : ""}`;
     }
     case "game": return gameHTML();
     case "match": {

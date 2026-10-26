@@ -458,6 +458,16 @@ g.view = "home";
   g.cs().progress = {}; g.cs().bonus = {}; g.ui.level = null;
 }
 
+// Intro cards: the example sentence shows the word itself; a sentence with another form says which one ("tchau" -> "até logo").
+{
+  g.setCourse("pt");
+  const u = g.UNITS().find(x => x.words.some(w => w.t === "tchau")), w = u.words.find(x => x.t === "tchau"), z = g.exampleFor(w, u.sentences);
+  if (!z || z.form !== "até logo") fail("Beispielsatz mit anderer Form nicht gekennzeichnet", JSON.stringify(z));
+  const own = u.words.find(x => { const y = g.exampleFor(x, u.sentences); return y && !y.form; });
+  if (own && g.exampleFor(own, u.sentences).form) fail("Beispielsatz mit dem Wort selbst gekennzeichnet");
+  g.setCourse("en");
+}
+
 // Every dialog renders (settings, account, privacy, languages, friends).
 for (const m of ["settings", "account", "privacy", "packs", "courses", "addfriend", "myqr", "signout", "deleteaccount", "reset"]) { g.ui.modal = m; g.modalHTML(); }
 g.ui.modal = null;

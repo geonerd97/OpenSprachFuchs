@@ -164,12 +164,18 @@ const knownOr = words => { const k = words.filter(wordKnown); return k.length >=
 // otherwise one from the whole course, its dialogues or stories.
 function exampleFor(w, sents) {
   const pad = x => " " + cleanKey(x).replace(/'/g, "' ") + " ";
-  const forms = [...new Set([w.t, ...w.alt].flatMap(f => [f, bare(f)]).map(f => pad(f).trim()))].filter(Boolean);
   // Plurals count too: "cows" for "cow", "chevaux" is too far off.
-  const res = forms.map(f => new RegExp(" " + f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?:s|es|x)? "));
-  const has = z => { const t = pad(z.t); return res.some(r => r.test(t)); };
+  const matcher = list => {
+    const res = [...new Set(list.flatMap(f => [f, bare(f)]).map(f => pad(f).trim()))].filter(Boolean)
+      .map(f => new RegExp(" " + f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?:s|es|x)? "));
+    return z => { const t = pad(z.t); return res.some(r => r.test(t)); };
+  };
   const more = () => ALL_SENTS.concat(C.dialogs.flatMap(d => d.turns.flatMap(x => [x.p, ...x.a])), C.stories.flatMap(z => z.lines));
-  for (const pool of [sents, more()]) { const hits = pool.filter(has); if (hits.length) return hits.reduce((a, b) => b.t.length < a.t.length ? b : a); }
+  const find = has => { for (const pool of [sents, more()]) { const hits = pool.filter(has); if (hits.length) return hits.reduce((a, b) => b.t.length < a.t.length ? b : a); } return null; };
+  // The word itself first; only without such a sentence one with another form ("até logo" for "tchau"), which the card then names.
+  const own = find(matcher([w.t]));
+  if (own) return own;
+  for (const f of w.alt) { const z = find(matcher([f])); if (z) return Object.assign({}, z, { form: f }); }
   return null;
 }
 const exWords = ex => ex.type === "match" ? ex.pairs : ex.key && ex.key.startsWith("w:") && ex.item ? [ex.item] : [];
