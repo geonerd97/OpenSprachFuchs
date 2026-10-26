@@ -10,6 +10,10 @@ Wer OpenSprachFuchs mit einem eigenen Backend betreibt, ist dafür selbst verant
 
 Alles bleibt auf deinem Handy: Fortschritt, Einstellungen und die Sprachpakete. Der Server wird nur angefragt, um neue Versionen der Sprachpakete zu finden. Dabei werden keine Daten über dich übertragen.
 
+## Im Browser (Web-App)
+
+OpenSprachFuchs läuft auch im Browser, zum Beispiel auf dem iPhone, unter `opensprachfuchs.opensprachfuchs.workers.dev`. Dann lädt dein Browser die Dateien der App (HTML, CSS, JavaScript, Bilder, Schrift) von diesem Server und legt sie für die Nutzung ohne Internet in seinem Speicher ab (Service Worker). Dabei werden keine Daten über dich übertragen, und es gibt keine Cookies. Fortschritt, Einstellungen, Sprachpakete und Schlüssel liegen im Speicher des Browsers (localStorage) auf deinem Gerät. Safari löscht diesen Speicher bei Webseiten, die 7 Tage nicht geöffnet wurden; für auf dem Home-Bildschirm installierte Web-Apps gilt das nicht. Mit Konto ist der Spielstand zusätzlich verschlüsselt gesichert. Die Suche nach App-Updates bei GitHub gibt es im Browser nicht.
+
 ## Mit Konto
 
 Ein Konto ist ein zufälliger Schlüssel (16 Zeichen), den nur dein Handy kennt. Aus ihm leitet die App zwei Dinge ab:
@@ -61,7 +65,7 @@ Bitte schreib nichts Persönliches in die Notiz. Die Meldungen werden, gesammelt
 
 - **Konto löschen:** unter Profil → Konto. Spielstand, Freundschaften und gemeinsame Serien werden sofort vom Server gelöscht.
 - **Automatisch:** Konten, die 12 Monate nicht genutzt wurden, löscht der Server selbst.
-- **Auf dem Handy:** „Abmelden“ oder das Deinstallieren der App entfernt alle Daten vom Gerät.
+- **Auf dem Handy:** „Abmelden“ oder das Deinstallieren der App entfernt alle Daten vom Gerät. Im Browser entfernen „Abmelden“ oder das Löschen der Websitedaten in den Browser-Einstellungen alles.
 
 ## Deine Rechte
 

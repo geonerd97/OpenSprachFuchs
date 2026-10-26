@@ -242,7 +242,7 @@ main{max-width:26rem;padding:1.5rem;text-align:center}.code{font:700 1.6rem ui-m
 a{display:block;margin:.6rem 0;padding:.8rem;border-radius:14px;background:#2456E8;color:#fff;font-weight:700;text-decoration:none}a.alt{background:#fff;color:#2456E8;border:2px solid #2456E8}
 small{color:#57627B}</style></head><body><main><div style="font-size:3rem">🦊</div>
 <h1 id="t">Lern mit mir auf OpenSprachFuchs!</h1><p>Mein Freundescode:</p><div class="code" id="c">–</div>
-<a id="open" href="#">In der App öffnen</a><a class="alt" href="${RELEASES}">App herunterladen (Android)</a>
+<a id="open" href="#">In der App öffnen</a><a class="alt" id="web" href="/">Im Browser lernen</a><a class="alt" id="apk" href="${RELEASES}">App herunterladen (Android)</a>
 <small>In der App unter „Freunde“ → „Freund hinzufügen“ kannst du den Code auch eintippen. Code und Name stehen nur in diesem Link und werden nicht an den Server geschickt.</small></main>
 <script>
 const [code, ...rest] = location.hash.slice(1).split("/"); let name = "";
@@ -251,7 +251,10 @@ const c = (code || "").toUpperCase().replace(/[^0-9A-Z-]/g, "").slice(0, 9);
 if (c) document.getElementById("c").textContent = c;
 if (name) document.getElementById("t").textContent = name.slice(0, 30) + " möchte mit dir auf OpenSprachFuchs lernen!";
 const q = "c=" + encodeURIComponent(c) + (name ? "&n=" + encodeURIComponent(name.slice(0, 30)) : "");
+// The web app (served at /) reads code and name from its own hash, so they still never reach the server.
+document.getElementById("web").href = "/#f/" + c + (name ? "/" + encodeURIComponent(name.slice(0, 30)) : "");
 document.getElementById("open").href = "intent://" + location.host + "/f?" + q + "#Intent;scheme=https;package=${env.APP_PACKAGE || APP_PACKAGE};S.browser_fallback_url=" + encodeURIComponent("${RELEASES}") + ";end";
+if (/iPad|iPhone|iPod/.test(navigator.userAgent)) { document.getElementById("open").remove(); document.getElementById("apk").remove(); }
 </script></body></html>`, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=3600", "Referrer-Policy": "no-referrer" } });
 
 /* ---------- Router ---------- */

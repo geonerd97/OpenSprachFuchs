@@ -1,11 +1,12 @@
 {
   "name": "opensprachfuchs",
   "private": true,
-  "description": "Freie Sprachlern-App für Android: Lernweg, Übungen, Freunde, anonymes Konto",
+  "description": "Freie Sprachlern-App für Android und den Browser: Lernweg, Übungen, Freunde, anonymes Konto",
   "license": "MIT",
   "engines": { "node": ">=22.5" },
   "scripts": {
-    "test": "node tools/packs.mjs check && node test/game-test.js && node test/backend-test.js",
-    "packs": "node tools/packs.mjs build"
+    "test": "node tools/packs.mjs check && node test/game-test.js && node test/backend-test.js && node test/web-test.js",
+    "packs": "node tools/packs.mjs build",
+    "web": "node tools/packs.mjs build && node tools/web.mjs build"
   }
 }

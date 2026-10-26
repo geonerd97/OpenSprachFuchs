@@ -35,6 +35,8 @@ app.addEventListener("click", e => {
     case "start": startLesson(+ds.u, +ds.l); return;
     case "bonus": startBonus(+ds.u); return;
     case "installvoice": window.AndroidBridge.installVoice(); return;
+    case "install": if (ui.installPrompt) { ui.installPrompt.prompt(); ui.installPrompt = null; render(); } return;
+    case "installhide": st.installHidden = true; save(); render(); return;
     case "voicehide": st.voiceHidden = Object.assign({}, st.voiceHidden, { [CODE]: true }); save(); render(); return;
     case "ws": wordSearchTap(+ds.r, +ds.c); return;
     case "scr": scrambleTap(+ds.i); return;
@@ -196,6 +198,7 @@ function copyText(text, msg) {
 }
 function shareText(text) {
   try { if (APP && window.AndroidBridge.share) { window.AndroidBridge.share(text); return; } } catch (e) {}
+  if (!APP && navigator.share) { navigator.share({ text }).catch(() => {}); return; }
   copyText(text, "Text zum Teilen kopiert.");
 }
 function openUrl(url) {
@@ -225,7 +228,19 @@ syncReminder(); reportDay();
 render(); scrollToCurrent(); checkVoice();
 // Friend links (QR code scanned with the camera): the link that started the app is handled once the account is known,
 // later ones arrive through opensprachfuchsLink.
-const startLink = APP && window.AndroidBridge.takeLink ? window.AndroidBridge.takeLink() : "";
+// In the web app the friend page /f links to the app as /#f/CODE/Name; the hash is removed again right away.
+function webLink() {
+  if (!WEB || !/^#f\//.test(location.hash || "")) return "";
+  const url = location.origin + "/f#" + location.hash.slice(3);
+  try { history.replaceState(null, "", location.pathname); } catch (e) {}
+  return url;
+}
+const startLink = APP && window.AndroidBridge.takeLink ? window.AndroidBridge.takeLink() : webLink();
+if (WEB && window.addEventListener) window.addEventListener("hashchange", () => { const url = webLink(); if (url) handleFriendLink(url); });
+/* Web app: the service worker (sw.js, only in the built web app) keeps it working offline. Browsers that can install
+   web apps themselves (Chrome on Android) hand over their install prompt, the notice on the path then offers a button. */
+if (WEB && navigator.serviceWorker) navigator.serviceWorker.register("sw.js").catch(() => {});
+if (window.addEventListener) window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); ui.installPrompt = e; render(); });
 window.opensprachfuchsLink = url => { handleFriendLink(url); };
 window.opensprachfuchsResume = () => checkVoice();
 initAccount().then(() => { if (startLink) handleFriendLink(startLink); sendReports(); checkPackUpdates(); checkAppUpdate(); });

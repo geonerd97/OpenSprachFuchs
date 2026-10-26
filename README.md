@@ -2,7 +2,7 @@
 
 # OpenSprachFuchs
 
-Eine freie Sprachlern-App für Android, inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch oder brasilianisches Portugiesisch** lernen wollen.
+Eine freie Sprachlern-App für Android und den Browser (auch iPhone und iPad), inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch oder brasilianisches Portugiesisch** lernen wollen.
 
 OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duolingo zu tun.
 
@@ -40,6 +40,7 @@ OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duo
   - eine gemeinsame Serie mit jedem Freund
   - täglich ein kostenloses Geschenk (5 💎)
 - **Offline:** Alles außer Sicherung und Freunden funktioniert ohne Internet. Die Sprachpakete stecken in der App und kommen als Update vom Server.
+- **Im Browser:** Die Web-App unter [opensprachfuchs.opensprachfuchs.workers.dev](https://opensprachfuchs.opensprachfuchs.workers.dev/) lässt sich auf den Home-Bildschirm legen (iPhone: Safari → Teilen → „Zum Home-Bildschirm“) und läuft dann auch offline. Erinnerung, Widget und Spracherkennung gibt es nur in der Android-App.
 - **Anonymes Konto:**
   - ein zufälliger Schlüssel statt Name, E-Mail oder Passwort
   - der Spielstand wird auf dem Handy verschlüsselt, bevor er gesichert wird
@@ -49,18 +50,21 @@ OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duo
 
 | Pfad | Inhalt |
 |---|---|
-| [`app/`](app) | Die App selbst: HTML, CSS und JavaScript ohne Build-Schritt. Läuft in der Android-WebView. |
+| [`app/`](app) | Die App selbst: HTML, CSS und JavaScript ohne Build-Schritt. Läuft in der Android-WebView und als Web-App im Browser. |
+| [`web/`](web) | Nur für die Web-App: Manifest, Icons, Service Worker (Vorlage) |
 | [`android/`](android) | Android-Projekt: WebView, Sprachausgabe, Spracherkennung, Erinnerung |
 | [`packs/`](packs) | Sprachpakete als JSON, eines pro Sprache ([Format](packs/README.md)) |
 | [`worker/`](worker) | Backend für Cloudflare Workers + D1: Konten, verschlüsselte Spielstände, Freunde, Sprachpakete |
-| [`tools/`](tools) | `packs.mjs` (Pakete prüfen und bauen), `release.sh` (Release auf GitHub) |
-| [`test/`](test) | Tests für Spiellogik und Backend |
+| [`tools/`](tools) | `packs.mjs` (Pakete prüfen und bauen), `web.mjs` (Web-App bauen), `release.sh` (Release auf GitHub) |
+| [`test/`](test) | Tests für Spiellogik, Backend und Web-App |
 
 ```mermaid
 flowchart LR
   subgraph Handy
     A[Android-App<br>WebView + app/] --- P[(Sprachpakete<br>+ Spielstand)]
+    B[Web-App im Browser<br>app/ + web/] --- P
   end
+  B -- "App-Dateien (Service Worker)" --> W
   A -- "HTTPS: verschlüsselter Spielstand,<br>Freunde, Paket-Updates" --> W[Cloudflare Worker]
   W --- D[(D1-Datenbank)]
   W --- S[Sprachpakete<br>statische Dateien]
@@ -78,6 +82,12 @@ npm test
 Das prüft die Sprachpakete und lässt beide Tests laufen. Alles läuft lokal, ohne Konto bei Cloudflare.
 
 Die Oberfläche lässt sich auch im Desktop-Browser ansehen, zum Beispiel mit `npx serve app`. Sprachausgabe, Spracherkennung und Erinnerung gibt es dort aber nur eingeschränkt.
+
+## Web-App
+
+Der Worker liefert unter seiner Adresse auch die Web-App aus. `npm run web` (oder `npm run build` in `worker/`) baut sie aus `app/` und `web/` nach `worker/public/`: Dabei bekommt `index.html` Manifest und Icons, und `sw.js` erhält die Liste aller Dateien und eine Version aus deren Prüfsumme. Mit `npm run deploy` in `worker/` ist eine Änderung an `app/` sofort für alle Web-Nutzer live; installierte Web-Apps laden sie beim nächsten Start. Die Android-App bekommt Änderungen weiterhin nur über ein Release.
+
+Im Browser fehlen die Brücke zum Handy und damit Erinnerung, Widget und Spracherkennung; die Sprachausgabe kommt vom Browser. Freundes-Links (`/f#Code/Name`) bieten „Im Browser lernen“ an und öffnen die Web-App mit `/#f/Code/Name`.
 
 ## Backend einrichten (Cloudflare, kostenlos)
 
@@ -101,7 +111,7 @@ Der kostenlose Tarif von Cloudflare reicht für ein kleines Projekt: 100.000 API
    ```bash
    npm run schema
    ```
-5. Bauen und veröffentlichen. Das baut auch die Sprachpakete:
+5. Bauen und veröffentlichen. Das baut auch die Sprachpakete und die Web-App:
    ```bash
    npm run deploy
    ```
