@@ -10,6 +10,7 @@ function startLesson(ui_, li) {
   const u = UNITS[ui_];
   const { pool, fresh } = lessonWords(u.words, newPerLesson(u));
   const p = { words: pool, sentences: u.sentences, used: new Set(), prefer: new Set([...cs().mistakes, ...fresh.map(w => "w:" + w.id)]) };
+  if (lessonsOf(u) > LESSONS_PER_UNIT) Object.assign(p, { focus: new Set(fresh.map(w => "w:" + w.id)), repeat: WORD_REPEAT, count: {} });
   const queue = withIntros(lessonsFor(u)[li].plan.map(k => generate(k, p)).filter(Boolean), u.sentences);
   beginLesson({ kind: "lesson", unit: ui_, lesson: li, queue });
 }

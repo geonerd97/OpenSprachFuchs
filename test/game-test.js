@@ -88,6 +88,21 @@ console.log("Neue Wörter ohne Beispielsatz:", noSentence.size);
   const h = g.homeHTML();
   if ((h.match(/data-id="0-\d"/g) || []).length !== 7) fail("A1-Einheit zeigt nicht 7 Lektionen");
   g.ui.pop = "0-0"; if (!g.homeHTML().includes("Lektion 1 von 7")) fail("Lektionsinfo zeigt nicht 7"); g.ui.pop = null;
+  // The first four lessons bring in the unit's words in portions and practise each new word three times.
+  const seenNew = new Set();
+  for (let li = 0; li < 4; li++) {
+    g.startLesson(0, li);
+    const all = [g.L.cur, ...g.L.queue], fresh = all.filter(x => x.type === "intro").map(x => x.item.id);
+    if (!fresh.length || fresh.length > Math.ceil(a1[0].words.length / 4)) fail("A1: neue Wörter pro Lektion", li + 1, fresh.length);
+    for (const id of fresh) {
+      seenNew.add(id);
+      const n = all.filter(x => x.type !== "intro").reduce((k, x) => k + g.exWords(x).filter(w => w.id === id).length, 0);
+      if (n < 3) fail("A1: neues Wort zu selten geübt", li + 1, id, n);
+    }
+    for (const id of fresh) g.cs().seen[id] = 1;
+    g.L = null; g.view = "home";
+  }
+  if (seenNew.size !== a1[0].words.length) fail("A1: nach vier Lektionen nicht alle Wörter eingeführt", seenNew.size, a1[0].words.length);
   g.st.courses.fr = { progress: { [a1[0].id]: 4, [a1[1].id]: 4, [a2.id]: 4 }, mistakes: [], bonus: { [a1[0].id]: true, [a2.id]: true } };
   g.migrateLessons();
   const p = g.st.courses.fr.progress;
