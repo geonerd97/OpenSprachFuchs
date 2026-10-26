@@ -81,7 +81,7 @@ const GEN = {
     const w = takeFrom(p, cand, "w"); const opts = shuffle([w, ...sample(cand.filter(x => x !== w), 3)]);
     return { type: "pic", item: w, opts, ans: opts.indexOf(w), key: "w:" + w.id };
   },
-  type: p => { const w = takeFrom(p, p.words, "w"); return { type: "type", word: true, src: w.de, answers: [w.t, ...w.alt], target: w.t, key: "w:" + w.id }; },
+  type: p => { const w = takeFrom(p, p.words, "w"); return { type: "type", word: true, item: w, src: w.de, answers: [w.t, ...w.alt], target: w.t, key: "w:" + w.id }; },
   typeSent: p => { const s = takeFrom(p, p.sentences, "s"); return { type: "type", word: false, src: s.de, answers: [s.t, ...s.tAlt], target: s.t, key: "s:" + s.id }; },
   bank: p => { const s = takeFrom(p, p.sentences, "s"); return { type: "bank", src: s.de, srcLang: "de", answers: [s.t, ...s.tAlt], target: s.t, tiles: makeTiles(s.t, "t", p), key: "s:" + s.id }; },
   bankRev: p => { const s = takeFrom(p, p.sentences, "s"); return { type: "bank", src: s.t, srcLang: CODE, answers: [s.de, ...s.deAlt], target: s.de, tiles: makeTiles(s.de, "de", p), key: "s:" + s.id }; },
@@ -133,6 +133,39 @@ const GEN = {
     return { type: "match", pairs: ws, key: "m" };
   },
 };
+/* ---------- New words (issue #9) ----------
+   A word is asked only after it was introduced: a card shows it with its meaning and in a sentence with tappable words.
+   A lesson brings in at most NEW_PER_LESSON new words; practice rounds stick to known words. */
+const NEW_PER_LESSON = 7;
+const seenWords = () => { const c = cs(); return c.seen || (c.seen = {}); };
+const wordKnown = w => !!(seenWords()[w.id] || srs()["w:" + w.id]);
+function lessonWords(words) {
+  const fresh = words.filter(w => !wordKnown(w)).slice(0, NEW_PER_LESSON);
+  return { pool: words.filter(w => wordKnown(w) || fresh.includes(w)), fresh };
+}
+const knownOr = words => { const k = words.filter(wordKnown); return k.length >= 4 ? k : words; };
+// The shortest sentence of the unit that contains the word (also without its article: "l'hôtel" counts for "hôtel"),
+// otherwise one from the whole course, its dialogues or stories.
+function exampleFor(w, sents) {
+  const pad = x => " " + cleanKey(x).replace(/'/g, "' ") + " ";
+  const forms = [...new Set([w.t, ...w.alt].flatMap(f => [f, bare(f)]).map(f => pad(f).trim()))].filter(Boolean);
+  // Plurals count too: "cows" for "cow", "chevaux" is too far off.
+  const res = forms.map(f => new RegExp(" " + f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?:s|es|x)? "));
+  const has = z => { const t = pad(z.t); return res.some(r => r.test(t)); };
+  const more = () => ALL_SENTS.concat(C.dialogs.flatMap(d => d.turns.flatMap(x => [x.p, ...x.a])), C.stories.flatMap(z => z.lines));
+  for (const pool of [sents, more()]) { const hits = pool.filter(has); if (hits.length) return hits.reduce((a, b) => b.t.length < a.t.length ? b : a); }
+  return null;
+}
+const exWords = ex => ex.type === "match" ? ex.pairs : ex.key && ex.key.startsWith("w:") && ex.item ? [ex.item] : [];
+// Puts an intro card in front of the first task that needs a word not seen yet.
+function withIntros(queue, sents) {
+  const out = [], shown = new Set();
+  for (const ex of queue) {
+    for (const w of exWords(ex)) if (!wordKnown(w) && !shown.has(w.id)) { shown.add(w.id); out.push({ type: "intro", item: w, sent: exampleFor(w, sents), key: "w:" + w.id }); }
+    out.push(ex);
+  }
+  return out;
+}
 const SENT_KINDS = new Set(["bank", "bankRev", "listen", "gap", "typeSent"]);
 function generate(kind, p) {
   const order = [kind, ...(FALLBACK[kind] || []), "choice"];

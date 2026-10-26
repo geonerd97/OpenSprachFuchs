@@ -166,6 +166,13 @@ svg { flex-shrink: 0; }
 .gap-sent { font-size: 1.35rem; font-weight: 700; line-height: 2.4; }
 .slot { display: inline-block; min-width: 5.5rem; border-bottom: 3px solid var(--ink-2); text-align: center; color: var(--accent); padding-inline: .3rem; line-height: 1.4; }
 .hint { color: var(--ink-2); font-size: .98rem; margin: 0; }
+.intro { display: flex; align-items: center; gap: 1rem; border: 2px solid var(--line); border-radius: 18px; padding: 1rem 1.1rem; background: var(--surface); }
+.intro .em { font-size: 3rem; line-height: 1; }
+.intro > div { display: flex; flex-direction: column; min-width: 0; }
+.intro b { font: 800 1.6rem var(--body); overflow-wrap: anywhere; }
+.intro span { color: var(--ink-2); font-size: 1.1rem; font-weight: 700; }
+.intro small { color: var(--ink-2); font-size: .85rem; }
+details.hint summary { cursor: pointer; font-weight: 700; }
 
 .match { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
 .match .col { display: grid; gap: .7rem; align-content: start; }
