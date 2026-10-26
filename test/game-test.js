@@ -7,7 +7,7 @@ const path = require("path");
 const { loadGame, el, packFiles } = require("./harness");
 
 let errors = 0, count = 0;
-const types = {};
+const types = {}, noSentence = new Set();
 const fail = (...a) => { errors++; console.log("FEHLER", ...a); };
 
 const g = loadGame();
@@ -24,7 +24,10 @@ for (const code of codes) {
       count++; types[name] = (types[name] || 0) + 1;
       if (ex.type !== "match" && !/^[ws]:[a-z0-9-]+\.[ws]\d+$/.test(ex.key)) fail("Aufgabe ohne feste ID", code, ex.key);
       g.exerciseHTML(ex);
-      if (ex.type === "match") { L.checked = true; L.res = { ok: true }; L.done++; }
+      // Issue #9: a word is asked only after it was introduced.
+      for (const w of g.exWords(ex)) if (ex.type !== "intro" && !g.wordKnown(w)) fail("Wort ohne Einführung abgefragt", code, ex.type, w.id);
+      if (ex.type === "intro") { if (!L.checked) fail("Einführung lässt sich nicht weiterklicken", code); if (!ex.sent) noSentence.add(code + ":" + ex.item.id); }
+      else if (ex.type === "match") { L.checked = true; L.res = { ok: true }; L.done++; }
       else {
         if (["choice", "pic", "gap"].includes(ex.type)) { L.sel = ex.ans; if (ex.ans < 0) fail("keine richtige Option", code, ex.key); }
         else if (ex.type === "bank" || ex.type === "listen") {
@@ -50,6 +53,29 @@ for (const code of codes) {
   g.ui.tab = "path";
   for (let u = 0; u < g.UNITS().length; u++) { g.ui.modal = "words"; g.ui.wu = u; g.modalHTML(); }
   g.ui.modal = null;
+}
+
+// Words that occur in no sentence of the pack are introduced with their meaning only (count for the pack authors).
+console.log("Neue Wörter ohne Beispielsatz:", noSentence.size);
+// Issue #9: a fresh course starts with an intro card, a lesson brings in a limited number of new words,
+// the progress bar does not count the cards, and practice rounds stick to words already known.
+{
+  g.setCourse("it"); g.st.course = "it"; g.st.courses.it = { progress: {}, mistakes: [] };
+  g.startLesson(0, 0);
+  const all = [g.L.cur, ...g.L.queue], intros = all.filter(x => x.type === "intro");
+  if (g.L.cur.type !== "intro" || !g.exerciseHTML(g.L.cur).includes("Das ist neu für dich")) fail("Lektion beginnt nicht mit einem neuen Wort");
+  if (!intros.length || intros.length > g.NEW_PER_LESSON) fail("Anzahl neuer Wörter pro Lektion", intros.length);
+  if (g.L.total !== all.length - intros.length) fail("Einführungen zählen im Fortschritt mit");
+  if (!/class="hw/.test(g.exerciseHTML(g.L.cur))) fail("Beispielsatz ohne antippbare Wörter");
+  answerAll(g.L);
+  const known = g.UNITS()[0].words.filter(g.wordKnown).map(w => w.id);
+  if (!intros.every(x => known.includes(x.item.id))) fail("Eingeführte Wörter nicht gemerkt");
+  g.view = "home"; g.startTraining(true);
+  for (const ex of [g.L.cur, ...g.L.queue]) for (const w of g.exWords(ex)) if (!known.includes(w.id)) fail("Training fragt unbekanntes Wort", ex.type, w.id);
+  g.view = "home";
+  g.resetCourseFrom(0);
+  if (Object.keys(g.cs().seen || {}).length) fail("Zurücksetzen vergisst die eingeführten Wörter nicht");
+  g.st.courses.it = { progress: {}, mistakes: [] };
 }
 
 // Tap hints: every word in a sentence or dialogue line can be tapped for a translation (numbers aside).
@@ -116,6 +142,7 @@ for (const code of codes) {
 function answerAll(L) {
   for (let guard = 0; guard < 80 && g.view === "lesson"; guard++) {
     const ex = L.cur;
+    if (ex.type === "intro") { g.cont(); continue; }
     if (ex.type === "match") { L.checked = true; L.res = { ok: true }; L.done++; L.right++; }
     else {
       if (["choice", "pic", "gap"].includes(ex.type)) L.sel = ex.ans;

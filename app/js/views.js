@@ -151,12 +151,12 @@ function exerciseHTML(ex) {
         <div class="choices">${ex.opts.map((o, i) => `<button class="choice ${optClass(i, ex)}" data-act="sel" data-i="${i}"><span class="num">${i + 1}</span>${esc(o.de)}</button>`).join("")}</div>
         <div class="row" style="justify-content:center"><button class="btn ghost" data-act="nolisten">Kann gerade nicht hören</button></div>`;
       const head = ex.rev ? `Was bedeutet „${esc(q)}“?` : `Wie sagt man „${esc(q)}“?`;
-      return `<div class="tag">${ex.rev ? "Neues Wort" : "Wortschatz"}</div><h2>${head}</h2>
+      return `<div class="tag">Wortschatz</div><h2>${head}</h2>
         ${ex.rev ? `<div class="row" style="align-items:center"><button class="speak" data-act="say" data-t="${esc(q)}" aria-label="Vorlesen">${I.speaker(22)}</button></div>` : ""}
         <div class="choices">${ex.opts.map((o, i) => `<button class="choice ${optClass(i, ex)}" data-act="sel" data-i="${i}"${ex.rev ? "" : ` data-say="${esc(o.t)}"`}><span class="num">${i + 1}</span><span>${ex.rev ? esc(o.de) : esc(o.t)}</span></button>`).join("")}</div>`;
     }
     case "pic":
-      return `<div class="tag">Neues Wort</div><h2>Welches Bild ist „${esc(ex.item.de)}“?</h2>
+      return `<div class="tag">Bilder</div><h2>Welches Bild ist „${esc(ex.item.de)}“?</h2>
         <div class="pics">${ex.opts.map((o, i) => `<button class="pic ${optClass(i, ex)}" data-act="sel" data-i="${i}" data-say="${esc(o.t)}"><span class="em" aria-hidden="true">${o.pic}</span><span>${esc(o.t)}</span></button>`).join("")}</div>`;
     case "type":
       return `<div class="tag">Selbst schreiben</div><h2>${ex.word ? `Schreib das auf ${C.name}` : `Übersetze ins ${C.name}e`}</h2>${bubble(ex.src, "de")}
@@ -189,6 +189,14 @@ function exerciseHTML(ex) {
         return `<button class="choice ${wrong ? "wrong" : ""}" data-act="dlg" data-i="${i}" ${wrong ? "disabled" : ""}><span class="num">${i + 1}</span><span>${esc(l.t)}${wrong ? `<small class="tr">„${esc(l.de)}“ passt hier nicht.</small>` : ""}</span></button>`; }).join("")}</div>` : "";
       return `<div class="tag">Gespräch</div><h2>${sc.em} ${esc(sc.title)}</h2><div class="chat">${bubbles}</div>${hintBox()}${opts}`;
     }
+    case "intro": {
+      const w = ex.item, z = ex.sent;
+      return `<div class="tag">Neues Wort</div><h2>Das ist neu für dich</h2>
+        <div class="intro">${w.pic ? `<span class="em" aria-hidden="true">${w.pic}</span>` : ""}
+          <button class="speak" data-act="say" data-t="${esc(w.t)}" aria-label="Vorlesen">${I.speaker(22)}</button>
+          <div><b lang="${CODE}">${esc(w.t)}</b><span>${esc(w.de)}</span>${w.alt.length ? `<small>auch: ${w.alt.map(esc).join(", ")}</small>` : ""}</div></div>
+        ${z ? `<p class="muted" style="margin:0">So kommt es im Satz vor:</p>${bubble(z.t, CODE)}<details class="hint"><summary>Übersetzung</summary>${esc(z.de)}</details>` : ""}`;
+    }
     case "game": return gameHTML();
     case "match": {
       const m = L.m, cls = (side, i) => m.done.has(i) ? "done" : (m.flash && m.flash[side] === i) ? "flash" : (m.okFlash === i) ? "ok" : (m[side] === i ? "sel" : "");
@@ -206,6 +214,8 @@ function footerHTML() {
     ? `<footer class="l-foot ok"><div class="l-foot-in"><div class="fb" role="status"><span class="ico">${I.check(32)}</span><div><h3>Gespräch geschafft!</h3>${L.combo >= 3 ? `<p class="combo-note">🔥 ${L.combo} in Folge</p>` : ""}</div></div>
       <button class="btn good" id="contBtn" data-act="cont">Weiter</button></div></footer>`
     : `<footer class="l-foot"><div class="l-foot-in"><p class="muted" style="margin:0">Wähle die passende Antwort. Unterstrichene Wörter kannst du antippen.</p></div></footer>`;
+  if (ex && ex.type === "intro") return `<footer class="l-foot"><div class="l-foot-in"><p class="muted" style="margin:0">${ex.sent ? "Unterstrichene Wörter kannst du antippen." : "Hör es dir an und merk es dir."}</p>
+    <button class="btn good" id="contBtn" data-act="cont">Weiter</button></div></footer>`;
   if (L.kind === "blitz") return `<footer class="l-foot ${L.checked ? (L.res.ok ? "ok" : "bad") : ""}"><div class="l-foot-in"><p style="margin:0;font-weight:800">Punkte: ${L.score}
     <span class="muted" style="font-weight:600">· Rekord in ${esc(C.name)}: ${cs().blitzBest || 0}</span></p>
     ${L.checked && !L.res.ok ? `<p style="margin:0;font-weight:700">${esc(correctText(ex))}</p>` : ""}</div></footer>`;

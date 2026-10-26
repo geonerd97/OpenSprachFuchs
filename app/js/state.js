@@ -132,6 +132,7 @@ function resetCourseFrom(from) {
   for (const key of Object.keys(c.srs || {})) if (inReset(key)) delete c.srs[key];
   c.mistakes = (c.mistakes || []).filter(key => !inReset(key));
   for (const id of ids) if (c.unitStats) delete c.unitStats[id];
+  for (const u of UNITS.slice(from)) for (const w of u.words) if (c.seen) delete c.seen[w.id];
   save();
 }
 /* Practising a language keeps it fresh. Every full 14 days without a finished round in a started language

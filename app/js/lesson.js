@@ -8,16 +8,17 @@ function startLesson(ui_, li) {
   syncHearts();
   if (st.settings.hearts && st.hearts <= 0) { ui.modal = "hearts"; render(); return; }
   const u = UNITS[ui_];
-  const p = { words: u.words, sentences: u.sentences, used: new Set(), prefer: new Set(cs().mistakes) };
-  const queue = PLANS[li].map(k => generate(k, p)).filter(Boolean);
+  const { pool, fresh } = lessonWords(u.words);
+  const p = { words: pool, sentences: u.sentences, used: new Set(), prefer: new Set([...cs().mistakes, ...fresh.map(w => "w:" + w.id)]) };
+  const queue = withIntros(PLANS[li].map(k => generate(k, p)).filter(Boolean), u.sentences);
   beginLesson({ kind: "lesson", unit: ui_, lesson: li, queue });
 }
 function startTraining(vocab, refill) {
   const open = UNITS.filter((u, i) => unitUnlocked(i) && (done(u.id) > 0 || i === 0));
   const due = dueWords().map(w => "w:" + w.id);
-  const p = { words: open.flatMap(u => u.words), sentences: open.flatMap(u => u.sentences), used: new Set(), prefer: new Set([...cs().mistakes, ...due]) };
+  const p = { words: knownOr(open.flatMap(u => u.words)), sentences: open.flatMap(u => u.sentences), used: new Set(), prefer: new Set([...cs().mistakes, ...due]) };
   const kinds = refill ? REFILL_PLAN : vocab ? VOCAB_PLAN : shuffle(MIX_PLAN);
-  beginLesson({ kind: "training", vocab: !!vocab || !!refill, refill: !!refill, queue: kinds.map(k => generate(k, p)).filter(Boolean) });
+  beginLesson({ kind: "training", vocab: !!vocab || !!refill, refill: !!refill, queue: withIntros(kinds.map(k => generate(k, p)).filter(Boolean), p.sentences) });
 }
 const PLACEMENT_PLAN = ["bank", "typeSent", "listenWord", "bankRev", "gap", "type", "listen", "choiceRev", "typeSent", "bankRev", "type", "bank"];
 const PLACEMENT_MAX = 3;
@@ -38,7 +39,7 @@ const BLITZ_MS = 60 * 1000, BLITZ_KINDS = ["choice", "choiceRev", "choice", "cho
 let blitzTimer = 0;
 function startBlitz() {
   const open = openUnits();
-  const p = { words: open.flatMap(u => u.words), sentences: [], used: new Set(), prefer: new Set(dueWords().map(w => "w:" + w.id)) };
+  const p = { words: knownOr(open.flatMap(u => u.words)), sentences: [], used: new Set(), prefer: new Set(dueWords().map(w => "w:" + w.id)) };
   beginLesson({ kind: "blitz", pool: p, queue: [blitzTask(p)], score: 0, endsAt: Date.now() + BLITZ_MS });
   clearInterval(blitzTimer);
   blitzTimer = setInterval(blitzTick, 250);
@@ -109,7 +110,7 @@ function startMaster(u) {
 }
 function beginLesson(o) {
   ui.pop = null; ui.modal = null;
-  L = Object.assign(o, { total: o.queue.length, done: 0, right: 0, mistakes: 0, startedAt: Date.now(), cur: null, checked: false, res: null });
+  L = Object.assign(o, { total: o.queue.filter(x => x.type !== "intro").length, done: 0, right: 0, mistakes: 0, startedAt: Date.now(), cur: null, checked: false, res: null });
   nextExercise(); view = "lesson"; render(); window.scrollTo(0, 0);
 }
 function nextExercise() {
@@ -120,7 +121,9 @@ function nextExercise() {
     const n = L.cur.pairs.length;
     L.m = { left: shuffle([...Array(n).keys()]), right: shuffle([...Array(n).keys()]), done: new Set(), l: null, r: null, flash: null, okFlash: null };
   }
+  if (L.cur && L.cur.type === "intro") { seenWords()[L.cur.item.id] = 1; L.checked = true; L.res = { ok: true, given: "" }; save(); }
   if (listenPaused() || noVoice()) L.cur = degradeAudio(L.cur);
+  else if (L.cur && L.cur.type === "intro") setTimeout(() => speak(L.cur.item.t), 350);
   else if (L.cur && L.cur.type === "listen") setTimeout(() => speak(L.cur.text), 350);
   else if (L.cur && L.cur.audio) setTimeout(() => speak(L.cur.item.t), 350);
 }
