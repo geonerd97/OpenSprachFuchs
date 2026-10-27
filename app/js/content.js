@@ -117,16 +117,19 @@ function setCourse(code) {
       addHint(HINT_DE, p, w.t); addHint(HINT_DE, p.replace(/^(der|die|das|ein|eine) /i, ""), w.t);
     }
   }
-  for (const [k, v] of Object.entries(C.gloss)) if (!HINT_T[cleanKey(k)]) addHint(HINT_T, k, v);
+  // The glossary is written for sentences, so it wins over the vocabulary ("un" = ein, not eins) and holds expressions
+  // whose words mean something else on their own ("ça va" = es geht, "il y a" = es gibt).
+  for (const [k, v] of Object.entries(C.gloss)) { delete HINT_T[cleanKey(k)]; addHint(HINT_T, k, v); }
   // German words in sentences (for translating into the language): the glossary read backwards ("is = ist" -> ist: is),
-  // for every German word the vocabulary does not cover. Explanations in brackets and longer phrases are left out.
+  // for every German word the vocabulary does not cover. Explanations in brackets, longer phrases and the glossary's
+  // expressions ("il y a" = es gibt) are left out; German expressions come from glossaryDe.
   const back = {};
-  for (const [k, v] of Object.entries(C.gloss)) for (const part of String(v).split("/")) {
+  for (const [k, v] of Object.entries(C.gloss)) if (!k.includes(" ")) for (const part of String(v).split("/")) {
     const p = part.replace(/\(.*?\)/g, "").trim();
-    if (p && p.split(" ").length <= 3 && !HINT_DE[cleanKey(p)]) addHint(back, p, k);
+    if (p && p.split(" ").length <= 3 && !HINT_DE[cleanKey(p)]) { addHint(back, p, k); addHint(back, p.replace(/^(der|die|das) /i, ""), k); }
   }
   for (const [k, v] of Object.entries(back)) if (!HINT_DE[k]) HINT_DE[k] = v;
-  for (const [k, v] of Object.entries(C.glossDe)) if (!HINT_DE[cleanKey(k)]) addHint(HINT_DE, k, v);
+  for (const [k, v] of Object.entries(C.glossDe)) { delete HINT_DE[cleanKey(k)]; addHint(HINT_DE, k, v); }
   KEY_UNIT = {};
   for (const u of UNITS) for (const x of [...u.words.map(w => "w:" + w.id), ...u.sentences.map(z => "s:" + z.id)]) KEY_UNIT[x] = u.id;
 }
