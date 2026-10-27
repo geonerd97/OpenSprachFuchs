@@ -17,7 +17,7 @@ const HEAD = `<link rel="manifest" href="manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="SprachFuchs">
-<meta name="description" content="Freie Sprachlern-App für Deutschsprachige: Englisch, Französisch, Spanisch, Italienisch und Portugiesisch. Ohne Werbung, ohne Tracking.">
+<meta name="description" content="Freie Sprachlern-App für Deutschsprachige: Englisch, Französisch, Spanisch, Italienisch, Portugiesisch und Kroatisch. Ohne Werbung, ohne Tracking.">
 `;
 const HEADERS = `/
   Cache-Control: no-cache
