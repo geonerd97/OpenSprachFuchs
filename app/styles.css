@@ -58,8 +58,9 @@ svg { flex-shrink: 0; }
 .iconbtn:hover { background: var(--surface-2); }
 
 /* Home */
-.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(8px); border-bottom: 2px solid var(--line); }
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); /* fallback: Safari < 16.2 has no color-mix */
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 2px solid var(--line); }
 .topbar-in { max-width: 1040px; margin: 0 auto; padding: .7rem 16px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .brand { display: flex; align-items: center; gap: .55rem; font-family: var(--display); font-weight: 800; font-size: 1.45rem; letter-spacing: -.02em; }
 .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; }
@@ -340,12 +341,14 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 
 /* Level tabs above the path: A1, A2, B1, B2 with progress */
 .levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: .45rem; }
-.level { border: 2px solid var(--line); border-bottom-width: 4px; border-radius: 14px; background: var(--surface); padding: .6rem .3rem .55rem; display: grid; justify-items: center; gap: .4rem; min-width: 0; }
+.level { border: 2px solid var(--line); border-bottom-width: 4px; border-radius: 14px; background: var(--surface); padding: .6rem .3rem .55rem; display: grid; justify-items: center; gap: .4rem; min-width: 0; overflow: hidden; }
 .level b { font-size: .8rem; font-weight: 800; display: inline-flex; align-items: center; gap: .15rem; max-width: 100%; color: var(--ink-2); }
 .level b span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 /* A locked level shows its lock below the name, where the progress bar would be, so it stays inside on narrow screens (issue #15). */
 .level .lock { display: grid; place-items: center; height: 12px; color: var(--ink-2); }
 @media (max-width: 400px) { .level { padding-inline: .2rem; } .level b { font-size: .72rem; } }
+/* Very narrow screens (iPod touch, iPhone SE 1st gen: 320px): four tabs can't fit "Mittelstufe", so two rows of two. */
+@media (max-width: 360px) { .levels { grid-template-columns: repeat(2, minmax(0, 1fr)); } .level b { font-size: .8rem; } }
 .level b svg { flex: none; }
 .level .meter { width: 80%; height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
 .level .meter i { display: block; height: 100%; background: var(--good); border-radius: 99px; }
