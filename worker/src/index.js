@@ -120,6 +120,9 @@ async function putSave(acc, request, env) {
   if (body.data.length > MAX_SAVE_CHARS) return fail(413, "too_large");
   if (!/^[A-Za-z0-9+/=]+$/.test(body.data)) return fail(400, "bad_save");
   if (acc.saved_at && acc.saved_at > body.savedAt) return json({ error: "newer", savedAt: acc.saved_at }, 409);
+  // base: the backup's savedAt this device last matched. If another device saved since, the upload must not replace
+  // that save (a phone resumed with old progress in memory would otherwise win by its clock); the app merges first.
+  if (typeof body.base === "number" && acc.saved_at && acc.saved_at !== body.base) return json({ error: "changed", savedAt: acc.saved_at }, 409);
   await env.DB.prepare("UPDATE accounts SET save = ?, saved_at = ? WHERE id = ?").bind(body.data, Math.round(body.savedAt), acc.id).run();
   return json({ ok: true });
 }

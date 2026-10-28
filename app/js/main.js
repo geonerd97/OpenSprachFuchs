@@ -242,5 +242,8 @@ if (WEB && window.addEventListener) window.addEventListener("hashchange", () => 
 if (WEB && navigator.serviceWorker) navigator.serviceWorker.register("sw.js").catch(() => {});
 if (window.addEventListener) window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); ui.installPrompt = e; render(); });
 window.opensprachfuchsLink = url => { handleFriendLink(url); };
-window.opensprachfuchsResume = () => checkVoice();
+/* Back in the foreground (Android: onResume; browser: tab visible again): another device may have saved meanwhile. */
+const resumeSync = () => { if (acct.aes && !acct.pending) pullSave().then(() => { if (view === "home" && !ui.modal) render(); }); };
+window.opensprachfuchsResume = () => { checkVoice(); resumeSync(); };
+if (WEB && document.addEventListener) document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") resumeSync(); });
 initAccount().then(() => { if (startLink) handleFriendLink(startLink); sendReports(); checkPackUpdates(); checkAppUpdate(); });

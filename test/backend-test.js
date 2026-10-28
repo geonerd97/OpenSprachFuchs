@@ -48,6 +48,10 @@ function fakeD1() {
   ok(r.status === 200, "Speichern", r.status);
   r = await call(B + "api/save", { method: "PUT", headers: auth, body: JSON.stringify({ savedAt: 4, data: "QUJD" }) });
   ok(r.status === 409, "älterer Spielstand überschreibt neueren");
+  r = await call(B + "api/save", { method: "PUT", headers: auth, body: JSON.stringify({ savedAt: 7, base: 3, data: "QUJD" }) });
+  ok(r.status === 409 && (await r.json()).error === "changed", "Spielstand trotz geänderter Sicherung überschrieben");
+  r = await call(B + "api/save", { method: "PUT", headers: auth, body: JSON.stringify({ savedAt: 6, base: 5, data: "QUJD" }) });
+  ok(r.status === 200, "Speichern mit passender Basis", r.status);
   r = await call(B + "api/save", { method: "PUT", headers: auth, body: JSON.stringify({ savedAt: 9, data: "x".repeat(800000) }) });
   ok(r.status === 413, "zu großer Spielstand angenommen", r.status);
   r = await call(B + "api/report", { method: "POST", body: JSON.stringify({ course: "en", task: "hallo", expected: "hello", note: "test" }) });
@@ -108,6 +112,14 @@ function fakeD1() {
     const c3 = anna.cs("en"); c3.progress = {}; anna.st.savedAt = Date.now() + 9500; // the phone that lost everything
     await anna.pullSave();
     ok(anna.st.courses.en.progress.basics === 5, "Wiederhergestellte Sicherung überschrieben", JSON.stringify(anna.st.courses.en.progress));
+    // A phone brought back from the background still has old progress in memory and saves (with a newer clock) before
+    // it pulled: the upload names the backup it last saw, the server refuses it, and the phone merges instead of replacing.
+    await anna2.pullSave(); await anna.pullSave();
+    anna.cs("en").progress.travel = 4; anna.st.savedAt = Date.now() + 20000; await anna.pushSave();
+    anna2.st.xp += 1; anna2.st.savedAt = Date.now() + 30000; await anna2.pushSave(); // stale phone, never pulled
+    ok(anna2.st.courses.en.progress.travel === 4, "Veraltetes Handy: nicht zusammengeführt", JSON.stringify(anna2.st.courses.en.progress));
+    await anna2.pushSave(); await anna.pullSave();
+    ok(anna.st.courses.en.progress.travel === 4 && anna.st.courses.en.progress.basics === 5, "Veraltetes Handy hat die Sicherung überschrieben", JSON.stringify(anna.st.courses.en.progress));
   }
   const wrong = loadGame({}, { fetch: appFetch });
   ok(!(await wrong.signIn("ZZZZ-ZZZZ-ZZZZ-ZZZZ")) && /kein Konto/.test(wrong.acct.note), "App: falscher Schlüssel angenommen");
