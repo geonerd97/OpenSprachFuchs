@@ -73,7 +73,7 @@ async function downloadPack(code) {
     const r = await fetchTimeout(PACK_INDEX.base + `${code}.json`, { cache: "no-store" });
     if (!entry || !r.ok || !installPack(await r.text(), entry.sha256)) throw new Error("pack");
     if (!COURSES[st.course]) st.course = code;
-    if (CODE === code || !UNITS.length) setCourse(st.course);
+    if (CODE === code || st.course === code || !UNITS.length) setCourse(st.course); // st.course: the language of a save adopted before its pack was here
     save();
   } catch (e) { packs.error = "Das Laden hat nicht geklappt. Bitte versuch es noch einmal."; }
   packs.busy = ""; render();
@@ -83,7 +83,9 @@ const packUpdates = () => PACK_INDEX && PACK_INDEX.remote ? PACK_INDEX.packs.fil
 async function checkPackUpdates() {
   try { await fetchPackIndex(); } catch (e) { return; }
   // A language the saved progress uses but this device lacks (e.g. after signing in with a key) is fetched right away.
-  for (const code of Object.keys(st.courses)) if (!COURSES[code] && PACK_INDEX.packs.some(p => p.code === code) && courseDone(code) > 0) await downloadPack(code);
+  // (Progress is checked on the saved values: courseDone() counts only units of installed packs and is 0 here.)
+  const used = code => code === st.course || Object.values((st.courses[code] || {}).progress || {}).some(v => v > 0);
+  for (const code of Object.keys(st.courses)) if (!COURSES[code] && PACK_INDEX.packs.some(p => p.code === code) && used(code)) await downloadPack(code);
   if (view === "home" && !ui.modal) render();
 }
 

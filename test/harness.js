@@ -42,9 +42,9 @@ function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl
     claimQuests, dayRec, applyDecay, resetCourseFrom, cs, startTraining, pauseListening, resumeListening, fromSaved, mergeSaves, MAX_HEARTS, startPlacement, cont, statsHTML,
     resultHTML, BADGES, done, speak, generate, startRecognition, pauseSpeaking, COURSES, acct, friends, createAccount, signIn, initAccount, pushSave, pullSave,
     deleteAccount, signOut, addFriend, acceptFriend, removeFriend, sendGift, claimGifts, loadFriends, reportLearningDay, sendReports, newKey, normalizeKey,
-    deriveKeys, encryptState, decryptState, pairStreak, checkAppUpdate, hintSpans, exampleFor, unitUnlocked, startBonus, bonusKind, gameWords, wordSearchTap, scrambleTap, memoryTap, guessTap, guessNext, storyToQuestions, storyAnswer, bonusDone, setMyName, friendLink, parseFriendLink, handleFriendLink, keyReminderDue, checkKeyEnd, qrMatrix, qrSVG, wordKnown, exWords, NEW_PER_LESSON, lessonsOf, lessonsTotal, migrateLessons, fetchPackIndex, downloadPack, removePack, packUpdates, installPack, PACK_SHA,
+    deriveKeys, encryptState, decryptState, pairStreak, checkAppUpdate, hintSpans, exampleFor, unitUnlocked, startBonus, bonusKind, gameWords, wordSearchTap, scrambleTap, memoryTap, guessTap, guessNext, storyToQuestions, storyAnswer, bonusDone, setMyName, friendLink, parseFriendLink, handleFriendLink, keyReminderDue, checkKeyEnd, qrMatrix, qrSVG, wordKnown, exWords, NEW_PER_LESSON, lessonsOf, lessonsTotal, migrateLessons, fetchPackIndex, checkPackUpdates, downloadPack, removePack, packUpdates, installPack, PACK_SHA,
     get PACK_INDEX() { return PACK_INDEX }, get PRIVACY_HTML() { return PRIVACY_HTML }, get result() { return result }, get L() { return L }, get st() { return st }, set st(v) { st = v },
-    get view() { return view }, set view(v) { view = v }, UNITS: () => UNITS`;
+    get CODE() { return CODE }, get view() { return view }, set view(v) { view = v }, UNITS: () => UNITS`;
   const g = new Function("localStorage", SRC + `;return { ${exportsList} };`)(localStorage);
   g.click = (act, data = {}) => clickHandler({ target: { closest: () => ({ dataset: Object.assign({ act }, data) }) } });
   g.store = store;

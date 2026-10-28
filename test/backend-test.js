@@ -214,6 +214,33 @@ function fakeD1() {
   await carl.sendReports();
   ok(!carl.st.reportQueue.length, "Meldungen nicht verschickt");
 
+  // Signing in on a new device (e.g. the web app on an iPod) where only another language is installed: the language
+  // with the progress is downloaded and shown, not the empty one that happened to be there.
+  {
+    carl.st.course = "fr"; carl.cs("fr").progress = { basics: 3 }; carl.st.savedAt = Date.now(); await carl.pushSave();
+    const ptOnly = {};
+    const ptText = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, "packs", "pt.json"), "utf8")));
+    ptOnly["opensprachfuchs-pack-pt"] = ptText;
+    ptOnly["opensprachfuchs-packs"] = JSON.stringify({ pt: require("crypto").createHash("sha256").update(ptText).digest("hex") });
+    ptOnly["opensprachfuchs-state"] = JSON.stringify({ onboarded: true, course: "pt", savedAt: 1 });
+    const packIndex = { packs: ["en", "fr", "es", "it", "pt", "hr"].map(code => {
+      const text = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, "packs", code + ".json"), "utf8")));
+      return { code, name: code, short: code.toUpperCase(), color: "#000", note: "", units: 80, words: 1, size: 1, sha256: require("crypto").createHash("sha256").update(text).digest("hex") };
+    }) };
+    const ipod = loadGame({}, { store: ptOnly, packs: false, fetch: async (u, o) => {
+      const url = String(u);
+      if (url.includes("/api/")) return appFetch(u, o);
+      if (url.endsWith("packs/index.json")) return new Response(JSON.stringify(packIndex));
+      const m = url.match(/packs\/(\w+)\.json$/);
+      return m ? new Response(JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, "packs", m[1] + ".json"), "utf8")))) : new Response("", { status: 404 });
+    } });
+    ok(Object.keys(ipod.COURSES).join() === "pt", "Neues Gerät: falsche Pakete", Object.keys(ipod.COURSES));
+    ok(await ipod.signIn(carl.acct.key), "Neues Gerät: Anmelden", ipod.acct.note);
+    await ipod.checkPackUpdates();
+    ok(ipod.COURSES.fr && ipod.CODE === "fr" && ipod.st.course === "fr" && ipod.st.courses.fr.progress.basics === 3,
+      "Neues Gerät: Sprache mit Fortschritt nicht geladen oder nicht angezeigt", Object.keys(ipod.COURSES), ipod.CODE, ipod.st.course);
+  }
+
   // Packs: the index from the backend, updates detected by checksum, and the bundled copy when offline.
   const idx = { packs: [{ code: "en", name: "Englisch", short: "EN", color: "#2456E8", note: "", units: 20, words: 1, size: 1, sha256: "neu" }] };
   const packApp = loadGame({}, { fetch: async u => (String(u).endsWith("index.json") ? new Response(JSON.stringify(idx)) : new Response("nope", { status: 404 })) });
