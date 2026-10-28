@@ -161,13 +161,16 @@ function correctText(ex) {
   if (ex.type === "gap") return ex.full;
   return ex.target;
 }
-/* Sentences with tappable words: known words (longest phrase first, up to three words) show a translation. */
+/* Sentences with tappable words: known words (longest phrase first, up to five words) show a translation.
+   A phrase never reaches across a comma or the end of a sentence (closing quotes still belong to it). */
+const HINT_PHRASE = 5;
 function hintSpans(text, lang) {
   if (L && L.kind === "master") return esc(text);
   const dict = lang === "de" ? HINT_DE : HINT_T, toks = String(text).split(" ").filter(Boolean), out = [];
   for (let i = 0; i < toks.length;) {
-    let hit = null;
-    for (let n = Math.min(3, toks.length - i); n >= 1 && !hit; n--) {
+    let hit = null, max = 1;
+    while (max < HINT_PHRASE && i + max < toks.length && !(/[,.;:!?…]["“”»)]*$/.test(toks[i + max - 1]) && /\p{L}/u.test(toks[i + max]))) max++;
+    for (let n = max; n >= 1 && !hit; n--) {
       const words = toks.slice(i, i + n).join(" "), h = dict[cleanKey(words)];
       if (h) hit = { words, n, h: h.join(" / ") };
     }

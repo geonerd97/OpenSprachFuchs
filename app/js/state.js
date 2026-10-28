@@ -16,6 +16,41 @@ function fromSaved(saved) {
   s.hearts = Math.min(MAX_HEARTS, s.hearts); // saves from before the hearts were halved
   return s;
 }
+/* Two devices with the same key (or the app and the web app) can both change the progress before they meet the backup.
+   Then neither copy may simply replace the other (issues #16, #17): the saves are merged, keeping the furthest progress.
+   Objects are merged key by key, numbers keep the larger value, flags stay set, dates (YYYY-MM-DD) keep the later
+   one, other text keeps the newer save's value unless it is empty, lists are joined. Settings, the report queue and
+   the daily quests come whole from the newer save (the quests from the later day). */
+const isDate = v => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v);
+function mergeValue(a, b) { // b belongs to the newer save
+  if (a === undefined || a === null) return b;
+  if (b === undefined || b === null) return a;
+  if (Array.isArray(a) && Array.isArray(b)) {
+    const out = [...b];
+    for (const x of a) if (!out.some(y => JSON.stringify(y) === JSON.stringify(x))) out.push(x);
+    return out;
+  }
+  if (typeof a === "object" && typeof b === "object" && !Array.isArray(a) && !Array.isArray(b)) {
+    const out = {};
+    for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) out[k] = mergeValue(a[k], b[k]);
+    return out;
+  }
+  if (typeof a === "number" && typeof b === "number") return Math.max(a, b);
+  if (typeof a === "boolean" && typeof b === "boolean") return a || b;
+  if (isDate(a) && isDate(b)) return a > b ? a : b;
+  return b === "" ? a : b;
+}
+function mergeSaves(x, y) {
+  const [older, newer] = (x.savedAt || 0) > (y.savedAt || 0) ? [y, x] : [x, y];
+  const m = mergeValue(older, newer);
+  m.settings = Object.assign({}, older.settings, newer.settings);
+  m.reportQueue = newer.reportQueue || [];
+  const qo = older.quests, qn = newer.quests;
+  m.quests = qo && qn && qo.day === qn.day ? mergeValue(qo, qn) : (qo && qn ? (qo.day > qn.day ? qo : qn) : qn || qo);
+  if (m.quests && qo && qn && qo.day === qn.day) m.quests.ids = qn.ids;
+  if (older.day !== newer.day) m.dayLessons = (older.day || "") > (newer.day || "") ? older.dayLessons : newer.dayLessons;
+  return m;
+}
 let st;
 try { st = fromSaved(JSON.parse(localStorage.getItem(STORE))); } catch (e) { st = fromSaved(null); }
 loadInstalledPacks();
