@@ -143,9 +143,9 @@ async function pushSave() {
   acct.busy = true;
   try {
     const at = st.savedAt || Date.now();
-    const r = await api("PUT", "save", { savedAt: at, data: await encryptState(st, acct.aes) });
+    const r = await api("PUT", "save", { savedAt: at, base: st.syncedAt || 0, data: await encryptState(st, acct.aes) });
     if (r.status === 200) { acct.status = "ok"; markSynced(at); }
-    else if (r.status === 409) await pullSave(); // another device saved something newer meanwhile
+    else if (r.status === 409) await pullSave(); // another device saved since this one last synced: merge, then upload
     else if (r.status === 401) acct.status = "gone";
     else acct.status = "offline";
   } catch (e) { acct.status = "offline"; }
