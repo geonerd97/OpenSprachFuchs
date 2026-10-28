@@ -39,7 +39,7 @@ function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl
   global.fetch = fetchImpl || (() => Promise.reject(new Error("offline")));
   const exportsList = `nextExercise, setCourse, startLesson, exerciseHTML, footerHTML, evaluate, homeHTML, modalHTML, render, srs, srsUpdate, dueWords, ui, check,
     startDialog, dialogPick, dialogsFor, startMaster, masteryOf, buy, shopItems, shownStreak, finish, startBlitz, blitzAnswer, blitzTask, blitzTick, todaysQuests,
-    claimQuests, dayRec, applyDecay, resetCourseFrom, cs, startTraining, pauseListening, resumeListening, fromSaved, MAX_HEARTS, startPlacement, cont, statsHTML,
+    claimQuests, dayRec, applyDecay, resetCourseFrom, cs, startTraining, pauseListening, resumeListening, fromSaved, mergeSaves, MAX_HEARTS, startPlacement, cont, statsHTML,
     resultHTML, BADGES, done, speak, generate, startRecognition, pauseSpeaking, COURSES, acct, friends, createAccount, signIn, initAccount, pushSave, pullSave,
     deleteAccount, signOut, addFriend, acceptFriend, removeFriend, sendGift, claimGifts, loadFriends, reportLearningDay, sendReports, newKey, normalizeKey,
     deriveKeys, encryptState, decryptState, pairStreak, checkAppUpdate, hintSpans, exampleFor, unitUnlocked, startBonus, bonusKind, gameWords, wordSearchTap, scrambleTap, memoryTap, guessTap, guessNext, storyToQuestions, storyAnswer, bonusDone, setMyName, friendLink, parseFriendLink, handleFriendLink, keyReminderDue, checkKeyEnd, qrMatrix, qrSVG, wordKnown, exWords, NEW_PER_LESSON, lessonsOf, lessonsTotal, migrateLessons, fetchPackIndex, downloadPack, removePack, packUpdates, installPack, PACK_SHA,

@@ -82,6 +82,33 @@ function fakeD1() {
   ok(await anna2.signIn(anna.acct.key.toLowerCase().replace(/-/g, " ").replace(/0/g, "o")), "App: Anmelden mit Schlüssel", anna2.acct.note);
   ok(anna2.st.xp === 123, "App: Spielstand nicht übernommen", anna2.st.xp);
   ok(anna2.st.keyChecked, "Anmelden mit Schlüssel zählt nicht als geprüft");
+  // Issues #16, #17: both phones change the progress before they meet the backup (e.g. a phone that was off for a while
+  // saves on start). Nothing may get lost: the saves are merged instead of one replacing the other.
+  {
+    const t = Date.now();
+    const c1 = anna.cs("en"); c1.progress = { basics: 5 }; c1.seen = { "basics.w01": 1 };
+    anna.st.myName = "Anna"; anna.st.friends = { f1: "Ben" }; anna.st.savedAt = t + 1000; await anna.pushSave();
+    const c2 = anna2.cs("en"); c2.progress = { basics: 2, food: 1 }; c2.seen = { "food.w01": 1 };
+    anna2.st.friends = { f2: "Cleo" }; anna2.st.xp = 500; anna2.st.savedAt = t + 2000; // the stale phone saves on start
+    await anna2.pullSave(); await anna2.pushSave();
+    const m = anna2.st, mc = m.courses.en;
+    ok(mc.progress.basics === 5 && mc.progress.food === 1 && mc.seen["basics.w01"] && mc.seen["food.w01"], "Zusammenführen: Fortschritt verloren", JSON.stringify(mc.progress));
+    ok(m.myName === "Anna" && m.friends.f1 === "Ben" && m.friends.f2 === "Cleo" && m.xp === 500, "Zusammenführen: Namen verloren", JSON.stringify(m.friends), m.myName);
+    await anna.pullSave();
+    ok(anna.st.courses.en.progress.food === 1 && anna.st.courses.en.progress.basics === 5 && anna.st.friends.f2 === "Cleo" && anna.st.myName === "Anna", "Zusammengeführter Stand kommt nicht aufs erste Handy");
+    // Only one side changed: it is taken over as it is (a reset of a course on one phone stays a reset).
+    delete anna.st.courses.en.progress.food; anna.st.savedAt = Date.now() + 5000; await anna.pushSave();
+    await anna2.pullSave();
+    ok(!anna2.st.courses.en.progress.food && anna2.st.courses.en.progress.basics === 5, "Änderung von nur einem Gerät nicht übernommen");
+    // A backup restored to an older state (database time travel) is merged in, not overwritten by the phone.
+    const before = DB.db.prepare("SELECT save, saved_at FROM accounts").all().find(r => r.saved_at);
+    const old = { s: before.save, at: before.saved_at };
+    anna2.cs("en").progress.drinks = 3; anna2.st.savedAt = Date.now() + 9000; await anna2.pushSave();
+    ok(DB.db.prepare("UPDATE accounts SET save = ?, saved_at = ? WHERE saved_at = ?").run(old.s, old.at - 100, anna2.st.savedAt).changes === 1, "Test: Sicherung nicht zurückgesetzt");
+    const c3 = anna.cs("en"); c3.progress = {}; anna.st.savedAt = Date.now() + 9500; // the phone that lost everything
+    await anna.pullSave();
+    ok(anna.st.courses.en.progress.basics === 5, "Wiederhergestellte Sicherung überschrieben", JSON.stringify(anna.st.courses.en.progress));
+  }
   const wrong = loadGame({}, { fetch: appFetch });
   ok(!(await wrong.signIn("ZZZZ-ZZZZ-ZZZZ-ZZZZ")) && /kein Konto/.test(wrong.acct.note), "App: falscher Schlüssel angenommen");
   ok(!wrong.normalizeKey("ABC") && wrong.normalizeKey("k7qm 4xd2 pl9a h3tv") === "K7QM-4XD2-P19A-H3TV", "Schlüssel normalisieren");

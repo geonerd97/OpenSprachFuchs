@@ -513,7 +513,7 @@ function levelsHTML() {
     const locked = !unitUnlocked(idx[0]), all = fin === idx.length;
     return `<button class="level ${l === cur ? "on" : ""} ${locked ? "locked" : ""}" role="tab" aria-selected="${l === cur}" data-act="level" data-l="${l}"
       title="${l}: ${fin} von ${idx.length} Einheiten geschafft" aria-label="${LEVEL_NAMES[l] || l}, ${fin} von ${idx.length} Einheiten">
-      <b><span>${LEVEL_NAMES[l] || l}</span>${all ? " ✓" : locked ? I.lock(11) : ""}</b><span class="meter"><i style="width:${100 * fin / idx.length}%"></i></span></button>`;
+      <b><span>${LEVEL_NAMES[l] || l}</span>${all ? " ✓" : ""}</b>${locked ? `<span class="lock">${I.lock(12)}</span>` : `<span class="meter"><i style="width:${100 * fin / idx.length}%"></i></span>`}</button>`;
   }).join("");
   const first = UNITS.findIndex(u => u.level === cur);
   const hint = first > 0 && !unitUnlocked(first) ? `<p class="muted level-hint">${LEVEL_NAMES[cur] || cur} ist noch gesperrt. Schließ die Einheiten davor ab oder spring mit dem Einstufungstest („Test“ an einer Einheit) direkt hierher.</p>` : "";

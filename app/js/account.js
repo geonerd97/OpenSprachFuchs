@@ -120,13 +120,19 @@ async function signIn(input) {
   return true;
 }
 function adopt(state, savedAt) {
-  st = fromSaved(state); st.savedAt = savedAt || st.savedAt; migrateLessons();
+  st = fromSaved(state); st.savedAt = savedAt || st.savedAt; st.syncedAt = st.savedAt; migrateLessons();
   try { localStorage.setItem(STORE, JSON.stringify(st)); } catch (e) {}
   setCourse(st.course);
   const notes = applyDecay(); if (notes.length) ui.decay = notes;
 }
 
-/* Backup: every save() schedules an upload a moment later; on start the newer of device and backend wins. */
+/* Backup: every save() schedules an upload a moment later. st.syncedAt is the backup's savedAt when this device last
+   matched it; on start (and when the backend reports a newer save) the side that changed since then wins, and if
+   both changed, the two are merged (mergeSaves in state.js). */
+function markSynced(at) {
+  st.syncedAt = at;
+  try { localStorage.setItem(STORE, JSON.stringify(st)); } catch (e) {}
+}
 function scheduleBackup() {
   if (!acct.key || acct.status === "none" || acct.status === "gone") return;
   clearTimeout(acct.timer); acct.timer = setTimeout(pushSave, 1500);
@@ -136,8 +142,9 @@ async function pushSave() {
   if (acct.busy) { acct.again = true; return; }
   acct.busy = true;
   try {
-    const r = await api("PUT", "save", { savedAt: st.savedAt || Date.now(), data: await encryptState(st, acct.aes) });
-    if (r.status === 200) acct.status = "ok";
+    const at = st.savedAt || Date.now();
+    const r = await api("PUT", "save", { savedAt: at, data: await encryptState(st, acct.aes) });
+    if (r.status === 200) { acct.status = "ok"; markSynced(at); }
     else if (r.status === 409) await pullSave(); // another device saved something newer meanwhile
     else if (r.status === 401) acct.status = "gone";
     else acct.status = "offline";
@@ -152,10 +159,18 @@ async function pullSave() {
   if (r.status === 404) { await pushSave(); return; }
   if (r.status !== 200) { acct.status = "offline"; return; }
   acct.status = "ok";
-  if ((r.data.savedAt || 0) > (st.savedAt || 0)) {
-    if (view === "lesson") return; // never swap progress under a running lesson; its save wins afterwards
-    try { adopt(await decryptState(r.data.data, acct.aes), r.data.savedAt); render(); } catch (e) {}
-  } else if ((st.savedAt || 0) > (r.data.savedAt || 0)) await pushSave();
+  const remote = r.data.savedAt || 0, local = st.savedAt || 0, base = st.syncedAt || 0;
+  if (remote === local) { if (base !== remote) markSynced(remote); return; }
+  if (remote !== base) { // another device saved since this one last synced (or the backup was restored to an older one)
+    if (view === "lesson") return; // never swap progress under a running lesson; its save comes back here afterwards
+    let other;
+    try { other = await decryptState(r.data.data, acct.aes); } catch (e) { return; }
+    if (local > base) { // both changed: merge, and the merged save goes up as the newest
+      adopt(mergeSaves(st, Object.assign({}, other, { savedAt: remote })), remote);
+      save(); st.savedAt = Math.max(st.savedAt, remote + 1, local + 1); markSynced(remote); // newer than both, even with a clock behind
+    } else adopt(other, remote);
+    render();
+  } else if (local > remote) await pushSave();
 }
 async function initAccount() {
   let stored = null;
