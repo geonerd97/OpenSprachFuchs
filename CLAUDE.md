@@ -26,7 +26,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten. Schrift Nunito als Datei in der App (`app/fonts/nunito.woff2`, variabel, nur Latin-Teilmenge, 39 KB, SIL OFL in `app/fonts/OFL.txt`, aus `@fontsource-variable/nunito` 5.3.0); Grundstärke 650, Überschriften 800, Systemschrift nur als Rückfall. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
 | `web/` | Nur für die Web-App: `manifest.webmanifest`, Icons (aus `docs/logo.webp`, `icon-maskable.png` mit Rand für runde Masken), `sw.js` (Vorlage für den Service Worker) |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.0.17 (versionCode 19, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.1.0 (versionCode 20, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt/hr.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256) |
