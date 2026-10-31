@@ -53,17 +53,23 @@ function homeHTML() {
     if (u.level !== level) return "";
     nth++;
     const open = unitUnlocked(ui_), d = done(u.id), ls = lessonsFor(u);
-    const nodes = ls.map((lesson, li) => {
+    // The nodes wind down the page on a sine curve; --mid puts the dotted trail halfway to the node before.
+    let prevOff = 0;
+    const lessonNodes = ls.map((lesson, li) => {
       const off = Math.round(Math.sin(gi++ * 0.95) * 62);
+      const mid = li === 0 ? null : Math.round((prevOff - off) / 2);
+      prevOff = off;
       const state = !open || li > d ? "locked" : li === d ? "current" : "done";
       const icon = state === "locked" ? I.lock(26) : state === "done" ? I.check(30) : li === ls.length - 1 ? I.trophy(30) : I.star(30);
       const id = `${ui_}-${li}`;
       const pop = ui.pop === id && state !== "locked" ? `<div class="pop" role="dialog" style="--c:${u.c[0]}"><h3>${lesson.name}</h3><p>${lesson.desc} Lektion ${li + 1} von ${ls.length}.</p>
         <button class="btn wide" data-act="start" data-u="${ui_}" data-l="${li}">${state === "done" ? "Wiederholen +10 XP" : "Starten +10 XP"}</button></div>` : "";
-      return `<div class="node-wrap" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
+      return `<div class="node-wrap ${state}${mid === null ? "" : " linked"}" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}${mid === null ? "" : `;--mid:${mid}px`}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
         ${state === "current" && ui.pop !== id ? `<span class="start-tag">START</span>` : ""}
         ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
-    }).join("") + bonusNodeHTML(u, ui_, open, Math.round(Math.sin(gi++ * 0.95) * 62));
+    }).join("");
+    const bOff = Math.round(Math.sin(gi++ * 0.95) * 62);
+    const nodes = lessonNodes + bonusNodeHTML(u, ui_, open, bOff, Math.round((prevOff - bOff) / 2));
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
       <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, ${u.words.length} Wörter">${esc(C.code)} – Einheit ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= ls.length && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}

@@ -254,7 +254,7 @@ function gameFooterHTML() {
   return `<footer class="l-foot"><div class="l-foot-in"><p class="muted" style="margin:0">${note}</p></div></footer>`;
 }
 /** The fifth node of a unit on the path: open after the four lessons, and needed for the next unit. */
-function bonusNodeHTML(u, ui_, open, off) {
+function bonusNodeHTML(u, ui_, open, off, mid) {
   const ready = open && done(u.id) >= lessonsOf(u), kind = bonusKind(ui_), info = GAME_INFO[kind], fin = bonusDone(u.id), id = `${ui_}-b`;
   const state = !ready ? "locked" : fin ? "done" : "current", here = state === "current" && ui.pop !== id;
   const next = UNITS[ui_ + 1];
@@ -262,7 +262,7 @@ function bonusNodeHTML(u, ui_, open, off) {
     <p>${info.desc}${!fin && next ? " Danach öffnet sich die nächste Einheit." : ""}</p>
     <button class="btn wide" data-act="bonus" data-u="${ui_}">${fin ? `Nochmal spielen +${BONUS_REPLAY_XP} XP` : `Spielen +${BONUS_XP} XP · ${BONUS_GEMS} 💎`}</button></div>` : "";
   const icon = state === "locked" ? I.lock(26) : `<span aria-hidden="true">${info.em}</span>`;
-  return `<div class="node-wrap" style="transform:translateX(${off}px)">${here ? foxHTML(off > 0 ? "left" : "right") + `<span class="start-tag" style="--c:var(--gold-deep)">START</span>` : ""}
+  return `<div class="node-wrap ${state} linked" style="transform:translateX(${off}px);--c:var(--gold);--cd:var(--gold-deep);--mid:${mid}px">${here ? foxHTML(off > 0 ? "left" : "right") + `<span class="start-tag" style="--c:var(--gold-deep)">START</span>` : ""}
     ${state === "current" ? `<span class="ring" style="--c:var(--gold)">` : ""}<button class="node bonus-node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state === "locked" ? "locked" : "open"}"
     aria-label="${u.title}, ${kind === "story" ? "Kurzgeschichte" : info.name}${state === "locked" ? ", gesperrt" : fin ? ", geschafft" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
 }

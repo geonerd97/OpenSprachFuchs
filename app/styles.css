@@ -106,11 +106,16 @@ svg { flex-shrink: 0; }
 .unit-head h2 { font-size: 1.45rem; margin-block: .1rem .2rem; }
 .unit-head p { margin: 0; font-size: .93rem; opacity: .92; }
 .cefr { font: 800 .8rem var(--body); letter-spacing: .06em; border: 2px solid currentColor; border-radius: 8px; padding: .2rem .45rem; opacity: .9; }
-.nodes { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; padding-block: 1.6rem .4rem; }
+/* The path should not read as nodes floating in nothing: a faint dot grid fills the space around the column,
+   a dotted trail joins the nodes (--mid is the step to the node before, from views.js) and the current one
+   breathes a halo. All of it is decoration and stops under "Bewegung reduzieren" (see the rule further down). */
+.nodes { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding-block: 1.6rem .4rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--ink-2) 22%, transparent) 1px, transparent 1.5px) center / 26px 26px; }
 .node-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
-.node { width: 72px; height: 66px; border-radius: 50%; border: 0; background: var(--c, var(--accent));
+.node { width: 72px; height: 66px; border-radius: 50%; border: 0; background: var(--c, var(--accent)); position: relative;
   box-shadow: 0 7px 0 var(--cd, var(--accent-deep)); display: grid; place-items: center; color: #fff; transition: transform .08s, box-shadow .08s; }
 .node:active { transform: translateY(6px); box-shadow: 0 1px 0 var(--cd, var(--accent-deep)); }
+@media (hover: hover) { .node:hover:not(:active) { transform: translateY(-2px); box-shadow: 0 9px 0 var(--cd, var(--accent-deep)); } }
 .node.locked { background: var(--lock); box-shadow: 0 7px 0 var(--lock-deep); color: var(--lock-deep); }
 /* Ring around the current lesson: a wrapper that stays put while the button presses down, with extra
    bottom padding so the ring also encloses the button's 7px 3D edge. */
@@ -123,6 +128,14 @@ svg { flex-shrink: 0; }
   display: grid; gap: .7rem; box-shadow: 0 10px 30px rgba(10, 20, 40, .25); }
 .pop h3 { font-size: 1.1rem; } .pop p { margin: 0; font-size: .9rem; opacity: .92; }
 .pop .btn { background: #fff; color: var(--c); box-shadow: 0 4px 0 rgba(0, 0, 0, .18); }
+.node-wrap.linked::before { content: ""; position: absolute; left: 50%; top: calc(-1.5rem + 7px); width: 7px; height: calc(1.5rem - 5px);
+  transform: translateX(calc(var(--mid, 0px) - 3.5px));
+  background: radial-gradient(circle, color-mix(in srgb, var(--c, var(--accent)) 75%, transparent) 2.6px, transparent 3px) center / 7px 8px repeat-y; }
+.node-wrap.locked.linked::before { background-image: radial-gradient(circle, var(--lock) 2.6px, transparent 3px); }
+/* opacity: 0 is the resting state, so with "Bewegung reduzieren" no ring is left standing around the node. */
+.node.current::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 5px solid var(--c, var(--accent));
+  opacity: 0; pointer-events: none; animation: halo 2.8s cubic-bezier(.2, .6, .4, 1) infinite; }
+@keyframes halo { 0% { transform: scale(1); opacity: .5; } 70%, 100% { transform: scale(1.7); opacity: 0; } }
 @keyframes bob { 50% { transform: translateY(-5px); } }
 @keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
 
