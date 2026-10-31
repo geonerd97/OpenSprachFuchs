@@ -25,7 +25,9 @@ function speak(text, slow, queued) {
   if (APP) {
     try {
       const b = window.AndroidBridge;
-      if (queued && b.speakQueued) b.speakQueued(text, C.voice, !!slow); else b.speak(text, C.voice, !!slow);
+      const spoken = queued && b.speakQueued ? b.speakQueued(text, C.voice, !!slow) : b.speak(text, C.voice, !!slow);
+      // The bridge says no when the phone has no voice for the language: show the notice on the path instead.
+      if (spoken === false && voice.state === "ok") checkVoice();
     } catch (e) {}
     return;
   }

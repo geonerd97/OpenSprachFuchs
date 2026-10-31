@@ -30,6 +30,12 @@ object Reminders {
         schedule(c)
     }
 
+    /** Switches the reminder off again, e.g. after the notification permission was denied. */
+    fun turnOff(c: Context) {
+        prefs(c).edit().putBoolean("on", false).apply()
+        schedule(c)
+    }
+
     fun report(c: Context, lastDay: String, streak: Int) {
         prefs(c).edit().putString("lastDay", lastDay).putInt("streak", streak).apply()
         StreakWidget.updateAll(c)

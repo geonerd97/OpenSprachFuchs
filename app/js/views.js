@@ -65,7 +65,7 @@ function homeHTML() {
         ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
     }).join("") + bonusNodeHTML(u, ui_, open, Math.round(Math.sin(gi++ * 0.95) * 62));
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
-      <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, Einheit ${nth} von ${perLevel}, ${u.words.length} Wörter">${esc(C.code)} – Stufe ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
+      <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, ${u.words.length} Wörter">${esc(C.code)} – Einheit ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= ls.length && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
         ${open ? `<button class="wordsbtn" data-act="words" data-u="${ui_}">Wörter</button>`
         : `<button class="wordsbtn test" data-act="placement" data-u="${ui_}" title="Einstufungstest: Einheiten überspringen">Test</button>`}</div></div>
@@ -308,7 +308,7 @@ function statsHTML() {
 }
 function failHTML() {
   if (ui.fail === "master") return `<div class="center"><div class="card fail">${foxSadHTML()}<h1>Noch nicht gemeistert</h1>
-    <p class="muted">Für ${MEDAL_NAMES[ui.ml + 1]} sind höchstens ${MASTER_ALLOWED[ui.ml]} ${MASTER_ALLOWED[ui.ml] === 1 ? "Fehler" : "Fehler"} erlaubt. Versuch es gleich noch einmal, die Aufgaben sind jedes Mal andere.</p>
+    <p class="muted">Für ${MEDAL_NAMES[ui.ml + 1]} ${MASTER_ALLOWED[ui.ml] === 0 ? "ist kein einziger Fehler" : `sind höchstens ${MASTER_ALLOWED[ui.ml]} Fehler`} erlaubt. Versuch es gleich noch einmal, die Aufgaben sind jedes Mal andere.</p>
     <button class="btn gold wide" data-act="startmaster" data-u="${ui.mu}">Noch einmal</button><button class="btn ghost wide" data-act="home">Zurück zum Lernpfad</button></div></div>`;
   if (ui.fail === "placement") return `<div class="center"><div class="card fail">${foxSadHTML()}<h1>Test nicht bestanden</h1>
     <p class="muted">Du hattest ${PLACEMENT_MAX} Fehler. Kein Problem: Übe die Einheiten davor weiter oder versuch den Test später noch einmal.</p>
@@ -360,7 +360,7 @@ function modalHTML() {
   if (ui.modal === "resetfrom") {
     const u = UNITS[ui.ru];
     return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>Ab „${esc(u.title)}“ zurücksetzen?</h2>
-      <p class="muted">${ui.ru === 0 ? `Dein ganzer Fortschritt in ${C.name}` : `Einheit ${ui.ru + 1} und alle Einheiten danach in ${C.name}`} werden zurückgesetzt, samt Lernstufen der Vokabeln und offenen Fehlern dieser Einheiten.
+      <p class="muted">${ui.ru === 0 ? `Dein ganzer Fortschritt in ${C.name}` : `Einheit ${ui.ru + 1} und alle Einheiten danach in ${C.name}`} werden zurückgesetzt, samt Lernstufen der Vokabeln, Sonderstationen, Medaillen und offenen Fehlern dieser Einheiten.
       XP, Serie, Abzeichen und die anderen Sprachen bleiben, wie sie sind.</p>
       <button class="btn bad wide" data-act="doresetfrom">Zurücksetzen</button><button class="btn ghost wide" data-act="resetcourse">Andere Einheit wählen</button></div></div>`;
   }
@@ -480,7 +480,8 @@ function modalHTML() {
     ${tg("listen", "Hörübungen", "Übungen, bei denen du nur zuhörst")}
     ${speechSupported() ? tg("speak", "Sprechübungen", "Sätze laut nachsprechen (Mikrofon)") : ""}
     ${APP && window.AndroidBridge.setReminder ? `${tg("reminder", "Tägliche Erinnerung", "Benachrichtigung, wenn das Tagesziel noch offen ist")}
-      ${st.settings.reminder ? `<div class="toggle"><span>Uhrzeit<small>Wann die Erinnerung kommen soll</small></span><input id="reminderTime" class="time-input" type="time" value="${esc(st.settings.reminderTime)}" aria-label="Uhrzeit der Erinnerung"></div>` : ""}` : ""}
+      ${st.settings.reminder ? `<div class="toggle"><span>Uhrzeit<small>Wann die Erinnerung kommen soll</small></span><input id="reminderTime" class="time-input" type="time" value="${esc(st.settings.reminderTime)}" aria-label="Uhrzeit der Erinnerung"></div>` : ""}
+      ${ui.reminderNote ? `<small class="muted" role="status">${esc(ui.reminderNote)}</small>` : ""}` : ""}
     ${tg("decay", "Rückstufung bei Pause", `Nach ${DECAY_DAYS} Tagen ohne Üben geht es in der Sprache eine Lektion zurück`)}
     ${tg("hearts", "Herzen", "Fehler kosten ein Herz")}
     ${APP && CONFIG.GITHUB_REPO ? tg("updates", "Nach App-Updates suchen", "Beim Start bei GitHub nach einer neuen Version fragen (höchstens alle 6 Stunden)") : ""}</div>
@@ -535,7 +536,7 @@ function dialogsHTML() {
   return `<div class="panel"><h3>Gespräche</h3><p class="muted">Kleine Szenen aus dem Urlaub: Wähle im Gespräch die passende Antwort.</p>${rows}</div>`;
 }
 /* The fox from the logo: next to the current lesson on the path (tap it), cheering after every round, a bit sad when it didn't work out. */
-const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!" };
+const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!", hr: "Idemo!" };
 function foxLine() {
   const streak = shownStreak(), lines = [FOX_HELLO[CODE] || "Los geht's!", "Ich glaub an dich!", "Eine Lektion am Tag reicht schon!", "Du schaffst das!", "Auf zur nächsten Lektion!"];
   if (streak > 1) lines.push(`🔥 ${streak} Tage in Folge!`);

@@ -102,7 +102,7 @@ async function signIn(input) {
   const key = normalizeKey(input);
   if (!key) { acct.note = "Ein Schlüssel hat 16 Zeichen, zum Beispiel K7QM-4XD2-PL9A-H3TV."; return false; }
   acct.note = "Prüfe den Schlüssel …"; render();
-  const before = { key: acct.key, pending: acct.pending, token: acct.token, aes: acct.aes };
+  const before = { key: acct.key, pending: acct.pending, token: acct.token, aes: acct.aes, friendCode: acct.friendCode };
   await useKey(key, false);
   const r = await api("GET", "account");
   if (r.status !== 200) {
@@ -150,7 +150,7 @@ async function pushSave() {
     else acct.status = "offline";
   } catch (e) { acct.status = "offline"; }
   acct.busy = false;
-  if (acct.again) { acct.again = false; pushSave(); }
+  if (acct.again) { acct.again = false; await pushSave(); } // awaited, so that `await pushSave()` really means the save is up
   if (view === "home" && !ui.modal) render();
 }
 async function pullSave() {
@@ -160,7 +160,9 @@ async function pullSave() {
   if (r.status !== 200) { acct.status = "offline"; return; }
   acct.status = "ok";
   const remote = r.data.savedAt || 0, local = st.savedAt || 0, base = st.syncedAt || 0;
-  if (remote === local) { if (base !== remote) markSynced(remote); return; }
+  if (remote === local && base === remote) return; // nothing changed anywhere
+  // The same time, but not the one of the last sync: two devices happened to save in the same millisecond. That does
+  // not count as synced, so the saves are merged below; otherwise this device would later overwrite the backup.
   if (remote !== base) { // another device saved since this one last synced (or the backup was restored to an older one)
     if (view === "lesson") return; // never swap progress under a running lesson; its save comes back here afterwards
     let other;
@@ -170,7 +172,12 @@ async function pullSave() {
       save(); st.savedAt = Math.max(st.savedAt, remote + 1, local + 1); markSynced(remote); // newer than both, even with a clock behind
     } else adopt(other, remote);
     render();
-  } else if (local > remote) await pushSave();
+  } else {
+    // The backup has not changed since the last sync, so this device holds the newer save (e.g. after a reset).
+    // A clock running behind must not stop the upload, or the change would stay on this device for good.
+    if (local < remote) { st.savedAt = remote + 1; markSynced(base); }
+    await pushSave();
+  }
 }
 async function initAccount() {
   let stored = null;

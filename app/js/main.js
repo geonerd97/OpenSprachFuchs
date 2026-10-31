@@ -120,13 +120,19 @@ app.addEventListener("click", e => {
       st.reportQueue = [...(st.reportQueue || []), rep].slice(-20); save(); sendReports();
       L.reported = true; ui.modal = null; render(); return;
     }
-    case "toggle": st.settings[ds.k] = !st.settings[ds.k]; if (ds.k === "reminder") syncReminder(); if (ds.k === "hearts" && st.settings.hearts) syncHearts(); save(); render(); return;
+    case "toggle": st.settings[ds.k] = !st.settings[ds.k]; if (ds.k === "reminder") { ui.reminderNote = ""; syncReminder(); } if (ds.k === "hearts" && st.settings.hearts) syncHearts(); save(); render(); return;
     case "reset": ui.modal = "reset"; render(); return;
     case "resetcourse": ui.modal = "resetcourse"; render(); return;
     case "dismissdecay": ui.decay = null; render(); return;
     case "resetfrom": ui.ru = +ds.u; ui.modal = "resetfrom"; render(); return;
     case "doresetfrom": resetCourseFrom(ui.ru); ui.modal = null; ui.pop = null; view = "home"; render(); window.scrollTo(0, 0); return;
-    case "doreset": { const keep = { onboarded: true, course: st.course, friends: st.friends, dayReported: st.dayReported }; st = Object.assign(fromSaved(null), keep); setCourse(st.course); save(); ui.modal = null; render(); return; }
+    case "doreset": {
+      // syncedAt belongs to the account, not to the progress: without it the next upload looks like one from a
+      // device that never synced, and the older save on the server would be merged back in.
+      const keep = { onboarded: true, course: st.course, friends: st.friends, dayReported: st.dayReported, syncedAt: st.syncedAt,
+        myName: st.myName, keyCreated: st.keyCreated, keyChecked: st.keyChecked, keyRemindAt: st.keyRemindAt };
+      st = Object.assign(fromSaved(null), keep); setCourse(st.course); save(); ui.modal = null; render(); return;
+    }
     case "closemodal": ui.modal = null; render(); return;
     case "home": clearInterval(blitzTimer); ui.modal = null; L = null; view = "home"; render(); scrollToCurrent(); return;
     case "quit": ui.modal = "quit"; render(); return;
@@ -242,6 +248,13 @@ if (WEB && window.addEventListener) window.addEventListener("hashchange", () => 
 if (WEB && navigator.serviceWorker) navigator.serviceWorker.register("sw.js").catch(() => {});
 if (window.addEventListener) window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); ui.installPrompt = e; render(); });
 window.opensprachfuchsLink = url => { handleFriendLink(url); };
+/* Android: the notification permission was denied, so the daily reminder cannot arrive. */
+window.opensprachfuchsReminderOff = () => {
+  if (!st.settings.reminder) return;
+  st.settings.reminder = false; save();
+  ui.reminderNote = "Ohne Erlaubnis für Benachrichtigungen kann die Erinnerung nicht kommen. Du kannst sie in den Einstellungen des Handys erlauben.";
+  render();
+};
 /* Back in the foreground (Android: onResume; browser: tab visible again): another device may have saved meanwhile. */
 const resumeSync = () => { if (acct.aes && !acct.pending) pullSave().then(() => { if (view === "home" && !ui.modal) render(); }); };
 window.opensprachfuchsResume = () => { checkVoice(); resumeSync(); };

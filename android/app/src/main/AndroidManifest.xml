@@ -18,8 +18,10 @@
         </intent>
     </queries>
 
+    <!-- allowBackup="false": Schlüssel und verschlüsselter Spielstand liegen im Speicher des WebView und sollen
+         nicht in Googles Cloud-Backup landen (siehe PRIVACY.md). Den Schlüssel notiert der Spieler selbst. -->
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"

@@ -190,11 +190,20 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        // Without the permission no notification can arrive, so the reminder goes off again instead of
+        // leaving a switch on that does nothing.
+        if (requestCode == REQ_NOTIFY) {
+            if (!granted) {
+                Reminders.turnOff(this)
+                web.evaluateJavascript("window.opensprachfuchsReminderOff && window.opensprachfuchsReminderOff()", null)
+            }
+            return
+        }
         if (requestCode != REQ_MIC) return
         val lang = pendingLang
         pendingLang = null
-        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && lang != null) listen(lang)
-        else speechError("permission")
+        if (granted && lang != null) listen(lang) else speechError("permission")
     }
 
     /** Called from the page as `window.AndroidBridge`. Runs on a WebView thread, not the UI thread. */
@@ -204,10 +213,11 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         fun speak(text: String, lang: String, slow: Boolean): Boolean {
             val engine = tts ?: return false
             if (!ttsReady) return false
-            val available = engine.setLanguage(Locale.forLanguageTag(lang)) >= TextToSpeech.LANG_AVAILABLE
+            // No voice for the language: better to stay silent than to read the sentence with the wrong one.
+            if (engine.setLanguage(Locale.forLanguageTag(lang)) < TextToSpeech.LANG_AVAILABLE) return false
             engine.setSpeechRate(if (slow) 0.6f else 0.95f)
             engine.speak(text, TextToSpeech.QUEUE_FLUSH, null, "opensprachfuchs")
-            return available
+            return true
         }
 
         /** Speaks [text] after whatever is being said now (a short pause in between), e.g. the next line in a dialogue. */
@@ -215,11 +225,11 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         fun speakQueued(text: String, lang: String, slow: Boolean): Boolean {
             val engine = tts ?: return false
             if (!ttsReady) return false
-            val available = engine.setLanguage(Locale.forLanguageTag(lang)) >= TextToSpeech.LANG_AVAILABLE
+            if (engine.setLanguage(Locale.forLanguageTag(lang)) < TextToSpeech.LANG_AVAILABLE) return false
             engine.setSpeechRate(if (slow) 0.6f else 0.95f)
             engine.playSilentUtterance(500, TextToSpeech.QUEUE_ADD, "opensprachfuchs-pause")
             engine.speak(text, TextToSpeech.QUEUE_ADD, null, "opensprachfuchs-next")
-            return available
+            return true
         }
 
         @JavascriptInterface

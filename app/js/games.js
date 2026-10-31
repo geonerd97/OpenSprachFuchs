@@ -45,10 +45,12 @@ function startBonus(ui_) {
     const words = gameWords(ui_, 6, 14).slice(0, 6);
     Object.assign(g, { words, cards: shuffle(words.flatMap((w, i) => [{ p: i, side: "t" }, { p: i, side: "de" }])), open: [], found: new Set() });
   } else if (kind === "guess") Object.assign(g, { words: gameWords(ui_, 4, 10).slice(0, 4), i: 0, guessed: new Set(), lives: 5 });
-  if (kind === "scramble") Object.assign(g, scrambleTiles(g.words[0]));
-  if (kind === "guess") g.keys = guessKeys(g.words[0].word);
+  if (kind === "scramble" && g.words.length) Object.assign(g, scrambleTiles(g.words[0]));
+  if (kind === "guess" && g.words.length) g.keys = guessKeys(g.words[0].word);
   beginLesson({ kind: "bonus", unit: ui_, game: g, queue: [{ type: "game", key: "g:" + u.id }] });
-  L.total = kind === "story" ? g.story.questions.length : g.words.length; render(); // the progress bar grows with every solved item
+  L.total = kind === "story" ? g.story.questions.length : g.words.length; // the progress bar grows with every solved item
+  if (!L.total) gameWon(); // a pack without fitting words for this unit must not block the path
+  render();
 }
 const bonusTitle = g => g.kind === "story" ? g.story.title : GAME_INFO[g.kind].name;
 function gameWon() { L.checked = true; L.res = { ok: true, given: "" }; L.done = L.total; sfx("good"); }
@@ -56,6 +58,13 @@ function gameWon() { L.checked = true; L.res = { ok: true, given: "" }; L.done =
 /* Word search: up to six words, left to right, top to bottom or diagonally, in an 8×8 grid. */
 function makeWordSearch(words) {
   const N = 8, DIRS = [[0, 1], [1, 0], [1, 1]];
+  // Fills the gaps with letters of the hidden words, so no letter gives a word away.
+  const fill = (grid, placed) => {
+    const pool = [...placed.map(p => p.word).join("")];
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) if (!grid[r][c]) grid[r][c] = pick(pool);
+    return { N, grid, words: placed, found: new Set(), first: null, flash: null };
+  };
+  let best = null;
   for (let attempt = 0; attempt < 40; attempt++) {
     const grid = [...Array(N)].map(() => new Array(N).fill("")), placed = [];
     for (const w of words) {
@@ -69,11 +78,11 @@ function makeWordSearch(words) {
         placed.push(Object.assign({}, w, { cells })); ok = true;
       }
     }
-    if (placed.length < Math.min(4, words.length)) continue;
-    const pool = [...placed.map(p => p.word).join("")];
-    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) if (!grid[r][c]) grid[r][c] = pick(pool);
-    return { N, grid, words: placed, found: new Set(), first: null, flash: null };
+    if (placed.length >= Math.min(4, words.length)) return fill(grid, placed);
+    if (!best || placed.length > best.placed.length) best = { grid, placed };
   }
+  // After 40 tries: the best attempt still beats an empty grid, which could never be won.
+  if (best && best.placed.length) return fill(best.grid, best.placed);
   return { N, grid: [...Array(N)].map(() => new Array(N).fill("·")), words: [], found: new Set(), first: null, flash: null };
 }
 function wordSearchTap(r, c) {
@@ -186,6 +195,8 @@ function speechStop() { try { if (APP && window.AndroidBridge.stop) window.Andro
 /* ---------- Views ---------- */
 function gameHTML() {
   const g = L.game, info = GAME_INFO[g.kind];
+  if (g.kind !== "story" && !g.words.length) return `<div class="tag">${info.em} ${info.name}</div><h2>Diesmal nichts zu tun</h2>
+    <p class="muted">Für diese Einheit hat das Sprachpaket keine passenden Wörter für dieses Spiel. Die Station ist damit geschafft.</p>`;
   if (g.kind === "story") {
     const s = g.story;
     if (g.phase === "read") return `<div class="tag">${info.em} ${info.name}</div><h2>${s.em || "📖"} ${esc(s.title)}</h2>
@@ -248,7 +259,7 @@ function bonusNodeHTML(u, ui_, open, off) {
   const state = !ready ? "locked" : fin ? "done" : "current", here = state === "current" && ui.pop !== id;
   const next = UNITS[ui_ + 1];
   const pop = ui.pop === id && ready ? `<div class="pop" role="dialog" style="--c:var(--gold)"><h3>${info.em} ${kind === "story" ? esc(storyFor(u.id).title) : info.name}</h3>
-    <p>${info.desc}${!fin && next ? " Danach öffnet sich die nächste Stufe." : ""}</p>
+    <p>${info.desc}${!fin && next ? " Danach öffnet sich die nächste Einheit." : ""}</p>
     <button class="btn wide" data-act="bonus" data-u="${ui_}">${fin ? `Nochmal spielen +${BONUS_REPLAY_XP} XP` : `Spielen +${BONUS_XP} XP · ${BONUS_GEMS} 💎`}</button></div>` : "";
   const icon = state === "locked" ? I.lock(26) : `<span aria-hidden="true">${info.em}</span>`;
   return `<div class="node-wrap" style="transform:translateX(${off}px)">${here ? foxHTML(off > 0 ? "left" : "right") + `<span class="start-tag" style="--c:var(--gold-deep)">START</span>` : ""}

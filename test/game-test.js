@@ -152,7 +152,7 @@ for (const code of codes) {
   if (g.UNITS().map(u => u.level).join() !== [...g.UNITS().map(u => u.level)].sort().join()) fail("Einheiten nicht nach Stufe sortiert");
   g.cs().progress = {};
   let h = g.homeHTML();
-  if (!h.includes('data-act="level" data-l="B2"') || (h.match(/class="unit-head/g) || []).length !== 20 || !h.includes("– Stufe 1 von 20")) fail("Stufen-Reiter oder A1-Pfad fehlen");
+  if (!h.includes('data-act="level" data-l="B2"') || (h.match(/class="unit-head/g) || []).length !== 20 || !h.includes("– Einheit 1 von 20")) fail("Stufen-Reiter oder A1-Pfad fehlen");
   g.click("level", { l: "B1" }); h = g.homeHTML();
   const b1 = g.UNITS().find(u => u.level === "B1");
   if (!h.includes(b1.title) || h.includes(g.UNITS()[0].title + "</h2>") || !h.includes("noch gesperrt")) fail("Reiter B1 zeigt nicht B1");
@@ -252,6 +252,15 @@ g.resetCourseFrom(5);
 if (g.done(g.UNITS()[4].id) !== 7 || g.done(g.UNITS()[5].id) !== 0 || g.done(g.UNITS()[19].id) !== 0) fail("Zurücksetzen ab Einheit 6 falsch");
 if (!g.srs()[w1] || g.srs()[w7]) fail("Lernstufen falsch zurückgesetzt");
 if (JSON.stringify(g.st.courses.fr) !== frBefore) fail("Andere Sprache verändert");
+// Sonderstation und Medaille gehören zur Einheit: ab der gewählten Einheit gehen sie mit, davor bleiben sie.
+{
+  const c = g.cs();
+  c.bonus = { [g.UNITS()[4].id]: true, [g.UNITS()[6].id]: true };
+  c.mastery = { [g.UNITS()[4].id]: 2, [g.UNITS()[6].id]: 3 };
+  g.resetCourseFrom(5);
+  if (!g.bonusDone(g.UNITS()[4].id) || g.bonusDone(g.UNITS()[6].id)) fail("Sonderstation falsch zurückgesetzt");
+  if (g.masteryOf(g.UNITS()[4].id) !== 2 || g.masteryOf(g.UNITS()[6].id) !== 0) fail("Medaille falsch zurückgesetzt");
+}
 g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5; g.modalHTML(); g.ui.modal = null;
 
 // Two weeks without practice: one lesson back per 14 days, starting from the furthest one.
@@ -448,6 +457,16 @@ g.view = "home";
   if (g.view !== "result" || !g.bonusDone(g.UNITS()[4].id)) fail("Kurzgeschichte nicht abschließbar");
   g.startBonus(0); solve(); const xp = g.st.xp, gems = g.st.gems; g.cont();
   if (g.st.xp - xp !== 5 || g.st.gems !== gems) fail("Wiederholung der Sonderstation falsch belohnt", g.st.xp - xp, g.st.gems - gems);
+  // A unit whose pack has no playable words for the game (new packs): the station must neither crash nor block the path.
+  {
+    const saved = [g.UNITS()[0].words, g.UNITS()[1].words];
+    g.UNITS()[0].words = []; g.UNITS()[1].words = [];
+    g.startBonus(1);
+    if (!g.L.checked || g.exerciseHTML(g.L.cur).includes("undefined")) fail("Sonderstation ohne Wörter nicht abschließbar", g.L.game.kind);
+    g.cont();
+    if (g.view !== "result" || !g.bonusDone(g.UNITS()[1].id)) fail("Sonderstation ohne Wörter nicht abgeschlossen");
+    g.UNITS()[0].words = saved[0]; g.UNITS()[1].words = saved[1];
+  }
   // The bonus node: locked until all lessons of the unit are done (7 in A1), then open.
   g.cs().progress = {}; g.ui.level = "A1"; g.view = "home"; g.ui.tab = "path";
   if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation nicht gesperrt");
