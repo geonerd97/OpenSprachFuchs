@@ -261,7 +261,8 @@ function finish() {
   let gems = L.kind === "bonus" ? (bonusFirst ? BONUS_GEMS : 0) : L.kind === "lesson" ? 5 + (perfect ? 3 : 0) : L.kind === "placement" ? 10 : L.kind === "master" ? 5 + 3 * L.level : L.kind === "dialog" ? 4 : L.kind === "blitz" ? Math.floor(L.score / 5) : 2;
   st.xp += xp; st.dayLessons++; st.lessons++;
   const rec = dayRec(); rec.xp += xp; rec.lessons++;
-  cs().last = Date.now();
+  // Never move this back: a bought pause protection (shop) puts it into the future and must survive a round.
+  cs().last = Math.max(cs().last || 0, Date.now());
   if (perfect && L.kind === "lesson") { st.perfect = (st.perfect || 0) + 1; bump(rec, "perfect"); }
   let blitz = null;
   if (L.kind === "blitz") {

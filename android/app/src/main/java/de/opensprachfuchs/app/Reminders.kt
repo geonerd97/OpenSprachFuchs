@@ -95,7 +95,7 @@ object Reminders {
 class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
-            Intent.ACTION_BOOT_COMPLETED -> Reminders.schedule(context)
+            Intent.ACTION_BOOT_COMPLETED -> { Reminders.schedule(context); StreakWidget.updateAll(context) }
             Reminders.ACTION -> Reminders.notifyIfOpen(context)
         }
     }

@@ -129,6 +129,8 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         web.onResume()
         // Back from installing a voice, for example: let the page check again.
         web.evaluateJavascript("window.opensprachfuchsResume && window.opensprachfuchsResume()", null)
+        StreakWidget.updateAll(this) // the widget's text depends on the date, so redraw it while we are here
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
