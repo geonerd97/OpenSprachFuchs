@@ -121,6 +121,20 @@ function fakeD1() {
     await anna2.pushSave(); await anna.pullSave();
     ok(anna.st.courses.en.progress.travel === 4 && anna.st.courses.en.progress.basics === 5, "Veraltetes Handy hat die Sicherung überschrieben", JSON.stringify(anna.st.courses.en.progress));
   }
+  // "Alles zurücksetzen" muss auch in der Sicherung ankommen: das Gerät behält den Bezug zum letzten Abgleich
+  // (st.syncedAt), sonst führt der nächste Upload den alten Stand vom Server wieder herein.
+  {
+    await anna.pullSave();
+    anna.st.xp = 500; anna.st.keyCreated = "2020-01-01"; anna.st.keyChecked = true; anna.st.myName = "Anna";
+    anna.st.savedAt = Date.now() + 40000; await anna.pushSave();
+    anna.click("doreset");
+    await anna.pushSave();
+    ok(anna.st.xp === 0 && !Object.keys(anna.cs("en").progress).length, "Zurücksetzen von der Sicherung überschrieben", anna.st.xp, JSON.stringify(anna.cs("en").progress));
+    ok(anna.st.keyChecked && anna.st.keyCreated === "2020-01-01" && anna.st.myName === "Anna" && !anna.keyReminderDue(), "Zurücksetzen verliert Schlüssel-Prüfung oder Namen");
+    await anna2.pullSave();
+    ok(anna2.st.xp === 0 && !Object.keys(anna2.cs("en").progress).length, "Zurücksetzen kommt nicht auf dem zweiten Gerät an", anna2.st.xp);
+  }
+
   const wrong = loadGame({}, { fetch: appFetch });
   ok(!(await wrong.signIn("ZZZZ-ZZZZ-ZZZZ-ZZZZ")) && /kein Konto/.test(wrong.acct.note), "App: falscher Schlüssel angenommen");
   ok(!wrong.normalizeKey("ABC") && wrong.normalizeKey("k7qm 4xd2 pl9a h3tv") === "K7QM-4XD2-P19A-H3TV", "Schlüssel normalisieren");
@@ -159,6 +173,10 @@ function fakeD1() {
   ok(anna.friends.gifts === 1, "Geschenk kommt nicht an", anna.friends.gifts);
   await anna.claimGifts();
   ok(anna.st.gems === gems + 5 && anna.friends.gifts === 0, "Geschenk nicht eingelöst", anna.st.gems - gems);
+  // Claiming subtracts only what it counted, so nothing is claimed twice and no counter goes below zero.
+  await anna.claimGifts();
+  const mins = DB.db.prepare("SELECT MIN(gifts_for_a) a, MIN(gifts_for_b) b FROM friendships").get();
+  ok(anna.st.gems === gems + 5 && mins.a >= 0 && mins.b >= 0, "Geschenke doppelt eingelöst", anna.st.gems - gems, JSON.stringify(mins));
 
   // QR code for friends: Anna's own name only travels in her link; Dora scans it, the app opens "Freund hinzufügen" filled in.
   anna.setMyName("  Anna <Lü>  ");

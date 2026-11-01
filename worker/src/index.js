@@ -208,13 +208,19 @@ async function gift(acc, f, env) {
   return json({ ok: true });
 }
 async function claimGifts(acc, env) {
-  const r = await env.DB.prepare("SELECT COALESCE(SUM(CASE WHEN a = ? THEN gifts_for_a ELSE gifts_for_b END), 0) AS n FROM friendships WHERE a = ? OR b = ?")
-    .bind(acc.id, acc.id, acc.id).first();
-  await env.DB.batch([
-    env.DB.prepare("UPDATE friendships SET gifts_for_a = 0 WHERE a = ?").bind(acc.id),
-    env.DB.prepare("UPDATE friendships SET gifts_for_b = 0 WHERE b = ?").bind(acc.id),
-  ]);
-  return json({ gifts: r ? r.n : 0 });
+  const { results } = await env.DB.prepare(`SELECT id, a, gifts_for_a, gifts_for_b FROM friendships
+    WHERE (a = ? AND gifts_for_a > 0) OR (b = ? AND gifts_for_b > 0)`).bind(acc.id, acc.id).all();
+  let gifts = 0;
+  const stmts = [];
+  for (const f of results) {
+    const mine = f.a === acc.id, n = mine ? f.gifts_for_a : f.gifts_for_b;
+    gifts += n;
+    // Minus the counted gifts instead of down to zero: one arriving in between is kept for the next time.
+    stmts.push(env.DB.prepare(mine ? "UPDATE friendships SET gifts_for_a = gifts_for_a - ? WHERE id = ?"
+      : "UPDATE friendships SET gifts_for_b = gifts_for_b - ? WHERE id = ?").bind(n, f.id));
+  }
+  if (stmts.length) await env.DB.batch(stmts);
+  return json({ gifts });
 }
 
 /* ---------- Content reports ---------- */

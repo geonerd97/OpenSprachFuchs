@@ -173,14 +173,15 @@ function checkBadges() {
   for (const b of fresh) st.badges[b.id] = dayStr();
   return fresh;
 }
-/* Resets the current course from unit `from` on: lesson progress, word stages, open mistakes and unit statistics. */
+/* Resets the current course from unit `from` on: lesson progress, word stages, open mistakes, the bonus stations,
+   the mastery medals and the unit statistics. */
 function resetCourseFrom(from) {
   const c = cs(), ids = new Set(UNITS.slice(from).map(u => u.id));
   for (const id of ids) delete c.progress[id];
   const inReset = key => ids.has(KEY_UNIT[key]);
   for (const key of Object.keys(c.srs || {})) if (inReset(key)) delete c.srs[key];
   c.mistakes = (c.mistakes || []).filter(key => !inReset(key));
-  for (const id of ids) if (c.unitStats) delete c.unitStats[id];
+  for (const id of ids) { if (c.unitStats) delete c.unitStats[id]; if (c.bonus) delete c.bonus[id]; if (c.mastery) delete c.mastery[id]; }
   for (const u of UNITS.slice(from)) for (const w of u.words) if (c.seen) delete c.seen[w.id];
   save();
 }
@@ -230,6 +231,7 @@ function todaysQuests() {
     const rnd = seeded(day), pool = QUESTS.filter(q => !q.when || q.when()), ids = [];
     while (ids.length < 3 && pool.length) { const q = pool.splice(Math.floor(rnd() * pool.length), 1)[0]; if (!ids.some(id => id.slice(0, 5) === q.id.slice(0, 5))) ids.push(q.id); }
     st.quests = { day, ids, claimed: [], bonus: false };
+    save(); // once a day: otherwise the picked quests stay in memory only and are missing from the backup
   }
   return st.quests.ids.map(id => QUESTS.find(q => q.id === id)).filter(Boolean);
 }
