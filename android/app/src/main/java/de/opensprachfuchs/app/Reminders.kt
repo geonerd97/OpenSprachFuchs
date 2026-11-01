@@ -22,6 +22,7 @@ object Reminders {
     private const val PREFS = "reminder"
     private const val CHANNEL = "daily"
     const val ACTION = "de.opensprachfuchs.app.REMINDER"
+    const val MIDNIGHT = "de.opensprachfuchs.app.MIDNIGHT"
 
     private fun prefs(c: Context) = c.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
@@ -43,6 +44,29 @@ object Reminders {
 
     /** The last learning day (yyyy-MM-dd, "" if none) and the streak, as the page last reported them. */
     fun state(c: Context): Pair<String, Int> = prefs(c).let { it.getString("lastDay", "") .orEmpty() to it.getInt("streak", 0) }
+
+    /* The widget says whether today's goal is done, so it has to be redrawn when the date changes. Its periodic
+       update (30 min) does not run while the phone dozes through the night, and ACTION_DATE_CHANGED may not be
+       received from the manifest since Android 8. So an alarm at midnight redraws it (issue #24). */
+    private fun midnightIntent(c: Context) = PendingIntent.getBroadcast(
+        c, 2, Intent(c, ReminderReceiver::class.java).setAction(MIDNIGHT),
+        PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+    )
+
+    fun scheduleMidnight(c: Context) {
+        val am = c.getSystemService(AlarmManager::class.java) ?: return
+        val at = Calendar.getInstance().apply {
+            add(Calendar.DAY_OF_YEAR, 1)
+            set(Calendar.HOUR_OF_DAY, 0); set(Calendar.MINUTE, 0); set(Calendar.SECOND, 5); set(Calendar.MILLISECOND, 0)
+        }
+        val pi = midnightIntent(c)
+        am.cancel(pi)
+        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, at.timeInMillis, AlarmManager.INTERVAL_DAY, pi)
+    }
+
+    fun cancelMidnight(c: Context) {
+        c.getSystemService(AlarmManager::class.java)?.cancel(midnightIntent(c))
+    }
 
     /** (Re)arms the daily alarm; inexact, so no special alarm permission is needed. */
     fun schedule(c: Context) {
@@ -91,12 +115,17 @@ object Reminders {
     }
 }
 
-/** Receives the daily alarm, and re-arms it after the phone restarts. */
+/** Receives the daily alarm and the one at midnight, and re-arms both after a restart or a change of time. */
 class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
-            Intent.ACTION_BOOT_COMPLETED -> Reminders.schedule(context)
+            Intent.ACTION_BOOT_COMPLETED, Intent.ACTION_TIME_CHANGED, Intent.ACTION_TIMEZONE_CHANGED -> {
+                Reminders.schedule(context)
+                Reminders.scheduleMidnight(context)
+                StreakWidget.updateAll(context) // the date may have jumped
+            }
             Reminders.ACTION -> Reminders.notifyIfOpen(context)
+            Reminders.MIDNIGHT -> StreakWidget.updateAll(context)
         }
     }
 }

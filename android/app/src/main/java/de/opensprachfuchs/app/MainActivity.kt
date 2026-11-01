@@ -127,6 +127,7 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
     override fun onResume() {
         super.onResume()
         web.onResume()
+        StreakWidget.updateAll(this) // the day may have changed while the app was in the background (issue #24)
         // Back from installing a voice, for example: let the page check again.
         web.evaluateJavascript("window.opensprachfuchsResume && window.opensprachfuchsResume()", null)
     }

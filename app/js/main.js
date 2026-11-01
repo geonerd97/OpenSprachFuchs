@@ -134,6 +134,13 @@ app.addEventListener("click", e => {
       st = Object.assign(fromSaved(null), keep); setCourse(st.course); save(); ui.modal = null; render(); return;
     }
     case "closemodal": ui.modal = null; render(); return;
+    case "resultdone": {
+      // Die erste Runde des Tages hat die Serie erhöht: erst der Serien-Bildschirm, dann der Lernweg.
+      if (!result || !result.streakUp) { view = "home"; render(); scrollToCurrent(); return; }
+      view = "streak"; render(); window.scrollTo(0, 0);
+      loadFriends().then(() => { if (view === "streak") render(); }); // die gemeinsamen Serien von eben
+      return;
+    }
     case "home": clearInterval(blitzTimer); ui.modal = null; L = null; view = "home"; render(); scrollToCurrent(); return;
     case "quit": ui.modal = "quit"; render(); return;
     case "say": speak(ds.t, !!ds.slow); return;
@@ -173,7 +180,7 @@ document.addEventListener("keydown", e => {
   if (ui.modal) { if (e.key === "Escape") { ui.modal = null; render(); } return; }
   if (view === "signin" && e.key === "Enter" && e.target.id === "keyInput") { e.preventDefault(); document.querySelector('[data-act="dosignin"]').click(); return; }
   if (view === "stats" && e.key === "Escape") { view = "home"; render(); return; }
-  if (view === "result" && e.key === "Enter") { e.preventDefault(); view = "home"; render(); return; }
+  if ((view === "result" || view === "streak") && e.key === "Enter") { e.preventDefault(); document.querySelector('[id="contBtn"]').click(); return; }
   if (view !== "lesson" || !L) return;
   const inText = e.target.tagName === "TEXTAREA";
   if (e.key === "Enter" && !e.shiftKey) {
@@ -213,6 +220,9 @@ function openUrl(url) {
 }
 
 setInterval(() => { if (view === "home" && !ui.modal && !ui.pop && st.settings.hearts && st.hearts < MAX_HEARTS) render(); }, 60000);
+// The trail is measured from the rendered nodes, so it has to be drawn again when the page changes width.
+let trailTimer = 0;
+if (window.addEventListener) window.addEventListener("resize", () => { clearTimeout(trailTimer); trailTimer = setTimeout(() => { if (view === "home" && ui.tab === "path") drawTrails(); }, 150); });
 window.opensprachfuchsBack = () => {
   if (ui.modal) { ui.modal = null; render(); return true; }
   if (ui.pop) { ui.pop = null; render(); return true; }

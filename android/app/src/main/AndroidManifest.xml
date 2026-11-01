@@ -18,8 +18,8 @@
         </intent>
     </queries>
 
-    <!-- allowBackup="false": Schlüssel und verschlüsselter Spielstand liegen im Speicher des WebView und sollen
-         nicht in Googles Cloud-Backup landen (siehe PRIVACY.md). Den Schlüssel notiert der Spieler selbst. -->
+    <!-- allowBackup="false": the secret key and the encrypted save live in the WebView's storage and must not
+         end up in Google's cloud backup (see PRIVACY.md). The player keeps the key themselves. -->
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -62,11 +62,15 @@
                 android:resource="@xml/streak_widget" />
         </receiver>
 
+        <!-- TIME_SET and TIMEZONE_CHANGED may still be declared here since Android 8, DATE_CHANGED may not;
+             the change of day therefore comes from an alarm of our own (Reminders.scheduleMidnight). -->
         <receiver
             android:name=".ReminderReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </receiver>
     </application>

@@ -29,11 +29,49 @@ function render() {
   else if (view === "langs") app.innerHTML = langsHTML();
   else if (view === "lesson") app.innerHTML = lessonHTML();
   else if (view === "result") app.innerHTML = resultHTML();
+  else if (view === "streak") app.innerHTML = streakHTML();
   else if (view === "fail") app.innerHTML = failHTML();
   else if (view === "stats") app.innerHTML = statsHTML();
   if (ui.modal) app.insertAdjacentHTML("beforeend", modalHTML());
+  if (view === "home" && ui.tab === "path") drawTrails();
   if (view === "lesson" && L.cur && L.cur.type === "type" && !L.checked) {
     const t = document.getElementById("typeInput"); if (t) { t.value = L.typed || ""; t.focus(); }
+  }
+}
+/* ---------- The trail between the lesson nodes (issue #23) ----------
+   The nodes sit on a sine curve, so a straight line between them looks wrong. After every render the real
+   centres are measured and drawn as one dotted line per unit, which therefore follows whatever shape the path
+   has. Two pieces: up to the first locked node in the unit's colour, the rest in grey. The SVG is the first
+   child of .nodes and all nodes are painted over it, so the line disappears behind them. */
+const rnd = x => Math.round(x * 10) / 10;
+/** A smooth line through all points (Catmull-Rom as cubic Béziers), so it touches every node centre. */
+function curveThrough(p) {
+  if (p.length < 2) return "";
+  let d = `M${rnd(p[0].x)} ${rnd(p[0].y)}`;
+  for (let i = 0; i < p.length - 1; i++) {
+    const a = p[i - 1] || p[i], b = p[i], c = p[i + 1], e = p[i + 2] || c;
+    d += ` C${rnd(b.x + (c.x - a.x) / 6)} ${rnd(b.y + (c.y - a.y) / 6)}, ${rnd(c.x - (e.x - b.x) / 6)} ${rnd(c.y - (e.y - b.y) / 6)}, ${rnd(c.x)} ${rnd(c.y)}`;
+  }
+  return d;
+}
+function drawTrails() {
+  let boxes = [];
+  try { boxes = document.querySelectorAll(".nodes"); } catch (e) { return; }
+  for (const box of boxes) {
+    const svg = box.querySelector && box.querySelector(".trail");
+    if (!svg || !box.getBoundingClientRect) continue;
+    const b = box.getBoundingClientRect();
+    const pts = [...box.querySelectorAll(".node")].map(n => {
+      const r = n.getBoundingClientRect();
+      return { x: r.left - b.left + r.width / 2, y: r.top - b.top + r.height / 2, locked: n.classList.contains("locked") };
+    });
+    if (pts.length < 2 || !b.width) { svg.innerHTML = ""; continue; }
+    let cut = pts.findIndex(p => p.locked);
+    if (cut < 0) cut = pts.length;
+    svg.setAttribute("viewBox", `0 0 ${rnd(b.width)} ${rnd(b.height)}`);
+    svg.setAttribute("width", rnd(b.width)); svg.setAttribute("height", rnd(b.height));
+    // The segment into the first locked node is grey, so the line shows how far the way is open.
+    svg.innerHTML = `<path class="t-open" d="${curveThrough(pts.slice(Math.max(cut - 1, 0)))}"/><path class="t-done" d="${curveThrough(pts.slice(0, cut))}"/>`;
   }
 }
 function heartsLabel() { return st.settings.hearts ? st.hearts : "∞"; }
@@ -53,29 +91,24 @@ function homeHTML() {
     if (u.level !== level) return "";
     nth++;
     const open = unitUnlocked(ui_), d = done(u.id), ls = lessonsFor(u);
-    // The nodes wind down the page on a sine curve; --mid puts the dotted trail halfway to the node before.
-    let prevOff = 0;
     const lessonNodes = ls.map((lesson, li) => {
       const off = Math.round(Math.sin(gi++ * 0.95) * 62);
-      const mid = li === 0 ? null : Math.round((prevOff - off) / 2);
-      prevOff = off;
       const state = !open || li > d ? "locked" : li === d ? "current" : "done";
       const icon = state === "locked" ? I.lock(26) : state === "done" ? I.check(30) : li === ls.length - 1 ? I.trophy(30) : I.star(30);
       const id = `${ui_}-${li}`;
       const pop = ui.pop === id && state !== "locked" ? `<div class="pop" role="dialog" style="--c:${u.c[0]}"><h3>${lesson.name}</h3><p>${lesson.desc} Lektion ${li + 1} von ${ls.length}.</p>
         <button class="btn wide" data-act="start" data-u="${ui_}" data-l="${li}">${state === "done" ? "Wiederholen +10 XP" : "Starten +10 XP"}</button></div>` : "";
-      return `<div class="node-wrap ${state}${mid === null ? "" : " linked"}" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}${mid === null ? "" : `;--mid:${mid}px`}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
+      return `<div class="node-wrap ${state}" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
         ${state === "current" && ui.pop !== id ? `<span class="start-tag">START</span>` : ""}
         ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
     }).join("");
-    const bOff = Math.round(Math.sin(gi++ * 0.95) * 62);
-    const nodes = lessonNodes + bonusNodeHTML(u, ui_, open, bOff, Math.round((prevOff - bOff) / 2));
+    const nodes = lessonNodes + bonusNodeHTML(u, ui_, open, Math.round(Math.sin(gi++ * 0.95) * 62));
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
       <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, ${u.words.length} Wörter">${esc(C.code)} – Einheit ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= ls.length && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
         ${open ? `<button class="wordsbtn" data-act="words" data-u="${ui_}">Wörter</button>`
         : `<button class="wordsbtn test" data-act="placement" data-u="${ui_}" title="Einstufungstest: Einheiten überspringen">Test</button>`}</div></div>
-      <div class="nodes">${nodes}</div></section>`;
+      <div class="nodes" style="--c:${u.c[0]}"><svg class="trail" aria-hidden="true"></svg>${nodes}</div></section>`;
   }).join("");
   return `<header class="topbar"><div class="topbar-in">
       <div class="brand"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>
@@ -276,9 +309,43 @@ function resultHTML() {
     <div class="tiles3"><div class="st" style="--c:var(--gold)"><small>XP</small><b>${I.bolt(20)}+${r.xp}</b></div>
       <div class="st" style="--c:var(--good)"><small>Genauigkeit</small><b>${r.acc}&nbsp;%</b></div>
       <div class="st" style="--c:var(--accent)"><small>Zeit</small><b>${fmtTime(r.secs)}</b></div></div>
-    <button class="btn wide" id="contBtn" data-act="home">Weiter</button>
+    <button class="btn wide" id="contBtn" data-act="resultdone">Weiter</button>
     ${r.blitz ? `<button class="btn gold wide" data-act="blitz">Noch eine Blitzrunde</button>` : ""}
     ${r.refill && st.settings.hearts && st.hearts < MAX_HEARTS ? `<button class="btn heartbtn wide" data-act="refill">Weiter auffüllen (${st.hearts} von ${MAX_HEARTS})</button>` : ""}</div></div>`;
+}
+/* ---------- The streak screen ----------
+   After the first finished round of a day the streak grows by one. That gets its own small screen: the flame
+   comes up, the number rolls from yesterday's to today's, and underneath stand the shared streaks with friends
+   that are running right now. Only shown when the streak really went up (result.streakUp), and the animations
+   stop under "Bewegung reduzieren" like all the others. */
+function streakWord(n) {
+  if (n === 1) return "Der Anfang ist gemacht. Morgen geht es weiter!";
+  if (n === 7) return "Eine ganze Woche am Stück. Stark!";
+  if (n === 30) return "Ein ganzer Monat ohne Lücke!";
+  if (n === 100) return "Hundert Tage. Das ist eine Hausnummer!";
+  if (n % 50 === 0) return `${n} Tage am Stück — unglaublich!`;
+  if (n < 7) return "Eine Lektion am Tag reicht, damit sie weiterwächst.";
+  return "Schön dranbleiben: Morgen eine Lektion, dann bleibt sie stehen.";
+}
+function streakHTML() {
+  const n = (result && result.streakUp) || st.streak || 1;
+  const pairs = friends.list.filter(f => f.status === "accepted" && pairStreak(f) > 0).sort((a, b) => pairStreak(b) - pairStreak(a));
+  const shown = pairs.slice(0, 5);
+  return `<div class="center"><div class="card">
+    <div class="flame-show">
+      <span class="flame-ring" aria-hidden="true"></span>
+      <span class="flame-big" aria-hidden="true">${I.flame(150)}</span>
+      <span class="roll" aria-hidden="true">${n > 1 ? `<i class="old">${n - 1}</i>` : ""}<i class="new">${n}</i></span>
+      <span class="spark s1" aria-hidden="true">✨</span><span class="spark s2" aria-hidden="true">⭐</span><span class="spark s3" aria-hidden="true">✨</span>
+    </div>
+    <h1>${n} ${n === 1 ? "Tag" : "Tage"} in Folge!</h1>
+    <p class="muted" style="font-size:1.05rem">${streakWord(n)}</p>
+    ${result && result.freezeUsed ? `<p class="muted">🧊 ${result.freezeUsed === 1 ? "Ein Serienschutz hat" : result.freezeUsed + " Serienschutze haben"} die Lücke geschlossen.</p>` : ""}
+    ${shown.length ? `<div class="pairs"><h3>Gemeinsam mit Freunden</h3><div class="friends">${shown.map(f => `<div class="friend">
+      <span><b>${esc(friendName(f))}</b><small>${friendLearnedToday(f) ? "hat heute auch gelernt ✓" : "heute noch nicht"}</small></span>
+      <span class="pair-streak">🔥 ${pairStreak(f)}</span></div>`).join("")}</div>
+      ${pairs.length > shown.length ? `<p class="muted">und ${pairs.length - shown.length} weitere</p>` : ""}</div>` : ""}
+    <button class="btn wide" id="contBtn" data-act="home">Weiter</button></div></div>`;
 }
 function statsHTML() {
   const h = st.history || {}, days = [];
@@ -542,7 +609,7 @@ function dialogsHTML() {
   return `<div class="panel"><h3>Gespräche</h3><p class="muted">Kleine Szenen aus dem Urlaub: Wähle im Gespräch die passende Antwort.</p>${rows}</div>`;
 }
 /* The fox from the logo: next to the current lesson on the path (tap it), cheering after every round, a bit sad when it didn't work out. */
-const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!", hr: "Idemo!" };
+const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!", hr: "Idemo!", da: "Kom så!" };
 function foxLine() {
   const streak = shownStreak(), lines = [FOX_HELLO[CODE] || "Los geht's!", "Ich glaub an dich!", "Eine Lektion am Tag reicht schon!", "Du schaffst das!", "Auf zur nächsten Lektion!"];
   if (streak > 1) lines.push(`🔥 ${streak} Tage in Folge!`);

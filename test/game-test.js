@@ -592,6 +592,42 @@ g.view = "home";
   if (same.ui.appUpdate || store["opensprachfuchs-update"]) fail("App-Update angeboten, obwohl die Version aktuell ist");
   if (!/neueste Version \(0\.0\.2\)/.test(same.ui.updateNote || "")) fail("Manuelle Prüfung meldet nichts", same.ui.updateNote);
   same.ui.modal = "settings"; if (!same.modalHTML().includes("neueste Version")) fail("Ergebnis der Prüfung fehlt in den Einstellungen");
+  // The streak screen: the first finished round of a day raises the streak and gets its own screen, with the
+  // shared streaks that are running underneath. A second round on the same day must not show it again.
+  {
+    const day = n => { const d = new Date(); d.setDate(d.getDate() - n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+    g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = false;
+    g.st.lastDay = day(1); g.st.streak = 4; g.st.day = day(0); g.st.dayLessons = 0;
+    g.view = "home"; g.startLesson(0, 0); answerAll(g.L);
+    if (g.view !== "result" || g.result.streakUp !== 5) fail("Serie nach der ersten Runde des Tages nicht gewachsen", g.view, g.result && g.result.streakUp);
+    if (!g.resultHTML().includes('data-act="resultdone"')) fail("Weiter auf dem Ergebnis führt nicht weiter");
+    g.st.friends = { 1: "Anna" };
+    g.friends.list = [
+      { id: 1, status: "accepted", code: "AAAA-1111", streak: 12, streakDay: day(0), lastDay: day(0) },
+      { id: 2, status: "accepted", code: "BBBB-2222", streak: 7, streakDay: day(5), lastDay: day(5) }, // abgelaufen
+      { id: 3, status: "incoming", code: "CCCC-3333", streak: 0, streakDay: null, lastDay: null },
+    ];
+    g.click("resultdone");
+    if (g.view !== "streak") fail("Serien-Bildschirm wird nicht gezeigt", g.view);
+    const h = g.streakHTML();
+    if (!h.includes("5 Tage in Folge!") || !h.includes(">4<") || !h.includes(">5<")) fail("Flamme zählt nicht von 4 auf 5");
+    if (!h.includes("Anna") || !h.includes("🔥 12")) fail("Laufende gemeinsame Serie fehlt");
+    if (h.includes("BBBB") || h.includes("CCCC")) fail("Abgelaufene Serie oder offene Anfrage auf dem Serien-Bildschirm");
+    g.click("home");
+    if (g.view !== "home") fail("Weiter vom Serien-Bildschirm führt nicht zum Lernweg", g.view);
+    // Second round on the same day: no streak screen.
+    g.startLesson(0, 1); answerAll(g.L);
+    if (g.result.streakUp) fail("Serie wächst zweimal am selben Tag", g.result.streakUp);
+    g.click("resultdone");
+    if (g.view !== "home") fail("Serien-Bildschirm kommt ohne gewachsene Serie", g.view);
+    // Day one: the screen says "1 Tag" and shows no old number.
+    g.st.lastDay = null; g.st.streak = 0; g.st.dayLessons = 0;
+    g.startLesson(0, 2); answerAll(g.L);
+    if (g.result.streakUp !== 1) fail("Erster Tag zählt nicht", g.result.streakUp);
+    g.click("resultdone");
+    if (!g.streakHTML().includes("1 Tag in Folge!") || g.streakHTML().includes('class="old"')) fail("Erster Tag zeigt eine alte Zahl");
+    g.click("home");
+  }
   console.log(`Übungen: ${count}, Fehler: ${errors}`, JSON.stringify(types));
 process.exit(errors ? 1 : 0);
 })();

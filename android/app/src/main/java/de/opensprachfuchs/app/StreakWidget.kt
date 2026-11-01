@@ -16,7 +16,12 @@ import java.time.LocalDate
  */
 class StreakWidget : AppWidgetProvider() {
     override fun onUpdate(context: Context, manager: AppWidgetManager, ids: IntArray) {
+        Reminders.scheduleMidnight(context) // keeps the redraw at the change of day armed while a widget is placed
         for (id in ids) manager.updateAppWidget(id, views(context))
+    }
+
+    override fun onDisabled(context: Context) {
+        Reminders.cancelMidnight(context) // the last widget is gone
     }
 
     companion object {
