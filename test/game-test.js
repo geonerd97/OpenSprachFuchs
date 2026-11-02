@@ -357,6 +357,15 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   if (!g.buy("boost") || g.buy("boost")) fail("Doppel-XP falsch");
   g.cs().last = Date.now() - 1000;
   if (!g.buy("pause") || g.cs().last < Date.now() + 13 * 864e5) fail("Pausenschutz verschiebt nicht");
+  if (g.buy("pause")) fail("Pausenschutz doppelt gekauft");
+  { // Issue #26: a finished round must not move the protection back to today ("schon mehrfach gekauft, verschwindet wieder").
+    const until = g.cs().last;
+    g.startLesson(0, 0); answerAll(g.L);
+    if (g.cs().last !== until) fail("Pausenschutz nach einer Lektion weg", g.cs().last - Date.now());
+    g.st.gems = 200;
+    if (g.buy("pause")) fail("Pausenschutz trotz aktivem Schutz nochmal verkauft");
+    if (!g.shopItems().find(x => x.id === "pause").note.includes("noch")) fail("Pausenschutz zeigt die Restdauer nicht");
+  }
   g.st.gems = 0; if (g.buy("freeze")) fail("Kauf ohne genug Edelsteine");
   const d = new Date(); d.setDate(d.getDate() - 2);
   g.st.lastDay = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;

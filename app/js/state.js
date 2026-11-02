@@ -267,7 +267,8 @@ function shopItems() {
     { id: "boost", em: "⚡", name: "Doppel-XP", price: 40, desc: "Alle Runden der nächsten 15 Minuten zählen doppelt.",
       note: boostLeft > 0 ? `Aktiv, noch ${boostLeft} Min.` : "", can: boostLeft <= 0, buy: () => { st.boostUntil = Date.now() + BOOST_MS; } },
     { id: "pause", em: "🏖️", name: `Pausenschutz für ${C.name}`, price: 40, desc: `${DECAY_DAYS} Tage mehr, bevor es in ${C.name} wegen einer Pause zurückgeht.`,
-      note: !started ? "Erst nach der ersten Lektion möglich" : st.settings.decay === false ? "Rückstufung ist ausgeschaltet" : (c.last || now) > now ? "Schutz ist aktiv" : "",
+      note: !started ? "Erst nach der ersten Lektion möglich" : st.settings.decay === false ? "Rückstufung ist ausgeschaltet"
+        : (c.last || now) > now ? `Schutz ist aktiv, noch ${Math.ceil((c.last - now) / DAY_MS)} Tage` : "",
       can: started && st.settings.decay !== false && (c.last || now) <= now, buy: () => { const k = cs(); k.last = (k.last || Date.now()) + DECAY_DAYS * DAY_MS; } },
   ];
 }
