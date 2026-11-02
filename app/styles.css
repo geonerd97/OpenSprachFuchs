@@ -109,7 +109,7 @@ svg { flex-shrink: 0; }
 /* The path should not read as nodes floating in nothing: a faint dot grid fills the space around the column,
    a dotted trail joins the nodes (--mid is the step to the node before, from views.js) and the current one
    breathes a halo. All of it is decoration and stops under "Bewegung reduzieren" (see the rule further down). */
-.nodes { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding-block: 1.6rem .4rem;
+.nodes { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding-block: 1.6rem .4rem;
   background: radial-gradient(circle, color-mix(in srgb, var(--ink-2) 22%, transparent) 1px, transparent 1.5px) center / 26px 26px; }
 .node-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
 .node { width: 72px; height: 66px; border-radius: 50%; border: 0; background: var(--c, var(--accent)); position: relative;
@@ -128,10 +128,12 @@ svg { flex-shrink: 0; }
   display: grid; gap: .7rem; box-shadow: 0 10px 30px rgba(10, 20, 40, .25); }
 .pop h3 { font-size: 1.1rem; } .pop p { margin: 0; font-size: .9rem; opacity: .92; }
 .pop .btn { background: #fff; color: var(--c); box-shadow: 0 4px 0 rgba(0, 0, 0, .18); }
-.node-wrap.linked::before { content: ""; position: absolute; left: 50%; top: calc(-1.5rem + 7px); width: 7px; height: calc(1.5rem - 5px);
-  transform: translateX(calc(var(--mid, 0px) - 3.5px));
-  background: radial-gradient(circle, color-mix(in srgb, var(--c, var(--accent)) 75%, transparent) 2.6px, transparent 3px) center / 7px 8px repeat-y; }
-.node-wrap.locked.linked::before { background-image: radial-gradient(circle, var(--lock) 2.6px, transparent 3px); }
+/* The dotted trail is drawn as one SVG line per unit (drawTrails in views.js), so it follows the curve of the
+   path instead of standing vertically between the nodes. It is the first child, the nodes cover its ends. */
+.trail { position: absolute; inset: 0; pointer-events: none; }
+.trail path { fill: none; stroke-width: 7px; stroke-linecap: round; stroke-dasharray: 0.1 13; }
+.trail .t-done { stroke: color-mix(in srgb, var(--c, var(--accent)) 75%, transparent); }
+.trail .t-open { stroke: var(--lock); }
 /* opacity: 0 is the resting state, so with "Bewegung reduzieren" no ring is left standing around the node. */
 .node.current::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 5px solid var(--c, var(--accent));
   opacity: 0; pointer-events: none; animation: halo 2.8s cubic-bezier(.2, .6, .4, 1) infinite; }
@@ -406,6 +408,27 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 @keyframes fox-flip { 0% { transform: none; } 45% { transform: translateY(-48px) rotate(180deg); } 80% { transform: translateY(-10px) rotate(340deg); } 100% { transform: rotate(360deg); } }
 @keyframes fox-sad { 0%, 100% { transform: rotate(-5deg) translateY(4px); } 50% { transform: rotate(5deg) translateY(4px); } }
 @keyframes spark { 0% { opacity: 0; transform: scale(.3); } 40% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0; transform: translateY(-22px) scale(.7); } }
+
+/* The streak screen after the first round of a day: the flame rises out of a halo and the number rolls from
+   yesterday's to today's. The old number rests at opacity 0, so with "Bewegung reduzieren" only today's stands. */
+.flame-show { position: relative; width: 190px; height: 190px; display: grid; place-items: center; color: var(--flame); }
+.flame-big { display: grid; place-items: center; filter: drop-shadow(0 6px 10px color-mix(in srgb, var(--flame) 45%, transparent));
+  animation: flame-in .7s cubic-bezier(.3, 1.4, .5, 1) both, flame-beat 2.4s ease-in-out .8s infinite; }
+.flame-ring { position: absolute; width: 150px; height: 150px; border-radius: 50%; border: 6px solid var(--flame);
+  opacity: 0; animation: flame-ring 1.4s cubic-bezier(.2, .6, .4, 1) .25s; }
+.roll { position: absolute; display: grid; place-items: center; height: 3.4rem; margin-top: 1.6rem; overflow: hidden; }
+.roll i { grid-area: 1/1; font: 800 2.6rem/3.4rem var(--display); font-style: normal; color: #fff; font-variant-numeric: tabular-nums; }
+.roll .old { opacity: 0; animation: roll-out .9s .35s both; }
+.roll .new { animation: roll-in .9s .35s both; }
+.pairs { display: grid; gap: .6rem; width: 100%; }
+.pairs h3 { font-size: 1rem; color: var(--ink-2); }
+.pairs .friend { grid-template-columns: minmax(0, 1fr) auto; text-align: left; }
+.pair-streak { font-weight: 800; color: var(--flame); white-space: nowrap; }
+@keyframes flame-in { 0% { transform: translateY(40px) scale(.4); opacity: 0; } 60% { transform: translateY(-6px) scale(1.08); opacity: 1; } 100% { transform: none; opacity: 1; } }
+@keyframes flame-beat { 0%, 100% { transform: none; } 50% { transform: scale(1.05) rotate(-1.5deg); } }
+@keyframes flame-ring { 0% { transform: scale(.6); opacity: .55; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes roll-out { 0%, 20% { opacity: 1; transform: none; } 70%, 100% { opacity: 0; transform: translateY(-100%); } }
+@keyframes roll-in { 0%, 20% { opacity: 0; transform: translateY(100%); } 70%, 100% { opacity: 1; transform: none; } }
 /* QR code with the key: always black on white so cameras read it */
 .qrbox { display: grid; gap: .5rem; justify-items: center; }
 .qr { background: #fff; border-radius: 12px; padding: 4px; width: min(200px, 70vw); height: auto; }
