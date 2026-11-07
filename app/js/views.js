@@ -61,7 +61,7 @@ function drawTrails() {
     const svg = box.querySelector && box.querySelector(".trail");
     if (!svg || !box.getBoundingClientRect) continue;
     const b = box.getBoundingClientRect();
-    const pts = [...box.querySelectorAll(".node")].map(n => {
+    const pts = [...box.querySelectorAll(".node:not(.mnode)")].map(n => {
       const r = n.getBoundingClientRect();
       return { x: r.left - b.left + r.width / 2, y: r.top - b.top + r.height / 2, locked: n.classList.contains("locked") };
     });
@@ -73,6 +73,15 @@ function drawTrails() {
     // The segment into the first locked node is grey, so the line shows how far the way is open.
     svg.innerHTML = `<path class="t-open" d="${curveThrough(pts.slice(Math.max(cut - 1, 0)))}"/><path class="t-done" d="${curveThrough(pts.slice(0, cut))}"/>`;
   }
+}
+const pathOff = i => Math.round(Math.sin(i * 1.3) * 58);
+const MASTER_COLORS = [null, ["#C9803F", "#8F5A24"], ["#AEB8C6", "#7C8798"], ["var(--gold)", "var(--gold-deep)"]];
+function masteryNodeHTML(u, ui_, off) {
+  const m = masteryOf(u.id);
+  if (m >= 3) return "";
+  const [c, cd] = MASTER_COLORS[m + 1];
+  return `<button class="node mnode ${off > 0 ? "left" : "right"}" style="--c:${c};--cd:${cd}" data-act="master" data-u="${ui_}" title="Einheit meistern: ${MEDAL_NAMES[m + 1]} (freiwillig)"
+    aria-label="${u.title}: ${MEDAL_NAMES[m + 1]} erreichen, freiwillig">${I.trophy(26)}</button>`;
 }
 function heartsLabel() { return st.settings.hearts ? st.hearts : "∞"; }
 function ring(reached) {
@@ -92,7 +101,7 @@ function homeHTML() {
     nth++;
     const open = unitUnlocked(ui_), d = done(u.id), ls = lessonsFor(u);
     const lessonNodes = ls.map((lesson, li) => {
-      const off = Math.round(Math.sin(gi++ * 0.95) * 62);
+      const off = pathOff(gi++);
       const state = !open || li > d ? "locked" : li === d ? "current" : "done";
       const icon = state === "locked" ? I.lock(26) : state === "done" ? I.check(30) : li === ls.length - 1 ? I.trophy(30) : I.star(30);
       const id = `${ui_}-${li}`;
@@ -100,9 +109,9 @@ function homeHTML() {
         <button class="btn wide" data-act="start" data-u="${ui_}" data-l="${li}">${state === "done" ? "Wiederholen +10 XP" : "Starten +10 XP"}</button></div>` : "";
       return `<div class="node-wrap ${state}" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
         ${state === "current" && ui.pop !== id ? `<span class="start-tag">START</span>` : ""}
-        ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
+        ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}${state === "done" && li === ls.length - 1 ? masteryNodeHTML(u, ui_, off) : ""}</div>${pop}`;
     }).join("");
-    const nodes = lessonNodes + bonusNodeHTML(u, ui_, open, Math.round(Math.sin(gi++ * 0.95) * 62));
+    const nodes = lessonNodes + bonusNodeHTML(u, ui_, open, pathOff(gi++));
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
       <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, ${u.words.length} Wörter">${esc(C.code)} – Einheit ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= ls.length && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
@@ -611,6 +620,8 @@ function dialogsHTML() {
 /* The fox from the logo: next to the current lesson on the path (tap it), cheering after every round, a bit sad when it didn't work out. */
 const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!", hr: "Idemo!", da: "Kom så!" };
 function foxLine() {
+  const due = dueWords().length;
+  if (due) return `${due} ${due === 1 ? "Vokabel ist" : "Vokabeln sind"} fällig. Tipp mich an!`;
   const streak = shownStreak(), lines = [FOX_HELLO[CODE] || "Los geht's!", "Ich glaub an dich!", "Eine Lektion am Tag reicht schon!", "Du schaffst das!", "Auf zur nächsten Lektion!"];
   if (streak > 1) lines.push(`🔥 ${streak} Tage in Folge!`);
   if (st.dayLessons >= 1) lines.push("Tagesziel geschafft, stark!");
@@ -619,7 +630,7 @@ function foxLine() {
   const seed = [...dayStr()].reduce((a, ch) => a + ch.charCodeAt(0), 0);
   return lines[(seed + (ui.foxN || 0)) % lines.length];
 }
-const foxHTML = side => `<button class="path-fox ${side} ${Date.now() < (ui.foxHopUntil || 0) ? "hop" : ""}" data-act="fox" aria-label="Fuchs sagt: ${esc(foxLine())}">
+const foxHTML = side => `<button class="path-fox ${side} ${dueWords().length ? "due" : ""} ${Date.now() < (ui.foxHopUntil || 0) ? "hop" : ""}" data-act="fox" aria-label="Fuchs sagt: ${esc(foxLine())}">
   <span class="fox-say" aria-hidden="true">${esc(foxLine())}</span><img src="img/fox.webp" alt="" width="64" height="64"></button>`;
 const foxCheerHTML = big => `<div class="fox-cheer ${big ? "flip" : ""}" aria-hidden="true"><img src="img/fox.webp" alt="" width="136" height="136">
   <span class="spark s1">✨</span><span class="spark s2">${big ? "🌟" : "⭐"}</span><span class="spark s3">✨</span>${big ? `<span class="spark s4">🎉</span>` : ""}</div>`;

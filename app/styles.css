@@ -110,10 +110,10 @@ svg { flex-shrink: 0; }
 /* The path should not read as nodes floating in nothing: a faint dot grid fills the space around the column,
    a dotted trail joins the nodes (--mid is the step to the node before, from views.js) and the current one
    breathes a halo. All of it is decoration and stops under "Bewegung reduzieren" (see the rule further down). */
-.nodes { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding-block: 1.6rem .4rem;
+.nodes { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.3rem; padding-block: 1.6rem .4rem;
   background: radial-gradient(circle, color-mix(in srgb, var(--ink-2) 22%, transparent) 1px, transparent 1.5px) center / 26px 26px; }
 .node-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
-.node { width: 72px; height: 66px; border-radius: 50%; border: 0; background: var(--c, var(--accent)); position: relative;
+.node { width: 80px; height: 74px; border-radius: 50%; border: 0; background: var(--c, var(--accent)); position: relative;
   box-shadow: 0 7px 0 var(--cd, var(--accent-deep)); display: grid; place-items: center; color: #fff; transition: transform .08s, box-shadow .08s; }
 .node:active { transform: translateY(6px); box-shadow: 0 1px 0 var(--cd, var(--accent-deep)); }
 @media (hover: hover) { .node:hover:not(:active) { transform: translateY(-2px); box-shadow: 0 9px 0 var(--cd, var(--accent-deep)); } }
@@ -122,6 +122,11 @@ svg { flex-shrink: 0; }
    bottom padding so the ring also encloses the button's 7px 3D edge. */
 .ring { display: grid; place-items: center; padding: 7px 7px 14px; border-radius: 50%; border: 6px solid var(--line);
   border-color: color-mix(in srgb, var(--c) 30%, transparent); }
+.node.mnode { position: absolute; top: 12px; width: 52px; height: 48px; box-shadow: 0 5px 0 var(--cd); }
+.node.mnode.left { right: calc(100% + 12px); }
+.node.mnode.right { left: calc(100% + 12px); }
+.node.mnode:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--cd); }
+.path-fox.due .fox-say { border-color: var(--gold); }
 .node.shake { animation: shake .35s; }
 .start-tag { position: relative; margin-bottom: 12px; background: var(--surface); color: var(--c, var(--accent)); border: 2px solid var(--line);
   font-weight: 800; font-size: .8rem; letter-spacing: .08em; padding: .35rem .7rem; border-radius: 10px; white-space: nowrap; animation: bob 1.6s ease-in-out infinite; }
