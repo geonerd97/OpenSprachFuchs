@@ -18,7 +18,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 - **Backend live:** https://app.opensprachfuchs.workers.dev/ (Worker `app`, alter Name `opensprachfuchs` läuft parallel, D1 `opensprachfuchs` in `weur`, workers.dev-Subdomain des Kontos `opensprachfuchs`). Alte Worker/Datenbanken (betterlingo, openlingo) sind gelöscht.
 - **Git lokal:** Der Ordner heißt noch `~/Betterlingo`. Branch `opensource` folgt `github/main` (Remote `github`). `origin` ist das private Gitea (`…/Bubulingo.git`) mit dem alten Verlauf; dorthin nichts vom neuen Stand pushen. Pushen nach GitHub mit `git -c credential.helper= -c credential.helper='!gh auth git-credential' push github opensource:main` (die gh-CLI ist als `geonerd97` angemeldet). Commits in diesem Repo laufen als `geonerd97 <277867742+geonerd97@users.noreply.github.com>`.
 - **Signatur:** `~/opensprachfuchs-release.jks` + `android/keystore.properties` (beides nicht in Git, muss gesichert sein; ohne diesen Schlüssel keine Updates mehr). Alte Schlüssel `~/betterlingo-release.jks`, `~/openlingo-release.jks` werden nicht mehr gebraucht.
-- **Cloudflare-Zugang:** Wrangler ist per OAuth angemeldet (Konto martin150897@gmail.com). Die Subdomain wurde über die API geändert (`/accounts/<id>/workers/subdomain`, Token aus `~/Library/Preferences/.wrangler/config/default.toml`).
+- **Cloudflare-Zugang:** Wrangler ist per OAuth angemeldet (Konto des Maintainers). Die Subdomain wurde über die API geändert (`/accounts/<id>/workers/subdomain`, Token aus `~/Library/Preferences/.wrangler/config/default.toml`).
 - Offene Punkte beim Maintainer: Test auf echten Handys läuft (Fairphone 5, Galaxy Tab S6 Lite), Auftragsverarbeitungsvertrag (DPA) mit Cloudflare.
 
 ## Aufbau
