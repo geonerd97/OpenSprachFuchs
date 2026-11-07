@@ -164,7 +164,7 @@ function correctText(ex) {
    A phrase never reaches across a comma or the end of a sentence (closing quotes still belong to it). */
 const HINT_PHRASE = 5;
 function hintSpans(text, lang) {
-  if (L && L.kind === "master") return esc(text);
+  if (L && L.kind === "master" || L.kind === "placement") return esc(text);
   const dict = lang === "de" ? HINT_DE : HINT_T, toks = String(text).split(" ").filter(Boolean), out = [];
   for (let i = 0; i < toks.length;) {
     let hit = null, max = 1;
