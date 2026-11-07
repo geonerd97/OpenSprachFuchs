@@ -77,11 +77,9 @@ function drawTrails() {
 const pathOff = i => Math.round(Math.sin(i * 1.3) * 58);
 const MASTER_COLORS = [null, ["#C9803F", "#8F5A24"], ["#AEB8C6", "#7C8798"], ["var(--gold)", "var(--gold-deep)"]];
 function masteryNodeHTML(u, ui_, off) {
-  const m = masteryOf(u.id);
-  if (m >= 3) return "";
-  const [c, cd] = MASTER_COLORS[m + 1];
-  return `<button class="node mnode ${off > 0 ? "left" : "right"}" style="--c:${c};--cd:${cd}" data-act="master" data-u="${ui_}" title="Einheit meistern: ${MEDAL_NAMES[m + 1]} (freiwillig)"
-    aria-label="${u.title}: ${MEDAL_NAMES[m + 1]} erreichen, freiwillig">${I.trophy(26)}</button>`;
+  const m = masteryOf(u.id), t = Math.min(m + 1, 3), [c, cd] = MASTER_COLORS[t];
+  return `<button class="node mnode ${off > 0 ? "left" : "right"}" style="--c:${c};--cd:${cd}" data-act="master" data-u="${ui_}" title="Einheit meistern: ${MEDAL_NAMES[t]} (freiwillig${m >= 3 ? ", Wiederholung" : ""})"
+    aria-label="${u.title}: ${MEDAL_NAMES[t]} ${m >= 3 ? "wiederholen" : "erreichen"}, freiwillig">${I.trophy(26)}</button>`;
 }
 function heartsLabel() { return st.settings.hearts ? st.hearts : "∞"; }
 function ring(reached) {
@@ -114,7 +112,7 @@ function homeHTML() {
     const nodes = lessonNodes + bonusNodeHTML(u, ui_, open, pathOff(gi++));
     return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
       <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, ${u.words.length} Wörter">${esc(C.code)} – Einheit ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
-        ${open && done(u.id) >= ls.length && masteryOf(u.id) < 3 ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
+        ${open && done(u.id) >= ls.length ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
         ${open ? `<button class="wordsbtn" data-act="words" data-u="${ui_}">Wörter</button>`
         : `<button class="wordsbtn test" data-act="placement" data-u="${ui_}" title="Einstufungstest: Einheiten überspringen">Test</button>`}</div></div>
       <div class="nodes" style="--c:${u.c[0]}"><svg class="trail" aria-hidden="true"></svg>${nodes}</div></section>`;
@@ -447,11 +445,11 @@ function modalHTML() {
       <button class="btn bad wide" data-act="doresetfrom">Zurücksetzen</button><button class="btn ghost wide" data-act="resetcourse">Andere Einheit wählen</button></div></div>`;
   }
   if (ui.modal === "master") {
-    const u = UNITS[ui.mu], lvl = masteryOf(u.id);
+    const u = UNITS[ui.mu], lvl = Math.min(masteryOf(u.id), 2), replay = masteryOf(u.id) >= 3;
     return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${MEDALS[lvl + 1]} ${MEDAL_NAMES[lvl + 1]}: ${esc(u.title)}</h2>
       <p class="muted">12 schwerere Aufgaben aus dieser Einheit, mit mehr Tippen${canSpeak() ? " und Sprechen" : ""} und ohne Worthilfen.
       Erlaubt ${MASTER_ALLOWED[lvl] === 0 ? "ist kein einziger Fehler" : `sind höchstens ${MASTER_ALLOWED[lvl]} Fehler`}. Herzen kostet es nicht.</p>
-      ${lvl ? `<p class="muted">Bisher erreicht: ${MEDALS[lvl]} ${MEDAL_NAMES[lvl]}.</p>` : ""}
+      ${lvl || replay ? `<p class="muted">Bisher erreicht: ${MEDALS[masteryOf(u.id)]} ${MEDAL_NAMES[masteryOf(u.id)]}.${replay ? " Zur Wiederholung, es gibt weniger Edelsteine." : ""}</p>` : ""}
       <button class="btn gold wide" data-act="startmaster" data-u="${ui.mu}">Los geht's</button><button class="btn ghost wide" data-act="closemodal">Abbrechen</button></div></div>`;
   }
   if (ui.modal === "shop") return modal("Shop", shopHTML() + `<button class="btn ghost wide" data-act="closemodal">Schließen</button>`);

@@ -104,10 +104,9 @@ function dialogPick(i) {
 const MEDALS = ["", "🥉", "🥈", "🥇"], MEDAL_NAMES = ["", "Bronze", "Silber", "Gold"], MASTER_ALLOWED = [2, 1, 0];
 const masteryOf = id => ((cs().mastery || {})[id]) || 0;
 function startMaster(u) {
-  const unit = UNITS[u], level = masteryOf(unit.id);
-  if (level >= 3) return;
+  const unit = UNITS[u], replay = masteryOf(unit.id) >= 3, level = Math.min(masteryOf(unit.id), 2);
   const p = { words: unit.words, sentences: unit.sentences, used: new Set(), prefer: new Set() };
-  beginLesson({ kind: "master", unit: u, level, queue: MASTER_PLAN.map(k => generate(k, p)).filter(Boolean) });
+  beginLesson({ kind: "master", unit: u, level, replay, queue: MASTER_PLAN.map(k => generate(k, p)).filter(Boolean) });
 }
 function beginLesson(o) {
   ui.pop = null; ui.modal = null;
@@ -258,7 +257,7 @@ function finish() {
   xp += comboBonus;
   const boosted = Date.now() < (st.boostUntil || 0);
   if (boosted) xp *= 2;
-  let gems = L.kind === "bonus" ? (bonusFirst ? BONUS_GEMS : 0) : L.kind === "lesson" ? 5 + (perfect ? 3 : 0) : L.kind === "placement" ? 10 : L.kind === "master" ? 5 + 3 * L.level : L.kind === "dialog" ? 4 : L.kind === "blitz" ? Math.floor(L.score / 5) : 2;
+  let gems = L.kind === "bonus" ? (bonusFirst ? BONUS_GEMS : 0) : L.kind === "lesson" ? 5 + (perfect ? 3 : 0) : L.kind === "placement" ? 10 : L.kind === "master" ? (L.replay ? 2 : 5 + 3 * L.level) : L.kind === "dialog" ? 4 : L.kind === "blitz" ? Math.floor(L.score / 5) : 2;
   st.xp += xp; st.dayLessons++; st.lessons++;
   const rec = dayRec(); rec.xp += xp; rec.lessons++;
   // Never move this back: a bought pause protection (shop) puts it into the future and must survive a round.
