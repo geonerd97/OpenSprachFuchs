@@ -19,13 +19,14 @@ function sfx(kind) {
 const browserTTS = () => typeof window !== "undefined" && "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined";
 const hasTTS = () => APP || browserTTS();
 /* speak() replaces whatever is being said; with `queued` the text waits until the current speech has finished
-   (dialogues: the partner answers after your line, instead of both talking at once, issue #5). */
+   (dialogues: the partner answers after your line, instead of both talking at once, issue #5).
+   C.speech is the pack's tag for the speech output (its `speech`, otherwise `voice`); packs with noListen stay silent. */
 function speak(text, slow, queued) {
-  if (!st.settings.audio) return;
+  if (!st.settings.audio || C.noListen) return;
   if (APP) {
     try {
       const b = window.AndroidBridge;
-      const spoken = queued && b.speakQueued ? b.speakQueued(text, C.voice, !!slow) : b.speak(text, C.voice, !!slow);
+      const spoken = queued && b.speakQueued ? b.speakQueued(text, C.speech, !!slow) : b.speak(text, C.speech, !!slow);
       // The bridge says no when the phone has no voice for the language: show the notice on the path instead.
       if (spoken === false && voice.state === "ok") checkVoice();
     } catch (e) {}
@@ -34,7 +35,7 @@ function speak(text, slow, queued) {
   if (!browserTTS()) return;
   try {
     const synth = speechSynthesis, u = new SpeechSynthesisUtterance(text);
-    u.lang = C.voice; u.rate = slow ? .6 : .95;
+    u.lang = C.speech; u.rate = slow ? .6 : .95;
     if (!queued) synth.cancel();
     synth.speak(u);
   } catch (e) {}
@@ -46,17 +47,34 @@ function stopSpeaking() {
 /* Listening can be paused for an hour; audio-only tasks then turn into reading tasks with the same answer. */
 const LISTEN_PAUSE_MS = 60 * 60 * 1000;
 const listenPaused = () => Date.now() < (st.listenOffUntil || 0);
-/* The phone's voice for the current language (app only): "ok", "missing", "none" or "loading"; checked when the
-   language changes and again once the speech engine has started. Without a voice, listening tasks become reading tasks. */
+/* The voice for the current language: "ok", "missing", "none" or "loading"; checked when the language changes and again
+   once the speech engine has started. In the app the phone's speech engine answers, in a browser its list of voices
+   (a voice of the same language counts; while the list is still empty nothing is known yet and "ok" stands).
+   Without a voice, listening tasks become reading tasks and the path shows "Keine Stimme für …".
+   Dialects often have no voice at all: "ksh" (Kölsch) and "gsw" (Swiss German) are valid tags that no engine speaks. */
 const voice = { code: "", state: "ok" };
+const langOf = tag => String(tag || "").toLowerCase().replace(/_/g, "-");
+function browserVoiceState(tag) {
+  let voices = [];
+  try { voices = speechSynthesis.getVoices ? speechSynthesis.getVoices() || [] : []; } catch (e) {}
+  if (!voices.length) return "ok";
+  const want = langOf(tag), primary = want.split("-")[0];
+  return voices.some(v => { const l = langOf(v.lang); return l === want || l.split("-")[0] === primary; }) ? "ok" : "none";
+}
 function checkVoice(retry = 4) {
-  if (!APP || !window.AndroidBridge.voiceState) return;
-  voice.code = CODE; voice.state = window.AndroidBridge.voiceState(C.voice);
+  if (C.noListen) { voice.code = CODE; voice.state = "ok"; return; }
+  if (APP) {
+    if (!window.AndroidBridge.voiceState) return;
+    voice.code = CODE; voice.state = window.AndroidBridge.voiceState(C.speech);
+  } else if (browserTTS()) { voice.code = CODE; voice.state = browserVoiceState(C.speech); }
+  else return;
   if (voice.state === "loading" && retry > 0) setTimeout(() => checkVoice(retry - 1), 1500);
   else if (view === "home" && !ui.modal) render();
 }
-const noVoice = () => APP && voice.code === CODE && (voice.state === "missing" || voice.state === "none");
-const canListen = () => hasTTS() && st.settings.audio && st.settings.listen && !listenPaused();
+// Browsers load their voices late; the list then arrives with "voiceschanged".
+try { if (!APP && browserTTS() && speechSynthesis.addEventListener) speechSynthesis.addEventListener("voiceschanged", () => checkVoice()); } catch (e) {}
+const noVoice = () => !C.noListen && voice.code === CODE && (voice.state === "missing" || voice.state === "none");
+const canListen = () => hasTTS() && !C.noListen && st.settings.audio && st.settings.listen && !listenPaused();
 function degradeAudio(ex) {
   if (!ex) return ex;
   if (ex.type === "listen") return Object.assign({}, ex, { type: "bank", src: ex.de, srcLang: "de" });
@@ -77,7 +95,8 @@ const pauseUntilText = () => clockText(st.listenOffUntil);
 let speechBroken = false;
 const speechSupported = () => !speechBroken && APP && !!(window.AndroidBridge.canRecognize && window.AndroidBridge.canRecognize());
 const speakPaused = () => Date.now() < (st.speakOffUntil || 0);
-const canSpeak = () => speechSupported() && st.settings.speak !== false && !speakPaused();
+// noListen also turns off speaking: a language without a voice has no speech recognition either.
+const canSpeak = () => speechSupported() && !C.noListen && st.settings.speak !== false && !speakPaused();
 function degradeSpeak(ex) {
   if (!ex || ex.type !== "speak") return ex;
   return Object.assign({}, ex, { type: "bank", src: ex.de, srcLang: "de", tiles: makeTiles(ex.target, "t", { sentences: ALL_SENTS }) });

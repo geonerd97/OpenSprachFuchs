@@ -9,12 +9,20 @@ let PACK_INDEX = null;     // the backend's packs/index.json once fetched: { pac
 const packs = { busy: "", error: "", loading: false };
 
 const list = v => Array.isArray(v) ? v : [v];
+/* Format 2 (packs/README.md) adds dialects: group, noTyping, noListen, speech (another tag for the speech output),
+   spellings (the alternatives in t are spellings) and tr (a transcription under the text). */
+const PACK_FORMAT = 2;
+const PACK_GROUPS = [{ id: "main", title: "Sprachen" }, { id: "dialects", title: "Dialekte" }];
+const groupOf = p => PACK_GROUPS.some(g => g.id === p.group) ? p.group : "main";
+/** Index entries (or courses) sorted into PACK_GROUPS; groups without packs are left out. */
+const packGroups = entries => PACK_GROUPS.map(g => Object.assign({}, g, { packs: entries.filter(p => groupOf(p) === g.id) })).filter(g => g.packs.length);
 function courseFromPack(p) {
-  return { code: p.short, name: p.name, voice: p.voice, c: p.color, note: p.note, art: new RegExp(p.articles || "(?!)", "i"),
+  return { code: p.short, name: p.name, voice: p.voice, speech: p.speech || p.voice, c: p.color, note: p.note, art: new RegExp(p.articles || "(?!)", "i"),
+    group: groupOf(p), noTyping: !!p.noTyping, noListen: !!p.noListen, spellings: !!p.spellings,
     skip: p.gapSkip || [], gloss: p.glossary || {}, glossDe: p.glossaryDe || {}, units: p.units, dialogs: p.dialogs || [], dialogGroups: p.dialogGroups || {}, stories: p.stories || [] };
 }
 function validPack(p) {
-  return p && p.format === 1 && /^[a-z]{2,3}$/.test(p.code) && Array.isArray(p.units) && p.units.length > 0
+  return p && (p.format === 1 || p.format === PACK_FORMAT) && /^[a-z]{2,3}$/.test(p.code) && Array.isArray(p.units) && p.units.length > 0
     && p.units.every(u => u.id && Array.isArray(u.words) && Array.isArray(u.sentences));
 }
 function storePacks() {
@@ -46,14 +54,17 @@ function removePack(code) {
   delete COURSES[code]; delete PACK_SHA[code];
   storePacks();
 }
-/* The packs come from the backend. The Android app also carries a copy of every pack (assets/packs/, made at build
-   time), so languages can be installed without internet; only updates need the backend. */
+/* The packs come from the backend. The Android app also carries a copy of every main language (assets/packs/, made at
+   build time by tools/packs.mjs bundle), so those can be installed without internet; only updates need the backend.
+   Dialects are left out of the APK and come from the backend. */
 const LOCAL_PACKS = "packs/";
 async function loadIndex(base) {
   const r = await fetchTimeout(base + "index.json", { cache: "no-store" }, 6000);
   if (!r.ok) throw new Error("index " + r.status);
   const idx = await r.json();
   if (!idx || !Array.isArray(idx.packs)) throw new Error("index");
+  // Format-2 packs stand in their own list, which apps up to 0.1.6 do not read; packs of a later format are skipped.
+  idx.packs = idx.packs.concat(Array.isArray(idx.packs2) ? idx.packs2 : []).filter(p => p && (p.format || 1) <= PACK_FORMAT);
   return Object.assign(idx, { base });
 }
 async function fetchPackIndex() {
@@ -73,7 +84,7 @@ async function downloadPack(code) {
     const r = await fetchTimeout(PACK_INDEX.base + `${code}.json`, { cache: "no-store" });
     if (!entry || !r.ok || !installPack(await r.text(), entry.sha256)) throw new Error("pack");
     if (!COURSES[st.course]) st.course = code;
-    if (CODE === code || st.course === code || !UNITS.length) setCourse(st.course); // st.course: the language of a save adopted before its pack was here
+    if (CODE === code || st.course === code || !UNITS.length) { setCourse(st.course); checkVoice(); } // st.course: the language of a save adopted before its pack was here
     save();
   } catch (e) { packs.error = "Das Laden hat nicht geklappt. Bitte versuch es noch einmal."; }
   packs.busy = ""; render();
@@ -90,7 +101,7 @@ async function checkPackUpdates() {
 }
 
 /* ---------- The active course ----------
-   setCourse() flattens one pack into UNITS: words { id, t, alt, de, pic } and sentences { id, t, tAlt, de, deAlt }.
+   setCourse() flattens one pack into UNITS: words { id, t, alt, de, pic, tr } and sentences { id, t, tAlt, de, deAlt, tr }.
    Progress is keyed by the stable ids ("w:basics.w01"), so corrections in a pack keep what was learned. */
 const cleanKey = x => String(x).toLowerCase().replace(/[’‘`´]/g, "'").replace(/[.,!?;:"«»„“”()¿¡]/g, "").replace(/\s+/g, " ").trim();
 let HINT_T = {}, HINT_DE = {};
@@ -100,15 +111,16 @@ function addHint(map, key, value) {
   if (!l.includes(value) && l.length < 3) l.push(value);
 }
 const unitsFor = code => (COURSES[code] && COURSES[code].units) || [];
-const EMPTY_COURSE = { code: "", name: "", voice: "de-DE", c: "#2456E8", note: "", art: /(?!)/, skip: [], gloss: {}, glossDe: {}, units: [], dialogs: [], stories: [] };
+const EMPTY_COURSE = { code: "", name: "", voice: "de-DE", speech: "de-DE", c: "#2456E8", note: "", art: /(?!)/, group: "main", noTyping: false, noListen: false, spellings: false,
+  skip: [], gloss: {}, glossDe: {}, units: [], dialogs: [], stories: [] };
 
 let C = EMPTY_COURSE, CODE = "", UNITS = [], ALL_WORDS = [], ALL_SENTS = [], KEY_UNIT = {};
 function setCourse(code) {
   if (!COURSES[code]) code = Object.keys(COURSES)[0] || "";
   CODE = code; C = COURSES[code] || EMPTY_COURSE;
   UNITS = C.units.map(u => ({ id: u.id, title: u.title, level: u.level, desc: u.desc, c: u.colors,
-    words: u.words.map(w => ({ id: w.id, t: list(w.t)[0], alt: list(w.t).slice(1), de: w.de, pic: w.pic || "" })),
-    sentences: u.sentences.map(s => ({ id: s.id, t: list(s.t)[0], tAlt: list(s.t).slice(1), de: list(s.de)[0], deAlt: list(s.de).slice(1) })) }));
+    words: u.words.map(w => ({ id: w.id, t: list(w.t)[0], alt: list(w.t).slice(1), de: w.de, pic: w.pic || "", tr: w.tr || "" })),
+    sentences: u.sentences.map(s => ({ id: s.id, t: list(s.t)[0], tAlt: list(s.t).slice(1), de: list(s.de)[0], deAlt: list(s.de).slice(1), tr: s.tr || "" })) }));
   ALL_WORDS = UNITS.flatMap(u => u.words); ALL_SENTS = UNITS.flatMap(u => u.sentences);
   // Tap hints: target-language words to German and back, from the vocabulary plus the pack's glossary.
   HINT_T = {}; HINT_DE = {};

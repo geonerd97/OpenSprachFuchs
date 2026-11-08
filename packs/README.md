@@ -1,11 +1,12 @@
 # Sprachpakete
 
-Jede Sprache ist eine JSON-Datei `<code>.json`. Die App lädt sie vom Backend und behält sie auf dem Gerät; eine Kopie aller Pakete steckt außerdem in der APK, damit die App offline startet. Ein Update erkennt die App an der SHA-256-Prüfsumme in `index.json`, eine Versionsnummer muss man nicht pflegen.
+Jede Sprache ist eine JSON-Datei `<code>.json`. Die App lädt sie vom Backend und behält sie auf dem Gerät; eine Kopie aller Hauptsprachen steckt außerdem in der APK, damit die App offline startet (Dialekte nicht, siehe [Dialekte](#dialekte-format-2)). Ein Update erkennt die App an der SHA-256-Prüfsumme in `index.json`, eine Versionsnummer muss man nicht pflegen.
 
 ```bash
 node tools/packs.mjs check    # prüfen
 node tools/packs.mjs format   # in das Hausformat bringen (eine Zeile pro Wort/Satz, gut lesbare Diffs)
 node tools/packs.mjs build    # prüfen und nach worker/public/packs/ bauen (mit index.json)
+node tools/packs.mjs bundle <Ordner> [--dialects]   # die Pakete für die APK (macht Gradle selbst)
 ```
 
 ## Aufbau
@@ -60,6 +61,7 @@ Eine neue Sprache braucht in der App keine Codeänderung: Die Datei `packs/<code
 
 | Feld | Pflicht | Bedeutung |
 |---|---|---|
+| `format` | ja | `1`, oder `2` für die Felder in [Dialekte](#dialekte-format-2) |
 | `code` | ja | zwei oder drei Kleinbuchstaben, gleich dem Dateinamen |
 | `name` | ja | deutscher Name der Sprache; steht im Hinweis „Keine Stimme für …“ („kann kein ‹name›“), muss also hinter „kein“ passen (Türkisch, Niederländisch) |
 | `short` | ja | Kürzel, Großbuchstaben (`TR`, `NL`) |
@@ -121,5 +123,49 @@ Türkisch (`tr`, `tr-TR`, `"articles": ""`) hat im Kopf dieselben Felder, nur oh
 - Sonderstationen: Hat eine Einheit eine Geschichte (`stories[].unit`), ist ihr fünfter Knopf diese Geschichte; sonst ein Minispiel aus den Wörtern der Einheit. Jede Frage hat genau drei Antworten auf Deutsch, die erste ist richtig. Bisher hat jede fünfte Einheit einer Stufe eine Geschichte.
 - Gespräche können zu Kategorien gehören: `"group": "restaurant"` am Gespräch und oben im Paket `"dialogGroups": {"restaurant": {"title": "Im Restaurant", "em": "🍽️"}}`. Die App zeigt die Kategorien aufklappbar mit Fortschritt.
 - `level` ist eines von A1, A2, B1, B2, C1, C2.
+
+## Dialekte (Format 2)
+
+Dialekte wie Kölsch oder Schweizerdeutsch haben oft keine feste Schreibweise und keine Stimme in der Sprachausgabe. Dafür gibt es `"format": 2`. Pakete mit Format 1 bleiben unverändert gültig; die neuen Felder sind alle freiwillig, aber **nur in Format 2 erlaubt** (`check` meldet sie sonst als Fehler). Apps bis Version 0.1.6 kennen nur Format 1 und bekommen Format-2-Pakete gar nicht erst angezeigt (siehe `index.json`).
+
+| Feld | Wo | Bedeutung |
+|---|---|---|
+| `group` | Kopf | `"main"` (Standard, Liste „Sprachen“) oder `"dialects"` (Liste „Dialekte“) |
+| `noTyping` | Kopf | `true`: keine Tipp-Aufgaben (Wort/Satz schreiben). Die App nimmt stattdessen Auswahl und Wortkarten; Sonderstationen ohne Geschichte sind Memory statt Wortsuche, Buchstabensalat und Wortraten |
+| `noListen` | Kopf | `true`: keine Sprachausgabe, keine Hör- und Sprechaufgaben, keine Lautsprecher-Knöpfe, kein Hinweis „Keine Stimme für …“ |
+| `speech` | Kopf | BCP-47-Tag nur für die Sprachausgabe, wenn er von `voice` abweichen soll (z. B. `"de-CH"`). Ohne Angabe gilt `voice` |
+| `spellings` | Kopf | `true`: Die Alternativen in `t` sind andere Schreibweisen desselben Wortes. Die App zeigt sie als „auch geschrieben: …“ (sonst „auch: …“); beim Tippen gelten sie wie immer alle als richtig |
+| `tr` | Wort, Satz, Gesprächs- und Geschichtszeile | Umschrift/Lesehilfe als Text, z. B. die Aussprache oder eine Schreibweise, die vom Standard abweicht. Steht klein unter dem Text (Wortkarte, Wortliste, „Was bedeutet …?“, Satz bauen ins Deutsche, Gespräche, Geschichten) |
+
+**Stimme bei Dialekten:** `voice` bleibt der echte Tag der Sprache, er steuert auch die Großschreibung (`toLocaleUpperCase`). Kölsch hat den ISO-639-3-Code `ksh`, Schweizerdeutsch `gsw` (`gsw-CH`). Beide sind gültige BCP-47-Tags, aber weder Googles Sprachausgabe noch die üblichen Browser haben dafür eine Stimme. Die App erkennt das (Android: `none`, Browser: keine Stimme dieser Sprache in `speechSynthesis.getVoices()`) und zeigt „Keine Stimme für ‹name›“; Hörübungen werden dann zu Leseübungen. Mit `speech: "de-CH"` liest die App mit einer Stimme für Deutsch (Schweiz) vor, das ist allerdings Hochdeutsch und kein Schweizerdeutsch, und Android wie Browser nehmen auch eine andere deutsche Stimme, wenn es keine für die Schweiz gibt. Solange keine passende Stimme feststeht, ist `noListen: true` die ehrliche Wahl.
+
+Kopf eines Dialekt-Pakets (ohne Inhalt):
+
+```jsonc
+{
+  "format": 2,
+  "code": "ksh",
+  "name": "Kölsch", "short": "KSH",
+  "voice": "ksh",
+  "group": "dialects",
+  "noTyping": true,
+  "noListen": true,
+  "spellings": true,
+  "color": "#C8102E",
+  "note": "Kölsch aus Köln",
+  "articles": "",
+  "gapSkip": [],
+  "glossary": {}, "glossaryDe": {},
+  "units": [ { "id": "basics", "…": "…",
+    "words": [ {"id": "basics.w01", "de": "…", "t": ["Hauptschreibweise", "andere Schreibweise"], "tr": "Lesehilfe"} ] } ],
+  "dialogs": [], "stories": []
+}
+```
+
+Schweizerdeutsch sähe gleich aus mit `"code": "gsw"`, `"voice": "gsw-CH"`; die Kürzel `ksh`/`gsw` sind die Dateinamen (`ksh.json`, `gsw.json`).
+
+**`index.json`:** Jeder Eintrag hat `group` und `format`. Pakete mit Format 1 stehen in `packs`, Pakete mit Format 2 in `packs2` (ältere Apps lesen nur `packs`). Die App führt beide Listen zusammen und zeigt sie in der Sprachauswahl nach Gruppen: „Sprachen“, dann „Dialekte“.
+
+**APK:** Gradle baut mit `tools/packs.mjs bundle` einen eigenen Ordner mit eigenem `index.json` für `assets/packs/`. Darin sind alle Pakete der Gruppe `main`, Dialekte nur mit `./gradlew assembleDebug -PbundleDialects=true`. Die Hauptsprachen bleiben damit offline installierbar; Dialekte lädt die App vom Backend. Die Web-App bekommt wie bisher alle Pakete (`build`), lädt aber auch nur, was der Nutzer auswählt.
 
 Die Inhalte stehen unter [CC BY-SA 4.0](LICENSE).

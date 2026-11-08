@@ -102,7 +102,7 @@ const GEN = {
   type: p => { const w = takeFrom(p, p.words, "w"); return { type: "type", word: true, item: w, src: w.de, answers: [w.t, ...w.alt], target: w.t, key: "w:" + w.id }; },
   typeSent: p => { const s = takeFrom(p, p.sentences, "s"); return { type: "type", word: false, src: s.de, answers: [s.t, ...s.tAlt], target: s.t, key: "s:" + s.id }; },
   bank: p => { const s = takeFrom(p, p.sentences, "s"); return { type: "bank", src: s.de, srcLang: "de", answers: [s.t, ...s.tAlt], target: s.t, tiles: makeTiles(s.t, "t", p), key: "s:" + s.id }; },
-  bankRev: p => { const s = takeFrom(p, p.sentences, "s"); return { type: "bank", src: s.t, srcLang: CODE, answers: [s.de, ...s.deAlt], target: s.de, tiles: makeTiles(s.de, "de", p), key: "s:" + s.id }; },
+  bankRev: p => { const s = takeFrom(p, p.sentences, "s"); return { type: "bank", src: s.t, tr: s.tr, srcLang: CODE, answers: [s.de, ...s.deAlt], target: s.de, tiles: makeTiles(s.de, "de", p), key: "s:" + s.id }; },
   listenWord: p => {
     if (!canListen()) return null;
     const w = takeFrom(p, p.words, "w"); const opts = shuffle([w, ...distractWords(p, w, 3, "de")]);
@@ -193,10 +193,13 @@ function withIntros(queue, sents) {
   return out;
 }
 const SENT_KINDS = new Set(["bank", "bankRev", "listen", "gap", "typeSent"]);
+// Packs with noTyping (dialects without a fixed spelling) never ask to type; their fallbacks pick or build instead.
+const TYPE_KINDS = new Set(["type", "typeSent"]);
 function generate(kind, p) {
   const order = [kind, ...(FALLBACK[kind] || []), "choice"];
   for (const k of order) {
     if (SENT_KINDS.has(k) && !p.sentences.length) continue;
+    if (C.noTyping && TYPE_KINDS.has(k)) continue;
     const ex = GEN[k](p); if (ex) return ex;
   }
   return null;

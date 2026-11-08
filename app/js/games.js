@@ -14,7 +14,8 @@ const GAME_INFO = {
   guess: { em: "❓", name: "Wortraten", desc: "Errate das Wort Buchstabe für Buchstabe." },
 };
 const storyFor = unitId => (C.stories || []).find(s => s.unit === unitId) || null;
-const bonusKind = ui_ => storyFor(UNITS[ui_].id) ? "story" : GAME_KINDS[ui_ % GAME_KINDS.length];
+// Without a fixed spelling (noTyping) the letter games would be unfair, so such packs play memory.
+const bonusKind = ui_ => storyFor(UNITS[ui_].id) ? "story" : C.noTyping ? "memory" : GAME_KINDS[ui_ % GAME_KINDS.length];
 const bonusDone = id => !!((cs().bonus || {})[id]);
 
 /* Words for the games: the unit's words without article, letters only (no spaces or apostrophes), uppercase.
@@ -200,11 +201,11 @@ function gameHTML() {
   if (g.kind === "story") {
     const s = g.story;
     if (g.phase === "read") return `<div class="tag">${info.em} ${info.name}</div><h2>${s.em || "📖"} ${esc(s.title)}</h2>
-      <div class="row"><button class="btn ghost" data-act="storyall">${I.speaker(18)} Alles vorlesen</button></div>
+      ${C.noListen ? "" : `<div class="row"><button class="btn ghost" data-act="storyall">${I.speaker(18)} Alles vorlesen</button></div>`}
       <div class="story">${s.lines.map(l => `<div class="story-line"><button class="speak sm" data-act="say" data-t="${esc(l.t)}" aria-label="Vorlesen">${I.speaker(16)}</button>
-        <div>${hintSpans(l.t, "t")}<details><summary>Übersetzung</summary>${esc(l.de)}</details></div></div>`).join("")}</div>${hintBox()}`;
+        <div>${hintSpans(l.t, "t")}${trHTML(l.tr)}<details><summary>Übersetzung</summary>${esc(l.de)}</details></div></div>`).join("")}</div>${hintBox()}`;
     if (g.q >= s.questions.length) return `<div class="tag">${info.em} ${info.name}</div><h2>Alle Fragen richtig beantwortet!</h2>
-      <div class="story">${s.lines.map(l => `<div class="story-line"><div>${hintSpans(l.t, "t")}</div></div>`).join("")}</div>${hintBox()}`;
+      <div class="story">${s.lines.map(l => `<div class="story-line"><div>${hintSpans(l.t, "t")}${trHTML(l.tr)}</div></div>`).join("")}</div>${hintBox()}`;
     const q = s.questions[g.q];
     return `<div class="tag">${info.em} Frage ${g.q + 1} von ${s.questions.length}</div><h2>${esc(q.q)}</h2>
       <div class="choices">${g.order.map((idx, i) => { const wrong = g.wrong.includes(i);

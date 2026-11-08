@@ -26,6 +26,7 @@ function render() {
   if (ui.pendingFriend && view === "home" && !ui.modal && UNITS.length) return openPendingFriend(); // opened through a friend's QR code
   syncHearts(); syncDay();
   if (view === "home" && !UNITS.length) view = "langs";
+  if (app.classList) app.classList.toggle("nolisten", !!C.noListen); // packs without speech output: no speaker buttons
   if (view === "home") app.innerHTML = homeHTML();
   else if (view === "welcome") app.innerHTML = welcomeHTML();
   else if (view === "newkey") app.innerHTML = newKeyHTML();
@@ -178,9 +179,13 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
     <div class="path">${units}</div>`;
 }
 
-function bubble(text, lang) {
+// Transcription of a word or sentence (pack field tr, format 2): a reading aid under the text, e.g. for dialects.
+const trHTML = tr => tr ? `<small class="umschrift">${esc(tr)}</small>` : "";
+// Alternatives of a word: in packs with `spellings` they are other ways to write it.
+const altHTML = (w, sep = "") => w.alt.length ? `${sep}${C.spellings ? "auch geschrieben" : "auch"}: ${w.alt.map(esc).join(", ")}` : "";
+function bubble(text, lang, tr) {
   const target = lang !== "de";
-  return `<div class="bubble"><span class="who">${target ? C.code : "DE"}</span><div class="say">${target ? `<button class="speak sm" data-act="say" data-t="${esc(text)}" aria-label="Vorlesen">${I.speaker(18)}</button>` : ""}<span>${hintSpans(text, target ? "t" : "de")}</span></div></div>${hintBox()}`;
+  return `<div class="bubble"><span class="who">${target ? C.code : "DE"}</span><div class="say">${target ? `<button class="speak sm" data-act="say" data-t="${esc(text)}" aria-label="Vorlesen">${I.speaker(18)}</button>` : ""}<span>${hintSpans(text, target ? "t" : "de")}${target ? trHTML(tr) : ""}</span></div></div>${hintBox()}`;
 }
 function tilesHTML(ex) {
   const picked = L.picked.map(id => `<button class="tile" data-act="unpick" data-id="${id}">${esc(ex.tiles[id].t)}</button>`).join("");
@@ -202,7 +207,7 @@ function exerciseHTML(ex) {
         <div class="choices">${ex.opts.map((o, i) => `<button class="choice ${optClass(i, ex)}" data-act="sel" data-i="${i}"><span class="num">${i + 1}</span>${esc(o.de)}</button>`).join("")}</div>
         <div class="row" style="justify-content:center"><button class="btn ghost" data-act="nolisten">Kann gerade nicht hören</button></div>`;
       const head = ex.rev ? `Was bedeutet „${esc(q)}“?` : `Wie sagt man „${esc(q)}“?`;
-      return `<div class="tag">Wortschatz</div><h2>${head}</h2>
+      return `<div class="tag">Wortschatz</div><h2>${head}</h2>${ex.rev ? trHTML(ex.item.tr) : ""}
         ${ex.rev ? `<div class="row" style="align-items:center"><button class="speak" data-act="say" data-t="${esc(q)}" aria-label="Vorlesen">${I.speaker(22)}</button></div>` : ""}
         <div class="choices">${ex.opts.map((o, i) => `<button class="choice ${optClass(i, ex)}" data-act="sel" data-i="${i}"${ex.rev ? "" : ` data-say="${esc(o.t)}"`}><span class="num">${i + 1}</span><span>${ex.rev ? esc(o.de) : esc(o.t)}</span></button>`).join("")}</div>`;
     }
@@ -213,7 +218,7 @@ function exerciseHTML(ex) {
       return `<div class="tag">Selbst schreiben</div><h2>${ex.word ? `Schreib das auf ${C.name}` : `Übersetze ins ${C.name}e`}</h2>${bubble(ex.src, "de")}
         <textarea id="typeInput" class="type" lang="${CODE}" placeholder="Auf ${C.name} tippen" autocomplete="off" autocapitalize="off" spellcheck="false" ${L.checked ? "disabled" : ""}></textarea>`;
     case "bank":
-      return `<div class="tag">Satz bauen</div><h2>${ex.srcLang === "de" ? "Übersetze diesen Satz" : "Übersetze ins Deutsche"}</h2>${bubble(ex.src, ex.srcLang)}${tilesHTML(ex)}`;
+      return `<div class="tag">Satz bauen</div><h2>${ex.srcLang === "de" ? "Übersetze diesen Satz" : "Übersetze ins Deutsche"}</h2>${bubble(ex.src, ex.srcLang, ex.tr)}${tilesHTML(ex)}`;
     case "listen":
       return `<div class="tag">Hören</div><h2>Was hörst du?</h2><div class="listen-row">
         <button class="speak big" data-act="say" data-t="${esc(ex.text)}" aria-label="Abspielen">${I.speaker(44)}</button>
@@ -235,7 +240,7 @@ function exerciseHTML(ex) {
     case "dialog": {
       const d = L.dlg, sc = L.scene, turn = sc.turns[d.turn];
       const bubbles = d.log.map(x => `<div class="msg ${x.who}"><div class="say">${x.who === "p" ? `<button class="speak sm" data-act="say" data-t="${esc(x.line.t)}" aria-label="Vorlesen">${I.speaker(16)}</button>` : ""}
-        <span>${hintSpans(x.line.t, "t")}<details><summary>Übersetzung</summary>${esc(x.line.de)}</details></span></div></div>`).join("");
+        <span>${hintSpans(x.line.t, "t")}${trHTML(x.line.tr)}<details><summary>Übersetzung</summary>${esc(x.line.de)}</details></span></div></div>`).join("");
       const opts = !L.checked && turn ? `<div class="choices">${d.order.map((idx, i) => { const l = turn.a[idx], wrong = d.wrong.includes(i);
         return `<button class="choice ${wrong ? "wrong" : ""}" data-act="dlg" data-i="${i}" ${wrong ? "disabled" : ""}><span class="num">${i + 1}</span><span>${esc(l.t)}${wrong ? `<small class="tr">„${esc(l.de)}“ passt hier nicht.</small>` : ""}</span></button>`; }).join("")}</div>` : "";
       return `<div class="tag">Gespräch</div><h2>${sc.em} ${esc(sc.title)}</h2><div class="chat">${bubbles}</div>${hintBox()}${opts}`;
@@ -245,8 +250,8 @@ function exerciseHTML(ex) {
       return `<div class="tag">Neues Wort</div><h2>Das ist neu für dich</h2>
         <div class="intro">${w.pic ? `<span class="em" aria-hidden="true">${w.pic}</span>` : ""}
           <button class="speak" data-act="say" data-t="${esc(w.t)}" aria-label="Vorlesen">${I.speaker(22)}</button>
-          <div><b lang="${CODE}">${esc(w.t)}</b><span>${esc(w.de)}</span>${w.alt.length ? `<small>auch: ${w.alt.map(esc).join(", ")}</small>` : ""}</div></div>
-        ${z ? `<p class="muted" style="margin:0">${z.form ? `So kommt „${esc(z.form)}“ im Satz vor:` : "So kommt es im Satz vor:"}</p>${bubble(z.t, CODE)}<details class="hint"><summary>Übersetzung</summary>${esc(z.de)}</details>` : ""}`;
+          <div><b lang="${CODE}">${esc(w.t)}</b>${trHTML(w.tr)}<span>${esc(w.de)}</span>${w.alt.length ? `<small>${altHTML(w)}</small>` : ""}</div></div>
+        ${z ? `<p class="muted" style="margin:0">${z.form ? `So kommt „${esc(z.form)}“ im Satz vor:` : "So kommt es im Satz vor:"}</p>${bubble(z.t, CODE, z.tr)}<details class="hint"><summary>Übersetzung</summary>${esc(z.de)}</details>` : ""}`;
     }
     case "game": return gameHTML();
     case "match": {
@@ -409,7 +414,7 @@ function modalHTML() {
       const dots = [1, 2, 3, 4, 5].map(i => `<i class="${box >= i ? "on" : ""}"></i>`).join("");
       const q = [w.t, w.de, ...w.alt].join(" ").toLowerCase();
       return `<div class="wrow" data-q="${esc(q)}"><button class="speak sm" data-act="say" data-t="${esc(w.t)}" aria-label="${esc(w.t)} vorlesen">${I.speaker(16)}</button>
-        <span><b>${esc(w.t)}</b><small>${esc(w.de)}${w.alt.length ? " · auch: " + esc(w.alt.join(", ")) : ""}</small>${whole ? `<small class="unit">${esc(u.title)}</small>` : ""}</span>
+        <span><b>${esc(w.t)}</b>${trHTML(w.tr)}<small>${esc(w.de)}${altHTML(w, " · ")}</small>${whole ? `<small class="unit">${esc(u.title)}</small>` : ""}</span>
         <span class="dots" title="${box < 0 ? "noch nicht geübt" : "Lernstand " + Math.min(box, 5) + " von 5"}">${dots}</span></div>`; }).join("");
     return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${whole ? `Alle Wörter (${C.name})` : esc(units[0].title)}</h2>
       <input id="wordSearch" class="search" type="search" placeholder="Suchen, auf Deutsch oder ${C.name}" autocomplete="off" aria-label="Wörter durchsuchen">
@@ -452,7 +457,7 @@ function modalHTML() {
   if (ui.modal === "master") {
     const u = UNITS[ui.mu], lvl = Math.min(masteryOf(u.id), 2), replay = masteryOf(u.id) >= 3;
     return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${MEDALS[lvl + 1]} ${MEDAL_NAMES[lvl + 1]}: ${esc(u.title)}</h2>
-      <p class="muted">12 schwerere Aufgaben aus dieser Einheit, mit mehr Tippen${canSpeak() ? " und Sprechen" : ""} und ohne Worthilfen.
+      <p class="muted">12 schwerere Aufgaben aus dieser Einheit${C.noTyping ? (canSpeak() ? ", mit mehr Sprechen" : "") : `, mit mehr Tippen${canSpeak() ? " und Sprechen" : ""}`} und ohne Worthilfen.
       Erlaubt ${MASTER_ALLOWED[lvl] === 0 ? "ist kein einziger Fehler" : `sind höchstens ${MASTER_ALLOWED[lvl]} Fehler`}. Herzen kostet es nicht.</p>
       ${lvl || replay ? `<p class="muted">Bisher erreicht: ${MEDALS[masteryOf(u.id)]} ${MEDAL_NAMES[masteryOf(u.id)]}.${replay ? " Zur Wiederholung, es gibt weniger Edelsteine." : ""}</p>` : ""}
       <button class="btn gold wide" data-act="startmaster" data-u="${ui.mu}">Los geht's</button><button class="btn ghost wide" data-act="closemodal">Abbrechen</button></div></div>`;
@@ -669,14 +674,16 @@ function signInHTML() {
 function packListHTML() {
   if (!PACK_INDEX) return `<p class="muted">${packs.error ? esc(packs.error) : "Lade die Liste der Sprachen …"}</p>
     <button class="btn ghost wide" data-act="reloadpacks">Noch einmal versuchen</button>${Object.keys(COURSES).length ? `<button class="btn ghost wide" data-act="closemodal">Schließen</button>` : ""}`;
-  const rows = PACK_INDEX.packs.map(p => { const have = !!COURSES[p.code], update = have && PACK_SHA[p.code] !== p.sha256, busy = packs.busy === p.code;
+  const row = p => { const have = !!COURSES[p.code], update = have && PACK_SHA[p.code] !== p.sha256, busy = packs.busy === p.code;
     const btn = busy ? `<button class="btn" disabled>Lädt …</button>`
       : !have ? `<button class="btn good" data-act="getpack" data-c="${p.code}">Laden · ${Math.max(1, Math.round(p.size / 1024))} KB</button>`
       : update ? `<button class="btn gold" data-act="getpack" data-c="${p.code}">Aktualisieren</button>`
       : `<button class="btn ghost" data-act="removepack" data-c="${p.code}" ${Object.keys(COURSES).length < 2 ? "disabled" : ""}>Entfernen</button>`;
-    return `<div class="item"><span class="code" style="--c:${esc(p.color)}">${esc(p.short)}</span><span><b>${esc(p.name)}</b><small>${esc(p.note)} · ${p.units} Einheiten, ${p.words} Wörter</small>${have && !update ? "<small>✓ auf dem Gerät</small>" : ""}</span>${btn}</div>`; }).join("");
+    return `<div class="item"><span class="code" style="--c:${esc(p.color)}">${esc(p.short)}</span><span><b>${esc(p.name)}</b><small>${esc(p.note)} · ${p.units} Einheiten, ${p.words} Wörter</small>${have && !update ? "<small>✓ auf dem Gerät</small>" : ""}</span>${btn}</div>`; };
+  // Main languages and dialects stand in their own groups (field group of the index, packs/README.md).
+  const groups = packGroups(PACK_INDEX.packs).map(g => `<section class="packgroup" data-group="${g.id}"><h3>${esc(g.title)}</h3><div class="shop packs">${g.packs.map(row).join("")}</div></section>`).join("");
   return `<p class="muted">Jede Sprache ist ein kleines Paket, das auf dem Gerät bleibt. Neue Sprachen und Korrekturen kommen als Update.</p>
-    ${packs.error ? `<p class="muted" role="status">${esc(packs.error)}</p>` : ""}<div class="shop packs">${rows}</div>
+    ${packs.error ? `<p class="muted" role="status">${esc(packs.error)}</p>` : ""}${groups}
     ${Object.keys(COURSES).length ? `<button class="btn ghost wide" data-act="closemodal">Schließen</button>` : ""}`;
 }
 function langsHTML() {
@@ -690,9 +697,10 @@ function langsHTML() {
 function noticesHTML() {
   const ups = packUpdates(), out = [];
   if (noVoice() && st.settings.audio && !(st.voiceHidden || {})[CODE]) out.push(`<div class="panel notice"><h3>🔇 Keine Stimme für ${esc(C.name)}</h3>
-    <p class="muted">${voice.state === "missing" ? `Die Sprachausgabe deines Handys hat die Stimme für ${esc(C.name)} noch nicht heruntergeladen.` : `Die Sprachausgabe deines Handys kann kein ${esc(C.name)}.`}
-    Bis dahin werden Hörübungen zu Leseübungen. Fehlt die Sprache ganz, hilft oft die kostenlose App „Speech Services by Google“ oder RHVoice.</p>
-    <button class="btn wide" data-act="installvoice">Stimme installieren</button>
+    <p class="muted">${!APP ? `Dein Browser hat keine Stimme für ${esc(C.name)}. Hörübungen werden zu Leseübungen.`
+      : `${voice.state === "missing" ? `Die Sprachausgabe deines Handys hat die Stimme für ${esc(C.name)} noch nicht heruntergeladen.` : `Die Sprachausgabe deines Handys kann kein ${esc(C.name)}.`}
+    Bis dahin werden Hörübungen zu Leseübungen. Fehlt die Sprache ganz, hilft oft die kostenlose App „Speech Services by Google“ oder RHVoice.`}</p>
+    ${APP ? `<button class="btn wide" data-act="installvoice">Stimme installieren</button>` : ""}
     <div class="row" style="justify-content:flex-end"><button class="linkbtn" data-act="voicehide">Nicht mehr anzeigen</button></div></div>`);
   if (WEB && !standalone() && !st.installHidden) out.push(`<div class="panel notice"><h3>📲 Als App installieren</h3>
     <p class="muted">${IOS ? "Tippe in Safari auf „Teilen“ (Quadrat mit Pfeil) und dann auf „Zum Home-Bildschirm“." : ui.installPrompt ? "" : "Wähle im Browser-Menü „App installieren“ oder „Zum Startbildschirm hinzufügen“."}

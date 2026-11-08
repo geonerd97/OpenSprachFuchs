@@ -60,11 +60,15 @@ dependencies {
 }
 
 // The game lives in ../app (plain HTML, CSS and JavaScript) and the language packs in ../packs.
-// Before every build the packs are checked and built with Node (../tools/packs.mjs), then the game and a copy of
-// all packs go into the app's assets, so the app also works offline. Node's path can be set with -PnodePath=...
+// Before every build the packs are checked and built with Node (../tools/packs.mjs): `build` writes all of them for
+// the backend, `bundle` writes the ones that go into the app's assets, so the app also works offline. Only the main
+// languages are bundled; dialects (group "dialects", packs/README.md) come from the backend, unless the build is
+// run with -PbundleDialects=true. Node's path can be set with -PnodePath=...
 val nodeBin: String = (findProperty("nodePath") as String?)
     ?: listOf("/opt/homebrew/bin/node", "/usr/local/bin/node", "/usr/bin/node").firstOrNull { File(it).exists() }
     ?: "node"
+val bundleDialects: Boolean = (findProperty("bundleDialects") as String?).toBoolean()
+val bundledPacksDir = layout.buildDirectory.dir("bundledPacks")
 val buildPacks by tasks.registering(Exec::class) {
     description = "Checks the language packs and builds them into ../worker/public/packs."
     workingDir = rootProject.file("..")
@@ -73,11 +77,22 @@ val buildPacks by tasks.registering(Exec::class) {
     inputs.file(rootProject.file("../tools/packs.mjs"))
     outputs.dir(rootProject.file("../worker/public/packs"))
 }
-val copyWeb by tasks.registering(Sync::class) {
-    description = "Copies the game and the built packs into app/src/main/assets."
+val bundlePacks by tasks.registering(Exec::class) {
+    description = "Writes the packs that ship inside the APK (main languages, dialects with -PbundleDialects=true)."
     dependsOn(buildPacks)
+    val out = bundledPacksDir.get().asFile
+    workingDir = rootProject.file("..")
+    commandLine(listOf(nodeBin, "tools/packs.mjs", "bundle", out.absolutePath) + (if (bundleDialects) listOf("--dialects") else emptyList()))
+    inputs.dir(rootProject.file("../packs"))
+    inputs.file(rootProject.file("../tools/packs.mjs"))
+    inputs.property("bundleDialects", bundleDialects)
+    outputs.dir(out)
+}
+val copyWeb by tasks.registering(Sync::class) {
+    description = "Copies the game and the bundled packs into app/src/main/assets."
+    dependsOn(bundlePacks)
     from(rootProject.file("../app"))
-    from(rootProject.file("../worker/public/packs")) { into("packs") }
+    from(bundledPacksDir) { into("packs") }
     into(layout.projectDirectory.dir("src/main/assets"))
 }
 tasks.named("preBuild") { dependsOn(copyWeb) }
