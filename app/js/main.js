@@ -222,6 +222,10 @@ function openUrl(url) {
 setInterval(() => { if (view === "home" && !ui.modal && !ui.pop && st.settings.hearts && st.hearts < MAX_HEARTS) render(); }, 60000);
 // The trail is measured from the rendered nodes, so it has to be drawn again when the page changes width.
 let trailTimer = 0;
+/* Full screen height for lessons and result pages: the real window height, set from script (dvh/flex on #app broke the fixed tab bar in the Android WebView). */
+const setAppH = () => { if (document.documentElement && document.documentElement.style) document.documentElement.style.setProperty("--app-h", window.innerHeight + "px"); };
+setAppH();
+if (window.addEventListener) window.addEventListener("resize", setAppH);
 if (window.addEventListener) window.addEventListener("resize", () => { clearTimeout(trailTimer); trailTimer = setTimeout(() => { if (view === "home" && ui.tab === "path") drawTrails(); }, 150); });
 window.opensprachfuchsBack = () => {
   if (ui.modal) { ui.modal = null; render(); return true; }
