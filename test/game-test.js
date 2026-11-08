@@ -13,6 +13,8 @@ const fail = (...a) => { errors++; console.log("FEHLER", ...a); };
 const g = loadGame();
 const codes = Object.keys(g.COURSES);
 if (codes.length !== packFiles().length) fail("Nicht alle Sprachpakete installiert", codes);
+// The main languages share one structure (20 dialogues in 4 categories, 16 stories); dialects are smaller.
+const isMain = code => g.COURSES[code].group === "main";
 
 for (const code of codes) {
   g.st.course = code; g.setCourse(code); g.st.settings.hearts = false;
@@ -395,14 +397,16 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
 // Dialogues: every scene of every language can be played to the end; a wrong pick counts as a mistake.
 for (const code of codes) {
   g.setCourse(code); g.st.course = code;
-  if (g.dialogsFor(code).length !== 20) fail("Gesprächsanzahl", code, g.dialogsFor(code).length);
-  for (const grp of ["restaurant", "taxi", "hotel", "pharmacy"]) if (g.dialogsFor(code).filter(d => d.group === grp).length !== 5) fail("Nicht 5 Gespräche in", grp, code);
-  // Practice tab: categories with progress, a tap opens the five dialogues of one category.
   g.ui.tab = "practice"; g.ui.dgroup = null; g.view = "home";
   let h = g.homeHTML();
-  if ((h.match(/data-act="dgroup"/g) || []).length !== 4 || h.includes('data-act="dialog"')) fail("Gesprächs-Kategorien falsch", code);
-  g.click("dgroup", { g: "taxi" }); h = g.homeHTML();
-  if ((h.match(/data-act="dialog"/g) || []).length !== 5 || !h.includes("Im Taxi")) fail("Kategorie Taxi zeigt nicht 5 Gespräche", code);
+  if (isMain(code)) {
+    if (g.dialogsFor(code).length !== 20) fail("Gesprächsanzahl", code, g.dialogsFor(code).length);
+    for (const grp of ["restaurant", "taxi", "hotel", "pharmacy"]) if (g.dialogsFor(code).filter(d => d.group === grp).length !== 5) fail("Nicht 5 Gespräche in", grp, code);
+    // Practice tab: categories with progress, a tap opens the five dialogues of one category.
+    if ((h.match(/data-act="dgroup"/g) || []).length !== 4 || h.includes('data-act="dialog"')) fail("Gesprächs-Kategorien falsch", code);
+    g.click("dgroup", { g: "taxi" }); h = g.homeHTML();
+    if ((h.match(/data-act="dialog"/g) || []).length !== 5 || !h.includes("Im Taxi")) fail("Kategorie Taxi zeigt nicht 5 Gespräche", code);
+  } else if (!g.dialogsFor(code).length || (h.match(/data-act="dgroup"/g) || []).length !== g.dialogsFor(code).length) fail("Gespräche ohne Kategorie fehlen im Üben-Tab", code); // each one on its own
   g.ui.dgroup = null; g.ui.tab = "path";
   for (const sc of g.dialogsFor(code)) {
     g.startDialog(sc.id);
@@ -472,7 +476,7 @@ g.view = "home";
   }
   if (kinds.size !== 4) fail("Minispiele wechseln sich nicht ab", [...kinds].join(","));
   // Every fifth unit has a short story in every language.
-  for (const code of codes) { g.setCourse(code); const n = g.UNITS().filter((u, i) => g.bonusKind(i) === "story").length; if (n !== 16) fail(`Kurzgeschichten fehlen (${code})`, n); }
+  for (const code of codes.filter(isMain)) { g.setCourse(code); const n = g.UNITS().filter((u, i) => g.bonusKind(i) === "story").length; if (n !== 16) fail(`Kurzgeschichten fehlen (${code})`, n); }
   g.setCourse("en");
   g.startBonus(4);
   if (g.L.game.kind !== "story" || !g.exerciseHTML(g.L.cur).includes("Alles vorlesen")) fail("Kurzgeschichte an Stufe 5 fehlt", g.L.game.kind);

@@ -1,0 +1,277 @@
+{
+  "format": 2,
+  "code": "ksh",
+  "name": "Kölsch",
+  "short": "KÖ",
+  "voice": "ksh",
+  "group": "dialects",
+  "noTyping": true,
+  "noListen": true,
+  "color": "#B5179E",
+  "note": "Kölner Mundart, Schreibweise nicht festgelegt",
+  "articles": "^(dä |de |et |e |ene |en )",
+  "gapSkip": [],
+  "glossary": {
+    "et": "es / das",
+    "es": "ist",
+    "jot": "gut",
+    "wat": "was",
+    "mer": "wir / mir",
+    "dat": "das",
+    "dä": "der / den",
+    "d'r": "den",
+    "nit": "nicht",
+    "han": "habe",
+    "met": "mit",
+    "noch": "noch",
+    "e": "ein",
+    "eine": "einen",
+    "ene": "einen",
+    "op": "auf",
+    "jeiht": "geht",
+    "kütt": "kommt",
+    "wie": "wie",
+    "dir": "dir",
+    "sin": "sind",
+    "em": "im",
+    "en": "in",
+    "bes": "bis",
+    "morje": "morgen",
+    "ich": "ich",
+    "wells": "willst",
+    "de": "du / die",
+    "hätt": "hat",
+    "jejange": "gegangen",
+    "mir": "mir",
+    "jaade": "Garten",
+    "spät": "spät",
+    "sinn": "sehen",
+    "uns": "uns",
+    "kein": "keine",
+    "kumme": "komme",
+    "wor": "war",
+    "brauhuus": "Brauhaus",
+    "öm": "um",
+    "drinkste": "trinkst du",
+    "minge": "mein",
+    "ming": "meine",
+    "us": "aus",
+    "nett": "nett",
+    "dich": "dich",
+    "wo": "wo",
+    "bitte": "bitte",
+    "koss": "kostet",
+    "leg": "leg",
+    "glas": "Glas",
+    "am": "am",
+    "kumm": "komm",
+    "weed": "wird",
+    "jebütz": "geküsst",
+    "wirf": "wirf",
+    "ens": "mal",
+    "darf": "darf",
+    "wellste": "willst du",
+    "och": "auch",
+    "jet": "etwas",
+    "esse": "essen",
+    "kost": "kostet"
+  },
+  "glossaryDe": {
+    "alaaf": "Alaaf",
+    "zug": "Zoch",
+    "hab": "han",
+    "kellner": "Köbes",
+    "halben hahn": "Halve Hahn",
+    "deckel": "Deckel",
+    "an": "op"
+  },
+  "units": [
+    {
+      "id": "ks-hello", "title": "Jode Daach!", "level": "A1", "colors": ["#C93A3A","#962828"],
+      "desc": "Grüßen, danken und Karneval: die ersten Wörter auf Kölsch.",
+      "words": [
+        {"id":"ks-hello.w01","de":"guten Tag","t":"Jode Daach","pic":"👋"},
+        {"id":"ks-hello.w02","de":"tschüss","t":["Tschö","Tschüss"]},
+        {"id":"ks-hello.w03","de":"ja","t":["Jo","Joh"],"pic":"✅"},
+        {"id":"ks-hello.w04","de":"nein","t":["Nä","Nee"],"pic":"❌"},
+        {"id":"ks-hello.w05","de":"gut","t":"jot","pic":"👍"},
+        {"id":"ks-hello.w06","de":"es / das","t":"et"},
+        {"id":"ks-hello.w07","de":"was","t":"wat"},
+        {"id":"ks-hello.w08","de":"wir","t":"mer"},
+        {"id":"ks-hello.w09","de":"nicht","t":"nit"},
+        {"id":"ks-hello.w10","de":"Köln","t":"Kölle","pic":"⛪"},
+        {"id":"ks-hello.w11","de":"der Narr / Karnevalist","t":["dä Jeck","Jeck"],"pic":"🤡"},
+        {"id":"ks-hello.w12","de":"die Kinder","t":["de Pänz","Pänz"],"pic":"🧒"},
+        {"id":"ks-hello.w13","de":"küssen","t":"bütze","pic":"💋"}
+      ],
+      "sentences": [
+        {"id":"ks-hello.s01","de":"Guten Tag!","t":"Jode Daach!"},
+        {"id":"ks-hello.s02","de":"Wie geht es dir?","t":["Wie jeiht et dir?","Wie jeht et dir?"]},
+        {"id":"ks-hello.s03","de":"Es geht mir gut.","t":["Et jeiht mir jot.","Mir jeiht et jot."]},
+        {"id":"ks-hello.s04","de":"Köln Alaaf!","t":"Kölle Alaaf!"},
+        {"id":"ks-hello.s05","de":"Tschüss, bis morgen!","t":["Tschö, bes morje!","Tschö, bis morje!"]},
+        {"id":"ks-hello.s06","de":"Die Kinder sind im Garten.","t":["De Pänz sin em Jaade.","De Pänz sin im Jaade."]},
+        {"id":"ks-hello.s07","de":"Was ist das?","t":["Wat es dat?","Wat is dat?"]}
+      ]
+    },
+    {
+      "id": "ks-num", "title": "Zahlen & Zick", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Zählen, Uhrzeit und wann man sich wiedersieht.",
+      "words": [
+        {"id":"ks-num.w01","de":"vier","t":"veer"},
+        {"id":"ks-num.w02","de":"fünf","t":"fünnef"},
+        {"id":"ks-num.w03","de":"sieben","t":"sibbe"},
+        {"id":"ks-num.w04","de":"acht","t":"aach"},
+        {"id":"ks-num.w05","de":"neun","t":"nüng"},
+        {"id":"ks-num.w06","de":"heute","t":"hück"},
+        {"id":"ks-num.w07","de":"morgen","t":"morje"},
+        {"id":"ks-num.w08","de":"gestern","t":["jester","jestere"]},
+        {"id":"ks-num.w09","de":"die Zeit","t":["de Zick","Zick"],"pic":"⏰"},
+        {"id":"ks-num.w10","de":"jetzt","t":"jetz"},
+        {"id":"ks-num.w11","de":"später","t":"späder"},
+        {"id":"ks-num.w12","de":"halb","t":"halv","pic":"🕧"}
+      ],
+      "sentences": [
+        {"id":"ks-num.s01","de":"Wie spät ist es?","t":["Wie spät es et?","Wie vill Uhr es et?"]},
+        {"id":"ks-num.s02","de":"Es ist halb vier.","t":"Et es halv veer."},
+        {"id":"ks-num.s03","de":"Wir sehen uns morgen.","t":["Mer sinn uns morje.","Mer sin uns morje."]},
+        {"id":"ks-num.s04","de":"Heute habe ich keine Zeit.","t":["Hück han ich kein Zick.","Hück han ich keine Zick."]},
+        {"id":"ks-num.s05","de":"Ich komme später.","t":["Ich kumme späder.","Ich kumm späder."]},
+        {"id":"ks-num.s06","de":"Gestern war ich im Brauhaus.","t":["Jester wor ich em Brauhuus.","Jestere wor ich em Brauhuus."]},
+        {"id":"ks-num.s07","de":"Der Zug kommt um fünf.","t":["Dä Zoch kütt öm fünnef.","Dä Zoch kütt um fünnef."]}
+      ]
+    },
+    {
+      "id": "ks-law", "title": "Et Kölsche Jrundjesetz", "level": "A2", "colors": ["#8C3FC8","#682C99"],
+      "desc": "Die berühmten Lebensweisheiten der Kölner, Artikel für Artikel.",
+      "words": [
+        {"id":"ks-law.w01","de":"ist","t":"es"},
+        {"id":"ks-law.w02","de":"kommt","t":"kütt"},
+        {"id":"ks-law.w03","de":"weg","t":"fott"},
+        {"id":"ks-law.w04","de":"gegangen","t":"jejange"},
+        {"id":"ks-law.w05","de":"immer","t":"immer"},
+        {"id":"ks-law.w06","de":"jeder","t":"jede"},
+        {"id":"ks-law.w07","de":"anders","t":"anders"},
+        {"id":"ks-law.w08","de":"trinken","t":"drinke","pic":"🍺"},
+        {"id":"ks-law.w09","de":"machen","t":"maache"},
+        {"id":"ks-law.w10","de":"der Dom","t":["dä Dom","Dom"],"pic":"⛪"},
+        {"id":"ks-law.w11","de":"lassen","t":"losse"}
+      ],
+      "sentences": [
+        {"id":"ks-law.s01","de":"Es ist, wie es ist.","t":"Et es wie et es."},
+        {"id":"ks-law.s02","de":"Es kommt, wie es kommt.","t":"Et kütt wie et kütt."},
+        {"id":"ks-law.s03","de":"Es ist noch immer gut gegangen.","t":["Et hätt noch immer jot jejange.","Et hät noch immer jot jejange."]},
+        {"id":"ks-law.s04","de":"Was weg ist, ist weg.","t":"Wat fott es, es fott."},
+        {"id":"ks-law.s05","de":"Jeder Narr ist anders.","t":"Jede Jeck es anders."},
+        {"id":"ks-law.s06","de":"Trinkst du einen mit?","t":["Drinkste eine met?","Drinks de eine met?"]},
+        {"id":"ks-law.s07","de":"Was willst du machen?","t":["Wat wells de maache?","Wat wellste maache?"]},
+        {"id":"ks-law.s08","de":"Wir lassen den Dom in Köln.","t":["Mer losse d'r Dom en Kölle.","Mer losse dä Dom en Kölle."]}
+      ]
+    },
+    {
+      "id": "ks-people", "title": "Lück & Familie", "level": "A2", "colors": ["#D2477F","#A1305D"],
+      "desc": "Familie, Freunde und Nachbarn: über Leute reden.",
+      "words": [
+        {"id":"ks-people.w01","de":"die Leute","t":["de Lück","Lück"],"pic":"👥"},
+        {"id":"ks-people.w02","de":"die Mama","t":["de Mamm","Mamm"],"pic":"👩"},
+        {"id":"ks-people.w03","de":"der Papa","t":["dä Papp","Papp"],"pic":"👨"},
+        {"id":"ks-people.w04","de":"der Junge","t":["dä Jung","Jung"],"pic":"👦"},
+        {"id":"ks-people.w05","de":"das Mädchen","t":["et Mädche","Mädche"],"pic":"👧"},
+        {"id":"ks-people.w06","de":"der Freund","t":["dä Fründ","Fründ"],"pic":"🤝"},
+        {"id":"ks-people.w07","de":"der Nachbar","t":["dä Nohber","Nohber"],"pic":"🏘️"},
+        {"id":"ks-people.w08","de":"der Kerl","t":["dä Kääl","Kääl"]},
+        {"id":"ks-people.w09","de":"das Herz","t":["et Hätz","Hätz"],"pic":"❤️"},
+        {"id":"ks-people.w10","de":"leben","t":"levve"},
+        {"id":"ks-people.w11","de":"das Haus","t":["et Huus","Huus"],"pic":"🏠"},
+        {"id":"ks-people.w12","de":"hier","t":"hee"},
+        {"id":"ks-people.w13","de":"gern","t":"jään"}
+      ],
+      "sentences": [
+        {"id":"ks-people.s01","de":"Das ist mein Freund.","t":["Dat es minge Fründ.","Dat es mi Fründ."]},
+        {"id":"ks-people.s02","de":"Meine Mama kommt aus Köln.","t":["Ming Mamm kütt us Kölle.","Ming Mamm kütt vun Kölle."]},
+        {"id":"ks-people.s03","de":"Der Nachbar ist nett.","t":"Dä Nohber es nett."},
+        {"id":"ks-people.s04","de":"Wir leben in Köln.","t":"Mer levve en Kölle."},
+        {"id":"ks-people.s05","de":"Ich hab dich gern.","t":["Ich han dich jään.","Ich hann dich jään."]},
+        {"id":"ks-people.s06","de":"Wo ist das Haus?","t":"Wo es dat Huus?"},
+        {"id":"ks-people.s07","de":"Die Leute sind hier nett.","t":["De Lück sin hee nett.","De Lück sinn hee nett."]}
+      ]
+    },
+    {
+      "id": "ks-pub", "title": "Im Brauhaus", "level": "A2", "colors": ["#B7791F","#8A5A12"],
+      "desc": "Köbes, Kölsch und Halve Hahn: bestellen wie die Kölner.",
+      "words": [
+        {"id":"ks-pub.w01","de":"das Kölsch (Bier)","t":["et Kölsch","Kölsch"],"pic":"🍺"},
+        {"id":"ks-pub.w02","de":"der Kellner im Brauhaus","t":["dä Köbes","Köbes"],"pic":"🧑‍🍳"},
+        {"id":"ks-pub.w03","de":"Roggenbrötchen mit Käse","t":["ene Halve Hahn","Halve Hahn"],"pic":"🧀"},
+        {"id":"ks-pub.w04","de":"Kartoffelpüree mit Apfelmus","t":["Himmel un Äd","Himmel und Äd"],"pic":"🥔"},
+        {"id":"ks-pub.w05","de":"die Blutwurst","t":["de Flönz","Flönz"],"pic":"🌭"},
+        {"id":"ks-pub.w06","de":"der Bierdeckel","t":["dä Deckel","Deckel"]},
+        {"id":"ks-pub.w07","de":"genug","t":"jenoch"},
+        {"id":"ks-pub.w08","de":"lecker","t":"lecker","pic":"😋"},
+        {"id":"ks-pub.w09","de":"habe","t":"han"},
+        {"id":"ks-pub.w10","de":"noch","t":"noch"},
+        {"id":"ks-pub.w11","de":"auf","t":"op"}
+      ],
+      "sentences": [
+        {"id":"ks-pub.s01","de":"Kellner, noch ein Kölsch!","t":["Köbes, noch e Kölsch!","Köbes, noch ene Kölsch!"]},
+        {"id":"ks-pub.s02","de":"Einen halben Hahn, bitte.","t":["Ene Halve Hahn, bitte.","E Halve Hahn, bitte."]},
+        {"id":"ks-pub.s03","de":"Ich habe genug.","t":["Ich han jenoch.","Ich han jenug."]},
+        {"id":"ks-pub.s04","de":"Das Kölsch ist lecker.","t":["Dat Kölsch es lecker.","Et Kölsch es lecker."]},
+        {"id":"ks-pub.s05","de":"Was kostet das?","t":["Wat koss dat?","Wat kost dat?"]},
+        {"id":"ks-pub.s06","de":"Wir trinken noch einen.","t":["Mer drinke noch eine.","Mer drinke noch ene."]},
+        {"id":"ks-pub.s07","de":"Leg den Deckel auf das Glas.","t":["Leg dä Deckel op et Glas.","Läch dä Deckel op et Glas."]}
+      ]
+    },
+    {
+      "id": "ks-carnival", "title": "Fastelovend", "level": "A2", "colors": ["#4E8A1C","#386614"],
+      "desc": "Kamelle, Zoch und Rusemondaach: alles für den Kölner Karneval.",
+      "words": [
+        {"id":"ks-carnival.w01","de":"der Karneval","t":["de Fastelovend","Fastelovend","Fasteleer"],"pic":"🎭"},
+        {"id":"ks-carnival.w02","de":"der Umzug","t":["dä Zoch","Zoch"],"pic":"🎉"},
+        {"id":"ks-carnival.w03","de":"die Bonbons","t":"Kamelle","pic":"🍬"},
+        {"id":"ks-carnival.w04","de":"das Blumensträußchen","t":["et Strüßje","Strüßje"],"pic":"💐"},
+        {"id":"ks-carnival.w05","de":"die Pappnase","t":["de Pappnas","Pappnas"],"pic":"🤡"},
+        {"id":"ks-carnival.w06","de":"die Weiberfastnacht","t":["Wieverfastelovend","Wieverfastelovend"],"pic":"👠"},
+        {"id":"ks-carnival.w07","de":"der Rosenmontag","t":["dä Rusemondaach","Rusemondaach"],"pic":"🌹"},
+        {"id":"ks-carnival.w08","de":"das Dreigestirn","t":["et Dreijesteen","Dreijesteen"],"pic":"👑"},
+        {"id":"ks-carnival.w09","de":"schunkeln","t":"schunkele","pic":"🍻"},
+        {"id":"ks-carnival.w10","de":"feiern","t":"fiere","pic":"🥳"},
+        {"id":"ks-carnival.w11","de":"der Karnevalsruf","t":"Alaaf","pic":"🎊"}
+      ],
+      "sentences": [
+        {"id":"ks-carnival.s01","de":"Am Rosenmontag geht der Umzug.","t":["Am Rusemondaach jeiht dä Zoch.","Am Rusemondaach jeiht der Zoch."]},
+        {"id":"ks-carnival.s02","de":"Wir feiern Karneval.","t":"Mer fiere Fastelovend."},
+        {"id":"ks-carnival.s03","de":"Wo ist meine Pappnase?","t":"Wo es ming Pappnas?"},
+        {"id":"ks-carnival.s04","de":"Komm, wir schunkeln!","t":["Kumm, mer schunkele!","Kumm, mir schunkele!"]},
+        {"id":"ks-carnival.s05","de":"Das Dreigestirn kommt!","t":["Dat Dreijesteen kütt!","Et Dreijesteen kütt!"]},
+        {"id":"ks-carnival.s06","de":"An Weiberfastnacht wird geküsst.","t":"Op Wieverfastelovend weed jebütz."},
+        {"id":"ks-carnival.s07","de":"Wirf mal Bonbons!","t":["Wirf ens Kamelle!","Schmieß ens Kamelle!"]}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "ks-d-brauhaus", "title": "Em Brauhuus", "em": "🍻", "desc": "Mit dem Köbes reden wie ein echter Kölner.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Was darf es sein?","t":"Jode Daach! Wat darf et sin?"},
+          "a": [
+            {"de":"Ein Kölsch, bitte.","t":"E Kölsch, bitte."},
+            {"de":"Köln Alaaf!","t":"Kölle Alaaf!"},
+            {"de":"Es ist halb vier.","t":"Et es halv veer."}
+          ] },
+        { "p": {"de":"Willst du auch etwas essen?","t":"Wellste och jet esse?"},
+          "a": [
+            {"de":"Ja, einen halben Hahn.","t":"Jo, ene Halve Hahn."},
+            {"de":"Wir feiern Karneval.","t":"Mer fiere Fastelovend."},
+            {"de":"Die Kinder sind im Garten.","t":"De Pänz sin em Jaade."}
+          ] },
+        { "p": {"de":"Noch ein Kölsch?","t":"Noch e Kölsch?"},
+          "a": [
+            {"de":"Nein, ich habe genug. Was kostet das?","t":"Nä, ich han jenoch. Wat kost dat?"},
+            {"de":"Wo ist meine Pappnase?","t":"Wo es ming Pappnas?"},
+            {"de":"Guten Tag!","t":"Jode Daach!"}
+          ] }
+      ]
+    }
+  ]
+}
