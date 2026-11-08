@@ -2,7 +2,7 @@
 
 # OpenSprachFuchs
 
-Eine freie Sprachlern-App für Android und den Browser (auch iPhone und iPad), inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch, brasilianisches Portugiesisch, Kroatisch oder Dänisch** lernen wollen.
+Eine freie Sprachlern-App für Android und den Browser (auch iPhone und iPad), inspiriert von Duolingo: ohne Werbung, ohne Tracking, ohne Abo. Gemacht für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch, brasilianisches Portugiesisch, Kroatisch, Dänisch, Türkisch oder Niederländisch** lernen wollen.
 
 OpenSprachFuchs ist ein unabhängiges Open-Source-Projekt und hat nichts mit Duolingo zu tun.
 

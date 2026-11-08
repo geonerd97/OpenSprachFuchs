@@ -626,7 +626,7 @@ function dialogsHTML() {
   return `<div class="panel"><h3>Gespräche</h3><p class="muted">Kleine Szenen aus dem Urlaub: Wähle im Gespräch die passende Antwort.</p>${rows}</div>`;
 }
 /* The fox from the logo: next to the current lesson on the path (tap it), cheering after every round, a bit sad when it didn't work out. */
-const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!", hr: "Idemo!", da: "Kom så!" };
+const FOX_HELLO = { en: "Let's go!", fr: "Allez, on y va!", es: "¡Vamos!", it: "Andiamo!", pt: "Vamos lá!", hr: "Idemo!", da: "Kom så!", tr: "Hadi gidelim!", nl: "Daar gaan we!" };
 function foxLine() {
   const due = dueWords().length;
   if (due) return `${due} ${due === 1 ? "Vokabel ist" : "Vokabeln sind"} fällig. Tipp mich an!`;

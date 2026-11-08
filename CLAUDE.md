@@ -1,7 +1,7 @@
 # OpenSprachFuchs – freie Sprachlern-App für Android
 
 ## Worum es geht
-Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch, brasilianisches Portugiesisch, Kroatisch und Dänisch** lernen. Die Oberfläche ist komplett auf Deutsch. Öffentlich auf GitHub: https://github.com/geonerd97/OpenSprachFuchs (Code MIT, Sprachpakete CC BY-SA 4.0, Konto `geonerd97`). Die APK baut der Maintainer lokal auf dem Mac und lädt sie als GitHub-Release hoch (`tools/release.sh`).
+Open-Source-Sprachlern-App nach dem Vorbild von Duolingo, für Deutschsprachige, die für Alltag und Urlaub **Englisch, Französisch, Spanisch, Italienisch, brasilianisches Portugiesisch, Kroatisch, Dänisch, Türkisch und Niederländisch** lernen. Die Oberfläche ist komplett auf Deutsch. Öffentlich auf GitHub: https://github.com/geonerd97/OpenSprachFuchs (Code MIT, Sprachpakete CC BY-SA 4.0, Konto `geonerd97`). Die APK baut der Maintainer lokal auf dem Mac und lädt sie als GitHub-Release hoch (`tools/release.sh`).
 Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt und ohne Anschrift, Entscheidung des Maintainers).
 
 ## Grundsätze (Vorgaben des Maintainers)
