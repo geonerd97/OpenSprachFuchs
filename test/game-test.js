@@ -78,16 +78,16 @@ console.log("Neue Wörter ohne Beispielsatz:", noSentence.size);
   g.st.courses.it = { progress: {}, mistakes: [] };
 }
 
-// A1 units have 7 lessons plus the bonus station, the other levels 4. Saves from before keep finished A1 units finished.
+// Every unit has 10 lessons plus the bonus station. Saves from before keep finished units finished.
 {
   g.setCourse("fr"); g.st.course = "fr";
   const a1 = g.UNITS().filter(u => u.level === "A1"), a2 = g.UNITS().find(u => u.level === "A2");
-  if (a1.some(u => g.lessonsOf(u) !== 7) || g.lessonsOf(a2) !== 4) fail("Lektionen pro Einheit falsch");
-  if (g.lessonsTotal("fr") !== 20 * 7 + (g.UNITS().length - 20) * 4) fail("Lektionen gesamt falsch", g.lessonsTotal("fr"));
+  if (g.LESSONS_PER_UNIT !== 10 || g.UNITS().some(u => g.lessonsOf(u) !== 10)) fail("Lektionen pro Einheit falsch");
+  if (g.lessonsTotal("fr") !== g.UNITS().length * 10) fail("Lektionen gesamt falsch", g.lessonsTotal("fr"));
   g.st.courses.fr = { progress: {}, mistakes: [] }; g.ui.level = "A1"; g.ui.tab = "path"; g.view = "home";
   const h = g.homeHTML();
-  if ((h.match(/data-id="0-\d"/g) || []).length !== 7) fail("A1-Einheit zeigt nicht 7 Lektionen");
-  g.ui.pop = "0-0"; if (!g.homeHTML().includes("Lektion 1 von 7")) fail("Lektionsinfo zeigt nicht 7"); g.ui.pop = null;
+  if ((h.match(/data-id="0-\d"/g) || []).length !== 10) fail("Einheit zeigt nicht 10 Lektionen");
+  g.ui.pop = "0-0"; if (!g.homeHTML().includes("Lektion 1 von 10")) fail("Lektionsinfo zeigt nicht 10"); g.ui.pop = null;
   // The first four lessons bring in the unit's words in portions and practise each new word three times.
   const seenNew = new Set();
   for (let li = 0; li < 4; li++) {
@@ -103,12 +103,23 @@ console.log("Neue Wörter ohne Beispielsatz:", noSentence.size);
     g.L = null; g.view = "home";
   }
   if (seenNew.size !== a1[0].words.length) fail("A1: nach vier Lektionen nicht alle Wörter eingeführt", seenNew.size, a1[0].words.length);
-  g.st.courses.fr = { progress: { [a1[0].id]: 4, [a1[1].id]: 4, [a2.id]: 4 }, mistakes: [], bonus: { [a1[0].id]: true, [a2.id]: true } };
+  // Migration, saves from before 2026-10-26 (no lessonsV): 4 lessons were a full unit; in A1 only together with the station.
+  g.st.courses.fr = { progress: { [a1[0].id]: 4, [a1[1].id]: 4, [a2.id]: 4, [g.UNITS()[30].id]: 3 }, mistakes: [], bonus: { [a1[0].id]: true, [a2.id]: true } };
   g.migrateLessons();
-  const p = g.st.courses.fr.progress;
-  if (p[a1[0].id] !== 7 || p[a1[1].id] !== 4 || p[a2.id] !== 4 || g.st.courses.fr.lessonsV !== 2) fail("Alte Spielstände falsch übernommen", JSON.stringify(p));
-  p[a1[1].id] = 4; g.migrateLessons();
-  if (p[a1[1].id] !== 4) fail("Übernahme läuft mehrfach");
+  let p = g.st.courses.fr.progress;
+  if (p[a1[0].id] !== 10 || p[a1[1].id] !== 4 || p[a2.id] !== 10 || p[g.UNITS()[30].id] !== 3 || g.st.courses.fr.lessonsV !== 3) fail("Alte Spielstände (v1) falsch übernommen", JSON.stringify(p));
+  p[a1[1].id] = 4; p[a2.id] = 5; g.migrateLessons();
+  if (p[a1[1].id] !== 4 || p[a2.id] !== 5) fail("Übernahme läuft mehrfach");
+  // lessonsV 2 (7 lessons in A1, 4 elsewhere): finished units stay finished, also without their station (it stays open).
+  g.st.courses.fr = { lessonsV: 2, progress: { [a1[0].id]: 7, [a1[1].id]: 6, [a1[2].id]: 3, [a2.id]: 4, [g.UNITS()[30].id]: 2 }, mistakes: [], bonus: { [a1[0].id]: true } };
+  g.migrateLessons(); p = g.st.courses.fr.progress;
+  if (p[a1[0].id] !== 10 || p[a1[1].id] !== 6 || p[a1[2].id] !== 3 || p[a2.id] !== 10 || p[g.UNITS()[30].id] !== 2) fail("Alte Spielstände (v2) falsch übernommen", JSON.stringify(p));
+  // Nothing finished gets locked again: the next unit stays open and the bonus mark is untouched.
+  g.st.courses.fr.progress[a1[1].id] = 0; g.setCourse("fr"); g.st.course = "fr";
+  if (!g.unitUnlocked(1) || !g.bonusDone(a1[0].id) || !g.unitComplete(0)) fail("Fertige Einheit nach Migration gesperrt");
+  // A new course starts at the current version and is not migrated.
+  g.st.courses.fr = {}; delete g.st.courses.fr; g.cs("fr").progress[a1[0].id] = 4; g.migrateLessons();
+  if (g.cs("fr").progress[a1[0].id] !== 4 || g.cs("fr").lessonsV !== 3) fail("Neuer Kurs fälschlich migriert");
   g.st.courses.fr = { progress: {}, mistakes: [] }; g.ui.level = null;
 }
 
@@ -144,15 +155,15 @@ for (const code of codes) {
   if (global.window.opensprachfuchsBack()) fail("Zurück auf dem Lernweg sollte die App verlassen");
 }
 
-// Level tabs: the path shows one level (20 units each), the tab switches it, started units stay open.
+// Level tabs: the path shows one level (25 units each), the tab switches it, started units stay open.
 {
   g.setCourse("en"); g.st.course = "en"; g.view = "home"; g.ui.tab = "path"; g.ui.level = null;
   const levels = ["A1", "A2", "B1", "B2"];
-  for (const l of levels) if (g.UNITS().filter(u => u.level === l).length !== 20) fail("Stufe hat nicht 20 Einheiten", l);
+  for (const l of levels) if (g.UNITS().filter(u => u.level === l).length !== 25) fail("Stufe hat nicht 25 Einheiten", l);
   if (g.UNITS().map(u => u.level).join() !== [...g.UNITS().map(u => u.level)].sort().join()) fail("Einheiten nicht nach Stufe sortiert");
   g.cs().progress = {};
   let h = g.homeHTML();
-  if (!h.includes('data-act="level" data-l="B2"') || (h.match(/class="unit-head/g) || []).length !== 20 || !h.includes("– Einheit 1 von 20")) fail("Stufen-Reiter oder A1-Pfad fehlen");
+  if (!h.includes('data-act="level" data-l="B2"') || (h.match(/class="unit-head/g) || []).length !== 25 || !h.includes("– Einheit 1 von 25")) fail("Stufen-Reiter oder A1-Pfad fehlen");
   g.click("level", { l: "B1" }); h = g.homeHTML();
   const b1 = g.UNITS().find(u => u.level === "B1");
   if (!h.includes(b1.title) || h.includes(g.UNITS()[0].title + "</h2>") || !h.includes("noch gesperrt")) fail("Reiter B1 zeigt nicht B1");
@@ -225,7 +236,10 @@ g.startTraining(true, true);
 if (g.L.queue.length + 1 < 7) fail("Auffüllrunde zu kurz", g.L.queue.length + 1);
 answerAll(g.L);
 if (g.view !== "result" || !g.result.refill) fail("Auffüllrunde endet nicht im Ergebnis", g.view);
-if (g.st.hearts < 1 || g.result.heartsGained !== g.st.hearts) fail("Auffüllrunde lädt nicht auf", g.st.hearts, g.result.heartsGained);
+// heartsGained counts only the hearts of the round (1 per 6 right answers); the daily-quest chest (+2) may come on top
+// of that, depending on what earlier tests already did today, and is reported in result.quests.
+const chestHearts = g.result.quests.some(q => /\+2 Herzen/.test(q)) ? 2 : 0;
+if (g.result.heartsGained < 1 || g.st.hearts !== Math.min(g.MAX_HEARTS, g.result.heartsGained + chestHearts)) fail("Auffüllrunde lädt nicht auf", g.st.hearts, g.result.heartsGained, chestHearts);
 g.resultHTML(); g.ui.modal = "hearts"; g.modalHTML(); g.ui.modal = null;
 
 // Pausing listening mid-lesson turns every remaining audio task into a reading task.
@@ -249,7 +263,7 @@ const w1 = "w:" + g.UNITS()[1].words[0].id, w7 = "w:" + g.UNITS()[7].words[0].id
 g.srsUpdate(w1, true); g.srsUpdate(w7, true);
 const frBefore = JSON.stringify(g.st.courses.fr);
 g.resetCourseFrom(5);
-if (g.done(g.UNITS()[4].id) !== 7 || g.done(g.UNITS()[5].id) !== 0 || g.done(g.UNITS()[19].id) !== 0) fail("Zurücksetzen ab Einheit 6 falsch");
+if (g.done(g.UNITS()[4].id) !== 10 || g.done(g.UNITS()[5].id) !== 0 || g.done(g.UNITS()[19].id) !== 0) fail("Zurücksetzen ab Einheit 6 falsch");
 if (!g.srs()[w1] || g.srs()[w7]) fail("Lernstufen falsch zurückgesetzt");
 if (JSON.stringify(g.st.courses.fr) !== frBefore) fail("Andere Sprache verändert");
 // Sonderstation und Medaille gehören zur Einheit: ab der gewählten Einheit gehen sie mit, davor bleiben sie.
@@ -298,9 +312,9 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = false; g.ui.level = "A1";
   const lastA1 = g.UNITS().map(u => u.level).lastIndexOf("A1");
   g.cs().bonus = {};
-  for (let i = 0; i < lastA1; i++) { g.cs().progress[g.UNITS()[i].id] = 7; g.cs().bonus[g.UNITS()[i].id] = true; }
-  g.cs().progress[g.UNITS()[lastA1].id] = 6;
-  g.startLesson(lastA1, 6); answerAll(g.L);
+  for (let i = 0; i < lastA1; i++) { g.cs().progress[g.UNITS()[i].id] = 10; g.cs().bonus[g.UNITS()[i].id] = true; }
+  g.cs().progress[g.UNITS()[lastA1].id] = 9;
+  g.startLesson(lastA1, 9); answerAll(g.L);
   // The bonus station is required: after the last lesson it is the next step, the next unit is still locked.
   if (g.view !== "result" || g.ui.level !== "A1" || g.unitUnlocked(lastA1 + 1)) fail("Sonderstation nicht Pflicht", g.ui.level);
   g.click("home");
@@ -476,13 +490,18 @@ g.view = "home";
     if (g.view !== "result" || !g.bonusDone(g.UNITS()[1].id)) fail("Sonderstation ohne Wörter nicht abgeschlossen");
     g.UNITS()[0].words = saved[0]; g.UNITS()[1].words = saved[1];
   }
-  // The bonus node: locked until all lessons of the unit are done (7 in A1), then open.
+  // The fifth unit of a level has a story, the 25th has none and falls back to a mini game; both have a bonus station.
+  { const us = g.UNITS(); const i5 = us.findIndex(u => u.level === "A2"), i25 = i5 + 24;
+    if (g.bonusKind(i5 + 4) !== "story" || g.bonusKind(i25) === "story" || us[i25].level !== "A2" || us[i25 + 1].level !== "B1") fail("Sonderstation von Einheit 5/25 falsch", g.bonusKind(i25));
+    g.cs().progress[us[i25].id] = 10; g.ui.level = "A2";
+    if (!/bonus-node (current|done)/.test(g.homeHTML())) fail("Sonderstation von Einheit 25 fehlt"); }
+  // The bonus node: locked until all lessons of the unit are done, then open.
   g.cs().progress = {}; g.ui.level = "A1"; g.view = "home"; g.ui.tab = "path";
   if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation nicht gesperrt");
   g.cs().progress[g.UNITS()[0].id] = 4;
-  if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation in A1 schon nach vier Lektionen offen");
-  g.cs().progress[g.UNITS()[0].id] = 7;
-  if (!/bonus-node (current|done)/.test(g.homeHTML())) fail("Sonderstation nach sieben Lektionen nicht offen");
+  if (!g.homeHTML().includes('bonus-node locked')) fail("Sonderstation schon nach vier Lektionen offen");
+  g.cs().progress[g.UNITS()[0].id] = 10;
+  if (!/bonus-node (current|done)/.test(g.homeHTML())) fail("Sonderstation nach zehn Lektionen nicht offen");
   g.cs().progress = {}; g.cs().bonus = {}; g.ui.level = null;
 }
 

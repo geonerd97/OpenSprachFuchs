@@ -1,12 +1,16 @@
 "use strict";
 /* ---------- Lesson plans ----------
    Each lesson, practice round and test is a list of exercise kinds; generate() falls back when a kind does not fit.
-   A unit has 4 lessons; in A1 it has 7, so beginners get more practice before the bonus station (lessonsOf in state.js). */
+   A unit has 10 lessons (LESSONS_PER_UNIT in state.js): four with new words, then mixed practice, listening, sentences, writing and a finale. */
 const LESSON = {
   words: { name: "Wörter", desc: "Die neuen Vokabeln mit Bildern, Paaren und Hören.",
     plan: ["pic", "choice", "choiceRev", "match", "listenWord", "type", "pic", "choiceRev", "choice", "listenWord", "type", "match"] },
   newWords: { name: "Neue Wörter", desc: "Ein paar neue Vokabeln, jede dreimal geübt, dazu die von vorher.",
     plan: ["pic", "choice", "choiceRev", "listenWord", "match", "type", "choice", "pic", "listenWord", "choiceRev", "type", "match", "choice", "type"] },
+  sentences: { name: "Sätze", desc: "Sätze zusammensetzen, ergänzen und verstehen.",
+    plan: ["bank", "gap", "bankRev", "listen", "bank", "typeSent", "gap", "bankRev", "choiceRev", "bank", "typeSent"] },
+  write: { name: "Schreiben", desc: "Wörter und Sätze selbst tippen.",
+    plan: ["type", "choiceRev", "typeSent", "listenWord", "type", "bank", "typeSent", "match", "type", "gap", "typeSent"] },
   mixed: { name: "Wörter & Sätze", desc: "Vokabeln festigen und erste Sätze bauen.",
     plan: ["choice", "bank", "choiceRev", "gap", "listenWord", "bank", "type", "bankRev", "match", "gap", "type"] },
   listen: { name: "Hören & Schreiben", desc: "Hör genau hin und tipp selbst.",
@@ -14,10 +18,10 @@ const LESSON = {
   final: { name: "Abschluss", desc: "Alles aus der Einheit, mit mehr Schreiben.",
     plan: ["typeSent", "match", "listen", "type", "bankRev", "gap", "typeSent", "speak", "bank", "type", "typeSent"] },
 };
-const LESSONS_4 = [LESSON.words, LESSON.mixed, LESSON.listen, LESSON.final];
-// A1: the unit's words come in four smaller portions, each practised more, before the usual three lessons.
-const LESSONS_7 = [LESSON.newWords, LESSON.newWords, LESSON.newWords, LESSON.newWords, LESSON.mixed, LESSON.listen, LESSON.final];
-const lessonsFor = u => lessonsOf(u) === LESSONS_7.length ? LESSONS_7 : LESSONS_4;
+// The unit's words come in four smaller portions, each practised more, before six lessons that mix everything.
+const LESSONS = [LESSON.newWords, LESSON.newWords, LESSON.newWords, LESSON.newWords,
+  LESSON.mixed, LESSON.words, LESSON.listen, LESSON.sentences, LESSON.write, LESSON.final];
+const lessonsFor = u => LESSONS;
 const REFILL_PLAN = ["choice", "choiceRev", "listenWord", "pic", "type", "match", "choiceRev", "type"];
 const RIGHT_PER_HEART = 6; // practice rounds: +1 heart per 6 right answers
 const VOCAB_PLAN = ["choice", "choiceRev", "type", "match", "listenWord", "pic", "type", "choiceRev", "choice", "type", "listenWord", "match"];
@@ -149,10 +153,10 @@ const GEN = {
 };
 /* ---------- New words (issue #9) ----------
    A word is asked only after it was introduced: a card shows it with its meaning and in a sentence with tappable words.
-   A lesson brings in at most newPerLesson(unit) new words: 7, in A1 a quarter of the unit's words (mostly 3 or 4),
+   A lesson brings in at most newPerLesson(unit) new words: a quarter of the unit's words (mostly 3 or 4),
    each practised WORD_REPEAT times in that lesson. Practice rounds stick to known words. */
 const NEW_PER_LESSON = 7, WORD_REPEAT = 3;
-const newPerLesson = u => lessonsOf(u) > LESSONS_PER_UNIT ? Math.ceil(u.words.length / 4) : NEW_PER_LESSON;
+const newPerLesson = u => Math.min(NEW_PER_LESSON, Math.ceil(u.words.length / 4));
 const seenWords = () => { const c = cs(); return c.seen || (c.seen = {}); };
 const wordKnown = w => !!(seenWords()[w.id] || srs()["w:" + w.id]);
 function lessonWords(words, n = NEW_PER_LESSON) {

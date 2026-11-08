@@ -4,7 +4,7 @@
    XP, streak, hearts and gems are shared by all languages; st.courses[code] keeps what belongs to one language. */
 const STORE = "opensprachfuchs-state";
 // Hearts (issue #4, all halved): at most 5, one grows back every 40 minutes, the bonus chest gives 2.
-const LESSONS_PER_UNIT = 4, LESSONS_A1 = 7, MAX_HEARTS = 5, REGEN_MS = 40 * 60 * 1000, BONUS_HEARTS = 2;
+const LESSONS_PER_UNIT = 10, MAX_HEARTS = 5, REGEN_MS = 40 * 60 * 1000, BONUS_HEARTS = 2;
 const DEF = { gems: 20, freezes: 0, boostUntil: 0, history: {}, bestStreak: 0, badges: {}, perfect: 0, placementPassed: false, xp: 0, streak: 0,
   lastDay: null, day: null, dayLessons: 0, hearts: MAX_HEARTS, heartsTs: 0, course: "", courses: {}, lessons: 0, listenOffUntil: 0, speakOffUntil: 0,
   onboarded: false, friends: {}, dayReported: "", reportQueue: [],
@@ -61,18 +61,25 @@ function save() {
   scheduleBackup();
 }
 
-const cs = (code = CODE) => st.courses[code] || (st.courses[code] = { progress: {}, mistakes: [], lessonsV: 2 });
-// Lessons per unit: 7 in A1 (since 2026-10-26), 4 elsewhere.
-const lessonsOf = u => u && u.level === "A1" ? LESSONS_A1 : LESSONS_PER_UNIT;
+const cs = (code = CODE) => st.courses[code] || (st.courses[code] = { progress: {}, mistakes: [], lessonsV: LESSONS_V });
+// Lessons per unit: 10 everywhere (4 before 2026-10-26 and since then 7 in A1, 4 elsewhere; see migrateLessons).
+const lessonsOf = u => u ? LESSONS_PER_UNIT : 0;
 const lessonsTotal = code => unitsFor(code).reduce((a, u) => a + lessonsOf(u), 0);
-/* Saves from before the longer A1 units: a unit finished then (4 lessons and its bonus station) stays finished,
-   so nobody loses progress or finds the next unit locked again. Runs once per course (lessonsV), also after a pull. */
+/* Saves from before the longer units: a unit whose lessons were all done under the old count stays finished
+   (and its bonus station stays as it was), so nobody loses progress or finds the next unit locked again.
+   lessonsV 0/1: 4 lessons per unit (A1 with its station counted as done, as before); lessonsV 2: 7 in A1, 4 elsewhere.
+   Runs once per course (lessonsV), also after a pull. */
+const LESSONS_V = 3;
 function migrateLessons() {
   for (const [code, c] of Object.entries(st.courses || {})) {
     const units = unitsFor(code);
-    if (c.lessonsV >= 2 || !units.length) continue;
-    for (const u of units) if (lessonsOf(u) > LESSONS_PER_UNIT && (c.progress || {})[u.id] >= LESSONS_PER_UNIT && (c.bonus || {})[u.id]) c.progress[u.id] = lessonsOf(u);
-    c.lessonsV = 2;
+    if (c.lessonsV >= LESSONS_V || !units.length) continue;
+    c.progress = c.progress || {};
+    for (const u of units) {
+      const was = u.level === "A1" && c.lessonsV >= 2 ? 7 : 4, n = c.progress[u.id] || 0;
+      if (n >= was && (c.lessonsV >= 2 || u.level !== "A1" || (c.bonus || {})[u.id])) c.progress[u.id] = lessonsOf(u);
+    }
+    c.lessonsV = LESSONS_V;
   }
 }
 migrateLessons();
@@ -105,7 +112,7 @@ function loseHeart() {
 }
 const done = (id, code) => cs(code).progress[id] || 0;
 // A unit opens when the one before is finished; one that was already started stays open (e.g. after the path was re-sorted).
-// A unit is complete with its four lessons and its bonus station (games.js); only then the next one opens.
+// A unit is complete with all its lessons and its bonus station (games.js); only then the next one opens.
 const unitComplete = i => done(UNITS[i].id) >= lessonsOf(UNITS[i]) && bonusDone(UNITS[i].id);
 const unitUnlocked = i => i === 0 || unitComplete(i - 1) || done(UNITS[i].id) > 0;
 /* Levels (GER/CEFR): the path is shown one level at a time, picked in the tabs above it. */

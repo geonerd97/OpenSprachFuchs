@@ -295,7 +295,11 @@ async function checkAppUpdate(force = false) {
       ui.updateNote = "";
       showUpdate(info);
     } else if (force) { ui.updateNote = `Du hast die neueste Version (${current}).`; render(); }
-  } catch (e) { if (force) { ui.updateNote = "GitHub ist gerade nicht erreichbar. Versuch es später noch einmal."; render(); } }
+  } catch (e) {
+    // 403/429: GitHub limits anonymous requests per address (60 per hour), which many phones in one mobile network share.
+    const limited = /github (403|429)/.test(String(e && e.message));
+    if (force) { ui.updateNote = limited ? "GitHub erlaubt von diesem Anschluss gerade keine weiteren Abfragen. Versuch es in ein, zwei Stunden noch einmal." : "GitHub ist gerade nicht erreichbar. Versuch es später noch einmal."; render(); }
+  }
 }
 /** Download button: the APK itself (the phone's browser downloads it), otherwise the release page. */
 function downloadUpdate() {

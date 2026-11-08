@@ -150,9 +150,10 @@ svg { flex-shrink: 0; }
 /* Lesson */
 .lesson { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
 .l-top { max-width: 1000px; width: 100%; margin: 0 auto; padding: 1rem 16px .5rem; display: flex; align-items: center; gap: 1rem; }
-.bar { flex: 1; height: 16px; background: var(--line); border-radius: 99px; overflow: hidden; }
-.bar > i { display: block; height: 100%; background: var(--good); border-radius: 99px; transition: width .4s cubic-bezier(.3, 1.4, .5, 1);
-  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, .12), inset 0 4px 0 rgba(255, 255, 255, .25); }
+/* No overflow:hidden on the track: in the Android WebView a clipped, rounded bar next to the animated combo chip
+   dropped out of the picture mid-lesson (issue #29). The fill stays inside through max-width instead. */
+.bar { flex: 1 1 4rem; min-width: 4rem; height: 16px; background: var(--line); border-radius: 99px; }
+.bar > i { display: block; height: 100%; max-width: 100%; background: var(--good); border-radius: 99px; transition: width .4s ease-out; }
 .l-main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding-inline: 16px; padding-block: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1.4rem; }
 .l-main h2 { font-size: clamp(1.4rem, 4vw, 1.85rem); }
 .tag { font: 800 .75rem var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: .4rem; }
