@@ -18,6 +18,10 @@ const I = {
 
 /* ---------- Rendering ---------- */
 const app = document.getElementById("app");
+/* Entry animations play once per change, not on every render (the whole screen is redrawn after each tap):
+   changed(key, value) is true the first time a screen part shows a new value. */
+const shownOnce = {};
+const changed = (key, value) => { const c = shownOnce[key] !== value; shownOnce[key] = value; return c; };
 function render() {
   if (ui.pendingFriend && view === "home" && !ui.modal && UNITS.length) return openPendingFriend(); // opened through a friend's QR code
   syncHearts(); syncDay();
@@ -32,7 +36,8 @@ function render() {
   else if (view === "streak") app.innerHTML = streakHTML();
   else if (view === "fail") app.innerHTML = failHTML();
   else if (view === "stats") app.innerHTML = statsHTML();
-  if (ui.modal) app.insertAdjacentHTML("beforeend", modalHTML());
+  if (ui.modal) { const html = modalHTML(); app.insertAdjacentHTML("beforeend", changed("modal", ui.modal) ? html : html.replace('class="scrim"', 'class="scrim still"')); }
+  else changed("modal", null);
   if (view === "home" && ui.tab === "path") drawTrails();
   if (view === "lesson" && L.cur && L.cur.type === "type" && !L.checked) {
     const t = document.getElementById("typeInput"); if (t) { t.value = L.typed || ""; t.focus(); }
@@ -124,7 +129,7 @@ function homeHTML() {
         <span class="stat xp" title="Gesamt-XP">${I.bolt(22)}${st.xp}</span>
         <button class="stat gem statbtn" data-act="shop" title="Edelsteine und Shop" aria-label="Shop, ${st.gems} Edelsteine">💎${st.gems}</button>
         <button class="stat heart statbtn" data-act="hearts" title="Herzen" aria-label="Herzen: ${heartsLabel()}">${I.heart(22)}${heartsLabel()}</button></div></div></header>
-    <main class="home tab-${ui.tab}">${tabHTML(ui.tab, { goal, mistakes, nextH, units })}</main>
+    <main class="home tab-${ui.tab}${changed("tab", ui.tab) ? " enter" : ""}">${tabHTML(ui.tab, { goal, mistakes, nextH, units })}</main>
     <nav class="tabbar" aria-label="Bereiche"><div class="tabbar-in">${TABS.map(t => `<button class="tab ${ui.tab === t.id ? "on" : ""}" data-act="tab" data-tab="${t.id}" ${ui.tab === t.id ? 'aria-current="page"' : ""}>
       <span class="tab-ico" aria-hidden="true">${t.em}</span><span>${t.name}</span>${t.badge() ? `<i class="tab-dot" aria-label="neu"></i>` : ""}</button>`).join("")}</div></nav>`;
 }
@@ -294,7 +299,7 @@ function lessonHTML() {
       <button class="iconbtn mutebtn ${listenPaused() ? "on" : ""}" data-act="mute" title="${listenPaused() ? `Hören pausiert bis ${pauseUntilText()}. Tippen zum Einschalten` : "Hören für 1 Stunde pausieren"}"
         aria-label="${listenPaused() ? "Hören wieder einschalten" : "Hören für 1 Stunde pausieren"}">${listenPaused() ? I.speakerOff(24) : I.speaker(24)}</button>
       <span class="stat heart" style="font-weight:800" title="${L.kind === "placement" ? "Erlaubte Fehler" : "Herzen"}">${I.heart(24)}${L.kind === "placement" ? PLACEMENT_MAX - L.mistakes : L.kind === "master" ? Math.max(0, MASTER_ALLOWED[L.level] - L.mistakes + 1) : L.kind === "lesson" ? heartsLabel() : "∞"}</span></div>
-    <main class="l-main">${exerciseHTML(L.cur)}</main>${footerHTML()}</div>`;
+    <main class="l-main${changed("ex", L.cur) ? " enter" : ""}">${exerciseHTML(L.cur)}</main>${changed("foot", L.checked ? L.cur : null) && L.checked ? footerHTML().replace('class="l-foot', 'class="l-foot enter') : footerHTML()}</div>`;
 }
 const fmtTime = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 function resultHTML() {

@@ -54,6 +54,63 @@ node tools/packs.mjs build    # prüfen und nach worker/public/packs/ bauen (mit
 }
 ```
 
+## Angaben für eine neue Sprache
+
+Eine neue Sprache braucht in der App keine Codeänderung: Die Datei `packs/<code>.json` wird gefunden, geprüft und in APK und Web-App gebaut. Diese Kopfangaben legt das Paket fest:
+
+| Feld | Pflicht | Bedeutung |
+|---|---|---|
+| `code` | ja | zwei oder drei Kleinbuchstaben, gleich dem Dateinamen |
+| `name` | ja | deutscher Name der Sprache; steht im Hinweis „Keine Stimme für …“ („kann kein ‹name›“), muss also hinter „kein“ passen (Türkisch, Niederländisch) |
+| `short` | ja | Kürzel, Großbuchstaben (`TR`, `NL`) |
+| `voice` | ja | BCP-47-Tag (`nl-NL`) für Sprachausgabe und Spracherkennung; wird mit `Locale.forLanguageTag` an Android übergeben und im Browser als `SpeechSynthesisUtterance.lang` genutzt. Er bestimmt auch die Großschreibung in den Sonderstationen (`toLocaleUpperCase`) |
+| `color`, `note` | ja | Farbe `#RRGGBB`, kurze Beschreibung |
+| `articles` | nein | RegExp (ohne Groß/klein) für Artikel am Wortanfang; leer oder fehlend = Sprache ohne Artikel |
+| `gapSkip` | ja (Liste, darf leer sein) | kleine Wörter, die der Lückentext nie abfragt: Artikel, Pronomen, Hilfsverben |
+| `glossary`, `glossaryDe` | nein, aber nötig | Tipp-Hilfe (siehe unten); `game-test.js` verlangt für jedes Wort eine Hilfe |
+
+**Was die App mit `articles` macht** (`content.js`, `exercises.js`, `games.js`):
+- Beim Tippen eines einzelnen Wortes darf der Artikel fehlen (`bare`).
+- Die Tipp-Hilfe speichert jedes Wort auch ohne Artikel.
+- Lückentext, Wortsuche und Buchstabensalat nehmen nur das Wort ohne Artikel.
+- Der Ausdruck wird nur am Anfang geprüft; er muss deshalb mit `^` beginnen und jeden Artikel mit Leerzeichen oder Apostroph abschließen, sonst frisst er Wortanfänge (`^(de|het)` würde „dehydratie“ kürzen).
+- Sprache ohne Artikel (Türkisch, wie Kroatisch): `"articles": ""`. Nomen stehen dann ohne Artikel im Paket.
+- Steht der Artikel im Paket vor dem Nomen (Dänisch, Niederländisch), muss jede Form im Ausdruck stehen.
+
+**`gapSkip`:** kleingeschrieben, genau so, wie das Wort im Satz steht. Die Angabe wirkt nur auf einzelne Wörter, nicht auf Wortgruppen.
+
+**Tipp-Hilfe:** Jedes Wort in Sätzen, Gesprächen, Geschichten und in den deutschen Sätzen muss beim Antippen eine Übersetzung haben. Dafür braucht die App
+- `glossary` mit allen Wortformen, die nicht schon als Vokabel vorkommen (Sprache → Deutsch, Schlüssel kleingeschrieben ohne Satzzeichen, Ausdrücke bis 5 Wörter),
+- `glossaryDe` für deutsche Wörter, die das rückwärts gelesene Glossar nicht abdeckt.
+
+Bei Sprachen mit vielen Wortformen (Türkisch mit Endungen, Niederländisch mit zusammengesetzten Wörtern) wird das Glossar entsprechend lang.
+
+**Bekannte Eigenheiten der Antwortprüfung** (`norm` in `exercises.js`): Sie macht alles klein mit `toLowerCase()` (ohne Spracheinstellung), entfernt Satzzeichen und löst nur englische Kurzformen auf. Akzente werden beim Tippen toleriert (`plain`: Zerlegung und Entfernen der Zeichen U+0300–U+036F). Folgen:
+- Türkisch: ç, ş, ğ, ö, ü gelten damit als Tippfehler-tolerant, **ı (punktloses i) zerfällt nicht** und zählt als ein Zeichen Abstand zu „i“; „İ“ wird zu „i̇“ (i mit Punkt), das nach dem Zerlegen wieder „i“ ergibt. Bei der Prüfung prüfen, ob „ı“/„i“ als richtig durchgehen soll.
+- Niederländisch: „ij“ ist ein Digraph, keine Besonderheit für die Prüfung; `'t`, `'s`, `'n` laufen über die Apostroph-Normalisierung.
+
+Beispiel für den Kopf eines niederländischen Pakets (ohne Inhalt, `units` bleibt leer, `check` meldet also bis zur Befüllung „keine Einheiten“):
+
+```jsonc
+{
+  "format": 1,
+  "code": "nl",
+  "name": "Niederländisch", "short": "NL",
+  "voice": "nl-NL",
+  "color": "#F36C21",
+  "note": "Niederländisch aus den Niederlanden",
+  "articles": "^(de |het |een |'t )",
+  "gapSkip": ["de", "het", "een", "ik", "je", "u"],
+  "glossary": {},
+  "glossaryDe": {},
+  "units": [], "dialogs": [], "stories": []
+}
+```
+
+Türkisch (`tr`, `tr-TR`, `"articles": ""`) hat im Kopf dieselben Felder, nur ohne Artikel; `gapSkip` enthält dort etwa Fragepartikel und Pronomen.
+
+**Stimme auf dem Handy:** Die App fragt `TextToSpeech.isLanguageAvailable(Locale.forLanguageTag(voice))` ab. Fehlt die Stimme (`missing`) oder wird die Sprache nicht unterstützt (`none`), spricht die App nichts, Hörübungen werden zu Leseübungen, und im Lernweg erscheint „Keine Stimme für ‹name›“. Mit `missing` bietet der Knopf den Stimmen-Download an. `voice` sollte daher ein Tag sein, den Googles Sprachausgabe kennt (`tr-TR`, `nl-NL`).
+
 ## Regeln
 
 - **`id`s sind fest.** Am `id` hängen Lernstufen, offene Fehler und Statistik der Spieler. Korrekturen ändern nur `de` und `t`. Neue Wörter bekommen die nächste freie Nummer, z. B. `basics.w14`.
