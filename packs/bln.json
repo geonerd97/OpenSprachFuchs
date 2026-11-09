@@ -1,0 +1,283 @@
+{
+  "format": 2,
+  "code": "bln",
+  "name": "Berlinerisch",
+  "short": "BE",
+  "voice": "de-DE",
+  "group": "dialects",
+  "noTyping": true,
+  "noListen": true,
+  "color": "#D7263D",
+  "note": "Berliner Mundart, Schreibweise nicht festgelegt",
+  "articles": "^(der |die |det |dit |ne |n |een |eene )",
+  "gapSkip": [],
+  "glossary": {
+    "wie": "wie",
+    "jeht's": "geht es",
+    "dir": "dir",
+    "mir": "mir",
+    "is'n": "ist denn",
+    "is": "ist",
+    "schlimm": "schlimm",
+    "kiek": "guck",
+    "ma": "mal / mir",
+    "hab": "habe",
+    "bitte": "bitte",
+    "noch": "noch",
+    "lecka": "lecker",
+    "nehm": "nehme",
+    "mit": "mit",
+    "jib": "gib",
+    "marmelade": "Marmelade",
+    "spät": "spät",
+    "isset": "ist es",
+    "et": "es",
+    "uhr": "Uhr",
+    "komm": "komm / komme",
+    "bis": "bis",
+    "kalt": "kalt",
+    "zeit": "Zeit",
+    "so": "so",
+    "wohn": "wohne",
+    "hier": "hier",
+    "im": "im",
+    "hat": "hat",
+    "zum": "zum",
+    "koof": "kaufe",
+    "bier": "Bier",
+    "wo": "wo",
+    "mein": "mein",
+    "kaputt": "kaputt",
+    "fahrn": "fahren",
+    "meene": "meine",
+    "heeßte": "heißt du",
+    "heeße": "heiße",
+    "kalle": "Kalle",
+    "spieln": "spielen",
+    "uffm": "auf dem",
+    "hof": "Hof",
+    "nett": "nett",
+    "frech": "frech",
+    "sind": "sind",
+    "kumpels": "Freunde",
+    "klar": "klar",
+    "du": "du",
+    "siehst": "siehst",
+    "aus": "aus",
+    "war": "war",
+    "mensch": "Mensch",
+    "schön": "schön",
+    "soll": "soll",
+    "sein": "sein",
+    "currywurst": "Currywurst",
+    "un": "und",
+    "oder": "oder",
+    "ohne": "ohne",
+    "darm": "Darm",
+    "dazu": "dazu",
+    "schmeckt": "schmeckt",
+    "wa": "wir / war / nicht wahr?"
+  },
+  "glossaryDe": {
+    "es": "et",
+    "denn": "'n",
+    "guck": "kiek",
+    "mal": "ma",
+    "habe": "hab",
+    "gib": "jib",
+    "kiez": "Kiez",
+    "komme": "komm",
+    "wohne": "wohn",
+    "kaufe": "koof",
+    "meine": "meene",
+    "heißt": "heeßte",
+    "dem": "-m (uffm)",
+    "freunde": "Kumpels",
+    "lecker": "lecka",
+    "nehme": "nehm",
+    "fahren": "fahrn",
+    "spielen": "spieln",
+    "heiße": "heeße",
+    "ist": "is",
+    "geht": "jeht"
+  },
+  "units": [
+    {
+      "id": "bl-hello", "title": "Tach ooch!", "level": "A1", "colors": ["#C93A3A","#962828"],
+      "desc": "Grüßen, kieken und die ersten Wörter mit Berliner Schnauze.",
+      "words": [
+        {"id":"bl-hello.w01","de":"guten Tag","t":["Tach","Tach ooch"],"pic":"👋"},
+        {"id":"bl-hello.w02","de":"ja","t":["ja","jo"],"pic":"✅"},
+        {"id":"bl-hello.w03","de":"nein","t":"nee","pic":"❌"},
+        {"id":"bl-hello.w04","de":"gut","t":"jut","pic":"👍"},
+        {"id":"bl-hello.w05","de":"ich","t":["ick","icke"]},
+        {"id":"bl-hello.w06","de":"was","t":"wat"},
+        {"id":"bl-hello.w07","de":"das","t":["det","dit"]},
+        {"id":"bl-hello.w08","de":"nicht","t":"nich"},
+        {"id":"bl-hello.w09","de":"auch","t":"ooch"},
+        {"id":"bl-hello.w10","de":"klein","t":"kleen"},
+        {"id":"bl-hello.w11","de":"gucken","t":"kieken","pic":"👀"},
+        {"id":"bl-hello.w12","de":"der Berliner","t":["der Berlina","Berlina"],"pic":"🐻"}
+      ],
+      "sentences": [
+        {"id":"bl-hello.s01","de":"Guten Tag!","t":"Tach!"},
+        {"id":"bl-hello.s02","de":"Wie geht es dir?","t":"Wie jeht's dir?"},
+        {"id":"bl-hello.s03","de":"Mir geht es gut.","t":"Mir jeht's jut."},
+        {"id":"bl-hello.s04","de":"Was ist denn das?","t":"Wat is'n det?"},
+        {"id":"bl-hello.s05","de":"Ich auch.","t":"Ick ooch."},
+        {"id":"bl-hello.s06","de":"Das ist nicht schlimm.","t":"Det is nich schlimm."},
+        {"id":"bl-hello.s07","de":"Guck mal!","t":"Kiek ma!"}
+      ]
+    },
+    {
+      "id": "bl-food", "title": "Stulle un Molle", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Schrippe, Bulette und Molle: Essen und Trinken in Berlin.",
+      "words": [
+        {"id":"bl-food.w01","de":"das Butterbrot","t":["die Stulle","Stulle"],"pic":"🥪"},
+        {"id":"bl-food.w02","de":"das Bier","t":["die Molle","Molle"],"pic":"🍺"},
+        {"id":"bl-food.w03","de":"das Brötchen","t":["die Schrippe","Schrippe"],"pic":"🥖"},
+        {"id":"bl-food.w04","de":"der Krapfen","t":["der Pfannkuchen","Pfannkuchen"],"pic":"🍩"},
+        {"id":"bl-food.w05","de":"die Frikadelle","t":["die Bulette","Bulette"],"pic":"🍔"},
+        {"id":"bl-food.w06","de":"die Gurke","t":["die Jurke","Jurke"],"pic":"🥒"},
+        {"id":"bl-food.w07","de":"die Flasche","t":["die Buddel","Buddel"],"pic":"🍾"},
+        {"id":"bl-food.w08","de":"der Hunger","t":["der Kohldampf","Kohldampf"],"pic":"😋"},
+        {"id":"bl-food.w09","de":"essen","t":"futtern"},
+        {"id":"bl-food.w10","de":"ein","t":["een","n"]},
+        {"id":"bl-food.w11","de":"eine","t":["ne","eene"]}
+      ],
+      "sentences": [
+        {"id":"bl-food.s01","de":"Ich habe Hunger.","t":"Ick hab Kohldampf."},
+        {"id":"bl-food.s02","de":"Ein Brötchen, bitte.","t":"Ne Schrippe, bitte."},
+        {"id":"bl-food.s03","de":"Noch ein Bier?","t":"Noch ne Molle?"},
+        {"id":"bl-food.s04","de":"Die Frikadelle ist lecker.","t":"Die Bulette is lecka."},
+        {"id":"bl-food.s05","de":"Ich nehme ein Butterbrot mit.","t":"Ick nehm ne Stulle mit."},
+        {"id":"bl-food.s06","de":"Gib mir mal die Flasche.","t":"Jib ma ma die Buddel."},
+        {"id":"bl-food.s07","de":"Ein Krapfen mit Marmelade.","t":"Een Pfannkuchen mit Marmelade."}
+      ]
+    },
+    {
+      "id": "bl-time", "title": "Zahlen un Zeit", "level": "A1", "colors": ["#2E9E5B","#1F7040"],
+      "desc": "Zählen, Uhrzeit und wann man sich wiedersieht.",
+      "words": [
+        {"id":"bl-time.w01","de":"eins","t":"eens"},
+        {"id":"bl-time.w02","de":"zwei","t":"zwee"},
+        {"id":"bl-time.w03","de":"gestern","t":"jestern"},
+        {"id":"bl-time.w04","de":"morgen","t":"morjen"},
+        {"id":"bl-time.w05","de":"gleich","t":"jleich"},
+        {"id":"bl-time.w06","de":"immer","t":"imma"},
+        {"id":"bl-time.w07","de":"jetzt","t":["jetze","jetz"]},
+        {"id":"bl-time.w08","de":"keine","t":"keene"},
+        {"id":"bl-time.w09","de":"der Abend","t":["der Ahmd","Ahmd"],"pic":"🌆"},
+        {"id":"bl-time.w10","de":"der Feierabend","t":["der Feierahmd","Feierahmd"],"pic":"🍻"}
+      ],
+      "sentences": [
+        {"id":"bl-time.s01","de":"Wie spät ist es?","t":"Wie spät isset?"},
+        {"id":"bl-time.s02","de":"Es ist zwei Uhr.","t":"Et is zwee Uhr."},
+        {"id":"bl-time.s03","de":"Ich komme gleich.","t":"Ick komm jleich."},
+        {"id":"bl-time.s04","de":"Bis morgen!","t":"Bis morjen!"},
+        {"id":"bl-time.s05","de":"Gestern war es kalt.","t":"Jestern wa et kalt."},
+        {"id":"bl-time.s06","de":"Ich habe keine Zeit.","t":"Ick hab keene Zeit."},
+        {"id":"bl-time.s07","de":"Das ist immer so.","t":"Det is imma so."}
+      ]
+    },
+    {
+      "id": "bl-city", "title": "Inne Stadt", "level": "A1", "colors": ["#E08A1E","#A8650F"],
+      "desc": "Kiez, Späti und Telespargel: unterwegs in Berlin.",
+      "words": [
+        {"id":"bl-city.w01","de":"das Viertel","t":["der Kiez","Kiez"],"pic":"🏘️"},
+        {"id":"bl-city.w02","de":"der Spätkauf","t":["der Späti","Späti"],"pic":"🏪"},
+        {"id":"bl-city.w03","de":"der Fernsehturm","t":["der Telespargel","Telespargel"],"pic":"🗼"},
+        {"id":"bl-city.w04","de":"das Fahrrad","t":["der Drahtesel","Drahtesel"],"pic":"🚲"},
+        {"id":"bl-city.w05","de":"das Auto","t":["die Karre","Karre"],"pic":"🚗"},
+        {"id":"bl-city.w06","de":"laufen","t":"loofen","pic":"🚶"},
+        {"id":"bl-city.w07","de":"kaufen","t":"koofen","pic":"🛒"},
+        {"id":"bl-city.w08","de":"auf","t":"uff"},
+        {"id":"bl-city.w09","de":"wir","t":"wa"},
+        {"id":"bl-city.w10","de":"um die Ecke","t":"umme Ecke","pic":"↪️"}
+      ],
+      "sentences": [
+        {"id":"bl-city.s01","de":"Ich wohne hier im Kiez.","t":"Ick wohn hier im Kiez."},
+        {"id":"bl-city.s02","de":"Der Spätkauf hat noch auf.","t":"Der Späti hat noch uff."},
+        {"id":"bl-city.s03","de":"Wir laufen zum Fernsehturm.","t":"Wa loofen zum Telespargel."},
+        {"id":"bl-city.s04","de":"Ich kaufe Bier im Spätkauf.","t":"Ick koof Bier im Späti."},
+        {"id":"bl-city.s05","de":"Wo ist mein Fahrrad?","t":"Wo is mein Drahtesel?"},
+        {"id":"bl-city.s06","de":"Das Auto ist kaputt.","t":"Die Karre is kaputt."},
+        {"id":"bl-city.s07","de":"Komm, wir fahren!","t":"Komm, wa fahrn!"}
+      ]
+    },
+    {
+      "id": "bl-people", "title": "Leute un Familie", "level": "A2", "colors": ["#7A4FD0","#5A37A0"],
+      "desc": "Familie, Kumpels und wie man sich vorstellt.",
+      "words": [
+        {"id":"bl-people.w01","de":"das freche Mädchen","t":["die Göre","Göre"],"pic":"👧"},
+        {"id":"bl-people.w02","de":"der kleine Junge","t":["der Steppke","Steppke"],"pic":"👦"},
+        {"id":"bl-people.w03","de":"der Freund","t":["der Kumpel","Kumpel"],"pic":"🤝"},
+        {"id":"bl-people.w04","de":"die Mutter","t":["die Mutta","Mutta"],"pic":"👩‍👧"},
+        {"id":"bl-people.w05","de":"der Vater","t":["der Vadda","Vadda"],"pic":"👨"},
+        {"id":"bl-people.w06","de":"der Bruder","t":["der Bruda","Bruda"]},
+        {"id":"bl-people.w07","de":"die Schwester","t":["die Schwesta","Schwesta"]},
+        {"id":"bl-people.w08","de":"die Kinder","t":["die Kinda","Kinda"],"pic":"🧒"},
+        {"id":"bl-people.w09","de":"ganz","t":"janz"},
+        {"id":"bl-people.w10","de":"heißen","t":"heeßen"}
+      ],
+      "sentences": [
+        {"id":"bl-people.s01","de":"Das ist meine Mutter.","t":"Det is meene Mutta."},
+        {"id":"bl-people.s02","de":"Wie heißt du?","t":"Wie heeßte?"},
+        {"id":"bl-people.s03","de":"Ich heiße Kalle.","t":"Ick heeße Kalle."},
+        {"id":"bl-people.s04","de":"Die Kinder spielen auf dem Hof.","t":"Die Kinda spieln uffm Hof."},
+        {"id":"bl-people.s05","de":"Mein Bruder ist ganz nett.","t":"Mein Bruda is janz nett."},
+        {"id":"bl-people.s06","de":"Der kleine Junge ist frech.","t":"Der Steppke is frech."},
+        {"id":"bl-people.s07","de":"Wir sind Freunde.","t":"Wa sind Kumpels."}
+      ]
+    },
+    {
+      "id": "bl-talk", "title": "Berliner Schnauze", "level": "A2", "colors": ["#D0457E","#9C2F5D"],
+      "desc": "Knorke, dufte, schnieke: so redet Berlin.",
+      "words": [
+        {"id":"bl-talk.w01","de":"toll","t":"knorke","pic":"🤩"},
+        {"id":"bl-talk.w02","de":"prima","t":"dufte","pic":"👍"},
+        {"id":"bl-talk.w03","de":"schick","t":"schnieke","pic":"👔"},
+        {"id":"bl-talk.w04","de":"der Mund","t":["die Schnauze","Schnauze"],"pic":"👄"},
+        {"id":"bl-talk.w05","de":"nichts","t":"nischt"},
+        {"id":"bl-talk.w06","de":"alles","t":"allet"},
+        {"id":"bl-talk.w07","de":"gemütlich","t":"jemütlich","pic":"🛋️"},
+        {"id":"bl-talk.w08","de":"nicht wahr?","t":"wa?"},
+        {"id":"bl-talk.w09","de":"gemacht","t":"jemacht"}
+      ],
+      "sentences": [
+        {"id":"bl-talk.s01","de":"Das ist ja toll!","t":"Det is ja knorke!"},
+        {"id":"bl-talk.s02","de":"Alles klar?","t":"Allet klar?"},
+        {"id":"bl-talk.s03","de":"Ich habe nichts gemacht.","t":"Ick hab nischt jemacht."},
+        {"id":"bl-talk.s04","de":"Du siehst schick aus.","t":"Du siehst schnieke aus."},
+        {"id":"bl-talk.s05","de":"Hier ist es gemütlich, nicht wahr?","t":"Hier isset jemütlich, wa?"},
+        {"id":"bl-talk.s06","de":"Das war prima.","t":"Det war dufte."},
+        {"id":"bl-talk.s07","de":"Mensch, ist das schön!","t":"Mensch, is det schön!"}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "bln-d-imbiss", "title": "An de Imbissbude", "em": "🌭", "desc": "Currywurst bestellen wie ein Berliner.",
+      "turns": [
+        { "p": {"de":"Tag! Was soll es sein?","t":"Tach! Wat soll et sein?"},
+          "a": [
+            {"de":"Eine Currywurst und ein Bier, bitte.","t":"Ne Currywurst un ne Molle, bitte."},
+            {"de":"Der Spätkauf hat noch auf.","t":"Der Späti hat noch uff."},
+            {"de":"Ich habe keine Zeit.","t":"Ick hab keene Zeit."}
+          ] },
+        { "p": {"de":"Mit oder ohne Darm?","t":"Mit oder ohne Darm?"},
+          "a": [
+            {"de":"Ohne, und ein Brötchen dazu.","t":"Ohne, un ne Schrippe dazu."},
+            {"de":"Gestern war es kalt.","t":"Jestern wa et kalt."},
+            {"de":"Die Kinder spielen auf dem Hof.","t":"Die Kinda spieln uffm Hof."}
+          ] },
+        { "p": {"de":"Schmeckt es?","t":"Schmeckt et?"},
+          "a": [
+            {"de":"Das ist toll!","t":"Det is knorke!"},
+            {"de":"Wo ist mein Fahrrad?","t":"Wo is mein Drahtesel?"},
+            {"de":"Ich heiße Kalle.","t":"Ick heeße Kalle."}
+          ] }
+      ]
+    }
+  ]
+}

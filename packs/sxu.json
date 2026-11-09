@@ -1,0 +1,282 @@
+{
+  "format": 2,
+  "code": "sxu",
+  "name": "Sächsisch",
+  "short": "SÄ",
+  "voice": "sxu",
+  "group": "dialects",
+  "noTyping": true,
+  "noListen": true,
+  "color": "#2E8B57",
+  "note": "Obersächsisch wie in Leipzig und Dresden, Schreibweise nicht festgelegt",
+  "articles": "^(dor |de |s |ä |ne )",
+  "gapSkip": [],
+  "glossary": {
+    "wie": "wie",
+    "gehdn's": "geht es denn",
+    "dir": "dir",
+    "mir": "mir / wir",
+    "gehd's": "geht es",
+    "gomme": "komme",
+    "aus": "aus",
+    "das": "das",
+    "is": "ist",
+    "schlimm": "schlimm",
+    "willsde": "willst du",
+    "ä": "ein / einen",
+    "un": "und",
+    "esse": "esse",
+    "zu": "zu",
+    "dinne": "dünn",
+    "mit": "mit",
+    "bidde": "bitte",
+    "schbääd": "spät",
+    "is'n": "ist denn / ist es",
+    "es": "es",
+    "bis": "bis",
+    "wars": "war es",
+    "hab": "habe",
+    "geene": "keine",
+    "wo": "wo",
+    "geh": "gehe",
+    "groß": "groß",
+    "fahrn": "fahren",
+    "mitm": "mit dem",
+    "uffm": "auf dem",
+    "viel": "viel",
+    "los": "los",
+    "meine": "meine",
+    "draußn": "draußen",
+    "heeßtn": "heißt denn",
+    "du": "du",
+    "heeße": "heiße",
+    "uwe": "Uwe",
+    "mei": "mein",
+    "wohnt": "wohnt",
+    "in": "in",
+    "unsor": "unser",
+    "sin": "sind",
+    "freinde": "Freunde",
+    "bin": "bin",
+    "free": "freue",
+    "misch": "mich",
+    "mach": "mach",
+    "ma": "mal",
+    "nur": "nur",
+    "geen": "keine",
+    "hier": "hier",
+    "isses": "ist es",
+    "was": "was",
+    "darfs'n": "darf es denn",
+    "sein": "sein",
+    "gerne": "gerne",
+    "hads": "hat es",
+    "geschmeggd": "geschmeckt",
+    "war": "war",
+    "ne": "eine"
+  },
+  "glossaryDe": {
+    "einen": "ä",
+    "ein": "ä",
+    "eine": "ne",
+    "bemme": "Bemme",
+    "blümchenkaffee": "Bliemchengaffee",
+    "uhr": "Uhr",
+    "heißt": "heeßt",
+    "denn": "'n",
+    "wir": "mir",
+    "dem": "-m (mitm, uffm)",
+    "auf": "uff",
+    "unser": "unsor",
+    "spät": "schbääd",
+    "bitte": "bidde",
+    "freue": "free",
+    "mich": "misch"
+  },
+  "units": [
+    {
+      "id": "sx-hello", "title": "Guddn Daach!", "level": "A1", "colors": ["#C93A3A","#962828"],
+      "desc": "Grüßen, „nu“ sagen und ein bisschen Sächsisch reden.",
+      "words": [
+        {"id":"sx-hello.w01","de":"guten Tag","t":"Guddn Daach","pic":"👋"},
+        {"id":"sx-hello.w02","de":"tschüss","t":["Tschüssi","Tschüss"]},
+        {"id":"sx-hello.w03","de":"ja","t":"nu","pic":"✅"},
+        {"id":"sx-hello.w04","de":"nein","t":"nee","pic":"❌"},
+        {"id":"sx-hello.w05","de":"gut","t":"gud","pic":"👍"},
+        {"id":"sx-hello.w06","de":"ich","t":"isch"},
+        {"id":"sx-hello.w07","de":"nicht","t":["nisch","nich"]},
+        {"id":"sx-hello.w08","de":"auch","t":"ooch"},
+        {"id":"sx-hello.w09","de":"na klar","t":"nu glar"},
+        {"id":"sx-hello.w10","de":"Sachsen","t":"Saggsn","pic":"🏰"},
+        {"id":"sx-hello.w11","de":"Leipzig","t":"Leibzsch"},
+        {"id":"sx-hello.w12","de":"Dresden","t":"Drääsdn"}
+      ],
+      "sentences": [
+        {"id":"sx-hello.s01","de":"Guten Tag!","t":"Guddn Daach!"},
+        {"id":"sx-hello.s02","de":"Wie geht es dir?","t":["Wie gehdn's dir?","Wie gehd's dir?"]},
+        {"id":"sx-hello.s03","de":"Mir geht es gut.","t":"Mir gehd's gud."},
+        {"id":"sx-hello.s04","de":"Ja, na klar!","t":"Nu glar!"},
+        {"id":"sx-hello.s05","de":"Ich komme aus Leipzig.","t":"Isch gomme aus Leibzsch."},
+        {"id":"sx-hello.s06","de":"Das ist nicht schlimm.","t":"Das is nisch schlimm."},
+        {"id":"sx-hello.s07","de":"Ich auch.","t":"Isch ooch."}
+      ]
+    },
+    {
+      "id": "sx-coffee", "title": "Gaffee un Guchn", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Kaffee, Kuchen und Bemme: Essen und Trinken auf Sächsisch.",
+      "words": [
+        {"id":"sx-coffee.w01","de":"der Kaffee","t":["dor Gaffee","Gaffee"],"pic":"☕"},
+        {"id":"sx-coffee.w02","de":"dünner Kaffee","t":"Bliemchengaffee"},
+        {"id":"sx-coffee.w03","de":"der Kuchen","t":["dor Guchn","Guchn"],"pic":"🍰"},
+        {"id":"sx-coffee.w04","de":"das Butterbrot","t":["de Bemme","Bemme"],"pic":"🍞"},
+        {"id":"sx-coffee.w05","de":"die Kartoffel","t":["de Ardäbbl","Ardäbbl"],"pic":"🥔"},
+        {"id":"sx-coffee.w06","de":"die Milch","t":["de Milsch","Milsch"],"pic":"🥛"},
+        {"id":"sx-coffee.w07","de":"der Zucker","t":["dor Zuggr","Zuggr"],"pic":"🍬"},
+        {"id":"sx-coffee.w08","de":"der Teller","t":["dor Deller","Deller"],"pic":"🍽️"},
+        {"id":"sx-coffee.w09","de":"trinken","t":"dringn"},
+        {"id":"sx-coffee.w10","de":"essen","t":"essn"},
+        {"id":"sx-coffee.w11","de":"lecker","t":"lägger","pic":"😋"},
+        {"id":"sx-coffee.w12","de":"das Stück","t":["s Stigge","Stigge"]}
+      ],
+      "sentences": [
+        {"id":"sx-coffee.s01","de":"Willst du einen Kaffee?","t":"Willsde ä Gaffee?"},
+        {"id":"sx-coffee.s02","de":"Ja, und ein Stück Kuchen.","t":"Nu, un ä Stigge Guchn."},
+        {"id":"sx-coffee.s03","de":"Der Kuchen ist lecker.","t":"Dor Guchn is lägger."},
+        {"id":"sx-coffee.s04","de":"Ich esse eine Bemme.","t":"Isch esse ne Bemme."},
+        {"id":"sx-coffee.s05","de":"Der Kaffee ist zu dünn.","t":"Dor Gaffee is zu dinne."},
+        {"id":"sx-coffee.s06","de":"Das ist Blümchenkaffee.","t":"Das is Bliemchengaffee."},
+        {"id":"sx-coffee.s07","de":"Mit Milch und Zucker, bitte.","t":"Mit Milsch un Zuggr, bidde."}
+      ]
+    },
+    {
+      "id": "sx-time", "title": "Zahln un Zeid", "level": "A1", "colors": ["#2E9E5B","#1F7040"],
+      "desc": "Zählen, Uhrzeit und wann man sich wiedersieht.",
+      "words": [
+        {"id":"sx-time.w01","de":"eins","t":"eens"},
+        {"id":"sx-time.w02","de":"zwei","t":"zwee"},
+        {"id":"sx-time.w03","de":"fünf","t":"fimfe"},
+        {"id":"sx-time.w04","de":"zehn","t":"zehne"},
+        {"id":"sx-time.w05","de":"heute","t":"heide"},
+        {"id":"sx-time.w06","de":"morgen","t":"morschn"},
+        {"id":"sx-time.w07","de":"gestern","t":"gesdorn"},
+        {"id":"sx-time.w08","de":"gleich","t":"glei"},
+        {"id":"sx-time.w09","de":"die Zeit","t":["de Zeid","Zeid"],"pic":"⏳"},
+        {"id":"sx-time.w10","de":"der Tag","t":["dor Daach","Daach"],"pic":"📅"},
+        {"id":"sx-time.w11","de":"die Woche","t":["de Wochn","Wochn"]},
+        {"id":"sx-time.w12","de":"kalt","t":"galt","pic":"🥶"}
+      ],
+      "sentences": [
+        {"id":"sx-time.s01","de":"Wie spät ist es?","t":"Wie schbääd is'n?"},
+        {"id":"sx-time.s02","de":"Es ist zehn Uhr.","t":"Es is zehne."},
+        {"id":"sx-time.s03","de":"Ich komme gleich.","t":"Isch gomme glei."},
+        {"id":"sx-time.s04","de":"Bis morgen!","t":"Bis morschn!"},
+        {"id":"sx-time.s05","de":"Gestern war es kalt.","t":"Gesdorn wars galt."},
+        {"id":"sx-time.s06","de":"Ich habe keine Zeit.","t":"Isch hab geene Zeid."},
+        {"id":"sx-time.s07","de":"Zwei Kaffee, bitte.","t":"Zwee Gaffee, bidde."}
+      ]
+    },
+    {
+      "id": "sx-city", "title": "In dor Schdadd", "level": "A1", "colors": ["#E08A1E","#A8650F"],
+      "desc": "Straßenbahn, Laden und Markt: unterwegs in der Stadt.",
+      "words": [
+        {"id":"sx-city.w01","de":"die Stadt","t":["de Schdadd","Schdadd"],"pic":"🏙️"},
+        {"id":"sx-city.w02","de":"die Straße","t":["de Schdraße","Schdraße"],"pic":"🛣️"},
+        {"id":"sx-city.w03","de":"die Straßenbahn","t":["de Bimmel","Bimmel"],"pic":"🚋"},
+        {"id":"sx-city.w04","de":"das Auto","t":["s Audo","Audo"],"pic":"🚗"},
+        {"id":"sx-city.w05","de":"die Kirche","t":["de Girsche","Girsche"],"pic":"⛪"},
+        {"id":"sx-city.w06","de":"der Laden","t":["dor Laadn","Laadn"],"pic":"🏪"},
+        {"id":"sx-city.w07","de":"der Markt","t":["dor Marggd","Marggd"],"pic":"🧺"},
+        {"id":"sx-city.w08","de":"kaufen","t":"goofen","pic":"🛒"},
+        {"id":"sx-city.w09","de":"einkaufen","t":"eingoofen"},
+        {"id":"sx-city.w10","de":"klein","t":"gleen"},
+        {"id":"sx-city.w11","de":"schön","t":"scheen","pic":"😍"}
+      ],
+      "sentences": [
+        {"id":"sx-city.s01","de":"Die Stadt ist schön.","t":"De Schdadd is scheen."},
+        {"id":"sx-city.s02","de":"Wo ist denn die Straßenbahn?","t":"Wo is'n de Bimmel?"},
+        {"id":"sx-city.s03","de":"Ich gehe einkaufen.","t":"Isch geh eingoofen."},
+        {"id":"sx-city.s04","de":"Der Laden ist klein.","t":"Dor Laadn is gleen."},
+        {"id":"sx-city.s05","de":"Die Kirche ist groß.","t":"De Girsche is groß."},
+        {"id":"sx-city.s06","de":"Wir fahren mit dem Auto.","t":"Mir fahrn mitm Audo."},
+        {"id":"sx-city.s07","de":"Auf dem Markt ist viel los.","t":"Uffm Marggd is viel los."}
+      ]
+    },
+    {
+      "id": "sx-people", "title": "Leide un Familie", "level": "A2", "colors": ["#7A4FD0","#5A37A0"],
+      "desc": "Familie, Nachbarn und wie man sich vorstellt.",
+      "words": [
+        {"id":"sx-people.w01","de":"die Leute","t":["de Leide","Leide"],"pic":"👥"},
+        {"id":"sx-people.w02","de":"das Kind","t":["s Gind","Gind"],"pic":"🧒"},
+        {"id":"sx-people.w03","de":"die Kinder","t":["de Ginner","Ginner"]},
+        {"id":"sx-people.w04","de":"der Vater","t":["dor Vadder","Vadder"],"pic":"👨"},
+        {"id":"sx-people.w05","de":"die Mutter","t":["de Mudder","Mudder"],"pic":"👩‍👧"},
+        {"id":"sx-people.w06","de":"das Mädchen","t":["s Määdl","Määdl"],"pic":"👧"},
+        {"id":"sx-people.w07","de":"der Freund","t":["dor Freind","Freind"],"pic":"🤝"},
+        {"id":"sx-people.w08","de":"der Nachbar","t":["dor Nachbor","Nachbor"],"pic":"🏡"},
+        {"id":"sx-people.w09","de":"nett","t":"nedd"},
+        {"id":"sx-people.w10","de":"spielen","t":"schbieln"},
+        {"id":"sx-people.w11","de":"heißen","t":"heeßn"}
+      ],
+      "sentences": [
+        {"id":"sx-people.s01","de":"Das ist meine Mutter.","t":"Das is meine Mudder."},
+        {"id":"sx-people.s02","de":"Die Kinder spielen draußen.","t":"De Ginner schbieln draußn."},
+        {"id":"sx-people.s03","de":"Wie heißt du denn?","t":"Wie heeßtn du?"},
+        {"id":"sx-people.s04","de":"Ich heiße Uwe.","t":"Isch heeße Uwe."},
+        {"id":"sx-people.s05","de":"Mein Vater wohnt in Dresden.","t":"Mei Vadder wohnt in Drääsdn."},
+        {"id":"sx-people.s06","de":"Unser Nachbar ist nett.","t":"Unsor Nachbor is nedd."},
+        {"id":"sx-people.s07","de":"Wir sind Freunde.","t":"Mir sin Freinde."}
+      ]
+    },
+    {
+      "id": "sx-feel", "title": "Gefiehle un Schbrüche", "level": "A2", "colors": ["#D0457E","#9C2F5D"],
+      "desc": "Freuen, staunen und meckern: typisch sächsische Ausdrücke.",
+      "words": [
+        {"id":"sx-feel.w01","de":"prima","t":"brima","pic":"👍"},
+        {"id":"sx-feel.w02","de":"schnell","t":"fix","pic":"⚡"},
+        {"id":"sx-feel.w03","de":"gemütlich","t":"gemiedlich","pic":"🛋️"},
+        {"id":"sx-feel.w04","de":"müde","t":"miede","pic":"😴"},
+        {"id":"sx-feel.w05","de":"traurig","t":"draurisch","pic":"😢"},
+        {"id":"sx-feel.w06","de":"lustig","t":"lusdsch","pic":"😄"},
+        {"id":"sx-feel.w07","de":"der Spaß","t":["dor Schbaß","Schbaß"]},
+        {"id":"sx-feel.w08","de":"die Angst","t":["dor Bammel","Bammel"],"pic":"😱"},
+        {"id":"sx-feel.w09","de":"meckern","t":"meggern"},
+        {"id":"sx-feel.w10","de":"nicht wahr?","t":["ne?","gelle?"]},
+        {"id":"sx-feel.w11","de":"ach du meine Güte!","t":"eiforbibsch!","pic":"😮"}
+      ],
+      "sentences": [
+        {"id":"sx-feel.s01","de":"Ich bin müde.","t":"Isch bin miede."},
+        {"id":"sx-feel.s02","de":"Das ist prima!","t":"Das is brima!"},
+        {"id":"sx-feel.s03","de":"Ich freue mich.","t":"Isch free misch."},
+        {"id":"sx-feel.s04","de":"Mach schnell!","t":"Mach ma fix!"},
+        {"id":"sx-feel.s05","de":"Nur keine Angst!","t":"Nur geen Bammel!"},
+        {"id":"sx-feel.s06","de":"Hier ist es gemütlich.","t":"Hier isses gemiedlich."},
+        {"id":"sx-feel.s07","de":"Ach du meine Güte, ist das schön!","t":"Eiforbibsch, is das scheen!"}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "sxu-d-gaffee", "title": "Im Gaffee", "em": "☕", "desc": "Kaffee und Kuchen bestellen wie in Leipzig.",
+      "turns": [
+        { "p": {"de":"Guten Tag! Was darf es denn sein?","t":"Guddn Daach! Was darfs'n sein?"},
+          "a": [
+            {"de":"Zwei Kaffee und ein Stück Kuchen, bitte.","t":"Zwee Gaffee un ä Stigge Guchn, bidde."},
+            {"de":"Mein Vater wohnt in Dresden.","t":"Mei Vadder wohnt in Drääsdn."},
+            {"de":"Die Kirche ist groß.","t":"De Girsche is groß."}
+          ] },
+        { "p": {"de":"Mit Milch und Zucker?","t":"Mit Milsch un Zuggr?"},
+          "a": [
+            {"de":"Ja, gerne.","t":"Nu, gerne."},
+            {"de":"Gestern war es kalt.","t":"Gesdorn wars galt."},
+            {"de":"Ich gehe einkaufen.","t":"Isch geh eingoofen."}
+          ] },
+        { "p": {"de":"Hat es geschmeckt?","t":"Hads geschmeggd?"},
+          "a": [
+            {"de":"Na klar, das war lecker!","t":"Nu glar, das war lägger!"},
+            {"de":"Es ist zehn Uhr.","t":"Es is zehne."},
+            {"de":"Wo ist denn die Straßenbahn?","t":"Wo is'n de Bimmel?"}
+          ] }
+      ]
+    }
+  ]
+}

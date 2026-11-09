@@ -1,0 +1,278 @@
+{
+  "format": 2,
+  "code": "frs",
+  "name": "Ostfriesisch",
+  "short": "OF",
+  "voice": "frs",
+  "group": "dialects",
+  "noTyping": true,
+  "noListen": true,
+  "color": "#1F6FB2",
+  "note": "Ostfriesisches Platt, Schreibweise nicht festgelegt",
+  "articles": "^(de |dat |en |'n )",
+  "gapSkip": [],
+  "glossary": {
+    "wo": "wie / wo",
+    "geiht": "geht",
+    "di": "dir",
+    "mi": "mir",
+    "proot": "spreche",
+    "platt": "Platt",
+    "is": "ist",
+    "bit": "bis",
+    "wullt": "willst",
+    "du": "du",
+    "en": "ein / eine",
+    "eerst": "erst",
+    "denn": "dann",
+    "dreemal": "dreimal",
+    "oostfreesenrecht": "Ostfriesenrecht",
+    "wi": "wir",
+    "un": "und",
+    "kookt": "kocht",
+    "laat": "spät",
+    "kaam": "komme",
+    "hebb": "habe",
+    "kien": "keine",
+    "koppkes": "Tassen",
+    "regent": "regnet",
+    "de": "der / die / den",
+    "schapen": "Schafe",
+    "staan": "stehen",
+    "up": "auf",
+    "gahn": "gehen",
+    "na": "nach / zu",
+    "kummt": "kommt",
+    "hier": "hier",
+    "mien": "mein / meine",
+    "woont": "wohnt",
+    "in": "in",
+    "emden": "Emden",
+    "buten": "draußen",
+    "heetst": "heißt",
+    "heet": "heiß / heiße",
+    "jan": "Jan",
+    "klook": "klug",
+    "sünd": "sind",
+    "frünnen": "Freunde",
+    "föhr": "fahre",
+    "mit": "mit",
+    "hett": "hat",
+    "kojen": "Kühe",
+    "bün": "bin",
+    "steiht": "steht",
+    "stall": "Stall",
+    "fieravend": "Feierabend",
+    "ok": "auch",
+    "noch": "noch",
+    "weer": "war / Wetter"
+  },
+  "glossaryDe": {
+    "es": "dat",
+    "dem": "de",
+    "ans": "na de",
+    "eine": "en",
+    "ein": "en",
+    "guter": "good",
+    "war": "weer",
+    "die": "de",
+    "den": "de",
+    "meine": "mien",
+    "mein": "mien",
+    "im": "in de",
+    "spät": "laat",
+    "mir": "mi",
+    "dir": "di",
+    "draußen": "buten",
+    "viele": "völ"
+  },
+  "units": [
+    {
+      "id": "of-hello", "title": "Moin!", "level": "A1", "colors": ["#C93A3A","#962828"],
+      "desc": "Grüßen, danken und Platt proten: die ersten Wörter.",
+      "words": [
+        {"id":"of-hello.w01","de":"hallo / guten Tag","t":["Moin","Moin moin"],"pic":"👋"},
+        {"id":"of-hello.w02","de":"tschüss","t":["Tschüüs","Adjüs"]},
+        {"id":"of-hello.w03","de":"ja","t":"jo","pic":"✅"},
+        {"id":"of-hello.w04","de":"nein","t":"nee","pic":"❌"},
+        {"id":"of-hello.w05","de":"danke","t":["dank di","dank ok"],"pic":"🙏"},
+        {"id":"of-hello.w06","de":"bitte","t":["bidde","bitte"]},
+        {"id":"of-hello.w07","de":"gut","t":"good","pic":"👍"},
+        {"id":"of-hello.w08","de":"ich","t":"ik"},
+        {"id":"of-hello.w09","de":"was","t":"wat"},
+        {"id":"of-hello.w10","de":"das","t":"dat"},
+        {"id":"of-hello.w11","de":"nicht","t":"nich"},
+        {"id":"of-hello.w12","de":"sprechen","t":["proten","snacken"],"pic":"🗣️"},
+        {"id":"of-hello.w13","de":"das Haus","t":["dat Huus","Huus"],"pic":"🏠"}
+      ],
+      "sentences": [
+        {"id":"of-hello.s01","de":"Hallo!","t":"Moin!"},
+        {"id":"of-hello.s02","de":"Wie geht es dir?","t":["Wo geiht di dat?","Wo geiht dat?"]},
+        {"id":"of-hello.s03","de":"Mir geht es gut.","t":"Mi geiht dat good."},
+        {"id":"of-hello.s04","de":"Ich spreche Platt.","t":["Ik proot Platt.","Ik snack Platt."]},
+        {"id":"of-hello.s05","de":"Was ist das?","t":"Wat is dat?"},
+        {"id":"of-hello.s06","de":"Das ist nicht gut.","t":"Dat is nich good."},
+        {"id":"of-hello.s07","de":"Tschüss, bis morgen!","t":["Tschüüs, bit mörgen!","Adjüs, bit mörgen!"]}
+      ]
+    },
+    {
+      "id": "of-tea", "title": "Teetied", "level": "A1", "colors": ["#1F86C6","#156493"],
+      "desc": "Tee mit Kluntje und Sahne: Ostfriesland am Tisch.",
+      "words": [
+        {"id":"of-tea.w01","de":"der Tee","t":["de Tee","Tee"],"pic":"🍵"},
+        {"id":"of-tea.w02","de":"der Kandis","t":["de Kluntje","Kluntje"],"pic":"🧊"},
+        {"id":"of-tea.w03","de":"die Sahne","t":["de Rohm","Rohm"],"pic":"🥛"},
+        {"id":"of-tea.w04","de":"die Tasse","t":["dat Koppke","Koppke"],"pic":"☕"},
+        {"id":"of-tea.w05","de":"die Teekanne","t":["de Teepott","Teepott"],"pic":"🫖"},
+        {"id":"of-tea.w06","de":"der Kuchen","t":["de Koken","Koken"],"pic":"🍰"},
+        {"id":"of-tea.w07","de":"das Wasser","t":["dat Water","Water"],"pic":"💧"},
+        {"id":"of-tea.w08","de":"trinken","t":"drinken"},
+        {"id":"of-tea.w09","de":"essen","t":"eten"},
+        {"id":"of-tea.w10","de":"heiß","t":"heet","pic":"🔥"},
+        {"id":"of-tea.w11","de":"gern","t":"geern"},
+        {"id":"of-tea.w12","de":"drei","t":"dree"}
+      ],
+      "sentences": [
+        {"id":"of-tea.s01","de":"Willst du eine Tasse Tee?","t":"Wullt du en Koppke Tee?"},
+        {"id":"of-tea.s02","de":"Ja, gern.","t":"Jo, geern."},
+        {"id":"of-tea.s03","de":"Der Tee ist heiß.","t":"De Tee is heet."},
+        {"id":"of-tea.s04","de":"Erst den Kandis, dann den Tee.","t":"Eerst de Kluntje, denn de Tee."},
+        {"id":"of-tea.s05","de":"Dreimal ist Ostfriesenrecht.","t":"Dreemal is Oostfreesenrecht."},
+        {"id":"of-tea.s06","de":"Wir trinken Tee und essen Kuchen.","t":"Wi drinken Tee un eten Koken."},
+        {"id":"of-tea.s07","de":"Das Wasser kocht.","t":"Dat Water kookt."}
+      ]
+    },
+    {
+      "id": "of-time", "title": "Tallen un Tied", "level": "A1", "colors": ["#2E9E5B","#1F7040"],
+      "desc": "Zählen, Uhrzeit und wann man sich wiedersieht.",
+      "words": [
+        {"id":"of-time.w01","de":"eins","t":"een"},
+        {"id":"of-time.w02","de":"zwei","t":"twee"},
+        {"id":"of-time.w03","de":"vier","t":"veer"},
+        {"id":"of-time.w04","de":"fünf","t":"fiev"},
+        {"id":"of-time.w05","de":"zehn","t":["teihn","tein"]},
+        {"id":"of-time.w06","de":"heute","t":"vandaag"},
+        {"id":"of-time.w07","de":"morgen","t":"mörgen"},
+        {"id":"of-time.w08","de":"gestern","t":"güstern"},
+        {"id":"of-time.w09","de":"die Zeit","t":["de Tied","Tied"],"pic":"⏳"},
+        {"id":"of-time.w10","de":"die Uhr","t":["de Klock","Klock"],"pic":"🕐"},
+        {"id":"of-time.w11","de":"der Tag","t":["de Dag","Dag"],"pic":"📅"},
+        {"id":"of-time.w12","de":"die Woche","t":["de Week","Week"]}
+      ],
+      "sentences": [
+        {"id":"of-time.s01","de":"Wie spät ist es?","t":"Wo laat is dat?"},
+        {"id":"of-time.s02","de":"Es ist zehn Uhr.","t":"Dat is teihn Klock."},
+        {"id":"of-time.s03","de":"Heute ist ein guter Tag.","t":"Vandaag is en good Dag."},
+        {"id":"of-time.s04","de":"Ich komme morgen.","t":"Ik kaam mörgen."},
+        {"id":"of-time.s05","de":"Gestern war es kalt.","t":"Güstern weer dat koold."},
+        {"id":"of-time.s06","de":"Ich habe keine Zeit.","t":"Ik hebb kien Tied."},
+        {"id":"of-time.s07","de":"Zwei Tassen Tee, bitte.","t":"Twee Koppkes Tee, bidde."}
+      ]
+    },
+    {
+      "id": "of-coast", "title": "An de Küst", "level": "A1", "colors": ["#E08A1E","#A8650F"],
+      "desc": "Meer, Deich und Schafe: Wetter und Wind an der Küste.",
+      "words": [
+        {"id":"of-coast.w01","de":"das Meer","t":["de See","See"],"pic":"🌊"},
+        {"id":"of-coast.w02","de":"der Deich","t":["de Diek","Diek"]},
+        {"id":"of-coast.w03","de":"das Schaf","t":["dat Schaap","Schaap"],"pic":"🐑"},
+        {"id":"of-coast.w04","de":"der Wind","t":["de Wind","Wind"],"pic":"💨"},
+        {"id":"of-coast.w05","de":"das Wetter","t":["dat Weer","Weer"],"pic":"🌦️"},
+        {"id":"of-coast.w06","de":"das Schiff","t":["dat Schipp","Schipp"],"pic":"🚢"},
+        {"id":"of-coast.w07","de":"der Fisch","t":["de Fisk","Fisk"],"pic":"🐟"},
+        {"id":"of-coast.w08","de":"die Möwe","t":["de Möw","Möw"],"pic":"🐦"},
+        {"id":"of-coast.w09","de":"kalt","t":"koold","pic":"🥶"},
+        {"id":"of-coast.w10","de":"schön","t":["moi","schöön"],"pic":"😍"},
+        {"id":"of-coast.w11","de":"regnen","t":"regen","pic":"🌧️"}
+      ],
+      "sentences": [
+        {"id":"of-coast.s01","de":"Das Wetter ist schön.","t":"Dat Weer is moi."},
+        {"id":"of-coast.s02","de":"Es regnet.","t":"Dat regent."},
+        {"id":"of-coast.s03","de":"Der Wind ist kalt.","t":"De Wind is koold."},
+        {"id":"of-coast.s04","de":"Die Schafe stehen auf dem Deich.","t":"De Schapen staan up de Diek."},
+        {"id":"of-coast.s05","de":"Wir gehen ans Meer.","t":"Wi gahn na de See."},
+        {"id":"of-coast.s06","de":"Das Schiff kommt.","t":"Dat Schipp kummt."},
+        {"id":"of-coast.s07","de":"Hier ist es schön.","t":"Hier is dat moi."}
+      ]
+    },
+    {
+      "id": "of-people", "title": "Lü un Familie", "level": "A2", "colors": ["#7A4FD0","#5A37A0"],
+      "desc": "Familie, Freunde und wie man sich vorstellt.",
+      "words": [
+        {"id":"of-people.w01","de":"die Leute","t":["de Lü","Lü"],"pic":"👥"},
+        {"id":"of-people.w02","de":"die Frau","t":["de Fro","Fro"],"pic":"👩"},
+        {"id":"of-people.w03","de":"die Kinder","t":["de Kinner","Kinner"],"pic":"🧒"},
+        {"id":"of-people.w04","de":"der Vater","t":["de Vadder","Vadder"],"pic":"👨"},
+        {"id":"of-people.w05","de":"die Mutter","t":["de Moder","Moder","Mudder"],"pic":"👩‍👧"},
+        {"id":"of-people.w06","de":"der Bruder","t":["de Broer","Broer"]},
+        {"id":"of-people.w07","de":"die Schwester","t":["de Süster","Süster"]},
+        {"id":"of-people.w08","de":"der Freund","t":["de Fründ","Fründ"],"pic":"🤝"},
+        {"id":"of-people.w09","de":"das Mädchen","t":["dat Wicht","Wicht"],"pic":"👧"},
+        {"id":"of-people.w10","de":"der Junge","t":["de Jung","Jung"],"pic":"👦"},
+        {"id":"of-people.w11","de":"spielen","t":"spölen","pic":"⚽"},
+        {"id":"of-people.w12","de":"heißen","t":"heten"}
+      ],
+      "sentences": [
+        {"id":"of-people.s01","de":"Das ist meine Mutter.","t":"Dat is mien Moder."},
+        {"id":"of-people.s02","de":"Mein Bruder wohnt in Emden.","t":"Mien Broer woont in Emden."},
+        {"id":"of-people.s03","de":"Die Kinder spielen draußen.","t":"De Kinner spölen buten."},
+        {"id":"of-people.s04","de":"Wie heißt du?","t":"Wo heetst du?"},
+        {"id":"of-people.s05","de":"Ich heiße Jan.","t":"Ik heet Jan."},
+        {"id":"of-people.s06","de":"Das Mädchen ist klug.","t":"Dat Wicht is klook."},
+        {"id":"of-people.s07","de":"Wir sind Freunde.","t":"Wi sünd Frünnen."}
+      ]
+    },
+    {
+      "id": "of-farm", "title": "Arbeiden un Leven", "level": "A2", "colors": ["#D0457E","#9C2F5D"],
+      "desc": "Hof, Garten und Fahrrad: der Alltag auf dem Land.",
+      "words": [
+        {"id":"of-farm.w01","de":"der Bauer","t":["de Buur","Buur"],"pic":"👨‍🌾"},
+        {"id":"of-farm.w02","de":"die Kuh","t":["de Koh","Koh"],"pic":"🐄"},
+        {"id":"of-farm.w03","de":"das Pferd","t":["dat Peerd","Peerd"],"pic":"🐴"},
+        {"id":"of-farm.w04","de":"der Garten","t":["de Tuun","Tuun"],"pic":"🌷"},
+        {"id":"of-farm.w05","de":"das Fahrrad","t":["de Fiets","Fiets"],"pic":"🚲"},
+        {"id":"of-farm.w06","de":"das Geld","t":["dat Geld","Geld"],"pic":"💰"},
+        {"id":"of-farm.w07","de":"die Arbeit","t":["de Arbeid","Arbeid"],"pic":"🛠️"},
+        {"id":"of-farm.w08","de":"arbeiten","t":"arbeiden"},
+        {"id":"of-farm.w09","de":"fahren","t":"föhren"},
+        {"id":"of-farm.w10","de":"müde","t":"möö","pic":"😴"},
+        {"id":"of-farm.w11","de":"viel","t":"völ"},
+        {"id":"of-farm.w12","de":"groß","t":"groot"}
+      ],
+      "sentences": [
+        {"id":"of-farm.s01","de":"Ich fahre mit dem Fahrrad.","t":"Ik föhr mit de Fiets."},
+        {"id":"of-farm.s02","de":"Der Bauer hat viele Kühe.","t":"De Buur hett völ Kojen."},
+        {"id":"of-farm.s03","de":"Ich bin müde.","t":"Ik bün möö."},
+        {"id":"of-farm.s04","de":"Das Pferd steht im Stall.","t":"Dat Peerd steiht in de Stall."},
+        {"id":"of-farm.s05","de":"Wir arbeiten im Garten.","t":"Wi arbeiden in de Tuun."},
+        {"id":"of-farm.s06","de":"Das Haus ist groß.","t":"Dat Huus is groot."},
+        {"id":"of-farm.s07","de":"Feierabend!","t":"Fieravend!"}
+      ]
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "frs-d-tee", "title": "In de Teestuuv", "em": "☕", "desc": "Tee bestellen wie in Ostfriesland.",
+      "turns": [
+        { "p": {"de":"Hallo! Was willst du trinken?","t":"Moin! Wat wullt du drinken?"},
+          "a": [
+            {"de":"Eine Tasse Tee mit Kandis, bitte.","t":"En Koppke Tee mit Kluntje, bidde."},
+            {"de":"Das Pferd steht im Stall.","t":"Dat Peerd steiht in de Stall."},
+            {"de":"Gestern war es kalt.","t":"Güstern weer dat koold."}
+          ] },
+        { "p": {"de":"Willst du auch Kuchen?","t":"Wullt du ok Koken?"},
+          "a": [
+            {"de":"Ja, gern.","t":"Jo, geern."},
+            {"de":"Ich fahre mit dem Fahrrad.","t":"Ik föhr mit de Fiets."},
+            {"de":"Die Schafe stehen auf dem Deich.","t":"De Schapen staan up de Diek."}
+          ] },
+        { "p": {"de":"Noch eine Tasse?","t":"Noch en Koppke?"},
+          "a": [
+            {"de":"Ja, dreimal ist Ostfriesenrecht.","t":"Jo, dreemal is Oostfreesenrecht."},
+            {"de":"Mein Bruder wohnt in Emden.","t":"Mien Broer woont in Emden."},
+            {"de":"Es ist zehn Uhr.","t":"Dat is teihn Klock."}
+          ] }
+      ]
+    }
+  ]
+}
