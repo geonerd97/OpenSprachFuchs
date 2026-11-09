@@ -3447,7 +3447,7 @@
         {"id":"school.w04","de":"Schüler","t":"o aluno"},
         {"id":"school.w05","de":"Buch","t":"o livro","pic":"📖"},
         {"id":"school.w06","de":"Heft","t":"o caderno"},
-        {"id":"school.w07","de":"Stift","t":"o lápis","pic":"✏️"},
+        {"id":"school.w07","de":"Stift","t":["a caneta","o lápis"],"pic":"✏️"},
         {"id":"school.w08","de":"Tafel","t":"o quadro"},
         {"id":"school.w09","de":"Hausaufgabe","t":"a lição de casa","pic":"📝"},
         {"id":"school.w10","de":"Pause","t":"o recreio"},
@@ -3528,7 +3528,7 @@
         {"id":"weather.s05","de":"Heute ist es sehr kalt.","t":"Hoje está muito frio."},
         {"id":"weather.s06","de":"Der Wind ist stark.","t":"O vento está forte."},
         {"id":"weather.s07","de":"Ich nehme einen Regenschirm mit.","t":"Eu levo um guarda-chuva."},
-        {"id":"weather.s08","de":"Es sind zwanzig Grad.","t":"Estão vinte graus."},
+        {"id":"weather.s08","de":"Es sind zwanzig Grad.","t":["Está fazendo vinte graus.","Faz vinte graus.","Estão vinte graus."]},
         {"id":"weather.s09","de":"Am Abend gibt es ein Gewitter.","t":"À noite vai ter uma tempestade."},
         {"id":"weather.s10","de":"Im Frühling ist das Wetter schön.","t":"Na primavera o tempo está bonito."}
       ]
@@ -4386,7 +4386,7 @@
         {"id":"appointments.s06","de":"Ich habe das in meinen Kalender geschrieben.","t":"Eu anotei isso na minha agenda."},
         {"id":"appointments.s07","de":"Entschuldige, ich bin zehn Minuten zu spät.","t":"Desculpe, estou dez minutos atrasado."},
         {"id":"appointments.s08","de":"Wir warten schon seit einer halben Stunde.","t":"Já estamos esperando há meia hora."},
-        {"id":"appointments.s09","de":"Das passt mir gut.","t":"Isso me convém."},
+        {"id":"appointments.s09","de":"Das passt mir gut.","t":["Para mim está ótimo.","Isso me convém."]},
         {"id":"appointments.s10","de":"Ich sage gern zu.","t":"Eu aceito com prazer."}
       ]
     },
@@ -4600,7 +4600,7 @@
         {"id":"work.s03","de":"Heute habe ich drei Besprechungen.","t":["Hoje eu tenho três reuniões.","Tenho três reuniões hoje."]},
         {"id":"work.s04","de":"Zweimal pro Woche arbeite ich im Homeoffice.","t":["Trabalho de casa duas vezes por semana.","Eu trabalho em home office duas vezes por semana."]},
         {"id":"work.s05","de":"Meine Kollegen sind sehr nett.","t":["Os meus colegas são muito legais.","Meus colegas são muito simpáticos."]},
-        {"id":"work.s06","de":"Ich muss oft Überstunden machen.","t":["Eu sempre tenho que fazer hora extra.","Muitas vezes tenho que fazer horas extras."]},
+        {"id":"work.s06","de":"Ich muss oft Überstunden machen.","t":["Muitas vezes tenho que fazer hora extra.","Eu sempre tenho que fazer hora extra."]},
         {"id":"work.s07","de":"Wie viele Urlaubstage hast du im Jahr?","t":"Quantos dias de férias você tem por ano?"},
         {"id":"work.s08","de":"Seit zwei Jahren bin ich selbstständig.","t":["Sou autônomo há dois anos.","Sou autônoma há dois anos."]},
         {"id":"work.s09","de":"Mein Chef ist diese Woche im Urlaub.","t":["Meu chefe está de férias esta semana.","O meu chefe está de férias essa semana."]},
@@ -5157,7 +5157,7 @@
         {"id":"conflicts.w03","de":"Missverständnis","t":"o mal-entendido"},
         {"id":"conflicts.w04","de":"sich entschuldigen","t":"pedir desculpas"},
         {"id":"conflicts.w05","de":"verzeihen","t":"perdoar"},
-        {"id":"conflicts.w06","de":"Kompromiss","t":"o compromisso"},
+        {"id":"conflicts.w06","de":"Kompromiss","t":["o meio-termo","o acordo"]},
         {"id":"conflicts.w07","de":"Ärger","t":"a chateação"},
         {"id":"conflicts.w08","de":"wütend","t":"bravo","pic":"😠"},
         {"id":"conflicts.w09","de":"beleidigt","t":"ofendido"},
@@ -5172,7 +5172,7 @@
         {"id":"conflicts.s02","de":"Das war ein Missverständnis.","t":"Foi um mal-entendido."},
         {"id":"conflicts.s03","de":"Ich möchte mich bei dir entschuldigen.","t":"Quero pedir desculpas a você."},
         {"id":"conflicts.s04","de":"Kannst du mir verzeihen?","t":"Você pode me perdoar?"},
-        {"id":"conflicts.s05","de":"Wir haben einen Kompromiss gefunden.","t":"Encontramos um compromisso."},
+        {"id":"conflicts.s05","de":"Wir haben einen Kompromiss gefunden.","t":["Chegamos a um acordo.","Encontramos um meio-termo."]},
         {"id":"conflicts.s06","de":"Er ist noch immer wütend auf mich.","t":"Ele ainda está bravo comigo."},
         {"id":"conflicts.s07","de":"Sie ist von ihm sehr enttäuscht.","t":"Ela está muito decepcionada com ele."},
         {"id":"conflicts.s08","de":"Lass uns das in Ruhe besprechen.","t":"Vamos conversar sobre isso com calma."},
@@ -5184,7 +5184,7 @@
       "id": "negotiate", "title": "Verhandeln & Diskutieren", "level": "B2", "colors": ["#374151","#1F2937"],
       "desc": "Argumentieren, Bedingungen stellen, komplexe Sätze bilden.",
       "words": [
-        {"id":"negotiate.w01","de":"der Kompromiss","t":["o meio-termo","o acordo","o compromisso"]},
+        {"id":"negotiate.w01","de":"der Kompromiss","t":["o meio-termo","o acordo"]},
         {"id":"negotiate.w02","de":"das Angebot","t":"a oferta"},
         {"id":"negotiate.w03","de":"der Vorteil","t":"a vantagem"},
         {"id":"negotiate.w04","de":"der Nachteil","t":"a desvantagem"},
@@ -6041,7 +6041,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"O que vou trazer para o senhor?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"O molho tem nozes?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"O molho tem nozes?"},
             {"de":"Ich fahre morgen nach Hause.","t":"Amanhã volto para casa."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"Meu quarto fica no segundo andar."}
           ] },

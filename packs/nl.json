@@ -2052,7 +2052,7 @@
         {"id":"school.w04","de":"Schüler","t":"de leerling"},
         {"id":"school.w05","de":"Buch","t":"het boek","pic":"📖"},
         {"id":"school.w06","de":"Heft","t":"het schrift"},
-        {"id":"school.w07","de":"Stift","t":"het potlood","pic":"✏️"},
+        {"id":"school.w07","de":"Stift","t":["de pen","het potlood","de stift"],"pic":"✏️"},
         {"id":"school.w08","de":"Tafel","t":["het schoolbord","het bord"]},
         {"id":"school.w09","de":"Hausaufgabe","t":"het huiswerk","pic":"📝"},
         {"id":"school.w10","de":"Pause","t":"de pauze"},
@@ -2099,7 +2099,7 @@
         {"id":"jobs.s03","de":"Mein Vater ist Bäcker.","t":"Mijn vader is bakker."},
         {"id":"jobs.s04","de":"Sie arbeitet im Büro.","t":"Ze werkt op kantoor."},
         {"id":"jobs.s05","de":"Der Chef ist heute nicht da.","t":"De baas is er vandaag niet."},
-        {"id":"jobs.s06","de":"Er fährt einen Bus.","t":"Hij bestuurt een bus."},
+        {"id":"jobs.s06","de":"Er fährt einen Bus.","t":["Hij rijdt een bus.","Hij bestuurt een bus.","Hij rijdt op een bus."]},
         {"id":"jobs.s07","de":"Der Arzt hilft den Leuten.","t":"De arts helpt mensen."},
         {"id":"jobs.s08","de":"Ich suche einen neuen Job.","t":"Ik zoek een nieuwe baan."},
         {"id":"jobs.s09","de":"Wann beginnt deine Arbeit?","t":"Wanneer begint je werk?"},
@@ -2159,7 +2159,7 @@
       ],
       "sentences": [
         {"id":"exercise.s01","de":"Treibst du gern Sport?","t":["Sport je graag?","Sport u graag?"]},
-        {"id":"exercise.s02","de":"Ich laufe jeden Morgen zehn Minuten.","t":"Ik ren elke ochtend tien minuten."},
+        {"id":"exercise.s02","de":"Ich laufe jeden Morgen zehn Minuten.","t":["Ik ren elke ochtend tien minuten.","Ik loop elke ochtend tien minuten hard."]},
         {"id":"exercise.s03","de":"Am Samstag schwimmen wir im Schwimmbad.","t":"Op zaterdag zwemmen we in het zwembad."},
         {"id":"exercise.s04","de":"Unsere Mannschaft gewinnt das Spiel!","t":"Ons team wint de wedstrijd!"},
         {"id":"exercise.s05","de":"Das Training beginnt um sechs Uhr.","t":"De training begint om zes uur."},
@@ -2319,7 +2319,7 @@
       "sentences": [
         {"id":"leisure.s01","de":"Wie ist das Wetter heute?","t":"Hoe is het weer vandaag?"},
         {"id":"leisure.s02","de":"Es ist sonnig und warm.","t":"Het is zonnig en warm."},
-        {"id":"leisure.s03","de":"Morgen soll es regnen.","t":"Morgen gaat het regenen."},
+        {"id":"leisure.s03","de":"Morgen soll es regnen.","t":["Morgen gaat het regenen.","Morgen zou het gaan regenen."]},
         {"id":"leisure.s04","de":"Lass uns an den Strand gehen!","t":"Laten we naar het strand gaan!"},
         {"id":"leisure.s05","de":"Kann man hier schwimmen?","t":"Kun je hier zwemmen?"},
         {"id":"leisure.s06","de":"Wir möchten einen Ausflug in die Berge machen.","t":"We willen een uitje naar de bergen maken."},
@@ -3109,7 +3109,7 @@
       ],
       "sentences": [
         {"id":"doctor.s01","de":"Ich hätte gern einen Termin beim Arzt.","t":"Ik wil graag een afspraak bij de arts."},
-        {"id":"doctor.s02","de":"Seit drei Tagen habe ich Husten und Fieber.","t":"Ik hoest en heb koorts sinds drie dagen."},
+        {"id":"doctor.s02","de":"Seit drei Tagen habe ich Husten und Fieber.","t":["Ik heb al drie dagen hoest en koorts.","Ik hoest al drie dagen en heb koorts."]},
         {"id":"doctor.s03","de":"Ich habe mir den Knöchel verstaucht.","t":"Ik heb mijn enkel verstuikt."},
         {"id":"doctor.s04","de":"Brauche ich dafür ein Rezept?","t":"Heb ik daarvoor een recept nodig?"},
         {"id":"doctor.s05","de":"Nehmen Sie die Tabletten dreimal täglich nach dem Essen.","t":"Neem de tabletten drie keer per dag na het eten."},
@@ -3207,7 +3207,7 @@
         {"id":"work.s05","de":"Meine Kollegen sind sehr nett.","t":"Mijn collega's zijn erg aardig."},
         {"id":"work.s06","de":"Ich muss oft Überstunden machen.","t":"Ik moet vaak overuren maken."},
         {"id":"work.s07","de":"Wie viele Urlaubstage hast du im Jahr?","t":"Hoeveel vakantiedagen heb je per jaar?"},
-        {"id":"work.s08","de":"Seit zwei Jahren bin ich selbstständig.","t":"Sinds twee jaar ben ik zelfstandig."},
+        {"id":"work.s08","de":"Seit zwei Jahren bin ich selbstständig.","t":["Ik ben al twee jaar zelfstandig.","Sinds twee jaar ben ik zelfstandig."]},
         {"id":"work.s09","de":"Mein Chef ist diese Woche im Urlaub.","t":"Mijn baas is deze week op vakantie."},
         {"id":"work.s10","de":"Ich habe viel Erfahrung in diesem Bereich.","t":"Ik heb veel ervaring op dit gebied."}
       ]
@@ -3295,7 +3295,7 @@
       "sentences": [
         {"id":"nature.s01","de":"Wie lange dauert die Wanderung?","t":"Hoe lang duurt de wandeling?"},
         {"id":"nature.s02","de":"Der Weg ist ziemlich steil.","t":"Het pad is behoorlijk steil."},
-        {"id":"nature.s03","de":"Von oben hat man eine tolle Aussicht.","t":"Vanaf de top heb je een prachtig uitzicht."},
+        {"id":"nature.s03","de":"Von oben hat man eine tolle Aussicht.","t":["Vanaf de top heb je een prachtig uitzicht.","Van bovenaf heb je een prachtig uitzicht."]},
         {"id":"nature.s04","de":"Heute Nachmittag soll es Gewitter geben.","t":"Vanmiddag is er onweer voorspeld."},
         {"id":"nature.s05","de":"Nimm genug Wasser mit.","t":"Neem genoeg water mee."},
         {"id":"nature.s06","de":"Wir sind um sechs Uhr losgegangen.","t":"We zijn om zes uur vertrokken."},
@@ -3382,7 +3382,7 @@
         {"id":"studies.w07","de":"die Hausaufgaben","t":"het huiswerk","pic":"🗒️"},
         {"id":"studies.w08","de":"das Fach","t":"het vak","pic":"🎯"},
         {"id":"studies.w09","de":"die Note","t":"het cijfer","pic":"🏅"},
-        {"id":"studies.w10","de":"das Zeugnis","t":"het diploma","pic":"📜"},
+        {"id":"studies.w10","de":"das Zeugnis","t":["het rapport","het diploma"],"pic":"📜"},
         {"id":"studies.w11","de":"sich merken","t":"onthouden","pic":"🧠"},
         {"id":"studies.w12","de":"die Aussprache","t":"de uitspraak","pic":"🗣️"},
         {"id":"studies.w13","de":"die Grammatik","t":"de grammatica","pic":"📖"},
@@ -3964,7 +3964,7 @@
         {"id":"authorities.s03","de":"Wann und wo ist das passiert?","t":"Wanneer en waar is dat gebeurd?"},
         {"id":"authorities.s04","de":"Bitte füllen Sie dieses Formular aus.","t":"Vul dit formulier alstublieft in."},
         {"id":"authorities.s05","de":"Hier fehlt noch Ihre Unterschrift.","t":"Hier ontbreekt nog uw handtekening."},
-        {"id":"authorities.s06","de":"Ich habe meinen Reisepass verloren.","t":"Ik ben mijn paspoort verloren."},
+        {"id":"authorities.s06","de":"Ich habe meinen Reisepass verloren.","t":["Ik heb mijn paspoort verloren.","Ik ben mijn paspoort kwijt.","Ik ben mijn paspoort verloren."]},
         {"id":"authorities.s07","de":"Die Botschaft stellt Ihnen einen vorläufigen Ausweis aus.","t":"De ambassade geeft u een voorlopig identiteitsbewijs."},
         {"id":"authorities.s08","de":"Brauche ich eine Kopie für die Versicherung?","t":"Heb ik een kopie nodig voor de verzekering?"},
         {"id":"authorities.s09","de":"Gab es Zeugen?","t":"Waren er getuigen?"},
@@ -3991,7 +3991,7 @@
       ],
       "sentences": [
         {"id":"lifestyle.s01","de":"Ich versuche, mich gesünder zu ernähren.","t":"Ik probeer gezonder te eten."},
-        {"id":"lifestyle.s02","de":"Seit einem Monat esse ich keinen Zucker mehr.","t":"Sinds een maand eet ik geen suiker meer."},
+        {"id":"lifestyle.s02","de":"Seit einem Monat esse ich keinen Zucker mehr.","t":["Ik eet al een maand geen suiker meer.","Sinds een maand eet ik geen suiker meer."]},
         {"id":"lifestyle.s03","de":"Dreimal pro Woche gehe ich ins Fitnessstudio.","t":"Drie keer per week ga ik naar de sportschool."},
         {"id":"lifestyle.s04","de":"Zu viel Stress macht krank.","t":"Te veel stress maakt ziek."},
         {"id":"lifestyle.s05","de":"Ich schlafe schlecht, wenn ich abends Kaffee trinke.","t":"Ik slaap slecht als ik 's avonds koffie drink."},
@@ -4412,7 +4412,7 @@
         {"id":"history.s07","de":"Wir haben die Ruinen eines römischen Tempels besichtigt.","t":"We hebben de ruïnes van een Romeinse tempel bezocht."},
         {"id":"history.s08","de":"Aus der Geschichte kann man viel lernen.","t":"Uit de geschiedenis kun je veel leren."},
         {"id":"history.s09","de":"Die Revolution hat das Land völlig verändert.","t":"De revolutie heeft het land volledig veranderd."},
-        {"id":"history.s10","de":"Seit siebzig Jahren herrscht hier Frieden.","t":"Sinds zeventig jaar heerst hier vrede."}
+        {"id":"history.s10","de":"Seit siebzig Jahren herrscht hier Frieden.","t":["Al zeventig jaar heerst hier vrede.","Sinds zeventig jaar heerst hier vrede."]}
       ]
     },
     {
@@ -4646,7 +4646,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"Wat mag ik voor u brengen?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"Zitten er noten in de saus?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"Zitten er noten in de saus?"},
             {"de":"Ich fahre morgen nach Hause.","t":"Ik ga morgen naar huis."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"Mijn kamer is op de tweede verdieping."}
           ] },
@@ -5029,7 +5029,7 @@
           ] },
         { "p": {"de":"Seit wann haben Sie das?","t":"Sinds wanneer heeft u dat?"},
           "a": [
-            {"de":"Seit zwei Tagen.","t":"Sinds twee dagen."},
+            {"de":"Seit zwei Tagen.","t":"Al twee dagen."},
             {"de":"Um acht Uhr.","t":"Om acht uur."},
             {"de":"Zwei Kilometer.","t":"Twee kilometer."}
           ] },
@@ -5110,7 +5110,7 @@
       "turns": [
         { "p": {"de":"Guten Abend! Was kann ich für Sie tun?","t":"Goedenavond! Wat kan ik voor u doen?"},
           "a": [
-            {"de":"Mich hat etwas gestochen, und der Arm ist ganz geschwollen.","t":"Er heeft iets in mij gestoken en mijn arm is helemaal opgezwollen."},
+            {"de":"Mich hat etwas gestochen, und der Arm ist ganz geschwollen.","t":"Ik ben ergens door gestoken en mijn arm is helemaal opgezwollen."},
             {"de":"Ich möchte gern auschecken.","t":"Ik wil graag uitchecken."},
             {"de":"Ich nehme die Pizza.","t":"Ik neem de pizza."}
           ] },

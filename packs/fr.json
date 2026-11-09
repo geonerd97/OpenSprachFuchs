@@ -2104,7 +2104,16 @@
     "magnifiques": "wunderschön",
     "invitation": "Einladung",
     "délicieux": "lecker",
-    "ausverkauft": "ausverkauft"
+    "ausverkauft": "ausverkauft",
+    "ce2": "3. Klasse (Grundschule)",
+    "qu'avec": "nur mit",
+    "ne roule qu'avec": "fahre nur mit",
+    "lumières": "Lichter",
+    "allumées": "eingeschaltet",
+    "élevé": "hoch",
+    "l'aire": "die Fläche / der Platz",
+    "l'aire de jeux": "der Spielplatz",
+    "fraîche": "kühl / frisch"
   },
   "glossaryDe": {
     "vielen": "beaucoup (vielen Dank = merci beaucoup)",
@@ -2756,7 +2765,7 @@
         {"id":"time.w12","de":"Sonntag","t":"dimanche"},
         {"id":"time.w13","de":"offen","t":"ouvert"},
         {"id":"time.w14","de":"geschlossen","t":"fermé"},
-        {"id":"time.w15","de":"die Uhr","t":"l'horloge","pic":"🕒"}
+        {"id":"time.w15","de":"die Uhr","t":["l'horloge","la montre","la pendule"],"pic":"🕒"}
       ],
       "sentences": [
         {"id":"time.s01","de":["Wie spät ist es?","Wie viel Uhr ist es?"],"t":"Quelle heure est-il?"},
@@ -3291,7 +3300,7 @@
         {"id":"school.w04","de":"Schüler","t":"l'élève"},
         {"id":"school.w05","de":"Buch","t":"le livre","pic":"📖"},
         {"id":"school.w06","de":"Heft","t":"le cahier"},
-        {"id":"school.w07","de":"Stift","t":"le crayon","pic":"✏️"},
+        {"id":"school.w07","de":"Stift","t":["le stylo","le crayon"],"pic":"✏️"},
         {"id":"school.w08","de":"Tafel","t":"le tableau"},
         {"id":"school.w09","de":"Hausaufgabe","t":"le devoir","pic":"📝"},
         {"id":"school.w10","de":"Pause","t":"la récréation"},
@@ -3302,7 +3311,7 @@
       ],
       "sentences": [
         {"id":"school.s01","de":"Wann beginnt die Schule?","t":"Quand commence l'école?"},
-        {"id":"school.s02","de":"Ich bin in der dritten Klasse.","t":"Je suis en classe de troisième."},
+        {"id":"school.s02","de":"Ich bin in der dritten Klasse.","t":["Je suis en CE2.","Je suis en troisième année.","Je suis en classe de CE2."]},
         {"id":"school.s03","de":"Mein Lehrer ist sehr nett.","t":"Mon professeur est très gentil."},
         {"id":"school.s04","de":"Wir lernen Englisch und Mathe.","t":"Nous apprenons l'anglais et les maths."},
         {"id":"school.s05","de":"Hast du deine Hausaufgaben gemacht?","t":"Tu as fait tes devoirs?"},
@@ -3430,7 +3439,7 @@
       ],
       "sentences": [
         {"id":"birthday.s01","de":"Wann hast du Geburtstag?","t":"Quand est ton anniversaire?"},
-        {"id":"birthday.s02","de":"Ich werde zwanzig Jahre alt.","t":"J'ai vingt ans."},
+        {"id":"birthday.s02","de":"Ich werde zwanzig Jahre alt.","t":["Je vais avoir vingt ans.","Je vais fêter mes vingt ans."]},
         {"id":"birthday.s03","de":"Herzlichen Glückwunsch zum Geburtstag!","t":"Joyeux anniversaire!"},
         {"id":"birthday.s04","de":"Ich habe dir ein Geschenk gekauft.","t":"Je t'ai acheté un cadeau."},
         {"id":"birthday.s05","de":"Wir feiern am Samstag eine Party.","t":"Samedi, nous faisons une fête."},
@@ -3943,7 +3952,7 @@
         {"id":"bike.s07","de":"Die Bremsen funktionieren nicht gut.","t":"Les freins ne marchent pas bien."},
         {"id":"bike.s08","de":"Die Strecke am Fluss ist sehr schön.","t":"Le parcours le long de la rivière est très beau."},
         {"id":"bike.s09","de":"Darf ich den Roller hier abstellen?","t":"Je peux garer la trottinette ici?"},
-        {"id":"bike.s10","de":"Nachts fahre ich nur mit Licht.","t":"La nuit, je roule seulement avec la lumière."}
+        {"id":"bike.s10","de":"Nachts fahre ich nur mit Licht.","t":["La nuit, je ne roule qu'avec mes lumières allumées.","La nuit, je roule seulement avec la lumière."]}
       ]
     },
     {
@@ -4130,7 +4139,7 @@
         {"id":"neighbors.s02","de":"Bitte drücken Sie auf die Klingel.","t":"Veuillez appuyer sur la sonnette."},
         {"id":"neighbors.s03","de":"Im Keller stehen die Fahrräder.","t":"Les vélos sont à la cave."},
         {"id":"neighbors.s04","de":"Der Vermieter wohnt im ersten Stock.","t":"Le propriétaire habite au premier étage."},
-        {"id":"neighbors.s05","de":"Die Miete ist diesen Monat zu hoch.","t":"Le loyer est trop cher ce mois-ci."},
+        {"id":"neighbors.s05","de":"Die Miete ist diesen Monat zu hoch.","t":["Le loyer est trop élevé ce mois-ci.","Le loyer est trop cher ce mois-ci."]},
         {"id":"neighbors.s06","de":"Wir haben einen kleinen Balkon.","t":"Nous avons un petit balcon."},
         {"id":"neighbors.s07","de":"Bitte macht nach zehn Uhr nicht so viel Lärm.","t":"Faites moins de bruit après dix heures, s'il vous plaît."},
         {"id":"neighbors.s08","de":"Hast du den Schlüssel?","t":"Tu as la clé?"},
@@ -4207,7 +4216,7 @@
       "desc": "Zeit ausmachen, absagen, pünktlich sein.",
       "words": [
         {"id":"appointments.w01","de":"Termin","t":"le rendez-vous","pic":"📅"},
-        {"id":"appointments.w02","de":"Verabredung","t":"le rendez-vous galant"},
+        {"id":"appointments.w02","de":"Verabredung","t":["le rendez-vous galant","le rendez-vous"]},
         {"id":"appointments.w03","de":"absagen","t":"annuler"},
         {"id":"appointments.w04","de":"verschieben","t":"reporter"},
         {"id":"appointments.w05","de":"pünktlich","t":"ponctuel","pic":"⏰"},
@@ -4884,7 +4893,7 @@
         {"id":"children.w14","de":"schlafen","t":"dormir","pic":"😴"}
       ],
       "sentences": [
-        {"id":"children.s01","de":"Die Kinder spielen auf dem Spielplatz.","t":"Les enfants jouent au terrain de jeux."},
+        {"id":"children.s01","de":"Die Kinder spielen auf dem Spielplatz.","t":["Les enfants jouent sur l'aire de jeux.","Les enfants jouent au terrain de jeux."]},
         {"id":"children.s02","de":"Unser Sohn kommt im Herbst in den Kindergarten.","t":"Notre fils entre à la maternelle en automne."},
         {"id":"children.s03","de":"Wir brauchen einen Babysitter am Freitag.","t":"Nous avons besoin d'une baby-sitter vendredi."},
         {"id":"children.s04","de":"Die Tochter bekommt Taschengeld.","t":"La fille reçoit de l'argent de poche."},
@@ -5758,7 +5767,7 @@
         {"id":"healthcare.w02","de":"Versichertenkarte","t":"la carte d'assuré"},
         {"id":"healthcare.w03","de":"Facharzt","t":"le spécialiste"},
         {"id":"healthcare.w04","de":"Hausarzt","t":"le médecin traitant"},
-        {"id":"healthcare.w05","de":"Überweisung","t":"l'adressage"},
+        {"id":"healthcare.w05","de":"Überweisung","t":["la lettre d'orientation","l'ordonnance d'orientation"]},
         {"id":"healthcare.w06","de":"Wartezeit","t":"le temps d'attente"},
         {"id":"healthcare.w07","de":"Sprechstunde","t":"la consultation"},
         {"id":"healthcare.w08","de":"Rezept","t":"l'ordonnance"},
@@ -5770,7 +5779,7 @@
         {"id":"healthcare.w14","de":"Zuzahlung","t":"le ticket modérateur","pic":"💶"}
       ],
       "sentences": [
-        {"id":"healthcare.s01","de":"Ich brauche eine Überweisung zum Facharzt.","t":"J'ai besoin d'un adressage chez le spécialiste."},
+        {"id":"healthcare.s01","de":"Ich brauche eine Überweisung zum Facharzt.","t":["J'ai besoin d'une lettre d'orientation pour le spécialiste.","Il me faut une lettre d'orientation pour le spécialiste."]},
         {"id":"healthcare.s02","de":"Die Wartezeit beim Hausarzt ist lang.","t":"Le temps d'attente chez le médecin traitant est long."},
         {"id":"healthcare.s03","de":"Die Krankenkasse übernimmt die Kosten.","t":"L'assurance maladie prend les frais en charge."},
         {"id":"healthcare.s04","de":"Bitte legen Sie Ihre Versichertenkarte vor.","t":"Veuillez présenter votre carte d'assuré."},
@@ -5885,7 +5894,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"Qu'est-ce que je vous apporte?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"Est-ce qu'il y a des noix dans la sauce?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"Est-ce qu'il y a des noix dans la sauce?"},
             {"de":"Ich fahre morgen nach Hause.","t":"Je rentre à la maison demain."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"Ma chambre est au deuxième étage."}
           ] },
@@ -6042,7 +6051,7 @@
           ] },
         { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"Environ quinze minutes, s'il n'y a pas de bouchons."},
           "a": [
-            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"D'accord. Vous pourriez baisser un peu la clim?"},
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"D'accord. Vous pourriez mettre la clim un peu plus fraîche?"},
             {"de":"Gut. Ich nehme den Fisch.","t":"D'accord. Je prends le poisson."},
             {"de":"Gut. Wo ist die Umkleidekabine?","t":"D'accord. Où est la cabine d'essayage?"}
           ] },

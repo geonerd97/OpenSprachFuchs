@@ -1622,7 +1622,13 @@
     "tom.": "leer",
     "plads": "Platz",
     "bekommt": "bekommt",
-    "sammen": "zusammen"
+    "sammen": "zusammen",
+    "hovedet": "den Kopf",
+    "ondt i hovedet": "Kopfschmerzen",
+    "bedstefar": "Opa",
+    "dødtræt": "todmüde",
+    "interessante": "interessante",
+    "det mest interessante": "das Interessanteste"
   },
   "glossaryDe": {
     "vielen": "mange",
@@ -1989,7 +1995,7 @@
         {"id":"talk.w05","de":"Deutsch","t":"tysk"},
         {"id":"talk.w06","de":"sprechen","t":["tale","snakke"]},
         {"id":"talk.w07","de":"verstehen","t":"forstå"},
-        {"id":"talk.w08","de":"langsam","t":"langsom","pic":"🐢"},
+        {"id":"talk.w08","de":"langsam","t":["langsom","langsomt"],"pic":"🐢"},
         {"id":"talk.w09","de":"wiederholen","t":["gentage","sige igen"]},
         {"id":"talk.w10","de":"ein bisschen","t":["lidt","en smule"]},
         {"id":"talk.w11","de":"wo","t":"hvor"},
@@ -2318,7 +2324,7 @@
         {"id":"body.w14","de":"wehtun","t":["gøre ondt","have ondt"],"pic":"🤕"}
       ],
       "sentences": [
-        {"id":"body.s01","de":"Mein Kopf tut weh.","t":"Mit hoved gør ondt."},
+        {"id":"body.s01","de":"Mein Kopf tut weh.","t":["Jeg har ondt i hovedet.","Mit hoved gør ondt."]},
         {"id":"body.s02","de":"Sie hat blaue Augen.","t":"Hun har blå øjne."},
         {"id":"body.s03","de":"Wasch dir die Hände!","t":"Vask dine hænder!"},
         {"id":"body.s04","de":"Mein Rücken tut seit gestern weh.","t":"Min ryg har gjort ondt siden i går."},
@@ -2342,7 +2348,7 @@
         {"id":"drinks.w06","de":"das Bier","t":"øl","pic":"🍺"},
         {"id":"drinks.w07","de":"der Wein","t":"vin","pic":"🍷"},
         {"id":"drinks.w08","de":"das Eis (Würfel)","t":["is","isterninger"],"pic":"🧊"},
-        {"id":"drinks.w09","de":"die Limonade","t":"en sodavand","pic":"🥤"},
+        {"id":"drinks.w09","de":"die Limonade","t":["en sodavand","en limonade"],"pic":"🥤"},
         {"id":"drinks.w10","de":"mit Kohlensäure","t":["med brus","med kulsyre"],"pic":"🫧"},
         {"id":"drinks.w11","de":"ohne Kohlensäure","t":["uden brus","uden kulsyre"],"pic":"🚰"},
         {"id":"drinks.w12","de":"die Flasche","t":"en flaske","pic":"🍾"},
@@ -2580,7 +2586,7 @@
         {"id":"describe.s04","de":"Er ist sehr nett und lustig.","t":"Han er meget sød og sjov."},
         {"id":"describe.s05","de":"Meine Schwester ist ein bisschen schüchtern.","t":"Min søster er lidt genert."},
         {"id":"describe.s06","de":"Du siehst müde aus.","t":"Du ser træt ud."},
-        {"id":"describe.s07","de":"Mein Opa hat einen weißen Bart.","t":"Min morfar har et hvidt skæg."},
+        {"id":"describe.s07","de":"Mein Opa hat einen weißen Bart.","t":["Min bedstefar har et hvidt skæg.","Min morfar har et hvidt skæg.","Min farfar har et hvidt skæg."]},
         {"id":"describe.s08","de":"Sie ist jünger als ich.","t":"Hun er yngre end mig."},
         {"id":"describe.s09","de":"Er ist klug, aber ein bisschen faul.","t":"Han er klog, men lidt doven."},
         {"id":"describe.s10","de":"Wer ist der Mann mit dem Bart?","t":"Hvem er manden med skægget?"}
@@ -2595,15 +2601,15 @@
         {"id":"school.w03","de":"Lehrer","t":"en lærer","pic":"👨‍🏫"},
         {"id":"school.w04","de":"Schüler","t":"en elev"},
         {"id":"school.w05","de":"Buch","t":"en bog","pic":"📖"},
-        {"id":"school.w06","de":"Heft","t":"en notesbog"},
+        {"id":"school.w06","de":"Heft","t":["et hæfte","en notesbog","et kladdehæfte"]},
         {"id":"school.w07","de":"Stift","t":"en blyant","pic":"✏️"},
         {"id":"school.w08","de":"Tafel","t":"en tavle"},
         {"id":"school.w09","de":"Hausaufgabe","t":"en lektie","pic":"📝"},
         {"id":"school.w10","de":"Pause","t":"en pause"},
         {"id":"school.w11","de":"Prüfung","t":"en prøve"},
         {"id":"school.w12","de":"Note","t":"en karakter"},
-        {"id":"school.w13","de":"lernen","t":"at lære","pic":"📚"},
-        {"id":"school.w14","de":"schreiben","t":"at skrive"}
+        {"id":"school.w13","de":"lernen","t":["lære","at lære"],"pic":"📚"},
+        {"id":"school.w14","de":"schreiben","t":["skrive","at skrive"]}
       ],
       "sentences": [
         {"id":"school.s01","de":"Wann beginnt die Schule?","t":"Hvornår begynder skolen?"},
@@ -2622,7 +2628,7 @@
       "id": "jobs", "title": "Berufe & Arbeit", "level": "A1", "colors": ["#8C3FC8","#682C99"],
       "desc": "Wer macht was, und wo arbeiten wir?",
       "words": [
-        {"id":"jobs.w01","de":"Beruf","t":"et job"},
+        {"id":"jobs.w01","de":"Beruf","t":["et erhverv","et job","et fag"]},
         {"id":"jobs.w02","de":"Arzt","t":"en læge","pic":"🧑‍⚕️"},
         {"id":"jobs.w03","de":"Koch","t":"en kok","pic":"🧑‍🍳"},
         {"id":"jobs.w04","de":"Polizist","t":"en politibetjent","pic":"👮"},
@@ -2632,8 +2638,8 @@
         {"id":"jobs.w08","de":"Chef","t":"en chef"},
         {"id":"jobs.w09","de":"Büro","t":"et kontor","pic":"🏢"},
         {"id":"jobs.w10","de":"Fahrer","t":"en chauffør","pic":"🚌"},
-        {"id":"jobs.w11","de":"arbeiten","t":"at arbejde","pic":"💼"},
-        {"id":"jobs.w12","de":"suchen","t":"at lede efter"},
+        {"id":"jobs.w11","de":"arbeiten","t":["arbejde","at arbejde"],"pic":"💼"},
+        {"id":"jobs.w12","de":"suchen","t":["lede efter","at lede efter"]},
         {"id":"jobs.w13","de":"neu","t":"ny"},
         {"id":"jobs.w14","de":"Arbeit","t":"et arbejde"}
       ],
@@ -2654,17 +2660,17 @@
       "id": "weather", "title": "Wetter", "level": "A1", "colors": ["#0E8C80","#08665D"],
       "desc": "Sonne, Regen und Wind: wie ist das Wetter?",
       "words": [
-        {"id":"weather.w01","de":"Wetter","t":"et vejr"},
-        {"id":"weather.w02","de":"Sonne","t":"en sol","pic":"☀️"},
-        {"id":"weather.w03","de":"Regen","t":"en regn","pic":"🌧️"},
+        {"id":"weather.w01","de":"Wetter","t":["vejr","vejret"]},
+        {"id":"weather.w02","de":"Sonne","t":["sol","solen"],"pic":"☀️"},
+        {"id":"weather.w03","de":"Regen","t":["regn","regnen"],"pic":"🌧️"},
         {"id":"weather.w04","de":"Wind","t":"en vind","pic":"💨"},
-        {"id":"weather.w05","de":"Schnee","t":"en sne","pic":"❄️"},
+        {"id":"weather.w05","de":"Schnee","t":["sne","sneen"],"pic":"❄️"},
         {"id":"weather.w06","de":"Wolke","t":"en sky","pic":"☁️"},
         {"id":"weather.w07","de":"warm","t":"varm"},
         {"id":"weather.w08","de":"kalt","t":"kold","pic":"🥶"},
         {"id":"weather.w09","de":"heiß","t":"hed","pic":"🔥"},
         {"id":"weather.w10","de":"Gewitter","t":"et tordenvejr","pic":"⛈️"},
-        {"id":"weather.w11","de":"Nebel","t":"en tåge","pic":"🌫️"},
+        {"id":"weather.w11","de":"Nebel","t":["tåge","tågen"],"pic":"🌫️"},
         {"id":"weather.w12","de":"Grad","t":"en grad"},
         {"id":"weather.w13","de":"schön","t":"smuk"},
         {"id":"weather.w14","de":"stark","t":"kraftig"}
@@ -2686,15 +2692,15 @@
       "id": "exercise", "title": "Sport & Bewegung", "level": "A1", "colors": ["#1F86C6","#156493"],
       "desc": "Laufen, schwimmen, spielen: wer macht mit?",
       "words": [
-        {"id":"exercise.w01","de":"Sport","t":"en sport","pic":"🏃"},
-        {"id":"exercise.w02","de":"laufen","t":"at løbe"},
-        {"id":"exercise.w03","de":"schwimmen","t":"at svømme","pic":"🏊"},
-        {"id":"exercise.w04","de":"Fußball","t":"en fodbold","pic":"⚽"},
-        {"id":"exercise.w05","de":"Tennis","t":"en tennis","pic":"🎾"},
+        {"id":"exercise.w01","de":"Sport","t":["sport","en sport"],"pic":"🏃"},
+        {"id":"exercise.w02","de":"laufen","t":["løbe","at løbe"]},
+        {"id":"exercise.w03","de":"schwimmen","t":["svømme","at svømme"],"pic":"🏊"},
+        {"id":"exercise.w04","de":"Fußball","t":["fodbold"],"pic":"⚽"},
+        {"id":"exercise.w05","de":"Tennis","t":["tennis"],"pic":"🎾"},
         {"id":"exercise.w06","de":"Mannschaft","t":"et hold","pic":"👥"},
-        {"id":"exercise.w07","de":"Training","t":"en træning"},
-        {"id":"exercise.w08","de":"gewinnen","t":"at vinde","pic":"🏆"},
-        {"id":"exercise.w09","de":"verlieren","t":"at tabe"},
+        {"id":"exercise.w07","de":"Training","t":["træning","træningen"]},
+        {"id":"exercise.w08","de":"gewinnen","t":["vinde","at vinde"],"pic":"🏆"},
+        {"id":"exercise.w09","de":"verlieren","t":["tabe","at tabe"]},
         {"id":"exercise.w10","de":"Spiel","t":"en kamp"},
         {"id":"exercise.w11","de":"Schwimmbad","t":"en svømmehal"},
         {"id":"exercise.w12","de":"Trainer","t":"en træner"},
@@ -2704,7 +2710,7 @@
       "sentences": [
         {"id":"exercise.s01","de":"Treibst du gern Sport?","t":"Dyrker du gerne sport?"},
         {"id":"exercise.s02","de":"Ich laufe jeden Morgen zehn Minuten.","t":"Jeg løber ti minutter hver morgen."},
-        {"id":"exercise.s03","de":"Am Samstag schwimmen wir im Schwimmbad.","t":"Om lørdagen svømmer vi i svømmehallen."},
+        {"id":"exercise.s03","de":"Am Samstag schwimmen wir im Schwimmbad.","t":["På lørdag svømmer vi i svømmehallen.","Om lørdagen svømmer vi i svømmehallen."]},
         {"id":"exercise.s04","de":"Unsere Mannschaft gewinnt das Spiel!","t":"Vores hold vinder kampen!"},
         {"id":"exercise.s05","de":"Das Training beginnt um sechs Uhr.","t":"Træningen begynder klokken seks."},
         {"id":"exercise.s06","de":"Der Trainer ist sehr streng.","t":"Træneren er meget streng."},
@@ -2724,14 +2730,14 @@
         {"id":"birthday.w04","de":"Party","t":"en fest","pic":"🎉"},
         {"id":"birthday.w05","de":"Einladung","t":"en invitation"},
         {"id":"birthday.w06","de":"Kerze","t":"et lys","pic":"🕯️"},
-        {"id":"birthday.w07","de":"feiern","t":"at fejre","pic":"🥳"},
+        {"id":"birthday.w07","de":"feiern","t":["fejre","at fejre"],"pic":"🥳"},
         {"id":"birthday.w08","de":"alt","t":"gammel"},
         {"id":"birthday.w09","de":"Glückwunsch","t":"en lykønskning"},
         {"id":"birthday.w10","de":"Ballon","t":"en ballon","pic":"🎈"},
         {"id":"birthday.w11","de":"Blumen","t":"blomster","pic":"💐"},
         {"id":"birthday.w12","de":"Überraschung","t":"en overraskelse"},
         {"id":"birthday.w13","de":"lecker","t":"lækker"},
-        {"id":"birthday.w14","de":"wunderschön","t":"smuk"}
+        {"id":"birthday.w14","de":"wunderschön","t":["pragtfuld","smuk","vidunderlig"]}
       ],
       "sentences": [
         {"id":"birthday.s01","de":"Wann hast du Geburtstag?","t":"Hvornår har du fødselsdag?"},
@@ -2868,7 +2874,7 @@
         {"id":"leisure.s05","de":"Kann man hier schwimmen?","t":"Kan man svømme her?"},
         {"id":"leisure.s06","de":"Wir möchten einen Ausflug in die Berge machen.","t":"Vi vil gerne på udflugt i bjergene."},
         {"id":"leisure.s07","de":"Zwei Eintrittskarten, bitte.","t":"To billetter, tak."},
-        {"id":"leisure.s08","de":"Es ist zu kalt zum Baden.","t":"Det er for koldt at bade."},
+        {"id":"leisure.s08","de":"Es ist zu kalt zum Baden.","t":["Det er for koldt til at bade."]},
         {"id":"leisure.s09","de":"Hast du einen Regenschirm?","t":"Har du en paraply?"},
         {"id":"leisure.s10","de":"Was kann man hier unternehmen?","t":"Hvad kan man lave her?"}
       ]
@@ -2987,7 +2993,7 @@
       "sentences": [
         {"id":"airport.s01","de":"Wo kann ich einchecken?","t":"Hvor kan jeg tjekke ind?"},
         {"id":"airport.s02","de":"Hier ist mein Reisepass.","t":"Her er mit pas."},
-        {"id":"airport.s03","de":"Ich habe einen Koffer und ein Handgepäck.","t":"Jeg har en kuffert og en håndbagage."},
+        {"id":"airport.s03","de":"Ich habe einen Koffer und ein Handgepäck.","t":["Jeg har en kuffert og noget håndbagage.","Jeg har en kuffert og håndbagage."]},
         {"id":"airport.s04","de":"Der Flug hat eine Stunde Verspätung.","t":"Flyet er en time forsinket."},
         {"id":"airport.s05","de":"Von welchem Gate fliegen wir?","t":"Fra hvilken gate flyver vi?"},
         {"id":"airport.s06","de":"Ich habe einen Platz am Fenster.","t":"Jeg har en plads ved vinduet."},
@@ -3182,7 +3188,7 @@
         {"id":"sports.s05","de":"Kannst du schwimmen?","t":"Kan du svømme?"},
         {"id":"sports.s06","de":"Das Spiel beginnt um acht.","t":"Kampen begynder klokken otte."},
         {"id":"sports.s07","de":"Sie spielt jeden Sonntag Tennis.","t":"Hun spiller tennis hver søndag."},
-        {"id":"sports.s08","de":"Ich möchte fitter werden.","t":"Jeg vil gerne i bedre form."},
+        {"id":"sports.s08","de":"Ich möchte fitter werden.","t":["Jeg vil gerne komme i bedre form.","Jeg vil gerne i bedre form."]},
         {"id":"sports.s09","de":"Wer hat das Tor geschossen?","t":"Hvem scorede målet?"},
         {"id":"sports.s10","de":"Wir fahren am Sonntag Rad.","t":"Vi cykler på søndag."}
       ]
@@ -3225,7 +3231,7 @@
       "words": [
         {"id":"bike.w01","de":"das Fahrrad","t":"en cykel","pic":"🚲"},
         {"id":"bike.w02","de":"der Roller","t":"et løbehjul","pic":"🛴"},
-        {"id":"bike.w03","de":"der Helm","t":"en cykelhjelm","pic":"⛑️"},
+        {"id":"bike.w03","de":"der Helm","t":["en cykelhjelm","en hjelm"],"pic":"⛑️"},
         {"id":"bike.w04","de":"das Schloss","t":"en lås","pic":"🔒"},
         {"id":"bike.w05","de":"der Reifen","t":"et dæk","pic":"🛞"},
         {"id":"bike.w06","de":"die Klingel","t":"en klokke","pic":"🔔"},
@@ -3417,15 +3423,15 @@
       "words": [
         {"id":"neighbors.w01","de":"Nachbar","t":"en nabo"},
         {"id":"neighbors.w02","de":"Hausmeister","t":"en vicevært"},
-        {"id":"neighbors.w03","de":"Treppenhaus","t":"et trappeopgang"},
+        {"id":"neighbors.w03","de":"Treppenhaus","t":["en opgang","en trappeopgang"]},
         {"id":"neighbors.w04","de":"Klingel","t":"en dørklokke","pic":"🔔"},
         {"id":"neighbors.w05","de":"Briefkasten","t":"en postkasse","pic":"📬"},
         {"id":"neighbors.w06","de":"Keller","t":"en kælder"},
         {"id":"neighbors.w07","de":"Dachboden","t":"et loft"},
         {"id":"neighbors.w08","de":"Balkon","t":"en altan"},
         {"id":"neighbors.w09","de":"Garten","t":"en have","pic":"🌳"},
-        {"id":"neighbors.w10","de":"Lärm","t":"en larm","pic":"🔊"},
-        {"id":"neighbors.w11","de":"Miete","t":"en husleje"},
+        {"id":"neighbors.w10","de":"Lärm","t":["larm","støj"],"pic":"🔊"},
+        {"id":"neighbors.w11","de":"Miete","t":["husleje","huslejen"]},
         {"id":"neighbors.w12","de":"Vermieter","t":"en udlejer"},
         {"id":"neighbors.w13","de":"Schlüssel","t":"en nøgle","pic":"🔑"},
         {"id":"neighbors.w14","de":"ruhig","t":"stille","pic":"🤫"}
@@ -3453,14 +3459,14 @@
         {"id":"books.w04","de":"Seite","t":"en side","pic":"📄"},
         {"id":"books.w05","de":"Kapitel","t":"et kapitel"},
         {"id":"books.w06","de":"Geschichte","t":"en historie"},
-        {"id":"books.w07","de":"ausleihen","t":"at låne"},
+        {"id":"books.w07","de":"ausleihen","t":["låne","at låne"]},
         {"id":"books.w08","de":"Zeitung","t":"en avis","pic":"📰"},
         {"id":"books.w09","de":"Zeitschrift","t":"et magasin"},
         {"id":"books.w10","de":"Wörterbuch","t":"en ordbog","pic":"📖"},
         {"id":"books.w11","de":"Titel","t":"en titel"},
         {"id":"books.w12","de":"spannend","t":"spændende"},
         {"id":"books.w13","de":"langweilig","t":"kedelig"},
-        {"id":"books.w14","de":"lesen","t":"at læse"}
+        {"id":"books.w14","de":"lesen","t":["læse","at læse"]}
       ],
       "sentences": [
         {"id":"books.s01","de":"Welches Buch liest du gerade?","t":"Hvilken bog læser du lige nu?"},
@@ -3479,17 +3485,17 @@
       "id": "fashion", "title": "Mode & Umkleide", "level": "A2", "colors": ["#0F8FA6","#0B6A7B"],
       "desc": "Anprobieren, Größe finden, Rabatt nutzen.",
       "words": [
-        {"id":"fashion.w01","de":"Mode","t":"et mode"},
+        {"id":"fashion.w01","de":"Mode","t":["mode","moden"]},
         {"id":"fashion.w02","de":"Umkleidekabine","t":"et prøverum"},
         {"id":"fashion.w03","de":"Größe","t":"en størrelse"},
-        {"id":"fashion.w04","de":"Rock","t":"et nederdel"},
+        {"id":"fashion.w04","de":"Rock","t":["en nederdel"]},
         {"id":"fashion.w05","de":"Bluse","t":"en bluse"},
         {"id":"fashion.w06","de":"Mantel","t":"en frakke"},
         {"id":"fashion.w07","de":"Gürtel","t":"et bælte"},
         {"id":"fashion.w08","de":"Stoff","t":"et stof"},
         {"id":"fashion.w09","de":"Muster","t":"et mønster"},
-        {"id":"fashion.w10","de":"passen","t":"at passe"},
-        {"id":"fashion.w11","de":"anprobieren","t":"at prøve"},
+        {"id":"fashion.w10","de":"passen","t":["passe","at passe"]},
+        {"id":"fashion.w11","de":"anprobieren","t":["prøve","at prøve"]},
         {"id":"fashion.w12","de":"Rabatt","t":"en rabat","pic":"🏷️"},
         {"id":"fashion.w13","de":"teuer","t":"dyr","pic":"💶"},
         {"id":"fashion.w14","de":"günstig","t":"billig"}
@@ -3513,18 +3519,18 @@
       "words": [
         {"id":"appointments.w01","de":"Termin","t":"en aftale","pic":"📅"},
         {"id":"appointments.w02","de":"Verabredung","t":"en date"},
-        {"id":"appointments.w03","de":"absagen","t":"at aflyse"},
-        {"id":"appointments.w04","de":"verschieben","t":"at udskyde"},
-        {"id":"appointments.w05","de":"pünktlich","t":"præcis","pic":"⏰"},
+        {"id":"appointments.w03","de":"absagen","t":["aflyse","at aflyse"]},
+        {"id":"appointments.w04","de":"verschieben","t":["udskyde","at udskyde"]},
+        {"id":"appointments.w05","de":"pünktlich","t":["præcis","punktlig","til tiden"],"pic":"⏰"},
         {"id":"appointments.w06","de":"Kalender","t":"en kalender","pic":"📆"},
         {"id":"appointments.w07","de":"Uhrzeit","t":"et tidspunkt"},
         {"id":"appointments.w08","de":"Treffpunkt","t":"et mødested","pic":"📍"},
-        {"id":"appointments.w09","de":"warten","t":"at vente","pic":"⏳"},
-        {"id":"appointments.w10","de":"sich verspäten","t":"at komme for sent"},
-        {"id":"appointments.w11","de":"vorbeikommen","t":"at kigge forbi"},
+        {"id":"appointments.w09","de":"warten","t":["vente","at vente"],"pic":"⏳"},
+        {"id":"appointments.w10","de":"sich verspäten","t":["komme for sent","at komme for sent"]},
+        {"id":"appointments.w11","de":"vorbeikommen","t":["kigge forbi","at kigge forbi"]},
         {"id":"appointments.w12","de":"Vorschlag","t":"et forslag"},
         {"id":"appointments.w13","de":"Woche","t":"en uge"},
-        {"id":"appointments.w14","de":"zusagen","t":"at sige ja"}
+        {"id":"appointments.w14","de":"zusagen","t":["sige ja","at sige ja"]}
       ],
       "sentences": [
         {"id":"appointments.s01","de":"Hast du am Freitag Zeit?","t":"Har du tid på fredag?"},
@@ -3549,7 +3555,7 @@
         {"id":"problems.w04","de":"umtauschen","t":"bytte"},
         {"id":"problems.w05","de":"erstatten","t":"refundere"},
         {"id":"problems.w06","de":"falsch","t":"forkert"},
-        {"id":"problems.w07","de":"dringend","t":"akut"},
+        {"id":"problems.w07","de":"dringend","t":["presserende","akut","haster"]},
         {"id":"problems.w08","de":"der Verantwortliche","t":"den ansvarlige"},
         {"id":"problems.w09","de":"die Lösung","t":"en løsning"},
         {"id":"problems.w10","de":"reparieren","t":"reparere","pic":"🔧"},
@@ -3843,7 +3849,7 @@
         {"id":"nature.s04","de":"Heute Nachmittag soll es Gewitter geben.","t":"Der skal komme tordenvejr i eftermiddag."},
         {"id":"nature.s05","de":"Nimm genug Wasser mit.","t":"Tag nok vand med."},
         {"id":"nature.s06","de":"Wir sind um sechs Uhr losgegangen.","t":"Vi gik af sted klokken seks."},
-        {"id":"nature.s07","de":"Ich bin total müde.","t":"Jeg er helt træt."},
+        {"id":"nature.s07","de":"Ich bin total müde.","t":["Jeg er dødtræt.","Jeg er helt udmattet.","Jeg er helt træt."]},
         {"id":"nature.s08","de":"Darf man im See baden?","t":"Må man bade i søen?"},
         {"id":"nature.s09","de":"Bitte bleibt auf dem Weg.","t":"Bliv venligst på stien."},
         {"id":"nature.s10","de":"Im Wald hört man viele Vögel.","t":"I skoven kan man høre mange fugle."}
@@ -4182,11 +4188,11 @@
         {"id":"children.w07","de":"Sohn","t":"en søn"},
         {"id":"children.w08","de":"Kinderwagen","t":"en barnevogn"},
         {"id":"children.w09","de":"Erziehung","t":"en opdragelse"},
-        {"id":"children.w10","de":"streiten","t":"at skændes"},
-        {"id":"children.w11","de":"trösten","t":"at trøste"},
-        {"id":"children.w12","de":"verwöhnen","t":"at forkæle"},
+        {"id":"children.w10","de":"streiten","t":["skændes","at skændes"]},
+        {"id":"children.w11","de":"trösten","t":["trøste","at trøste"]},
+        {"id":"children.w12","de":"verwöhnen","t":["forkæle","at forkæle"]},
         {"id":"children.w13","de":"Regel","t":"en regel"},
-        {"id":"children.w14","de":"schlafen","t":"at sove","pic":"😴"}
+        {"id":"children.w14","de":"schlafen","t":["sove","at sove"],"pic":"😴"}
       ],
       "sentences": [
         {"id":"children.s01","de":"Die Kinder spielen auf dem Spielplatz.","t":"Børnene leger på legepladsen."},
@@ -4213,9 +4219,9 @@
         {"id":"clubs.w06","de":"Beitrag","t":"et kontingent"},
         {"id":"clubs.w07","de":"Versammlung","t":"et møde"},
         {"id":"clubs.w08","de":"freiwillig","t":"frivillig"},
-        {"id":"clubs.w09","de":"helfen","t":"at hjælpe","pic":"🤝"},
-        {"id":"clubs.w10","de":"sammeln","t":"at indsamle"},
-        {"id":"clubs.w11","de":"organisieren","t":"at organisere"},
+        {"id":"clubs.w09","de":"helfen","t":["hjælpe","at hjælpe"],"pic":"🤝"},
+        {"id":"clubs.w10","de":"sammeln","t":["indsamle","at indsamle"]},
+        {"id":"clubs.w11","de":"organisieren","t":["organisere","at organisere"]},
         {"id":"clubs.w12","de":"Gemeinde","t":"et lokalsamfund","pic":"🏘️"},
         {"id":"clubs.w13","de":"Projekt","t":"et projekt"},
         {"id":"clubs.w14","de":"Abstimmung","t":"en afstemning","pic":"🗳️"}
@@ -4241,14 +4247,14 @@
         {"id":"traditions.w02","de":"Brauch","t":"en skik"},
         {"id":"traditions.w03","de":"Feiertag","t":"en helligdag"},
         {"id":"traditions.w04","de":"Fest","t":"en højtid"},
-        {"id":"traditions.w05","de":"Umzug","t":"en optog"},
+        {"id":"traditions.w05","de":"Umzug","t":["et optog"]},
         {"id":"traditions.w06","de":"Kostüm","t":"en udklædning","pic":"🎭"},
         {"id":"traditions.w07","de":"Festessen","t":"et festmåltid"},
         {"id":"traditions.w08","de":"Weihnachten","t":"jul","pic":"🎄"},
         {"id":"traditions.w09","de":"Ostern","t":"påske","pic":"🐣"},
         {"id":"traditions.w10","de":"Lied","t":"en sang","pic":"🎵"},
-        {"id":"traditions.w11","de":"singen","t":"at synge","pic":"🎶"},
-        {"id":"traditions.w12","de":"tanzen","t":"at danse","pic":"💃"},
+        {"id":"traditions.w11","de":"singen","t":["synge","at synge"],"pic":"🎶"},
+        {"id":"traditions.w12","de":"tanzen","t":["danse","at danse"],"pic":"💃"},
         {"id":"traditions.w13","de":"Laterne","t":"en lygte","pic":"🏮"},
         {"id":"traditions.w14","de":"bunt","t":"farverig"}
       ],
@@ -4269,7 +4275,7 @@
       "id": "mobility", "title": "Verkehr & Mobilität", "level": "B1", "colors": ["#3F6212","#2C450D"],
       "desc": "Stau, Verspätung und der Weg zur Arbeit.",
       "words": [
-        {"id":"mobility.w01","de":"Verkehr","t":"en trafik"},
+        {"id":"mobility.w01","de":"Verkehr","t":["trafik","trafikken"]},
         {"id":"mobility.w02","de":"Stau","t":"en kø","pic":"🚗"},
         {"id":"mobility.w03","de":"Verspätung","t":"en forsinkelse"},
         {"id":"mobility.w04","de":"Fahrkarte","t":"en billet"},
@@ -4280,9 +4286,9 @@
         {"id":"mobility.w09","de":"Fußgänger","t":"en fodgænger","pic":"🚶"},
         {"id":"mobility.w10","de":"Zebrastreifen","t":"et fodgængerfelt"},
         {"id":"mobility.w11","de":"Bußgeld","t":"en bøde","pic":"💶"},
-        {"id":"mobility.w12","de":"abbiegen","t":"at dreje"},
-        {"id":"mobility.w13","de":"überholen","t":"at overhale"},
-        {"id":"mobility.w14","de":"bremsen","t":"at bremse"}
+        {"id":"mobility.w12","de":"abbiegen","t":["dreje","at dreje"]},
+        {"id":"mobility.w13","de":"überholen","t":["overhale","at overhale"]},
+        {"id":"mobility.w14","de":"bremsen","t":["bremse","at bremse"]}
       ],
       "sentences": [
         {"id":"mobility.s01","de":"Wegen des Staus komme ich zu spät.","t":"På grund af køen kommer jeg for sent."},
@@ -4301,23 +4307,23 @@
       "id": "conflicts", "title": "Streit & Entschuldigung", "level": "B1", "colors": ["#9D174D","#6F1036"],
       "desc": "Missverständnisse klären und sich wieder vertragen.",
       "words": [
-        {"id":"conflicts.w01","de":"Streit","t":"en uenighed"},
+        {"id":"conflicts.w01","de":"Streit","t":["et skænderi","en strid","en uenighed"]},
         {"id":"conflicts.w02","de":"Vorwurf","t":"en bebrejdelse"},
         {"id":"conflicts.w03","de":"Missverständnis","t":"en misforståelse"},
-        {"id":"conflicts.w04","de":"sich entschuldigen","t":"at undskylde sig"},
-        {"id":"conflicts.w05","de":"verzeihen","t":"at tilgive"},
+        {"id":"conflicts.w04","de":"sich entschuldigen","t":["undskylde sig","at undskylde sig"]},
+        {"id":"conflicts.w05","de":"verzeihen","t":["tilgive","at tilgive"]},
         {"id":"conflicts.w06","de":"Kompromiss","t":"et kompromis"},
         {"id":"conflicts.w07","de":"Ärger","t":"en irritation"},
         {"id":"conflicts.w08","de":"wütend","t":"vred","pic":"😠"},
         {"id":"conflicts.w09","de":"beleidigt","t":"fornærmet"},
         {"id":"conflicts.w10","de":"enttäuscht","t":"skuffet","pic":"😞"},
-        {"id":"conflicts.w11","de":"sich vertragen","t":"at forliges"},
-        {"id":"conflicts.w12","de":"sich aussprechen","t":"at tale ud"},
+        {"id":"conflicts.w11","de":"sich vertragen","t":["forliges","at forliges"]},
+        {"id":"conflicts.w12","de":"sich aussprechen","t":["tale ud","at tale ud"]},
         {"id":"conflicts.w13","de":"Verständnis","t":"en forståelse"},
         {"id":"conflicts.w14","de":"Schuld","t":"en skyld"}
       ],
       "sentences": [
-        {"id":"conflicts.s01","de":"Es gab gestern einen großen Streit.","t":"Der var i går en stor uenighed."},
+        {"id":"conflicts.s01","de":"Es gab gestern einen großen Streit.","t":["I går var der et stort skænderi.","Der var et stort skænderi i går."]},
         {"id":"conflicts.s02","de":"Das war ein Missverständnis.","t":"Det var en misforståelse."},
         {"id":"conflicts.s03","de":"Ich möchte mich bei dir entschuldigen.","t":"Jeg vil gerne undskylde over for dig."},
         {"id":"conflicts.s04","de":"Kannst du mir verzeihen?","t":"Kan du tilgive mig?"},
@@ -4967,13 +4973,13 @@
         {"id":"climate.w02","de":"Treibhausgas","t":"en drivhusgas"},
         {"id":"climate.w03","de":"Erderwärmung","t":"den globale opvarmning","pic":"🌡️"},
         {"id":"climate.w04","de":"Gletscher","t":"en gletsjer","pic":"🏔️"},
-        {"id":"climate.w05","de":"Dürre","t":"en tørke"},
+        {"id":"climate.w05","de":"Dürre","t":["tørke","en tørke"]},
         {"id":"climate.w06","de":"Überschwemmung","t":"en oversvømmelse","pic":"🌊"},
-        {"id":"climate.w07","de":"Meeresspiegel","t":"havniveauet"},
+        {"id":"climate.w07","de":"Meeresspiegel","t":["havniveau","havniveauet"]},
         {"id":"climate.w08","de":"Energiewende","t":"en energiomstilling"},
         {"id":"climate.w09","de":"erneuerbar","t":"vedvarende","pic":"♻️"},
         {"id":"climate.w10","de":"Klimaschutz","t":"klimabeskyttelse"},
-        {"id":"climate.w11","de":"Ausstoß","t":"udledningen"},
+        {"id":"climate.w11","de":"Ausstoß","t":["udledning","udledningen"]},
         {"id":"climate.w12","de":"Anpassung","t":"en tilpasning"},
         {"id":"climate.w13","de":"Artensterben","t":"udryddelse af arter"},
         {"id":"climate.w14","de":"nachhaltig","t":"bæredygtig","pic":"🌱"}
@@ -5008,7 +5014,7 @@
         {"id":"workplace.w11","de":"Bildschirm","t":"en skærm","pic":"🖥️"},
         {"id":"workplace.w12","de":"Videokonferenz","t":"en videokonference","pic":"🎥"},
         {"id":"workplace.w13","de":"Arbeitsplatz","t":"en arbejdsplads"},
-        {"id":"workplace.w14","de":"kündigen","t":"at sige op"}
+        {"id":"workplace.w14","de":"kündigen","t":["sige op","at sige op"]}
       ],
       "sentences": [
         {"id":"workplace.s01","de":"Ich arbeite zwei Tage pro Woche im Homeoffice.","t":"Jeg arbejder to dage om ugen hjemmefra."},
@@ -5037,15 +5043,15 @@
         {"id":"integration.w08","de":"Anerkennung","t":"en anerkendelse"},
         {"id":"integration.w09","de":"Vielfalt","t":"en mangfoldighed","pic":"🌈"},
         {"id":"integration.w10","de":"Vorurteil","t":"en fordom"},
-        {"id":"integration.w11","de":"Heimat","t":"et hjemland","pic":"🏡"},
+        {"id":"integration.w11","de":"Heimat","t":["et tilhørsforhold"],"pic":"🏡"},
         {"id":"integration.w12","de":"Zugehörigkeit","t":"en tilhørsforhold"},
         {"id":"integration.w13","de":"Asyl","t":"asyl"},
-        {"id":"integration.w14","de":"teilhaben","t":"at deltage"}
+        {"id":"integration.w14","de":"teilhaben","t":["deltage","at deltage"]}
       ],
       "sentences": [
         {"id":"integration.s01","de":"Die Integration gelingt am besten über die Sprache.","t":"Integration lykkes bedst gennem sproget."},
         {"id":"integration.s02","de":"Viele Einwanderer suchen eine Arbeit.","t":"Mange indvandrere leder efter et arbejde."},
-        {"id":"integration.s03","de":"Sie hat eine Aufenthaltserlaubnis für drei Jahre.","t":"Hun har en opholdstilladelse i tre år."},
+        {"id":"integration.s03","de":"Sie hat eine Aufenthaltserlaubnis für drei Jahre.","t":["Hun har en opholdstilladelse på tre år.","Hun har en opholdstilladelse i tre år."]},
         {"id":"integration.s04","de":"Die Anerkennung ausländischer Abschlüsse dauert lange.","t":"Anerkendelse af udenlandske uddannelser tager lang tid."},
         {"id":"integration.s05","de":"Vorurteile sind oft das größte Hindernis.","t":"Fordomme er ofte den største forhindring."},
         {"id":"integration.s06","de":"Vielfalt bereichert unsere Gesellschaft.","t":"Mangfoldighed beriger vores samfund."},
@@ -5060,11 +5066,11 @@
       "desc": "Überweisungen, Wartezeiten und Krankenkasse.",
       "words": [
         {"id":"healthcare.w01","de":"Krankenkasse","t":"en sygesikring"},
-        {"id":"healthcare.w02","de":"Versichertenkarte","t":"sygesikringskortet"},
+        {"id":"healthcare.w02","de":"Versichertenkarte","t":["et sygesikringskort","sygesikringskortet"]},
         {"id":"healthcare.w03","de":"Facharzt","t":"en speciallæge"},
         {"id":"healthcare.w04","de":"Hausarzt","t":"en praktiserende læge"},
         {"id":"healthcare.w05","de":"Überweisung","t":"en henvisning"},
-        {"id":"healthcare.w06","de":"Wartezeit","t":"ventetid"},
+        {"id":"healthcare.w06","de":"Wartezeit","t":["pleje","plejen"]},
         {"id":"healthcare.w07","de":"Sprechstunde","t":"konsultationstid"},
         {"id":"healthcare.w08","de":"Rezept","t":"en recept"},
         {"id":"healthcare.w09","de":"Befund","t":"et resultat"},
@@ -5190,7 +5196,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"Hvad må jeg bringe dig?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"Er der nødder i saucen?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"Er der nødder i saucen?"},
             {"de":"Ich fahre morgen nach Hause.","t":"Jeg tager hjem i morgen."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"Mit værelse er på anden sal."}
           ] },
@@ -5347,7 +5353,7 @@
           ] },
         { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"Cirka femten minutter, hvis der ikke er kø."},
           "a": [
-            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Godt. Kunne du skrue lidt ned for airconditionen?"},
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Godt. Kunne du skrue lidt op for airconditionen?"},
             {"de":"Gut. Ich nehme den Fisch.","t":"Godt. Jeg tager fisken."},
             {"de":"Gut. Wo ist die Umkleidekabine?","t":"Godt. Hvor er prøverummet?"}
           ] },
@@ -5712,7 +5718,7 @@
     {
       "id": "food.story", "unit": "food", "title": "Im Café", "em": "☕",
       "lines": [
-        {"de":"Lena geht heute ins Café.","t":"Lena tager i café i dag."},
+        {"de":"Lena geht heute ins Café.","t":"Lena går på café i dag."},
         {"de":"Sie hat Hunger und Durst.","t":"Hun er sulten og tørstig."},
         {"de":"Der Kellner ist sehr freundlich.","t":"Tjeneren er meget venlig."},
         {"de":"Lena bestellt einen Kaffee und ein Croissant.","t":"Lena bestiller en kaffe og en croissant."},
@@ -5773,7 +5779,7 @@
         {"de":"Clara hat einen kleinen Hund.","t":"Clara har en lille hund."},
         {"de":"Der Hund ist schwarz und sehr lustig.","t":"Hunden er sort og meget sjov."},
         {"de":"Clara ist Lehrerin und spricht drei Sprachen.","t":"Clara er lærer og taler tre sprog."},
-        {"de":"Am Samstag trinken wir zusammen Kaffee.","t":"Om lørdagen drikker vi kaffe sammen."}
+        {"de":"Am Samstag trinken wir zusammen Kaffee.","t":"På lørdag drikker vi kaffe sammen."}
       ],
       "questions": [
         {"q":"Wie sieht Clara aus?","a":["Groß, mit langen blonden Haaren","Klein, mit kurzen Haaren","Groß, mit einem Bart"]},
@@ -5842,7 +5848,7 @@
         {"de":"Wir haben Blumen und eine Flasche Wein mitgebracht.","t":"Vi havde blomster og en flaske vin med."},
         {"de":"Frau Rossi hat uns sehr herzlich begrüßt.","t":"Fru Rossi tog meget hjerteligt imod os."},
         {"de":"Zuerst gab es eine Suppe, dann Nudeln mit Tomatensoße.","t":"Først var der suppe, så pasta med tomatsauce."},
-        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"Maden var så lækker, at jeg tog to gange."},
+        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"Maden var så lækker, at jeg tog om to gange."},
         {"de":"Zum Nachtisch gab es Eis mit Erdbeeren.","t":"Til dessert var der is med jordbær."},
         {"de":"Wir haben bis spät in die Nacht geredet und gelacht.","t":"Vi snakkede og grinede til langt ud på natten."},
         {"de":"Beim Abschied hat Frau Rossi gesagt: „Kommt bald wieder!“","t":"Ved afskeden sagde fru Rossi: „Kom snart igen!“"}
@@ -5861,7 +5867,7 @@
         {"de":"Es wurde vor fast fünfhundert Jahren gebaut.","t":"Det blev bygget for næsten femhundrede år siden."},
         {"de":"Im großen Saal hängen Gemälde von berühmten Künstlern.","t":"I den store sal hænger der malerier af berømte kunstnere."},
         {"de":"Fotografieren war leider nicht erlaubt.","t":"Det var desværre ikke tilladt at fotografere."},
-        {"de":"Am interessantesten fand ich die geheime Treppe hinter einem Bücherregal.","t":"Mest interessant syntes jeg den hemmelige trappe bag en bogreol var."},
+        {"de":"Am interessantesten fand ich die geheime Treppe hinter einem Bücherregal.","t":"Det mest interessante var den hemmelige trappe bag en bogreol."},
         {"de":"Nach der Führung haben wir im Garten des Schlosses Kaffee getrunken.","t":"Efter rundvisningen drak vi kaffe i slottets have."},
         {"de":"Es hat sich wirklich gelohnt.","t":"Det var virkelig det værd."}
       ],

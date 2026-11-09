@@ -2629,7 +2629,22 @@
     "snositi": "tragen",
     "pruža": "gibt",
     "smislu": "Sinn",
-    "uspješna": "erfolgreich"
+    "uspješna": "erfolgreich",
+    "igraš": "spielst",
+    "priređujemo": "veranstalten wir",
+    "priređujemo zabavu": "wir feiern eine Party",
+    "sinoćnja": "gestrige (Abend-)",
+    "carinjenje": "Verzollung",
+    "treći": "dritte",
+    "mališani": "die Kleinen",
+    "pečenu": "gebratene",
+    "janjetinu": "Lammfleisch",
+    "pečenu janjetinu": "Lammbraten",
+    "trgu": "Platz",
+    "izdaleka": "von weitem",
+    "ni izdaleka": "bei weitem nicht",
+    "online": "online",
+    "pojačati": "verstärken / höher stellen"
   },
   "glossaryDe": {
     "tut": "boli / žao",
@@ -3005,7 +3020,7 @@
       "desc": "Grüßen, bitten, danken: die Wörter für jeden Tag.",
       "words": [
         {"id":"basics.w01","de":"hallo","t":["bok","zdravo","pozdrav"],"pic":"👋"},
-        {"id":"basics.w02","de":"tschüss","t":["doviđenja","bok","zbogom"]},
+        {"id":"basics.w02","de":"tschüss","t":["doviđenja","bok","ćao"]},
         {"id":"basics.w03","de":"bitte","t":["molim","molim vas","molim te"]},
         {"id":"basics.w04","de":"danke","t":"hvala","pic":"🙏"},
         {"id":"basics.w05","de":"ja","t":"da","pic":"✅"},
@@ -3664,10 +3679,10 @@
         {"id":"school.s02","de":"Ich bin in der dritten Klasse.","t":"Ja sam u trećem razredu."},
         {"id":"school.s03","de":"Mein Lehrer ist sehr nett.","t":"Moj učitelj je jako ljubazan."},
         {"id":"school.s04","de":"Wir lernen Englisch und Mathe.","t":"Učimo engleski i matematiku."},
-        {"id":"school.s05","de":"Hast du deine Hausaufgaben gemacht?","t":"Jesi li napravio zadaću?"},
+        {"id":"school.s05","de":"Hast du deine Hausaufgaben gemacht?","t":["Jesi li napravio zadaću?","Jesi li napravila zadaću?","Jesi li napisao zadaću?","Jesi li napisala zadaću?"]},
         {"id":"school.s06","de":"Die Pause ist um zehn Uhr.","t":"Odmor je u deset sati."},
         {"id":"school.s07","de":"Ich schreibe morgen eine Prüfung.","t":"Sutra imam ispit."},
-        {"id":"school.s08","de":"Ich habe eine gute Note bekommen.","t":"Dobio sam dobru ocjenu."},
+        {"id":"school.s08","de":"Ich habe eine gute Note bekommen.","t":["Dobio sam dobru ocjenu.","Dobila sam dobru ocjenu."]},
         {"id":"school.s09","de":"Bitte schreib das an die Tafel.","t":"Molim te, napiši to na ploču."},
         {"id":"school.s10","de":"Die Schüler lesen ein Buch.","t":"Učenici čitaju knjigu."}
       ]
@@ -3693,7 +3708,7 @@
       ],
       "sentences": [
         {"id":"jobs.s01","de":"Was machst du beruflich?","t":"Čime se baviš?"},
-        {"id":"jobs.s02","de":"Ich bin Ingenieur.","t":"Ja sam inženjer."},
+        {"id":"jobs.s02","de":"Ich bin Ingenieur.","t":["Ja sam inženjer.","Ja sam inženjerka.","Inženjer sam."]},
         {"id":"jobs.s03","de":"Mein Vater ist Bäcker.","t":"Moj otac je pekar."},
         {"id":"jobs.s04","de":"Sie arbeitet im Büro.","t":"Ona radi u uredu."},
         {"id":"jobs.s05","de":"Der Chef ist heute nicht da.","t":"Šef danas nije ovdje."},
@@ -3717,7 +3732,7 @@
         {"id":"weather.w07","de":"warm","t":"topao"},
         {"id":"weather.w08","de":"kalt","t":"hladan","pic":"🥶"},
         {"id":"weather.w09","de":"heiß","t":"vruć","pic":"🔥"},
-        {"id":"weather.w10","de":"Gewitter","t":"oluja","pic":"⛈️"},
+        {"id":"weather.w10","de":"Gewitter","t":["oluja","grmljavina","nevrijeme"],"pic":"⛈️"},
         {"id":"weather.w11","de":"Nebel","t":"magla","pic":"🌫️"},
         {"id":"weather.w12","de":"Grad","t":"stupanj"},
         {"id":"weather.w13","de":"schön","t":"lijep"},
@@ -3756,14 +3771,14 @@
         {"id":"exercise.w14","de":"Sieg","t":"pobjeda"}
       ],
       "sentences": [
-        {"id":"exercise.s01","de":"Treibst du gern Sport?","t":"Voliš li baviti se sportom?"},
+        {"id":"exercise.s01","de":"Treibst du gern Sport?","t":["Voliš li se baviti sportom?","Baviš li se rado sportom?"]},
         {"id":"exercise.s02","de":"Ich laufe jeden Morgen zehn Minuten.","t":"Svako jutro trčim deset minuta."},
         {"id":"exercise.s03","de":"Am Samstag schwimmen wir im Schwimmbad.","t":"U subotu plivamo u bazenu."},
         {"id":"exercise.s04","de":"Unsere Mannschaft gewinnt das Spiel!","t":"Naša ekipa pobjeđuje u utakmici!"},
         {"id":"exercise.s05","de":"Das Training beginnt um sechs Uhr.","t":"Trening počinje u šest sati."},
         {"id":"exercise.s06","de":"Der Trainer ist sehr streng.","t":"Trener je jako strog."},
         {"id":"exercise.s07","de":"Wir haben leider verloren.","t":"Nažalost, izgubili smo."},
-        {"id":"exercise.s08","de":"Spielst du lieber Tennis oder Fußball?","t":"Voliš li radije igrati tenis ili nogomet?"},
+        {"id":"exercise.s08","de":"Spielst du lieber Tennis oder Fußball?","t":["Igraš li radije tenis ili nogomet?","Voliš li više tenis ili nogomet?"]},
         {"id":"exercise.s09","de":"Der Schiedsrichter pfeift laut.","t":"Sudac glasno zviždi."},
         {"id":"exercise.s10","de":"Der Sieg ist super!","t":"Pobjeda je super!"}
       ]
@@ -3791,11 +3806,11 @@
         {"id":"birthday.s01","de":"Wann hast du Geburtstag?","t":"Kada ti je rođendan?"},
         {"id":"birthday.s02","de":"Ich werde zwanzig Jahre alt.","t":"Navršavam dvadeset godina."},
         {"id":"birthday.s03","de":"Herzlichen Glückwunsch zum Geburtstag!","t":"Sretan rođendan!"},
-        {"id":"birthday.s04","de":"Ich habe dir ein Geschenk gekauft.","t":"Kupio sam ti poklon."},
-        {"id":"birthday.s05","de":"Wir feiern am Samstag eine Party.","t":"U subotu slavimo zabavom."},
+        {"id":"birthday.s04","de":"Ich habe dir ein Geschenk gekauft.","t":["Kupio sam ti poklon.","Kupila sam ti poklon."]},
+        {"id":"birthday.s05","de":"Wir feiern am Samstag eine Party.","t":["U subotu priređujemo zabavu.","U subotu imamo zabavu.","U subotu slavimo uz zabavu."]},
         {"id":"birthday.s06","de":"Der Kuchen ist sehr lecker.","t":"Torta je jako ukusna."},
         {"id":"birthday.s07","de":"Wie viele Kerzen sind auf dem Kuchen?","t":"Koliko je svijeća na torti?"},
-        {"id":"birthday.s08","de":"Danke für die Einladung!","t":"Hvala na pozivnici!"},
+        {"id":"birthday.s08","de":"Danke für die Einladung!","t":["Hvala na pozivu!","Hvala na pozivnici!"]},
         {"id":"birthday.s09","de":"Die Blumen sind wunderschön.","t":"Cvijeće je prekrasno."},
         {"id":"birthday.s10","de":"Ich habe eine Überraschung für dich.","t":"Imam iznenađenje za tebe."}
       ]
@@ -3951,7 +3966,7 @@
         {"id":"past.s02","de":"Wir sind letzte Woche angekommen.","t":["Stigli smo prošli tjedan.","Stigli smo prošlog tjedna."]},
         {"id":"past.s03","de":"Hast du schon die Altstadt gesehen?","t":["Jesi li već vidio stari grad?","Jesi li već vidjela stari grad?"]},
         {"id":"past.s04","de":"Ich habe meinen Pass im Hotel vergessen.","t":["Zaboravio sam putovnicu u hotelu.","Zaboravila sam putovnicu u hotelu."]},
-        {"id":"past.s05","de":"Das Essen gestern Abend war fantastisch.","t":["Hrana sinoć je bila fantastična.","Sinoćnja večera je bila fantastična."]},
+        {"id":"past.s05","de":"Das Essen gestern Abend war fantastisch.","t":["Sinoćnja večera bila je fantastična.","Sinoćnja večera je bila fantastična.","Hrana sinoć bila je fantastična."]},
         {"id":"past.s06","de":"Wir waren noch nie in Lissabon.","t":["Nikad nismo bili u Lisabonu.","Još nikada nismo bili u Lisabonu."]},
         {"id":"past.s07","de":"Vor zwei Tagen haben wir einen Ausflug gemacht.","t":["Prije dva dana išli smo na izlet.","Prije dva dana bili smo na izletu."]},
         {"id":"past.s08","de":"Letztes Jahr sind wir nach Spanien gereist.","t":["Prošle godine putovali smo u Španjolsku.","Prošle godine smo putovali u Španjolsku."]},
@@ -4047,7 +4062,7 @@
         {"id":"airport.s06","de":"Ich habe einen Platz am Fenster.","t":["Imam mjesto do prozora.","Imam sjedalo do prozora."]},
         {"id":"airport.s07","de":"Mein Koffer ist nicht angekommen.","t":"Moj kofer nije stigao."},
         {"id":"airport.s08","de":"Wann beginnt das Boarding?","t":["Kada počinje ukrcaj?","Kad počinje ukrcavanje?"]},
-        {"id":"airport.s09","de":"Haben Sie etwas zu verzollen?","t":["Imate li nešto za prijaviti na carini?","Imate li nešto za cariniti?"]},
+        {"id":"airport.s09","de":"Haben Sie etwas zu verzollen?","t":["Imate li nešto za carinjenje?","Imate li što prijaviti?","Imate li nešto za prijaviti na carini?"]},
         {"id":"airport.s10","de":"Der Flug nach Lissabon ist gestrichen.","t":"Let za Lisabon je otkazan."}
       ]
     },
@@ -4454,9 +4469,9 @@
       ],
       "sentences": [
         {"id":"cinema.s01","de":"Was läuft heute im Kino?","t":"Što se danas prikazuje u kinu?"},
-        {"id":"cinema.s02","de":"Ich möchte zwei Karten für die Abendvorstellung.","t":"Htio bih dvije karte za večernju predstavu."},
+        {"id":"cinema.s02","de":"Ich möchte zwei Karten für die Abendvorstellung.","t":["Htio bih dvije karte za večernju predstavu.","Htjela bih dvije karte za večernju predstavu."]},
         {"id":"cinema.s03","de":"Die Vorstellung beginnt um acht Uhr.","t":"Predstava počinje u osam sati."},
-        {"id":"cinema.s04","de":"Sitzen wir lieber in der dritten Reihe?","t":"Sjedimo li radije u trećem redu?"},
+        {"id":"cinema.s04","de":"Sitzen wir lieber in der dritten Reihe?","t":["Hoćemo li radije sjesti u treći red?","Sjednimo radije u treći red?"]},
         {"id":"cinema.s05","de":"Der Film hat englische Untertitel.","t":"Film ima engleske titlove."},
         {"id":"cinema.s06","de":"Leider ist die Vorstellung ausverkauft.","t":"Nažalost, predstava je rasprodana."},
         {"id":"cinema.s07","de":"Der Schauspieler spielt sehr gut.","t":"Glumac jako dobro glumi."},
@@ -4519,7 +4534,7 @@
       "sentences": [
         {"id":"books.s01","de":"Welches Buch liest du gerade?","t":"Koju knjigu sada čitaš?"},
         {"id":"books.s02","de":"Der Roman ist sehr spannend.","t":"Roman je jako napet."},
-        {"id":"books.s03","de":"Ich habe das Buch in der Bibliothek ausgeliehen.","t":"Tu knjigu sam posudio u knjižnici."},
+        {"id":"books.s03","de":"Ich habe das Buch in der Bibliothek ausgeliehen.","t":["Tu knjigu sam posudio u knjižnici.","Tu knjigu sam posudila u knjižnici.","Knjigu sam posudio u knjižnici.","Knjigu sam posudila u knjižnici."]},
         {"id":"books.s04","de":"Der Autor schreibt jeden Morgen.","t":"Autor piše svako jutro."},
         {"id":"books.s05","de":"Das Kapitel ist zu lang.","t":"Poglavlje je predugo."},
         {"id":"books.s06","de":"Auf Seite zwanzig steht ein Fehler.","t":"Na dvadesetoj stranici stoji greška."},
@@ -4585,8 +4600,8 @@
         {"id":"appointments.s02","de":"Können wir den Termin verschieben?","t":"Možemo li odgoditi termin?"},
         {"id":"appointments.s03","de":"Ich muss leider absagen.","t":"Nažalost moram otkazati."},
         {"id":"appointments.s04","de":"Wir treffen uns um halb acht am Bahnhof.","t":"Vidimo se u pola osam na željezničkom kolodvoru."},
-        {"id":"appointments.s05","de":"Bitte sei pünktlich!","t":"Budi točan, molim te!"},
-        {"id":"appointments.s06","de":"Ich habe das in meinen Kalender geschrieben.","t":"Zapisao sam to u svoj kalendar."},
+        {"id":"appointments.s05","de":"Bitte sei pünktlich!","t":["Budi točan, molim te!","Budi točna, molim te!"]},
+        {"id":"appointments.s06","de":"Ich habe das in meinen Kalender geschrieben.","t":["Zapisao sam to u svoj kalendar.","Zapisala sam to u svoj kalendar."]},
         {"id":"appointments.s07","de":"Entschuldige, ich bin zehn Minuten zu spät.","t":"Oprosti, kasnim deset minuta."},
         {"id":"appointments.s08","de":"Wir warten schon seit einer halben Stunde.","t":"Već čekamo pola sata."},
         {"id":"appointments.s09","de":"Das passt mir gut.","t":"To mi odgovara."},
@@ -5250,9 +5265,9 @@
         {"id":"children.s05","de":"Kinder brauchen feste Regeln.","t":"Djeci trebaju čvrsta pravila."},
         {"id":"children.s06","de":"Er tröstet sein Kind, wenn es weint.","t":"On tješi svoje dijete kad plače."},
         {"id":"children.s07","de":"Die Kinder streiten sich oft.","t":"Djeca se često svađaju."},
-        {"id":"children.s08","de":"Ich habe den Kinderwagen im Flur geparkt.","t":"Parkirao sam kolica u hodniku."},
+        {"id":"children.s08","de":"Ich habe den Kinderwagen im Flur geparkt.","t":["Parkirao sam kolica u hodniku.","Parkirala sam kolica u hodniku.","Ostavio sam kolica u hodniku."]},
         {"id":"children.s09","de":"Man sollte Kinder nicht zu sehr verwöhnen.","t":"Djecu ne bi trebalo previše razmaziti."},
-        {"id":"children.s10","de":"Abends gehen die Kleinen früh schlafen.","t":"Navečer mali rano idu spavati."}
+        {"id":"children.s10","de":"Abends gehen die Kleinen früh schlafen.","t":["Navečer mališani rano idu spavati.","Navečer mali rano idu spavati."]}
       ]
     },
     {
@@ -5311,12 +5326,12 @@
         {"id":"traditions.s02","de":"Der Umzug zieht durch die ganze Stadt.","t":"Povorka prolazi kroz cijeli grad."},
         {"id":"traditions.s03","de":"An diesem Feiertag bleiben die Läden zu.","t":"Na ovaj državni praznik trgovine su zatvorene."},
         {"id":"traditions.s04","de":"Die Kinder tragen bunte Kostüme.","t":"Djeca nose šarene kostime."},
-        {"id":"traditions.s05","de":"Zu Ostern essen wir immer Lammbraten.","t":"Za Uskrs uvijek jedemo pečeno janjetina."},
+        {"id":"traditions.s05","de":"Zu Ostern essen wir immer Lammbraten.","t":["Za Uskrs uvijek jedemo pečenu janjetinu."]},
         {"id":"traditions.s06","de":"Wir singen Lieder mit Laternen.","t":"Pjevamo pjesme s lampionima."},
         {"id":"traditions.s07","de":"Das ist ein alter Brauch in unserer Familie.","t":"To je stari običaj u našoj obitelji."},
         {"id":"traditions.s08","de":"Die Tradition gibt es seit hundert Jahren.","t":"Tradicija postoji već stotinu godina."},
         {"id":"traditions.s09","de":"Beim Festessen tanzen wir bis spät in die Nacht.","t":"Na svečanom ručku plešemo do kasno u noć."},
-        {"id":"traditions.s10","de":"Kommst du zum Fest auf dem Marktplatz?","t":"Dolaziš li na svečanost na tržnici?"}
+        {"id":"traditions.s10","de":"Kommst du zum Fest auf dem Marktplatz?","t":["Dolaziš li na svečanost na trgu?","Dolaziš li na proslavu na trgu?"]}
       ]
     },
     {
@@ -5361,7 +5376,7 @@
         {"id":"conflicts.w04","de":"sich entschuldigen","t":"ispričati se"},
         {"id":"conflicts.w05","de":"verzeihen","t":"oprostiti"},
         {"id":"conflicts.w06","de":"Kompromiss","t":"kompromis"},
-        {"id":"conflicts.w07","de":"Ärger","t":"nervoza"},
+        {"id":"conflicts.w07","de":"Ärger","t":["ljutnja","nervoza"]},
         {"id":"conflicts.w08","de":"wütend","t":"ljut","pic":"😠"},
         {"id":"conflicts.w09","de":"beleidigt","t":"uvrijeđen"},
         {"id":"conflicts.w10","de":"enttäuscht","t":"razočaran","pic":"😞"},
@@ -5371,13 +5386,13 @@
         {"id":"conflicts.w14","de":"Schuld","t":"krivnja"}
       ],
       "sentences": [
-        {"id":"conflicts.s01","de":"Es gab gestern einen großen Streit.","t":"Jučer je bilo velike svađe."},
+        {"id":"conflicts.s01","de":"Es gab gestern einen großen Streit.","t":["Jučer je bila velika svađa.","Jučer smo se jako posvađali."]},
         {"id":"conflicts.s02","de":"Das war ein Missverständnis.","t":"To je bio nesporazum."},
-        {"id":"conflicts.s03","de":"Ich möchte mich bei dir entschuldigen.","t":"Želio bih se ispričati tebi."},
+        {"id":"conflicts.s03","de":"Ich möchte mich bei dir entschuldigen.","t":["Želim ti se ispričati.","Želio bih ti se ispričati.","Željela bih ti se ispričati."]},
         {"id":"conflicts.s04","de":"Kannst du mir verzeihen?","t":"Možeš li mi oprostiti?"},
         {"id":"conflicts.s05","de":"Wir haben einen Kompromiss gefunden.","t":"Pronašli smo kompromis."},
         {"id":"conflicts.s06","de":"Er ist noch immer wütend auf mich.","t":"On je još uvijek ljut na mene."},
-        {"id":"conflicts.s07","de":"Sie ist von ihm sehr enttäuscht.","t":"Ona je od njega jako razočarana."},
+        {"id":"conflicts.s07","de":"Sie ist von ihm sehr enttäuscht.","t":["Ona je jako razočarana u njega.","Jako je razočarana u njega."]},
         {"id":"conflicts.s08","de":"Lass uns das in Ruhe besprechen.","t":"Razgovarajmo o tome mirno."},
         {"id":"conflicts.s09","de":"Wir haben uns endlich wieder vertragen.","t":"Konačno smo se opet pomirili."},
         {"id":"conflicts.s10","de":"Der Vorwurf war nicht berechtigt.","t":"Prigovor nije bio opravdan."}
@@ -5685,7 +5700,7 @@
         {"id":"society.s02","de":"Meiner Meinung nach sollte Wohnen bezahlbar sein.","t":["Po mom mišljenju, stanovanje bi trebalo biti pristupačno.","Mislim da bi stanovanje trebalo biti pristupačno."]},
         {"id":"society.s03","de":"Sie engagiert sich ehrenamtlich in einem Verein.","t":["Ona volontira u jednoj udruzi.","Ona se volonterski angažira u udruzi."]},
         {"id":"society.s04","de":"Die junge Generation sieht das anders.","t":["Mlada generacija to vidi drukčije.","Mladi naraštaj to vidi drugačije."]},
-        {"id":"society.s05","de":"Gleichberechtigung ist noch lange nicht erreicht.","t":["Ravnopravnost još dugo nije postignuta.","Ravnopravnost još nije ni izdaleka postignuta."]},
+        {"id":"society.s05","de":"Gleichberechtigung ist noch lange nicht erreicht.","t":["Ravnopravnost još ni izdaleka nije postignuta.","Ravnopravnost još nije postignuta."]},
         {"id":"society.s06","de":"Vielfalt macht eine Stadt lebendig.","t":["Raznolikost čini grad živim.","Raznolikost daje gradu život."]},
         {"id":"society.s07","de":"Man sollte Menschen ohne Vorurteile begegnen.","t":["Ljudima treba pristupati bez predrasuda.","Ljude treba susretati bez predrasuda."]},
         {"id":"society.s08","de":"Gehst du am Sonntag wählen?","t":["Ideš li u nedjelju na izbore?","Ideš li u nedjelju glasati?"]},
@@ -6058,7 +6073,7 @@
         {"id":"workplace.w07","de":"Feierabend","t":"kraj radnog dana"},
         {"id":"workplace.w08","de":"Pendeln","t":"putovanje na posao"},
         {"id":"workplace.w09","de":"Gehalt","t":"plaća","pic":"💶"},
-        {"id":"workplace.w10","de":"Weiterbildung","t":"dodatno obrazovanje","pic":"📚"},
+        {"id":"workplace.w10","de":"Weiterbildung","t":["stručno usavršavanje","dodatno obrazovanje"],"pic":"📚"},
         {"id":"workplace.w11","de":"Bildschirm","t":"ekran","pic":"🖥️"},
         {"id":"workplace.w12","de":"Videokonferenz","t":"videokonferencija","pic":"🎥"},
         {"id":"workplace.w13","de":"Arbeitsplatz","t":"radno mjesto"},
@@ -6071,7 +6086,7 @@
         {"id":"workplace.s04","de":"Nach dem Feierabend schalte ich das Handy aus.","t":"Nakon kraja radnog dana isključujem mobitel."},
         {"id":"workplace.s05","de":"Das Pendeln kostet mich viel Zeit.","t":"Putovanje na posao oduzima mi puno vremena."},
         {"id":"workplace.s06","de":"Das Gehalt wird am Monatsende überwiesen.","t":"Plaća se uplaćuje krajem mjeseca."},
-        {"id":"workplace.s07","de":"Die Weiterbildung findet online statt.","t":"Dodatno obrazovanje održava se na internetu."},
+        {"id":"workplace.s07","de":"Die Weiterbildung findet online statt.","t":["Stručno usavršavanje održava se online.","Dodatno obrazovanje održava se na internetu."]},
         {"id":"workplace.s08","de":"Wir haben heute eine Videokonferenz mit dem Team.","t":"Danas imamo videokonferenciju s timom."},
         {"id":"workplace.s09","de":"Er möchte im nächsten Jahr kündigen.","t":"Želi dati otkaz sljedeće godine."},
         {"id":"workplace.s10","de":"Die Work-Life-Balance ist mir sehr wichtig.","t":"Ravnoteža između posla i privatnog života mi je jako važna."}
@@ -6119,7 +6134,7 @@
         {"id":"healthcare.w04","de":"Hausarzt","t":"obiteljski liječnik"},
         {"id":"healthcare.w05","de":"Überweisung","t":"uputnica"},
         {"id":"healthcare.w06","de":"Wartezeit","t":"vrijeme čekanja"},
-        {"id":"healthcare.w07","de":"Sprechstunde","t":"ordinacija"},
+        {"id":"healthcare.w07","de":"Sprechstunde","t":["vrijeme primanja","radno vrijeme ordinacije"]},
         {"id":"healthcare.w08","de":"Rezept","t":"recept"},
         {"id":"healthcare.w09","de":"Befund","t":"nalaz"},
         {"id":"healthcare.w10","de":"Operation","t":"operacija"},
@@ -6133,7 +6148,7 @@
         {"id":"healthcare.s02","de":"Die Wartezeit beim Hausarzt ist lang.","t":"Vrijeme čekanja kod obiteljskog liječnika je dugo."},
         {"id":"healthcare.s03","de":"Die Krankenkasse übernimmt die Kosten.","t":"Zdravstveno osiguranje pokriva troškove."},
         {"id":"healthcare.s04","de":"Bitte legen Sie Ihre Versichertenkarte vor.","t":"Molim, pokažite svoju iskaznicu osiguranika."},
-        {"id":"healthcare.s05","de":"Die Sprechstunde beginnt um acht Uhr.","t":"Ordinacija počinje u osam sati."},
+        {"id":"healthcare.s05","de":"Die Sprechstunde beginnt um acht Uhr.","t":["Ordinacija radi od osam sati.","Primanje pacijenata počinje u osam sati."]},
         {"id":"healthcare.s06","de":"Der Befund kommt in einer Woche.","t":"Nalaz stiže za tjedan dana."},
         {"id":"healthcare.s07","de":"Die Operation war erfolgreich.","t":"Operacija je bila uspješna."},
         {"id":"healthcare.s08","de":"Die Pflege zu Hause übernehmen oft Angehörige.","t":"Njegu kod kuće često preuzimaju članovi obitelji."},
@@ -6244,7 +6259,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"Što vam mogu donijeti?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"Ima li u umaku orašastih plodova?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"Ima li u umaku orašastih plodova?"},
             {"de":"Ich fahre morgen nach Hause.","t":"Sutra idem kući."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"Moja soba je na drugom katu."}
           ] },
@@ -6256,7 +6271,7 @@
           ] },
         { "p": {"de":"Dann empfehle ich Ihnen den gegrillten Fisch mit Gemüse.","t":"Onda vam preporučujem ribu na žaru s povrćem."},
           "a": [
-            {"de":"Gut, den nehme ich. Ohne Nüsse, bitte.","t":"Dobro, uzet ću nju. Bez orašastih plodova, molim."},
+            {"de":"Gut, den nehme ich. Ohne Nüsse, bitte.","t":"Dobro, to ću uzeti. Bez orašastih plodova, molim."},
             {"de":"Gut, dann nehme ich den Bus.","t":"Dobro, onda idem autobusom."},
             {"de":"Wo kann ich parken?","t":"Gdje mogu parkirati?"}
           ] },
@@ -6401,7 +6416,7 @@
           ] },
         { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"Otprilike petnaest minuta, ako nema gužve."},
           "a": [
-            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Dobro. Biste li mogli klimu staviti malo hladnije?"},
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Dobro. Biste li mogli malo pojačati klimu?"},
             {"de":"Gut. Ich nehme den Fisch.","t":"Dobro. Uzet ću ribu."},
             {"de":"Gut. Wo ist die Umkleidekabine?","t":"Dobro. Gdje je kabina za presvlačenje?"}
           ] },
@@ -7041,7 +7056,7 @@
         {"de":"Er war vor hundert Jahren als junger Mann ausgewandert.","t":"Iselio se prije sto godina kao mladić."},
         {"de":"In seinen Briefen beschrieb er die lange Reise mit dem Schiff.","t":"U svojim pismima opisao je dugo putovanje brodom."},
         {"de":"Er schrieb auch, wie schwer die ersten Jahre in der neuen Heimat waren.","t":"Pisao je i o tome koliko su teške bile prve godine u novoj domovini."},
-        {"de":"Auf einem Foto sieht man ihn vor seinem ersten eigenen Laden.","t":"Na jednoj fotografiji vidi se ispred svoje prve trgovine."},
+        {"de":"Auf einem Foto sieht man ihn vor seinem ersten eigenen Laden.","t":"Na jednoj fotografiji vidi se kako stoji ispred svoje prve trgovine."},
         {"de":"Durch die Briefe haben wir viel über unsere Familiengeschichte gelernt.","t":"Zahvaljujući pismima naučili smo mnogo o povijesti naše obitelji."},
         {"de":"Jetzt wollen wir die Stadt besuchen, in der er damals gelebt hat.","t":"Sada želimo posjetiti grad u kojem je tada živio."}
       ],

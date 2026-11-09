@@ -1929,7 +1929,36 @@
     "tarihimiz": "unsere Geschichte",
     "öğrendik": "wir haben gelernt",
     "yaşadığı": "wo er lebte",
-    "da": "auch"
+    "da": "auch",
+    "hâlâ": "noch / immer noch",
+    "saçlı": "mit … Haaren",
+    "uzun saçlı": "mit langen Haaren",
+    "maçı": "das Spiel",
+    "davetin": "deine Einladung",
+    "ısmarlıyorum": "ich lade ein (zahle)",
+    "ben ısmarlıyorum": "ich lade dich ein (ich zahle)",
+    "şarjım": "mein Akku (Ladung)",
+    "şarjım bitti": "mein Akku ist leer",
+    "hediyelik eşyası": "Souvenir (von …)",
+    "hediyelik": "Geschenk-",
+    "eşyası": "Gegenstand (von …)",
+    "ağırlık veriyor": "setzt auf",
+    "ağırlık": "Gewicht",
+    "veriyor": "gibt",
+    "haftanın": "der Woche",
+    "halkın": "des Volkes / der Bevölkerung",
+    "yerel halk": "die Einheimischen",
+    "kiraları": "die Mieten",
+    "karşılayamıyor": "kann sich nicht leisten",
+    "klimayı": "die Klimaanlage",
+    "açabilir": "kann einschalten / öffnen",
+    "kulağa": "ans Ohr",
+    "kulağa iyi geliyor": "klingt gut",
+    "haplar": "Tabletten",
+    "marco'nun": "Marcos",
+    "sara'nın": "Sara hat (… von Sara)",
+    "ortalığı": "alles (die Umgebung)",
+    "ortalığı toplarken": "beim Aufräumen"
   },
   "glossaryDe": {
     "vielen": "çok",
@@ -2563,7 +2592,7 @@
         {"id":"talk.s07","de":"Können Sie das bitte wiederholen?","t":["Lütfen tekrar eder misiniz?","Tekrar edebilir misiniz, lütfen?"]},
         {"id":"talk.s08","de":"Bitte sprechen Sie langsamer.","t":"Lütfen daha yavaş konuşun."},
         {"id":"talk.s09","de":"Was bedeutet das?","t":"Bu ne demek?"},
-        {"id":"talk.s10","de":"Wie sagt man das auf Türkisch?","t":"Bunu Türkçe nasıl söylersiniz?"},
+        {"id":"talk.s10","de":"Wie sagt man das auf Türkisch?","t":["Bunu Türkçe nasıl söylersiniz?","Bu Türkçede nasıl denir?"]},
         {"id":"talk.s11","de":["Freut mich!","Freut mich, dich kennenzulernen."],"t":"Memnun oldum!"}
       ]
     },
@@ -2588,14 +2617,14 @@
       ],
       "sentences": [
         {"id":"money.s01","de":"Wie viel kostet das?","t":["Bu ne kadar?","Bu kaç para?"]},
-        {"id":"money.s02","de":"Das kostet zehn Euro.","t":"Bu on euro tutuyor."},
-        {"id":"money.s03","de":"Das ist zu teuer.","t":"Bu çok pahalı."},
+        {"id":"money.s02","de":"Das kostet zehn Euro.","t":["Bu on euro tutuyor.","Bu on euro."]},
+        {"id":"money.s03","de":"Das ist zu teuer.","t":["Bu çok pahalı.","Bu fazla pahalı."]},
         {"id":"money.s04","de":"Kann ich mit Karte zahlen?","t":"Kartla ödeyebilir miyim?"},
         {"id":"money.s05","de":"Ich zahle bar.","t":"Nakit ödeyeceğim."},
         {"id":"money.s06","de":"Haben Sie etwas Günstigeres?","t":"Daha ucuz bir şeyiniz var mı?"},
         {"id":"money.s07","de":"Die Quittung, bitte.","t":"Fiş, lütfen."},
         {"id":"money.s08","de":"Ich möchte zwei, bitte.","t":"İki tane istiyorum, lütfen."},
-        {"id":"money.s09","de":"Wo ist ein Geldautomat?","t":"Bankamatik nerede?"},
+        {"id":"money.s09","de":"Wo ist ein Geldautomat?","t":["Bankamatik nerede?","ATM nerede?"]},
         {"id":"money.s10","de":["Stimmt so.","Behalten Sie den Rest."],"t":"Üstü kalsın."}
       ]
     },
@@ -2617,7 +2646,7 @@
         {"id":"time.w12","de":"Sonntag","t":"pazar"},
         {"id":"time.w13","de":"offen","t":"açık"},
         {"id":"time.w14","de":"geschlossen","t":"kapalı"},
-        {"id":"time.w15","de":"die Uhr","t":"kol saati","pic":"🕒"}
+        {"id":"time.w15","de":"die Uhr","t":["kol saati","saat"],"pic":"🕒"}
       ],
       "sentences": [
         {"id":"time.s01","de":["Wie spät ist es?","Wie viel Uhr ist es?"],"t":"Saat kaç?"},
@@ -2739,10 +2768,10 @@
         {"id":"family.w05","de":"die Schwester","t":"kız kardeş"},
         {"id":"family.w06","de":"das Kind","t":"çocuk","pic":"🧒"},
         {"id":"family.w07","de":"der Sohn","t":"oğul"},
-        {"id":"family.w08","de":"die Tochter","t":"kız"},
+        {"id":"family.w08","de":"die Tochter","t":["kız","kız çocuğu","kız evlat"]},
         {"id":"family.w09","de":"die Eltern","t":["anne baba","ebeveyn"]},
-        {"id":"family.w10","de":"der Ehemann","t":"koca"},
-        {"id":"family.w11","de":"die Ehefrau","t":"karı"},
+        {"id":"family.w10","de":"der Ehemann","t":["koca","eş"]},
+        {"id":"family.w11","de":"die Ehefrau","t":["karı","eş","hanım"]},
         {"id":"family.w12","de":"der Freund / die Freundin","t":"arkadaş","pic":"🤝"},
         {"id":"family.w13","de":"die Großeltern","t":"büyükanne ve büyükbaba","pic":"👵"},
         {"id":"family.w14","de":"verheiratet","t":"evli","pic":"💍"}
@@ -2940,7 +2969,7 @@
       "sentences": [
         {"id":"market.s01","de":"Ein Kilo Tomaten, bitte.","t":"Bir kilo domates, lütfen."},
         {"id":"market.s02","de":"Sind die Erdbeeren süß?","t":"Çilekler tatlı mı?"},
-        {"id":"market.s03","de":"Ich kaufe Obst auf dem Markt.","t":"Meyveyi pazar yerinden alıyorum."},
+        {"id":"market.s03","de":"Ich kaufe Obst auf dem Markt.","t":["Meyveyi pazar yerinden alıyorum.","Meyveyi pazardan alıyorum."]},
         {"id":"market.s04","de":"Die Bananen sind noch nicht reif.","t":"Muzlar henüz olgun değil."},
         {"id":"market.s05","de":"Was kostet ein Kilo Äpfel?","t":"Bir kilo elma ne kadar?"},
         {"id":"market.s06","de":"Ich brauche Zwiebeln und Karotten für die Suppe.","t":"Çorba için soğan ve havuç lazım."},
@@ -3056,7 +3085,7 @@
         {"id":"breakfast.w04","de":"die Marmelade","t":"reçel","pic":"🫙"},
         {"id":"breakfast.w05","de":"der Käse","t":"peynir","pic":"🧀"},
         {"id":"breakfast.w06","de":"das Ei","t":"yumurta","pic":"🥚"},
-        {"id":"breakfast.w07","de":"der Speck","t":"bacon","pic":"🥓"},
+        {"id":"breakfast.w07","de":"der Speck","t":["bacon","domuz pastırması"],"pic":"🥓"},
         {"id":"breakfast.w08","de":"das Müsli","t":"müsli","pic":"🥣"},
         {"id":"breakfast.w09","de":"der Honig","t":"bal","pic":"🍯"},
         {"id":"breakfast.w10","de":"der Zucker","t":"şeker","pic":"🍬"},
@@ -3131,7 +3160,7 @@
       ],
       "sentences": [
         {"id":"describe.s01","de":"Wie sieht er aus?","t":"Nasıl görünüyor?"},
-        {"id":"describe.s02","de":"Sie ist groß und hat lange Haare.","t":"O uzun boylu ve uzun saçları var."},
+        {"id":"describe.s02","de":"Sie ist groß und hat lange Haare.","t":["O uzun boylu ve uzun saçlı.","Uzun boylu ve saçları uzun."]},
         {"id":"describe.s03","de":"Mein Bruder trägt eine Brille.","t":"Erkek kardeşim gözlük takıyor."},
         {"id":"describe.s04","de":"Er ist sehr nett und lustig.","t":"O çok nazik ve komik."},
         {"id":"describe.s05","de":"Meine Schwester ist ein bisschen schüchtern.","t":"Kız kardeşim biraz utangaç."},
@@ -3261,7 +3290,7 @@
         {"id":"exercise.s01","de":"Treibst du gern Sport?","t":"Spor yapmayı sever misin?"},
         {"id":"exercise.s02","de":"Ich laufe jeden Morgen zehn Minuten.","t":"Her sabah on dakika koşuyorum."},
         {"id":"exercise.s03","de":"Am Samstag schwimmen wir im Schwimmbad.","t":"Cumartesi günü havuzda yüzüyoruz."},
-        {"id":"exercise.s04","de":"Unsere Mannschaft gewinnt das Spiel!","t":"Takımımız oyunu kazanıyor!"},
+        {"id":"exercise.s04","de":"Unsere Mannschaft gewinnt das Spiel!","t":["Takımımız maçı kazanıyor!","Takımımız oyunu kazanıyor!"]},
         {"id":"exercise.s05","de":"Das Training beginnt um sechs Uhr.","t":"Antrenman saat altıda başlıyor."},
         {"id":"exercise.s06","de":"Der Trainer ist sehr streng.","t":"Antrenör çok sert."},
         {"id":"exercise.s07","de":"Wir haben leider verloren.","t":"Maalesef kaybettik."},
@@ -3297,7 +3326,7 @@
         {"id":"birthday.s05","de":"Wir feiern am Samstag eine Party.","t":"Cumartesi günü parti veriyoruz."},
         {"id":"birthday.s06","de":"Der Kuchen ist sehr lecker.","t":"Pasta çok lezzetli."},
         {"id":"birthday.s07","de":"Wie viele Kerzen sind auf dem Kuchen?","t":"Pastanın üstünde kaç mum var?"},
-        {"id":"birthday.s08","de":"Danke für die Einladung!","t":"Davetiye için teşekkürler!"},
+        {"id":"birthday.s08","de":"Danke für die Einladung!","t":["Davetin için teşekkürler!","Davetiniz için teşekkürler!","Davet için teşekkürler!"]},
         {"id":"birthday.s09","de":"Die Blumen sind wunderschön.","t":"Çiçekler çok güzel."},
         {"id":"birthday.s10","de":"Ich habe eine Überraschung für dich.","t":"Senin için bir sürprizim var."}
       ]
@@ -3389,7 +3418,7 @@
         {"id":"help.s02","de":"Ich brauche einen Arzt.","t":"Bir doktora ihtiyacım var."},
         {"id":"help.s03","de":"Wo ist die nächste Apotheke?","t":"En yakın eczane nerede?"},
         {"id":"help.s04","de":"Ich habe Kopfschmerzen.","t":"Başım ağrıyor."},
-        {"id":"help.s05","de":"Mir ist schlecht.","t":"Midem bulanıyor."},
+        {"id":"help.s05","de":"Mir ist schlecht.","t":["Midem bulanıyor.","Kendimi kötü hissediyorum."]},
         {"id":"help.s06","de":"Mein Handy wurde gestohlen.","t":"Telefonum çalındı."},
         {"id":"help.s07","de":"Rufen Sie die Polizei!","t":"Polisi çağırın!"},
         {"id":"help.s08","de":"Ich habe Fieber.","t":"Ateşim var."},
@@ -3484,7 +3513,7 @@
         {"id":"plans.s02","de":"Morgen fahren wir in die Stadt.","t":"Yarın şehre gidiyoruz."},
         {"id":"plans.s03","de":"Hast du am Wochenende Zeit?","t":"Hafta sonu vaktin var mı?"},
         {"id":"plans.s04","de":"Wollen wir zusammen essen gehen?","t":"Birlikte yemeğe gidelim mi?"},
-        {"id":"plans.s05","de":"Ich lade dich ein.","t":"Davet benden."},
+        {"id":"plans.s05","de":"Ich lade dich ein.","t":["Ben ısmarlıyorum.","Benden.","Seni davet ediyorum."]},
         {"id":"plans.s06","de":"Wir treffen uns um acht vor dem Hotel.","t":"Saat sekizde otelin önünde buluşuyoruz."},
         {"id":"plans.s07","de":"Leider kann ich morgen nicht.","t":"Maalesef yarın gelemem."},
         {"id":"plans.s08","de":"Vielleicht gehen wir ins Kino.","t":"Belki sinemaya gideriz."},
@@ -3605,7 +3634,7 @@
       "sentences": [
         {"id":"phone.s01","de":"Gibt es hier WLAN?","t":"Burada wifi var mı?"},
         {"id":"phone.s02","de":"Wie ist das Passwort?","t":"Şifre nedir?"},
-        {"id":"phone.s03","de":"Mein Akku ist leer.","t":"Pilim bitti."},
+        {"id":"phone.s03","de":"Mein Akku ist leer.","t":["Şarjım bitti.","Pilim bitti."]},
         {"id":"phone.s04","de":"Kann ich mein Handy hier aufladen?","t":"Telefonumu burada şarj edebilir miyim?"},
         {"id":"phone.s05","de":"Ich brauche eine SIM-Karte.","t":"Bir SIM karta ihtiyacım var."},
         {"id":"phone.s06","de":"Ich schicke dir eine Nachricht.","t":"Sana bir mesaj göndereceğim."},
@@ -3673,7 +3702,7 @@
         {"id":"supermarket.s04","de":"Die Nudeln sind heute im Angebot.","t":"Makarna bugün indirimde."},
         {"id":"supermarket.s05","de":"Ich habe die Einkaufsliste vergessen.","t":"Alışveriş listesini unuttum."},
         {"id":"supermarket.s06","de":"Kann ich mit Karte bezahlen?","t":"Kartla ödeyebilir miyim?"},
-        {"id":"supermarket.s07","de":"Wir brauchen noch Seife und Brot.","t":"Hala sabun ve ekmeğe ihtiyacımız var."},
+        {"id":"supermarket.s07","de":"Wir brauchen noch Seife und Brot.","t":["Bir de sabun ve ekmek lazım.","Sabun ve ekmeğe de ihtiyacımız var."]},
         {"id":"supermarket.s08","de":"Das Fleisch ist hinten links.","t":"Et arkada, solda."},
         {"id":"supermarket.s09","de":"Diese Kasse ist geschlossen.","t":"Bu kasa kapalı."},
         {"id":"supermarket.s10","de":"Ein Dutzend Eier, bitte.","t":"Bir düzine yumurta, lütfen."}
@@ -3764,7 +3793,7 @@
       ],
       "sentences": [
         {"id":"party.s01","de":"Ich lade dich zu meiner Party ein.","t":"Seni partime davet ediyorum."},
-        {"id":"party.s02","de":"Danke für die Einladung!","t":"Davetiye için teşekkürler!"},
+        {"id":"party.s02","de":"Danke für die Einladung!","t":["Davetin için teşekkürler!","Davetiniz için teşekkürler!","Davet için teşekkürler!"]},
         {"id":"party.s03","de":"Was soll ich mitbringen?","t":"Ne getirmeliyim?"},
         {"id":"party.s04","de":"Herzlichen Glückwunsch!","t":"Tebrikler!"},
         {"id":"party.s05","de":"Wir feiern am Samstag ihren Geburtstag.","t":"Cumartesi günü onun doğum gününü kutluyoruz."},
@@ -3827,7 +3856,7 @@
         {"id":"camping.w14","de":"die Sterne","t":["yıldızlar","yıldız"],"pic":"🌌"}
       ],
       "sentences": [
-        {"id":"camping.s01","de":"Haben Sie noch einen Platz für ein Zelt?","t":"Çadır için hala yeriniz var mı?"},
+        {"id":"camping.s01","de":"Haben Sie noch einen Platz für ein Zelt?","t":["Çadır için yeriniz var mı?","Çadır için hâlâ yeriniz var mı?","Çadır için yeriniz kaldı mı?"]},
         {"id":"camping.s02","de":"Wir bleiben zwei Nächte.","t":"İki gece kalıyoruz."},
         {"id":"camping.s03","de":"Wo sind die Duschen?","t":"Duşlar nerede?"},
         {"id":"camping.s04","de":"Kannst du mir helfen, das Zelt aufzubauen?","t":"Çadırı kurmama yardım edebilir misin?"},
@@ -3859,7 +3888,7 @@
         {"id":"souvenirs.w14","de":"typisch","t":"tipik","pic":"🍶"}
       ],
       "sentences": [
-        {"id":"souvenirs.s01","de":"Was ist ein typisches Souvenir von hier?","t":"Buranın tipik hatırası nedir?"},
+        {"id":"souvenirs.s01","de":"Was ist ein typisches Souvenir von hier?","t":["Buranın tipik hediyelik eşyası ne?","Buraya özgü bir hediyelik eşya nedir?"]},
         {"id":"souvenirs.s02","de":"Ist das handgemacht?","t":"Bu el yapımı mı?"},
         {"id":"souvenirs.s03","de":"Können Sie es als Geschenk einpacken?","t":"Hediye paketi yapabilir misiniz?"},
         {"id":"souvenirs.s04","de":"Das ist mir zu teuer.","t":"Bu benim için çok pahalı."},
@@ -3964,7 +3993,7 @@
         {"id":"cinema.s07","de":"Der Schauspieler spielt sehr gut.","t":"Oyuncu çok iyi oynuyor."},
         {"id":"cinema.s08","de":"Wir kaufen noch Popcorn an der Kasse.","t":"Kasadan patlamış mısır alıyoruz."},
         {"id":"cinema.s09","de":"Das Theaterstück war sehr lang.","t":"Tiyatro oyunu çok uzundu."},
-        {"id":"cinema.s10","de":"Nach dem Ende klatschen alle.","t":"Sondan sonra herkes alkışlıyor."}
+        {"id":"cinema.s10","de":"Nach dem Ende klatschen alle.","t":["Sonunda herkes alkışlıyor.","Bitince herkes alkışlıyor."]}
       ]
     },
     {
@@ -4132,7 +4161,7 @@
       "words": [
         {"id":"opinions.w01","de":"die Meinung","t":["görüş","fikir"]},
         {"id":"opinions.w02","de":"denken","t":"düşünmek","pic":"🤔"},
-        {"id":"opinions.w03","de":"glauben","t":"inanmak"},
+        {"id":"opinions.w03","de":"glauben","t":["inanmak","sanmak"]},
         {"id":"opinions.w04","de":"einverstanden","t":"aynı fikirde","pic":"🤝"},
         {"id":"opinions.w05","de":"wichtig","t":"önemli"},
         {"id":"opinions.w06","de":"interessant","t":"ilginç"},
@@ -4230,7 +4259,7 @@
         {"id":"culture.w04","de":"die Ermäßigung","t":"indirim"},
         {"id":"culture.w05","de":"das Schloss","t":["kale","şato"],"pic":"🏰"},
         {"id":"culture.w06","de":"die Kathedrale","t":"katedral"},
-        {"id":"culture.w07","de":"der Reiseführer","t":["rehber kitabı","rehber"]},
+        {"id":"culture.w07","de":"der Reiseführer","t":["rehber kitap","rehber"]},
         {"id":"culture.w08","de":"das Jahrhundert","t":"yüzyıl"},
         {"id":"culture.w09","de":"berühmt","t":"ünlü","pic":"⭐"},
         {"id":"culture.w10","de":"fotografieren","t":"fotoğraf çekmek","pic":"📸"},
@@ -4495,7 +4524,7 @@
         {"id":"studies.s04","de":"Was studierst du?","t":"Hangi bölümü okuyorsun?"},
         {"id":"studies.s05","de":"Die Grammatik finde ich schwierig.","t":"Dilbilgisini zor buluyorum."},
         {"id":"studies.s06","de":"Ich kann mir die neuen Wörter nicht merken.","t":"Yeni kelimeleri aklımda tutamıyorum."},
-        {"id":"studies.s07","de":"Wir müssen noch die Hausaufgaben machen.","t":"Hala ödevlerimizi yapmamız gerekiyor."},
+        {"id":"studies.s07","de":"Wir müssen noch die Hausaufgaben machen.","t":["Daha ödevlerimizi yapmamız gerekiyor.","Ödevlerimizi de yapmamız gerekiyor."]},
         {"id":"studies.s08","de":"Ihre Aussprache ist sehr gut.","t":"Telaffuzunuz çok iyi."},
         {"id":"studies.s09","de":"Mein Lieblingsfach war Geschichte.","t":"En sevdiğim ders tarihti."},
         {"id":"studies.s10","de":"Vor der Prüfung wiederhole ich alles.","t":"Sınavdan önce her şeyi tekrar ederim."}
@@ -4614,7 +4643,7 @@
         {"id":"booking.w11","de":"umbuchen","t":"rezervasyonu değiştirmek","pic":"🔄"},
         {"id":"booking.w12","de":"die Hauptsaison","t":"yüksek sezon","pic":"🗓️"},
         {"id":"booking.w13","de":"das Pauschalangebot","t":"paket tur","pic":"🏷️"},
-        {"id":"booking.w14","de":"der Reiseführer","t":["rehber kitabı","seyahat rehberi"],"pic":"🧭"}
+        {"id":"booking.w14","de":"der Reiseführer","t":["rehber kitap","seyahat rehberi"],"pic":"🧭"}
       ],
       "sentences": [
         {"id":"booking.s01","de":"Wir planen eine Reise nach Portugal.","t":"Portekiz'e bir seyahat planlıyoruz."},
@@ -4654,7 +4683,7 @@
         {"id":"moving.s03","de":"Die Wohnung hat achtzig Quadratmeter und einen Balkon.","t":"Dairenin seksen metrekaresi ve bir balkonu var."},
         {"id":"moving.s04","de":"Gibt es einen Aufzug?","t":"Asansör var mı?"},
         {"id":"moving.s05","de":"Die Kartons sind sehr schwer.","t":"Koliler çok ağır."},
-        {"id":"moving.s06","de":"Ich muss noch das Bett zusammenbauen.","t":"Yatağı hala monte etmem gerekiyor."},
+        {"id":"moving.s06","de":"Ich muss noch das Bett zusammenbauen.","t":["Bir de yatağı monte etmem gerekiyor.","Yatağı da monte etmem gerekiyor."]},
         {"id":"moving.s07","de":"Wann wird das Internet angeschlossen?","t":"İnternet ne zaman bağlanacak?"},
         {"id":"moving.s08","de":"Nach dem Umzug muss man sich bei der Stadt anmelden.","t":"Taşındıktan sonra belediyeye kayıt olmak gerekiyor."},
         {"id":"moving.s09","de":"Wir haben den Mietvertrag gestern unterschrieben.","t":"Kira sözleşmesini dün imzaladık."},
@@ -4878,7 +4907,7 @@
         {"id":"conflicts.s03","de":"Ich möchte mich bei dir entschuldigen.","t":"Senden özür dilemek istiyorum."},
         {"id":"conflicts.s04","de":"Kannst du mir verzeihen?","t":"Beni affedebilir misin?"},
         {"id":"conflicts.s05","de":"Wir haben einen Kompromiss gefunden.","t":"Bir uzlaşma bulduk."},
-        {"id":"conflicts.s06","de":"Er ist noch immer wütend auf mich.","t":"O hala bana kızgın."},
+        {"id":"conflicts.s06","de":"Er ist noch immer wütend auf mich.","t":["O hâlâ bana kızgın.","Hâlâ bana kızgın."]},
         {"id":"conflicts.s07","de":"Sie ist von ihm sehr enttäuscht.","t":"O ondan çok hayal kırıklığına uğradı."},
         {"id":"conflicts.s08","de":"Lass uns das in Ruhe besprechen.","t":"Bunu sakin sakin konuşalım."},
         {"id":"conflicts.s09","de":"Wir haben uns endlich wieder vertragen.","t":"Sonunda yeniden barıştık."},
@@ -4943,7 +4972,7 @@
         {"id":"environment.s06","de":"Es ist wichtig, die Natur zu schützen.","t":"Doğayı korumak önemli."},
         {"id":"environment.s07","de":"Wir verschwenden zu viele Lebensmittel.","t":"Çok fazla gıdayı israf ediyoruz."},
         {"id":"environment.s08","de":"Jeder trägt eine Verantwortung für die Umwelt.","t":"Herkesin çevreye karşı bir sorumluluğu var."},
-        {"id":"environment.s09","de":"Die Stadt setzt auf erneuerbare Energie.","t":"Şehir yenilenebilir enerjiye güveniyor."},
+        {"id":"environment.s09","de":"Die Stadt setzt auf erneuerbare Energie.","t":["Şehir yenilenebilir enerjiye ağırlık veriyor.","Şehir yenilenebilir enerjiye yöneliyor."]},
         {"id":"environment.s10","de":"Auch wenn es teurer ist, kaufe ich regional.","t":"Daha pahalı olsa da yerel ürün alırım."}
       ]
     },
@@ -5006,7 +5035,7 @@
         {"id":"interview.s07","de":"Wie hoch ist Ihre Gehaltsvorstellung?","t":"Maaş beklentiniz nedir?"},
         {"id":"interview.s08","de":"Die Probezeit dauert sechs Monate.","t":"Deneme süresi altı ay sürüyor."},
         {"id":"interview.s09","de":"Wann könnten Sie anfangen?","t":"Ne zaman başlayabilirsiniz?"},
-        {"id":"interview.s10","de":"Wir melden uns bis Ende der Woche bei Ihnen.","t":"Hafta sonuna kadar size dönüş yapacağız."}
+        {"id":"interview.s10","de":"Wir melden uns bis Ende der Woche bei Ihnen.","t":["Bu haftanın sonuna kadar size dönüş yapacağız.","Hafta bitmeden size dönüş yapacağız."]}
       ]
     },
     {
@@ -5031,7 +5060,7 @@
         {"id":"feelings.s01","de":"Ich mache mir Sorgen um dich.","t":"Senin için endişeleniyorum."},
         {"id":"feelings.s02","de":"Ich bin ein bisschen enttäuscht.","t":"Biraz hayal kırıklığına uğradım."},
         {"id":"feelings.s03","de":"Wir hatten gestern einen Streit.","t":"Dün bir kavga ettik."},
-        {"id":"feelings.s04","de":"Inzwischen haben wir uns versöhnt.","t":"Bu arada barıştık."},
+        {"id":"feelings.s04","de":"Inzwischen haben wir uns versöhnt.","t":["Artık barıştık.","Bu arada barıştık."]},
         {"id":"feelings.s05","de":"Es tut mir leid, dass ich dich verletzt habe.","t":"Seni kırdığım için üzgünüm."},
         {"id":"feelings.s06","de":"Ich vermisse meine Familie sehr.","t":"Ailemi çok özlüyorum."},
         {"id":"feelings.s07","de":"In einer Beziehung ist Vertrauen das Wichtigste.","t":"Bir ilişkide en önemli şey güvendir."},
@@ -5063,7 +5092,7 @@
         {"id":"authorities.s02","de":"Ich möchte eine Anzeige erstatten.","t":"Suç duyurusunda bulunmak istiyorum."},
         {"id":"authorities.s03","de":"Wann und wo ist das passiert?","t":"Bu ne zaman ve nerede oldu?"},
         {"id":"authorities.s04","de":"Bitte füllen Sie dieses Formular aus.","t":"Lütfen bu formu doldurun."},
-        {"id":"authorities.s05","de":"Hier fehlt noch Ihre Unterschrift.","t":"Burada hala imzanız eksik."},
+        {"id":"authorities.s05","de":"Hier fehlt noch Ihre Unterschrift.","t":["Burada imzanız eksik.","Burada hâlâ imzanız eksik."]},
         {"id":"authorities.s06","de":"Ich habe meinen Reisepass verloren.","t":"Pasaportumu kaybettim."},
         {"id":"authorities.s07","de":"Die Botschaft stellt Ihnen einen vorläufigen Ausweis aus.","t":"Büyükelçilik size geçici bir kimlik düzenler."},
         {"id":"authorities.s08","de":"Brauche ich eine Kopie für die Versicherung?","t":"Sigorta için bir kopyaya ihtiyacım var mı?"},
@@ -5284,7 +5313,7 @@
         {"id":"science.s03","de":"Das ist noch nicht wissenschaftlich bewiesen.","t":"Bu henüz bilimsel olarak kanıtlanmadı."},
         {"id":"science.s04","de":"Die Entdeckung könnte vielen Patienten helfen.","t":"Keşif birçok hastaya yardımcı olabilir."},
         {"id":"science.s05","de":"Für die Studie wurden tausend Menschen befragt.","t":"Çalışma için bin kişiye anket yapıldı."},
-        {"id":"science.s06","de":"Die Daten müssen noch ausgewertet werden.","t":"Verilerin hala değerlendirilmesi gerekiyor."},
+        {"id":"science.s06","de":"Die Daten müssen noch ausgewertet werden.","t":["Verilerin henüz değerlendirilmesi gerekiyor.","Verilerin daha değerlendirilmesi gerekiyor."]},
         {"id":"science.s07","de":"Die Forschung braucht mehr Geld.","t":"Araştırma daha fazla paraya ihtiyaç duyuyor."},
         {"id":"science.s08","de":"Welche Erfindung hat die Welt am meisten verändert?","t":"Hangi icat dünyayı en çok değiştirdi?"},
         {"id":"science.s09","de":"Der Impfstoff wurde in Rekordzeit entwickelt.","t":"Aşı rekor sürede geliştirildi."},
@@ -5413,7 +5442,7 @@
         {"id":"urban.s04","de":"Die Straße ist wegen einer Baustelle gesperrt.","t":"Yol, inşaat nedeniyle kapalı."},
         {"id":"urban.s05","de":"Im Vorort sind die Mieten günstiger.","t":"Banliyöde kiralar daha uygun."},
         {"id":"urban.s06","de":"Die Anbindung an die Innenstadt ist sehr gut.","t":"Şehir merkezine bağlantı çok iyi."},
-        {"id":"urban.s07","de":"Die Luftverschmutzung ist im Winter am schlimmsten.","t":"Hava kirliliği en çok kışın kötü."},
+        {"id":"urban.s07","de":"Die Luftverschmutzung ist im Winter am schlimmsten.","t":["Hava kirliliği en kötü kışın oluyor.","Hava kirliliği kışın en kötü durumda."]},
         {"id":"urban.s08","de":"Seit es die Fußgängerzone gibt, ist es viel ruhiger.","t":"Yaya bölgesi olduğundan beri çok daha sessiz."},
         {"id":"urban.s09","de":"Die Stadt braucht mehr Grünflächen.","t":"Şehrin daha çok yeşil alana ihtiyacı var."},
         {"id":"urban.s10","de":"Ich könnte nie in einer Großstadt leben.","t":"Asla bir büyükşehirde yaşayamam."}
@@ -5440,7 +5469,7 @@
       ],
       "sentences": [
         {"id":"tourism.s01","de":"Der Massentourismus verändert die Altstadt.","t":"Kitle turizmi eski şehri değiştiriyor."},
-        {"id":"tourism.s02","de":"Viele Einheimische können sich die Mieten nicht mehr leisten.","t":"Birçok yerel kira ödeyemiyor artık."},
+        {"id":"tourism.s02","de":"Viele Einheimische können sich die Mieten nicht mehr leisten.","t":["Yerel halkın çoğu artık kiraları karşılayamıyor.","Birçok yerli artık kiraları ödeyemiyor."]},
         {"id":"tourism.s03","de":"Ferienwohnungen verdrängen die Bewohner.","t":"Tatil evleri sakinleri yerinden ediyor."},
         {"id":"tourism.s04","de":"Gleichzeitig lebt die Region von den Einnahmen.","t":"Aynı zamanda bölge bu gelirle yaşıyor."},
         {"id":"tourism.s05","de":"In der Nebensaison ist es viel entspannter.","t":"Sezon dışında çok daha rahat."},
@@ -5480,7 +5509,7 @@
         {"id":"meetings.s07","de":"Die Zahlen sehen besser aus als erwartet.","t":"Rakamlar beklenenden daha iyi görünüyor."},
         {"id":"meetings.s08","de":"Hat jemand noch Fragen?","t":"Başka sorusu olan var mı?"},
         {"id":"meetings.s09","de":"Da stimme ich Ihnen nicht ganz zu.","t":"Buna tam olarak katılmıyorum."},
-        {"id":"meetings.s10","de":"Wir müssen heute noch eine Entscheidung treffen.","t":"Bugün hala bir karar vermemiz gerekiyor."}
+        {"id":"meetings.s10","de":"Wir müssen heute noch eine Entscheidung treffen.","t":["Bugün bir karar vermemiz gerekiyor.","Bugün içinde bir karar vermemiz gerekiyor."]}
       ]
     },
     {
@@ -5508,7 +5537,7 @@
         {"id":"history.s03","de":"Die Mauer fiel im Jahr 1989.","t":"Duvar 1989 yılında yıkıldı."},
         {"id":"history.s04","de":"Das Denkmal erinnert an die Opfer.","t":"Anıt kurbanları anıyor."},
         {"id":"history.s05","de":"In der Antike war die Stadt ein wichtiger Hafen.","t":"Antik çağda şehir önemli bir limandı."},
-        {"id":"history.s06","de":"Meine Großeltern erinnern sich noch gut an diese Zeit.","t":"Büyükanne ve büyükbabam o zamanı hala iyi hatırlıyor."},
+        {"id":"history.s06","de":"Meine Großeltern erinnern sich noch gut an diese Zeit.","t":["Büyükanne ve büyükbabam o zamanı hâlâ iyi hatırlıyor."]},
         {"id":"history.s07","de":"Wir haben die Ruinen eines römischen Tempels besichtigt.","t":"Bir Roma tapınağının harabelerini gezdik."},
         {"id":"history.s08","de":"Aus der Geschichte kann man viel lernen.","t":"Tarihten çok şey öğrenilebilir."},
         {"id":"history.s09","de":"Die Revolution hat das Land völlig verändert.","t":"Devrim ülkeyi tamamen değiştirdi."},
@@ -5539,7 +5568,7 @@
         {"id":"climate.s02","de":"Die Erderwärmung lässt die Gletscher schmelzen.","t":"Küresel ısınma buzulları eritiyor."},
         {"id":"climate.s03","de":"Der Meeresspiegel steigt jedes Jahr etwas.","t":"Deniz seviyesi her yıl biraz yükseliyor."},
         {"id":"climate.s04","de":"Der Ausstoß von Treibhausgasen muss sinken.","t":"Sera gazı salımı azalmalı."},
-        {"id":"climate.s05","de":"Viele Länder setzen auf erneuerbare Energien.","t":"Birçok ülke yenilenebilir enerjiye güveniyor."},
+        {"id":"climate.s05","de":"Viele Länder setzen auf erneuerbare Energien.","t":["Birçok ülke yenilenebilir enerjiye ağırlık veriyor.","Birçok ülke yenilenebilir enerjiye yöneliyor."]},
         {"id":"climate.s06","de":"Die Dürre hat die Ernte zerstört.","t":"Kuraklık ürünü yok etti."},
         {"id":"climate.s07","de":"Klimaschutz kostet Geld, aber er lohnt sich.","t":"İklimi korumak para tutar ama buna değer."},
         {"id":"climate.s08","de":"Die Politik muss sich an die Folgen anpassen.","t":"Siyaset sonuçlara uyum sağlamalı."},
@@ -5560,7 +5589,7 @@
         {"id":"workplace.w07","de":"Feierabend","t":"paydos"},
         {"id":"workplace.w08","de":"Pendeln","t":"işe gidip gelmek"},
         {"id":"workplace.w09","de":"Gehalt","t":"maaş","pic":"💶"},
-        {"id":"workplace.w10","de":"Weiterbildung","t":"sürekli eğitim","pic":"📚"},
+        {"id":"workplace.w10","de":"Weiterbildung","t":["hizmet içi eğitim","mesleki gelişim","sürekli eğitim"],"pic":"📚"},
         {"id":"workplace.w11","de":"Bildschirm","t":"ekran","pic":"🖥️"},
         {"id":"workplace.w12","de":"Videokonferenz","t":"görüntülü görüşme","pic":"🎥"},
         {"id":"workplace.w13","de":"Arbeitsplatz","t":"iş yeri"},
@@ -5570,10 +5599,10 @@
         {"id":"workplace.s01","de":"Ich arbeite zwei Tage pro Woche im Homeoffice.","t":"Haftada iki gün evden çalışıyorum."},
         {"id":"workplace.s02","de":"Mein Arbeitgeber bietet flexible Arbeitszeiten an.","t":"İşverenim esnek çalışma saatleri sunuyor."},
         {"id":"workplace.s03","de":"Die Überstunden werden nicht bezahlt.","t":"Fazla mesai ücretsiz."},
-        {"id":"workplace.s04","de":"Nach dem Feierabend schalte ich das Handy aus.","t":"Paydostan sonra telefonumu kapatıyorum."},
+        {"id":"workplace.s04","de":"Nach dem Feierabend schalte ich das Handy aus.","t":["Paydostan sonra telefonumu kapatıyorum.","İşten sonra telefonumu kapatıyorum."]},
         {"id":"workplace.s05","de":"Das Pendeln kostet mich viel Zeit.","t":"İşe gidip gelmek bana çok zaman kaybettiriyor."},
         {"id":"workplace.s06","de":"Das Gehalt wird am Monatsende überwiesen.","t":"Maaş ay sonunda yatırılıyor."},
-        {"id":"workplace.s07","de":"Die Weiterbildung findet online statt.","t":"Sürekli eğitim çevrim içi yapılıyor."},
+        {"id":"workplace.s07","de":"Die Weiterbildung findet online statt.","t":["Hizmet içi eğitim çevrim içi yapılıyor.","Eğitim çevrim içi yapılıyor."]},
         {"id":"workplace.s08","de":"Wir haben heute eine Videokonferenz mit dem Team.","t":"Bugün ekiple görüntülü görüşmemiz var."},
         {"id":"workplace.s09","de":"Er möchte im nächsten Jahr kündigen.","t":"O gelecek yıl istifa etmek istiyor."},
         {"id":"workplace.s10","de":"Die Work-Life-Balance ist mir sehr wichtig.","t":"İş ve yaşam dengesi benim için çok önemli."}
@@ -5746,7 +5775,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"Size ne getirebilirim?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"Sosta kuruyemiş var mı?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"Sosta kuruyemiş var mı?"},
             {"de":"Ich fahre morgen nach Hause.","t":"Yarın eve gidiyorum."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"Odam ikinci katta."}
           ] },
@@ -5878,7 +5907,7 @@
             {"de":"Zwei Kugeln Eis, bitte.","t":"İki top dondurma, lütfen."},
             {"de":"Ich habe es verloren.","t":"Onu kaybettim."}
           ] },
-        { "p": {"de":"Das Taxi ist in zehn Minuten da.","t":"Taksi on dakikaya orada."},
+        { "p": {"de":"Das Taxi ist in zehn Minuten da.","t":"Taksi on dakika içinde orada olur."},
           "a": [
             {"de":"Perfekt, danke. Bis gleich!","t":"Harika, teşekkürler. Birazdan görüşürüz!"},
             {"de":"Perfekt, die Suppe ist lecker.","t":"Harika, çorba lezzetli."},
@@ -5903,7 +5932,7 @@
           ] },
         { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"Trafik yoksa yaklaşık on beş dakika."},
           "a": [
-            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"İyi. Kliması biraz daha serin yapabilir misiniz?"},
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"İyi. Klimayı biraz daha soğuk açabilir misiniz?"},
             {"de":"Gut. Ich nehme den Fisch.","t":"İyi. Ben balık alacağım."},
             {"de":"Gut. Wo ist die Umkleidekabine?","t":"İyi. Deneme kabini nerede?"}
           ] },
@@ -6071,9 +6100,9 @@
           ] },
         { "p": {"de":"Gern! Das Lokal am Hafen ist sehr beliebt, besonders für Fisch.","t":"Tabii! Limandaki yer çok sevilen bir yer, özellikle balık için."},
           "a": [
-            {"de":"Klingt gut. Muss man dort reservieren?","t":"İyi görünüyor. Orada rezervasyon yaptırmak gerekiyor mu?"},
-            {"de":"Klingt gut. Ich habe Fieber.","t":"İyi görünüyor. Ateşim var."},
-            {"de":"Klingt gut. Wo ist Gleis vier?","t":"İyi görünüyor. Dördüncü peron nerede?"}
+            {"de":"Klingt gut. Muss man dort reservieren?","t":"Kulağa iyi geliyor. Orada rezervasyon yaptırmak gerekiyor mu?"},
+            {"de":"Klingt gut. Ich habe Fieber.","t":"Kulağa iyi geliyor. Ateşim var."},
+            {"de":"Klingt gut. Wo ist Gleis vier?","t":"Kulağa iyi geliyor. Dördüncü peron nerede?"}
           ] },
         { "p": {"de":"Am Wochenende ja. Soll ich für Sie anrufen?","t":"Hafta sonu evet. Sizin için arayayım mı?"},
           "a": [
@@ -6197,7 +6226,7 @@
             {"de":"Gibt es auch ein Zimmer mit Balkon?","t":"Balkonlu bir oda da var mı?"},
             {"de":"Gibt es auch eine Führung auf Deutsch?","t":"Almanca rehberli tur da var mı?"}
           ] },
-        { "p": {"de":"Ja, diese Tabletten. Wenn es in zwei Tagen nicht besser ist, gehen Sie zum Arzt.","t":"Evet, bu hapler. İki günde düzelmezse doktora gidin."},
+        { "p": {"de":"Ja, diese Tabletten. Wenn es in zwei Tagen nicht besser ist, gehen Sie zum Arzt.","t":"Evet, bu haplar. İki günde düzelmezse doktora gidin."},
           "a": [
             {"de":"Mache ich. Vielen Dank für Ihre Hilfe!","t":"Giderim. Yardımınız için çok teşekkürler!"},
             {"de":"Mache ich. Ein Eis, bitte!","t":"Giderim. Bir dondurma, lütfen!"},
@@ -6324,7 +6353,7 @@
       "lines": [
         {"de":"Im Haus wohnt eine neue Nachbarin.","t":"Apartmana yeni bir komşu taşındı."},
         {"de":"Sie heißt Clara und ist sehr nett.","t":"Adı Clara ve çok nazik."},
-        {"de":"Clara ist groß und hat lange blonde Haare.","t":"Clara uzun boylu ve uzun sarı saçları var."},
+        {"de":"Clara ist groß und hat lange blonde Haare.","t":"Clara uzun boylu ve uzun sarı saçlı."},
         {"de":"Sie trägt immer eine rote Brille.","t":"Her zaman kırmızı bir gözlük takıyor."},
         {"de":"Clara hat einen kleinen Hund.","t":"Clara küçük bir köpek besliyor."},
         {"de":"Der Hund ist schwarz und sehr lustig.","t":"Köpek siyah ve çok komik."},
@@ -6345,7 +6374,7 @@
         {"de":"Das Hotel war klein, aber sehr gemütlich.","t":"Otel küçüktü ama çok rahattı."},
         {"de":"Am Samstag war das Wetter wunderbar.","t":"Cumartesi hava harikaydı."},
         {"de":"Wir sind geschwommen und haben in der Sonne gelegen.","t":"Yüzdük ve güneşte yattık."},
-        {"de":"Am Abend haben wir frischen Fisch gegessen.","t":"Akşamları taze balık yedik."},
+        {"de":"Am Abend haben wir frischen Fisch gegessen.","t":"Akşam taze balık yedik."},
         {"de":"Am Sonntag hat es leider den ganzen Tag geregnet.","t":"Pazar günü maalesef bütün gün yağmur yağdı."},
         {"de":"Trotzdem war es ein tolles Wochenende.","t":"Yine de harika bir hafta sonuydu."}
       ],
@@ -6362,10 +6391,10 @@
         {"de":"Aber er konnte sein Handy nicht finden.","t":"Ama telefonunu bulamadı."},
         {"de":"Er hat in der Küche und im Bad gesucht.","t":"Mutfakta ve banyoda aradı."},
         {"de":"Dann hat er seine Freundin um Hilfe gebeten.","t":"Sonra kız arkadaşından yardım istedi."},
-        {"de":"Sie hat Marcos Nummer angerufen.","t":"O, onun numarasını aradı."},
+        {"de":"Sie hat Marcos Nummer angerufen.","t":"Kız arkadaşı Marco'nun numarasını aradı."},
         {"de":"Plötzlich hat etwas im Kühlschrank geklingelt!","t":"Birden buzdolabında bir şey çaldı!"},
         {"de":"Das Handy lag neben der Milch.","t":"Telefon sütün yanındaydı."},
-        {"de":"Der Akku war fast leer, aber das Handy war kalt und funktionierte noch.","t":"Pil neredeyse bitmişti ama telefon soğuktu ve hala çalışıyordu."}
+        {"de":"Der Akku war fast leer, aber das Handy war kalt und funktionierte noch.","t":"Pil neredeyse bitmişti ama telefon soğuktu ve hâlâ çalışıyordu."}
       ],
       "questions": [
         {"q":"Wen wollte Marco anrufen?","a":["Seine Mutter","Seine Freundin","Seinen Chef"]},
@@ -6376,7 +6405,7 @@
     {
       "id": "party.story", "unit": "party", "title": "Die Überraschungsparty", "em": "🎂",
       "lines": [
-        {"de":"Sara hat am Freitag Geburtstag.","t":"Sara cuma günü doğum gününü kutluyor."},
+        {"de":"Sara hat am Freitag Geburtstag.","t":"Sara'nın cuma günü doğum günü var."},
         {"de":"Ihre Freunde planen eine Überraschungsparty.","t":"Arkadaşları bir sürpriz parti planlıyor."},
         {"de":"Ben backt einen großen Schokoladenkuchen.","t":"Ben büyük bir çikolatalı kek pişiriyor."},
         {"de":"Mia kauft Luftballons und Kerzen.","t":"Mia balonlar ve mumlar alıyor."},
@@ -6398,7 +6427,7 @@
         {"de":"Wir haben Blumen und eine Flasche Wein mitgebracht.","t":"Çiçek ve bir şişe şarap getirdik."},
         {"de":"Frau Rossi hat uns sehr herzlich begrüßt.","t":"Bayan Rossi bizi çok sıcak karşıladı."},
         {"de":"Zuerst gab es eine Suppe, dann Nudeln mit Tomatensoße.","t":"Önce çorba, sonra domates soslu makarna vardı."},
-        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"Yemek o kadar lezzetliydi ki iki kez ek aldım."},
+        {"de":"Das Essen war so lecker, dass ich zweimal nachgenommen habe.","t":"Yemek o kadar lezzetliydi ki iki kez daha aldım."},
         {"de":"Zum Nachtisch gab es Eis mit Erdbeeren.","t":"Tatlı olarak çilekli dondurma vardı."},
         {"de":"Wir haben bis spät in die Nacht geredet und gelacht.","t":"Gecenin geç saatlerine kadar konuşup güldük."},
         {"de":"Beim Abschied hat Frau Rossi gesagt: „Kommt bald wieder!“","t":"Vedalaşırken Bayan Rossi şöyle dedi: “Yakında yine gelin!”"}
@@ -6430,7 +6459,7 @@
     {
       "id": "nature.story", "unit": "nature", "title": "Die Wanderung im Nebel", "em": "🥾",
       "lines": [
-        {"de":"Jonas und Eva wollten auf einen Berg in den Alpen wandern.","t":"Jonas ve Eva Alplerde bir dağa yürümek istedi."},
+        {"de":"Jonas und Eva wollten auf einen Berg in den Alpen wandern.","t":"Jonas ve Eva Alplerde bir dağa yürüyüş yapmak istedi."},
         {"de":"Sie sind früh am Morgen losgegangen, als die Sonne schien.","t":"Güneş açmışken sabah erkenden yola çıktılar."},
         {"de":"Nach zwei Stunden kam plötzlich dichter Nebel.","t":"İki saat sonra birden yoğun sis çöktü."},
         {"de":"Sie konnten den Weg kaum noch sehen.","t":"Yolu zar zor görebiliyorlardı."},
@@ -6468,7 +6497,7 @@
       "lines": [
         {"de":"Der Wetterbericht hatte für Samstag Sonne angesagt.","t":"Hava durumu cumartesi için güneş tahmin etmişti."},
         {"de":"Deshalb haben wir ein Picknick im Park geplant.","t":"Bu yüzden parkta piknik planladık."},
-        {"de":"Am Mittag war der Himmel noch blau und es war sehr heiß.","t":"Öğlen gökyüzü hala maviydi ve hava çok sıcaktı."},
+        {"de":"Am Mittag war der Himmel noch blau und es war sehr heiß.","t":"Öğlen gökyüzü hâlâ maviydi ve hava çok sıcaktı."},
         {"de":"Doch am Nachmittag wurden die Wolken immer dunkler.","t":"Ama öğleden sonra bulutlar giderek koyulaştı."},
         {"de":"Plötzlich hat es heftig gedonnert und geregnet.","t":"Birden şiddetli gök gürledi ve yağmur yağdı."},
         {"de":"Wir haben alles schnell eingepackt und sind unter eine Brücke gelaufen.","t":"Hızla her şeyi topladık ve bir köprünün altına koştuk."},
@@ -6538,7 +6567,7 @@
     {
       "id": "history.story", "unit": "history", "title": "Die Kiste auf dem Dachboden", "em": "📜",
       "lines": [
-        {"de":"Beim Aufräumen haben wir auf dem Dachboden eine alte Holzkiste gefunden.","t":"Toplarken tavan arasında eski bir tahta sandık bulduk."},
+        {"de":"Beim Aufräumen haben wir auf dem Dachboden eine alte Holzkiste gefunden.","t":"Ortalığı toplarken tavan arasında eski bir tahta sandık bulduk."},
         {"de":"Darin lagen Briefe und Fotos von unserem Urgroßvater.","t":"İçinde büyük dedemizin mektupları ve fotoğrafları vardı."},
         {"de":"Er war vor hundert Jahren als junger Mann ausgewandert.","t":"O, yüz yıl önce genç bir adam olarak göç etmişti."},
         {"de":"In seinen Briefen beschrieb er die lange Reise mit dem Schiff.","t":"Mektuplarında gemiyle yaptığı uzun yolculuğu anlatıyordu."},

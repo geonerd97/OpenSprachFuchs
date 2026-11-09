@@ -2260,7 +2260,9 @@
     "assumersi": "tragen",
     "proprie": "eigenen",
     "dà": "gibt",
-    "dell'associazione.": "Verein"
+    "dell'associazione.": "Verein",
+    "italiano": "Italienisch",
+    "fresca": "kühl / frisch"
   },
   "glossaryDe": {
     "vielen": "molte (vielen Dank = grazie mille)",
@@ -2758,7 +2760,8 @@
     "vorsorgeuntersuchungen": "visite di prevenzione",
     "meinem": "mio",
     "lebens": "della vita",
-    "legen": "mostri"
+    "legen": "mostri",
+    "italienisch": "italiano"
   },
   "units": [
     {
@@ -2817,12 +2820,12 @@
         {"id":"talk.s02","de":["Wie heißt du?","Wie heißen Sie?","Wie ist dein Name?"],"t":["Come ti chiami?","Come si chiama?"]},
         {"id":"talk.s03","de":"Ich komme aus Deutschland.","t":["Vengo dalla Germania.","Sono tedesco.","Sono tedesca."]},
         {"id":"talk.s04","de":["Woher kommst du?","Woher kommen Sie?"],"t":["Di dove sei?","Da dove vieni?","Di dov'è?"]},
-        {"id":"talk.s05","de":"Ich spreche ein bisschen Englisch.","t":["Parlo un po' di inglese.","Parlo un po' inglese."]},
+        {"id":"talk.s05","de":"Ich spreche ein bisschen Italienisch.","t":["Parlo un po' di italiano.","Parlo un po' italiano."]},
         {"id":"talk.s06","de":["Ich verstehe nicht.","Ich verstehe das nicht."],"t":"Non capisco."},
         {"id":"talk.s07","de":"Können Sie das bitte wiederholen?","t":["Può ripetere, per favore?","Può ripeterlo, per favore?"]},
         {"id":"talk.s08","de":"Bitte sprechen Sie langsamer.","t":["Parli più piano, per favore.","Per favore, parli più lentamente."]},
         {"id":"talk.s09","de":"Was bedeutet das?","t":["Che cosa significa?","Cosa vuol dire?","Che significa?"]},
-        {"id":"talk.s10","de":"Wie sagt man das auf Englisch?","t":"Come si dice in inglese?"},
+        {"id":"talk.s10","de":"Wie sagt man das auf Italienisch?","t":["Come si dice in italiano?"]},
         {"id":"talk.s11","de":["Freut mich!","Freut mich, dich kennenzulernen."],"t":["Piacere!","Molto piacere!"]}
       ]
     },
@@ -3411,7 +3414,7 @@
         {"id":"school.w04","de":"Schüler","t":"lo studente"},
         {"id":"school.w05","de":"Buch","t":"il libro","pic":"📖"},
         {"id":"school.w06","de":"Heft","t":"il quaderno"},
-        {"id":"school.w07","de":"Stift","t":"la matita","pic":"✏️"},
+        {"id":"school.w07","de":"Stift","t":["la penna","la matita"],"pic":"✏️"},
         {"id":"school.w08","de":"Tafel","t":"la lavagna"},
         {"id":"school.w09","de":"Hausaufgabe","t":"il compito","pic":"📝"},
         {"id":"school.w10","de":"Pause","t":"la ricreazione"},
@@ -4312,7 +4315,7 @@
       "sentences": [
         {"id":"fashion.s01","de":"Kann ich das mal anprobieren?","t":"Posso provarlo?"},
         {"id":"fashion.s02","de":"Wo ist die Umkleidekabine?","t":"Dov'è il camerino?"},
-        {"id":"fashion.s03","de":"Welche Größe haben Sie?","t":"Che taglia avete?"},
+        {"id":"fashion.s03","de":"Welche Größe haben Sie?","t":["Che taglia porta?","Che taglia ha?"]},
         {"id":"fashion.s04","de":"Die Hose passt mir nicht.","t":"I pantaloni non mi stanno bene."},
         {"id":"fashion.s05","de":"Der Rock ist aus schönem Stoff.","t":"La gonna è di un bel tessuto."},
         {"id":"fashion.s06","de":"Diese Bluse ist mir zu teuer.","t":"Questa camicetta è troppo cara per me."},
@@ -5874,7 +5877,7 @@
       "id": "healthcare", "title": "Gesundheitssystem", "level": "B2", "colors": ["#9333EA","#6B21A8"],
       "desc": "Überweisungen, Wartezeiten und Krankenkasse.",
       "words": [
-        {"id":"healthcare.w01","de":"Krankenkasse","t":"la cassa malattia"},
+        {"id":"healthcare.w01","de":"Krankenkasse","t":["l'assicurazione sanitaria","il servizio sanitario","la cassa malattia"]},
         {"id":"healthcare.w02","de":"Versichertenkarte","t":"la tessera sanitaria"},
         {"id":"healthcare.w03","de":"Facharzt","t":"lo specialista"},
         {"id":"healthcare.w04","de":"Hausarzt","t":"il medico di famiglia"},
@@ -5892,7 +5895,7 @@
       "sentences": [
         {"id":"healthcare.s01","de":"Ich brauche eine Überweisung zum Facharzt.","t":"Ho bisogno di un'impegnativa per lo specialista."},
         {"id":"healthcare.s02","de":"Die Wartezeit beim Hausarzt ist lang.","t":"Il tempo d'attesa dal medico di famiglia è lungo."},
-        {"id":"healthcare.s03","de":"Die Krankenkasse übernimmt die Kosten.","t":"La cassa malattia copre le spese."},
+        {"id":"healthcare.s03","de":"Die Krankenkasse übernimmt die Kosten.","t":["Il servizio sanitario copre le spese.","L'assicurazione sanitaria copre le spese.","La cassa malattia copre le spese."]},
         {"id":"healthcare.s04","de":"Bitte legen Sie Ihre Versichertenkarte vor.","t":"Mi mostri la tessera sanitaria, per favore."},
         {"id":"healthcare.s05","de":"Die Sprechstunde beginnt um acht Uhr.","t":"L'orario di visita inizia alle otto."},
         {"id":"healthcare.s06","de":"Der Befund kommt in einer Woche.","t":"Il referto arriva tra una settimana."},
@@ -6005,7 +6008,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"Cosa le porto?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"Nella salsa ci sono noci?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"Nella salsa ci sono noci?"},
             {"de":"Ich fahre morgen nach Hause.","t":"Domani torno a casa."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"La mia camera è al secondo piano."}
           ] },
@@ -6162,7 +6165,7 @@
           ] },
         { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"Circa quindici minuti, se non c'è traffico."},
           "a": [
-            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Bene. Potrebbe abbassare un po' l'aria condizionata?"},
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Bene. Potrebbe mettere l'aria condizionata un po' più fresca?"},
             {"de":"Gut. Ich nehme den Fisch.","t":"Bene. Prendo il pesce."},
             {"de":"Gut. Wo ist die Umkleidekabine?","t":"Bene. Dov'è il camerino?"}
           ] },

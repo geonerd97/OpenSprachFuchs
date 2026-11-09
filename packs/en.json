@@ -1743,7 +1743,14 @@
     "fashion": "Mode",
     "letterbox": "Briefkasten",
     "past": "vergangen",
-    "carsharing": "Carsharing"
+    "carsharing": "Carsharing",
+    "math": "Mathe",
+    "raining": "regnet (gerade)",
+    "winning": "gewinnt (gerade)",
+    "claps": "klatscht",
+    "settle in": "sich einleben / ankommen",
+    "settle": "sich einleben",
+    "cooler": "kühler"
   },
   "glossaryDe": {
     "geht": "goes / is (wie geht's = how are you)",
@@ -2474,7 +2481,7 @@
         {"id":"time.w12","de":"Sonntag","t":"Sunday"},
         {"id":"time.w13","de":"offen","t":"open"},
         {"id":"time.w14","de":"geschlossen","t":"closed"},
-        {"id":"time.w15","de":"die Uhr","t":"clock","pic":"🕒"}
+        {"id":"time.w15","de":"die Uhr","t":["clock","watch"],"pic":"🕒"}
       ],
       "sentences": [
         {"id":"time.s01","de":["Wie spät ist es?","Wie viel Uhr ist es?"],"t":"What time is it?"},
@@ -3008,8 +3015,8 @@
         {"id":"school.w03","de":"Lehrer","t":"teacher","pic":"👨‍🏫"},
         {"id":"school.w04","de":"Schüler","t":"pupil"},
         {"id":"school.w05","de":"Buch","t":"book","pic":"📖"},
-        {"id":"school.w06","de":"Heft","t":"exercise book"},
-        {"id":"school.w07","de":"Stift","t":"pencil","pic":"✏️"},
+        {"id":"school.w06","de":"Heft","t":["exercise book","notebook"]},
+        {"id":"school.w07","de":"Stift","t":["pen","pencil"],"pic":"✏️"},
         {"id":"school.w08","de":"Tafel","t":"blackboard"},
         {"id":"school.w09","de":"Hausaufgabe","t":"homework","pic":"📝"},
         {"id":"school.w10","de":"Pause","t":"break"},
@@ -3020,12 +3027,12 @@
       ],
       "sentences": [
         {"id":"school.s01","de":"Wann beginnt die Schule?","t":"When does school start?"},
-        {"id":"school.s02","de":"Ich bin in der dritten Klasse.","t":"I am in the third class."},
+        {"id":"school.s02","de":"Ich bin in der dritten Klasse.","t":["I am in third grade.","I'm in third grade.","I am in the third grade.","I am in Year 3.","I am in the third class."]},
         {"id":"school.s03","de":"Mein Lehrer ist sehr nett.","t":"My teacher is very nice."},
-        {"id":"school.s04","de":"Wir lernen Englisch und Mathe.","t":"We learn English and maths."},
+        {"id":"school.s04","de":"Wir lernen Englisch und Mathe.","t":["We learn English and math.","We learn English and maths.","We are learning English and math.","We are learning English and maths."]},
         {"id":"school.s05","de":"Hast du deine Hausaufgaben gemacht?","t":"Have you done your homework?"},
         {"id":"school.s06","de":"Die Pause ist um zehn Uhr.","t":"The break is at ten o'clock."},
-        {"id":"school.s07","de":"Ich schreibe morgen eine Prüfung.","t":"I am writing a test tomorrow."},
+        {"id":"school.s07","de":"Ich schreibe morgen eine Prüfung.","t":["I have a test tomorrow.","I am taking a test tomorrow.","I am writing a test tomorrow."]},
         {"id":"school.s08","de":"Ich habe eine gute Note bekommen.","t":"I got a good grade."},
         {"id":"school.s09","de":"Bitte schreib das an die Tafel.","t":"Please write that on the board."},
         {"id":"school.s10","de":"Die Schüler lesen ein Buch.","t":"The pupils are reading a book."}
@@ -3035,7 +3042,7 @@
       "id": "jobs", "title": "Berufe & Arbeit", "level": "A1", "colors": ["#8C3FC8","#682C99"],
       "desc": "Wer macht was, und wo arbeiten wir?",
       "words": [
-        {"id":"jobs.w01","de":"Beruf","t":"job"},
+        {"id":"jobs.w01","de":"Beruf","t":["job","profession","occupation"]},
         {"id":"jobs.w02","de":"Arzt","t":"doctor","pic":"🧑‍⚕️"},
         {"id":"jobs.w03","de":"Koch","t":"cook","pic":"🧑‍🍳"},
         {"id":"jobs.w04","de":"Polizist","t":"police officer","pic":"👮"},
@@ -3054,7 +3061,7 @@
         {"id":"jobs.s01","de":"Was machst du beruflich?","t":"What do you do for a living?"},
         {"id":"jobs.s02","de":"Ich bin Ingenieur.","t":"I am an engineer."},
         {"id":"jobs.s03","de":"Mein Vater ist Bäcker.","t":"My father is a baker."},
-        {"id":"jobs.s04","de":"Sie arbeitet im Büro.","t":"She works in the office."},
+        {"id":"jobs.s04","de":"Sie arbeitet im Büro.","t":["She works in an office.","She works in the office."]},
         {"id":"jobs.s05","de":"Der Chef ist heute nicht da.","t":"The boss is not here today."},
         {"id":"jobs.s06","de":"Er fährt einen Bus.","t":"He drives a bus."},
         {"id":"jobs.s07","de":"Der Arzt hilft den Leuten.","t":"The doctor helps people."},
@@ -3085,13 +3092,13 @@
       "sentences": [
         {"id":"weather.s01","de":"Wie ist das Wetter heute?","t":"What is the weather like today?"},
         {"id":"weather.s02","de":"Die Sonne scheint.","t":"The sun is shining."},
-        {"id":"weather.s03","de":"Es regnet den ganzen Tag.","t":"It rains all day."},
+        {"id":"weather.s03","de":"Es regnet den ganzen Tag.","t":["It is raining all day.","It's raining all day.","It rains all day."]},
         {"id":"weather.s04","de":"Im Winter schneit es oft.","t":"In winter it often snows."},
         {"id":"weather.s05","de":"Heute ist es sehr kalt.","t":"Today it is very cold."},
         {"id":"weather.s06","de":"Der Wind ist stark.","t":"The wind is strong."},
         {"id":"weather.s07","de":"Ich nehme einen Regenschirm mit.","t":"I am taking an umbrella with me."},
         {"id":"weather.s08","de":"Es sind zwanzig Grad.","t":"It is twenty degrees."},
-        {"id":"weather.s09","de":"Am Abend gibt es ein Gewitter.","t":"In the evening there is a thunderstorm."},
+        {"id":"weather.s09","de":"Am Abend gibt es ein Gewitter.","t":["There will be a thunderstorm in the evening.","In the evening there is a thunderstorm.","There's a thunderstorm in the evening."]},
         {"id":"weather.s10","de":"Im Frühling ist das Wetter schön.","t":"In spring the weather is nice."}
       ]
     },
@@ -3115,11 +3122,11 @@
         {"id":"exercise.w14","de":"Sieg","t":"victory"}
       ],
       "sentences": [
-        {"id":"exercise.s01","de":"Treibst du gern Sport?","t":"Do you like doing sport?"},
+        {"id":"exercise.s01","de":"Treibst du gern Sport?","t":["Do you like doing sports?","Do you like doing sport?","Do you like playing sports?"]},
         {"id":"exercise.s02","de":"Ich laufe jeden Morgen zehn Minuten.","t":"I run for ten minutes every morning."},
         {"id":"exercise.s03","de":"Am Samstag schwimmen wir im Schwimmbad.","t":"On Saturday we swim in the swimming pool."},
-        {"id":"exercise.s04","de":"Unsere Mannschaft gewinnt das Spiel!","t":"Our team wins the game!"},
-        {"id":"exercise.s05","de":"Das Training beginnt um sechs Uhr.","t":"The training starts at six o'clock."},
+        {"id":"exercise.s04","de":"Unsere Mannschaft gewinnt das Spiel!","t":["Our team is winning the game!","Our team wins the game!","Our team is winning the match!"]},
+        {"id":"exercise.s05","de":"Das Training beginnt um sechs Uhr.","t":["Training starts at six o'clock.","The training starts at six o'clock.","Training starts at six."]},
         {"id":"exercise.s06","de":"Der Trainer ist sehr streng.","t":"The coach is very strict."},
         {"id":"exercise.s07","de":"Wir haben leider verloren.","t":"Unfortunately we lost."},
         {"id":"exercise.s08","de":"Spielst du lieber Tennis oder Fußball?","t":"Do you prefer playing tennis or football?"},
@@ -3818,10 +3825,10 @@
         {"id":"cinema.s04","de":"Sitzen wir lieber in der dritten Reihe?","t":"Shall we sit in the third row?"},
         {"id":"cinema.s05","de":"Der Film hat englische Untertitel.","t":"The film has English subtitles."},
         {"id":"cinema.s06","de":"Leider ist die Vorstellung ausverkauft.","t":"Unfortunately the show is sold out."},
-        {"id":"cinema.s07","de":"Der Schauspieler spielt sehr gut.","t":"The actor plays very well."},
+        {"id":"cinema.s07","de":"Der Schauspieler spielt sehr gut.","t":["The actor is very good.","The actor acts very well.","The actor plays very well."]},
         {"id":"cinema.s08","de":"Wir kaufen noch Popcorn an der Kasse.","t":"We'll buy popcorn at the counter."},
         {"id":"cinema.s09","de":"Das Theaterstück war sehr lang.","t":"The play was very long."},
-        {"id":"cinema.s10","de":"Nach dem Ende klatschen alle.","t":"After the end everyone applauds."}
+        {"id":"cinema.s10","de":"Nach dem Ende klatschen alle.","t":["At the end, everyone claps.","At the end everyone applauds.","After the end everyone applauds."]}
       ]
     },
     {
@@ -3884,7 +3891,7 @@
         {"id":"books.s06","de":"Auf Seite zwanzig steht ein Fehler.","t":"There is a mistake on page twenty."},
         {"id":"books.s07","de":"Die Zeitung kommt jeden Tag.","t":"The newspaper comes every day."},
         {"id":"books.s08","de":"Die Geschichte ist sehr langweilig.","t":"The story is very boring."},
-        {"id":"books.s09","de":"Ein Wörterbuch hilft beim Lernen.","t":"A dictionary helps when learning."},
+        {"id":"books.s09","de":"Ein Wörterbuch hilft beim Lernen.","t":["A dictionary helps with learning.","A dictionary helps when learning."]},
         {"id":"books.s10","de":"Der Titel gefällt mir sehr.","t":"I like the title very much."}
       ]
     },
@@ -3910,12 +3917,12 @@
       "sentences": [
         {"id":"fashion.s01","de":"Kann ich das mal anprobieren?","t":"Can I try this on?"},
         {"id":"fashion.s02","de":"Wo ist die Umkleidekabine?","t":"Where is the fitting room?"},
-        {"id":"fashion.s03","de":"Welche Größe haben Sie?","t":"What size do you have?"},
+        {"id":"fashion.s03","de":"Welche Größe haben Sie?","t":["What size are you?","What size do you have?","What size do you wear?"]},
         {"id":"fashion.s04","de":"Die Hose passt mir nicht.","t":"The trousers don't fit me."},
         {"id":"fashion.s05","de":"Der Rock ist aus schönem Stoff.","t":"The skirt is made of nice fabric."},
         {"id":"fashion.s06","de":"Diese Bluse ist mir zu teuer.","t":"This blouse is too expensive for me."},
         {"id":"fashion.s07","de":"Gibt es das auch in Blau?","t":"Is this also available in blue?"},
-        {"id":"fashion.s08","de":"Heute gibt es zwanzig Prozent Rabatt.","t":"Today there is twenty percent discount."},
+        {"id":"fashion.s08","de":"Heute gibt es zwanzig Prozent Rabatt.","t":["Today there is a twenty percent discount.","There is twenty percent off today."]},
         {"id":"fashion.s09","de":"Der Mantel ist ein bisschen zu groß.","t":"The coat is a bit too big."},
         {"id":"fashion.s10","de":"Ich suche einen Gürtel zu dieser Hose.","t":"I am looking for a belt to go with these trousers."}
       ]
@@ -3925,7 +3932,7 @@
       "desc": "Zeit ausmachen, absagen, pünktlich sein.",
       "words": [
         {"id":"appointments.w01","de":"Termin","t":"appointment","pic":"📅"},
-        {"id":"appointments.w02","de":"Verabredung","t":"date"},
+        {"id":"appointments.w02","de":"Verabredung","t":["date","meeting"]},
         {"id":"appointments.w03","de":"absagen","t":"to cancel"},
         {"id":"appointments.w04","de":"verschieben","t":"to postpone"},
         {"id":"appointments.w05","de":"pünktlich","t":"punctual","pic":"⏰"},
@@ -4256,7 +4263,7 @@
         {"id":"nature.s04","de":"Heute Nachmittag soll es Gewitter geben.","t":["There are supposed to be thunderstorms this afternoon.","Thunderstorms are expected this afternoon."]},
         {"id":"nature.s05","de":"Nimm genug Wasser mit.","t":["Take enough water with you.","Bring enough water."]},
         {"id":"nature.s06","de":"Wir sind um sechs Uhr losgegangen.","t":["We set off at six.","We left at six o'clock.","We started at six."]},
-        {"id":"nature.s07","de":"Ich bin total müde.","t":["I am totally tired.","I'm completely exhausted.","I'm really tired."]},
+        {"id":"nature.s07","de":"Ich bin total müde.","t":["I am really tired.","I am completely exhausted.","I am totally tired."]},
         {"id":"nature.s08","de":"Darf man im See baden?","t":["Is swimming allowed in the lake?","Can you swim in the lake?"]},
         {"id":"nature.s09","de":"Bitte bleibt auf dem Weg.","t":["Please stay on the path.","Please stay on the trail."]},
         {"id":"nature.s10","de":"Im Wald hört man viele Vögel.","t":["You can hear lots of birds in the forest.","In the forest you hear many birds."]}
@@ -4640,7 +4647,7 @@
         {"id":"clubs.s04","de":"Sie engagiert sich ehrenamtlich im Altenheim.","t":"She volunteers in the care home."},
         {"id":"clubs.s05","de":"Wir sammeln Spenden für ein neues Projekt.","t":"We are collecting donations for a new project."},
         {"id":"clubs.s06","de":"Die Versammlung findet im Gemeindehaus statt.","t":"The meeting takes place in the community hall."},
-        {"id":"clubs.s07","de":"Bei der Abstimmung gab es eine klare Mehrheit.","t":"The vote had a clear majority."},
+        {"id":"clubs.s07","de":"Bei der Abstimmung gab es eine klare Mehrheit.","t":["There was a clear majority in the vote.","The vote had a clear majority."]},
         {"id":"clubs.s08","de":"Viele Helfer organisieren das Fest.","t":"Many helpers are organising the festival."},
         {"id":"clubs.s09","de":"Die Arbeit ist freiwillig und unbezahlt.","t":"The work is voluntary and unpaid."},
         {"id":"clubs.s10","de":"Hilfst du beim nächsten Projekt mit?","t":"Will you help with the next project?"}
@@ -5401,7 +5408,7 @@
         {"id":"climate.s07","de":"Klimaschutz kostet Geld, aber er lohnt sich.","t":"Climate protection costs money, but it is worth it."},
         {"id":"climate.s08","de":"Die Politik muss sich an die Folgen anpassen.","t":"Politicians must adapt to the consequences."},
         {"id":"climate.s09","de":"Das Artensterben nimmt dramatisch zu.","t":"The extinction of species is increasing dramatically."},
-        {"id":"climate.s10","de":"Nachhaltiges Wirtschaften ist die Zukunft.","t":"Sustainable economics is the future."}
+        {"id":"climate.s10","de":"Nachhaltiges Wirtschaften ist die Zukunft.","t":["A sustainable economy is the future.","Sustainable economics is the future."]}
       ]
     },
     {
@@ -5430,7 +5437,7 @@
         {"id":"workplace.s04","de":"Nach dem Feierabend schalte ich das Handy aus.","t":"After work I switch my phone off."},
         {"id":"workplace.s05","de":"Das Pendeln kostet mich viel Zeit.","t":"Commuting costs me a lot of time."},
         {"id":"workplace.s06","de":"Das Gehalt wird am Monatsende überwiesen.","t":"The salary is transferred at the end of the month."},
-        {"id":"workplace.s07","de":"Die Weiterbildung findet online statt.","t":"The further training takes place online."},
+        {"id":"workplace.s07","de":"Die Weiterbildung findet online statt.","t":["The training course takes place online.","The further training takes place online."]},
         {"id":"workplace.s08","de":"Wir haben heute eine Videokonferenz mit dem Team.","t":"We have a video conference with the team today."},
         {"id":"workplace.s09","de":"Er möchte im nächsten Jahr kündigen.","t":"He wants to resign next year."},
         {"id":"workplace.s10","de":"Die Work-Life-Balance ist mir sehr wichtig.","t":"Work-life balance is very important to me."}
@@ -5465,7 +5472,7 @@
         {"id":"integration.s07","de":"Die Herkunft spielt für mich keine Rolle.","t":"Origin doesn't matter to me."},
         {"id":"integration.s08","de":"Er hat die Staatsbürgerschaft vor zwei Jahren bekommen.","t":"He received citizenship two years ago."},
         {"id":"integration.s09","de":"Jeder soll am gesellschaftlichen Leben teilhaben können.","t":"Everyone should be able to take part in social life."},
-        {"id":"integration.s10","de":"Ein Sprachkurs hilft beim Ankommen.","t":"A language course helps you arrive."}
+        {"id":"integration.s10","de":"Ein Sprachkurs hilft beim Ankommen.","t":["A language course helps you settle in.","A language course helps you arrive."]}
       ]
     },
     {
@@ -5603,7 +5610,7 @@
       "turns": [
         { "p": {"de":"Was darf ich Ihnen bringen?","t":"What can I get you?"},
           "a": [
-            {"de":"Ist in der Soße Nüsse drin?","t":"Are there nuts in the sauce?"},
+            {"de":"Sind in der Soße Nüsse drin?","t":"Are there nuts in the sauce?"},
             {"de":"Ich fahre morgen nach Hause.","t":"I am going home tomorrow."},
             {"de":"Mein Zimmer ist im zweiten Stock.","t":"My room is on the second floor."}
           ] },
@@ -5760,7 +5767,7 @@
           ] },
         { "p": {"de":"Etwa fünfzehn Minuten, wenn kein Stau ist.","t":"About fifteen minutes if there's no traffic jam."},
           "a": [
-            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Good. Could you turn the air conditioning down a bit?"},
+            {"de":"Gut. Könnten Sie die Klimaanlage etwas kühler stellen?","t":"Good. Could you make the air conditioning a bit cooler?"},
             {"de":"Gut. Ich nehme den Fisch.","t":"Good. I'll have the fish."},
             {"de":"Gut. Wo ist die Umkleidekabine?","t":"Good. Where is the fitting room?"}
           ] },
