@@ -8,7 +8,7 @@ Wer OpenSprachFuchs mit einem eigenen Backend betreibt, ist dafür selbst verant
 
 ## Ohne Konto
 
-Alles bleibt auf deinem Handy: Fortschritt, Einstellungen und die Sprachpakete. Der Server wird nur angefragt, um neue Versionen der Sprachpakete zu finden. Dabei werden keine Daten über dich übertragen.
+Alles bleibt auf deinem Handy: Fortschritt, Einstellungen und die Sprachpakete. Sie liegen unverschlüsselt im Speicher der App. Der Server wird nur angefragt, um neue Versionen der Sprachpakete zu finden. Dabei werden keine Daten über dich übertragen.
 
 ## Im Browser (Web-App)
 
@@ -16,7 +16,7 @@ OpenSprachFuchs läuft auch im Browser, zum Beispiel auf dem iPhone, unter `app.
 
 ## Mit Konto
 
-Ein Konto ist ein zufälliger Schlüssel (16 Zeichen), den nur dein Handy kennt. Aus ihm leitet die App zwei Dinge ab:
+Ein Konto ist ein zufälliger Schlüssel (16 Zeichen), den nur dein Handy kennt. Er liegt wie der Spielstand unverschlüsselt im Speicher der App bzw. des Browsers; verschlüsselt ist nur die Sicherung auf dem Server. Aus ihm leitet die App zwei Dinge ab:
 
 - einen **Zugangscode**, mit dem sie sich beim Server meldet. Der Server speichert nur dessen SHA-256-Prüfsumme.
 - einen **AES-Schlüssel**, mit dem sie den Spielstand verschlüsselt, bevor er hochgeladen wird. Der Server kann ihn nicht lesen.
@@ -35,12 +35,12 @@ Für jede Freundschaft speichert er, wer mit wem befreundet ist, ob die Anfrage 
 
 **Was Freunde sehen:**
 - deinen Freundescode
-- ob du heute gelernt hast
+- ob du heute gelernt hast. Dafür bekommt ihre App das Datum deines letzten Lerntags, aber nur, wenn es höchstens einen Tag von heute abweicht (wegen der Zeitzonen); ältere Daten schickt der Server nicht.
 - eure gemeinsame Serie
 
-Namen für Freunde vergibst du selbst. Sie liegen nur in deinem verschlüsselten Spielstand.
+Namen für Freunde vergibst du selbst. Sie liegen nur in deinem Spielstand auf deinem Handy und gehen nur verschlüsselt, in der Sicherung, an den Server.
 
-**Dein eigener Name und dein QR-Code:** Im Profil kannst du dir einen Namen geben. Er liegt nur auf deinem Handy und verschlüsselt in deinem Spielstand, der Server bekommt ihn nie. Er verlässt dein Handy nur in deinem QR-Code bzw. dem geteilten Link (`…/f#Freundescode/Name`), und zwar an die Menschen, denen du den Code zeigst oder den Link schickst. Der Teil hinter `#` wird von Browsern nicht an den Server übertragen. Öffnet jemand den Link ohne App, lädt sein Browser nur eine kleine Seite vom Server, ohne Code und Name.
+**Dein eigener Name und dein QR-Code:** Im Profil kannst du dir einen Namen geben. Er liegt nur in deinem Spielstand auf deinem Handy und geht nur verschlüsselt, in der Sicherung, an den Server, der ihn nicht lesen kann. Er verlässt dein Handy nur in deinem QR-Code bzw. dem geteilten Link (`…/f#Freundescode/Name`), und zwar an die Menschen, denen du den Code zeigst oder den Link schickst. Der Teil hinter `#` wird von Browsern nicht an den Server übertragen. Öffnet jemand den Link ohne App, lädt sein Browser nur eine kleine Seite vom Server, ohne Code und Name.
 
 Es werden **keine** Namen, E-Mail-Adressen, Telefonnummern, Gerätekennungen oder Standortdaten erhoben.
 

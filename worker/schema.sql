@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS friendships (
   streak_day  TEXT,                        -- the last of those days
   gift_a      TEXT,                        -- day (UTC) a last sent b a gift
   gift_b      TEXT,                        -- day (UTC) b last sent a a gift
-  gifts_for_a INTEGER NOT NULL DEFAULT 0,  -- unopened gifts
+  gifts_for_a INTEGER NOT NULL DEFAULT 0,  -- unopened gifts; never below 0 (the claim UPDATE checks and clamps, issue #41)
   gifts_for_b INTEGER NOT NULL DEFAULT 0,
   UNIQUE (a, b)
 );

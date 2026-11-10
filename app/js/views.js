@@ -782,14 +782,14 @@ function friendsPanelHTML() {
 }
 const PRIVACY_HTML = `<div class="privacy">
   <p>OpenSprachFuchs erhebt nur, was für Sicherung und Freunde nötig ist. Es gibt keine Werbung, kein Tracking und keine Analyse-Dienste.</p>
-  <h3>Auf deinem Gerät</h3><p class="muted">Fortschritt, Einstellungen, heruntergeladene Sprachpakete und dein Schlüssel.</p>
+  <h3>Auf deinem Gerät</h3><p class="muted">Fortschritt, Einstellungen, heruntergeladene Sprachpakete und dein Schlüssel. Sie liegen unverschlüsselt im Speicher der App bzw. des Browsers; verschlüsselt ist nur die Sicherung auf dem Server.</p>
   <h3>Auf dem Server (nur mit Konto)</h3><ul class="muted">
     <li>eine Prüfsumme deines Zugangs (nicht der Schlüssel selbst)</li>
-    <li>dein Spielstand, auf dem Handy verschlüsselt; der Server kann ihn nicht lesen</li>
-    <li>dein öffentlicher Freundescode, der letzte Tag mit einer abgeschlossenen Runde, Tag der Anlage und der letzten Nutzung</li>
-    <li>Freundschaften: wer mit wem, gemeinsame Serie, an welchem Tag ein Geschenk verschickt wurde</li></ul>
-  <p class="muted">Deine Freunde sehen deinen Freundescode, ob du heute gelernt hast und eure gemeinsame Serie. Namen für Freunde vergibst du selbst; sie liegen nur verschlüsselt in deinem Spielstand.</p>
-  <h3>Dein Name und QR-Code</h3><p class="muted">Deinen eigenen Namen bekommt der Server nie. Er steht nur auf deinem Handy, verschlüsselt im Spielstand und in deinem QR-Code bzw. Link, also bei denen, die ihn von dir bekommen. Code und Name stehen im Link hinter „#“; dieser Teil wird nicht an den Server geschickt.</p>
+    <li>dein Spielstand, vor dem Hochladen verschlüsselt, und der Zeitpunkt des Speicherns; der Server kann ihn nicht lesen</li>
+    <li>dein öffentlicher Freundescode, dein letzter und vorletzter Lerntag, Tag der Anlage und der letzten Nutzung</li>
+    <li>Freundschaften: wer mit wem, ob angenommen, gemeinsame Serie, an welchem Tag zuletzt ein Geschenk verschickt wurde und wie viele noch ungeöffnet sind</li></ul>
+  <p class="muted">Deine Freunde sehen deinen Freundescode, ob du heute gelernt hast und eure gemeinsame Serie. Dafür bekommt ihre App das Datum deines letzten Lerntags, aber nur, wenn es höchstens einen Tag von heute abweicht (wegen der Zeitzonen); ältere Daten schickt der Server nicht. Namen für Freunde vergibst du selbst; sie liegen nur in deinem Spielstand auf deinem Gerät und gehen nur verschlüsselt, in der Sicherung, an den Server.</p>
+  <h3>Dein Name und QR-Code</h3><p class="muted">Deinen eigenen Namen kann der Server nicht lesen. Er steht nur in deinem Spielstand auf deinem Gerät, verschlüsselt in der Sicherung und in deinem QR-Code bzw. Link, also bei denen, die ihn von dir bekommen. Code und Name stehen im Link hinter „#“; dieser Teil wird nicht an den Server geschickt.</p>
   <h3>Fehlermeldungen</h3><p class="muted">„Fehler melden“ schickt Aufgabe, erwartete Lösung, deine Antwort und deine Notiz ohne Bezug zu deinem Konto. Die Meldungen werden als öffentliche Issues auf GitHub gesammelt. Schreib bitte nichts Persönliches hinein.</p>
   <h3>Technik</h3><p class="muted">Der Server läuft bei Cloudflare, das zur Auslieferung und gegen Missbrauch IP-Adressen verarbeitet; OpenSprachFuchs speichert sie nicht.${APP && CONFIG.GITHUB_REPO ? " Die Suche nach App-Updates fragt beim Start, höchstens alle 6 Stunden, bei GitHub an (abschaltbar)." : ""}${WEB ? " Im Browser lädt die App ihre Dateien vom selben Server und speichert sie für die Nutzung ohne Internet; es gibt keine Cookies. Dein Fortschritt liegt im Speicher des Browsers." : ""}</p>
   <h3>Löschen</h3><p class="muted">Unter Profil → Konto → „Konto löschen“ wird alles sofort vom Server entfernt. Konten, die 12 Monate nicht genutzt werden, löscht der Server von selbst.</p>

@@ -16,14 +16,18 @@ function fakeD1() {
   const db = new DatabaseSync(":memory:");
   db.exec("PRAGMA foreign_keys = ON;");
   db.exec(fs.readFileSync(path.join(ROOT, "worker", "schema.sql"), "utf8"));
+  // With `slow` set, every query first yields to the event loop, as a real D1 round trip does, so that requests
+  // started together interleave between their reads and writes (used for the parallel-request tests).
+  const D = { slow: false };
+  const tick = () => (D.slow ? new Promise(r => setImmediate(r)) : null);
   const stmt = (sql, args = []) => ({
     bind: (...a) => stmt(sql, a),
-    first: async () => db.prepare(sql).get(...args) || null,
-    all: async () => ({ results: db.prepare(sql).all(...args) }),
-    run: async () => { const r = db.prepare(sql).run(...args); return { meta: { changes: r.changes } }; },
+    first: async () => { await tick(); return db.prepare(sql).get(...args) || null; },
+    all: async () => { await tick(); return { results: db.prepare(sql).all(...args) }; },
+    run: async () => { await tick(); const r = db.prepare(sql).run(...args); return { meta: { changes: r.changes } }; },
     _run: () => db.prepare(sql).run(...args),
   });
-  return { db, prepare: sql => stmt(sql), batch: async list => { db.exec("BEGIN"); try { for (const s of list) s._run(); db.exec("COMMIT"); } catch (e) { db.exec("ROLLBACK"); throw e; } } };
+  return Object.assign(D, { db, prepare: sql => stmt(sql), batch: async list => { await tick(); db.exec("BEGIN"); try { const out = list.map(s => ({ meta: { changes: s._run().changes } })); db.exec("COMMIT"); return out; } catch (e) { db.exec("ROLLBACK"); throw e; } } });
 }
 
 (async () => {
@@ -57,8 +61,39 @@ function fakeD1() {
   r = await call(B + "api/report", { method: "POST", body: JSON.stringify({ course: "en", task: "hallo", expected: "hello", note: "test" }) });
   ok(r.status === 200 && DB.db.prepare("SELECT COUNT(*) n FROM reports").get().n === 1, "Fehlermeldung");
   ok(!Object.keys(DB.db.prepare("SELECT * FROM reports").get()).some(k => /account|auth|ip/i.test(k)), "Meldung mit Kontobezug");
+  // Issue #43: reports become public GitHub issues; mentions, links and issue references in them must stay inert.
+  {
+    const { issueBody, issueTitle, md } = await import(path.join(ROOT, "tools", "reports.mjs"));
+    const evil = { day: "2026-11-10", course: "@x", unit: "[u](https://evil.example)", item: "w:a`b", type: "<img src=x>",
+      task: "Hi @geonerd97 and @org/team, see #1", expected: "[klick](https://evil.example) ![b](http://evil.example/p.png)",
+      given: "<https://evil.example> www.evil.example http://evil.example", note: "**fett** `code` | x", pack: "abc" };
+    const body = issueBody([evil]), title = issueTitle([evil]), all = body + "\n" + title;
+    ok(!/@\w/.test(all), "Erwähnung in Meldung nicht entschärft", all);
+    ok(!/\]\(|<https?:|https?:\/\/|www\./i.test(all), "Link in Meldung nicht entschärft", all);
+    ok(!/(^|\s)#\d/.test(body), "Issue-Verweis in Meldung nicht entschärft", body);
+    ok(body.includes("  - ? · ") && !body.includes("<img"), "Unbekannter Typ nicht durch ? ersetzt", body);
+    ok(issueBody([{ ...evil, type: "typeSent" }]).includes("  - typeSent · "), "Bekannter Typ geht verloren");
+    ok(md("Ça va ? – Très bien, merci.") === "Ça va ? – Très bien, merci.", "Normaler Text in Meldung verändert", md("Ça va ? – Très bien, merci."));
+  }
   ok((await call(B + "api/day", { method: "POST", headers: auth, body: JSON.stringify({ day: "2001-01-01" }) })).status === 400, "uralter Lerntag angenommen");
   ok((await call(B + "api/account", { method: "OPTIONS" })).headers.get("Access-Control-Allow-Origin") === "*", "CORS fehlt");
+  // Issue #51: a body larger than allowed is refused by its Content-Length before it is read, and a chunked one while streaming.
+  let pulled = 0;
+  const huge = new ReadableStream({ pull(c) { pulled++; if (pulled > 50) c.close(); else c.enqueue(new Uint8Array(100_000).fill(65)); } });
+  r = await call(B + "api/report", { method: "POST", headers: { "Content-Length": "999999999" }, body: huge, duplex: "half" });
+  ok(r.status === 413 && pulled <= 2, "Zu große Anfrage trotz Content-Length gelesen", r.status, pulled);
+  pulled = 0;
+  r = await call(B + "api/report", { method: "POST", body: new ReadableStream({ pull(c) { pulled++; if (pulled > 50) c.close(); else c.enqueue(new Uint8Array(100_000).fill(65)); } }), duplex: "half" });
+  ok(r.status === 413 && pulled < 10, "Zu große Anfrage ohne Content-Length ganz gelesen", r.status, pulled);
+  r = await call(B + "api/report", { method: "POST", body: JSON.stringify({ course: "en", task: "ä".repeat(500), expected: "ü" }) });
+  ok(r.status === 200, "Meldung mit Umlauten an der Grenze abgelehnt", r.status);
+  DB.db.prepare("DELETE FROM reports WHERE expected = 'ü'").run();
+  // Issue #49: without rate-limit bindings the service works, but the ping says so.
+  let ping = await (await call(B + "api/ping")).json();
+  ok(ping.ok && ping.rateLimit === "missing", "Fehlendes Rate Limiting im Ping nicht sichtbar", JSON.stringify(ping));
+  const limiter = { limit: async () => ({ success: true }) };
+  ping = await (await worker.fetch(new Request(B + "api/ping"), { DB, LIMIT_API: limiter, LIMIT_STRICT: limiter })).json();
+  ok(ping.ok && ping.rateLimit === "ok", "Rate Limiting trotz Bindings als fehlend gemeldet", JSON.stringify(ping));
   ok((await call(B + "api/account", { method: "DELETE", headers: auth })).status === 200 && !DB.db.prepare("SELECT * FROM accounts").get(), "Konto löschen");
 
   /* ---------- Through the app: two players on their phones ---------- */
@@ -177,6 +212,36 @@ function fakeD1() {
   await anna.claimGifts();
   const mins = DB.db.prepare("SELECT MIN(gifts_for_a) a, MIN(gifts_for_b) b FROM friendships").get();
   ok(anna.st.gems === gems + 5 && mins.a >= 0 && mins.b >= 0, "Geschenke doppelt eingelöst", anna.st.gems - gems, JSON.stringify(mins));
+
+  // Issues #40/#41: requests running at the same time. With DB.slow every query waits for the event loop, so the
+  // requests interleave like parallel requests in the Worker: all of them read before any of them writes.
+  DB.slow = true;
+  const fid = ben.friends.list[0].id, benAuth = { Authorization: "Bearer " + ben.acct.token };
+  DB.db.prepare("UPDATE friendships SET gift_a = NULL, gift_b = NULL WHERE id = ?").run(fid);
+  const sent = await Promise.all([1, 2, 3].map(() => call(B + `api/friends/${fid}/gift`, { method: "POST", headers: benAuth })));
+  const giftRow = DB.db.prepare("SELECT * FROM friendships WHERE id = ?").get(fid);
+  const giftAnna = DB.db.prepare("SELECT id FROM accounts WHERE friend_code = ?").get(anna.acct.friendCode);
+  const forAnna = giftRow.a === giftAnna.id ? giftRow.gifts_for_a : giftRow.gifts_for_b;
+  ok(sent.filter(x => x.status === 200).length === 1 && sent.filter(x => x.status === 409).length === 2 && forAnna === 1,
+    "Gleichzeitige Geschenke mehrfach gezählt", sent.map(x => x.status), forAnna);
+  const annaAuth = { Authorization: "Bearer " + anna.acct.token };
+  const claims = await Promise.all([1, 2, 3].map(async () => (await (await call(B + "api/gifts/claim", { method: "POST", headers: annaAuth })).json()).gifts));
+  const after = DB.db.prepare("SELECT gifts_for_a a, gifts_for_b b FROM friendships WHERE id = ?").get(fid);
+  ok(claims.reduce((a, b) => a + b, 0) === 1 && after.a === 0 && after.b === 0, "Gleichzeitiges Einlösen doppelt gezählt oder Zähler negativ", claims, JSON.stringify(after));
+  DB.slow = false;
+  // The bound itself: a claim that counted more than is left changes nothing (and is not counted).
+  DB.db.prepare("UPDATE friendships SET gifts_for_a = 1, gifts_for_b = 1 WHERE id = ?").run(fid);
+  const guard = await DB.prepare("UPDATE friendships SET gifts_for_a = MAX(0, gifts_for_a - ?) WHERE id = ? AND gifts_for_a >= ?").bind(3, fid, 3).run();
+  ok(guard.meta.changes === 0 && DB.db.prepare("SELECT gifts_for_a n FROM friendships WHERE id = ?").get(fid).n === 1, "Bedingung beim Einlösen greift nicht");
+  DB.db.prepare("UPDATE friendships SET gifts_for_a = 0, gifts_for_b = 0 WHERE id = ?").run(fid);
+
+  // Issue #42: friends get the last learning day only while it can still be "today" for them, never an older date.
+  DB.db.prepare("UPDATE accounts SET last_day = '2020-05-05' WHERE friend_code = ?").run(ben.acct.friendCode);
+  await anna.loadFriends();
+  ok(anna.friends.list[0].lastDay === null && !anna.friendLearnedToday(anna.friends.list[0]), "Altes Lerndatum an Freunde geschickt", anna.friends.list[0].lastDay);
+  DB.db.prepare("UPDATE accounts SET last_day = ? WHERE friend_code = ?").run(local(t), ben.acct.friendCode);
+  await anna.loadFriends();
+  ok(anna.friendLearnedToday(anna.friends.list[0]), "Heute gelernt wird nicht mehr erkannt");
 
   // QR code for friends: Anna's own name only travels in her link; Dora scans it, the app opens "Freund hinzufügen" filled in.
   anna.setMyName("  Anna <Lü>  ");

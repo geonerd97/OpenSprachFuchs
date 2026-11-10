@@ -18,6 +18,7 @@
  *   POST   /api/friends/:id/gift      the daily free gift for a friend
  *   POST   /api/gifts/claim           open received gifts                      -> { gifts }
  *   POST   /api/report                content report from "Fehler melden", without any account reference
+ *   GET    /api/ping                  health check; rateLimit says whether both rate-limit bindings are configured
  *
  * Everything else (the language packs under /packs/) is served from the static assets in ./public.
  */
@@ -56,15 +57,45 @@ const cleanCode = s => {
   return c.length === 8 ? c.slice(0, 4) + "-" + c.slice(4) : "";
 };
 
+const RATE_LIMITS = ["LIMIT_API", "LIMIT_STRICT"];
+const hasLimiter = (env, binding) => !!env[binding] && typeof env[binding].limit === "function";
+let warnedLimits = false;
 async function limited(env, binding, key) {
-  const limiter = env[binding];
-  if (!limiter || typeof limiter.limit !== "function") return false;
-  const { success } = await limiter.limit({ key });
+  // A missing binding (e.g. a fork whose wrangler.toml lacks [[ratelimits]]) must not stop the service, but it should
+  // not go unnoticed either: one warning in the log per isolate, and GET /api/ping reports it (issue #49).
+  if (!hasLimiter(env, binding)) {
+    if (!warnedLimits) { warnedLimits = true; console.warn("Rate limiting is off, binding missing:", RATE_LIMITS.filter(b => !hasLimiter(env, b)).join(", ")); }
+    return false;
+  }
+  const { success } = await env[binding].limit({ key });
   return !success;
 }
+const tooLarge = () => Object.assign(new Error("too large"), { status: 413 });
+/** The body as text, at most `max` characters. Too large bodies are refused before they are read (issue #51): by their
+ *  Content-Length, and a body without one (chunked) as soon as it passes the byte limit while streaming. One UTF-16
+ *  character takes at most 3 bytes in UTF-8, so `max * 3` bytes never refuses a body of `max` characters. */
+async function readText(request, max) {
+  const maxBytes = max * 3;
+  const announced = Number(request.headers.get("Content-Length"));
+  if (Number.isFinite(announced) && announced > maxBytes) throw tooLarge();
+  if (!request.body) return "";
+  const reader = request.body.getReader(), chunks = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) { await reader.cancel().catch(() => {}); throw tooLarge(); }
+    chunks.push(value);
+  }
+  const all = new Uint8Array(total);
+  let at = 0;
+  for (const c of chunks) { all.set(c, at); at += c.byteLength; }
+  return new TextDecoder().decode(all);
+}
 async function readJson(request, max = 1_000_000) {
-  const text = await request.text();
-  if (text.length > max) throw Object.assign(new Error("too large"), { status: 413 });
+  const text = await readText(request, max);
+  if (text.length > max) throw tooLarge();
   try { return JSON.parse(text || "{}"); } catch (e) { throw Object.assign(new Error("bad json"), { status: 400 }); }
 }
 
@@ -150,6 +181,8 @@ async function reportDay(acc, request, env) {
 }
 
 /* ---------- Friends ---------- */
+// Rows changed by a D1 statement (the result of run() or one entry of batch()).
+const changed = r => !!(r && r.meta && r.meta.changes > 0);
 async function friendCount(env, id) {
   const r = await env.DB.prepare("SELECT COUNT(*) AS n FROM friendships WHERE a = ? OR b = ?").bind(id, id).first();
   return r ? r.n : 0;
@@ -158,13 +191,17 @@ async function listFriends(acc, env) {
   const { results } = await env.DB.prepare(`SELECT f.*, o.friend_code AS code, o.last_day AS o_last FROM friendships f
     JOIN accounts o ON o.id = CASE WHEN f.a = ? THEN f.b ELSE f.a END WHERE f.a = ? OR f.b = ? ORDER BY f.id`).bind(acc.id, acc.id, acc.id).all();
   const today = utcDay();
+  // The app only asks whether a friend learned today (their local date equals its own). The server does not know the
+  // asking phone's date, which can be yesterday, today or tomorrow in UTC, so it sends the friend's last learning day
+  // only if it is one of those three, and null otherwise; older dates never leave the server (issue #42).
+  const maybeToday = new Set([addDays(today, -1), today, addDays(today, 1)]);
   let gifts = 0;
   const friends = results.map(f => {
     const mine = f.a === acc.id;
     gifts += mine ? f.gifts_for_a : f.gifts_for_b;
     const status = f.accepted ? "accepted" : mine ? "outgoing" : "incoming";
     return { id: f.id, status, code: f.code,
-      streak: f.accepted ? f.streak : 0, streakDay: f.accepted ? f.streak_day : null, lastDay: f.accepted ? f.o_last : null,
+      streak: f.accepted ? f.streak : 0, streakDay: f.accepted ? f.streak_day : null, lastDay: f.accepted && maybeToday.has(f.o_last) ? f.o_last : null,
       canGift: !!f.accepted && (mine ? f.gift_a : f.gift_b) !== today };
   });
   return json({ friends, gifts });
@@ -203,23 +240,30 @@ async function gift(acc, f, env) {
   if (!f.accepted) return fail(409, "not_friends");
   const today = utcDay(), mine = f.a === acc.id;
   if ((mine ? f.gift_a : f.gift_b) === today) return fail(409, "already_sent");
-  await env.DB.prepare(mine ? "UPDATE friendships SET gift_a = ?, gifts_for_b = MIN(gifts_for_b + 1, 30) WHERE id = ?"
-    : "UPDATE friendships SET gift_b = ?, gifts_for_a = MIN(gifts_for_a + 1, 30) WHERE id = ?").bind(today, f.id).run();
+  // The check is repeated inside the UPDATE (issue #40): two requests arriving together both pass the read above,
+  // but only the first one changes the row; the other gets "already_sent".
+  const r = await env.DB.prepare(mine
+    ? "UPDATE friendships SET gift_a = ?, gifts_for_b = MIN(gifts_for_b + 1, 30) WHERE id = ? AND accepted = 1 AND (gift_a IS NULL OR gift_a <> ?)"
+    : "UPDATE friendships SET gift_b = ?, gifts_for_a = MIN(gifts_for_a + 1, 30) WHERE id = ? AND accepted = 1 AND (gift_b IS NULL OR gift_b <> ?)")
+    .bind(today, f.id, today).run();
+  if (!changed(r)) return fail(409, "already_sent");
   return json({ ok: true });
 }
 async function claimGifts(acc, env) {
   const { results } = await env.DB.prepare(`SELECT id, a, gifts_for_a, gifts_for_b FROM friendships
     WHERE (a = ? AND gifts_for_a > 0) OR (b = ? AND gifts_for_b > 0)`).bind(acc.id, acc.id).all();
-  let gifts = 0;
-  const stmts = [];
+  const counted = [], stmts = [];
   for (const f of results) {
     const mine = f.a === acc.id, n = mine ? f.gifts_for_a : f.gifts_for_b;
-    gifts += n;
+    counted.push(n);
     // Minus the counted gifts instead of down to zero: one arriving in between is kept for the next time.
-    stmts.push(env.DB.prepare(mine ? "UPDATE friendships SET gifts_for_a = gifts_for_a - ? WHERE id = ?"
-      : "UPDATE friendships SET gifts_for_b = gifts_for_b - ? WHERE id = ?").bind(n, f.id));
+    // Only if they are still there (issue #41): of two claims running at once, the second finds the counter already
+    // lowered, changes nothing and does not count these gifts again. MAX(0, …) keeps the counter from going negative.
+    stmts.push(env.DB.prepare(mine ? "UPDATE friendships SET gifts_for_a = MAX(0, gifts_for_a - ?) WHERE id = ? AND gifts_for_a >= ?"
+      : "UPDATE friendships SET gifts_for_b = MAX(0, gifts_for_b - ?) WHERE id = ? AND gifts_for_b >= ?").bind(n, f.id, n));
   }
-  if (stmts.length) await env.DB.batch(stmts);
+  const done = stmts.length ? await env.DB.batch(stmts) : [];
+  const gifts = counted.reduce((sum, n, i) => sum + (changed(done[i]) ? n : 0), 0);
   return json({ gifts });
 }
 
@@ -278,7 +322,8 @@ async function handle(request, env) {
   const strict = (method === "POST" && (path === "/api/account" || path === "/api/friends" || path === "/api/report"));
   if (strict && await limited(env, "LIMIT_STRICT", path + ":" + ip)) return fail(429, "rate_limited");
 
-  if (path === "/api/ping") return json({ app: "opensprachfuchs", ok: true });
+  // ok stays true without limiters (the service works); rateLimit "missing" shows the configuration gap (issue #49).
+  if (path === "/api/ping") return json({ app: "opensprachfuchs", ok: true, rateLimit: RATE_LIMITS.every(b => hasLimiter(env, b)) ? "ok" : "missing" });
   if (path === "/api/report" && method === "POST") return report(request, env);
   if (path === "/api/account" && method === "POST") return createAccount(request, env);
 
