@@ -63,10 +63,12 @@
         </receiver>
 
         <!-- TIME_SET and TIMEZONE_CHANGED may still be declared here since Android 8, DATE_CHANGED may not;
-             the change of day therefore comes from an alarm of our own (Reminders.scheduleMidnight). -->
+             the change of day therefore comes from an alarm of our own (Reminders.scheduleMidnight).
+             Not exported (issue #47): other apps cannot trigger it. The alarms are explicit PendingIntents of the
+             app itself, and the system still delivers its own broadcasts (boot, time, time zone) to it. -->
         <receiver
             android:name=".ReminderReceiver"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.TIME_SET" />

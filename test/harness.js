@@ -38,7 +38,7 @@ function loadGame(windowExtra = {}, { store = {}, packs = true, fetch: fetchImpl
   global.clearTimeout = () => {};
   global.fetch = fetchImpl || (() => Promise.reject(new Error("offline")));
   const exportsList = `nextExercise, setCourse, startLesson, exerciseHTML, footerHTML, evaluate, homeHTML, modalHTML, render, srs, srsUpdate, dueWords, ui, check,
-    startDialog, dialogPick, dialogsFor, startMaster, masteryOf, buy, shopItems, shownStreak, finish, startBlitz, blitzAnswer, blitzTask, blitzTick, todaysQuests,
+    startDialog, dialogPick, dialogsFor, startMaster, masteryOf, buy, shopItems, shownStreak, streakUntil, finish, startBlitz, blitzAnswer, blitzTask, blitzTick, todaysQuests,
     claimQuests, dayRec, applyDecay, resetCourseFrom, cs, startTraining, pauseListening, resumeListening, fromSaved, mergeSaves, MAX_HEARTS, startPlacement, cont, statsHTML,
     resultHTML, streakHTML, drawTrails, BADGES, done, speak, generate, startRecognition, pauseSpeaking, COURSES, acct, friends, createAccount, signIn, initAccount, pushSave, pullSave,
     deleteAccount, signOut, addFriend, acceptFriend, removeFriend, sendGift, claimGifts, loadFriends, reportLearningDay, sendReports, newKey, normalizeKey,

@@ -37,13 +37,27 @@ object Reminders {
         schedule(c)
     }
 
-    fun report(c: Context, lastDay: String, streak: Int) {
-        prefs(c).edit().putString("lastDay", lastDay).putInt("streak", streak).apply()
+    /** [until]: the last day (yyyy-MM-dd) on which the streak still holds without learning, streak freezes included. */
+    fun report(c: Context, lastDay: String, streak: Int, until: String) {
+        prefs(c).edit().putString("lastDay", lastDay).putInt("streak", streak).putString("until", until).apply()
         StreakWidget.updateAll(c)
     }
 
-    /** The last learning day (yyyy-MM-dd, "" if none) and the streak, as the page last reported them. */
-    fun state(c: Context): Pair<String, Int> = prefs(c).let { it.getString("lastDay", "") .orEmpty() to it.getInt("streak", 0) }
+    /** Whether a round was finished today, and the streak that still counts today (0 once it has lapsed). */
+    data class Streak(val learnedToday: Boolean, val days: Int)
+
+    /** The streak as of today, from what the page last reported. Shared by the widget and the reminder (issues #44, #45). */
+    fun streak(c: Context, today: LocalDate = LocalDate.now()): Streak {
+        val p = prefs(c)
+        val lastDay = p.getString("lastDay", "").orEmpty()
+        val learnedToday = lastDay == today.toString()
+        // The page reports until when the streak holds (streak freezes cover missed days); without that report
+        // (an older page) it only counts while the last learning day is today or yesterday.
+        val until = p.getString("until", null)?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
+            ?: runCatching { LocalDate.parse(lastDay).plusDays(1) }.getOrNull()
+        val holds = learnedToday || (until != null && !today.isAfter(until))
+        return Streak(learnedToday, if (holds) p.getInt("streak", 0) else 0)
+    }
 
     /* The widget says whether today's goal is done, so it has to be redrawn when the date changes. Its periodic
        update (30 min) does not run while the phone dozes through the night, and ACTION_DATE_CHANGED may not be
@@ -91,13 +105,14 @@ object Reminders {
     fun notifyIfOpen(c: Context) {
         val p = prefs(c)
         if (!p.getBoolean("on", false)) return
-        if (p.getString("lastDay", "") == LocalDate.now().toString()) return
+        val now = streak(c)
+        if (now.learnedToday) return
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             c.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
         ) return
         val nm = c.getSystemService(NotificationManager::class.java) ?: return
         nm.createNotificationChannel(NotificationChannel(CHANNEL, "Tägliche Erinnerung", NotificationManager.IMPORTANCE_DEFAULT))
-        val streak = p.getInt("streak", 0)
+        val streak = now.days // a lapsed streak is not named (issue #45)
         val text = if (streak > 0) "Deine Serie von $streak ${if (streak == 1) "Tag" else "Tagen"} wartet. Eine Lektion reicht!"
         else "Fünf Minuten OpenSprachFuchs? Eine Lektion reicht fürs Tagesziel."
         val open = PendingIntent.getActivity(
