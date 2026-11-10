@@ -1,6 +1,7 @@
 "use strict";
 /* ---------- State ----------
-   Progress always lives on the device (localStorage). With an account it is also backed up, encrypted (account.js).
+   Progress always lives on the device (localStorage), as plain JSON: it is not encrypted there. With an account it is
+   also backed up on the server, and only that copy is encrypted (account.js).
    XP, streak, hearts and gems are shared by all languages; st.courses[code] keeps what belongs to one language. */
 const STORE = "opensprachfuchs-state";
 // Hearts (issue #4, all halved): at most 5, one grows back every 40 minutes, the bonus chest gives 2.
@@ -63,6 +64,7 @@ let st;
 try { st = fromSaved(JSON.parse(localStorage.getItem(STORE))); } catch (e) { st = fromSaved(null); }
 loadInstalledPacks();
 setCourse(st.course);
+// Writes st to localStorage unencrypted (the device's copy); the encrypted copy for the server is made in account.js.
 function save() {
   st.savedAt = Date.now();
   try { localStorage.setItem(STORE, JSON.stringify(st)); } catch (e) {}

@@ -10,7 +10,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const WORKER = join(ROOT, "worker");
@@ -35,41 +35,56 @@ for (const f of readdirSync(join(ROOT, "packs")).filter(f => f.endsWith(".json")
 const langName = c => (packs[c] && packs[c].name) || c || "?";
 const unitName = (c, u) => (packs[c] && packs[c].units[u]) || u || "ohne Einheit";
 
-const reports = d1("SELECT * FROM reports WHERE issue IS NULL ORDER BY course, unit, id");
-if (!reports.length) { console.log("Keine offenen Fehlermeldungen."); process.exit(0); }
-const groups = new Map();
-for (const r of reports) {
-  const key = `${r.course}|${r.unit}`;
-  if (!groups.has(key)) groups.set(key, []);
-  groups.get(key).push(r);
-}
-
+// Everything in a report comes from anyone who can reach the server, and it ends up in a public issue (issue #43).
+// So it must not mention people (@name, @org/team), link anywhere ([text](url), ![](img), <url>, bare URLs) or
+// reference issues (#12). md() keeps the text readable but inert: "@" and "#" become full-width "＠"/"＃", "[" "]"
+// become "［" "］", and "://" and "www." are broken up so GitHub does not turn them into links.
 const clip = (s, n = 300) => String(s || "").replace(/\s+/g, " ").trim().slice(0, n);
-const md = s => clip(s).replace(/[`|<>]/g, c => ({ "`": "'", "|": "/", "<": "‹", ">": "›" }[c]));
-function issueBody(list) {
-  const rows = list.map(r => `- **${md(r.task)}**\n  - erwartet: ${md(r.expected)}\n  - Antwort: ${md(r.given) || "–"}${r.note ? `\n  - Notiz: ${md(r.note)}` : ""}\n  - ${r.type || "?"} · \`${md(r.item) || "?"}\` · ${r.day}${r.pack ? ` · Paket ${md(r.pack)}` : ""}`);
+const INERT = { "`": "'", "|": "/", "<": "‹", ">": "›", "@": "＠", "#": "＃", "[": "［", "]": "］", "*": "∗", "_": "＿", "~": "～", "\\": "∖" };
+export const md = s => clip(s).replace(/[`|<>@#[\]*_~\\]/g, c => INERT[c]).replace(/:\/\//g, ":⁄⁄").replace(/\bwww\./gi, m => m.slice(0, 3) + "·");
+// The exercise types the app sends (ex.type in app/js/main.js "sendreport", generators in exercises.js); anything else is "?".
+export const TYPES = new Set(["choice", "choiceRev", "listenWord", "pic", "bank", "bankRev", "listen", "type", "typeSent", "gap", "match", "speak", "intro", "game", "dialog"]);
+const type = t => (TYPES.has(t) ? t : "?");
+const DAY = d => (/^\d{4}-\d{2}-\d{2}$/.test(String(d)) ? d : "?");
+export function issueBody(list) {
+  const rows = list.map(r => `- **${md(r.task) || "–"}**\n  - erwartet: ${md(r.expected) || "–"}\n  - Antwort: ${md(r.given) || "–"}${r.note ? `\n  - Notiz: ${md(r.note)}` : ""}\n  - ${type(r.type)} · ${md(r.item) || "?"} · ${DAY(r.day)}${r.pack ? ` · Paket ${md(r.pack)}` : ""}`);
   return `Fehlermeldungen aus der App („Fehler melden“), ohne Bezug zu einem Konto.\n\n${rows.join("\n")}\n\n` +
     "Bitte prüfen und in `packs/` korrigieren (die `id` nie ändern), danach dieses Issue schließen.";
 }
+// Language and unit come from the report too; unknown codes appear in the title as they are, so they go through md().
+export const issueTitle = list => `Fehlermeldung: ${md(langName(list[0].course))} · ${md(unitName(list[0].course, list[0].unit))} (${list.length})`;
 
-console.log(`${reports.length} offene Fehlermeldungen in ${groups.size} Gruppen:\n`);
-for (const list of groups.values()) {
-  const r0 = list[0];
-  console.log(`## ${langName(r0.course)} · ${unitName(r0.course, r0.unit)} (${list.length})`);
-  for (const r of list) console.log(`  - ${clip(r.task, 80)} → erwartet „${clip(r.expected, 60)}“${r.note ? ` · Notiz: ${clip(r.note, 80)}` : ""}`);
-  console.log("");
-}
-if (!args.has("--issues")) { console.log("Mit --issues wird pro Gruppe ein GitHub-Issue angelegt."); process.exit(0); }
-if (!REPO) { console.log("GITHUB_REPO in app/js/config.js ist leer."); process.exit(1); }
+// Run as a script; imported (test/backend-test.js) it only provides the functions above.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();
+function main() {
+  const reports = d1("SELECT * FROM reports WHERE issue IS NULL ORDER BY course, unit, id");
+  if (!reports.length) { console.log("Keine offenen Fehlermeldungen."); process.exit(0); }
+  const groups = new Map();
+  for (const r of reports) {
+    const key = `${r.course}|${r.unit}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(r);
+  }
 
-const dry = args.has("--dry-run");
-if (!dry) execFileSync("gh", ["label", "create", LABEL, "--repo", REPO, "--color", "F26B1D", "--description", "Meldung aus der App: Inhalt prüfen", "--force"], { stdio: "ignore" });
-for (const list of groups.values()) {
-  const r0 = list[0], title = `Fehlermeldung: ${langName(r0.course)} · ${unitName(r0.course, r0.unit)} (${list.length})`;
-  if (dry) { console.log(`[dry-run] ${title}\n${issueBody(list)}\n`); continue; }
-  const url = execFileSync("gh", ["issue", "create", "--repo", REPO, "--title", title, "--label", LABEL, "--body", issueBody(list)], { encoding: "utf8" }).trim();
-  const num = Number((url.match(/\/issues\/(\d+)/) || [])[1]);
-  if (!num) { console.log("Issue-Nummer nicht erkannt:", url); process.exit(1); }
-  d1(`UPDATE reports SET issue = ${num} WHERE id IN (${list.map(r => Number(r.id)).join(",")})`);
-  console.log(`${url}  (${list.length} Meldungen)`);
+  console.log(`${reports.length} offene Fehlermeldungen in ${groups.size} Gruppen:\n`);
+  for (const list of groups.values()) {
+    const r0 = list[0];
+    console.log(`## ${langName(r0.course)} · ${unitName(r0.course, r0.unit)} (${list.length})`);
+    for (const r of list) console.log(`  - ${clip(r.task, 80)} → erwartet „${clip(r.expected, 60)}“${r.note ? ` · Notiz: ${clip(r.note, 80)}` : ""}`);
+    console.log("");
+  }
+  if (!args.has("--issues")) { console.log("Mit --issues wird pro Gruppe ein GitHub-Issue angelegt."); process.exit(0); }
+  if (!REPO) { console.log("GITHUB_REPO in app/js/config.js ist leer."); process.exit(1); }
+
+  const dry = args.has("--dry-run");
+  if (!dry) execFileSync("gh", ["label", "create", LABEL, "--repo", REPO, "--color", "F26B1D", "--description", "Meldung aus der App: Inhalt prüfen", "--force"], { stdio: "ignore" });
+  for (const list of groups.values()) {
+    const title = issueTitle(list);
+    if (dry) { console.log(`[dry-run] ${title}\n${issueBody(list)}\n`); continue; }
+    const url = execFileSync("gh", ["issue", "create", "--repo", REPO, "--title", title, "--label", LABEL, "--body", issueBody(list)], { encoding: "utf8" }).trim();
+    const num = Number((url.match(/\/issues\/(\d+)/) || [])[1]);
+    if (!num) { console.log("Issue-Nummer nicht erkannt:", url); process.exit(1); }
+    d1(`UPDATE reports SET issue = ${num} WHERE id IN (${list.map(r => Number(r.id)).join(",")})`);
+    console.log(`${url}  (${list.length} Meldungen)`);
+  }
 }
