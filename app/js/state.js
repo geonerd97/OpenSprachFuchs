@@ -49,6 +49,14 @@ function mergeSaves(x, y) {
   m.quests = qo && qn && qo.day === qn.day ? mergeValue(qo, qn) : (qo && qn ? (qo.day > qn.day ? qo : qn) : qn || qo);
   if (m.quests && qo && qn && qo.day === qn.day) m.quests.ids = qn.ids;
   if (older.day !== newer.day) m.dayLessons = (older.day || "") > (newer.day || "") ? older.dayLessons : newer.dayLessons;
+  // The fox (avatar.js): owned parts are joined, so nothing bought on one device gets lost; what the fox wears and the
+  // background come whole from the save that changed the look last (avatar.at), on a tie from the newer save.
+  const ao = older.avatar, an = newer.avatar;
+  if (ao || an) {
+    const look = !ao ? an : !an ? ao : (ao.at || 0) > (an.at || 0) ? ao : an;
+    m.avatar = Object.assign({}, m.avatar, { owned: [...new Set([...((ao || {}).owned || []), ...((an || {}).owned || [])])],
+      worn: Object.assign({}, look.worn || {}), bg: look.bg || "", at: Math.max((ao || {}).at || 0, (an || {}).at || 0) });
+  }
   return m;
 }
 let st;

@@ -158,7 +158,7 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
       ${speakPaused() ? `<p class="muted">Sprechen ist bis ${clockText(st.speakOffUntil)} Uhr pausiert. <button class="linkbtn" data-act="resumespeak">Wieder einschalten</button></p>` : ""}${nextH ? `<p class="muted">${nextH}</p>` : ""}</div>
     ${dialogsHTML()}`;
   if (tab === "friends") return friendsPanelHTML();
-  if (tab === "shop") return `<div class="panel"><h3>Shop</h3>${shopHTML()}</div>`;
+  if (tab === "shop") return `${avatarShopHTML()}<div class="panel"><h3>Shop</h3>${shopHTML()}</div>`;
   if (tab === "profile") return `
     <div class="panel"><h3>👤 ${st.myName ? esc(st.myName) : "Dein Name"}</h3>
       <p class="muted">Bleibt auf deinem Handy (und verschlüsselt in deiner Sicherung). Freunde sehen ihn nur, wenn sie deinen QR-Code scannen.</p>
@@ -323,6 +323,7 @@ function resultHTML() {
     ${r.freezeUsed ? `<p class="muted">🧊 ${r.freezeUsed === 1 ? "Ein Serienschutz hat" : r.freezeUsed + " Serienschutze haben"} deine Serie gerettet.</p>` : ""}
     ${r.quests && r.quests.length ? `<div class="rewards">${r.quests.map(m => `<span>${esc(m)}</span>`).join("")}</div>` : ""}
     ${r.badges && r.badges.length ? `<div class="badge-new">${r.badges.map(b => `<span>${b.em} Neues Abzeichen: ${esc(b.name)}</span>`).join("")}</div>` : ""}
+    ${r.parts && r.parts.length ? `<div class="badge-new">${r.parts.map(it => `<span>🦊 Geschenk für deinen Fuchs: ${esc(it.name)} <button class="linkbtn" data-act="avshow" data-cat="${it.cat}">Anprobieren</button></span>`).join("")}</div>` : ""}
     <div class="tiles3"><div class="st" style="--c:var(--gold)"><small>XP</small><b>${I.bolt(20)}+${r.xp}</b></div>
       <div class="st" style="--c:var(--good)"><small>Genauigkeit</small><b>${r.acc}&nbsp;%</b></div>
       <div class="st" style="--c:var(--accent)"><small>Zeit</small><b>${fmtTime(r.secs)}</b></div></div>
@@ -462,6 +463,15 @@ function modalHTML() {
       ${lvl || replay ? `<p class="muted">Bisher erreicht: ${MEDALS[masteryOf(u.id)]} ${MEDAL_NAMES[masteryOf(u.id)]}.${replay ? " Zur Wiederholung, es gibt weniger Edelsteine." : ""}</p>` : ""}
       <button class="btn gold wide" data-act="startmaster" data-u="${ui.mu}">Los geht's</button><button class="btn ghost wide" data-act="closemodal">Abbrechen</button></div></div>`;
   }
+  if (ui.modal === "buypart") {
+    const it = avatarItem(ui.buyId);
+    if (!it) return "";
+    const short = it.price - (st.gems || 0);
+    return modal(`${esc(it.name)} kaufen?`, `<div class="av-stage">${foxFigureHTML(110, Object.assign(avatarLook(), { [it.cat]: it.id }))}</div>
+      <p class="muted">Kostet 💎 ${it.price}, du hast 💎 ${st.gems || 0}. ${it.cat === "bg" ? "Der Hintergrund" : "Das Teil"} gehört dann für immer deinem Fuchs und lässt sich jederzeit an- und ausziehen. Beim Lernen hilft es nicht, es sieht nur gut aus.</p>
+      ${short > 0 ? `<p class="muted"><b>Dir fehlen noch 💎 ${short}.</b></p>` : ""}
+      <button class="btn good wide" data-act="doavbuy" ${short > 0 || ownsPart(it.id) ? "disabled" : ""}>Für 💎 ${it.price} kaufen</button><button class="btn ghost wide" data-act="closemodal">Abbrechen</button>`);
+  }
   if (ui.modal === "shop") return modal("Shop", shopHTML() + `<button class="btn ghost wide" data-act="closemodal">Schließen</button>`);
   if (ui.modal === "courses") {
     const items = Object.entries(COURSES).map(([code, c]) => `<button class="course ${code === CODE ? "on" : ""}" data-act="pickcourse" data-c="${code}" style="--c:${c.c}">
@@ -594,6 +604,35 @@ function shopHTML() {
     ${ui.shopMsg ? `<p role="status" style="margin:0;font-weight:800;color:var(--good)">${esc(ui.shopMsg)}</p>` : ""}
     <div class="shop">${rows}</div>`;
 }
+/* The fox's wardrobe in the shop tab: a big fox shows what it wears plus what is being tried on (ui.avTry, not saved),
+   below the categories and their parts. Tapping an owned part puts it on or takes it off; any other part is tried on first
+   and bought after a confirmation (modal "buypart"). Milestone parts say what earns them. */
+function avatarShopHTML() {
+  const cat = AVATAR_CATS.some(c => c.id === ui.avCat) ? ui.avCat : AVATAR_CATS[0].id, look = avatarLook();
+  const tryIt = ui.avTry && avatarItem(ui.avTry) && !ownsPart(ui.avTry) ? avatarItem(ui.avTry) : null;
+  const shown = tryIt ? Object.assign({}, look, { [tryIt.cat]: tryIt.id }) : look;
+  const cats = AVATAR_CATS.map(c => `<button class="av-cat ${c.id === cat ? "on" : ""}" role="tab" aria-selected="${c.id === cat}" data-act="avcat" data-cat="${c.id}"><span aria-hidden="true">${c.em}</span>${esc(c.name)}</button>`).join("");
+  const items = AVATAR_ITEMS.filter(it => it.cat === cat).map(it => {
+    const own = ownsPart(it.id), on = look[cat] === it.id, trying = tryIt && tryIt.id === it.id;
+    const tag = on ? "Trägt er" : own ? "Anziehen" : it.free ? "🎁 Geschenk" : `💎 ${it.price}`;
+    return `<button class="av-item ${on ? "on" : ""} ${trying ? "try" : ""} ${own ? "own" : ""}" data-act="avpick" data-id="${it.id}" aria-pressed="${on || !!trying}"
+      aria-label="${esc(it.name)}: ${on ? "trägt er gerade, antippen zum Ausziehen" : own ? "gehört dir, antippen zum Anziehen" : it.free ? "Geschenk für einen Meilenstein, antippen zum Anprobieren" : `kostet ${it.price} Edelsteine, antippen zum Anprobieren`}">
+      ${foxFigureHTML(52, { [cat]: it.id })}<b>${esc(it.name)}</b><small>${tag}</small></button>`;
+  }).join("");
+  let bar = "";
+  if (tryIt) {
+    const ms = tryIt.free && AVATAR_MILESTONES[tryIt.free];
+    bar = `<div class="av-try" role="status"><span><b>Anprobe: ${esc(tryIt.name)}</b><small>${ms ? `Geschenk: ${esc(ms.text)}` : `Kostet 💎 ${tryIt.price}`}</small></span>
+      ${ms ? "" : `<button class="btn good" data-act="avbuy" data-id="${tryIt.id}">Kaufen</button>`}<button class="btn ghost" data-act="avtryoff">Zurück</button></div>`;
+  }
+  return `<div class="panel avshop"><h3>🦊 Dein Fuchs</h3>
+    <p class="muted">Kleide deinen Fuchs ein: Was du kaufst, gehört ihm für immer. Es ist nur zum Anschauen und bleibt auf deinem Gerät (und verschlüsselt in deiner Sicherung).</p>
+    <div class="av-stage">${foxFigureHTML(120, shown)}</div>${bar}
+    ${ui.avMsg ? `<p role="status" style="margin:0;font-weight:800;color:var(--good)">${esc(ui.avMsg)}</p>` : ""}
+    <div class="av-cats" role="tablist" aria-label="Kategorien">${cats}</div>
+    <div class="av-items">${items}</div>
+    ${look[cat] ? `<button class="btn ghost wide" data-act="avoff" data-cat="${cat}">${cat === "bg" ? "Ohne Hintergrund" : `${esc(AVATAR_CATS.find(c => c.id === cat).name)} ausziehen`}</button>` : ""}</div>`;
+}
 /* The logo: the OpenSprachFuchs fox with the "O" (app/img/logo.webp; the launcher icon is cut out from the same picture). */
 const logoHTML = () => `<img class="logo" src="img/logo.webp" alt="" width="34" height="34">`;
 /* Tabs for the levels (A1, A2, B1, B2) above the path, each with its progress. */
@@ -638,11 +677,12 @@ function foxLine() {
   const seed = [...dayStr()].reduce((a, ch) => a + ch.charCodeAt(0), 0);
   return lines[(seed + (ui.foxN || 0)) % lines.length];
 }
-const foxHTML = side => `<button class="path-fox ${side} ${dueWords().length ? "due" : ""} ${Date.now() < (ui.foxHopUntil || 0) ? "hop" : ""}" data-act="fox" aria-label="Fuchs sagt: ${esc(foxLine())}">
-  <span class="fox-say" aria-hidden="true">${esc(foxLine())}</span><img src="img/fox.webp" alt="" width="64" height="64"></button>`;
-const foxCheerHTML = big => `<div class="fox-cheer ${big ? "flip" : ""}" aria-hidden="true"><img src="img/fox.webp" alt="" width="136" height="136">
+/* The fox wears the avatar (avatar.js): all its parts are layers inside .fox-av, the box that is animated. */
+const foxHTML = side => { const look = avatarLook(); return `<button class="path-fox ${side} ${dueWords().length ? "due" : ""} ${Date.now() < (ui.foxHopUntil || 0) ? "hop" : ""} ${look.head || look.bg ? "hat" : ""}" data-act="fox" aria-label="Fuchs sagt: ${esc(foxLine())}">
+  <span class="fox-say" aria-hidden="true">${esc(foxLine())}</span>${foxFigureHTML(64, look)}</button>`; };
+const foxCheerHTML = big => `<div class="fox-cheer ${big ? "flip" : ""}" aria-hidden="true">${foxFigureHTML(136)}
   <span class="spark s1">✨</span><span class="spark s2">${big ? "🌟" : "⭐"}</span><span class="spark s3">✨</span>${big ? `<span class="spark s4">🎉</span>` : ""}</div>`;
-const foxSadHTML = () => `<div class="fox-sad" aria-hidden="true"><img src="img/fox.webp" alt="" width="120" height="120"><span class="fox-say">Kopf hoch!</span></div>`;
+const foxSadHTML = () => `<div class="fox-sad" aria-hidden="true">${foxFigureHTML(120)}<span class="fox-say">Kopf hoch!</span></div>`;
 const qrBox = () => `<div class="qrbox">${qrSVG(acct.key, 200)}<small class="muted">Auf dem neuen Handy mit der Kamera-App scannen, den Text kopieren und bei „Mit Schlüssel anmelden“ einfügen. Zeig den Code niemandem.</small></div>`;
 const modal = (title, body) => `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${title}</h2>${body}</div></div>`;
 const brandHTML = () => `<div class="brand" style="justify-content:center"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>`;

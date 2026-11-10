@@ -414,19 +414,42 @@ input.search.key { text-align: center; text-transform: uppercase; font-size: 1.1
 .path-fox { position: absolute; top: 2.4rem; width: 64px; border: 0; background: none; padding: 0; z-index: 2; animation: fox-bob 2.6s ease-in-out infinite; }
 .path-fox.left { right: calc(100% + .7rem); }
 .path-fox.right { left: calc(100% + .7rem); }
-.path-fox img { display: block; width: 64px; height: 64px; filter: drop-shadow(0 3px 2px rgba(0, 0, 0, .25)); }
+.path-fox .fox-av { filter: drop-shadow(0 3px 2px rgba(0, 0, 0, .25)); }
+.path-fox.hat .fox-say { bottom: calc(100% + .35rem + 10px); }
 .path-fox.hop { animation: fox-hop .7s cubic-bezier(.3, .7, .4, 1); }
 .fox-say { position: absolute; bottom: calc(100% + .35rem); left: 50%; transform: translateX(-50%); width: max-content; max-width: 140px; background: var(--surface); color: var(--ink);
   border: 2px solid var(--line); border-radius: 12px; padding: .3rem .55rem; font-size: .75rem; font-weight: 700; line-height: 1.25; text-align: center; animation: say-in .35s ease-out; }
 .fox-say::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border: 6px solid transparent; border-top-color: var(--line); }
-.fox-cheer { position: relative; width: 150px; height: 150px; display: grid; place-items: center; }
-.fox-cheer img { width: 136px; height: 136px; filter: drop-shadow(0 6px 4px rgba(0, 0, 0, .25)); animation: fox-cheer .8s cubic-bezier(.3, 1.4, .5, 1) both, fox-jump 1.4s ease-in-out .9s infinite; }
-.fox-cheer.flip img { animation: fox-cheer .8s cubic-bezier(.3, 1.4, .5, 1) both, fox-flip 1.1s ease-in-out .9s, fox-jump 1.4s ease-in-out 2.1s infinite; }
+.fox-cheer { position: relative; width: 150px; min-height: 150px; display: grid; place-items: center; }
+.fox-cheer .fox-av { filter: drop-shadow(0 6px 4px rgba(0, 0, 0, .25)); animation: fox-cheer .8s cubic-bezier(.3, 1.4, .5, 1) both, fox-jump 1.4s ease-in-out .9s infinite; }
+.fox-cheer.flip .fox-av { animation: fox-cheer .8s cubic-bezier(.3, 1.4, .5, 1) both, fox-flip 1.1s ease-in-out .9s, fox-jump 1.4s ease-in-out 2.1s infinite; }
 .spark { position: absolute; font-size: 1.4rem; opacity: 0; animation: spark 1.6s ease-out infinite; }
 .spark.s1 { top: 6%; left: 2%; animation-delay: .6s; } .spark.s2 { top: 0; right: 4%; animation-delay: 1s; }
 .spark.s3 { bottom: 14%; left: -6%; animation-delay: 1.4s; } .spark.s4 { bottom: 10%; right: -6%; animation-delay: .8s; }
-.fox-sad { position: relative; width: 140px; height: 140px; display: grid; place-items: end center; margin-top: 2.2rem; }
-.fox-sad img { width: 120px; height: 120px; filter: saturate(.75) drop-shadow(0 5px 4px rgba(0, 0, 0, .25)); animation: fox-sad 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+.fox-sad { position: relative; width: 140px; min-height: 140px; display: grid; place-items: end center; margin-top: 2.2rem; }
+.fox-sad .fox-av { width: 120px; height: 120px; filter: saturate(.75) drop-shadow(0 5px 4px rgba(0, 0, 0, .25)); animation: fox-sad 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+/* The fox as avatar (avatar.js): the picture and its parts are layers of .fox-av, the box that moves. Each part has its
+   box in percent of the fox (inline style), so it sits right at every size. */
+.fox-av { position: relative; display: block; flex: none; }
+.fox-av .fox-img { position: relative; z-index: 2; display: block; width: 100%; height: 100%; }
+.fox-av .acc { position: absolute; display: block; max-width: none; pointer-events: none; }
+.avshop { display: grid; gap: .7rem; }
+.av-stage { display: grid; place-items: center; padding: 1.6rem 0 .2rem; }
+.av-stage .acc { animation: acc-pop .35s cubic-bezier(.3, 1.4, .5, 1); }
+.av-try { display: flex; gap: .5rem; align-items: center; border: 2px solid var(--gold); border-radius: 14px; padding: .6rem .7rem; }
+.av-try > span { flex: 1; min-width: 0; } .av-try small { display: block; color: var(--ink-2); }
+.av-try .btn { padding: .55rem .8rem; font-size: .78rem; white-space: nowrap; }
+.av-cats { display: flex; gap: .4rem; overflow-x: auto; scrollbar-width: none; padding-bottom: .1rem; }
+.av-cats::-webkit-scrollbar { display: none; }
+.av-cat { flex: none; display: flex; gap: .3rem; align-items: center; border: 2px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink);
+  font: inherit; font-size: .8rem; font-weight: 800; padding: .4rem .7rem; cursor: pointer; }
+.av-cat.on { border-color: var(--accent); color: var(--accent); }
+.av-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: .5rem; }
+.av-item { display: grid; justify-items: center; gap: .15rem; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink);
+  font: inherit; padding: 1rem .3rem .5rem; cursor: pointer; text-align: center; }
+.av-item b { font-size: .78rem; line-height: 1.15; } .av-item small { font-size: .72rem; color: var(--ink-2); font-weight: 700; }
+.av-item.own small { color: var(--good); } .av-item.on { border-color: var(--good); } .av-item.try { border-color: var(--gold); }
+@keyframes acc-pop { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes fox-bob { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-5px) rotate(3deg); } }
 @keyframes fox-hop { 0% { transform: none; } 20% { transform: scale(1.12, .84); } 50% { transform: translateY(-26px) scale(.94, 1.08) rotate(-10deg); } 80% { transform: scale(1.08, .92); } 100% { transform: none; } }
 @keyframes say-in { from { opacity: 0; transform: translate(-50%, 6px) scale(.9); } to { opacity: 1; transform: translateX(-50%); } }

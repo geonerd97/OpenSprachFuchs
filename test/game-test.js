@@ -186,10 +186,10 @@ for (const code of codes) {
 }
 
 // Shared answer helper for flows below: answers every task correctly through the real check().
-function answerAll(L) {
-  for (let guard = 0; guard < 80 && g.view === "lesson"; guard++) {
+function answerAll(L, gm = g) {
+  for (let guard = 0; guard < 80 && gm.view === "lesson"; guard++) {
     const ex = L.cur;
-    if (ex.type === "intro") { g.cont(); continue; }
+    if (ex.type === "intro") { gm.cont(); continue; }
     if (ex.type === "match") { L.checked = true; L.res = { ok: true }; L.done++; L.right++; }
     else {
       if (["choice", "pic", "gap"].includes(ex.type)) L.sel = ex.ans;
@@ -197,12 +197,12 @@ function answerAll(L) {
         const used = new Set(); L.picked = [];
         for (const t of ex.target.replace(/[.,!?¿¡]/g, "").split(" ").filter(Boolean)) { const tile = ex.tiles.find(x => x.t === t && !used.has(x.id)); used.add(tile.id); L.picked.push(tile.id); }
       } else if (ex.type === "type") global.document.getElementById = () => ({ value: ex.target });
-      g.ui.modal = null;
-      g.check(false);
+      gm.ui.modal = null;
+      gm.check(false);
       global.document.getElementById = () => el();
       if (!L.res || !L.res.ok) fail("Antwort abgelehnt", ex.type, ex.target || ex.full);
     }
-    g.cont();
+    gm.cont();
   }
 }
 
@@ -392,6 +392,92 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   g.st.boostUntil = Date.now() + 60000; g.startLesson(0, 0); answerAll(g.L);
   if (!g.result.boosted || g.result.xp < 30) fail("Doppel-XP wirkt nicht", g.result.xp);
   g.st.boostUntil = 0; g.ui.modal = "shop"; g.modalHTML(); g.ui.modal = null; g.resultHTML();
+}
+
+// The fox as avatar (avatar.js): the catalogue, try-on and buying in the shop, merging two saves, milestone gifts and
+// the parts as layers of every fox (on the path, cheering, sad).
+{
+  const a = loadGame();
+  const cats = new Set(a.AVATAR_CATS.map(c => c.id)), ids = new Set();
+  for (const it of a.AVATAR_ITEMS) {
+    if (!/^[a-z][a-z0-9_]*$/.test(it.id) || ids.has(it.id)) fail("Avatar-Teil ohne gültige, eindeutige ID", it.id);
+    ids.add(it.id);
+    if (!cats.has(it.cat)) fail("Avatar-Teil in unbekannter Kategorie", it.id, it.cat);
+    if (it.free ? !a.AVATAR_MILESTONES[it.free] || it.price !== undefined : !(Number.isInteger(it.price) && it.price > 0)) fail("Avatar-Teil ohne Preis oder Meilenstein", it.id);
+    if (!it.name || it.at.length !== 4 || it.at.some(v => typeof v !== "number")) fail("Avatar-Teil ohne Name oder Position", it.id);
+    const file = path.join(__dirname, "..", "app", "img", "acc", it.id + ".svg");
+    if (!fs.existsSync(file)) { fail("Grafik fehlt", file); continue; }
+    const vb = (fs.readFileSync(file, "utf8").match(/viewBox="([^"]+)"/) || [])[1];
+    if (!vb || vb.split(/\s+/).map(Number).join() !== it.at.join()) fail("Position im Katalog passt nicht zur viewBox der Grafik", it.id, vb, it.at);
+  }
+  for (const c of cats) { const n = a.AVATAR_ITEMS.filter(it => it.cat === c).length; if (n < 2 || n > 3) fail("Kategorie mit falscher Teilezahl", c, n); }
+  for (const m of Object.keys(a.AVATAR_MILESTONES)) if (!a.AVATAR_ITEMS.some(it => it.free === m)) fail("Meilenstein ohne Teil", m);
+  a.view = "home"; a.ui.tab = "shop";
+  let h = a.homeHTML();
+  for (const c of cats) if (!h.includes(`data-act="avcat" data-cat="${c}"`)) fail("Kategorie fehlt im Shop", c);
+  // Try on, then buy with a confirmation: exactly the price, once.
+  a.st.gems = 200;
+  a.click("avcat", { cat: "eyes" }); a.click("avpick", { id: "sunglasses" });
+  h = a.homeHTML();
+  if (a.ui.avTry !== "sunglasses" || !h.includes("Anprobe: Sonnenbrille") || !/class="av-stage"><span class="fox-av[^>]*><img[^>]*data-part="sunglasses"/.test(h)) fail("Anprobieren zeigt die Brille nicht am Fuchs");
+  if (a.ownsPart("sunglasses") || a.avatarLook().eyes || a.st.gems !== 200) fail("Anprobieren kauft oder zieht schon an");
+  a.click("avbuy", { id: "sunglasses" });
+  if (a.ui.modal !== "buypart" || !a.modalHTML().includes('data-act="doavbuy"')) fail("Kaufbestätigung fehlt");
+  a.click("doavbuy");
+  if (a.st.gems !== 120 || !a.ownsPart("sunglasses") || a.avatarLook().eyes !== "sunglasses" || a.ui.avTry) fail("Kauf zieht nicht genau den Preis ab oder zieht nicht an", a.st.gems);
+  a.click("avbuy", { id: "sunglasses" }); a.click("doavbuy");
+  if (a.buyPart("sunglasses") || a.st.gems !== 120 || a.st.avatar.owned.filter(id => id === "sunglasses").length !== 1) fail("Teil zweimal gekauft", a.st.gems);
+  if (a.buyPart("beanie") || a.ownsPart("beanie")) fail("Meilenstein-Teil lässt sich kaufen");
+  if (a.buyPart("crown") || a.st.gems !== 120) fail("Kauf ohne genug Edelsteine");
+  if (a.buyPart("nope")) fail("Unbekanntes Teil gekauft");
+  a.click("avpick", { id: "sunglasses" });
+  if (a.avatarLook().eyes) fail("Antippen zieht die Brille nicht aus");
+  a.click("avpick", { id: "sunglasses" });
+  if (a.avatarLook().eyes !== "sunglasses") fail("Antippen zieht die Brille nicht wieder an");
+  if (a.wearPart("head", "crown")) fail("Nicht gekauftes Teil angezogen");
+  if (!JSON.parse(a.store["opensprachfuchs-state"]).avatar.owned.includes("sunglasses")) fail("Kauf nicht gespeichert");
+  // Two devices: a part bought on each one; both stay. The look comes from the device that changed it last.
+  const t = Date.now();
+  const x = a.fromSaved({ savedAt: t + 5000, gems: 10, avatar: { owned: ["cap"], worn: { head: "cap" }, bg: "", at: t } });
+  const y = a.fromSaved({ savedAt: t, gems: 30, avatar: { owned: ["crown", "bg_night"], worn: { head: "crown" }, bg: "bg_night", at: t + 1000 } });
+  for (const m of [a.mergeSaves(x, y), a.mergeSaves(y, x), a.mergeSaves(JSON.parse(JSON.stringify(x)), JSON.parse(JSON.stringify(y)))]) {
+    if (!["cap", "crown", "bg_night"].every(id => m.avatar.owned.includes(id)) || m.avatar.owned.length !== 3) fail("Zusammenführen verliert einen Kauf", m.avatar.owned);
+    if (m.avatar.worn.head !== "crown" || m.avatar.bg !== "bg_night") fail("Zusammenführen nimmt nicht das zuletzt geänderte Aussehen", JSON.stringify(m.avatar));
+  }
+  const plain = a.fromSaved({ savedAt: t + 9000, xp: 50 }), m2 = a.mergeSaves(x, plain);
+  if (!m2.avatar || m2.avatar.worn.head !== "cap" || !m2.avatar.owned.includes("cap")) fail("Gerät ohne Fuchs-Daten zieht den Fuchs aus", JSON.stringify(m2.avatar));
+  const taken = a.fromSaved({ savedAt: t + 9000, avatar: { owned: ["cap"], worn: {}, bg: "", at: t + 9000 } });
+  if (a.mergeSaves(x, taken).avatar.worn.head) fail("Ausgezogenes Teil kommt beim Zusammenführen zurück");
+  // Milestones: each free part comes once, when its condition holds.
+  const b = loadGame();
+  b.st.badges = {}; b.st.bestStreak = 0; b.st.avatar = undefined;
+  if (b.checkAvatarMilestones().length) fail("Meilenstein-Teil ohne Meilenstein");
+  b.st.bestStreak = 7;
+  let got = b.checkAvatarMilestones().map(it => it.id);
+  if (got.join() !== "beanie" || b.checkAvatarMilestones().length) fail("Pudelmütze nicht genau einmal für 7 Tage Serie", got);
+  b.startLesson(0, 0); answerAll(b.L, b);
+  if (!b.result.parts || !b.result.parts.some(it => it.id === "round_glasses") || !b.resultHTML().includes("Runde Brille")) fail("Runde Brille fürs erste Abzeichen fehlt im Ergebnis");
+  const u0 = b.UNITS()[0];
+  b.cs().progress[u0.id] = b.lessonsOf(u0);
+  got = b.checkAvatarMilestones().map(it => it.id);
+  if (got.join() !== "bandana") fail("Halstuch für die erste Einheit nicht vergeben", got);
+  b.startLesson(0, 1); answerAll(b.L, b);
+  if (b.result.parts.length || b.checkAvatarMilestones().length) fail("Meilenstein-Teil doppelt vergeben");
+  for (const id of ["beanie", "round_glasses", "bandana"]) if (b.st.avatar.owned.filter(x => x === id).length !== 1) fail("Meilenstein-Teil nicht genau einmal im Besitz", id);
+  // The parts are layers inside the box that moves, in every fox.
+  b.st.avatar.owned.push("crown", "scarf", "hoodie", "bg_night", "sunglasses");
+  for (const [cat, id] of [["head", "crown"], ["eyes", "sunglasses"], ["neck", "scarf"], ["body", "hoodie"], ["bg", "bg_night"]]) if (!b.wearPart(cat, id)) fail("Anziehen klappt nicht", id);
+  const inBox = html => { const m = html.match(/<span class="fox-av[^"]*"[^>]*>(.*?)<img class="fox-img" src="img\/fox\.webp"/s); return m ? ["crown", "sunglasses", "scarf", "hoodie", "bg_night"].every(id => m[1].includes(`data-part="${id}"`)) : false; };
+  if (!inBox(b.foxHTML("left"))) fail("Fuchs auf dem Lernweg ohne Avatar");
+  if (!inBox(b.foxCheerHTML(true)) || !inBox(b.foxCheerHTML(false))) fail("Jubelnder Fuchs ohne Avatar");
+  if (!inBox(b.foxSadHTML())) fail("Trauriger Fuchs ohne Avatar");
+  b.view = "home"; b.ui.tab = "path";
+  if (!inBox(b.homeHTML())) fail("Lernweg zeigt den Fuchs ohne Avatar");
+  if (!/left:-?[\d.]+%;top:-?[\d.]+%;width:[\d.]+%;height:[\d.]+%/.test(b.foxHTML("left"))) fail("Avatar-Teile nicht in Prozent verankert");
+  // A part from a newer app version (unknown id) is ignored, not drawn and not lost.
+  b.st.avatar.owned.push("future_hat"); b.st.avatar.worn.head = "future_hat";
+  if (b.foxHTML("left").includes("future_hat") || b.avatarLook().head) fail("Unbekanntes Teil wird gezeichnet");
+  if (!b.st.avatar.owned.includes("future_hat")) fail("Unbekanntes Teil geht verloren");
 }
 
 // Dialogues: every scene of every language can be played to the end; a wrong pick counts as a mistake.

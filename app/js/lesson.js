@@ -306,10 +306,11 @@ function finish() {
     heartsGained = st.hearts - before;
   }
   const quests = claimQuests();
+  const parts = checkAvatarMilestones(); // free parts for the fox (avatar.js), after the progress of this round counts
   save();
   const answered = L.done + L.mistakes;
   result = { xp, perfect, acc: Math.round(100 * L.done / Math.max(1, answered)), secs: Math.round((Date.now() - L.startedAt) / 1000),
-    streakUp: st.streak > before ? st.streak : 0, goal: !goalBefore, training: L.kind === "training", vocab: !!L.vocab, badges: fresh,
+    streakUp: st.streak > before ? st.streak : 0, goal: !goalBefore, training: L.kind === "training", vocab: !!L.vocab, badges: fresh, parts,
     placement: L.kind === "placement" ? UNITS[L.unit].title : "", refill: !!L.refill, heartsGained,
     comboBonus, bestCombo: L.bestCombo || 0, blitz, quests, gems, boosted, freezeUsed, master, dialog, bonus,
     unitDone: L.kind === "lesson" && done(UNITS[L.unit].id) >= lessonsOf(UNITS[L.unit]) && L.lesson === lessonsOf(UNITS[L.unit]) - 1 };

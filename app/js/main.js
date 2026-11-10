@@ -58,9 +58,25 @@ app.addEventListener("click", e => {
     case "dlg": dialogPick(+ds.i); return;
     case "master": ui.pop = null; ui.mu = +ds.u; ui.modal = "master"; render(); return;
     case "startmaster": ui.modal = null; startMaster(+ds.u); return;
-    case "shop": ui.pop = null; ui.shopMsg = ""; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
+    case "shop": ui.pop = null; ui.shopMsg = ""; ui.avMsg = ""; ui.avTry = null; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
     case "tab": ui.pop = null; ui.shopMsg = ""; ui.tab = ds.tab; if (ds.tab === "friends") loadFriends(); render(); scrollToCurrent(); return;
     case "buy": if (buy(ds.id)) sfx("win"); render(); return;
+    // The fox's wardrobe (avatar.js, avatarShopHTML in views.js)
+    case "avshow": ui.avCat = ds.cat; ui.avTry = null; ui.avMsg = ""; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
+    case "avcat": ui.avCat = ds.cat; ui.avTry = null; ui.avMsg = ""; sfx("tap"); render(); return;
+    case "avpick": {
+      const it = avatarItem(ds.id); if (!it) return;
+      ui.avMsg = ""; sfx("tap");
+      if (ownsPart(it.id)) { ui.avTry = null; wearPart(it.cat, avatarLook()[it.cat] === it.id ? null : it.id); }
+      else ui.avTry = ui.avTry === it.id ? null : it.id;
+      render(); return;
+    }
+    case "avtryoff": ui.avTry = null; render(); return;
+    case "avoff": wearPart(ds.cat, null); ui.avTry = null; ui.avMsg = ""; render(); return;
+    case "avbuy": ui.buyId = ds.id; ui.modal = "buypart"; render(); return;
+    case "doavbuy": { const it = avatarItem(ui.buyId); ui.modal = null;
+      if (it && buyPart(it.id)) { sfx("win"); ui.avTry = null; ui.avCat = it.cat; ui.avMsg = `${it.name} gehört jetzt deinem Fuchs.`; }
+      render(); return; }
     case "refill": startTraining(true, true); return;
     case "hearts": ui.pop = null; ui.modal = "hearts"; render(); return;
     case "courses": ui.pop = null; ui.modal = "courses"; render(); return;
@@ -242,7 +258,7 @@ if (!st.onboarded) {
   try { stored = localStorage.getItem(ACCOUNT_KEY); } catch (e) {}
   if (stored) st.onboarded = true; else view = "welcome";
 }
-checkBadges();
+checkBadges(); checkAvatarMilestones();
 ui.decay = applyDecay();
 syncReminder(); reportDay();
 render(); scrollToCurrent(); checkVoice();
