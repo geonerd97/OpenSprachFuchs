@@ -9,7 +9,7 @@ function syncReminder() {
     window.AndroidBridge.setReminder(!!st.settings.reminder, h || 0, m || 0);
   } catch (e) {}
 }
-function reportDay() { try { if (APP && window.AndroidBridge.reportDay) window.AndroidBridge.reportDay(st.lastDay || "", shownStreak()); } catch (e) {} }
+function reportDay() { try { if (APP && window.AndroidBridge.reportDay) window.AndroidBridge.reportDay(st.lastDay || "", shownStreak(), streakUntil()); } catch (e) {} }
 app.addEventListener("change", e => {
   if (e.target.id === "reminderTime" && e.target.value) { st.settings.reminderTime = e.target.value; save(); syncReminder(); }
 });
@@ -60,7 +60,7 @@ app.addEventListener("click", e => {
     case "startmaster": ui.modal = null; startMaster(+ds.u); return;
     case "shop": ui.pop = null; ui.shopMsg = ""; ui.avMsg = ""; ui.avTry = null; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
     case "tab": ui.pop = null; ui.shopMsg = ""; ui.tab = ds.tab; if (ds.tab === "friends") loadFriends(); render(); scrollToCurrent(); return;
-    case "buy": if (buy(ds.id)) sfx("win"); render(); return;
+    case "buy": if (buy(ds.id)) { sfx("win"); reportDay(); } render(); return;
     // The fox's wardrobe (avatar.js, avatarShopHTML in views.js)
     case "avshow": ui.avCat = ds.cat; ui.avTry = null; ui.avMsg = ""; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
     case "avcat": ui.avCat = ds.cat; ui.avTry = null; ui.avMsg = ""; sfx("tap"); render(); return;

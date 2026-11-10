@@ -3,13 +3,16 @@ package de.opensprachfuchs.app
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.ClipData
+import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.net.Uri
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -65,6 +68,15 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? =
                     assets.shouldInterceptRequest(request.url)
+
+                // Only the app's own pages stay in the WebView, so AndroidBridge is never exposed to other sites
+                // (issue #37). Other https links open in the browser; everything else is dropped.
+                override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
+                    val url = request.url
+                    if (url.scheme == "https" && url.host == APP_HOST) return false
+                    if (request.isForMainFrame && url.scheme == "https") openExternal(url)
+                    return true
+                }
             }
         }
 
@@ -96,6 +108,13 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         super.onNewIntent(intent)
         val link = linkOf(intent) ?: return
         web.evaluateJavascript("window.opensprachfuchsLink && window.opensprachfuchsLink(${JSONObject.quote(link)})", null)
+    }
+
+    /** Opens [url] in another app (the browser); a toast instead of a crash if there is none (issue #39). */
+    private fun openExternal(url: Uri) {
+        try { startActivity(Intent(Intent.ACTION_VIEW, url)) } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "Keine App zum Öffnen des Links gefunden.", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun linkOf(intent: Intent?): String? =
@@ -311,7 +330,12 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         @JavascriptInterface
         fun copy(text: String) {
             runOnUiThread {
-                getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("OpenSprachFuchs", text))
+                val clip = ClipData.newPlainText("OpenSprachFuchs", text)
+                // Android 13+ hides sensitive clips in the clipboard preview and from keyboard suggestions (issue #38).
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    clip.description.extras = PersistableBundle().apply { putBoolean(ClipDescription.EXTRA_IS_SENSITIVE, true) }
+                }
+                getSystemService(ClipboardManager::class.java).setPrimaryClip(clip)
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Toast.makeText(this@MainActivity, "Kopiert", Toast.LENGTH_SHORT).show()
             }
         }
@@ -320,7 +344,11 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         @JavascriptInterface
         fun share(text: String) {
             runOnUiThread {
-                startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text), null))
+                try {
+                    startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text), null))
+                } catch (e: ActivityNotFoundException) {
+                    Toast.makeText(this@MainActivity, "Teilen ist auf diesem Gerät nicht möglich.", Toast.LENGTH_LONG).show()
+                }
             }
         }
 
@@ -328,18 +356,20 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         @JavascriptInterface
         fun openUrl(url: String) {
             if (!url.startsWith("https://")) return
-            runOnUiThread { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
+            runOnUiThread { openExternal(Uri.parse(url)) }
         }
 
-        /** The page reports the last day with a finished round, so the reminder stays quiet once the goal is met. */
+        /** The page reports the last day with a finished round, so the reminder stays quiet once the goal is met, and
+         *  [until], the last day the streak holds without learning (streak freezes included, issue #44). */
         @JavascriptInterface
-        fun reportDay(lastDay: String, streak: Int) {
-            Reminders.report(this@MainActivity, lastDay, streak)
+        fun reportDay(lastDay: String, streak: Int, until: String) {
+            Reminders.report(this@MainActivity, lastDay, streak, until)
         }
     }
 
     private companion object {
-        const val START_URL = "https://appassets.androidplatform.net/assets/index.html"
+        const val APP_HOST = WebViewAssetLoader.DEFAULT_DOMAIN // appassets.androidplatform.net
+        const val START_URL = "https://$APP_HOST/assets/index.html"
         const val REQ_MIC = 1
         const val REQ_NOTIFY = 2
     }

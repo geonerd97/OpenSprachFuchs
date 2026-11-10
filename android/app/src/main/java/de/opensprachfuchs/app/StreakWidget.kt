@@ -7,7 +7,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import java.time.LocalDate
 
 /**
  * Home-screen widget with the fox, the current streak and whether today's goal is done.
@@ -32,11 +31,8 @@ class StreakWidget : AppWidgetProvider() {
         }
 
         private fun views(c: Context): RemoteViews {
-            val (lastDay, reported) = Reminders.state(c)
-            val today = LocalDate.now()
-            val learnedToday = lastDay == today.toString()
-            // The streak only counts while the last learning day is today or yesterday.
-            val streak = if (learnedToday || lastDay == today.minusDays(1).toString()) reported else 0
+            // Streak freezes keep the streak alive over missed days (issue #44).
+            val (learnedToday, streak) = Reminders.streak(c)
             val v = RemoteViews(c.packageName, R.layout.widget_streak)
             v.setTextViewText(R.id.widget_streak, if (streak > 0) "🔥 $streak ${if (streak == 1) "Tag" else "Tage"}" else "🦊 Los geht's")
             v.setTextViewText(

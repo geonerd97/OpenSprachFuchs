@@ -387,6 +387,16 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   g.st.lastDay = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   g.st.streak = 7; g.st.freezes = 1;
   if (g.shownStreak() !== 7) fail("Serie trotz Schutz nicht angezeigt");
+  // Issue #44: the Android widget and reminder learn from the page until when the streak holds (freezes included).
+  {
+    const ds = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`;
+    const t = new Date(), tom = new Date(); tom.setDate(tom.getDate() + 1);
+    if (g.streakUntil() !== ds(t)) fail("Serie gilt bis: Serienschutz nicht eingerechnet", g.streakUntil());
+    g.st.freezes = 2; if (g.streakUntil() !== ds(tom)) fail("Serie gilt bis: zwei Serienschutze", g.streakUntil());
+    g.st.freezes = 0; const y = new Date(); y.setDate(y.getDate() - 1);
+    if (g.streakUntil() !== ds(y)) fail("Serie gilt bis: ohne Schutz nicht der Tag nach dem letzten Lerntag", g.streakUntil());
+    g.st.freezes = 1;
+  }
   g.startLesson(0, 0); answerAll(g.L);
   if (g.st.streak !== 8 || g.st.freezes !== 0 || g.result.freezeUsed !== 1) fail("Serienschutz greift nicht", g.st.streak, g.st.freezes);
   g.st.boostUntil = Date.now() + 60000; g.startLesson(0, 0); answerAll(g.L);
@@ -635,11 +645,12 @@ g.view = "home";
   const spoken = [], calls = [];
   const a = loadGame({ AndroidBridge: { speak: (t, lang) => { spoken.push(lang + ":" + t); return true; }, speakQueued: (t, lang) => { spoken.push("queued:" + lang + ":" + t); return true; }, stop() {},
     canRecognize: () => true, startListening: lang => calls.push("listen:" + lang), stopListening() {}, appVersion: () => "0.0.1",
-    setReminder: (on, h, m) => calls.push(`reminder:${on}:${h}:${m}`), reportDay: () => calls.push("day"), copy: t => calls.push("copy:" + t), share() {}, openUrl() {} } });
+    setReminder: (on, h, m) => calls.push(`reminder:${on}:${h}:${m}`), reportDay: (day, streak, until) => calls.push(`day:${day}:${streak}:${until}`), copy: t => calls.push("copy:" + t), share() {}, openUrl() {} } });
   a.st.settings.audio = true;
   a.setCourse("pt"); a.speak("Bom dia!");
   if (spoken[0] !== "pt-BR:Bom dia!") fail("App: Sprachausgabe des Handys nicht genutzt", spoken[0]);
   if (!calls.some(c => c.startsWith("reminder:false"))) fail("App: Erinnerung beim Start nicht übergeben");
+  if (!calls.includes("day::0:")) fail("App: Lerntag beim Start nicht mit Gültigkeit der Serie gemeldet", calls.filter(c => c.startsWith("day")));
   a.setCourse("en"); a.st.course = "en";
   const u = a.UNITS()[0], pool = { words: u.words, sentences: u.sentences, used: new Set(), prefer: new Set() };
   const sp = a.generate("speak", pool);

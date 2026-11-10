@@ -109,6 +109,14 @@ function shownStreak() {
   const m = missedDays();
   return m > 0 && m <= (st.freezes || 0) ? st.streak : 0;
 }
+/* The last day (yyyy-mm-dd) on which the streak still holds without learning: the day after the last learning day
+   plus one day per streak freeze. The Android widget and reminder use it once the page is closed (issue #44). */
+function streakUntil() {
+  if (!st.lastDay) return "";
+  const d = new Date(st.lastDay + "T00:00:00");
+  d.setDate(d.getDate() + 1 + (st.freezes || 0));
+  return dayStr(d);
+}
 function syncHearts() {
   if (st.hearts >= MAX_HEARTS) { st.hearts = MAX_HEARTS; return; }
   const n = Math.floor((Date.now() - st.heartsTs) / REGEN_MS);
