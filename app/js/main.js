@@ -261,7 +261,7 @@ if (!st.onboarded) {
 checkBadges(); checkAvatarMilestones();
 ui.decay = applyDecay();
 syncReminder(); reportDay();
-render(); scrollToCurrent(); checkVoice();
+render(); scrollToCurrent(); appStarted = true; checkVoice();
 // Friend links (QR code scanned with the camera): the link that started the app is handled once the account is known,
 // later ones arrive through opensprachfuchsLink.
 // In the web app the friend page /f links to the app as /#f/CODE/Name; the hash is removed again right away.

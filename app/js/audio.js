@@ -53,6 +53,9 @@ const listenPaused = () => Date.now() < (st.listenOffUntil || 0);
    Without a voice, listening tasks become reading tasks and the path shows "Keine Stimme für …".
    Dialects often have no voice at all: "ksh" (Kölsch) and "gsw" (Swiss German) are valid tags that no engine speaks. */
 const voice = { code: "", state: "ok" };
+// Set by main.js once the app has drawn itself: browsers may send "voiceschanged" while the later scripts (lesson.js with
+// view/ui, views.js with render) are still loading; the state is then kept and main.js draws with it.
+let appStarted = false;
 const langOf = tag => String(tag || "").toLowerCase().replace(/_/g, "-");
 function browserVoiceState(tag) {
   let voices = [];
@@ -69,7 +72,7 @@ function checkVoice(retry = 4) {
   } else if (browserTTS()) { voice.code = CODE; voice.state = browserVoiceState(C.speech); }
   else return;
   if (voice.state === "loading" && retry > 0) setTimeout(() => checkVoice(retry - 1), 1500);
-  else if (view === "home" && !ui.modal) render();
+  else if (appStarted && view === "home" && !ui.modal) render();
 }
 // Browsers load their voices late; the list then arrives with "voiceschanged".
 try { if (!APP && browserTTS() && speechSynthesis.addEventListener) speechSynthesis.addEventListener("voiceschanged", () => checkVoice()); } catch (e) {}
