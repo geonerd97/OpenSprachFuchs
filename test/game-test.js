@@ -833,7 +833,10 @@ g.view = "home";
     const calls = [];
     const s = loadGame({ AndroidBridge: { appVersion: () => "0.1.7", speak() {}, stop() {}, openUrl() {}, setReminder: (on, h, m) => calls.push(`reminder:${on}:${h}:${m}`),
       reportDay: (day, streak) => calls.push(`day:${day}:${streak}`) } }, { fetch: async (url, opts) => reply(url, opts || {}) });
-    const tick = async () => { for (let i = 0; i < 20; i++) await new Promise(r => setImmediate(r)); };
+    // Waits until `done()` holds, at most `ms` of real time. Not a fixed number of event-loop turns: the upload behind the
+    // button compresses and encrypts the save in libuv's thread pool (CompressionStream, Web Crypto), which on a busy
+    // machine takes far longer than a few turns (PR #56: the CI runner checked while the upload was still running).
+    const until = async (done, ms = 10000) => { const end = performance.now() + ms; while (!done() && performance.now() < end) await new Promise(r => setImmediate(r)); };
     s.acct.key = s.newKey(); Object.assign(s.acct, await s.deriveKeys(s.acct.key), { status: "ok", pending: false });
     s.st.xp = 123; s.st.savedAt = Date.now(); s.store["opensprachfuchs-state"] = JSON.stringify(s.st);
     const kept = what => { if (!s.acct.key || !s.store["opensprachfuchs-state"] || JSON.parse(s.store["opensprachfuchs-state"]).xp !== 123 || !s.acct.note) fail("Abmelden löscht den Stand " + what); };
@@ -848,7 +851,7 @@ g.view = "home";
     kept("bei gelöschtem Konto");
     // The button: the dialog goes back to the account with the warning instead of the welcome screen.
     s.acct.status = "ok"; reply = () => { throw new Error("offline"); };
-    s.view = "home"; s.ui.modal = "signout"; s.click("dosignout"); await tick();
+    s.view = "home"; s.ui.modal = "signout"; s.click("dosignout"); await until(() => s.ui.modal !== "signout");
     if (s.ui.modal !== "account" || s.view !== "home" || !s.modalHTML().includes("nicht sichern")) fail("Abmelden ohne Sicherung zeigt keine Warnung", s.ui.modal, s.view);
     // #46: a save adopted from the backup reaches widget and reminder.
     const theirs = s.fromSaved({ savedAt: Date.now() + 5000, xp: 500, lastDay: s.st.lastDay || "2026-11-09", streak: 7, settings: { reminder: true, reminderTime: "07:30" } });
