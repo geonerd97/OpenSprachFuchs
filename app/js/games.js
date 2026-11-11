@@ -200,7 +200,7 @@ function gameHTML() {
     <p class="muted">Für diese Einheit hat das Sprachpaket keine passenden Wörter für dieses Spiel. Die Station ist damit geschafft.</p>`;
   if (g.kind === "story") {
     const s = g.story;
-    if (g.phase === "read") return `<div class="tag">${info.em} ${info.name}</div><h2>${s.em || "📖"} ${esc(s.title)}</h2>
+    if (g.phase === "read") return `<div class="tag">${info.em} ${info.name}</div><h2>${esc(s.em || "📖")} ${esc(s.title)}</h2>
       ${C.noListen ? "" : `<div class="row"><button class="btn ghost" data-act="storyall">${I.speaker(18)} Alles vorlesen</button></div>`}
       <div class="story">${s.lines.map(l => `<div class="story-line"><button class="speak sm" data-act="say" data-t="${esc(l.t)}" aria-label="Vorlesen">${I.speaker(16)}</button>
         <div>${hintSpans(l.t, "t")}${trHTML(l.tr)}<details><summary>Übersetzung</summary>${esc(l.de)}</details></div></div>`).join("")}</div>${hintBox()}`;
@@ -265,5 +265,5 @@ function bonusNodeHTML(u, ui_, open, off) {
   const icon = state === "locked" ? I.lock(26) : `<span aria-hidden="true">${info.em}</span>`;
   return `<div class="node-wrap ${state}" style="transform:translateX(${off}px);--c:var(--gold);--cd:var(--gold-deep)">${here ? foxHTML(off > 0 ? "left" : "right") + `<span class="start-tag" style="--c:var(--gold-deep)">START</span>` : ""}
     ${state === "current" ? `<span class="ring" style="--c:var(--gold)">` : ""}<button class="node bonus-node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state === "locked" ? "locked" : "open"}"
-    aria-label="${u.title}, ${kind === "story" ? "Kurzgeschichte" : info.name}${state === "locked" ? ", gesperrt" : fin ? ", geschafft" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
+    aria-label="${esc(u.title)}, ${kind === "story" ? "Kurzgeschichte" : info.name}${state === "locked" ? ", gesperrt" : fin ? ", geschafft" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}</div>${pop}`;
 }

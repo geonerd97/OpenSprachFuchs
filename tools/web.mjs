@@ -19,6 +19,10 @@ const HEAD = `<link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-title" content="SprachFuchs">
 <meta name="description" content="Freie Sprachlern-App für Deutschsprachige: Englisch, Französisch, Spanisch, Italienisch, Portugiesisch und Kroatisch. Ohne Werbung, ohne Tracking.">
 `;
+// The Content-Security-Policy of app/index.html (issue #33) also goes out as a header, there with frame-ancestors,
+// which browsers ignore in a meta tag: nobody may show the app in a frame.
+const CSP = (readFileSync(join(APP, "index.html"), "utf8").match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1];
+if (!CSP) throw new Error("app/index.html: Content-Security-Policy nicht gefunden");
 const HEADERS = `/
   Cache-Control: no-cache
 /index.html
@@ -28,6 +32,7 @@ const HEADERS = `/
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
+  Content-Security-Policy: ${CSP}; frame-ancestors 'none'
 `;
 
 const files = dir => readdirSync(dir).flatMap(f => { const p = join(dir, f); return statSync(p).isDirectory() ? files(p) : [p]; });

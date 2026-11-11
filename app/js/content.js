@@ -75,14 +75,27 @@ async function fetchPackIndex() {
   }
   return PACK_INDEX;
 }
-/** Downloads (or updates) one language. Renders progress through `packs.busy` / `packs.error`. */
+/** SHA-256 of a text as lower-case hex, like tools/packs.mjs writes it into the index. "" without Web Crypto. */
+async function sha256Hex(text) {
+  if (!(typeof crypto === "object" && crypto.subtle)) return "";
+  const d = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)));
+  return Array.from(d, b => b.toString(16).padStart(2, "0")).join("");
+}
+/** Downloads (or updates) one language. Renders progress through `packs.busy` / `packs.error`. A pack is only installed
+   when its text has the checksum of the index (issue #48): a damaged or outdated copy (e.g. from a cache) is refused. */
 async function downloadPack(code) {
   packs.busy = code; packs.error = ""; render();
   try {
     if (!PACK_INDEX) await fetchPackIndex();
     const entry = PACK_INDEX.packs.find(p => p.code === code);
     const r = await fetchTimeout(PACK_INDEX.base + `${code}.json`, { cache: "no-store" });
-    if (!entry || !r.ok || !installPack(await r.text(), entry.sha256)) throw new Error("pack");
+    if (!entry || !r.ok) throw new Error("pack");
+    const text = await r.text();
+    if (!entry.sha256 || (await sha256Hex(text)) !== entry.sha256) {
+      packs.busy = ""; packs.error = "Das Sprachpaket kam nicht vollständig oder nicht in der neuesten Fassung an und wurde nicht installiert. Bitte versuch es in ein paar Minuten noch einmal.";
+      render(); return;
+    }
+    if (!installPack(text, entry.sha256)) throw new Error("pack");
     if (!COURSES[st.course]) st.course = code;
     if (CODE === code || st.course === code || !UNITS.length) { setCourse(st.course); checkVoice(); } // st.course: the language of a save adopted before its pack was here
     save();
