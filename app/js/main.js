@@ -106,7 +106,7 @@ app.addEventListener("click", e => {
     case "savename": setMyName(val("myName")); ui.nameSaved = ui.modal !== "myqr"; render(); setTimeout(() => { ui.nameSaved = false; }, 0); return;
     case "newcode": newFriendCode().then(render); return;
     case "signout": ui.modal = "signout"; render(); return;
-    case "dosignout": signOut().then(() => { ui.modal = null; view = "welcome"; render(); }); return;
+    case "dosignout": signOut().then(ok => { if (ok) { ui.modal = null; view = "welcome"; } else ui.modal = "account"; render(); }); return;
     case "deleteaccount": acct.note = ""; ui.modal = "deleteaccount"; render(); return;
     case "dodeleteaccount": deleteAccount().then(ok => { if (ok) { ui.modal = "account"; acct.note = "Dein Konto wurde gelöscht."; } render(); }); return;
     case "privacy": ui.modal = "privacy"; render(); return;
