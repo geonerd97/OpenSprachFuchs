@@ -28,20 +28,32 @@ const AVATAR_MILESTONES = {
   unit: { text: "Schließ deine erste Einheit ab.", test: () => Object.keys(COURSES).some(c => unitsDone(c) >= 1) },
   streak7: { text: "Lerne 7 Tage am Stück.", test: () => (st.bestStreak || 0) >= 7 },
   badge: { text: "Hol dir dein erstes Abzeichen.", test: () => Object.keys(st.badges || {}).length >= 1 },
+  streak30: { text: "Lerne 30 Tage am Stück.", test: () => (st.bestStreak || 0) >= 30 },
 };
 const AVATAR_ITEMS = [
   { id: "cap", cat: "head", name: "Basecap", price: 80, at: [18, -4, 64, 30] },
   { id: "beanie", cat: "head", name: "Pudelmütze", free: "streak7", at: [20, -14, 60, 40] },
   { id: "crown", cat: "head", name: "Krone", price: 250, at: [30, -8, 40, 28] },
+  { id: "straw_hat", cat: "head", name: "Strohhut", price: 100, at: [10, -6, 80, 32] },
+  { id: "beret", cat: "head", name: "Baskenmütze", price: 90, at: [22, -4, 56, 28] },
+  { id: "flower_crown", cat: "head", name: "Blumenkranz", free: "streak30", at: [18, 4, 64, 22] },
   { id: "sunglasses", cat: "eyes", name: "Sonnenbrille", price: 80, at: [12, 38, 76, 26] },
   { id: "round_glasses", cat: "eyes", name: "Runde Brille", free: "badge", at: [12, 38, 76, 28] },
+  { id: "heart_glasses", cat: "eyes", name: "Herzbrille", price: 90, at: [12, 38, 76, 28] },
+  { id: "monocle", cat: "eyes", name: "Monokel", price: 180, at: [54, 38, 34, 50] },
   { id: "scarf", cat: "neck", name: "Ringelschal", price: 60, at: [18, 78, 64, 42] },
   { id: "bandana", cat: "neck", name: "Entdecker-Halstuch", free: "unit", at: [20, 80, 60, 36] },
+  { id: "bow_tie", cat: "neck", name: "Fliege", price: 50, at: [34, 84, 32, 16] },
+  { id: "flower_lei", cat: "neck", name: "Blumenkette", price: 80, at: [18, 80, 64, 30] },
   { id: "hoodie", cat: "body", name: "Kapuzenpulli", price: 120, at: [4, 76, 92, 38] },
   { id: "striped_shirt", cat: "body", name: "Ringelshirt", price: 100, at: [4, 76, 92, 38] },
+  { id: "raincoat", cat: "body", name: "Regenjacke", price: 110, at: [4, 76, 92, 38] },
+  { id: "jersey", cat: "body", name: "Trikot", price: 130, at: [4, 76, 92, 38] },
   { id: "bg_meadow", cat: "bg", name: "Sommerwiese", price: 60, at: [-10, -10, 120, 126] },
   { id: "bg_beach", cat: "bg", name: "Strand", price: 100, at: [-10, -10, 120, 126] },
   { id: "bg_night", cat: "bg", name: "Sternenhimmel", price: 150, at: [-10, -10, 120, 126] },
+  { id: "bg_mountains", cat: "bg", name: "Bergsee", price: 120, at: [-10, -10, 120, 126] },
+  { id: "bg_city", cat: "bg", name: "Altstadt am Abend", price: 180, at: [-10, -10, 120, 126] },
 ];
 const avatarItem = id => AVATAR_ITEMS.find(x => x.id === id);
 const av = () => {

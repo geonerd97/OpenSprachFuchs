@@ -420,7 +420,7 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
     const vb = (fs.readFileSync(file, "utf8").match(/viewBox="([^"]+)"/) || [])[1];
     if (!vb || vb.split(/\s+/).map(Number).join() !== it.at.join()) fail("Position im Katalog passt nicht zur viewBox der Grafik", it.id, vb, it.at);
   }
-  for (const c of cats) { const n = a.AVATAR_ITEMS.filter(it => it.cat === c).length; if (n < 2 || n > 3) fail("Kategorie mit falscher Teilezahl", c, n); }
+  for (const c of cats) { const n = a.AVATAR_ITEMS.filter(it => it.cat === c).length; if (n < 2 || n > 6) fail("Kategorie mit falscher Teilezahl", c, n); }
   for (const m of Object.keys(a.AVATAR_MILESTONES)) if (!a.AVATAR_ITEMS.some(it => it.free === m)) fail("Meilenstein ohne Teil", m);
   a.view = "home"; a.ui.tab = "shop";
   let h = a.homeHTML();
@@ -446,6 +446,20 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   if (a.avatarLook().eyes !== "sunglasses") fail("Antippen zieht die Brille nicht wieder an");
   if (a.wearPart("head", "crown")) fail("Nicht gekauftes Teil angezogen");
   if (!JSON.parse(a.store["opensprachfuchs-state"]).avatar.owned.includes("sunglasses")) fail("Kauf nicht gespeichert");
+  // Every part with a price can be bought and worn, and shows on the fox in the shop.
+  {
+    const e = loadGame(), shop = AVATAR => AVATAR.filter(it => !it.free);
+    e.st.gems = shop(e.AVATAR_ITEMS).reduce((n, it) => n + it.price, 0); e.st.avatar = undefined;
+    for (const it of shop(e.AVATAR_ITEMS)) {
+      const before = e.st.gems;
+      e.click("avcat", { cat: it.cat }); e.click("avpick", { id: it.id });
+      e.ui.tab = "shop"; e.view = "home";
+      if (!e.homeHTML().includes(`data-part="${it.id}"`)) fail("Teil im Shop nicht zu sehen", it.id);
+      e.click("avbuy", { id: it.id }); e.click("doavbuy");
+      if (!e.ownsPart(it.id) || e.avatarLook()[it.cat] !== it.id || e.st.gems !== before - it.price) fail("Teil lässt sich nicht kaufen oder anziehen", it.id, e.st.gems);
+    }
+    if (e.st.gems !== 0) fail("Edelsteine nach allen Käufen nicht verbraucht", e.st.gems);
+  }
   // Two devices: a part bought on each one; both stay. The look comes from the device that changed it last.
   const t = Date.now();
   const x = a.fromSaved({ savedAt: t + 5000, gems: 10, avatar: { owned: ["cap"], worn: { head: "cap" }, bg: "", at: t } });
@@ -474,6 +488,9 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   b.startLesson(0, 1); answerAll(b.L, b);
   if (b.result.parts.length || b.checkAvatarMilestones().length) fail("Meilenstein-Teil doppelt vergeben");
   for (const id of ["beanie", "round_glasses", "bandana"]) if (b.st.avatar.owned.filter(x => x === id).length !== 1) fail("Meilenstein-Teil nicht genau einmal im Besitz", id);
+  b.st.bestStreak = 30;
+  got = b.checkAvatarMilestones().map(it => it.id);
+  if (got.join() !== "flower_crown" || b.checkAvatarMilestones().length) fail("Blumenkranz nicht genau einmal für 30 Tage Serie", got);
   // The parts are layers inside the box that moves, in every fox.
   b.st.avatar.owned.push("crown", "scarf", "hoodie", "bg_night", "sunglasses");
   for (const [cat, id] of [["head", "crown"], ["eyes", "sunglasses"], ["neck", "scarf"], ["body", "hoodie"], ["bg", "bg_night"]]) if (!b.wearPart(cat, id)) fail("Anziehen klappt nicht", id);
