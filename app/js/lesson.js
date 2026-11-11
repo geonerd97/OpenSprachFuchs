@@ -262,6 +262,9 @@ function finish() {
   const rec = dayRec(); rec.xp += xp; rec.lessons++;
   // Never move this back: a bought pause protection (shop) puts it into the future and must survive a round.
   cs().last = Math.max(cs().last || 0, Date.now());
+  // When this course was played and where it grew, so that a merge keeps progress made after a take-back (mergeCuts).
+  { const c = cs(), now = Date.now(), gain = c.gainAt || (c.gainAt = {}); c.playedAt = now;
+    if (["lesson", "bonus", "master", "placement"].includes(L.kind) && UNITS[L.unit]) for (let i = L.kind === "placement" ? 0 : L.unit; i <= L.unit; i++) gain[UNITS[i].id] = now; }
   if (perfect && L.kind === "lesson") { st.perfect = (st.perfect || 0) + 1; bump(rec, "perfect"); }
   let blitz = null;
   if (L.kind === "blitz") {

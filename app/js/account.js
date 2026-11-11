@@ -124,6 +124,7 @@ function adopt(state, savedAt) {
   try { localStorage.setItem(STORE, JSON.stringify(st)); } catch (e) {}
   setCourse(st.course);
   const notes = applyDecay(); if (notes.length) ui.decay = notes;
+  syncReminder(); reportDay(); // widget and daily reminder (Android) learn the adopted streak and settings (issue #46)
 }
 
 /* Backup: every save() schedules an upload a moment later. st.syncedAt is the backup's savedAt when this device last
@@ -203,14 +204,34 @@ async function deleteAccount() {
   st.friends = {}; st.dayReported = ""; save();
   return true;
 }
-/** Signs out: the key and all progress leave this device (the backup stays and comes back with the key). */
-async function signOut() {
+/** Uploads the save now; true only if the backup then holds exactly this device's save. */
+async function backupNow() {
   clearTimeout(acct.timer);
-  if (acct.status === "ok") await pushSave();
+  if (!acct.aes || acct.busy || acct.status === "gone") return false;
+  if (acct.pending && !(await ensureRegistered())) return false;
+  if (!st.savedAt) st.savedAt = Date.now();
+  // A 409 merges with the backup first (pullSave), so a second upload may be needed for the merged save.
+  for (let i = 0; i < 3 && !(acct.status === "ok" && st.syncedAt === st.savedAt); i++) {
+    await pushSave(); clearTimeout(acct.timer);
+    if (acct.status !== "ok") break;
+  }
+  return acct.status === "ok" && st.syncedAt === st.savedAt;
+}
+/** Signs out: the key and all progress leave this device (the backup stays and comes back with the key). Only once
+   the backup holds this device's save (issue #34): offline or after a failed upload the progress stays here. */
+async function signOut() {
+  acct.note = "";
+  if (!(await backupNow())) {
+    acct.note = acct.status === "gone" ? "Dieses Konto gibt es nicht mehr. Dein Fortschritt ist nur noch auf diesem Gerät, deshalb bleibt er hier."
+      : "Dein Fortschritt ließ sich gerade nicht sichern. Damit nichts verloren geht, bleibst du angemeldet. Versuch es mit Internet noch einmal.";
+    scheduleBackup();
+    return false;
+  }
   forgetAccount();
   st = fromSaved(null);
   try { localStorage.removeItem(STORE); } catch (e) {}
   setCourse(st.course);
+  return true;
 }
 async function newFriendCode() {
   const r = await api("POST", "account/friend-code");

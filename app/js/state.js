@@ -50,6 +50,10 @@ function mergeSaves(x, y) {
   m.quests = qo && qn && qo.day === qn.day ? mergeValue(qo, qn) : (qo && qn ? (qo.day > qn.day ? qo : qn) : qn || qo);
   if (m.quests && qo && qn && qo.day === qn.day) m.quests.ids = qn.ids;
   if (older.day !== newer.day) m.dayLessons = (older.day || "") > (newer.day || "") ? older.dayLessons : newer.dayLessons;
+  // The streak belongs to its last learning day (issue #35): the larger number alone would bring a lost streak back.
+  const [early, late] = (older.lastDay || "") > (newer.lastDay || "") ? [newer, older] : [older, newer];
+  m.lastDay = late.lastDay || early.lastDay || null; m.streak = joinStreaks(early, late);
+  mergeCuts(m, older, newer);
   // The fox (avatar.js): owned parts are joined, so nothing bought on one device gets lost; what the fox wears and the
   // background come whole from the save that changed the look last (avatar.at), on a tie from the newer save.
   const ao = older.avatar, an = newer.avatar;
@@ -59,6 +63,57 @@ function mergeSaves(x, y) {
       worn: Object.assign({}, look.worn || {}), bg: look.bg || "", at: Math.max((ao || {}).at || 0, (an || {}).at || 0) });
   }
   return m;
+}
+/** The streak of two saves, `late` with the later (or the same) lastDay. The earlier save's streak only counts on when
+   the later one's streak reaches back to it (learned on every day in between); otherwise it was lost meanwhile. */
+function joinStreaks(early, late) {
+  const a = early.streak || 0, b = late.streak || 0;
+  if (!late.lastDay) return Math.max(a, b);
+  if (!early.lastDay) return b;
+  const gap = Math.round((new Date(late.lastDay + "T00:00:00") - new Date(early.lastDay + "T00:00:00")) / 864e5);
+  return b >= gap ? Math.max(b, a + gap) : b;
+}
+/* Take-backs (issue #36): the decay and "Zurücksetzen ab Einheit" lower progress, which the merge above would bring
+   back from the other save. So each course notes, per unit, when it was taken back last (cuts[unit] = { at, was } for
+   the decay, was = the lessons before it; { at, reset: true } for a reset) and when progress grew last (gainAt[unit];
+   playedAt for any finished round in the course). The rule: a save never loses progress that the other save did not
+   take back. A take-back wins in a unit unless the other save learned there after it (gainAt later), and a decay
+   only takes back what it had: if the other save holds more lessons than `was`, they stay. A reset also takes back
+   the unit's bonus station, medals, statistics and words; the words only if the other save played nothing since. */
+const UNIT_FIELDS = ["progress", "bonus", "mastery", "unitStats"];
+function mergeCuts(m, older, newer) {
+  for (const code of Object.keys(m.courses || {})) {
+    const a = (older.courses || {})[code], b = (newer.courses || {})[code], mc = m.courses[code];
+    if (!a || !b || !(a.cuts || b.cuts)) continue;
+    const cuts = {}, wordsFrom = {};
+    for (const id of new Set([...Object.keys(a.cuts || {}), ...Object.keys(b.cuts || {})])) {
+      const ca = (a.cuts || {})[id], cb = (b.cuts || {})[id];
+      const [R, O, cut] = !cb || (ca && ca.at >= cb.at) ? [a, b, ca] : [b, a, cb]; // R took back last
+      cuts[id] = Object.assign({}, cut);
+      if (((O.gainAt || {})[id] || 0) > cut.at) continue; // learned there after the take-back: nothing of it is lost
+      const fields = cut.reset ? UNIT_FIELDS : ((O.progress || {})[id] || 0) <= (cut.was || 0) ? ["progress"] : [];
+      for (const f of fields) {
+        const v = (R[f] || {})[id];
+        mc[f] = mc[f] || {};
+        if (v === undefined) delete mc[f][id]; else mc[f][id] = JSON.parse(JSON.stringify(v));
+      }
+      if (cut.reset && !((O.playedAt || 0) > cut.at)) wordsFrom[id] = R;
+    }
+    mc.cuts = cuts;
+    if (!Object.keys(wordsFrom).length) continue;
+    const unitOf = {};
+    for (const u of unitsFor(code)) {
+      for (const w of u.words) unitOf[w.id] = unitOf["w:" + w.id] = u.id;
+      for (const s of u.sentences || []) unitOf["s:" + s.id] = u.id;
+    }
+    const from = key => wordsFrom[unitOf[key]];
+    for (const f of ["srs", "seen"]) for (const key of Object.keys(mc[f] || {})) {
+      const R = from(key);
+      if (!R) continue;
+      if ((R[f] || {})[key] === undefined) delete mc[f][key]; else mc[f][key] = JSON.parse(JSON.stringify(R[f][key]));
+    }
+    if (mc.mistakes) mc.mistakes = mc.mistakes.filter(key => !from(key) || (from(key).mistakes || []).includes(key));
+  }
 }
 let st;
 try { st = fromSaved(JSON.parse(localStorage.getItem(STORE))); } catch (e) { st = fromSaved(null); }
@@ -208,6 +263,8 @@ function resetCourseFrom(from) {
   c.mistakes = (c.mistakes || []).filter(key => !inReset(key));
   for (const id of ids) { if (c.unitStats) delete c.unitStats[id]; if (c.bonus) delete c.bonus[id]; if (c.mastery) delete c.mastery[id]; }
   for (const u of UNITS.slice(from)) for (const w of u.words) if (c.seen) delete c.seen[w.id];
+  const cuts = c.cuts || (c.cuts = {}), now = Date.now();
+  for (const id of ids) cuts[id] = { at: now, reset: true }; // so that merging with another save keeps the reset (mergeCuts)
   save();
 }
 /* Practising a language keeps it fresh. Every full 14 days without a finished round in a started language
@@ -228,7 +285,11 @@ function applyDecay(now = Date.now()) {
       let i = units.length - 1;
       while (i >= 0 && !(c.progress[units[i].id] > 0)) i--;
       if (i < 0) break;
-      c.progress[units[i].id]--; lost++;
+      // Noted for merging (mergeCuts): `was` stays the count before the first decay since the unit last grew.
+      const id = units[i].id, cuts = c.cuts || (c.cuts = {}), old = cuts[id];
+      const was = old && !old.reset && ((c.gainAt || {})[id] || 0) < old.at ? Math.max(old.was || 0, c.progress[id]) : c.progress[id];
+      cuts[id] = { at: now, was };
+      c.progress[id]--; lost++;
     }
     c.last += steps * DECAY_DAYS * DAY_MS;
     if (lost) notes.push({ code, lost, days });

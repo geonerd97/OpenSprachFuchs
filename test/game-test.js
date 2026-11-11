@@ -757,6 +757,117 @@ g.view = "home";
     if (!g.streakHTML().includes("1 Tag in Folge!") || g.streakHTML().includes('class="old"')) fail("Erster Tag zeigt eine alte Zahl");
     g.click("home");
   }
+
+  // Merging two saves keeps the streak with its own last learning day (issue #35).
+  {
+    const a = loadGame(), t = Date.now();
+    const sv = (savedAt, lastDay, streak) => a.fromSaved({ savedAt, lastDay, streak });
+    for (const [x, y, want, what] of [
+      [sv(t + 1, "2026-11-01", 10), sv(t, "2026-11-10", 1), 1, "verlorene Serie lebt wieder auf"],
+      [sv(t, "2026-11-01", 10), sv(t + 1, "2026-11-10", 1), 1, "verlorene Serie lebt wieder auf (neuerer Stand)"],
+      [sv(t + 1, "2026-11-09", 10), sv(t, "2026-11-10", 1), 11, "Serie über beide Geräte reißt ab"],
+      [sv(t, "2026-11-06", 4), sv(t + 1, "2026-11-10", 5), 8, "Serie über beide Geräte reißt ab (mehrere Tage)"],
+      [sv(t + 1, "2026-11-10", 5), sv(t, "2026-11-10", 3), 5, "Serie am selben Tag nicht die größere"],
+      [sv(t + 1, null, 0), sv(t, "2026-11-10", 2), 2, "Serie ohne Lerntag auf dem anderen Gerät"]]) {
+      for (const m of [a.mergeSaves(x, y), a.mergeSaves(y, x)]) {
+        const day = [x.lastDay, y.lastDay].filter(Boolean).sort().pop();
+        if (m.streak !== want || m.lastDay !== day) fail("Zusammenführen: " + what, m.streak, m.lastDay);
+      }
+    }
+  }
+
+  // Merging keeps a decay or a reset unless the other save learned there after it (issue #36).
+  {
+    const a = loadGame(), U = a.UNITS(), c = a.cs(), copy = o => JSON.parse(JSON.stringify(o));
+    // A finished round notes when and where the course grew.
+    a.startLesson(0, 0); answerAll(a.L, a);
+    if (!(a.cs().gainAt[U[0].id] > 0) || !(a.cs().playedAt > 0)) fail("Lektion vermerkt den Lernzeitpunkt nicht", JSON.stringify(a.cs().gainAt));
+    for (let i = 0; i < 4; i++) { c.progress[U[i].id] = 10; (c.bonus = c.bonus || {})[U[i].id] = true; (c.mastery = c.mastery || {})[U[i].id] = 1; }
+    const w3 = U[3].words[0];
+    a.srs()["w:" + w3.id] = { box: 4, due: Date.now() + 864e5 }; (c.seen = c.seen || {})[w3.id] = true; c.mistakes = ["w:" + w3.id];
+    a.st.savedAt = Date.now() - 5000;
+    const other = copy(a.st); // the second device, still before the reset
+    a.resetCourseFrom(2);
+    const reset = copy(a.st);
+    for (const m of [a.mergeSaves(reset, other), a.mergeSaves(other, reset)]) {
+      const mc = m.courses.en;
+      if (mc.progress[U[2].id] || mc.progress[U[3].id] || mc.bonus[U[3].id] || mc.mastery[U[3].id]) fail("Zusammenführen macht „Zurücksetzen ab Einheit“ rückgängig", JSON.stringify(mc.progress));
+      if (mc.progress[U[1].id] !== 10 || !mc.bonus[U[1].id]) fail("Zusammenführen verliert Fortschritt vor dem Zurücksetzen");
+      if (mc.srs["w:" + w3.id] || (mc.seen || {})[w3.id] || mc.mistakes.includes("w:" + w3.id)) fail("Zusammenführen holt Wörter der zurückgesetzten Einheit zurück");
+    }
+    // The other device learned in unit 3 after the reset: that stays, unit 2 stays reset.
+    const later = copy(other), lc = later.courses.en;
+    lc.progress[U[3].id] = 10; lc.gainAt = Object.assign({}, lc.gainAt, { [U[3].id]: Date.now() + 1000 }); lc.playedAt = Date.now() + 1000; later.savedAt = Date.now() + 1000;
+    for (const m of [a.mergeSaves(reset, later), a.mergeSaves(later, reset)]) {
+      const mc = m.courses.en;
+      if (mc.progress[U[3].id] !== 10) fail("Zusammenführen verliert Fortschritt nach dem Zurücksetzen", mc.progress[U[3].id]);
+      if (mc.progress[U[2].id]) fail("Zusammenführen macht Zurücksetzen in einer anderen Einheit rückgängig");
+      if (!mc.srs["w:" + w3.id]) fail("Zusammenführen verliert Wörter, die nach dem Zurücksetzen geübt wurden");
+    }
+    // Decay: one lesson less in the furthest unit; merging with the older save keeps it.
+    const d = loadGame(), DU = d.UNITS(), dc = d.cs();
+    dc.progress[DU[0].id] = 10; dc.progress[DU[1].id] = 6; dc.last = Date.now() - 15 * 864e5; d.st.savedAt = Date.now() - 5000;
+    const before = copy(d.st);
+    const notes = d.applyDecay();
+    if (!notes.length || d.cs().progress[DU[1].id] !== 5) fail("Rückstufung greift nicht", JSON.stringify(notes));
+    const decayed = copy(d.st);
+    for (const m of [d.mergeSaves(decayed, before), d.mergeSaves(before, decayed)]) if (m.courses.en.progress[DU[1].id] !== 5) fail("Zusammenführen macht Rückstufung rückgängig", m.courses.en.progress[DU[1].id]);
+    // ... but not the lessons it never had (the other device was further) nor those learned after it.
+    const further = copy(before); further.courses.en.progress[DU[1].id] = 8;
+    if (d.mergeSaves(decayed, further).courses.en.progress[DU[1].id] !== 8) fail("Rückstufung nimmt Fortschritt des anderen Geräts weg");
+    const after = copy(before); after.courses.en.progress[DU[1].id] = 6; after.courses.en.gainAt = { [DU[1].id]: Date.now() + 1000 };
+    if (d.mergeSaves(decayed, after).courses.en.progress[DU[1].id] !== 6) fail("Rückstufung nimmt danach Gelerntes weg");
+    // Two decays in a row still count from the lessons before the first.
+    dc.last = Date.now() - 15 * 864e5; d.applyDecay();
+    if (d.cs().progress[DU[1].id] !== 4 || d.cs().cuts[DU[1].id].was !== 6) fail("Zweite Rückstufung vergisst den Stand davor", JSON.stringify(d.cs().cuts));
+    if (d.mergeSaves(copy(d.st), before).courses.en.progress[DU[1].id] !== 4) fail("Zusammenführen macht zweite Rückstufung rückgängig");
+    // Saves without take-backs merge as before.
+    const p = copy(before), q = copy(before); q.courses.en.progress[DU[1].id] = 9; q.savedAt -= 1000;
+    if (d.mergeSaves(p, q).courses.en.progress[DU[1].id] !== 9) fail("Zusammenführen ohne Zurücknehmen verliert Fortschritt");
+  }
+
+  // Signing out keeps the progress until the backup really has it (issue #34); adopting a save updates widget and
+  // reminder (issue #46).
+  {
+    let reply = () => { throw new Error("offline"); };
+    const calls = [];
+    const s = loadGame({ AndroidBridge: { appVersion: () => "0.1.7", speak() {}, stop() {}, openUrl() {}, setReminder: (on, h, m) => calls.push(`reminder:${on}:${h}:${m}`),
+      reportDay: (day, streak) => calls.push(`day:${day}:${streak}`) } }, { fetch: async (url, opts) => reply(url, opts || {}) });
+    // Waits until `done()` holds, at most `ms` of real time. Not a fixed number of event-loop turns: the upload behind the
+    // button compresses and encrypts the save in libuv's thread pool (CompressionStream, Web Crypto), which on a busy
+    // machine takes far longer than a few turns (PR #56: the CI runner checked while the upload was still running).
+    const until = async (done, ms = 10000) => { const end = performance.now() + ms; while (!done() && performance.now() < end) await new Promise(r => setImmediate(r)); };
+    s.acct.key = s.newKey(); Object.assign(s.acct, await s.deriveKeys(s.acct.key), { status: "ok", pending: false });
+    s.st.xp = 123; s.st.savedAt = Date.now(); s.store["opensprachfuchs-state"] = JSON.stringify(s.st);
+    const kept = what => { if (!s.acct.key || !s.store["opensprachfuchs-state"] || JSON.parse(s.store["opensprachfuchs-state"]).xp !== 123 || !s.acct.note) fail("Abmelden löscht den Stand " + what); };
+    if (await s.signOut()) fail("Abmelden klappt offline");
+    kept("offline");
+    s.acct.status = "offline"; // the status a failed upload leaves behind
+    reply = () => new Response("{}", { status: 500 });
+    if (await s.signOut()) fail("Abmelden klappt bei Serverfehler");
+    kept("bei Serverfehler");
+    reply = () => new Response("{}", { status: 401 });
+    if (await s.signOut()) fail("Abmelden klappt bei gelöschtem Konto");
+    kept("bei gelöschtem Konto");
+    // The button: the dialog goes back to the account with the warning instead of the welcome screen.
+    s.acct.status = "ok"; reply = () => { throw new Error("offline"); };
+    s.view = "home"; s.ui.modal = "signout"; s.click("dosignout"); await until(() => s.ui.modal !== "signout");
+    if (s.ui.modal !== "account" || s.view !== "home" || !s.modalHTML().includes("nicht sichern")) fail("Abmelden ohne Sicherung zeigt keine Warnung", s.ui.modal, s.view);
+    // #46: a save adopted from the backup reaches widget and reminder.
+    const theirs = s.fromSaved({ savedAt: Date.now() + 5000, xp: 500, lastDay: s.st.lastDay || "2026-11-09", streak: 7, settings: { reminder: true, reminderTime: "07:30" } });
+    const blob = await s.encryptState(theirs, s.acct.aes);
+    s.st.syncedAt = s.st.savedAt; s.acct.status = "ok"; calls.length = 0;
+    reply = (url, o) => new Response(JSON.stringify((o.method || "GET") === "GET" ? { savedAt: theirs.savedAt, data: blob } : {}), { status: 200 });
+    await s.pullSave();
+    if (s.st.xp !== 500) fail("Gesicherter Stand nicht übernommen", s.st.xp);
+    if (!calls.includes("reminder:true:7:30") || !calls.some(x => x.startsWith(`day:${theirs.lastDay}:`))) fail("Übernommener Stand erreicht Widget und Erinnerung nicht", calls);
+    // Online: the upload works, then the progress leaves the device.
+    s.st.xp = 600; s.st.savedAt = Date.now() + 9000; s.st.syncedAt = theirs.savedAt;
+    const puts = [];
+    reply = (url, o) => { if (o.method === "PUT") puts.push(JSON.parse(o.body).savedAt); return new Response("{}", { status: 200 }); };
+    if (!(await s.signOut())) fail("Abmelden klappt online nicht", s.acct.note);
+    if (!puts.length || s.acct.key || s.store["opensprachfuchs-state"]) fail("Abmelden online lädt nicht hoch oder lässt Daten zurück", puts);
+  }
   console.log(`Übungen: ${count}, Fehler: ${errors}`, JSON.stringify(types));
 process.exit(errors ? 1 : 0);
 })();
