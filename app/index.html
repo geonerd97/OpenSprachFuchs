@@ -2,6 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<!-- Content-Security-Policy (issue #33), also inside the Android app. Scripts and the stylesheet only from the app itself;
+     style attributes are needed (colours, positions). connect-src: the packs ('self'), the backend (CONFIG.BACKEND_URL in
+     js/config.js, keep both in step), GitHub for app updates, and wrangler dev on localhost. tools/web.mjs sends the
+     same policy as a header, plus frame-ancestors, which a meta tag cannot set. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://app.opensprachfuchs.workers.dev https://api.github.com http://localhost:8787; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>OpenSprachFuchs</title>

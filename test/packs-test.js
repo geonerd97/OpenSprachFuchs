@@ -69,12 +69,32 @@ const clone = x => JSON.parse(JSON.stringify(x));
   const kshEntry = P.indexEntry(ksh, kshText);
   const index = P.makeIndex([P.indexEntry(en, JSON.stringify(en)), kshEntry]);
   index.packs2.push(Object.assign({}, kshEntry, { code: "zzz", name: "Zukunft", format: 3 }));
-  const serve = pack => async u => {
+  // The index names the checksum of the text served, as tools/packs.mjs does (`listed`: the text the index was made from).
+  const sha = t => require("crypto").createHash("sha256").update(t).digest("hex");
+  const serve = (pack, listed = pack) => async u => {
     const url = String(u);
-    if (url.endsWith("packs/index.json")) return new Response(JSON.stringify(index));
+    if (url.endsWith("packs/index.json")) {
+      const idx = clone(index); idx.packs2.find(e => e.code === "ksh").sha256 = sha(listed);
+      return new Response(JSON.stringify(idx));
+    }
     if (url.endsWith("ksh.json")) return new Response(pack);
     return new Response("", { status: 404 });
   };
+  // Issue #48: a pack whose text does not match the checksum of the index is not installed, and an installed one stays.
+  {
+    const bad = loadGame({}, { packs: false, fetch: serve(kshText.replace('"name":"Kölsch"', '"name":"Kölsch (alt)"'), kshText) });
+    ok(kshText.includes('"name":"Kölsch"'), "Testdaten: Name des Dialekts nicht gefunden");
+    await bad.fetchPackIndex(); await bad.downloadPack("ksh");
+    ok(!bad.COURSES.ksh && !bad.store["opensprachfuchs-pack-ksh"], "Paket mit falscher Prüfsumme installiert");
+    ok(/nicht installiert/.test(bad.packListHTML()), "Keine Meldung bei falscher Prüfsumme");
+    const keep = loadGame({}, { packs: false, fetch: serve(kshText) });
+    await keep.fetchPackIndex(); await keep.downloadPack("ksh");
+    ok(keep.COURSES.ksh && keep.COURSES.ksh.name === "Kölsch", "Paket mit richtiger Prüfsumme nicht installiert");
+    const before = keep.store["opensprachfuchs-pack-ksh"];
+    const later = loadGame({}, { store: keep.store, packs: false, fetch: serve(kshText + " ", kshText.replace("Kölsch", "Kölsch 2")) });
+    await later.fetchPackIndex(); await later.downloadPack("ksh");
+    ok(later.store["opensprachfuchs-pack-ksh"] === before && later.COURSES.ksh.name === "Kölsch", "Fehlgeschlagenes Update ersetzt das installierte Paket");
+  }
   const g = loadGame({}, { fetch: serve(kshText) });
   await g.fetchPackIndex();
   ok(g.PACK_INDEX.packs.some(p => p.code === "ksh") && !g.PACK_INDEX.packs.some(p => p.code === "zzz"), "App liest packs2 nicht oder nimmt Format 3", g.PACK_INDEX.packs.map(p => p.code));

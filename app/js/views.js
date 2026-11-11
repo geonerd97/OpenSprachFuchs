@@ -80,12 +80,14 @@ function drawTrails() {
     svg.innerHTML = `<path class="t-open" d="${curveThrough(pts.slice(Math.max(cut - 1, 0)))}"/><path class="t-done" d="${curveThrough(pts.slice(0, cut))}"/>`;
   }
 }
+// Colours from a pack go into style attributes, where esc() is not enough: only #rgb … #rrggbbaa (issue #32).
+const cssColor = (v, fallback = "#2456E8") => /^#[0-9a-f]{3,8}$/i.test(String(v)) ? v : fallback;
 const pathOff = i => Math.round(Math.sin(i * 1.3) * 58);
 const MASTER_COLORS = [null, ["#C9803F", "#8F5A24"], ["#AEB8C6", "#7C8798"], ["var(--gold)", "var(--gold-deep)"]];
 function masteryNodeHTML(u, ui_, off) {
   const m = masteryOf(u.id), t = Math.min(m + 1, 3), [c, cd] = MASTER_COLORS[t];
   return `<button class="node mnode ${off > 0 ? "left" : "right"}" style="--c:${c};--cd:${cd}" data-act="master" data-u="${ui_}" title="Einheit meistern: ${MEDAL_NAMES[t]} (freiwillig${m >= 3 ? ", Wiederholung" : ""})"
-    aria-label="${u.title}: ${MEDAL_NAMES[t]} ${m >= 3 ? "wiederholen" : "erreichen"}, freiwillig">${I.trophy(26)}</button>`;
+    aria-label="${esc(u.title)}: ${MEDAL_NAMES[t]} ${m >= 3 ? "wiederholen" : "erreichen"}, freiwillig">${I.trophy(26)}</button>`;
 }
 function heartsLabel() { return st.settings.hearts ? st.hearts : "∞"; }
 function ring(reached) {
@@ -109,23 +111,23 @@ function homeHTML() {
       const state = !open || li > d ? "locked" : li === d ? "current" : "done";
       const icon = state === "locked" ? I.lock(26) : state === "done" ? I.check(30) : li === ls.length - 1 ? I.trophy(30) : I.star(30);
       const id = `${ui_}-${li}`;
-      const pop = ui.pop === id && state !== "locked" ? `<div class="pop" role="dialog" style="--c:${u.c[0]}"><h3>${lesson.name}</h3><p>${lesson.desc} Lektion ${li + 1} von ${ls.length}.</p>
+      const pop = ui.pop === id && state !== "locked" ? `<div class="pop" role="dialog" style="--c:${cssColor(u.c[0])}"><h3>${lesson.name}</h3><p>${lesson.desc} Lektion ${li + 1} von ${ls.length}.</p>
         <button class="btn wide" data-act="start" data-u="${ui_}" data-l="${li}">${state === "done" ? "Wiederholen +10 XP" : "Starten +10 XP"}</button></div>` : "";
-      return `<div class="node-wrap ${state}" style="transform:translateX(${off}px);--c:${u.c[0]};--cd:${u.c[1]}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
+      return `<div class="node-wrap ${state}" style="transform:translateX(${off}px);--c:${cssColor(u.c[0])};--cd:${cssColor(u.c[1])}">${state === "current" && ui.pop !== id ? foxHTML(off > 0 ? "left" : "right") : ""}
         ${state === "current" && ui.pop !== id ? `<span class="start-tag">START</span>` : ""}
-        ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${u.title}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}${state === "done" && li === ls.length - 1 ? masteryNodeHTML(u, ui_, off) : ""}</div>${pop}`;
+        ${state === "current" ? `<span class="ring">` : ""}<button class="node ${state} ${ui.shake === id ? "shake" : ""}" data-act="node" data-id="${id}" data-state="${state}" aria-label="${esc(u.title)}, ${lesson.name}${state === "locked" ? ", gesperrt" : ""}">${icon}</button>${state === "current" ? "</span>" : ""}${state === "done" && li === ls.length - 1 ? masteryNodeHTML(u, ui_, off) : ""}</div>${pop}`;
     }).join("");
     const nodes = lessonNodes + bonusNodeHTML(u, ui_, open, pathOff(gi++));
-    return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${u.c[0]};--cd:${u.c[1]}">
-      <div><div class="eyebrow" title="${esc(C.name)}, ${u.level}, ${u.words.length} Wörter">${esc(C.code)} – Einheit ${nth} von ${perLevel}</div><h2>${u.title}</h2><p>${u.desc}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${u.level}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
+    return `<section><div class="unit-head ${open ? "" : "locked"}" style="--c:${cssColor(u.c[0])};--cd:${cssColor(u.c[1])}">
+      <div><div class="eyebrow" title="${esc(C.name)}, ${esc(u.level)}, ${u.words.length} Wörter">${esc(C.code)} – Einheit ${nth} von ${perLevel}</div><h2>${esc(u.title)}</h2><p>${esc(u.desc)}</p></div><div class="unit-side"><span class="cefr" title="Niveau nach GER">${esc(u.level)}</span>${masteryOf(u.id) ? `<span class="medal" title="Meisterschaft: ${MEDAL_NAMES[masteryOf(u.id)]}">${MEDALS[masteryOf(u.id)]}</span>` : ""}
         ${open && done(u.id) >= ls.length ? `<button class="wordsbtn" data-act="master" data-u="${ui_}" title="Einheit meistern">Meistern</button>` : ""}
         ${open ? `<button class="wordsbtn" data-act="words" data-u="${ui_}">Wörter</button>`
         : `<button class="wordsbtn test" data-act="placement" data-u="${ui_}" title="Einstufungstest: Einheiten überspringen">Test</button>`}</div></div>
-      <div class="nodes" style="--c:${u.c[0]}"><svg class="trail" aria-hidden="true"></svg>${nodes}</div></section>`;
+      <div class="nodes" style="--c:${cssColor(u.c[0])}"><svg class="trail" aria-hidden="true"></svg>${nodes}</div></section>`;
   }).join("");
   return `<header class="topbar"><div class="topbar-in">
       <div class="brand"><span class="brand-mark">${logoHTML()}</span><span class="name">OpenSprachFuchs</span></div>
-      <div class="stats"><button class="langchip" data-act="courses" title="Du lernst ${C.name}. Sprache wechseln" aria-label="Sprache wechseln, aktuell ${C.name}">${C.code}${I.chev(14)}</button>
+      <div class="stats"><button class="langchip" data-act="courses" title="Du lernst ${esc(C.name)}. Sprache wechseln" aria-label="Sprache wechseln, aktuell ${esc(C.name)}">${esc(C.code)}${I.chev(14)}</button>
         <span class="stat flame ${streak ? "" : "off"}" title="Tage in Folge">${I.flame(22)}${streak}</span>
         <span class="stat xp" title="Gesamt-XP">${I.bolt(22)}${st.xp}</span>
         <button class="stat gem statbtn" data-act="shop" title="Edelsteine und Shop" aria-label="Shop, ${st.gems} Edelsteine">💎${st.gems}</button>
@@ -185,7 +187,7 @@ const trHTML = tr => tr ? `<small class="umschrift">${esc(tr)}</small>` : "";
 const altHTML = (w, sep = "") => w.alt.length ? `${sep}${C.spellings ? "auch geschrieben" : "auch"}: ${w.alt.map(esc).join(", ")}` : "";
 function bubble(text, lang, tr) {
   const target = lang !== "de";
-  return `<div class="bubble"><span class="who">${target ? C.code : "DE"}</span><div class="say">${target ? `<button class="speak sm" data-act="say" data-t="${esc(text)}" aria-label="Vorlesen">${I.speaker(18)}</button>` : ""}<span>${hintSpans(text, target ? "t" : "de")}${target ? trHTML(tr) : ""}</span></div></div>${hintBox()}`;
+  return `<div class="bubble"><span class="who">${target ? esc(C.code) : "DE"}</span><div class="say">${target ? `<button class="speak sm" data-act="say" data-t="${esc(text)}" aria-label="Vorlesen">${I.speaker(18)}</button>` : ""}<span>${hintSpans(text, target ? "t" : "de")}${target ? trHTML(tr) : ""}</span></div></div>${hintBox()}`;
 }
 function tilesHTML(ex) {
   const picked = L.picked.map(id => `<button class="tile" data-act="unpick" data-id="${id}">${esc(ex.tiles[id].t)}</button>`).join("");
@@ -213,10 +215,10 @@ function exerciseHTML(ex) {
     }
     case "pic":
       return `<div class="tag">Bilder</div><h2>Welches Bild ist „${esc(ex.item.de)}“?</h2>
-        <div class="pics">${ex.opts.map((o, i) => `<button class="pic ${optClass(i, ex)}" data-act="sel" data-i="${i}" data-say="${esc(o.t)}"><span class="em" aria-hidden="true">${o.pic}</span><span>${esc(o.t)}</span></button>`).join("")}</div>`;
+        <div class="pics">${ex.opts.map((o, i) => `<button class="pic ${optClass(i, ex)}" data-act="sel" data-i="${i}" data-say="${esc(o.t)}"><span class="em" aria-hidden="true">${esc(o.pic)}</span><span>${esc(o.t)}</span></button>`).join("")}</div>`;
     case "type":
-      return `<div class="tag">Selbst schreiben</div><h2>${ex.word ? `Schreib das auf ${C.name}` : `Übersetze ins ${C.name}e`}</h2>${bubble(ex.src, "de")}
-        <textarea id="typeInput" class="type" lang="${CODE}" placeholder="Auf ${C.name} tippen" autocomplete="off" autocapitalize="off" spellcheck="false" ${L.checked ? "disabled" : ""}></textarea>`;
+      return `<div class="tag">Selbst schreiben</div><h2>${ex.word ? `Schreib das auf ${esc(C.name)}` : `Übersetze ins ${esc(C.name)}e`}</h2>${bubble(ex.src, "de")}
+        <textarea id="typeInput" class="type" lang="${esc(CODE)}" placeholder="Auf ${esc(C.name)} tippen" autocomplete="off" autocapitalize="off" spellcheck="false" ${L.checked ? "disabled" : ""}></textarea>`;
     case "bank":
       return `<div class="tag">Satz bauen</div><h2>${ex.srcLang === "de" ? "Übersetze diesen Satz" : "Übersetze ins Deutsche"}</h2>${bubble(ex.src, ex.srcLang, ex.tr)}${tilesHTML(ex)}`;
     case "listen":
@@ -243,14 +245,14 @@ function exerciseHTML(ex) {
         <span>${hintSpans(x.line.t, "t")}${trHTML(x.line.tr)}<details><summary>Übersetzung</summary>${esc(x.line.de)}</details></span></div></div>`).join("");
       const opts = !L.checked && turn ? `<div class="choices">${d.order.map((idx, i) => { const l = turn.a[idx], wrong = d.wrong.includes(i);
         return `<button class="choice ${wrong ? "wrong" : ""}" data-act="dlg" data-i="${i}" ${wrong ? "disabled" : ""}><span class="num">${i + 1}</span><span>${esc(l.t)}${wrong ? `<small class="tr">„${esc(l.de)}“ passt hier nicht.</small>` : ""}</span></button>`; }).join("")}</div>` : "";
-      return `<div class="tag">Gespräch</div><h2>${sc.em} ${esc(sc.title)}</h2><div class="chat">${bubbles}</div>${hintBox()}${opts}`;
+      return `<div class="tag">Gespräch</div><h2>${esc(sc.em || "")} ${esc(sc.title)}</h2><div class="chat">${bubbles}</div>${hintBox()}${opts}`;
     }
     case "intro": {
       const w = ex.item, z = ex.sent;
       return `<div class="tag">Neues Wort</div><h2>Das ist neu für dich</h2>
-        <div class="intro">${w.pic ? `<span class="em" aria-hidden="true">${w.pic}</span>` : ""}
+        <div class="intro">${w.pic ? `<span class="em" aria-hidden="true">${esc(w.pic)}</span>` : ""}
           <button class="speak" data-act="say" data-t="${esc(w.t)}" aria-label="Vorlesen">${I.speaker(22)}</button>
-          <div><b lang="${CODE}">${esc(w.t)}</b>${trHTML(w.tr)}<span>${esc(w.de)}</span>${w.alt.length ? `<small>${altHTML(w)}</small>` : ""}</div></div>
+          <div><b lang="${esc(CODE)}">${esc(w.t)}</b>${trHTML(w.tr)}<span>${esc(w.de)}</span>${w.alt.length ? `<small>${altHTML(w)}</small>` : ""}</div></div>
         ${z ? `<p class="muted" style="margin:0">${z.form ? `So kommt „${esc(z.form)}“ im Satz vor:` : "So kommt es im Satz vor:"}</p>${bubble(z.t, CODE, z.tr)}<details class="hint"><summary>Übersetzung</summary>${esc(z.de)}</details>` : ""}`;
     }
     case "game": return gameHTML();
@@ -377,7 +379,7 @@ function statsHTML() {
   const acc = sum.right + sum.wrong ? Math.round(100 * sum.right / (sum.right + sum.wrong)) + " %" : "–";
   const week = days.slice(7).reduce((a, x) => a + x.r.xp, 0);
   const langs = Object.entries(COURSES).map(([code, c]) => { const s = (st.courses[code] || {}).srs || {}, v = Object.values(s);
-    return `<div class="lang" style="--c:${c.c}"><div class="row" style="align-items:center"><span class="code">${c.code}</span><b>${c.name}</b></div><dl>
+    return `<div class="lang" style="--c:${cssColor(c.c)}"><div class="row" style="align-items:center"><span class="code">${esc(c.code)}</span><b>${esc(c.name)}</b></div><dl>
       <dt>Lektionen</dt><dd>${courseDone(code)} / ${lessonsTotal(code)}</dd><dt>Wörter geübt</dt><dd>${v.filter(e => e.box >= 1).length}</dd>
       <dt>Wörter sicher</dt><dd>${v.filter(e => e.box >= 3).length}</dd></dl></div>`; }).join("");
   const us = cs().unitStats || {};
@@ -394,7 +396,7 @@ function statsHTML() {
     <section class="chart"><div class="chart-head"><h2>XP der letzten 14 Tage</h2><small>${week} XP in den letzten 7 Tagen · Skala bis ${top} XP</small></div>
       <div class="plot">${bars}</div><div class="xlabels" aria-hidden="true">${xl}</div><p class="chart-note" aria-live="polite">${label(sel)}</p></section>
     <section style="display:grid;gap:.8rem"><h2>Sprachen</h2><div class="langs">${langs}</div></section>
-    <section class="panel"><h2>Themen in ${C.name}</h2>${unitsBlock}</section>
+    <section class="panel"><h2>Themen in ${esc(C.name)}</h2>${unitsBlock}</section>
     <section style="display:grid;gap:.8rem"><h2>Abzeichen (${Object.keys(st.badges || {}).length} von ${BADGES.length})</h2><div class="badges">${badges}</div></section></main>`;
 }
 function failHTML() {
@@ -417,8 +419,8 @@ function modalHTML() {
       return `<div class="wrow" data-q="${esc(q)}"><button class="speak sm" data-act="say" data-t="${esc(w.t)}" aria-label="${esc(w.t)} vorlesen">${I.speaker(16)}</button>
         <span><b>${esc(w.t)}</b>${trHTML(w.tr)}<small>${esc(w.de)}${altHTML(w, " · ")}</small>${whole ? `<small class="unit">${esc(u.title)}</small>` : ""}</span>
         <span class="dots" title="${box < 0 ? "noch nicht geübt" : "Lernstand " + Math.min(box, 5) + " von 5"}">${dots}</span></div>`; }).join("");
-    return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${whole ? `Alle Wörter (${C.name})` : esc(units[0].title)}</h2>
-      <input id="wordSearch" class="search" type="search" placeholder="Suchen, auf Deutsch oder ${C.name}" autocomplete="off" aria-label="Wörter durchsuchen">
+    return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${whole ? `Alle Wörter (${esc(C.name)})` : esc(units[0].title)}</h2>
+      <input id="wordSearch" class="search" type="search" placeholder="Suchen, auf Deutsch oder ${esc(C.name)}" autocomplete="off" aria-label="Wörter durchsuchen">
       <p class="muted">Alle Vokabeln dieser Einheit. Die Punkte zeigen, wie gut ein Wort sitzt: Jede richtige Antwort bringt es eine Stufe weiter und verlängert die Pause bis zur nächsten Wiederholung.</p>
       <div class="wlist">${rows || `<p class="muted">Noch keine Einheit freigeschaltet.</p>`}</div><p class="muted" id="wordNone" hidden>Kein Wort gefunden.</p>
       <button class="btn wide" data-act="closemodal">Schließen</button></div></div>`;
@@ -444,14 +446,14 @@ function modalHTML() {
     const rows = UNITS.map((u, i) => { const d = done(u.id), state = d >= lessonsOf(u) ? "fertig" : d ? `${d} von ${lessonsOf(u)} Lektionen` : "noch nicht begonnen";
       return `<div class="wrow" style="grid-template-columns:minmax(0,1fr) auto"><span><b>${i + 1}. ${esc(u.title)}</b><small>${state}</small></span>
         <button class="btn ghost" style="padding:.5rem .8rem;font-size:.75rem" data-act="resetfrom" data-u="${i}">Ab hier</button></div>`; }).join("");
-    return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${C.name} zurücksetzen</h2>
+    return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>${esc(C.name)} zurücksetzen</h2>
       <p class="muted">Wähle die Einheit, ab der du neu anfangen willst. Sie und alle Einheiten danach werden zurückgesetzt, die davor bleiben erhalten.</p>
       <div class="wlist">${rows}</div><button class="btn ghost wide" data-act="closemodal">Abbrechen</button></div></div>`;
   }
   if (ui.modal === "resetfrom") {
     const u = UNITS[ui.ru];
     return `<div class="scrim" data-act="closemodal"><div class="modal" role="dialog" aria-modal="true"><h2>Ab „${esc(u.title)}“ zurücksetzen?</h2>
-      <p class="muted">${ui.ru === 0 ? `Dein ganzer Fortschritt in ${C.name}` : `Einheit ${ui.ru + 1} und alle Einheiten danach in ${C.name}`} werden zurückgesetzt, samt Lernstufen der Vokabeln, Sonderstationen, Medaillen und offenen Fehlern dieser Einheiten.
+      <p class="muted">${ui.ru === 0 ? `Dein ganzer Fortschritt in ${esc(C.name)}` : `Einheit ${ui.ru + 1} und alle Einheiten danach in ${esc(C.name)}`} werden zurückgesetzt, samt Lernstufen der Vokabeln, Sonderstationen, Medaillen und offenen Fehlern dieser Einheiten.
       XP, Serie, Abzeichen und die anderen Sprachen bleiben, wie sie sind.</p>
       <button class="btn bad wide" data-act="doresetfrom">Zurücksetzen</button><button class="btn ghost wide" data-act="resetcourse">Andere Einheit wählen</button></div></div>`;
   }
@@ -474,7 +476,7 @@ function modalHTML() {
   }
   if (ui.modal === "shop") return modal("Shop", shopHTML() + `<button class="btn ghost wide" data-act="closemodal">Schließen</button>`);
   if (ui.modal === "courses") {
-    const items = Object.entries(COURSES).map(([code, c]) => `<button class="course ${code === CODE ? "on" : ""}" data-act="pickcourse" data-c="${code}" style="--c:${c.c}">
+    const items = Object.entries(COURSES).map(([code, c]) => `<button class="course ${code === CODE ? "on" : ""}" data-act="pickcourse" data-c="${esc(code)}" style="--c:${cssColor(c.c)}">
       <span class="code">${esc(c.code)}</span><span><b>${esc(c.name)}</b><small>${courseDone(code)} von ${lessonsTotal(code)} Lektionen · ${esc(c.note)}</small></span></button>`).join("");
     return modal("Welche Sprache lernst du?", `<p class="muted">Jede Sprache hat ihren eigenen Lernpfad. XP, Serie und Herzen gelten für alle.</p><div class="courses">${items}</div>
       <button class="btn ghost wide" data-act="managepacks">Sprachen herunterladen oder entfernen</button>`);
@@ -641,12 +643,12 @@ function levelsHTML() {
   const tabs = levelsOf().map(l => {
     const idx = UNITS.map((u, i) => i).filter(i => UNITS[i].level === l), fin = idx.filter(i => unitComplete(i)).length;
     const locked = !unitUnlocked(idx[0]), all = fin === idx.length;
-    return `<button class="level ${l === cur ? "on" : ""} ${locked ? "locked" : ""}" role="tab" aria-selected="${l === cur}" data-act="level" data-l="${l}"
-      title="${l}: ${fin} von ${idx.length} Einheiten geschafft" aria-label="${LEVEL_NAMES[l] || l}, ${fin} von ${idx.length} Einheiten">
-      <b><span>${LEVEL_NAMES[l] || l}</span>${all ? " ✓" : ""}</b>${locked ? `<span class="lock">${I.lock(12)}</span>` : `<span class="meter"><i style="width:${100 * fin / idx.length}%"></i></span>`}</button>`;
+    return `<button class="level ${l === cur ? "on" : ""} ${locked ? "locked" : ""}" role="tab" aria-selected="${l === cur}" data-act="level" data-l="${esc(l)}"
+      title="${esc(l)}: ${fin} von ${idx.length} Einheiten geschafft" aria-label="${esc(LEVEL_NAMES[l] || l)}, ${fin} von ${idx.length} Einheiten">
+      <b><span>${esc(LEVEL_NAMES[l] || l)}</span>${all ? " ✓" : ""}</b>${locked ? `<span class="lock">${I.lock(12)}</span>` : `<span class="meter"><i style="width:${100 * fin / idx.length}%"></i></span>`}</button>`;
   }).join("");
   const first = UNITS.findIndex(u => u.level === cur);
-  const hint = first > 0 && !unitUnlocked(first) ? `<p class="muted level-hint">${LEVEL_NAMES[cur] || cur} ist noch gesperrt. Schließ die Einheiten davor ab oder spring mit dem Einstufungstest („Test“ an einer Einheit) direkt hierher.</p>` : "";
+  const hint = first > 0 && !unitUnlocked(first) ? `<p class="muted level-hint">${esc(LEVEL_NAMES[cur] || cur)} ist noch gesperrt. Schließ die Einheiten davor ab oder spring mit dem Einstufungstest („Test“ an einer Einheit) direkt hierher.</p>` : "";
   return `<div class="levels" role="tablist" aria-label="Niveaustufen">${tabs}</div>${hint}`;
 }
 /* Conversations, grouped by category (restaurant, taxi, ...): a row per category with its progress; tapping it shows its dialogues. */
@@ -658,8 +660,8 @@ function dialogsHTML() {
   const rows = order.map(g => {
     const list = all.filter(d => (d.group || d.id) === g), fin = list.filter(d => doneSet[d.id]).length, open = ui.dgroup === g;
     const info = groups[g] || { title: list[0].title, em: list[0].em };
-    const items = open ? `<div class="dlist">${list.map(d => `<button class="btn ghost wide dlg-item" data-act="dialog" data-id="${d.id}"><span>${d.em}&nbsp; ${esc(d.title)}<small>${esc(d.desc || "")}</small></span>${doneSet[d.id] ? "✓" : ""}</button>`).join("")}</div>` : "";
-    return `<button class="dgroup ${open ? "on" : ""}" data-act="dgroup" data-g="${esc(g)}" aria-expanded="${open}"><span class="em" aria-hidden="true">${info.em}</span>
+    const items = open ? `<div class="dlist">${list.map(d => `<button class="btn ghost wide dlg-item" data-act="dialog" data-id="${esc(d.id)}"><span>${esc(d.em || "")}&nbsp; ${esc(d.title)}<small>${esc(d.desc || "")}</small></span>${doneSet[d.id] ? "✓" : ""}</button>`).join("")}</div>` : "";
+    return `<button class="dgroup ${open ? "on" : ""}" data-act="dgroup" data-g="${esc(g)}" aria-expanded="${open}"><span class="em" aria-hidden="true">${esc(info.em || "")}</span>
       <span><b>${esc(info.title)}</b><small>${fin} / ${list.length} Gespräche${fin === list.length ? " ✓" : ""}</small></span>${I.chev(18)}</button>${items}`;
   }).join("");
   return `<div class="panel"><h3>Gespräche</h3><p class="muted">Kleine Szenen aus dem Urlaub: Wähle im Gespräch die passende Antwort.</p>${rows}</div>`;
@@ -716,10 +718,10 @@ function packListHTML() {
     <button class="btn ghost wide" data-act="reloadpacks">Noch einmal versuchen</button>${Object.keys(COURSES).length ? `<button class="btn ghost wide" data-act="closemodal">Schließen</button>` : ""}`;
   const row = p => { const have = !!COURSES[p.code], update = have && PACK_SHA[p.code] !== p.sha256, busy = packs.busy === p.code;
     const btn = busy ? `<button class="btn" disabled>Lädt …</button>`
-      : !have ? `<button class="btn good" data-act="getpack" data-c="${p.code}">Laden · ${Math.max(1, Math.round(p.size / 1024))} KB</button>`
-      : update ? `<button class="btn gold" data-act="getpack" data-c="${p.code}">Aktualisieren</button>`
-      : `<button class="btn ghost" data-act="removepack" data-c="${p.code}" ${Object.keys(COURSES).length < 2 ? "disabled" : ""}>Entfernen</button>`;
-    return `<div class="item"><span class="code" style="--c:${esc(p.color)}">${esc(p.short)}</span><span><b>${esc(p.name)}</b><small>${esc(p.note)} · ${p.units} Einheiten, ${p.words} Wörter</small>${have && !update ? "<small>✓ auf dem Gerät</small>" : ""}</span>${btn}</div>`; };
+      : !have ? `<button class="btn good" data-act="getpack" data-c="${esc(p.code)}">Laden · ${Math.max(1, Math.round(p.size / 1024))} KB</button>`
+      : update ? `<button class="btn gold" data-act="getpack" data-c="${esc(p.code)}">Aktualisieren</button>`
+      : `<button class="btn ghost" data-act="removepack" data-c="${esc(p.code)}" ${Object.keys(COURSES).length < 2 ? "disabled" : ""}>Entfernen</button>`;
+    return `<div class="item"><span class="code" style="--c:${cssColor(p.color)}">${esc(p.short)}</span><span><b>${esc(p.name)}</b><small>${esc(p.note)} · ${esc(p.units)} Einheiten, ${esc(p.words)} Wörter</small>${have && !update ? "<small>✓ auf dem Gerät</small>" : ""}</span>${btn}</div>`; };
   // Main languages and dialects stand in their own groups (field group of the index, packs/README.md).
   const groups = packGroups(PACK_INDEX.packs).map(g => `<section class="packgroup" data-group="${g.id}"><h3>${esc(g.title)}</h3><div class="shop packs">${g.packs.map(row).join("")}</div></section>`).join("");
   return `<p class="muted">Jede Sprache ist ein kleines Paket, das auf dem Gerät bleibt. Neue Sprachen und Korrekturen kommen als Update.</p>
@@ -749,7 +751,7 @@ function noticesHTML() {
     ${ui.installPrompt ? `<button class="btn wide" data-act="install">Installieren</button>` : ""}
     <div class="row" style="justify-content:flex-end"><button class="linkbtn" data-act="installhide">Nicht mehr anzeigen</button></div></div>`);
   if (ups.length) out.push(`<div class="panel notice"><h3>Neue Inhalte</h3><p class="muted">Für ${ups.map(c => esc(COURSES[c].name)).join(", ")} gibt es ein Update mit Verbesserungen.</p>
-    ${ups.map(c => `<button class="btn gold wide" data-act="getpack" data-c="${c}" ${packs.busy ? "disabled" : ""}>${packs.busy === c ? "Lädt …" : `${esc(COURSES[c].name)} aktualisieren`}</button>`).join("")}</div>`);
+    ${ups.map(c => `<button class="btn gold wide" data-act="getpack" data-c="${esc(c)}" ${packs.busy ? "disabled" : ""}>${packs.busy === c ? "Lädt …" : `${esc(COURSES[c].name)} aktualisieren`}</button>`).join("")}</div>`);
   if (ui.appUpdate && !ui.updateHidden) out.push(`<div class="panel notice"><h3>🦊 Neue App-Version ${esc(ui.appUpdate.version)}</h3>
     <p class="muted">Die neue Version installiert sich über die alte, dein Fortschritt bleibt erhalten.</p>
     <button class="btn wide" data-act="openupdate">Herunterladen${ui.appUpdate.size ? ` · ${(ui.appUpdate.size / 1048576).toFixed(1).replace(".", ",")} MB` : ""}</button>
