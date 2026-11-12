@@ -22,8 +22,29 @@ const app = document.getElementById("app");
    changed(key, value) is true the first time a screen part shows a new value. */
 const shownOnce = {};
 const changed = (key, value) => { const c = shownOnce[key] !== value; shownOnce[key] = value; return c; };
+/* Focus (issue #52). Every render replaces the whole screen, so the focused control would be lost each time. It is
+   remembered by what identifies it (its id or its data-* attributes) and focused again afterwards. A dialog gets its
+   heading as name; when it opens it takes the focus, and when it closes the control that opened it gets it back. */
+let modalOpener = null, dialogNo = 0;
+function focusKey(e) {
+  if (!e || !e.getAttribute || typeof document.body === "undefined" || e === document.body || !app.contains || !app.contains(e)) return null;
+  const q = v => (typeof CSS !== "undefined" && CSS.escape ? CSS.escape(v) : String(v).replace(/["\\]/g, "\\$&"));
+  if (e.id) return "#" + q(e.id);
+  const attrs = [...(e.attributes || [])].filter(a => a.name.startsWith("data-")).map(a => `[${a.name}="${q(a.value)}"]`);
+  return attrs.length ? e.tagName.toLowerCase() + attrs.join("") : null;
+}
+function focusFrom(key, caret) {
+  const e = key && app.querySelector ? app.querySelector(key) : null;
+  if (!e || !e.focus) return false;
+  e.focus({ preventScroll: true });
+  if (caret != null && e.setSelectionRange) try { e.setSelectionRange(caret, caret); } catch (x) {}
+  return true;
+}
 function render() {
   if (ui.pendingFriend && view === "home" && !ui.modal && UNITS.length) return openPendingFriend(); // opened through a friend's QR code
+  const active = typeof document.activeElement !== "undefined" ? document.activeElement : null;
+  const focused = focusKey(active), caret = active && typeof active.selectionStart === "number" ? active.selectionStart : null;
+  const modalBefore = shownOnce.modal || null;
   syncHearts(); syncDay();
   if (view === "home" && !UNITS.length) view = "langs";
   if (app.classList) app.classList.toggle("nolisten", !!C.noListen); // packs without speech output: no speaker buttons
@@ -40,9 +61,29 @@ function render() {
   if (ui.modal) { const html = modalHTML(); app.insertAdjacentHTML("beforeend", changed("modal", ui.modal) ? html : html.replace('class="scrim"', 'class="scrim still"')); }
   else changed("modal", null);
   if (view === "home" && ui.tab === "path") drawTrails();
+  restoreFocus(focused, caret, modalBefore);
   if (view === "lesson" && L.cur && L.cur.type === "type" && !L.checked) {
     const t = document.getElementById("typeInput"); if (t) { t.value = L.typed || ""; t.focus(); }
   }
+}
+function restoreFocus(focused, caret, modalBefore) {
+  if (!app.querySelectorAll || typeof document.activeElement === "undefined") return; // not in a browser (tests)
+  for (const d of app.querySelectorAll('[role="dialog"]')) {
+    const h = d.querySelector("h2, h3");
+    if (h && !d.hasAttribute("aria-labelledby") && !d.hasAttribute("aria-label")) {
+      if (!h.id) h.id = "dlg-title-" + ++dialogNo;
+      d.setAttribute("aria-labelledby", h.id);
+    }
+  }
+  const modal = app.querySelector('.modal[role="dialog"]');
+  if (ui.modal && ui.modal !== modalBefore) {
+    if (!modalBefore) modalOpener = focused; // a dialog over a dialog keeps the first opener
+    if (modal) { modal.setAttribute("tabindex", "-1"); modal.focus({ preventScroll: true }); }
+    return;
+  }
+  if (!ui.modal && modalBefore) { const opener = modalOpener; modalOpener = null; if (focusFrom(opener)) return; }
+  if (modal && modal.hasAttribute && !modal.hasAttribute("tabindex")) modal.setAttribute("tabindex", "-1");
+  if (!focusFrom(focused, caret) && modal && !modal.contains(document.activeElement)) modal.focus({ preventScroll: true });
 }
 /* ---------- The trail between the lesson nodes (issue #23) ----------
    The nodes sit on a sine curve, so a straight line between them looks wrong. After every render the real
