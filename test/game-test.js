@@ -69,7 +69,7 @@ console.log("Neue Wörter ohne Beispielsatz:", noSentence.size);
   if (!intros.length || intros.length > g.NEW_PER_LESSON) fail("Anzahl neuer Wörter pro Lektion", intros.length);
   if (g.L.total !== all.length - intros.length) fail("Einführungen zählen im Fortschritt mit");
   if (!/class="hw/.test(g.exerciseHTML(g.L.cur))) fail("Beispielsatz ohne antippbare Wörter");
-  answerAll(g.L);
+  answerAll(g);
   const known = g.UNITS()[0].words.filter(g.wordKnown).map(w => w.id);
   if (!intros.every(x => known.includes(x.item.id))) fail("Eingeführte Wörter nicht gemerkt");
   g.view = "home"; g.startTraining(true);
@@ -185,8 +185,13 @@ for (const code of codes) {
   if (!after.includes("path-fox") || say(after) === say(before) || !after.includes(" hop")) fail("Fuchs reagiert nicht aufs Antippen", say(before), say(after));
 }
 
-// Shared answer helper for flows below: answers every task correctly through the real check().
-function answerAll(L, gm = g) {
+// Shared answer helper for flows below: answers every task of the running round of game `gm` correctly through the
+// real check(), until the round reaches finish(). It takes the round from the game itself (gm.L): with a round of one
+// game and the helpers of another, nothing was answered and the round never finished (issue #31: result stayed null
+// and the whole run stopped at the next `result.parts`).
+function answerAll(gm = g) {
+  const L = gm.L;
+  if (gm.view !== "lesson" || !L) { fail("answerAll: keine laufende Runde in diesem Spiel", gm.view); return; }
   for (let guard = 0; guard < 80 && gm.view === "lesson"; guard++) {
     const ex = L.cur;
     if (ex.type === "intro") { gm.cont(); continue; }
@@ -204,13 +209,14 @@ function answerAll(L, gm = g) {
     }
     gm.cont();
   }
+  if (gm.view === "lesson") fail("answerAll: Runde kommt nicht bis finish()", L.kind, L.done, L.total);
 }
 
 // Placement test: passing unlocks every unit up to the target.
 g.setCourse("es"); g.st.course = "es";
 g.startPlacement(5);
 if (g.L.kind !== "placement" || g.L.queue.length < 10) fail("Einstufungstest startet nicht richtig");
-answerAll(g.L);
+answerAll(g);
 if (g.view !== "result" || !g.result.placement) fail("Einstufungstest endet nicht im Ergebnis", g.view);
 for (let i = 0; i <= 5; i++) if (g.done(g.UNITS()[i].id) < 4) fail("Einheit nicht freigeschaltet", i);
 g.resultHTML();
@@ -236,7 +242,7 @@ if (g.fromSaved({ hearts: 9, courses: {} }).hearts !== 5) fail("Alter Spielstand
 g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = true; g.st.hearts = 0; g.st.heartsTs = Date.now();
 g.startTraining(true, true);
 if (g.L.queue.length + 1 < 7) fail("Auffüllrunde zu kurz", g.L.queue.length + 1);
-answerAll(g.L);
+answerAll(g);
 if (g.view !== "result" || !g.result.refill) fail("Auffüllrunde endet nicht im Ergebnis", g.view);
 // heartsGained counts only the hearts of the round (1 per 6 right answers); the daily-quest chest (+2) may come on top
 // of that, depending on what earlier tests already did today, and is reported in result.quests.
@@ -302,7 +308,7 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = false;
   g.startLesson(0, 0);
   const before = g.st.xp;
-  answerAll(g.L);
+  answerAll(g);
   if (g.view !== "result") fail("Combo-Lektion endet nicht");
   else if (!g.resultHTML().includes("fox-cheer flip")) fail("Jubelnder Fuchs nach fehlerfreier Lektion fehlt");
   else if (g.result.bestCombo < 10 || g.result.comboBonus < 4) fail("Combo-Bonus fehlt", g.result.bestCombo, g.result.comboBonus);
@@ -316,7 +322,7 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   g.cs().bonus = {};
   for (let i = 0; i < lastA1; i++) { g.cs().progress[g.UNITS()[i].id] = 10; g.cs().bonus[g.UNITS()[i].id] = true; }
   g.cs().progress[g.UNITS()[lastA1].id] = 9;
-  g.startLesson(lastA1, 9); answerAll(g.L);
+  g.startLesson(lastA1, 9); answerAll(g);
   // The bonus station is required: after the last lesson it is the next step, the next unit is still locked.
   if (g.view !== "result" || g.ui.level !== "A1" || g.unitUnlocked(lastA1 + 1)) fail("Sonderstation nicht Pflicht", g.ui.level);
   g.click("home");
@@ -364,7 +370,7 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
 // Gems and shop.
 {
   g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = true; g.st.hearts = 5; g.st.boostUntil = 0;
-  g.st.gems = 0; g.startLesson(0, 0); answerAll(g.L);
+  g.st.gems = 0; g.startLesson(0, 0); answerAll(g);
   if (g.result.gems < 5 || g.st.gems !== g.result.gems) fail("Edelsteine für Lektion fehlen", g.result.gems, g.st.gems);
   g.st.gems = 200; g.st.freezes = 0;
   if (!g.buy("freeze") || g.st.freezes !== 1 || g.st.gems !== 150) fail("Serienschutz kaufen klappt nicht");
@@ -376,7 +382,7 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   if (g.buy("pause")) fail("Pausenschutz doppelt gekauft");
   { // Issue #26: a finished round must not move the protection back to today ("schon mehrfach gekauft, verschwindet wieder").
     const until = g.cs().last;
-    g.startLesson(0, 0); answerAll(g.L);
+    g.startLesson(0, 0); answerAll(g);
     if (g.cs().last !== until) fail("Pausenschutz nach einer Lektion weg", g.cs().last - Date.now());
     g.st.gems = 200;
     if (g.buy("pause")) fail("Pausenschutz trotz aktivem Schutz nochmal verkauft");
@@ -397,9 +403,9 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
     if (g.streakUntil() !== ds(y)) fail("Serie gilt bis: ohne Schutz nicht der Tag nach dem letzten Lerntag", g.streakUntil());
     g.st.freezes = 1;
   }
-  g.startLesson(0, 0); answerAll(g.L);
+  g.startLesson(0, 0); answerAll(g);
   if (g.st.streak !== 8 || g.st.freezes !== 0 || g.result.freezeUsed !== 1) fail("Serienschutz greift nicht", g.st.streak, g.st.freezes);
-  g.st.boostUntil = Date.now() + 60000; g.startLesson(0, 0); answerAll(g.L);
+  g.st.boostUntil = Date.now() + 60000; g.startLesson(0, 0); answerAll(g);
   if (!g.result.boosted || g.result.xp < 30) fail("Doppel-XP wirkt nicht", g.result.xp);
   g.st.boostUntil = 0; g.ui.modal = "shop"; g.modalHTML(); g.ui.modal = null; g.resultHTML();
 }
@@ -479,14 +485,14 @@ g.ui.modal = "resetcourse"; g.modalHTML(); g.ui.modal = "resetfrom"; g.ui.ru = 5
   b.st.bestStreak = 7;
   let got = b.checkAvatarMilestones().map(it => it.id);
   if (got.join() !== "beanie" || b.checkAvatarMilestones().length) fail("Pudelmütze nicht genau einmal für 7 Tage Serie", got);
-  b.startLesson(0, 0); answerAll(b.L, b);
-  if (!b.result.parts || !b.result.parts.some(it => it.id === "round_glasses") || !b.resultHTML().includes("Runde Brille")) fail("Runde Brille fürs erste Abzeichen fehlt im Ergebnis");
+  b.startLesson(0, 0); answerAll(b);
+  if (!b.result || !b.result.parts || !b.result.parts.some(it => it.id === "round_glasses") || !b.resultHTML().includes("Runde Brille")) fail("Runde Brille fürs erste Abzeichen fehlt im Ergebnis");
   const u0 = b.UNITS()[0];
   b.cs().progress[u0.id] = b.lessonsOf(u0);
   got = b.checkAvatarMilestones().map(it => it.id);
   if (got.join() !== "bandana") fail("Halstuch für die erste Einheit nicht vergeben", got);
-  b.startLesson(0, 1); answerAll(b.L, b);
-  if (b.result.parts.length || b.checkAvatarMilestones().length) fail("Meilenstein-Teil doppelt vergeben");
+  b.startLesson(0, 1); answerAll(b);
+  if (!b.result || b.result.parts.length || b.checkAvatarMilestones().length) fail("Meilenstein-Teil doppelt vergeben oder Runde ohne Ergebnis");
   for (const id of ["beanie", "round_glasses", "bandana"]) if (b.st.avatar.owned.filter(x => x === id).length !== 1) fail("Meilenstein-Teil nicht genau einmal im Besitz", id);
   b.st.bestStreak = 30;
   got = b.checkAvatarMilestones().map(it => it.id);
@@ -542,7 +548,7 @@ for (const code of codes) {
   g.startMaster(0);
   if (g.L.kind !== "master" || g.L.queue.length < 10) fail("Meisterschaft startet nicht");
   if (g.exerciseHTML(g.L.cur).includes('class="hw')) fail("Worthilfen in der Meisterschaft");
-  answerAll(g.L);
+  answerAll(g);
   if (g.masteryOf(g.UNITS()[0].id) !== 1 || !g.result.master) fail("Bronze nicht vergeben", g.masteryOf(g.UNITS()[0].id));
   g.startMaster(0);
   for (let i = 0; i < 2; i++) { if (g.L.cur.type === "match") { g.nextExercise(); } g.check(true); g.cont(); }
@@ -744,7 +750,7 @@ g.view = "home";
     const day = n => { const d = new Date(); d.setDate(d.getDate() - n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
     g.setCourse("en"); g.st.course = "en"; g.st.settings.hearts = false;
     g.st.lastDay = day(1); g.st.streak = 4; g.st.day = day(0); g.st.dayLessons = 0;
-    g.view = "home"; g.startLesson(0, 0); answerAll(g.L);
+    g.view = "home"; g.startLesson(0, 0); answerAll(g);
     if (g.view !== "result" || g.result.streakUp !== 5) fail("Serie nach der ersten Runde des Tages nicht gewachsen", g.view, g.result && g.result.streakUp);
     if (!g.resultHTML().includes('data-act="resultdone"')) fail("Weiter auf dem Ergebnis führt nicht weiter");
     g.st.friends = { 1: "Anna" };
@@ -762,13 +768,13 @@ g.view = "home";
     g.click("home");
     if (g.view !== "home") fail("Weiter vom Serien-Bildschirm führt nicht zum Lernweg", g.view);
     // Second round on the same day: no streak screen.
-    g.startLesson(0, 1); answerAll(g.L);
+    g.startLesson(0, 1); answerAll(g);
     if (g.result.streakUp) fail("Serie wächst zweimal am selben Tag", g.result.streakUp);
     g.click("resultdone");
     if (g.view !== "home") fail("Serien-Bildschirm kommt ohne gewachsene Serie", g.view);
     // Day one: the screen says "1 Tag" and shows no old number.
     g.st.lastDay = null; g.st.streak = 0; g.st.dayLessons = 0;
-    g.startLesson(0, 2); answerAll(g.L);
+    g.startLesson(0, 2); answerAll(g);
     if (g.result.streakUp !== 1) fail("Erster Tag zählt nicht", g.result.streakUp);
     g.click("resultdone");
     if (!g.streakHTML().includes("1 Tag in Folge!") || g.streakHTML().includes('class="old"')) fail("Erster Tag zeigt eine alte Zahl");
@@ -797,7 +803,7 @@ g.view = "home";
   {
     const a = loadGame(), U = a.UNITS(), c = a.cs(), copy = o => JSON.parse(JSON.stringify(o));
     // A finished round notes when and where the course grew.
-    a.startLesson(0, 0); answerAll(a.L, a);
+    a.startLesson(0, 0); answerAll(a);
     if (!(a.cs().gainAt[U[0].id] > 0) || !(a.cs().playedAt > 0)) fail("Lektion vermerkt den Lernzeitpunkt nicht", JSON.stringify(a.cs().gainAt));
     for (let i = 0; i < 4; i++) { c.progress[U[i].id] = 10; (c.bonus = c.bonus || {})[U[i].id] = true; (c.mastery = c.mastery || {})[U[i].id] = 1; }
     const w3 = U[3].words[0];
