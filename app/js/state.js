@@ -46,6 +46,7 @@ function mergeSaves(x, y) {
   const m = mergeValue(older, newer);
   m.settings = Object.assign({}, older.settings, newer.settings);
   m.reportQueue = newer.reportQueue || [];
+  m.kids = newer.kids || older.kids; // kids mode: the newer choice of the parents, not a mix
   const qo = older.quests, qn = newer.quests;
   m.quests = qo && qn && qo.day === qn.day ? mergeValue(qo, qn) : (qo && qn ? (qo.day > qn.day ? qo : qn) : qn || qo);
   if (m.quests && qo && qn && qo.day === qn.day) m.quests.ids = qn.ids;

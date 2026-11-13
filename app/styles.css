@@ -292,6 +292,9 @@ button.langchip:hover { border-color: var(--accent); color: var(--accent); }
 .mutebtn.on { color: var(--bad); background: var(--bad-soft); }
 .unit-head .wordsbtn.test { border-style: dashed; }
 .search { width: 100%; box-sizing: border-box; border: 2px solid var(--line); border-radius: 12px; background: var(--surface-2); color: var(--ink); font: 600 1rem var(--body); padding: .6rem .8rem; }
+.pin-input { text-align: center; letter-spacing: .5em; font-size: 1.4rem; font-weight: 800; }
+.modal details summary { cursor: pointer; font-weight: 800; padding: .4rem 0; }
+.modal details[open] { display: grid; gap: .5rem; }
 .search:focus { border-color: var(--accent); background: var(--surface); }
 .wrow small.unit { display: block; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
 .linkbtn { border: 0; background: none; padding: .2rem 0; font-weight: 700; font-size: .85rem; color: inherit; opacity: .8; text-decoration: underline; text-underline-offset: 3px; }

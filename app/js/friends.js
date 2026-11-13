@@ -81,7 +81,7 @@ function parseFriendLink(url) {
 /** Called when the app is opened through a friend link: shows "Freund hinzufügen" with code and name filled in. */
 function handleFriendLink(url) {
   const f = parseFriendLink(url);
-  if (!f) return false;
+  if (!f || kidsFriendsOff()) return false;
   ui.addPrefill = f; ui.pendingFriend = true;
   openPendingFriend();
   return true;

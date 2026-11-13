@@ -48,7 +48,9 @@ function render() {
   syncHearts(); syncDay();
   if (view === "home" && !UNITS.length) view = "langs";
   if (app.classList) app.classList.toggle("nolisten", !!C.noListen); // packs without speech output: no speaker buttons
-  if (view === "home") app.innerHTML = homeHTML();
+  const lock = (view === "home" || view === "stats") && UNITS.length ? kidsLock() : "";
+  if (lock) app.innerHTML = kidsLockHTML(lock);
+  else if (view === "home") app.innerHTML = homeHTML();
   else if (view === "welcome") app.innerHTML = welcomeHTML();
   else if (view === "newkey") app.innerHTML = newKeyHTML();
   else if (view === "signin") app.innerHTML = signInHTML();
@@ -60,7 +62,7 @@ function render() {
   else if (view === "stats") app.innerHTML = statsHTML();
   if (ui.modal) { const html = modalHTML(); app.insertAdjacentHTML("beforeend", changed("modal", ui.modal) ? html : html.replace('class="scrim"', 'class="scrim still"')); }
   else changed("modal", null);
-  if (view === "home" && ui.tab === "path") drawTrails();
+  if (view === "home" && ui.tab === "path" && !lock) drawTrails();
   restoreFocus(focused, caret, modalBefore);
   if (view === "lesson" && L.cur && L.cur.type === "type" && !L.checked) {
     const t = document.getElementById("typeInput"); if (t) { t.value = L.typed || ""; t.focus(); }
@@ -174,7 +176,7 @@ function homeHTML() {
         <button class="stat gem statbtn" data-act="shop" title="Edelsteine und Shop" aria-label="Shop, ${st.gems} Edelsteine">💎${st.gems}</button>
         <button class="stat heart statbtn" data-act="hearts" title="Herzen" aria-label="Herzen: ${heartsLabel()}">${I.heart(22)}${heartsLabel()}</button></div></div></header>
     <main class="home tab-${ui.tab}${changed("tab", ui.tab) ? " enter" : ""}">${tabHTML(ui.tab, { goal, mistakes, nextH, units })}</main>
-    <nav class="tabbar" aria-label="Bereiche"><div class="tabbar-in">${TABS.map(t => `<button class="tab ${ui.tab === t.id ? "on" : ""}" data-act="tab" data-tab="${t.id}" ${ui.tab === t.id ? 'aria-current="page"' : ""}>
+    <nav class="tabbar" aria-label="Bereiche"><div class="tabbar-in">${TABS.filter(t => t.id !== "friends" || !kidsFriendsOff()).map(t => `<button class="tab ${ui.tab === t.id ? "on" : ""}" data-act="tab" data-tab="${t.id}" ${ui.tab === t.id ? 'aria-current="page"' : ""}>
       <span class="tab-ico" aria-hidden="true">${t.em}</span><span>${t.name}</span>${t.badge() ? `<i class="tab-dot" aria-label="neu"></i>` : ""}</button>`).join("")}</div></nav>`;
 }
 /* Home is split into tabs, switched in the bar at the bottom, so no page gets too long. */
@@ -200,7 +202,7 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
       <button class="btn ghost wide" data-act="words" data-u="-1">Alle Wörter durchsuchen</button>
       ${speakPaused() ? `<p class="muted">Sprechen ist bis ${clockText(st.speakOffUntil)} Uhr pausiert. <button class="linkbtn" data-act="resumespeak">Wieder einschalten</button></p>` : ""}${nextH ? `<p class="muted">${nextH}</p>` : ""}</div>
     ${dialogsHTML()}`;
-  if (tab === "friends") return friendsPanelHTML();
+  if (tab === "friends" && !kidsFriendsOff()) return friendsPanelHTML();
   if (tab === "shop") return `${avatarShopHTML()}<div class="panel"><h3>Shop</h3>${shopHTML()}</div>`;
   if (tab === "profile") return `
     <div class="panel"><h3>👤 ${st.myName ? esc(st.myName) : "Dein Name"}</h3>
@@ -213,7 +215,7 @@ function tabHTML(tab, { goal, mistakes, nextH, units }) {
       <button class="btn ghost wide" data-act="managepacks">Sprachen verwalten</button></div>
     <div class="panel"><h3>Konto</h3><p class="muted">${accountLine()}</p>
       <button class="btn ghost wide" data-act="account">Konto & Freundescode</button></div>
-    <div class="panel"><button class="btn ghost wide" data-act="settings">${I.gear(18)} Einstellungen</button><button class="btn ghost wide" data-act="privacy">Datenschutz</button></div>`;
+    <div class="panel">${kidsOn() ? `<p class="muted">👧 Kindermodus ist an${kidsMinutesLeft() !== null ? ` · heute noch ${kidsMinutesLeft()} Min. Spielzeit` : ""}.</p>` : ""}<button class="btn ghost wide" data-act="settings">${I.gear(18)} Einstellungen</button><button class="btn ghost wide" data-act="privacy">Datenschutz</button></div>`;
   return `${noticesHTML()}
     ${ui.decay && ui.decay.length ? `<div class="panel" role="status" style="border-color:var(--gold)"><h3>Lange nicht geübt</h3>
       ${ui.decay.map(n => `<p class="muted">${esc((COURSES[n.code] || { name: n.code }).name)}: ${n.days} Tage Pause, deshalb ${n.lost === 1 ? "eine Lektion" : n.lost + " Lektionen"} zurück. Wiederhol sie, und du bist schnell wieder da.</p>`).join("")}
@@ -452,6 +454,8 @@ function failHTML() {
     <button class="btn heartbtn wide" data-act="refill">Herzen auffüllen</button><button class="btn ghost wide" data-act="home">Zurück zum Lernpfad</button></div></div>`;
 }
 function modalHTML() {
+  if (ui.modal === "pin") return pinModalHTML();
+  if (ui.modal === "kids") return kidsModalHTML();
   if (ui.modal === "words") {
     const all = srs(), whole = ui.wu < 0, units = whole ? openUnits() : [UNITS[ui.wu]];
     const rows = units.flatMap(u => u.words.map(w => ({ w, u }))).map(({ w, u }) => { const e = all["w:" + w.id], box = e ? e.box : -1;
@@ -631,6 +635,7 @@ function modalHTML() {
     ${APP && CONFIG.GITHUB_REPO ? `<div style="display:grid;gap:.4rem">${ui.appUpdate ? `<button class="btn good wide" data-act="updateinfo">Version ${esc(ui.appUpdate.version)} herunterladen</button>`
       : `<button class="btn ghost wide" data-act="checkupdate">Jetzt nach Updates suchen</button>`}${ui.updateNote ? `<small class="muted" role="status">${esc(ui.updateNote)}</small>` : ""}</div>` : ""}
     <button class="btn wide" data-act="closemodal">Fertig</button>
+    <button class="btn ghost wide" data-act="kidsettings">👧 Kindermodus${kidsOn() ? " (an)" : ""}</button>
     <button class="btn ghost wide" data-act="account">Konto & Freundescode</button>
     <button class="btn ghost wide" data-act="managepacks">Sprachen verwalten</button>
     <button class="btn ghost wide" data-act="privacy">Datenschutz</button>
