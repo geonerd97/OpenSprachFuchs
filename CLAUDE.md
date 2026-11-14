@@ -15,7 +15,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 
 ## Stand (2026-11-14)
 - **Release 0.1.11** (versionCode 31, experimentell, GitHub-Pre-release `v0.1.11`, Commit `9bee057` auf `main`). Alle 0.x-Releases sind Pre-releases; `newerVersion` vergleicht die Stellen als Zahlen, 0.1.11 gilt also gegenüber 0.1.9 als neuer.
-- Offene Issues: keine. Offene PRs: keine. Gemergte Branches sind gelöscht (lokal und auf GitHub). Der Branch `claude/friendly-cori-g2pbbz` (Kindermodus, Commit `8555e4c`) ist nicht gemergt und bleibt bis zur Entscheidung des Maintainers stehen.
+- Offene Issues: keine. Offene PRs: keine. Gemergte Branches sind gelöscht (lokal und auf GitHub). Der Kindermodus (PR #61) ist gemergt, der Branch `claude/friendly-cori-g2pbbz` gelöscht.
 - **Backend live:** https://app.opensprachfuchs.workers.dev/ (Worker `app`, alter Name `opensprachfuchs` läuft parallel, D1 `opensprachfuchs` in `weur`, workers.dev-Subdomain des Kontos `opensprachfuchs`). Alte Worker/Datenbanken (betterlingo, openlingo) sind gelöscht.
 - **Git lokal:** Der Ordner heißt noch `~/Betterlingo`. Branch `opensource` folgt `github/main` (Remote `github`). `origin` ist das private Gitea (`…/Bubulingo.git`) mit dem alten Verlauf; dorthin nichts vom neuen Stand pushen. Pushen nach GitHub mit `git -c credential.helper= -c credential.helper='!gh auth git-credential' push github opensource:main` (die gh-CLI ist als `geonerd97` angemeldet). Commits in diesem Repo laufen als `geonerd97 <277867742+geonerd97@users.noreply.github.com>`.
 - **Signatur:** `~/opensprachfuchs-release.jks` + `android/keystore.properties` (beides nicht in Git, muss gesichert sein; ohne diesen Schlüssel keine Updates mehr). Alte Schlüssel `~/betterlingo-release.jks`, `~/openlingo-release.jks` werden nicht mehr gebraucht.
@@ -125,7 +125,6 @@ Lernweg mit 100 Einheiten pro Sprache, je 25 in A1, A2, B1, B2; jede Einheit hat
 ## Mögliche nächste Schritte
 - Auftragsverarbeitungsvertrag mit Cloudflare abschließen
 - Rückmeldungen aus den Handy-Tests (Issues)
-- Entscheiden, ob der Kindermodus-Branch `claude/friendly-cori-g2pbbz` (Commit `8555e4c`) übernommen wird
 - Prüfen, ob der Worker die Web-Änderungen aus PR #57 und #60 ausgeliefert hat (`cd worker && npm run deploy`)
 - Thai als Paket (Format erweitern, Schweizerdeutsch und Kölsch sind als Dialekt-Pakete schon da)
 - Sprachpakete von Muttersprachlern prüfen lassen
