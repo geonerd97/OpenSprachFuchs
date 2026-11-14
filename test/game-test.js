@@ -891,6 +891,48 @@ g.view = "home";
     if (!(await s.signOut())) fail("Abmelden klappt online nicht", s.acct.note);
     if (!puts.length || s.acct.key || s.store["opensprachfuchs-state"]) fail("Abmelden online lädt nicht hoch oder lässt Daten zurück", puts);
   }
+  // Kids mode: PIN in front of settings, language management, account and updates; play time and bedtime lock the app.
+  {
+    const k0 = g.st.kids, tab0 = g.ui.tab;
+    g.view = "home"; g.ui.modal = null; g.ui.parentUntil = 0;
+    g.kidsEnable("12a4", "12a4"); if (g.kidsOn()) fail("Kindermodus mit ungültiger PIN an");
+    g.kidsEnable("1234", "4321"); if (g.kidsOn()) fail("Kindermodus mit verschiedenen PINs an");
+    g.kidsEnable("1234", "1234"); if (!g.kidsOn() || g.st.kids.pin.includes("1234")) fail("Kindermodus nicht an oder PIN im Klartext", g.st.kids);
+    g.ui.parentUntil = 0;
+    for (const a of ["settings", "managepacks", "account", "openupdate", "checkupdate", "reset", "getpack"]) {
+      g.ui.modal = null; g.click(a, { c: "en" });
+      if (g.ui.modal !== "pin" || !g.ui.pinFor || g.ui.pinFor.a !== a) fail("Ohne PIN erreichbar", a, g.ui.modal);
+    }
+    g.ui.modal = null; g.click("settings");
+    g.kidsCheckPin("0000"); if (g.ui.modal !== "pin" || !g.ui.pinMsg) fail("Falsche PIN angenommen");
+    g.kidsCheckPin("1234"); if (g.ui.modal !== "settings" || !g.parentOk()) fail("Richtige PIN öffnet die Einstellungen nicht", g.ui.modal);
+    if (!g.modalHTML().includes('data-act="kidsettings"')) fail("Kindermodus fehlt in den Einstellungen");
+    g.click("home"); if (g.parentOk()) fail("Eltern-Freigabe bleibt nach dem Schließen");
+    g.click("courses"); if (g.ui.modal !== "courses") fail("Sprache wechseln braucht im Kindermodus keine PIN"); g.ui.modal = null;
+    // Friends: off by default in kids mode, tab hidden, actions ignored.
+    if (!g.kidsFriendsOff() || g.homeHTML().includes('data-tab="friends"')) fail("Freunde-Tab im Kindermodus sichtbar");
+    g.click("addfriend"); if (g.ui.modal === "addfriend") fail("Freund hinzufügen im Kindermodus möglich");
+    g.ui.parentUntil = Date.now() + 60000; g.click("kidstoggle", { k: "friends" });
+    if (g.kidsFriendsOff() || !g.homeHTML().includes('data-tab="friends"')) fail("Freunde lassen sich nicht erlauben");
+    // Play time: 15 minutes, 16 used → locked; parents give 30 minutes.
+    g.kidsSet("limit", 15); g.kidsStore({ day: g.kidsUsed().day, ms: 16 * 60000, extraUntil: 0 });
+    if (g.kidsLock() !== "time" || !g.kidsLockHTML("time").includes('data-act="kidsunlock"')) fail("Spielzeit sperrt nicht");
+    g.ui.parentUntil = 0; g.ui.modal = null; g.click("kidsunlock"); if (g.ui.modal !== "pin") fail("Freigeben ohne PIN");
+    g.kidsCheckPin("1234"); if (g.kidsLock()) fail("Freigabe der Eltern wirkt nicht");
+    g.kidsStore({ day: g.kidsUsed().day, ms: 0, extraUntil: 0 });
+    // Bedtime over midnight.
+    g.kidsSet("bed", true); g.kidsSet("bedFrom", "20:00"); g.kidsSet("bedTo", "07:00");
+    const at = h => { const d = new Date(); d.setHours(h, 0, 0, 0); return d; };
+    if (!g.inBedtime(at(22)) || !g.inBedtime(at(6)) || g.inBedtime(at(12))) fail("Schlafenszeit über Mitternacht falsch");
+    g.kidsSet("bed", false);
+    // A reset keeps kids mode, the merge keeps the newer choice.
+    if (!g.mergeSaves(Object.assign({}, g.st, { savedAt: 1, kids: { on: false } }), Object.assign({}, g.st, { savedAt: 2 })).kids.on) fail("Zusammenführen verliert den Kindermodus");
+    g.ui.parentUntil = Date.now() + 60000; g.click("doreset"); if (!g.kidsOn()) fail("Alles zurücksetzen schaltet den Kindermodus aus");
+    // PIN forgotten: the account key turns it off.
+    g.ui.modal = "pin"; g.kidsForgot("falsch"); if (!g.kidsOn()) fail("Falscher Schlüssel schaltet Kindermodus aus");
+    if (g.acct.key) { g.kidsForgot(g.acct.key); if (g.kidsOn()) fail("Schlüssel schaltet Kindermodus nicht aus"); }
+    g.st.kids = k0; g.ui.tab = tab0; g.ui.modal = null; g.ui.parentUntil = 0;
+  }
   console.log(`Übungen: ${count}, Fehler: ${errors}`, JSON.stringify(types));
 process.exit(errors ? 1 : 0);
 })();

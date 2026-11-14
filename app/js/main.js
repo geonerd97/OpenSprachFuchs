@@ -12,6 +12,8 @@ function syncReminder() {
 function reportDay() { try { if (APP && window.AndroidBridge.reportDay) window.AndroidBridge.reportDay(st.lastDay || "", shownStreak(), streakUntil()); } catch (e) {} }
 app.addEventListener("change", e => {
   if (e.target.id === "reminderTime" && e.target.value) { st.settings.reminderTime = e.target.value; save(); syncReminder(); }
+  if (e.target.id === "kidsLimit" && parentOk()) { kidsSet("limit", +e.target.value || 0); render(); }
+  if ((e.target.id === "kidsBedFrom" || e.target.id === "kidsBedTo") && e.target.value && parentOk()) kidsSet(e.target.id === "kidsBedFrom" ? "bedFrom" : "bedTo", e.target.value);
 });
 app.addEventListener("input", e => {
   if (e.target.id === "typeInput" && L) { L.typed = e.target.value; updateCheckBtn(); }
@@ -27,6 +29,10 @@ app.addEventListener("click", e => {
   if (!el) return;
   const a = el.dataset.act, ds = el.dataset;
   if (a === "closemodal" && e.target !== el) return; // clicks inside the modal box bubble to the scrim
+  if (kidsGuard(a, ds)) return; // kids mode: PIN for settings and the like
+  act(a, ds);
+});
+function act(a, ds) {
   switch (a) {
     case "node": {
       if (ds.state === "locked") { ui.shake = ds.id; sfx("bad"); render(); setTimeout(() => { ui.shake = null; }, 400); return; }
@@ -59,7 +65,7 @@ app.addEventListener("click", e => {
     case "master": ui.pop = null; ui.mu = +ds.u; ui.modal = "master"; render(); return;
     case "startmaster": ui.modal = null; startMaster(+ds.u); return;
     case "shop": ui.pop = null; ui.shopMsg = ""; ui.avMsg = ""; ui.avTry = null; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
-    case "tab": ui.pop = null; ui.shopMsg = ""; ui.tab = ds.tab; if (ds.tab === "friends") loadFriends(); render(); scrollToCurrent(); return;
+    case "tab": ui.parentUntil = 0; if (ds.tab === "friends" && kidsFriendsOff()) return; ui.pop = null; ui.shopMsg = ""; ui.tab = ds.tab; if (ds.tab === "friends") loadFriends(); render(); scrollToCurrent(); return;
     case "buy": if (buy(ds.id)) { sfx("win"); reportDay(); } render(); return;
     // The fox's wardrobe (avatar.js, avatarShopHTML in views.js)
     case "avshow": ui.avCat = ds.cat; ui.avTry = null; ui.avMsg = ""; ui.modal = null; ui.tab = "shop"; view = "home"; render(); window.scrollTo(0, 0); return;
@@ -146,10 +152,10 @@ app.addEventListener("click", e => {
       // syncedAt belongs to the account, not to the progress: without it the next upload looks like one from a
       // device that never synced, and the older save on the server would be merged back in.
       const keep = { onboarded: true, course: st.course, friends: st.friends, dayReported: st.dayReported, syncedAt: st.syncedAt,
-        myName: st.myName, keyCreated: st.keyCreated, keyChecked: st.keyChecked, keyRemindAt: st.keyRemindAt };
+        myName: st.myName, keyCreated: st.keyCreated, keyChecked: st.keyChecked, keyRemindAt: st.keyRemindAt, kids: st.kids };
       st = Object.assign(fromSaved(null), keep); setCourse(st.course); save(); ui.modal = null; render(); return;
     }
-    case "closemodal": ui.modal = null; render(); return;
+    case "closemodal": ui.modal = null; ui.pinFor = null; ui.parentUntil = 0; render(); return;
     case "resultdone": {
       // Die erste Runde des Tages hat die Serie erhöht: erst der Serien-Bildschirm, dann der Lernweg.
       if (!result || !result.streakUp) { view = "home"; render(); scrollToCurrent(); return; }
@@ -157,7 +163,7 @@ app.addEventListener("click", e => {
       loadFriends().then(() => { if (view === "streak") render(); }); // die gemeinsamen Serien von eben
       return;
     }
-    case "home": clearInterval(blitzTimer); ui.modal = null; L = null; view = "home"; render(); scrollToCurrent(); return;
+    case "home": clearInterval(blitzTimer); ui.modal = null; ui.parentUntil = 0; L = null; view = "home"; render(); scrollToCurrent(); return;
     case "quit": ui.modal = "quit"; render(); return;
     case "say": speak(ds.t, !!ds.slow); return;
     case "hint":
@@ -174,8 +180,17 @@ app.addEventListener("click", e => {
     case "mute": if (listenPaused()) resumeListening(); else pauseListening(); return;
     case "resumelisten": resumeListening(); return;
     case "ml": case "mr": matchClick(a === "ml" ? "l" : "r", +ds.i); return;
+    case "pinok": kidsCheckPin(val("pinInput")); return;
+    case "pinforgot": ui.pinForgot = true; ui.pinMsg = ""; render(); return;
+    case "pinkeyok": kidsForgot(val("pinKey")); return;
+    case "kidsettings": ui.kidsMsg = ""; ui.modal = "kids"; render(); return;
+    case "kidson": kidsEnable(val("kidsPin"), val("kidsPin2")); return;
+    case "kidspin": kidsChangePin(val("kidsPin"), val("kidsPin2")); return;
+    case "kidsoff": kidsSet("on", false); ui.kidsMsg = "Kindermodus ist aus."; render(); return;
+    case "kidstoggle": kidsSet(ds.k, !kids()[ds.k]); if (ds.k === "friends" && kidsFriendsOff() && ui.tab === "friends") ui.tab = "path"; render(); return;
+    case "kidsunlock": kidsUnlock(); return;
   }
-});
+}
 function matchClick(side, i) {
   const m = L.m; if (m.done.has(i)) return;
   if (side === "r" && !listenPaused()) speak(L.cur.pairs[i].t);
@@ -193,7 +208,10 @@ function matchClick(side, i) {
   render();
 }
 document.addEventListener("keydown", e => {
-  if (ui.modal) { if (e.key === "Escape") { ui.modal = null; render(); } return; }
+  if (ui.modal) {
+    if (e.key === "Enter" && e.target.id === "pinInput") { e.preventDefault(); kidsCheckPin(e.target.value); return; }
+    if (e.key === "Escape") { ui.modal = null; ui.pinFor = null; ui.parentUntil = 0; render(); } return;
+  }
   if (view === "signin" && e.key === "Enter" && e.target.id === "keyInput") { e.preventDefault(); document.querySelector('[data-act="dosignin"]').click(); return; }
   if (view === "stats" && e.key === "Escape") { view = "home"; render(); return; }
   if ((view === "result" || view === "streak") && e.key === "Enter") { e.preventDefault(); document.querySelector('[id="contBtn"]').click(); return; }
@@ -244,7 +262,7 @@ setAppH();
 if (window.addEventListener) window.addEventListener("resize", setAppH);
 if (window.addEventListener) window.addEventListener("resize", () => { clearTimeout(trailTimer); trailTimer = setTimeout(() => { if (view === "home" && ui.tab === "path") drawTrails(); }, 150); });
 window.opensprachfuchsBack = () => {
-  if (ui.modal) { ui.modal = null; render(); return true; }
+  if (ui.modal) { ui.modal = null; ui.pinFor = null; ui.parentUntil = 0; render(); return true; }
   if (ui.pop) { ui.pop = null; render(); return true; }
   if (view === "lesson") { ui.modal = "quit"; render(); return true; }
   if (view === "home" && ui.tab !== "path") { ui.tab = "path"; render(); window.scrollTo(0, 0); return true; }
