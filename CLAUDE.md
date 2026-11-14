@@ -13,8 +13,9 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 - Backend kostenlos bei **Cloudflare** (Worker + D1 + statische Dateien). Live unter `https://app.opensprachfuchs.workers.dev/` (Worker `app`; derselbe Worker läuft zusätzlich unter dem alten Namen `opensprachfuchs` = `https://opensprachfuchs.opensprachfuchs.workers.dev/` für App-Versionen bis 0.0.14 und alte Freundes-Links, `npm run deploy` aktualisiert beide), D1-Datenbank `opensprachfuchs` in Westeuropa (`weur`). Deploy: `cd worker && npm run deploy`.
 - **Keine Liga.** Thai, Schweizerdeutsch und Kölsch sollen später als Pakete nachgeliefert werden (die Inhalte der Vorversion liegen nicht im öffentlichen Repository; der Maintainer hat sie im privaten Verlauf auf seinem Gitea). Das Paketformat dafür steht (Format 2 seit 2026-11-08: `group` „dialects“, `noTyping`, `noListen`, `speech`, `spellings`, Umschrift `tr`; siehe `packs/README.md`); Thai braucht noch eigene Prüfung.
 
-## Stand (2026-10-31)
-- **Release 0.1.1** (experimentell, GitHub-Pre-release): https://github.com/geonerd97/OpenSprachFuchs/releases/tag/v0.1.1, Tag auf `88b67f8`, APK `opensprachfuchs-0.1.1.apk` (1,75 MB). Alle 0.x-Releases sind Pre-releases; `newerVersion` vergleicht die Stellen als Zahlen, 0.1.0 gilt also gegenüber 0.0.17 als neuer.
+## Stand (2026-11-14)
+- **Release 0.1.11** (versionCode 31, experimentell, GitHub-Pre-release `v0.1.11`, Commit `9bee057` auf `main`). Alle 0.x-Releases sind Pre-releases; `newerVersion` vergleicht die Stellen als Zahlen, 0.1.11 gilt also gegenüber 0.1.9 als neuer.
+- Offene Issues: keine. Offene PRs: keine. Gemergte Branches sind gelöscht (lokal und auf GitHub). Der Branch `claude/friendly-cori-g2pbbz` (Kindermodus, Commit `8555e4c`) ist nicht gemergt und bleibt bis zur Entscheidung des Maintainers stehen.
 - **Backend live:** https://app.opensprachfuchs.workers.dev/ (Worker `app`, alter Name `opensprachfuchs` läuft parallel, D1 `opensprachfuchs` in `weur`, workers.dev-Subdomain des Kontos `opensprachfuchs`). Alte Worker/Datenbanken (betterlingo, openlingo) sind gelöscht.
 - **Git lokal:** Der Ordner heißt noch `~/Betterlingo`. Branch `opensource` folgt `github/main` (Remote `github`). `origin` ist das private Gitea (`…/Bubulingo.git`) mit dem alten Verlauf; dorthin nichts vom neuen Stand pushen. Pushen nach GitHub mit `git -c credential.helper= -c credential.helper='!gh auth git-credential' push github opensource:main` (die gh-CLI ist als `geonerd97` angemeldet). Commits in diesem Repo laufen als `geonerd97 <277867742+geonerd97@users.noreply.github.com>`.
 - **Signatur:** `~/opensprachfuchs-release.jks` + `android/keystore.properties` (beides nicht in Git, muss gesichert sein; ohne diesen Schlüssel keine Updates mehr). Alte Schlüssel `~/betterlingo-release.jks`, `~/openlingo-release.jks` werden nicht mehr gebraucht.
@@ -26,7 +27,7 @@ Verantwortlich/Kontakt: M. Reger, opensprachfuchs@gmx.net (bewusst abgekürzt un
 |---|---|
 | `app/` | Die App: `index.html`, `styles.css`, `js/*.js`. Kein Build-Schritt, keine Abhängigkeiten. Schrift Nunito als Datei in der App (`app/fonts/nunito.woff2`, variabel, nur Latin-Teilmenge, 39 KB, SIL OFL in `app/fonts/OFL.txt`, aus `@fontsource-variable/nunito` 5.3.0); Grundstärke 650, Überschriften 800, Systemschrift nur als Rückfall. Die Skripte teilen sich den globalen Gültigkeitsbereich, Reihenfolge wie in `index.html`. |
 | `web/` | Nur für die Web-App: `manifest.webmanifest`, Icons (aus `docs/logo.webp`, `icon-maskable.png` mit Rand für runde Masken), `sw.js` (Vorlage für den Service Worker) |
-| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.1.7 (versionCode 27, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
+| `android/` | WebView-App, Paket `de.opensprachfuchs.app`, Version 0.1.11 (versionCode 31, experimentell; 0.x-Releases sind auf GitHub Pre-releases) |
 | `packs/` | Sprachpakete `en/fr/es/it/pt/hr/da.json`, Format in `packs/README.md` |
 | `worker/` | Cloudflare Worker (`src/index.js`), `schema.sql`, `wrangler.example.toml` (Vorlage; die echte `wrangler.toml` mit der Datenbank-ID ist lokal und gitignored); `public/` wird gebaut (gitignored) |
 | `tools/packs.mjs` | `check` / `format` / `build` (nach `worker/public/packs/` inkl. `index.json` mit sha256, `group`, `format`; Format-2-Pakete in `packs2`) / `bundle <Ordner> [--dialects]` (Pakete für die APK: nur Hauptsprachen) |
@@ -122,5 +123,7 @@ Lernweg mit 100 Einheiten pro Sprache, je 25 in A1, A2, B1, B2; jede Einheit hat
 ## Mögliche nächste Schritte
 - Auftragsverarbeitungsvertrag mit Cloudflare abschließen
 - Rückmeldungen aus den Handy-Tests (Issues)
-- Thai, Schweizerdeutsch, Kölsch als Pakete (Format erweitern)
+- Entscheiden, ob der Kindermodus-Branch `claude/friendly-cori-g2pbbz` (Commit `8555e4c`) übernommen wird
+- Prüfen, ob der Worker die Web-Änderungen aus PR #57 und #60 ausgeliefert hat (`cd worker && npm run deploy`)
+- Thai als Paket (Format erweitern, Schweizerdeutsch und Kölsch sind als Dialekt-Pakete schon da)
 - Sprachpakete von Muttersprachlern prüfen lassen
