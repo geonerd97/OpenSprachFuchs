@@ -123,9 +123,12 @@ function nextExercise() {
   }
   if (L.cur && L.cur.type === "intro") { seenWords()[L.cur.item.id] = 1; L.checked = true; L.res = { ok: true, given: "" }; save(); }
   if (listenPaused() || noVoice()) L.cur = degradeAudio(L.cur);
-  else if (L.cur && L.cur.type === "intro") setTimeout(() => speak(L.cur.item.t), 350);
-  else if (L.cur && L.cur.type === "listen") setTimeout(() => speak(L.cur.text), 350);
-  else if (L.cur && L.cur.audio) setTimeout(() => speak(L.cur.item.t), 350);
+  else if (L.cur && (L.cur.type === "intro" || L.cur.type === "listen" || L.cur.audio)) {
+    // Spoken a moment later, but only if the task is still on screen: after a quick "Weiter" or "Beenden" it would
+    // otherwise read the next task (and give away its answer) or fail on an ended round.
+    const ex = L.cur, text = ex.type === "listen" ? ex.text : ex.item.t;
+    setTimeout(() => { if (L && L.cur === ex) speak(text); }, 350);
+  }
 }
 function answerReady() {
   const ex = L.cur;

@@ -199,7 +199,7 @@ function matchClick(side, i) {
     if (m.l === m.r) {
       const k = m.l; m.okFlash = k; sfx("good"); m.l = m.r = null; render();
       srsUpdate("w:" + L.cur.pairs[k].id, true);
-      setTimeout(() => { m.done.add(k); m.okFlash = null; if (m.done.size === L.cur.pairs.length) { L.checked = true; L.res = { ok: true, given: "" }; L.reported = false; L.done++; L.right++; trackAnswer(L.cur, true); comboHit(L.cur); save(); } render(); }, 260);
+      setTimeout(() => { if (!L || L.m !== m) return; m.done.add(k); m.okFlash = null; if (m.done.size === L.cur.pairs.length) { L.checked = true; L.res = { ok: true, given: "" }; L.reported = false; L.done++; L.right++; trackAnswer(L.cur, true); comboHit(L.cur); save(); } render(); }, 260);
       return;
     }
     m.flash = { l: m.l, r: m.r }; sfx("bad"); m.l = m.r = null;
